@@ -2,7 +2,6 @@ import { AppView } from "@/store/useAppStore";
 
 type LangKey = 'zh' | 'en';
 
-// 定义翻译字典
 const translations = {
   en: {
     menu: {
@@ -12,11 +11,18 @@ const translations = {
       settings: "Settings"
     },
     actions: {
-      darkMode: "Dark Mode",
-      lightMode: "Light Mode",
-      language: "English",
       collapse: "Collapse",
       expand: "Expand"
+    },
+    settings: {
+      title: "Settings",
+      appearance: "Appearance",
+      language: "Language",
+      themeDark: "Dark Theme",
+      themeLight: "Light Theme",
+      langEn: "English",
+      langZh: "Chinese (Simplified)",
+      close: "Close"
     }
   },
   zh: {
@@ -27,22 +33,27 @@ const translations = {
       settings: "设置"
     },
     actions: {
-      darkMode: "深色模式",
-      lightMode: "亮色模式",
-      language: "简体中文",
       collapse: "收起侧栏",
       expand: "展开侧栏"
+    },
+    settings: {
+      title: "设置",
+      appearance: "外观与显示",
+      language: "语言偏好",
+      themeDark: "深色模式",
+      themeLight: "亮色模式",
+      langEn: "English",
+      langZh: "简体中文",
+      close: "关闭"
     }
   }
 };
 
-// 辅助函数：获取菜单文本
 export function getMenuLabel(view: AppView, lang: LangKey): string {
   return translations[lang].menu[view];
 }
 
-// 辅助函数：获取通用文本
-export function getText(key: keyof typeof translations['en']['actions'] | 'settings', lang: LangKey): string {
-  if (key === 'settings') return translations[lang].menu.settings;
-  return translations[lang].actions[key as keyof typeof translations['en']['actions']];
+export function getText(section: 'actions' | 'settings', key: string, lang: LangKey): string {
+  // @ts-ignore
+  return translations[lang][section][key] || key;
 }

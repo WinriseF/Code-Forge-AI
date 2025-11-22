@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { fileStorage } from '@/lib/storage'; // <--- 引入我们写的适配器
+import { fileStorage } from '@/lib/storage';
 
 export type AppView = 'prompts' | 'context' | 'patch';
 export type AppTheme = 'dark' | 'light';
@@ -9,12 +9,21 @@ export type AppLang = 'en' | 'zh';
 interface AppState {
   currentView: AppView;
   isSidebarOpen: boolean;
+  
+  // 新增：控制设置弹窗
+  isSettingsOpen: boolean; 
+  
   theme: AppTheme;
   language: AppLang;
+
   setView: (view: AppView) => void;
   toggleSidebar: () => void;
-  toggleTheme: () => void;
-  toggleLanguage: () => void;
+  
+  // 新增：打开/关闭设置
+  setSettingsOpen: (open: boolean) => void; 
+
+  setTheme: (theme: AppTheme) => void; // 改名为 setTheme 更直观
+  setLanguage: (lang: AppLang) => void; // 改名为 setLanguage
 }
 
 export const useAppStore = create<AppState>()(
@@ -22,30 +31,29 @@ export const useAppStore = create<AppState>()(
     (set) => ({
       currentView: 'prompts',
       isSidebarOpen: true,
-      theme: 'dark',
+      isSettingsOpen: false, // 默认关闭
+      theme: 'dark', 
       language: 'zh',
 
       setView: (view) => set({ currentView: view }),
-      
       toggleSidebar: () => set((state) => ({ isSidebarOpen: !state.isSidebarOpen })),
       
-      toggleTheme: () => set((state) => {
-        const newTheme = state.theme === 'dark' ? 'light' : 'dark';
-        if (newTheme === 'dark') {
+      setSettingsOpen: (open) => set({ isSettingsOpen: open }),
+
+      // 修改逻辑：直接传入目标值，而不是 toggle
+      setTheme: (theme) => set(() => {
+        if (theme === 'dark') {
           document.documentElement.classList.add('dark');
         } else {
           document.documentElement.classList.remove('dark');
         }
-        return { theme: newTheme };
+        return { theme };
       }),
 
-      toggleLanguage: () => set((state) => ({ 
-        language: state.language === 'en' ? 'zh' : 'en' 
-      })),
+      setLanguage: (language) => set({ language }),
     }),
     {
-      name: 'app-config', // 这个名字不重要了，因为我们自定义了存储
-      // 关键修改：使用 createJSONStorage 包装我们的 fileStorage
+      name: 'app-config',
       storage: createJSONStorage(() => fileStorage),
     }
   )

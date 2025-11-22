@@ -1,4 +1,4 @@
-import { BookOpen, FileJson, GitMerge, Settings, ChevronLeft, ChevronRight, Globe, Moon, Sun } from 'lucide-react';
+import { BookOpen, FileJson, GitMerge, Settings, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useAppStore, AppView } from '@/store/useAppStore';
 import { getMenuLabel, getText } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
@@ -7,11 +7,9 @@ export function Sidebar() {
   const { 
     currentView, setView, 
     isSidebarOpen, toggleSidebar,
-    theme, toggleTheme,
-    language, toggleLanguage
+    language, setSettingsOpen // 获取打开设置的方法
   } = useAppStore();
 
-  // 菜单配置
   const menuItems: { id: AppView; icon: any }[] = [
     { id: 'prompts', icon: BookOpen },
     { id: 'context', icon: FileJson },
@@ -21,12 +19,11 @@ export function Sidebar() {
   return (
     <aside
       className={cn(
-        // 修改颜色：使用语义化变量 bg-background, border-border
-        "bg-background border-r border-border flex flex-col relative select-none transition-[width] duration-300 ease-in-out overflow-hidden",
+        "bg-background border-r border-border flex flex-col relative select-none transition-[width] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] overflow-hidden",
         isSidebarOpen ? "w-48" : "w-16"
       )}
     >
-      {/* --- Header --- */}
+      {/* Header */}
       <div className="h-14 flex items-center border-b border-border shrink-0 overflow-hidden">
         <div className="h-full flex items-center min-w-[256px] pl-5"> 
           <div className={cn(
@@ -49,13 +46,13 @@ export function Sidebar() {
             "absolute top-0 bottom-0 right-0 w-8 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors z-20 h-14 border-l border-transparent",
             !isSidebarOpen && "w-full right-auto left-0 border-none hover:bg-secondary"
           )}
-          title={isSidebarOpen ? getText('collapse', language) : getText('expand', language)}
+          title={isSidebarOpen ? getText('actions', 'collapse', language) : getText('actions', 'expand', language)}
         >
           {isSidebarOpen ? <ChevronLeft size={16} /> : <ChevronRight size={18} />}
         </button>
       </div>
 
-      {/* --- 菜单 --- */}
+      {/* Menu */}
       <nav className="flex-1 py-4 space-y-1 overflow-y-auto overflow-x-hidden flex flex-col">
         {menuItems.map((item) => (
           <button
@@ -65,7 +62,7 @@ export function Sidebar() {
             className={cn(
               "relative flex items-center text-sm font-medium transition-all group h-10 w-full",
               currentView === item.id
-                ? "text-primary" // 选中色使用 primary (蓝色)
+                ? "text-primary" 
                 : "text-muted-foreground hover:text-foreground"
             )}
           >
@@ -75,11 +72,9 @@ export function Sidebar() {
                 isSidebarOpen && "w-full opacity-10 border-r border-primary/20 left-0"
               )} />
             )}
-            
             <div className="w-16 flex items-center justify-center shrink-0 z-10">
               <item.icon size={20} className="transition-transform duration-300 group-hover:scale-110" />
             </div>
-
             <span className={cn(
                 "whitespace-nowrap transition-all duration-300 z-10 origin-left",
                 isSidebarOpen ? "opacity-100 translate-x-0 scale-100" : "opacity-0 -translate-x-4 scale-90"
@@ -91,52 +86,28 @@ export function Sidebar() {
         ))}
       </nav>
 
-      {/* --- 底部按钮 --- */}
+      {/* Footer - 只有设置按钮了 */}
       <div className="border-t border-border shrink-0 flex flex-col overflow-hidden whitespace-nowrap py-2">
-        {[
-          { 
-            icon: theme === 'dark' ? Moon : Sun, 
-            label: theme === 'dark' ? getText('darkMode', language) : getText('lightMode', language), 
-            onClick: toggleTheme 
-          },
-          { 
-            icon: Globe, 
-            label: getText('language', language), 
-            onClick: toggleLanguage 
-          },
-          { 
-            icon: Settings, 
-            label: getText('settings', language), 
-            onClick: () => {}, 
-            isSettings: true 
-          }
-        ].map((btn, idx) => (
-          <button 
-            key={idx}
-            onClick={btn.onClick}
-            className={cn(
-              "relative flex items-center h-10 w-full text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors group/btn",
-              btn.isSettings && "mt-1"
-            )}
-            title={!isSidebarOpen ? btn.label : undefined}
-          >
-            <div className="w-16 flex items-center justify-center shrink-0">
-               <btn.icon 
-                 size={18} 
-                 className={cn(
-                   "transition-transform duration-500", 
-                   btn.isSettings && "group-hover/btn:rotate-90"
-                 )} 
-               />
-            </div>
-            <span className={cn(
-              "text-sm transition-all duration-300 origin-left", 
-              isSidebarOpen ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
-            )}>
-              {btn.label}
-            </span>
-          </button>
-        ))}
+        <button 
+          onClick={() => setSettingsOpen(true)} // 点击打开设置弹窗
+          className={cn(
+            "relative flex items-center h-10 w-full text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors group/btn"
+          )}
+          title={!isSidebarOpen ? getText('menu', 'settings', language) : undefined}
+        >
+          <div className="w-16 flex items-center justify-center shrink-0">
+             <Settings 
+               size={18} 
+               className="transition-transform duration-500 group-hover/btn:rotate-90" 
+             />
+          </div>
+          <span className={cn(
+            "text-sm transition-all duration-300 origin-left", 
+            isSidebarOpen ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
+          )}>
+            {getText('menu', 'settings', language)}
+          </span>
+        </button>
       </div>
     </aside>
   );
