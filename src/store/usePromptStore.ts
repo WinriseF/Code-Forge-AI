@@ -29,7 +29,7 @@ interface PromptState {
 
 export const usePromptStore = create<PromptState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       prompts: [],
       groups: [DEFAULT_GROUP, 'Git', 'SQL', 'Docker'], // 预设几个常用组
       activeGroup: 'all', // 'all' 表示查看全部
