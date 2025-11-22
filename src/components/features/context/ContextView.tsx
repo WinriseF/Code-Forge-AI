@@ -21,6 +21,7 @@ export function ContextView() {
   const { 
     projectRoot, fileTree, isScanning, 
     projectIgnore, updateProjectIgnore, // ✨ 获取项目配置
+    refreshTreeStatus,
     setProjectRoot, setFileTree, setIsScanning, toggleSelect 
   } = useContextStore();
 
@@ -41,8 +42,10 @@ export function ContextView() {
 
   // Sync input with store
   useEffect(() => {
-    if (projectRoot) setPathInput(projectRoot);
-  }, [projectRoot]);
+    if (fileTree.length > 0) {
+      refreshTreeStatus(globalIgnore);
+    }
+  }, [globalIgnore, projectIgnore, refreshTreeStatus]); // 依赖项
 
   // --- Statistics (Memoized) ---
   const stats = useMemo(() => {

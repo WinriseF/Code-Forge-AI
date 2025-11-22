@@ -43,5 +43,6 @@ export interface FileNode {
   isSelected: boolean;
   isPartial?: boolean;
   isExpanded?: boolean;
+  isLocked?: boolean;
   children?: FileNode[];
 }
