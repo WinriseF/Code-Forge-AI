@@ -1,0 +1,122 @@
+[
+  {
+    "id": "gemini-2-5-pro",
+    "name": "Gemini 2.5 Pro",
+    "provider": "Google",
+    "contextLimit": 1048576,  
+    "inputPricePerMillion": 1.25,
+    "color": "bg-blue-600"
+  },
+  {
+    "id": "claude-sonnet-4-5-20250929-thinking-32k",
+    "name": "Claude Sonnet 4.5 (Thinking 32k)",
+    "provider": "Anthropic",
+    "contextLimit": 200000,
+    "inputPricePerMillion": 3.0,
+    "color": "bg-orange-500"
+  },
+  {
+    "id": "claude-opus-4-1-20250805-thinking-16k",
+    "name": "Claude Opus 4.1 (Thinking 16k)",
+    "provider": "Anthropic",
+    "contextLimit": 16000,
+    "inputPricePerMillion": 15.0,
+    "color": "bg-orange-700"
+  },
+  {
+    "id": "claude-sonnet-4-5-20250929",
+    "name": "Claude Sonnet 4.5",
+    "provider": "Anthropic",
+    "contextLimit": 200000,
+    "inputPricePerMillion": 3.0,
+    "color": "bg-orange-400"
+  },
+  {
+    "id": "gpt-4-5-preview-2025-02-27",
+    "name": "GPT 4.5 Preview",
+    "provider": "OpenAI",
+    "contextLimit": null,
+    "inputPricePerMillion": null,
+    "color": "bg-green-500"
+  },
+  {
+    "id": "chatgpt-4o-latest-20250326",
+    "name": "ChatGPT 4o (Latest)",
+    "provider": "OpenAI",
+    "contextLimit": 128000,
+    "inputPricePerMillion": 2.5,
+    "color": "bg-indigo-500"
+  },
+  {
+    "id": "gpt-5-high",
+    "name": "GPT 5 High",
+    "provider": "OpenAI",
+    "contextLimit": null,
+    "inputPricePerMillion": 1.25,
+    "color": "bg-green-700"
+  },
+  {
+    "id": "o3-2025-04-16",
+    "name": "o3 (2025-04-16)",
+    "provider": "OpenAI",
+    "contextLimit": null,
+    "inputPricePerMillion": 2.0,
+    "color": "bg-teal-600"
+  },
+  {
+    "id": "qwen3-max-preview",
+    "name": "Qwen 3 Max Preview",
+    "provider": "Alibaba / Qwen",
+    "contextLimit": 131072,
+    "inputPricePerMillion": null,
+    "color": "bg-indigo-600"
+  },
+  {
+    "id": "glm-4-6",
+    "name": "GLM 4.6",
+    "provider": "Z.ai",
+    "contextLimit": null,
+    "inputPricePerMillion": null,
+    "color": "bg-yellow-500"
+  },
+  {
+    "id": "gpt-5-chat",
+    "name": "GPT 5 Chat",
+    "provider": "OpenAI",
+    "contextLimit": null,
+    "inputPricePerMillion": null,
+    "color": "bg-green-400"
+  },
+  {
+    "id": "qwen3-max-2025-09-23",
+    "name": "Qwen 3 Max (2025-09-23)",
+    "provider": "Alibaba / Qwen",
+    "contextLimit": 131072,
+    "inputPricePerMillion": null,
+    "color": "bg-indigo-500"
+  },
+  {
+    "id": "claude-opus-4-20250514-thinking-16k",
+    "name": "Claude Opus 4.1 (Thinking 16k, May 2025)",
+    "provider": "Anthropic",
+    "contextLimit": 16000,
+    "inputPricePerMillion": 15.0,
+    "color": "bg-orange-600"
+  },
+  {
+    "id": "kimi-k2-thinking",
+    "name": "Kimi K2 Thinking",
+    "provider": "Moonshot",
+    "contextLimit": 256000,
+    "inputPricePerMillion": null,
+    "color": "bg-pink-500"
+  },
+  {
+    "id": "hunyuan-turbos",
+    "name": "Hunyuan Turbo S",
+    "provider": "Tencent",
+    "contextLimit": 256000,
+    "inputPricePerMillion": null,
+    "color": "bg-gray-700"
+  }
+]

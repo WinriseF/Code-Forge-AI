@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Copy, FileText, Loader2, AlertCircle } from 'lucide-react';
 import { FileNode } from '@/types/context';
 import { generateContext } from '@/lib/context_assembler';
-import { cn } from '@/lib/utils';
 import { writeText } from '@tauri-apps/api/clipboard';
 
 interface ContextPreviewProps {

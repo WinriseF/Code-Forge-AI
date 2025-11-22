@@ -5,17 +5,17 @@ import { writeText as writeClipboard } from '@tauri-apps/api/clipboard';
 import { 
   FolderOpen, RefreshCw, Loader2, FileJson, 
   PanelLeft, Search, ArrowRight, CheckCircle2, SlidersHorizontal, ChevronUp,
-  LayoutDashboard, FileText // ✨ 引入新图标
+  LayoutDashboard, FileText 
 } from 'lucide-react';
 import { useContextStore } from '@/store/useContextStore';
-import { useAppStore } from '@/store/useAppStore';
+import { useAppStore, DEFAULT_MODELS } from '@/store/useAppStore'; // 引入默认值
 import { scanProject } from '@/lib/fs_helper';
 import { calculateIdealTreeWidth } from '@/lib/tree_utils';
 import { calculateStats, generateContext } from '@/lib/context_assembler';
 import { FileTreeNode } from './FileTreeNode';
 import { TokenDashboard } from './TokenDashboard';
 import { FilterManager } from './FilterManager';
-import { ContextPreview } from './ContextPreview'; // ✨ 引入预览组件
+import { ContextPreview } from './ContextPreview';
 import { cn } from '@/lib/utils';
 
 export function ContextView() {
@@ -29,17 +29,19 @@ export function ContextView() {
   const { 
     isContextSidebarOpen, setContextSidebarOpen,
     contextSidebarWidth, setContextSidebarWidth,
-    globalIgnore 
-  } = useAppStore();
+    globalIgnore,
+    models // ✨ 现在类型是安全的，不需要 as any
+  } = useAppStore(); 
 
   const [pathInput, setPathInput] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
   const [showFilters, setShowFilters] = useState(false); 
-
-  // ✨ 新增：视图模式状态 ('dashboard' | 'preview')
   const [rightViewMode, setRightViewMode] = useState<'dashboard' | 'preview'>('dashboard');
+
+  // 兜底逻辑：如果 store 里的 models 为空（比如还没 sync 下来），使用默认值
+  const activeModels = (models && models.length > 0) ? models : DEFAULT_MODELS;
 
   useEffect(() => {
     if (projectRoot) setPathInput(projectRoot);
@@ -55,7 +57,7 @@ export function ContextView() {
     return calculateStats(fileTree);
   }, [fileTree]);
 
-  // --- Helpers & Actions ---
+  // --- Actions ---
   const triggerToast = (msg: string) => {
     setToastMessage(msg);
     setShowToast(true);
@@ -105,6 +107,7 @@ export function ContextView() {
     if (!path.trim()) return;
     setIsScanning(true);
     try {
+      // 合并全局和项目配置
       const effectiveConfig = {
         dirs: Array.from(new Set([...globalIgnore.dirs, ...projectIgnore.dirs])),
         files: Array.from(new Set([...globalIgnore.files, ...projectIgnore.files])),
@@ -139,6 +142,7 @@ export function ContextView() {
     if (e.key === 'Enter') performScan(pathInput);
   };
 
+  // Resizing Logic
   const isResizingRef = useRef(false);
   const startResizing = () => { isResizingRef.current = true; };
   
@@ -203,6 +207,8 @@ export function ContextView() {
              <span className="flex items-center gap-1"><FileJson size={12}/> EXPLORER</span>
              <span className="bg-secondary/50 px-1.5 py-0.5 rounded text-[10px]">{stats.fileCount} selected</span>
           </div>
+          
+          {/* File Tree */}
           <div className="flex-1 overflow-y-auto custom-scrollbar p-2">
             {!projectRoot ? (
               <div className="mt-10 flex flex-col items-center justify-center text-muted-foreground opacity-50 gap-2 text-center px-4"><p className="text-sm">Enter a path to open</p></div>
@@ -214,6 +220,8 @@ export function ContextView() {
               fileTree.map(node => <FileTreeNode key={node.id} node={node} onToggleSelect={toggleSelect} />)
             )}
           </div>
+
+          {/* Filters */}
           <div className="border-t border-border bg-background shrink-0 flex flex-col z-10">
               <button 
                   onClick={() => setShowFilters(!showFilters)}
@@ -228,6 +236,8 @@ export function ContextView() {
                   </div>
               )}
           </div>
+          
+          {/* Resize Handle */}
           {isContextSidebarOpen && <div onMouseDown={startResizing} className="absolute top-0 right-0 bottom-0 w-1 cursor-col-resize hover:bg-primary/50 active:bg-primary transition-colors z-20" />}
         </div>
 
@@ -235,9 +245,9 @@ export function ContextView() {
         <div className="flex-1 bg-background min-w-0 flex flex-col relative">
             <div className="absolute inset-0 bg-grid-slate-900/[0.04] bg-[bottom_1px_center] dark:bg-grid-slate-400/[0.05] [mask-image:linear-gradient(to_bottom,transparent,black)] pointer-events-none" />
             
-            {/* ✨ 视图切换开关 (Segmented Control) */}
-            <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20">
-               <div className="bg-secondary/80 backdrop-blur-md border border-border p-1 rounded-xl flex items-center shadow-sm">
+            {/* View Toggle */}
+            <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+               <div className="bg-secondary/80 backdrop-blur-md border border-border p-1 rounded-xl flex items-center shadow-sm pointer-events-auto">
                   <ViewToggleBtn 
                     active={rightViewMode === 'dashboard'} 
                     onClick={() => setRightViewMode('dashboard')}
@@ -253,17 +263,21 @@ export function ContextView() {
                </div>
             </div>
 
-            {/* 内容区域 */}
-            <div className="flex-1 overflow-hidden pt-16"> {/* pt-16 为顶部开关留出空间 */}
+            {/* Content Area */}
+            <div className="flex-1 overflow-y-auto custom-scrollbar pt-20 pb-10 h-full"> 
                 {rightViewMode === 'dashboard' ? (
                    <TokenDashboard 
                      stats={stats}
+                     fileTree={fileTree}
+                     models={activeModels} // ✨ 传入处理后的 models
                      onCopy={handleCopyContext}
                      onSave={handleSaveToFile}
                      isGenerating={isGenerating}
                    />
                 ) : (
-                   <ContextPreview fileTree={fileTree} />
+                   <div className="h-full">
+                      <ContextPreview fileTree={fileTree} />
+                   </div>
                 )}
             </div>
         </div>
@@ -280,7 +294,7 @@ export function ContextView() {
   );
 }
 
-// ✨ 子组件：切换按钮
+// ... ViewToggleBtn component ...
 function ViewToggleBtn({ active, onClick, icon, label }: any) {
   return (
     <button
