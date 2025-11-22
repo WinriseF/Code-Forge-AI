@@ -5,12 +5,12 @@ import { IgnoreConfig, DEFAULT_GLOBAL_IGNORE } from '@/types/context';
 import { AIModelConfig } from '@/types/model';
 import { fetch } from '@tauri-apps/api/http';
 
-// --- 1. 导出类型 (解决循环引用问题) ---
+// --- 1. 导出类型 ---
 export type AppView = 'prompts' | 'context' | 'patch';
 export type AppTheme = 'dark' | 'light';
 export type AppLang = 'en' | 'zh';
 
-// --- 2. 默认/兜底模型数据 (2025 Latest) ---
+// --- 2. 默认/兜底模型数据 ---
 export const DEFAULT_MODELS: AIModelConfig[] = [
   { 
     id: 'gpt-4o', 
@@ -41,13 +41,13 @@ export const DEFAULT_MODELS: AIModelConfig[] = [
     name: 'DeepSeek V3',
     provider: 'DeepSeek',
     contextLimit: 64000,
-    inputPricePerMillion: 0.14, // 极高性价比
+    inputPricePerMillion: 0.14,
     color: 'bg-purple-500'
   }
 ];
 
-// 🌍 远程配置源
-const REMOTE_CONFIG_URL = 'https://github.com/WinriseF/Code-Forge-AI/models/models.json'; 
+// ✨ 修正后的真实 Raw 链接
+const REMOTE_CONFIG_URL = 'https://raw.githubusercontent.com/WinriseF/Code-Forge-AI/main/models/models.json'; 
 
 // --- 3. Store 接口 ---
 interface AppState {
@@ -64,7 +64,7 @@ interface AppState {
   // Filters
   globalIgnore: IgnoreConfig;
 
-  // ✨ Models State
+  // Models State
   models: AIModelConfig[];
   lastUpdated: number;
 
@@ -79,7 +79,7 @@ interface AppState {
   setLanguage: (lang: AppLang) => void;
   updateGlobalIgnore: (type: keyof IgnoreConfig, action: 'add' | 'remove', value: string) => void;
   
-  // ✨ Async Actions
+  // Async Actions
   syncModels: () => Promise<void>;
   resetModels: () => void;
 }
@@ -99,7 +99,7 @@ export const useAppStore = create<AppState>()(
       language: 'zh',
       globalIgnore: DEFAULT_GLOBAL_IGNORE,
       
-      // 模型初始值 (优先使用 Store 内部缓存，如果没有则用 Default)
+      // 模型初始值
       models: DEFAULT_MODELS,
       lastUpdated: 0,
 
@@ -131,10 +131,10 @@ export const useAppStore = create<AppState>()(
       // ✨ 核心：从云端同步模型
       syncModels: async () => {
         try {
-          // 使用 Tauri API 绕过 CORS
+          console.log('[AppStore] Fetching models from:', REMOTE_CONFIG_URL);
           const response = await fetch<AIModelConfig[]>(REMOTE_CONFIG_URL, {
             method: 'GET',
-            timeout: 10,
+            timeout: 15,
           });
 
           if (response.ok && Array.isArray(response.data) && response.data.length > 0) {
@@ -143,6 +143,8 @@ export const useAppStore = create<AppState>()(
               lastUpdated: Date.now() 
             });
             console.log(`[AppStore] Models synced successfully: ${response.data.length} models found.`);
+          } else {
+            console.warn('[AppStore] Fetch response invalid:', response.status);
           }
         } catch (err) {
           console.warn('[AppStore] Failed to sync models, keeping local cache.', err);
@@ -155,7 +157,6 @@ export const useAppStore = create<AppState>()(
       name: 'app-config',
       storage: createJSONStorage(() => fileStorage),
       partialize: (state) => ({
-        // 持久化所有重要状态
         theme: state.theme,
         language: state.language,
         isSidebarOpen: state.isSidebarOpen,
@@ -164,7 +165,7 @@ export const useAppStore = create<AppState>()(
         contextSidebarWidth: state.contextSidebarWidth,
         currentView: state.currentView,
         globalIgnore: state.globalIgnore,
-        models: state.models, // 缓存模型列表
+        models: state.models,
         lastUpdated: state.lastUpdated
       }),
     }

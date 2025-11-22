@@ -8,7 +8,7 @@ export function generateAsciiTree(nodes: FileNode[]): string {
   let output = '';
 
   // 递归函数
-  const traverse = (nodeList: FileNode[], prefix: string, isLastParent: boolean) => {
+  const traverse = (nodeList: FileNode[], prefix: string) => {
     // 1. 过滤出需要显示的节点 (被选中)
     const activeNodes = nodeList.filter(n => n.isSelected);
     
@@ -22,12 +22,12 @@ export function generateAsciiTree(nodes: FileNode[]): string {
       // 递归处理子节点
       if (node.children && node.children.length > 0) {
         const childPrefix = prefix + (isLast ? '    ' : '│   ');
-        traverse(node.children, childPrefix, isLast);
+        traverse(node.children, childPrefix);
       }
     });
   };
 
-  traverse(nodes, '', true);
+  traverse(nodes, '');
   
   if (!output.trim()) return '(No files selected)';
   return output;
