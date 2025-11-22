@@ -1,144 +1,138 @@
-import { useState, useEffect, useCallback } from 'react';
-import { BookOpen, FileJson, GitMerge, Settings, ChevronLeft, ChevronRight } from 'lucide-react';
+import { BookOpen, FileJson, GitMerge, Settings, ChevronLeft, ChevronRight, Globe, Moon, Sun } from 'lucide-react';
 import { useAppStore, AppView } from '@/store/useAppStore';
 import { cn } from '@/lib/utils';
+import { useState } from 'react';
 
 export function Sidebar() {
-  const { currentView, setView, sidebarWidth, setSidebarWidth, isSidebarOpen, toggleSidebar } = useAppStore();
-  const [isResizing, setIsResizing] = useState(false);
+  const { currentView, setView, isSidebarOpen, toggleSidebar } = useAppStore();
+  
+  const [isDark, setIsDark] = useState(true); 
 
-  // 菜单配置
   const menuItems: { id: AppView; icon: any; label: string }[] = [
     { id: 'prompts', icon: BookOpen, label: 'Prompt Verse' },
     { id: 'context', icon: FileJson, label: 'Context Forge' },
     { id: 'patch', icon: GitMerge, label: 'Patch Weaver' },
   ];
 
-  // --- 拖拽逻辑开始 ---
-  const startResizing = useCallback(() => setIsResizing(true), []);
-  const stopResizing = useCallback(() => setIsResizing(false), []);
-  
-  const resize = useCallback(
-    (mouseMoveEvent: MouseEvent) => {
-      if (isResizing) {
-        const newWidth = mouseMoveEvent.clientX;
-        if (newWidth > 160 && newWidth < 480) setSidebarWidth(newWidth);
-      }
-    },
-    [isResizing, setSidebarWidth]
-  );
-
-  useEffect(() => {
-    window.addEventListener("mousemove", resize);
-    window.addEventListener("mouseup", stopResizing);
-    return () => {
-      window.removeEventListener("mousemove", resize);
-      window.removeEventListener("mouseup", stopResizing);
-    };
-  }, [resize, stopResizing]);
-  // --- 拖拽逻辑结束 ---
-
-  // 🔴 模式 A: 折叠状态 (窄条)
-  if (!isSidebarOpen) {
-    return (
-      <aside className="w-14 bg-slate-950 border-r border-slate-800 flex flex-col items-center py-4 select-none">
-        {/* 1. 展开按钮 */}
-        <button 
-          onClick={toggleSidebar} 
-          className="p-2 mb-4 text-slate-500 hover:text-slate-200 hover:bg-slate-800 rounded-md transition-colors"
-          title="Expand Sidebar"
-        >
-          <ChevronRight size={20} />
-        </button>
-
-        {/* 2. 核心菜单图标 */}
-        <nav className="flex-1 w-full flex flex-col items-center gap-2">
-          {menuItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => setView(item.id)}
-              className={cn(
-                "p-2 rounded-md transition-all relative group",
-                currentView === item.id 
-                  ? "bg-blue-500/10 text-blue-400" 
-                  : "text-slate-400 hover:bg-slate-800 hover:text-slate-200"
-              )}
-              title={item.label}
-            >
-              <item.icon size={20} />
-              {/* 选中时的左侧指示条 */}
-              {currentView === item.id && (
-                <div className="absolute left-0 top-2 bottom-2 w-1 bg-blue-500 rounded-r-full" />
-              )}
-            </button>
-          ))}
-        </nav>
-
-        {/* 3. 底部设置图标 (修复：之前这里漏了) */}
-        <div className="mt-auto">
-          <button 
-            className="p-2 text-slate-500 hover:text-slate-200 hover:bg-slate-800 rounded-md transition-colors"
-            title="Settings"
-          >
-            <Settings size={20} />
-          </button>
-        </div>
-      </aside>
-    );
-  }
-
-  // 🟢 模式 B: 展开状态 (可拖拽)
   return (
-    <aside 
-      style={{ width: sidebarWidth }} 
-      className="bg-slate-950 border-r border-slate-800 flex flex-col relative group select-none"
+    <aside
+      className={cn(
+        "bg-slate-950 border-r border-slate-800 flex flex-col relative select-none transition-[width] duration-300 ease-in-out overflow-hidden",
+        // 宽度切换：16 (64px) <-> 48 (192px)
+        isSidebarOpen ? "w-48" : "w-16"
+      )}
     >
-      {/* 1. 顶部 Header */}
-      <div className="h-12 flex items-center justify-between px-4 border-b border-slate-800 shrink-0">
-        <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Explorer</span>
-        <button 
-          onClick={toggleSidebar} 
-          className="text-slate-600 hover:text-slate-200 p-1 rounded hover:bg-slate-800 transition-colors"
+      {/* --- 1. 顶部 Header (修复展开按钮丢失问题) --- */}
+      <div 
+        className={cn(
+          "h-12 flex items-center border-b border-slate-800 shrink-0 overflow-hidden transition-all",
+          // 展开时两端对ZX，折叠时居中
+          isSidebarOpen ? "px-4 justify-between" : "justify-center px-0"
+        )}
+      >
+        {/* 标题区：折叠时宽度归零，防止挤占空间 */}
+        <div 
+          className={cn(
+            "flex items-center gap-2 font-bold text-slate-300 tracking-wide transition-all duration-300 overflow-hidden whitespace-nowrap",
+            isSidebarOpen ? "w-auto opacity-100 mr-2" : "w-0 opacity-0 mr-0"
+          )}
         >
-          <ChevronLeft size={18} />
+          <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse shrink-0" />
+          <span className="text-xs uppercase">Explorer</span>
+        </div>
+        
+        {/* 展开/折叠按钮 */}
+        <button
+          onClick={toggleSidebar}
+          className={cn(
+            "text-slate-500 hover:text-slate-200 p-1.5 rounded hover:bg-slate-800 transition-colors shrink-0",
+            // 修复：确保按钮本身有固定大小，不会被压缩
+            "h-8 w-8 flex items-center justify-center"
+          )}
+          title={isSidebarOpen ? "Collapse" : "Expand"}
+        >
+          {isSidebarOpen ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
         </button>
       </div>
 
-      {/* 2. 菜单列表 */}
-      <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
+      {/* --- 2. 核心导航菜单 (修复图标不居中问题) --- */}
+      <nav className="flex-1 p-3 space-y-1 overflow-y-auto overflow-x-hidden flex flex-col">
         {menuItems.map((item) => (
           <button
             key={item.id}
             onClick={() => setView(item.id)}
+            title={!isSidebarOpen ? item.label : undefined}
             className={cn(
-              "w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-all truncate border border-transparent",
+              "flex items-center rounded-md text-sm font-medium transition-all border border-transparent whitespace-nowrap relative group shrink-0",
+              // 样式逻辑：
+              // 1. 宽度：总是 w-full
+              // 2. 高度：固定 py-2.5
+              // 3. 关键修复：isSidebarOpen ? "gap-3 px-3" : "gap-0 justify-center px-0"
+              //    折叠时 gap-0 是关键，否则图标会歪
+              "w-full py-2.5",
+              isSidebarOpen ? "gap-3 px-3 justify-start" : "gap-0 px-0 justify-center",
+              
+              // 颜色状态
               currentView === item.id
-                ? "bg-blue-500/10 text-blue-400 border-blue-500/20" // 选中态
-                : "text-slate-400 hover:bg-slate-900 hover:text-slate-200" // 默认态
+                ? "bg-blue-500/10 text-blue-400 border-blue-500/20"
+                : "text-slate-400 hover:bg-slate-900 hover:text-slate-200"
             )}
           >
-            <item.icon size={18} className="shrink-0" />
-            <span className="truncate">{item.label}</span>
+            <item.icon size={20} className="shrink-0" />
+            
+            {/* 文字标签：宽度的平滑过渡 */}
+            <span 
+              className={cn(
+                "transition-all duration-300 overflow-hidden",
+                isSidebarOpen ? "opacity-100 w-auto translate-x-0" : "opacity-0 w-0 -translate-x-4"
+              )}
+            >
+              {item.label}
+            </span>
+
+            {/* 折叠状态下的蓝色指示点 (可选) */}
+            {!isSidebarOpen && currentView === item.id && (
+               <div className="absolute left-0.5 w-1 h-1 bg-blue-500 rounded-full" />
+            )}
           </button>
         ))}
       </nav>
 
-      {/* 3. 底部设置按钮 (修复：改回了 Button，并置于底部) */}
-      <div className="p-3 border-t border-slate-800 shrink-0">
-         <button className="flex items-center gap-3 w-full px-3 py-2 text-slate-400 hover:text-slate-200 hover:bg-slate-900 rounded-md transition-colors group/settings">
-             <Settings size={18} className="group-hover/settings:rotate-45 transition-transform duration-300"/>
-             <span className="text-sm font-medium">Settings</span>
-         </button>
-      </div>
+      {/* --- 3. 底部扩展区域 (同样修复居中) --- */}
+      <div className="p-3 border-t border-slate-800 shrink-0 flex flex-col gap-1 overflow-hidden whitespace-nowrap">
+        
+        {/* 辅助函数：生成底部按钮 */}
+        {[
+          { icon: isDark ? Moon : Sun, label: isDark ? "Dark Mode" : "Light Mode", onClick: () => setIsDark(!isDark) },
+          { icon: Globe, label: "English", onClick: () => {} },
+          { icon: Settings, label: "Settings", onClick: () => {}, isSettings: true }
+        ].map((btn, idx) => (
+          <button 
+            key={idx}
+            onClick={btn.onClick}
+            className={cn(
+              "flex items-center rounded-md transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-900 group/btn",
+              "w-full py-2",
+              // 同样的居中修复逻辑
+              isSidebarOpen ? "gap-3 px-3 justify-start" : "gap-0 px-0 justify-center",
+              btn.isSettings && "mt-2 pt-2 border-t border-slate-800/50 rounded-none"
+            )}
+            title={!isSidebarOpen ? btn.label : undefined}
+          >
+            <btn.icon 
+              size={18} 
+              className={cn(
+                "shrink-0 transition-transform duration-500", 
+                btn.isSettings && "group-hover/btn:rotate-90"
+              )} 
+            />
+            <span className={cn("text-sm transition-all duration-300", isSidebarOpen ? "opacity-100 w-auto" : "opacity-0 w-0")}>
+              {btn.label}
+            </span>
+          </button>
+        ))}
 
-      {/* 4. 拖拽手柄 */}
-      <div
-        onMouseDown={startResizing}
-        className={cn(
-          "absolute right-[-3px] top-0 bottom-0 w-1.5 cursor-col-resize z-10 hover:bg-blue-500/50 transition-colors",
-          isResizing && "bg-blue-600 w-1.5"
-        )}
-      />
+      </div>
     </aside>
   );
 }
