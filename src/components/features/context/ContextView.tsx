@@ -1,14 +1,17 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { open } from '@tauri-apps/api/dialog';
+import { writeText } from '@tauri-apps/api/clipboard';
 import { 
   FolderOpen, RefreshCw, Loader2, FileJson, 
-  PanelLeft, Search, ArrowRight 
+  PanelLeft, Search, ArrowRight, CheckCircle2 
 } from 'lucide-react';
 import { useContextStore } from '@/store/useContextStore';
 import { useAppStore } from '@/store/useAppStore';
 import { scanProject } from '@/lib/fs_helper';
-import { calculateIdealTreeWidth } from '@/lib/tree_utils'; // 引入计算工具
+import { calculateIdealTreeWidth } from '@/lib/tree_utils';
+import { calculateStats, generateContext } from '@/lib/context_assembler';
 import { FileTreeNode } from './FileTreeNode';
+import { TokenDashboard } from './TokenDashboard';
 import { cn } from '@/lib/utils';
 
 export function ContextView() {
@@ -24,24 +27,46 @@ export function ContextView() {
 
   // 本地状态：路径输入框
   const [pathInput, setPathInput] = useState('');
+  // 本地状态：生成中 loading
+  const [isGenerating, setIsGenerating] = useState(false);
+  // 本地状态：成功提示 Toast
+  const [showToast, setShowToast] = useState(false);
 
   // 当 projectRoot 改变时，同步到输入框
   useEffect(() => {
     if (projectRoot) setPathInput(projectRoot);
   }, [projectRoot]);
 
-  // 统计信息
+  // --- 统计信息 (实时计算) ---
+  // 使用 context_assembler 提供的 calculateStats，包含文件数、总大小、预估Token
   const stats = useMemo(() => {
-    let selectedFiles = 0;
-    const count = (nodes: any[]) => {
-      nodes.forEach(node => {
-        if (node.kind === 'file' && node.isSelected) selectedFiles++;
-        if (node.children) count(node.children);
-      });
-    };
-    count(fileTree);
-    return { selectedFiles };
+    return calculateStats(fileTree);
   }, [fileTree]);
+
+  // --- 核心操作：生成并复制上下文 ---
+  const handleCopyContext = async () => {
+    if (isGenerating) return;
+    
+    setIsGenerating(true);
+    try {
+      // 1. 读取文件并组装文本
+      const { text, tokenCount } = await generateContext(fileTree);
+      
+      // 2. 写入系统剪贴板
+      await writeText(text);
+      
+      console.log(`Context copied! Actual tokens: ${tokenCount}`);
+      
+      // 3. 显示成功提示
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 2000);
+    } catch (err) {
+      console.error("Failed to generate context:", err);
+      // 实际项目中这里可以用个更正式的 Error Toast
+    } finally {
+      setIsGenerating(false);
+    }
+  };
 
   // --- 核心逻辑：执行扫描并自动调整宽度 ---
   const performScan = async (path: string) => {
@@ -55,8 +80,8 @@ export function ContextView() {
       
       // ✨ 自动调整宽度逻辑
       const idealWidth = calculateIdealTreeWidth(tree);
-      // 如果计算出的宽度比当前大，或者当前是默认值，就自动展开
-      // 用户体验优化：只有当新宽度显著大于当前宽度时才自动撑开，避免用户缩小后被强制还原
+      
+      // 用户体验优化：只有当新宽度显著大于当前宽度时才自动撑开
       if (idealWidth > contextSidebarWidth) {
          setContextSidebarWidth(idealWidth);
       }
@@ -66,7 +91,6 @@ export function ContextView() {
 
     } catch (err) {
       console.error("Scan failed:", err);
-      // 这里可以加个 Toast 提示路径不存在
     } finally {
       setIsScanning(false);
     }
@@ -105,7 +129,7 @@ export function ContextView() {
     const handleMouseMove = (e: MouseEvent) => {
       if (!isResizingRef.current) return;
       
-      // 限制最小 200px，最大 800px
+      // 限制最小 200px，最大 800px (可在 tree_utils 或这里修改上限)
       const newWidth = Math.max(200, Math.min(e.clientX - 64, 800)); // 64 是左侧主 Sidebar 的宽度
       setContextSidebarWidth(newWidth);
     };
@@ -122,9 +146,8 @@ export function ContextView() {
     };
   }, [setContextSidebarWidth]);
 
-
   return (
-    <div className="h-full flex flex-col bg-background">
+    <div className="h-full flex flex-col bg-background relative">
       {/* --- 顶部工具栏 (Header) --- */}
       <div className="h-14 border-b border-border flex items-center px-4 gap-3 shrink-0 bg-background/80 backdrop-blur z-10">
         
@@ -192,7 +215,7 @@ export function ContextView() {
           {/* Explorer Header */}
           <div className="p-3 border-b border-border/50 text-xs font-bold text-muted-foreground uppercase tracking-wider flex justify-between shrink-0 items-center">
              <span className="flex items-center gap-1"><FileJson size={12}/> EXPLORER</span>
-             <span className="bg-secondary/50 px-1.5 py-0.5 rounded text-[10px]">{stats.selectedFiles} selected</span>
+             <span className="bg-secondary/50 px-1.5 py-0.5 rounded text-[10px]">{stats.fileCount} selected</span>
           </div>
           
           {/* File Tree Body */}
@@ -229,15 +252,35 @@ export function ContextView() {
           )}
         </div>
 
-        {/* 右侧：操作区域 (Placeholder) */}
-        <div className="flex-1 bg-background min-w-0 flex flex-col">
-            {/* 这里将放置 Token 仪表盘和 Copy 按钮 */}
-            <div className="flex-1 flex flex-col items-center justify-center text-muted-foreground opacity-60">
-               <p>Select files to generate context</p>
-            </div>
+        {/* 右侧：Token 仪表盘与操作区 */}
+        <div className="flex-1 bg-background min-w-0 flex flex-col relative">
+            {/* 背景网格装饰 */}
+            <div className="absolute inset-0 bg-grid-slate-900/[0.04] bg-[bottom_1px_center] dark:bg-grid-slate-400/[0.05] [mask-image:linear-gradient(to_bottom,transparent,black)] pointer-events-none" />
+            
+            {/* 仪表盘组件 */}
+            <TokenDashboard 
+              stats={stats}
+              onCopy={handleCopyContext}
+              isGenerating={isGenerating}
+            />
         </div>
 
       </div>
+
+      {/* 底部 Toast 提示 */}
+      <div className={cn(
+        "fixed bottom-8 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-out pointer-events-none", 
+        showToast ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+      )}>
+        <div className="bg-foreground/90 text-background px-5 py-2.5 rounded-full shadow-2xl flex items-center gap-3 text-sm font-medium backdrop-blur-md border border-white/10">
+          <CheckCircle2 size={18} className="text-green-400" />
+          <div className="flex flex-col">
+            <span>Context Copied!</span>
+            <span className="text-[10px] opacity-70 font-normal">Ready to paste into ChatGPT/Claude</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 }
