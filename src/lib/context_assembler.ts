@@ -1,7 +1,7 @@
-// src/lib/context_assembler.ts
 import { readTextFile } from '@tauri-apps/api/fs';
 import { FileNode } from '@/types/context';
 import { countTokens, estimateTokens } from './tokenizer';
+import { generateAsciiTree } from './tree_generator'; // ✨ 引入树生成器
 
 export interface ContextStats {
   fileCount: number;
@@ -9,9 +9,6 @@ export interface ContextStats {
   estimatedTokens: number;
 }
 
-/**
- * 递归获取所有被选中的文件节点（扁平化）
- */
 export function getSelectedFiles(nodes: FileNode[]): FileNode[] {
   let files: FileNode[] = [];
   for (const node of nodes) {
@@ -25,17 +22,12 @@ export function getSelectedFiles(nodes: FileNode[]): FileNode[] {
   return files;
 }
 
-/**
- * 快速估算统计信息（不读取文件内容）
- */
 export function calculateStats(nodes: FileNode[]): ContextStats {
   const files = getSelectedFiles(nodes);
-  
   let totalSize = 0;
   for (const f of files) {
     totalSize += f.size || 0;
   }
-
   return {
     fileCount: files.length,
     totalSize: totalSize,
@@ -44,43 +36,54 @@ export function calculateStats(nodes: FileNode[]): ContextStats {
 }
 
 /**
- * 生成最终的上下文文本
- * 格式采用 XML 标签风格，这是目前 Claude/GPT-4 最容易理解的格式
+ * ✨ 升级后的上下文生成器
+ * 包含：元数据 + 结构树 + 文件内容
  */
 export async function generateContext(nodes: FileNode[]): Promise<{ text: string, tokenCount: number }> {
   const files = getSelectedFiles(nodes);
-  const parts: string[] = [];
+  const treeString = generateAsciiTree(nodes); // 生成树
   
-  // 头部说明
-  parts.push(`# Project Context`);
-  parts.push(`Total Files: ${files.length}\n`);
+  const parts: string[] = [];
 
-  // 并发读取文件内容
+  // --- 1. System Preamble (引导语) ---
+  parts.push(`<project_context>`);
+  parts.push(`This is a source code context provided by CodeForge AI.`);
+  parts.push(`Total Files: ${files.length}`);
+  parts.push(``);
+
+  // --- 2. Project Structure (结构树) ---
+  parts.push(`<project_structure>`);
+  parts.push(treeString);
+  parts.push(`</project_structure>`);
+  parts.push(``);
+
+  // --- 3. File Contents (文件内容) ---
+  parts.push(`<source_files>`);
+  
   const filePromises = files.map(async (file) => {
     try {
       const content = await readTextFile(file.path);
-      // 构建单个文件的格式块
+      // 使用 XML 标签包裹文件内容，增加 path 属性方便 AI 定位
       return `
 <file path="${file.path}">
 ${content}
-</file>
-`;
+</file>`;
     } catch (err) {
       console.warn(`Failed to read file: ${file.path}`, err);
       return `
 <file path="${file.path}">
 [Error: Unable to read file content]
-</file>
-`;
+</file>`;
     }
   });
 
   const fileContents = await Promise.all(filePromises);
   parts.push(...fileContents);
+  
+  parts.push(`</source_files>`);
+  parts.push(`</project_context>`);
 
   const fullText = parts.join('\n');
-  
-  // 计算精确 Token
   const finalTokens = countTokens(fullText);
 
   return {
