@@ -24,7 +24,7 @@ export function FilterManager({ localConfig, globalConfig, onUpdate }: FilterMan
     const allItems = Array.from(new Set([...globalItems, ...localItems])).sort();
 
     return (
-      <div className="space-y-1 max-h-[200px] overflow-y-auto custom-scrollbar pr-2">
+      <div className="flex-1 overflow-y-auto custom-scrollbar pr-2 min-h-0 space-y-1">
         {allItems.map(item => {
           const isLocked = globalItems.includes(item);
           const isLocal = localItems.includes(item);
@@ -77,7 +77,7 @@ export function FilterManager({ localConfig, globalConfig, onUpdate }: FilterMan
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full overflow-hidden">
       {/* Tabs */}
       <div className="flex items-center gap-1 bg-secondary/20 p-1 rounded-lg mb-3 shrink-0">
         <TabButton active={activeTab === 'dirs'} onClick={() => setActiveTab('dirs')} icon={<Folder size={12} />} label="Folders" />
@@ -104,9 +104,7 @@ export function FilterManager({ localConfig, globalConfig, onUpdate }: FilterMan
       </div>
 
       {/* List */}
-      <div className="flex-1 min-h-0">
-        {renderList()}
-      </div>
+      {renderList()}
     </div>
   );
 }
