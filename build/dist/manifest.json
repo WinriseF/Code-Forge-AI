@@ -1,0 +1,176 @@
+{
+  "updated_at": 1763893858677,
+  "version": "1.0.0",
+  "packages": [
+    {
+      "id": "zh-android",
+      "language": "zh",
+      "platform": "android",
+      "name": "Android 开发 (ZH)",
+      "description": "Contains 54 zh commands for android.",
+      "count": 54,
+      "size_kb": 23,
+      "url": "packs/zh/android.json"
+    },
+    {
+      "id": "zh-windows",
+      "language": "zh",
+      "platform": "windows",
+      "name": "Windows (ZH)",
+      "description": "Contains 406 zh commands for windows.",
+      "count": 406,
+      "size_kb": 175,
+      "url": "packs/zh/windows.json"
+    },
+    {
+      "id": "zh-linux",
+      "language": "zh",
+      "platform": "linux",
+      "name": "Linux 运维 (ZH)",
+      "description": "Contains 704 zh commands for linux.",
+      "count": 704,
+      "size_kb": 316,
+      "url": "packs/zh/linux.json"
+    },
+    {
+      "id": "zh-common",
+      "language": "zh",
+      "platform": "common",
+      "name": "通用工具 (Common) (ZH)",
+      "description": "Contains 3058 zh commands for common.",
+      "count": 3058,
+      "size_kb": 1485,
+      "url": "packs/zh/common.json"
+    },
+    {
+      "id": "zh-osx",
+      "language": "zh",
+      "platform": "osx",
+      "name": "macOS (ZH)",
+      "description": "Contains 462 zh commands for osx.",
+      "count": 462,
+      "size_kb": 191,
+      "url": "packs/zh/osx.json"
+    },
+    {
+      "id": "zh-sunos",
+      "language": "zh",
+      "platform": "sunos",
+      "name": "SunOS (ZH)",
+      "description": "Contains 3 zh commands for sunos.",
+      "count": 3,
+      "size_kb": 1,
+      "url": "packs/zh/sunos.json"
+    },
+    {
+      "id": "en-android",
+      "language": "en",
+      "platform": "android",
+      "name": "Android Dev (EN)",
+      "description": "Contains 54 en commands for android.",
+      "count": 54,
+      "size_kb": 24,
+      "url": "packs/en/android.json"
+    },
+    {
+      "id": "en-windows",
+      "language": "en",
+      "platform": "windows",
+      "name": "Windows (EN)",
+      "description": "Contains 1089 en commands for windows.",
+      "count": 1089,
+      "size_kb": 528,
+      "url": "packs/en/windows.json"
+    },
+    {
+      "id": "en-dos",
+      "language": "en",
+      "platform": "dos",
+      "name": "Dos (EN)",
+      "description": "Contains 11 en commands for dos.",
+      "count": 11,
+      "size_kb": 4,
+      "url": "packs/en/dos.json"
+    },
+    {
+      "id": "en-openbsd",
+      "language": "en",
+      "platform": "openbsd",
+      "name": "Openbsd (EN)",
+      "description": "Contains 36 en commands for openbsd.",
+      "count": 36,
+      "size_kb": 16,
+      "url": "packs/en/openbsd.json"
+    },
+    {
+      "id": "en-netbsd",
+      "language": "en",
+      "platform": "netbsd",
+      "name": "Netbsd (EN)",
+      "description": "Contains 41 en commands for netbsd.",
+      "count": 41,
+      "size_kb": 19,
+      "url": "packs/en/netbsd.json"
+    },
+    {
+      "id": "en-freebsd",
+      "language": "en",
+      "platform": "freebsd",
+      "name": "Freebsd (EN)",
+      "description": "Contains 63 en commands for freebsd.",
+      "count": 63,
+      "size_kb": 29,
+      "url": "packs/en/freebsd.json"
+    },
+    {
+      "id": "en-linux",
+      "language": "en",
+      "platform": "linux",
+      "name": "Linux Ops (EN)",
+      "description": "Contains 7533 en commands for linux.",
+      "count": 7533,
+      "size_kb": 3576,
+      "url": "packs/en/linux.json"
+    },
+    {
+      "id": "en-common",
+      "language": "en",
+      "platform": "common",
+      "name": "Common Tools (EN)",
+      "description": "Contains 18935 en commands for common.",
+      "count": 18935,
+      "size_kb": 9191,
+      "url": "packs/en/common.json"
+    },
+    {
+      "id": "en-osx",
+      "language": "en",
+      "platform": "osx",
+      "name": "macOS (EN)",
+      "description": "Contains 931 en commands for osx.",
+      "count": 931,
+      "size_kb": 408,
+      "url": "packs/en/osx.json"
+    },
+    {
+      "id": "en-sunos",
+      "language": "en",
+      "platform": "sunos",
+      "name": "SunOS (EN)",
+      "description": "Contains 42 en commands for sunos.",
+      "count": 42,
+      "size_kb": 18,
+      "url": "packs/en/sunos.json"
+    },
+    {
+      "id": "en-cisco-ios",
+      "language": "en",
+      "platform": "cisco-ios",
+      "name": "Cisco-Ios (EN)",
+      "description": "Contains 42 en commands for cisco-ios.",
+      "count": 42,
+      "size_kb": 17,
+      "url": "packs/en/cisco-ios.json"
+    }
+  ]
+}

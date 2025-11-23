@@ -1,0 +1,156 @@
+[
+  {
+    "id": "tldr-en-dos-cd-0",
+    "title": "cd - Go to the specified directory",
+    "content": "CD {{PATH\\TO\\DIRECTORY}}",
+    "group": "Dos",
+    "description": "cd: Change the current working directory. More information: . (Go to the specified directory)",
+    "tags": [
+      "dos",
+      "cd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-cd-1",
+    "title": "cd - Go up to the parent of the current directory",
+    "content": "CD ..",
+    "group": "Dos",
+    "description": "cd: Change the current working directory. More information: . (Go up to the parent of the current directory)",
+    "tags": [
+      "dos",
+      "cd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-cd-2",
+    "title": "cd - Go to the root directory of the current drive",
+    "content": "CD \\",
+    "group": "Dos",
+    "description": "cd: Change the current working directory. More information: . (Go to the root directory of the current drive)",
+    "tags": [
+      "dos",
+      "cd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-cls-0",
+    "title": "cls - Clear the screen resetting colors to white on black",
+    "content": "CLS",
+    "group": "Dos",
+    "description": "cls: Clear the screen and reset colors. More information: . (Clear the screen resetting colors to white on black)",
+    "tags": [
+      "dos",
+      "cls",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-chdir-0",
+    "title": "chdir - View documentation for the original command",
+    "content": "tldr {{[-p|--platform]}} dos cd",
+    "group": "Dos",
+    "description": "chdir: This command is an alias of `CD`. (View documentation for the original command)",
+    "tags": [
+      "dos",
+      "chdir",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-path-0",
+    "title": "path - Display the current search path",
+    "content": "PATH",
+    "group": "Dos",
+    "description": "path: Display or set the search path for executable files. This command is available in `FreeDOS` only. More information: . (Display the current search path)",
+    "tags": [
+      "dos",
+      "path",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-path-1",
+    "title": "path - Set the semicolon-separated list of directories to search in",
+    "content": "PATH {{path/to/directory1;path/to/directory2;...}}",
+    "group": "Dos",
+    "description": "path: Display or set the search path for executable files. This command is available in `FreeDOS` only. More information: . (Set the semicolon-separated list of directories to search in)",
+    "tags": [
+      "dos",
+      "path",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-path-2",
+    "title": "path - Append a directory to the search path",
+    "content": "PATH %PATH%;{{path/to/directory}}",
+    "group": "Dos",
+    "description": "path: Display or set the search path for executable files. This command is available in `FreeDOS` only. More information: . (Append a directory to the search path)",
+    "tags": [
+      "dos",
+      "path",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-path-3",
+    "title": "path - Add a directory to the beginning of the search path",
+    "content": "PATH {{path/to/directory}};%PATH%",
+    "group": "Dos",
+    "description": "path: Display or set the search path for executable files. This command is available in `FreeDOS` only. More information: . (Add a directory to the beginning of the search path)",
+    "tags": [
+      "dos",
+      "path",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-path-4",
+    "title": "path - Clear the search path",
+    "content": "PATH;",
+    "group": "Dos",
+    "description": "path: Display or set the search path for executable files. This command is available in `FreeDOS` only. More information: . (Clear the search path)",
+    "tags": [
+      "dos",
+      "path",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-path-5",
+    "title": "path - Display help",
+    "content": "PATH /?",
+    "group": "Dos",
+    "description": "path: Display or set the search path for executable files. This command is available in `FreeDOS` only. More information: . (Display help)",
+    "tags": [
+      "dos",
+      "path",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  }
+]

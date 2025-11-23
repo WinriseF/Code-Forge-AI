@@ -1,0 +1,758 @@
+[
+  {
+    "id": "tldr-zh-android-dumpsys-0",
+    "title": "dumpsys - 获取所有系统服务的诊断输出：",
+    "content": "dumpsys",
+    "group": "Android 开发",
+    "description": "dumpsys: 提供关于 Android 系统服务的信息。 此命令只能通过 `adb shell` 使用。 更多信息：. (获取所有系统服务的诊断输出：)",
+    "tags": [
+      "android",
+      "dumpsys",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-dumpsys-1",
+    "title": "dumpsys - 获取指定系统服务的诊断输出：",
+    "content": "dumpsys {{服务}}",
+    "group": "Android 开发",
+    "description": "dumpsys: 提供关于 Android 系统服务的信息。 此命令只能通过 `adb shell` 使用。 更多信息：. (获取指定系统服务的诊断输出：)",
+    "tags": [
+      "android",
+      "dumpsys",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-dumpsys-2",
+    "title": "dumpsys - 列出 `dumpsys` 可以提供的所有服务信息：",
+    "content": "dumpsys -l",
+    "group": "Android 开发",
+    "description": "dumpsys: 提供关于 Android 系统服务的信息。 此命令只能通过 `adb shell` 使用。 更多信息：. (列出 `dumpsys` 可以提供的所有服务信息：)",
+    "tags": [
+      "android",
+      "dumpsys",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-dumpsys-3",
+    "title": "dumpsys - 列出服务的指定服务参数：",
+    "content": "dumpsys {{服务}} -h",
+    "group": "Android 开发",
+    "description": "dumpsys: 提供关于 Android 系统服务的信息。 此命令只能通过 `adb shell` 使用。 更多信息：. (列出服务的指定服务参数：)",
+    "tags": [
+      "android",
+      "dumpsys",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-dumpsys-4",
+    "title": "dumpsys - 从诊断输出中排除指定服务：",
+    "content": "dumpsys --skip {{服务}}",
+    "group": "Android 开发",
+    "description": "dumpsys: 提供关于 Android 系统服务的信息。 此命令只能通过 `adb shell` 使用。 更多信息：. (从诊断输出中排除指定服务：)",
+    "tags": [
+      "android",
+      "dumpsys",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-dumpsys-5",
+    "title": "dumpsys - 指定超时时间，以秒为单位（默认为 10s）：",
+    "content": "dumpsys -t {{秒数}}",
+    "group": "Android 开发",
+    "description": "dumpsys: 提供关于 Android 系统服务的信息。 此命令只能通过 `adb shell` 使用。 更多信息：. (指定超时时间，以秒为单位（默认为 10s）：)",
+    "tags": [
+      "android",
+      "dumpsys",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-am-0",
+    "title": "am - 启动一个指定的活动：",
+    "content": "am start -n {{com.android.settings/.Settings}}",
+    "group": "Android 开发",
+    "description": "am: Android 活动管理器。 更多信息：. (启动一个指定的活动：)",
+    "tags": [
+      "android",
+      "am",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-am-1",
+    "title": "am - 启动一个活动并将数据传递给它：",
+    "content": "am start -a {{android.intent.action.VIEW}} -d {{tel:123}}",
+    "group": "Android 开发",
+    "description": "am: Android 活动管理器。 更多信息：. (启动一个活动并将数据传递给它：)",
+    "tags": [
+      "android",
+      "am",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-am-2",
+    "title": "am - 启动与特定操作和类别匹配的活动：",
+    "content": "am start -a {{android.intent.action.MAIN}} -c {{android.intent.category.HOME}}",
+    "group": "Android 开发",
+    "description": "am: Android 活动管理器。 更多信息：. (启动与特定操作和类别匹配的活动：)",
+    "tags": [
+      "android",
+      "am",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-am-3",
+    "title": "am - 将意图转换为 URI：",
+    "content": "am to-uri -a {{android.intent.action.VIEW}} -d {{tel:123}}",
+    "group": "Android 开发",
+    "description": "am: Android 活动管理器。 更多信息：. (将意图转换为 URI：)",
+    "tags": [
+      "android",
+      "am",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-wm-0",
+    "title": "wm - 显示 Android 设备屏幕的物理尺寸：",
+    "content": "wm size",
+    "group": "Android 开发",
+    "description": "wm: 显示关于 Android 设备屏幕的信息。 此命令只能通过 `adb shell` 使用。 更多信息：. (显示 Android 设备屏幕的物理尺寸：)",
+    "tags": [
+      "android",
+      "wm",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-wm-1",
+    "title": "wm - 显示 Android 设备屏幕的物理密度：",
+    "content": "wm density",
+    "group": "Android 开发",
+    "description": "wm: 显示关于 Android 设备屏幕的信息。 此命令只能通过 `adb shell` 使用。 更多信息：. (显示 Android 设备屏幕的物理密度：)",
+    "tags": [
+      "android",
+      "wm",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-screencap-0",
+    "title": "screencap - 捕获屏幕截图：",
+    "content": "screencap {{路径/到/文件}}",
+    "group": "Android 开发",
+    "description": "screencap: 捕获移动设备显示器的屏幕截图。 此命令只能通过 `adb shell` 使用。 更多信息：. (捕获屏幕截图：)",
+    "tags": [
+      "android",
+      "screencap",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-getprop-0",
+    "title": "getprop - 显示关于 Android 系统属性的信息：",
+    "content": "getprop",
+    "group": "Android 开发",
+    "description": "getprop: 显示关于 Android 系统属性的信息。 更多信息：. (显示关于 Android 系统属性的信息：)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-getprop-1",
+    "title": "getprop - 显示关于指定属性的信息：",
+    "content": "getprop {{prop}}",
+    "group": "Android 开发",
+    "description": "getprop: 显示关于 Android 系统属性的信息。 更多信息：. (显示关于指定属性的信息：)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-getprop-2",
+    "title": "getprop - 显示 SDK API 级别：",
+    "content": "getprop {{ro.build.version.sdk}}",
+    "group": "Android 开发",
+    "description": "getprop: 显示关于 Android 系统属性的信息。 更多信息：. (显示 SDK API 级别：)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-getprop-3",
+    "title": "getprop - 显示 Android 版本：",
+    "content": "getprop {{ro.build.version.release}}",
+    "group": "Android 开发",
+    "description": "getprop: 显示关于 Android 系统属性的信息。 更多信息：. (显示 Android 版本：)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-getprop-4",
+    "title": "getprop - 显示 Android 设备型号：",
+    "content": "getprop {{ro.vendor.product.model}}",
+    "group": "Android 开发",
+    "description": "getprop: 显示关于 Android 系统属性的信息。 更多信息：. (显示 Android 设备型号：)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-getprop-5",
+    "title": "getprop - 显示 OEM 解锁状态：",
+    "content": "getprop {{ro.oem_unlock_supported}}",
+    "group": "Android 开发",
+    "description": "getprop: 显示关于 Android 系统属性的信息。 更多信息：. (显示 OEM 解锁状态：)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-getprop-6",
+    "title": "getprop - 显示 Android WiFi 卡的 MAC 地址：",
+    "content": "getprop {{ro.boot.wifimacaddr}}",
+    "group": "Android 开发",
+    "description": "getprop: 显示关于 Android 系统属性的信息。 更多信息：. (显示 Android WiFi 卡的 MAC 地址：)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-bugreportz-0",
+    "title": "bugreportz - 生成一个完整的 Android 设备压缩错误报告：",
+    "content": "bugreportz",
+    "group": "Android 开发",
+    "description": "bugreportz: 生成一个压缩的 Android 错误报告。 此命令只能通过 `adb shell` 使用。 更多信息：. (生成一个完整的 Android 设备压缩错误报告：)",
+    "tags": [
+      "android",
+      "bugreportz",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-bugreportz-1",
+    "title": "bugreportz - 显示正在运行的 `bugreportz` 操作的进度：",
+    "content": "bugreportz -p",
+    "group": "Android 开发",
+    "description": "bugreportz: 生成一个压缩的 Android 错误报告。 此命令只能通过 `adb shell` 使用。 更多信息：. (显示正在运行的 `bugreportz` 操作的进度：)",
+    "tags": [
+      "android",
+      "bugreportz",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-bugreportz-2",
+    "title": "bugreportz - 将 Android 错误报告的内容写入 `stdout`：",
+    "content": "bugreportz -s",
+    "group": "Android 开发",
+    "description": "bugreportz: 生成一个压缩的 Android 错误报告。 此命令只能通过 `adb shell` 使用。 更多信息：. (将 Android 错误报告的内容写入 `stdout`：)",
+    "tags": [
+      "android",
+      "bugreportz",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-bugreportz-3",
+    "title": "bugreportz - 显示帮助：",
+    "content": "bugreportz -h",
+    "group": "Android 开发",
+    "description": "bugreportz: 生成一个压缩的 Android 错误报告。 此命令只能通过 `adb shell` 使用。 更多信息：. (显示帮助：)",
+    "tags": [
+      "android",
+      "bugreportz",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-bugreportz-4",
+    "title": "bugreportz - 显示版本：",
+    "content": "bugreportz -v",
+    "group": "Android 开发",
+    "description": "bugreportz: 生成一个压缩的 Android 错误报告。 此命令只能通过 `adb shell` 使用。 更多信息：. (显示版本：)",
+    "tags": [
+      "android",
+      "bugreportz",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-logcat-0",
+    "title": "logcat - 显示系统日志：",
+    "content": "logcat",
+    "group": "Android 开发",
+    "description": "logcat: 转储系统消息日志，包括发生错误时的堆栈跟踪信息，以及应用程序记录的信息消息。 更多信息：. (显示系统日志：)",
+    "tags": [
+      "android",
+      "logcat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-logcat-1",
+    "title": "logcat - 将系统日志写入文件（[f]ile）：",
+    "content": "logcat -f {{路径/到/文件}}",
+    "group": "Android 开发",
+    "description": "logcat: 转储系统消息日志，包括发生错误时的堆栈跟踪信息，以及应用程序记录的信息消息。 更多信息：. (将系统日志写入文件（[f]ile）：)",
+    "tags": [
+      "android",
+      "logcat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-logcat-2",
+    "title": "logcat - 显示与正则表达式匹配的日志行：",
+    "content": "logcat --regex {{正则表达式}}",
+    "group": "Android 开发",
+    "description": "logcat: 转储系统消息日志，包括发生错误时的堆栈跟踪信息，以及应用程序记录的信息消息。 更多信息：. (显示与正则表达式匹配的日志行：)",
+    "tags": [
+      "android",
+      "logcat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-logcat-3",
+    "title": "logcat - 显示特定 PID 的日志：",
+    "content": "logcat --pid {{pid}}",
+    "group": "Android 开发",
+    "description": "logcat: 转储系统消息日志，包括发生错误时的堆栈跟踪信息，以及应用程序记录的信息消息。 更多信息：. (显示特定 PID 的日志：)",
+    "tags": [
+      "android",
+      "logcat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-logcat-4",
+    "title": "logcat - 显示特定包的进程日志：",
+    "content": "logcat --pid $(pidof -s {{包}})",
+    "group": "Android 开发",
+    "description": "logcat: 转储系统消息日志，包括发生错误时的堆栈跟踪信息，以及应用程序记录的信息消息。 更多信息：. (显示特定包的进程日志：)",
+    "tags": [
+      "android",
+      "logcat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-dalvikvm-0",
+    "title": "dalvikvm - 启动一个 Java 程序：",
+    "content": "dalvikvm -classpath {{path/to/file.jar}} {{classname}}",
+    "group": "Android 开发",
+    "description": "dalvikvm: Android Java 虚拟机。 更多信息：. (启动一个 Java 程序：)",
+    "tags": [
+      "android",
+      "dalvikvm",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pm-0",
+    "title": "pm - 打印所有已安装应用程序的列表：",
+    "content": "pm list packages",
+    "group": "Android 开发",
+    "description": "pm: 显示关于 Android 设备上的应用程序的信息。 更多信息：. (打印所有已安装应用程序的列表：)",
+    "tags": [
+      "android",
+      "pm",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pm-1",
+    "title": "pm - 打印所有已安装的系统应用程序的列表：",
+    "content": "pm list packages -s",
+    "group": "Android 开发",
+    "description": "pm: 显示关于 Android 设备上的应用程序的信息。 更多信息：. (打印所有已安装的系统应用程序的列表：)",
+    "tags": [
+      "android",
+      "pm",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pm-2",
+    "title": "pm - 打印所有已安装的第三方应用程序的列表：",
+    "content": "pm list packages -3",
+    "group": "Android 开发",
+    "description": "pm: 显示关于 Android 设备上的应用程序的信息。 更多信息：. (打印所有已安装的第三方应用程序的列表：)",
+    "tags": [
+      "android",
+      "pm",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pm-3",
+    "title": "pm - 打印与指定关键字匹配的应用程序列表：",
+    "content": "pm list packages {{关键词}}",
+    "group": "Android 开发",
+    "description": "pm: 显示关于 Android 设备上的应用程序的信息。 更多信息：. (打印与指定关键字匹配的应用程序列表：)",
+    "tags": [
+      "android",
+      "pm",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pm-4",
+    "title": "pm - 打印指定应用的 APK 的路径：",
+    "content": "pm path {{应用名}}",
+    "group": "Android 开发",
+    "description": "pm: 显示关于 Android 设备上的应用程序的信息。 更多信息：. (打印指定应用的 APK 的路径：)",
+    "tags": [
+      "android",
+      "pm",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-cmd-0",
+    "title": "cmd - 列出所有正在运行的服务：",
+    "content": "cmd -l",
+    "group": "Android 开发",
+    "description": "cmd: Android 服务管理器。 更多信息：. (列出所有正在运行的服务：)",
+    "tags": [
+      "android",
+      "cmd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-cmd-1",
+    "title": "cmd - 调用指定服务：",
+    "content": "cmd {{alarm}}",
+    "group": "Android 开发",
+    "description": "cmd: Android 服务管理器。 更多信息：. (调用指定服务：)",
+    "tags": [
+      "android",
+      "cmd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-cmd-2",
+    "title": "cmd - 调用服务同时传递参数：",
+    "content": "cmd {{vibrator}} {{vibrate 300}}",
+    "group": "Android 开发",
+    "description": "cmd: Android 服务管理器。 更多信息：. (调用服务同时传递参数：)",
+    "tags": [
+      "android",
+      "cmd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-input-0",
+    "title": "input - 将单个字符的事件代码发送到 Android 设备：",
+    "content": "input keyevent {{event_code}}",
+    "group": "Android 开发",
+    "description": "input: 将事件代码或触摸屏手势发送到 Android 设备。 此命令只能通过 `adb shell` 使用。 更多信息：. (将单个字符的事件代码发送到 Android 设备：)",
+    "tags": [
+      "android",
+      "input",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-input-1",
+    "title": "input - 将文本发送到 Android 设备（`%s` 代表空格）：",
+    "content": "input text \"{{text}}\"",
+    "group": "Android 开发",
+    "description": "input: 将事件代码或触摸屏手势发送到 Android 设备。 此命令只能通过 `adb shell` 使用。 更多信息：. (将文本发送到 Android 设备（`%s` 代表空格）：)",
+    "tags": [
+      "android",
+      "input",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-input-2",
+    "title": "input - 将轻触发送到 Android 设备：",
+    "content": "input tap {{x_pos}} {{y_pos}}",
+    "group": "Android 开发",
+    "description": "input: 将事件代码或触摸屏手势发送到 Android 设备。 此命令只能通过 `adb shell` 使用。 更多信息：. (将轻触发送到 Android 设备：)",
+    "tags": [
+      "android",
+      "input",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-input-3",
+    "title": "input - 将滑动手势发送到 Android 设备：",
+    "content": "input swipe {{x_start}} {{y_start}} {{x_end}} {{y_end}} {{duration_in_ms}}",
+    "group": "Android 开发",
+    "description": "input: 将事件代码或触摸屏手势发送到 Android 设备。 此命令只能通过 `adb shell` 使用。 更多信息：. (将滑动手势发送到 Android 设备：)",
+    "tags": [
+      "android",
+      "input",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-input-4",
+    "title": "input - 使用滑动手势将长按发送到 Android 设备：",
+    "content": "input swipe {{x_pos}} {{y_pos}} {{x_pos}} {{y_pos}} {{duration_in_ms}}",
+    "group": "Android 开发",
+    "description": "input: 将事件代码或触摸屏手势发送到 Android 设备。 此命令只能通过 `adb shell` 使用。 更多信息：. (使用滑动手势将长按发送到 Android 设备：)",
+    "tags": [
+      "android",
+      "input",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-settings-0",
+    "title": "settings - 在 `全局` 命名空间中显示环境变量列表：",
+    "content": "settings list {{global}}",
+    "group": "Android 开发",
+    "description": "settings: 获取关于 Android OS 的信息。 更多信息：. (在 `全局` 命名空间中显示环境变量列表：)",
+    "tags": [
+      "android",
+      "settings",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-settings-1",
+    "title": "settings - 获取指定环境变量的值：",
+    "content": "settings get {{global}} {{airplane_mode_on}}",
+    "group": "Android 开发",
+    "description": "settings: 获取关于 Android OS 的信息。 更多信息：. (获取指定环境变量的值：)",
+    "tags": [
+      "android",
+      "settings",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-settings-2",
+    "title": "settings - 设置指定环境变量的值：",
+    "content": "settings put {{system}} {{screen_brightness}} {{42}}",
+    "group": "Android 开发",
+    "description": "settings: 获取关于 Android OS 的信息。 更多信息：. (设置指定环境变量的值：)",
+    "tags": [
+      "android",
+      "settings",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-settings-3",
+    "title": "settings - 删除指定环境变量：",
+    "content": "settings delete {{secure}} {{screensaver_enabled}}",
+    "group": "Android 开发",
+    "description": "settings: 获取关于 Android OS 的信息。 更多信息：. (删除指定环境变量：)",
+    "tags": [
+      "android",
+      "settings",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-bugreport-0",
+    "title": "bugreport - 显示 Android 设备的完整错误报告：",
+    "content": "bugreport",
+    "group": "Android 开发",
+    "description": "bugreport: 显示安卓的 Bug 报告。 该命令只能通过 `adb shell` 使用。 更多信息：. (显示 Android 设备的完整错误报告：)",
+    "tags": [
+      "android",
+      "bugreport",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pkg-0",
+    "title": "pkg - 升级所有已安装的包：",
+    "content": "pkg upgrade",
+    "group": "Android 开发",
+    "description": "pkg: Termux 的包管理工具。 更多信息：. (升级所有已安装的包：)",
+    "tags": [
+      "android",
+      "pkg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pkg-1",
+    "title": "pkg - 安装一个包：",
+    "content": "pkg install {{包名}}",
+    "group": "Android 开发",
+    "description": "pkg: Termux 的包管理工具。 更多信息：. (安装一个包：)",
+    "tags": [
+      "android",
+      "pkg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pkg-2",
+    "title": "pkg - 卸载一个包：",
+    "content": "pkg uninstall {{包名}}",
+    "group": "Android 开发",
+    "description": "pkg: Termux 的包管理工具。 更多信息：. (卸载一个包：)",
+    "tags": [
+      "android",
+      "pkg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pkg-3",
+    "title": "pkg - 重新安装一个包：",
+    "content": "pkg reinstall {{包名}}",
+    "group": "Android 开发",
+    "description": "pkg: Termux 的包管理工具。 更多信息：. (重新安装一个包：)",
+    "tags": [
+      "android",
+      "pkg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pkg-4",
+    "title": "pkg - 搜索一个包：",
+    "content": "pkg search {{包名}}",
+    "group": "Android 开发",
+    "description": "pkg: Termux 的包管理工具。 更多信息：. (搜索一个包：)",
+    "tags": [
+      "android",
+      "pkg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  }
+]

@@ -1,0 +1,5686 @@
+[
+  {
+    "id": "tldr-zh-windows-reg-load-0",
+    "title": "reg-load - 将备份文件加载到指定的键中：",
+    "content": "reg load {{键名}} {{文件的路径}}",
+    "group": "Windows",
+    "description": "reg-load: 将保存的子键加载到不同的子键中。 This is intended for troubleshooting and temporary keys. 更多信息：. (将备份文件加载到指定的键中：)",
+    "tags": [
+      "windows",
+      "reg-load",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-delete-0",
+    "title": "reg-delete - 删除一个指定的键：",
+    "content": "reg delete {{键名}}",
+    "group": "Windows",
+    "description": "reg-delete: 从注册表中删除键和值。 更多信息：. (删除一个指定的键：)",
+    "tags": [
+      "windows",
+      "reg-delete",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-delete-1",
+    "title": "reg-delete - 删除键中指定的值：",
+    "content": "reg delete {{键名}} /v {{值}}",
+    "group": "Windows",
+    "description": "reg-delete: 从注册表中删除键和值。 更多信息：. (删除键中指定的值：)",
+    "tags": [
+      "windows",
+      "reg-delete",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-delete-2",
+    "title": "reg-delete - 递归删除指定键下所有的值：",
+    "content": "reg delete {{键名}} /va",
+    "group": "Windows",
+    "description": "reg-delete: 从注册表中删除键和值。 更多信息：. (递归删除指定键下所有的值：)",
+    "tags": [
+      "windows",
+      "reg-delete",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-delete-3",
+    "title": "reg-delete - 在没有提示的情况下递归删除键中所有的值：",
+    "content": "reg delete {{键名}} /f /va",
+    "group": "Windows",
+    "description": "reg-delete: 从注册表中删除键和值。 更多信息：. (在没有提示的情况下递归删除键中所有的值：)",
+    "tags": [
+      "windows",
+      "reg-delete",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-tzutil-0",
+    "title": "tzutil - 获取当前的时区：",
+    "content": "tzutil /g",
+    "group": "Windows",
+    "description": "tzutil: 用于显示或配置系统时区的工具。 更多信息：. (获取当前的时区：)",
+    "tags": [
+      "windows",
+      "tzutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-tzutil-1",
+    "title": "tzutil - 显示可用的时区列表：",
+    "content": "tzutil /l",
+    "group": "Windows",
+    "description": "tzutil: 用于显示或配置系统时区的工具。 更多信息：. (显示可用的时区列表：)",
+    "tags": [
+      "windows",
+      "tzutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-tzutil-2",
+    "title": "tzutil - 将系统时区设置为特定值：",
+    "content": "tzutil /s {{时区 id}}",
+    "group": "Windows",
+    "description": "tzutil: 用于显示或配置系统时区的工具。 更多信息：. (将系统时区设置为特定值：)",
+    "tags": [
+      "windows",
+      "tzutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-get-filehash-0",
+    "title": "get-filehash - 使用 SHA256 算法计算给定文件的哈希值：",
+    "content": "Get-FileHash {{文件路径}}",
+    "group": "Windows",
+    "description": "get-filehash: 计算一个文件的 HASH 值。 更多信息：. (使用 SHA256 算法计算给定文件的哈希值：)",
+    "tags": [
+      "windows",
+      "get-filehash",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-get-filehash-1",
+    "title": "get-filehash - 使用指定的哈希算法计算给定文件的哈希值：",
+    "content": "Get-FileHash {{文件路径}} -Algorithm {{SHA1|SHA384|SHA256|SHA512|MD5}}",
+    "group": "Windows",
+    "description": "get-filehash: 计算一个文件的 HASH 值。 更多信息：. (使用指定的哈希算法计算给定文件的哈希值：)",
+    "tags": [
+      "windows",
+      "get-filehash",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-install-0",
+    "title": "choco-install - 安装一个或多个用空格分隔的软件包：",
+    "content": "choco install {{包名 包名 ..}}",
+    "group": "Windows",
+    "description": "choco-install: 使用 Chocolatey 下载一个或多个包。 更多信息：. (安装一个或多个用空格分隔的软件包：)",
+    "tags": [
+      "windows",
+      "choco-install",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-install-1",
+    "title": "choco-install - 从一个自定义的配置文件中安装包：",
+    "content": "choco install {{配置文件的路径}}",
+    "group": "Windows",
+    "description": "choco-install: 使用 Chocolatey 下载一个或多个包。 更多信息：. (从一个自定义的配置文件中安装包：)",
+    "tags": [
+      "windows",
+      "choco-install",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-install-2",
+    "title": "choco-install - 安装一个特定的 \"nuspec\" 或 \"nupkg\" 文件：",
+    "content": "choco install {{文件的路径}}",
+    "group": "Windows",
+    "description": "choco-install: 使用 Chocolatey 下载一个或多个包。 更多信息：. (安装一个特定的 \"nuspec\" 或 \"nupkg\" 文件：)",
+    "tags": [
+      "windows",
+      "choco-install",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-install-3",
+    "title": "choco-install - 安装一个指定版本的包：",
+    "content": "choco install {{包名}} --version {{版本号}}",
+    "group": "Windows",
+    "description": "choco-install: 使用 Chocolatey 下载一个或多个包。 更多信息：. (安装一个指定版本的包：)",
+    "tags": [
+      "windows",
+      "choco-install",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-install-4",
+    "title": "choco-install - 允许安装一个包的多个版本：",
+    "content": "choco install {{包名}} --allow-multiple",
+    "group": "Windows",
+    "description": "choco-install: 使用 Chocolatey 下载一个或多个包。 更多信息：. (允许安装一个包的多个版本：)",
+    "tags": [
+      "windows",
+      "choco-install",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-install-5",
+    "title": "choco-install - 自动确认所有提示：",
+    "content": "choco install {{包名}} --yes",
+    "group": "Windows",
+    "description": "choco-install: 使用 Chocolatey 下载一个或多个包。 更多信息：. (自动确认所有提示：)",
+    "tags": [
+      "windows",
+      "choco-install",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-install-6",
+    "title": "choco-install - 从自定义的源处获取包：",
+    "content": "choco install {{包名}} --source {{源 URL|别名}}",
+    "group": "Windows",
+    "description": "choco-install: 使用 Chocolatey 下载一个或多个包。 更多信息：. (从自定义的源处获取包：)",
+    "tags": [
+      "windows",
+      "choco-install",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-install-7",
+    "title": "choco-install - 提供一个用户名和密码来进行验证：",
+    "content": "choco install {{包名}} --user {{用户名}} --password {{密码}}",
+    "group": "Windows",
+    "description": "choco-install: 使用 Chocolatey 下载一个或多个包。 更多信息：. (提供一个用户名和密码来进行验证：)",
+    "tags": [
+      "windows",
+      "choco-install",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-restore-0",
+    "title": "reg-restore - 使用备份文件中的数据覆盖指定的键：",
+    "content": "reg restore {{键名}} {{文件路径}}",
+    "group": "Windows",
+    "description": "reg-restore: 从备份文件中恢复键和值。 参见 `reg-save` 来获取更多的信息。 更多信息：. (使用备份文件中的数据覆盖指定的键：)",
+    "tags": [
+      "windows",
+      "reg-restore",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-compare-0",
+    "title": "reg-compare - 比较两个键中的所有值：",
+    "content": "reg compare {{第一个键名}} {{第二个键名}}",
+    "group": "Windows",
+    "description": "reg-compare: 比较注册表中的键和值。 更多信息：. (比较两个键中的所有值：)",
+    "tags": [
+      "windows",
+      "reg-compare",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-compare-1",
+    "title": "reg-compare - 比较两个键中指定的值：",
+    "content": "reg compare {{第一个键名}} {{第二个键名}} /v {{值}}",
+    "group": "Windows",
+    "description": "reg-compare: 比较注册表中的键和值。 更多信息：. (比较两个键中指定的值：)",
+    "tags": [
+      "windows",
+      "reg-compare",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-compare-2",
+    "title": "reg-compare - 比较两个键中的所有子键和值：",
+    "content": "reg compare {{第一个键名}} {{第二个键名}} /s",
+    "group": "Windows",
+    "description": "reg-compare: 比较注册表中的键和值。 更多信息：. (比较两个键中的所有子键和值：)",
+    "tags": [
+      "windows",
+      "reg-compare",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-compare-3",
+    "title": "reg-compare - 仅输出指定键之间匹配的结果：",
+    "content": "reg compare {{第一个键名}} {{第二个键名}} /os",
+    "group": "Windows",
+    "description": "reg-compare: 比较注册表中的键和值。 更多信息：. (仅输出指定键之间匹配的结果：)",
+    "tags": [
+      "windows",
+      "reg-compare",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-compare-4",
+    "title": "reg-compare - 输出两个键之间的匹配和差异：",
+    "content": "reg compare {{第一个键名}} {{第二个键名}} /oa",
+    "group": "Windows",
+    "description": "reg-compare: 比较注册表中的键和值。 更多信息：. (输出两个键之间的匹配和差异：)",
+    "tags": [
+      "windows",
+      "reg-compare",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-0",
+    "title": "reg - 执行注册表命令：",
+    "content": "reg {{命令}}",
+    "group": "Windows",
+    "description": "reg: 用于在 Windows 注册表中管理键及其值的命令行界面。 此命令也有关于其子命令的文件，例如：`add`. 更多信息：. (执行注册表命令：)",
+    "tags": [
+      "windows",
+      "reg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-1",
+    "title": "reg - 显示常规信息并列出所有可用命令：",
+    "content": "reg /?",
+    "group": "Windows",
+    "description": "reg: 用于在 Windows 注册表中管理键及其值的命令行界面。 此命令也有关于其子命令的文件，例如：`add`. 更多信息：. (显示常规信息并列出所有可用命令：)",
+    "tags": [
+      "windows",
+      "reg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-2",
+    "title": "reg - 显示指定命令的帮助信息：",
+    "content": "reg {{命令}} /?",
+    "group": "Windows",
+    "description": "reg: 用于在 Windows 注册表中管理键及其值的命令行界面。 此命令也有关于其子命令的文件，例如：`add`. 更多信息：. (显示指定命令的帮助信息：)",
+    "tags": [
+      "windows",
+      "reg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-pathping-0",
+    "title": "pathping - Ping 并追踪主机的路由：",
+    "content": "pathping {{主机名}}",
+    "group": "Windows",
+    "description": "pathping: 一种结合了`ping`和`tracert`功能的跟踪路由工具。 更多信息：. (Ping 并追踪主机的路由：)",
+    "tags": [
+      "windows",
+      "pathping",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-pathping-1",
+    "title": "pathping - 不要对主机名执行 IP 地址的反向查找：",
+    "content": "pathping {{主机名}} -n",
+    "group": "Windows",
+    "description": "pathping: 一种结合了`ping`和`tracert`功能的跟踪路由工具。 更多信息：. (不要对主机名执行 IP 地址的反向查找：)",
+    "tags": [
+      "windows",
+      "pathping",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-pathping-2",
+    "title": "pathping - 指定要搜索目标的最大跃点数（默认值为 30）：",
+    "content": "pathping {{主机名}} -h {{最大跃点数}}",
+    "group": "Windows",
+    "description": "pathping: 一种结合了`ping`和`tracert`功能的跟踪路由工具。 更多信息：. (指定要搜索目标的最大跃点数（默认值为 30）：)",
+    "tags": [
+      "windows",
+      "pathping",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-pathping-3",
+    "title": "pathping - 指定 ping 之间等待的毫秒数（默认值为 240）：",
+    "content": "pathping {{主机名}} -p {{时间}}",
+    "group": "Windows",
+    "description": "pathping: 一种结合了`ping`和`tracert`功能的跟踪路由工具。 更多信息：. (指定 ping 之间等待的毫秒数（默认值为 240）：)",
+    "tags": [
+      "windows",
+      "pathping",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-pathping-4",
+    "title": "pathping - 指定每跳的查询数（默认值为 100）：",
+    "content": "pathping {{主机名}} -q {{查询语句}}",
+    "group": "Windows",
+    "description": "pathping: 一种结合了`ping`和`tracert`功能的跟踪路由工具。 更多信息：. (指定每跳的查询数（默认值为 100）：)",
+    "tags": [
+      "windows",
+      "pathping",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-pathping-5",
+    "title": "pathping - 强制使用 IPV4：",
+    "content": "pathping {{主机名}} -4",
+    "group": "Windows",
+    "description": "pathping: 一种结合了`ping`和`tracert`功能的跟踪路由工具。 更多信息：. (强制使用 IPV4：)",
+    "tags": [
+      "windows",
+      "pathping",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-pathping-6",
+    "title": "pathping - 强制使用 IPV6：",
+    "content": "pathping {{主机名}} -6",
+    "group": "Windows",
+    "description": "pathping: 一种结合了`ping`和`tracert`功能的跟踪路由工具。 更多信息：. (强制使用 IPV6：)",
+    "tags": [
+      "windows",
+      "pathping",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-pathping-7",
+    "title": "pathping - 显示详细的使用帮助：",
+    "content": "pathping /?",
+    "group": "Windows",
+    "description": "pathping: 一种结合了`ping`和`tracert`功能的跟踪路由工具。 更多信息：. (显示详细的使用帮助：)",
+    "tags": [
+      "windows",
+      "pathping",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-scoop-0",
+    "title": "scoop - 安装一个包：",
+    "content": "scoop install {{包名}}",
+    "group": "Windows",
+    "description": "scoop: Windows 的命令行安装程序。 更多信息：. (安装一个包：)",
+    "tags": [
+      "windows",
+      "scoop",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-scoop-1",
+    "title": "scoop - 删除一个包：",
+    "content": "scoop uninstall {{包名}}",
+    "group": "Windows",
+    "description": "scoop: Windows 的命令行安装程序。 更多信息：. (删除一个包：)",
+    "tags": [
+      "windows",
+      "scoop",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-scoop-2",
+    "title": "scoop - 更新所有已安装的包：",
+    "content": "scoop update --all",
+    "group": "Windows",
+    "description": "scoop: Windows 的命令行安装程序。 更多信息：. (更新所有已安装的包：)",
+    "tags": [
+      "windows",
+      "scoop",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-scoop-3",
+    "title": "scoop - 列出所有已安装的包：",
+    "content": "scoop list",
+    "group": "Windows",
+    "description": "scoop: Windows 的命令行安装程序。 更多信息：. (列出所有已安装的包：)",
+    "tags": [
+      "windows",
+      "scoop",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-scoop-4",
+    "title": "scoop - 显示一个包的信息：",
+    "content": "scoop info {{包名}}",
+    "group": "Windows",
+    "description": "scoop: Windows 的命令行安装程序。 更多信息：. (显示一个包的信息：)",
+    "tags": [
+      "windows",
+      "scoop",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-scoop-5",
+    "title": "scoop - 搜索一个包：",
+    "content": "scoop search {{包名}}",
+    "group": "Windows",
+    "description": "scoop: Windows 的命令行安装程序。 更多信息：. (搜索一个包：)",
+    "tags": [
+      "windows",
+      "scoop",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-scoop-6",
+    "title": "scoop - 移除所有包的旧版本并清理下载缓存：",
+    "content": "scoop cleanup --cache --all",
+    "group": "Windows",
+    "description": "scoop: Windows 的命令行安装程序。 更多信息：. (移除所有包的旧版本并清理下载缓存：)",
+    "tags": [
+      "windows",
+      "scoop",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-copy-0",
+    "title": "reg-copy - 将注册表键复制到新的注册表位置：",
+    "content": "reg copy {{旧键名}} {{新键名}}",
+    "group": "Windows",
+    "description": "reg-copy: 复制注册表中的键和值。 更多信息：. (将注册表键复制到新的注册表位置：)",
+    "tags": [
+      "windows",
+      "reg-copy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-copy-1",
+    "title": "reg-copy - 递归将注册表键复制到新的注册表位置：",
+    "content": "reg copy {{旧键名}} {{新键名}} /s",
+    "group": "Windows",
+    "description": "reg-copy: 复制注册表中的键和值。 更多信息：. (递归将注册表键复制到新的注册表位置：)",
+    "tags": [
+      "windows",
+      "reg-copy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-copy-2",
+    "title": "reg-copy - 在没有提示的情况下强制复制注册表键：",
+    "content": "reg copy {{旧键名}} {{新键名}} /f",
+    "group": "Windows",
+    "description": "reg-copy: 复制注册表中的键和值。 更多信息：. (在没有提示的情况下强制复制注册表键：)",
+    "tags": [
+      "windows",
+      "reg-copy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-forfiles-0",
+    "title": "forfiles - 在当前的目录中寻找文件：",
+    "content": "forfiles",
+    "group": "Windows",
+    "description": "forfiles: 选择一个或多个文件以执行指定的命令。 更多信息：. (在当前的目录中寻找文件：)",
+    "tags": [
+      "windows",
+      "forfiles",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-forfiles-1",
+    "title": "forfiles - 在一个指定目录中寻找文件：",
+    "content": "forfiles /p {{目录的路径}}",
+    "group": "Windows",
+    "description": "forfiles: 选择一个或多个文件以执行指定的命令。 更多信息：. (在一个指定目录中寻找文件：)",
+    "tags": [
+      "windows",
+      "forfiles",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-forfiles-2",
+    "title": "forfiles - 为每个文件执行指定的命令：",
+    "content": "forfiles /c \"{{命令}}\"",
+    "group": "Windows",
+    "description": "forfiles: 选择一个或多个文件以执行指定的命令。 更多信息：. (为每个文件执行指定的命令：)",
+    "tags": [
+      "windows",
+      "forfiles",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-forfiles-3",
+    "title": "forfiles - 使用通配符来寻找指定的文件：",
+    "content": "forfiles /m {{通配符}}",
+    "group": "Windows",
+    "description": "forfiles: 选择一个或多个文件以执行指定的命令。 更多信息：. (使用通配符来寻找指定的文件：)",
+    "tags": [
+      "windows",
+      "forfiles",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-forfiles-4",
+    "title": "forfiles - 递归寻找文件：",
+    "content": "forfiles /s",
+    "group": "Windows",
+    "description": "forfiles: 选择一个或多个文件以执行指定的命令。 更多信息：. (递归寻找文件：)",
+    "tags": [
+      "windows",
+      "forfiles",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-forfiles-5",
+    "title": "forfiles - 搜索超过 5 天的文件：",
+    "content": "forfiles /d +{{5}}",
+    "group": "Windows",
+    "description": "forfiles: 选择一个或多个文件以执行指定的命令。 更多信息：. (搜索超过 5 天的文件：)",
+    "tags": [
+      "windows",
+      "forfiles",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cipher-0",
+    "title": "cipher - 加密文件或目录：",
+    "content": "cipher /e:{{路径/文件或目录}}",
+    "group": "Windows",
+    "description": "cipher: 加密或解密 NTFS 驱动器上的文件。 更多信息：. (加密文件或目录：)",
+    "tags": [
+      "windows",
+      "cipher",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cipher-1",
+    "title": "cipher - 解密文件或目录：",
+    "content": "cipher /d:{{路径/文件或目录}}",
+    "group": "Windows",
+    "description": "cipher: 加密或解密 NTFS 驱动器上的文件。 更多信息：. (解密文件或目录：)",
+    "tags": [
+      "windows",
+      "cipher",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cipher-2",
+    "title": "cipher - 安全地删除文件或目录：",
+    "content": "cipher /w:{{路径/文件或目录}}",
+    "group": "Windows",
+    "description": "cipher: 加密或解密 NTFS 驱动器上的文件。 更多信息：. (安全地删除文件或目录：)",
+    "tags": [
+      "windows",
+      "cipher",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-chrome-0",
+    "title": "chrome - 原命令的文档在：",
+    "content": "tldr chromium",
+    "group": "Windows",
+    "description": "chrome: 这是 `chromium` 命令的一个别名。 更多信息：. (原命令的文档在：)",
+    "tags": [
+      "windows",
+      "chrome",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-exit-0",
+    "title": "exit - 退出当前的命令行实例：",
+    "content": "exit",
+    "group": "Windows",
+    "description": "exit: 退出当前的命令行实例或 bat 脚本。 更多信息：. (退出当前的命令行实例：)",
+    "tags": [
+      "windows",
+      "exit",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-exit-1",
+    "title": "exit - 退出当前的 [b]at 脚本：",
+    "content": "exit /b",
+    "group": "Windows",
+    "description": "exit: 退出当前的命令行实例或 bat 脚本。 更多信息：. (退出当前的 [b]at 脚本：)",
+    "tags": [
+      "windows",
+      "exit",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-exit-2",
+    "title": "exit - 使用一个指定的退出码退出：",
+    "content": "exit {{退出码}}",
+    "group": "Windows",
+    "description": "exit: 退出当前的命令行实例或 bat 脚本。 更多信息：. (使用一个指定的退出码退出：)",
+    "tags": [
+      "windows",
+      "exit",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-wsl-0",
+    "title": "wsl - 启动 Linux Shell（在默认发行版中）：",
+    "content": "wsl {{shell_命令}}",
+    "group": "Windows",
+    "description": "wsl: 从命令行管理适用于 Linux 的 Windows 子系统。 更多信息：. (启动 Linux Shell（在默认发行版中）：)",
+    "tags": [
+      "windows",
+      "wsl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-wsl-1",
+    "title": "wsl - 在不使用 Shell 的情况下运行 Linux 命令：",
+    "content": "wsl --exec {{命令}} {{命令参数}}",
+    "group": "Windows",
+    "description": "wsl: 从命令行管理适用于 Linux 的 Windows 子系统。 更多信息：. (在不使用 Shell 的情况下运行 Linux 命令：)",
+    "tags": [
+      "windows",
+      "wsl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-wsl-2",
+    "title": "wsl - 指定特定的发行版：",
+    "content": "wsl --distribution {{发行版}} {{shell_命令}}",
+    "group": "Windows",
+    "description": "wsl: 从命令行管理适用于 Linux 的 Windows 子系统。 更多信息：. (指定特定的发行版：)",
+    "tags": [
+      "windows",
+      "wsl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-wsl-3",
+    "title": "wsl - 列出所有可用发行版：",
+    "content": "wsl --list",
+    "group": "Windows",
+    "description": "wsl: 从命令行管理适用于 Linux 的 Windows 子系统。 更多信息：. (列出所有可用发行版：)",
+    "tags": [
+      "windows",
+      "wsl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-wsl-4",
+    "title": "wsl - 将发行版导出到 .tar 文件：",
+    "content": "wsl --export {{发行版}} {{路径/distro_fs.tar}}",
+    "group": "Windows",
+    "description": "wsl: 从命令行管理适用于 Linux 的 Windows 子系统。 更多信息：. (将发行版导出到 .tar 文件：)",
+    "tags": [
+      "windows",
+      "wsl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-wsl-5",
+    "title": "wsl - 从 .tar 文件导入发行版：",
+    "content": "wsl --import {{发行版}} {{路径/安装位置}} {{路径/distro_fs.tar}}",
+    "group": "Windows",
+    "description": "wsl: 从命令行管理适用于 Linux 的 Windows 子系统。 更多信息：. (从 .tar 文件导入发行版：)",
+    "tags": [
+      "windows",
+      "wsl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-wsl-6",
+    "title": "wsl - 更改指定发行版的版本：",
+    "content": "wsl --set-version {{发行版}} {{版本}}",
+    "group": "Windows",
+    "description": "wsl: 从命令行管理适用于 Linux 的 Windows 子系统。 更多信息：. (更改指定发行版的版本：)",
+    "tags": [
+      "windows",
+      "wsl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-wsl-7",
+    "title": "wsl - 关闭适用于 Linux 的 Windows 子系统：",
+    "content": "wsl --shutdown",
+    "group": "Windows",
+    "description": "wsl: 从命令行管理适用于 Linux 的 Windows 子系统。 更多信息：. (关闭适用于 Linux 的 Windows 子系统：)",
+    "tags": [
+      "windows",
+      "wsl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-expand-0",
+    "title": "expand - 将单文件 cab 文件解压到指定目录：",
+    "content": "expand {{cab 文件路径}} {{指定的目录}}",
+    "group": "Windows",
+    "description": "expand: 解压一个或多个 cab 文件。 更多信息：. (将单文件 cab 文件解压到指定目录：)",
+    "tags": [
+      "windows",
+      "expand",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-expand-1",
+    "title": "expand - 列出 cab 文件中的所有文件：",
+    "content": "expand {{cab 文件路径}} {{指定的目录}} -d",
+    "group": "Windows",
+    "description": "expand: 解压一个或多个 cab 文件。 更多信息：. (列出 cab 文件中的所有文件：)",
+    "tags": [
+      "windows",
+      "expand",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-expand-2",
+    "title": "expand - 从 cab 文件中解压所有的文件：",
+    "content": "expand {{cab 文件路径}} {{指定的目录}} -f:*",
+    "group": "Windows",
+    "description": "expand: 解压一个或多个 cab 文件。 更多信息：. (从 cab 文件中解压所有的文件：)",
+    "tags": [
+      "windows",
+      "expand",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-expand-3",
+    "title": "expand - 从 cab 文件中解压一个特定的文件：",
+    "content": "expand {{cab 文件路径}} {{指定的目录}} -f:{{文件名}}",
+    "group": "Windows",
+    "description": "expand: 解压一个或多个 cab 文件。 更多信息：. (从 cab 文件中解压一个特定的文件：)",
+    "tags": [
+      "windows",
+      "expand",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-expand-4",
+    "title": "expand - 解压缩时忽略目录结构，并将它们添加到单个目录中：",
+    "content": "expand {{cab 文件路径}} {{指定的目录}} -i",
+    "group": "Windows",
+    "description": "expand: 解压一个或多个 cab 文件。 更多信息：. (解压缩时忽略目录结构，并将它们添加到单个目录中：)",
+    "tags": [
+      "windows",
+      "expand",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-iwr-0",
+    "title": "iwr - 原命令的文档在：",
+    "content": "tldr invoke-webrequest",
+    "group": "Windows",
+    "description": "iwr: 这是 `invoke-webrequest` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "windows",
+      "iwr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cmstp-0",
+    "title": "cmstp - 安装指定的配置文件：",
+    "content": "cmstp \"{{配置文件的路径}}\"",
+    "group": "Windows",
+    "description": "cmstp: 用于管理连接服务配置文件的命令行工具。 更多信息：. (安装指定的配置文件：)",
+    "tags": [
+      "windows",
+      "cmstp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cmstp-1",
+    "title": "cmstp - 安装时不创建桌面快捷方式：",
+    "content": "cmstp /ns \"{{配置文件的路径}}\"",
+    "group": "Windows",
+    "description": "cmstp: 用于管理连接服务配置文件的命令行工具。 更多信息：. (安装时不创建桌面快捷方式：)",
+    "tags": [
+      "windows",
+      "cmstp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cmstp-2",
+    "title": "cmstp - 安装时不检查依赖：",
+    "content": "cmstp /nf \"{{配置文件的路径}}\"",
+    "group": "Windows",
+    "description": "cmstp: 用于管理连接服务配置文件的命令行工具。 更多信息：. (安装时不检查依赖：)",
+    "tags": [
+      "windows",
+      "cmstp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cmstp-3",
+    "title": "cmstp - 仅为当前用户安装：",
+    "content": "cmstp /su \"{{配置文件的路径}}\"",
+    "group": "Windows",
+    "description": "cmstp: 用于管理连接服务配置文件的命令行工具。 更多信息：. (仅为当前用户安装：)",
+    "tags": [
+      "windows",
+      "cmstp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cmstp-4",
+    "title": "cmstp - 为所有用户安装（需要管理员权限）：",
+    "content": "cmstp /au \"{{配置文件的路径}}\"",
+    "group": "Windows",
+    "description": "cmstp: 用于管理连接服务配置文件的命令行工具。 更多信息：. (为所有用户安装（需要管理员权限）：)",
+    "tags": [
+      "windows",
+      "cmstp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cmstp-5",
+    "title": "cmstp - 静默安装：",
+    "content": "cmstp /s \"{{配置文件的路径}}\"",
+    "group": "Windows",
+    "description": "cmstp: 用于管理连接服务配置文件的命令行工具。 更多信息：. (静默安装：)",
+    "tags": [
+      "windows",
+      "cmstp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cmstp-6",
+    "title": "cmstp - 卸载一个指定的配置文件：",
+    "content": "cmstp /u \"{{配置文件的路径}}\"",
+    "group": "Windows",
+    "description": "cmstp: 用于管理连接服务配置文件的命令行工具。 更多信息：. (卸载一个指定的配置文件：)",
+    "tags": [
+      "windows",
+      "cmstp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cmstp-7",
+    "title": "cmstp - 静默删除：",
+    "content": "cmstp /u /s \"{{配置文件的路径}}\"",
+    "group": "Windows",
+    "description": "cmstp: 用于管理连接服务配置文件的命令行工具。 更多信息：. (静默删除：)",
+    "tags": [
+      "windows",
+      "cmstp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-ftp-0",
+    "title": "ftp - 交互式连接一个远程的 FTP 服务：",
+    "content": "ftp {{主机名}}",
+    "group": "Windows",
+    "description": "ftp: 在本地和远程 FTP 服务器之间交互式传输文件。 更多信息：. (交互式连接一个远程的 FTP 服务：)",
+    "tags": [
+      "windows",
+      "ftp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-ftp-1",
+    "title": "ftp - 匿名登录：",
+    "content": "ftp -A {{主机名}}",
+    "group": "Windows",
+    "description": "ftp: 在本地和远程 FTP 服务器之间交互式传输文件。 更多信息：. (匿名登录：)",
+    "tags": [
+      "windows",
+      "ftp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-ftp-2",
+    "title": "ftp - 初始连接时禁用自动登录：",
+    "content": "ftp -n {{主机名}}",
+    "group": "Windows",
+    "description": "ftp: 在本地和远程 FTP 服务器之间交互式传输文件。 更多信息：. (初始连接时禁用自动登录：)",
+    "tags": [
+      "windows",
+      "ftp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-ftp-3",
+    "title": "ftp - 运行包含 FTP 命令列表的文件：",
+    "content": "ftp -s:{{文件的路径}} {{主机名}}",
+    "group": "Windows",
+    "description": "ftp: 在本地和远程 FTP 服务器之间交互式传输文件。 更多信息：. (运行包含 FTP 命令列表的文件：)",
+    "tags": [
+      "windows",
+      "ftp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-ftp-4",
+    "title": "ftp - 下载多个文件（通配符表达式）：",
+    "content": "mget {{*.png}}",
+    "group": "Windows",
+    "description": "ftp: 在本地和远程 FTP 服务器之间交互式传输文件。 更多信息：. (下载多个文件（通配符表达式）：)",
+    "tags": [
+      "windows",
+      "ftp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-ftp-5",
+    "title": "ftp - 上传多个文件（通配符表达式）：",
+    "content": "mput {{*.zip}}",
+    "group": "Windows",
+    "description": "ftp: 在本地和远程 FTP 服务器之间交互式传输文件。 更多信息：. (上传多个文件（通配符表达式）：)",
+    "tags": [
+      "windows",
+      "ftp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-ftp-6",
+    "title": "ftp - 在远程服务器上删除多个文件：",
+    "content": "mdelete {{*.txt}}",
+    "group": "Windows",
+    "description": "ftp: 在本地和远程 FTP 服务器之间交互式传输文件。 更多信息：. (在远程服务器上删除多个文件：)",
+    "tags": [
+      "windows",
+      "ftp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-ftp-7",
+    "title": "ftp - 显示详细的帮助：",
+    "content": "ftp --help",
+    "group": "Windows",
+    "description": "ftp: 在本地和远程 FTP 服务器之间交互式传输文件。 更多信息：. (显示详细的帮助：)",
+    "tags": [
+      "windows",
+      "ftp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-list-0",
+    "title": "choco-list - 列出所有可用的包：",
+    "content": "choco list",
+    "group": "Windows",
+    "description": "choco-list: 使用 Chocolatey 显示包列表。 更多信息：. (列出所有可用的包：)",
+    "tags": [
+      "windows",
+      "choco-list",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-list-1",
+    "title": "choco-list - 列出所有本地已安装的包：",
+    "content": "choco list --local-only",
+    "group": "Windows",
+    "description": "choco-list: 使用 Chocolatey 显示包列表。 更多信息：. (列出所有本地已安装的包：)",
+    "tags": [
+      "windows",
+      "choco-list",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-list-2",
+    "title": "choco-list - 显示包含本地程序的列表：",
+    "content": "choco list --include-programs",
+    "group": "Windows",
+    "description": "choco-list: 使用 Chocolatey 显示包列表。 更多信息：. (显示包含本地程序的列表：)",
+    "tags": [
+      "windows",
+      "choco-list",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-list-3",
+    "title": "choco-list - 只显示已批准的包：",
+    "content": "choco list --approved-only",
+    "group": "Windows",
+    "description": "choco-list: 使用 Chocolatey 显示包列表。 更多信息：. (只显示已批准的包：)",
+    "tags": [
+      "windows",
+      "choco-list",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-list-4",
+    "title": "choco-list - Specify a custom source to display packages from 指定一个源来显示包列表：",
+    "content": "choco list --source {{源 URL|别名}}",
+    "group": "Windows",
+    "description": "choco-list: 使用 Chocolatey 显示包列表。 更多信息：. (Specify a custom source to display packages from 指定一个源来显示包列表：)",
+    "tags": [
+      "windows",
+      "choco-list",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-list-5",
+    "title": "choco-list - 提供一个用户名和密码来进行验证：",
+    "content": "choco list --user {{用户名}} --password {{密码}}",
+    "group": "Windows",
+    "description": "choco-list: 使用 Chocolatey 显示包列表。 更多信息：. (提供一个用户名和密码来进行验证：)",
+    "tags": [
+      "windows",
+      "choco-list",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-sls-0",
+    "title": "sls - 原命令的文档在：",
+    "content": "tldr select-string",
+    "group": "Windows",
+    "description": "sls: 这是 `Select-String` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "windows",
+      "sls",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-color-0",
+    "title": "color - 将控制台颜色恢复至默认值：",
+    "content": "color",
+    "group": "Windows",
+    "description": "color: 设置控制台的前景色和背景色。 更多信息：. (将控制台颜色恢复至默认值：)",
+    "tags": [
+      "windows",
+      "color",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-color-1",
+    "title": "color - 列出可用的颜色值和详细信息：",
+    "content": "color /?",
+    "group": "Windows",
+    "description": "color: 设置控制台的前景色和背景色。 更多信息：. (列出可用的颜色值和详细信息：)",
+    "tags": [
+      "windows",
+      "color",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-color-2",
+    "title": "color - 将控制台前景色和背景色设置为指定颜色：",
+    "content": "color {{前景色值}}{{背景色值}}",
+    "group": "Windows",
+    "description": "color: 设置控制台的前景色和背景色。 更多信息：. (将控制台前景色和背景色设置为指定颜色：)",
+    "tags": [
+      "windows",
+      "color",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-repair-bde-0",
+    "title": "repair-bde - 尝试修复一个指定的卷：",
+    "content": "repair-bde {{C:}}",
+    "group": "Windows",
+    "description": "repair-bde: 尝试修复或解密损坏的 BitLocker 加密卷。 更多信息：. (尝试修复一个指定的卷：)",
+    "tags": [
+      "windows",
+      "repair-bde",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-repair-bde-1",
+    "title": "repair-bde - 尝试修复指定的卷并输出到另一个卷：",
+    "content": "repair-bde {{C:}} {{D:}}",
+    "group": "Windows",
+    "description": "repair-bde: 尝试修复或解密损坏的 BitLocker 加密卷。 更多信息：. (尝试修复指定的卷并输出到另一个卷：)",
+    "tags": [
+      "windows",
+      "repair-bde",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-repair-bde-2",
+    "title": "repair-bde - 尝试使用提供的恢复密钥文件修复指定的卷：",
+    "content": "repair-bde {{C:}} -RecoveryKey {{bek 文件的路径}}",
+    "group": "Windows",
+    "description": "repair-bde: 尝试修复或解密损坏的 BitLocker 加密卷。 更多信息：. (尝试使用提供的恢复密钥文件修复指定的卷：)",
+    "tags": [
+      "windows",
+      "repair-bde",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-repair-bde-3",
+    "title": "repair-bde - 尝试使用提供的数字恢复密码修复指定的卷：",
+    "content": "repair-bde {{C:}} -RecoveryPassword {{密码}}",
+    "group": "Windows",
+    "description": "repair-bde: 尝试修复或解密损坏的 BitLocker 加密卷。 更多信息：. (尝试使用提供的数字恢复密码修复指定的卷：)",
+    "tags": [
+      "windows",
+      "repair-bde",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-repair-bde-4",
+    "title": "repair-bde - 尝试使用提供的密码修复指定的卷：",
+    "content": "repair-bde {{C:}} -Password {{密码}}",
+    "group": "Windows",
+    "description": "repair-bde: 尝试修复或解密损坏的 BitLocker 加密卷。 更多信息：. (尝试使用提供的密码修复指定的卷：)",
+    "tags": [
+      "windows",
+      "repair-bde",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-repair-bde-5",
+    "title": "repair-bde - 尝试使用提供的密钥包修复指定的卷：",
+    "content": "repair-bde {{C:}} -KeyPackage {{目录的路径}}",
+    "group": "Windows",
+    "description": "repair-bde: 尝试修复或解密损坏的 BitLocker 加密卷。 更多信息：. (尝试使用提供的密钥包修复指定的卷：)",
+    "tags": [
+      "windows",
+      "repair-bde",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-repair-bde-6",
+    "title": "repair-bde - 将日志输出到指定的文件：",
+    "content": "repair-bde {{C:}} -LogFile {{文件的路径}}",
+    "group": "Windows",
+    "description": "repair-bde: 尝试修复或解密损坏的 BitLocker 加密卷。 更多信息：. (将日志输出到指定的文件：)",
+    "tags": [
+      "windows",
+      "repair-bde",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-repair-bde-7",
+    "title": "repair-bde - 显示所有可用的选项：",
+    "content": "repair-bde /?",
+    "group": "Windows",
+    "description": "repair-bde: 尝试修复或解密损坏的 BitLocker 加密卷。 更多信息：. (显示所有可用的选项：)",
+    "tags": [
+      "windows",
+      "repair-bde",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-popd-0",
+    "title": "popd - 切换到储存在栈顶的目录：",
+    "content": "popd",
+    "group": "Windows",
+    "description": "popd: 将当前目录切换到`pushd`命令存储的目录。 更多信息：. (切换到储存在栈顶的目录：)",
+    "tags": [
+      "windows",
+      "popd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-winget-0",
+    "title": "winget - 安装一个包：",
+    "content": "winget install {{包}}",
+    "group": "Windows",
+    "description": "winget: Windows 软件包管理器命令行工具。 更多信息：. (安装一个包：)",
+    "tags": [
+      "windows",
+      "winget",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-winget-1",
+    "title": "winget - 移除一个包（注意：`remove` 也可以用来代替 `uninstall`）：",
+    "content": "winget uninstall {{包}}",
+    "group": "Windows",
+    "description": "winget: Windows 软件包管理器命令行工具。 更多信息：. (移除一个包（注意：`remove` 也可以用来代替 `uninstall`）：)",
+    "tags": [
+      "windows",
+      "winget",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-winget-2",
+    "title": "winget - 显示一个包的信息：",
+    "content": "winget show {{包}}",
+    "group": "Windows",
+    "description": "winget: Windows 软件包管理器命令行工具。 更多信息：. (显示一个包的信息：)",
+    "tags": [
+      "windows",
+      "winget",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-winget-3",
+    "title": "winget - 搜索一个包：",
+    "content": "winget search {{包}}",
+    "group": "Windows",
+    "description": "winget: Windows 软件包管理器命令行工具。 更多信息：. (搜索一个包：)",
+    "tags": [
+      "windows",
+      "winget",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-winget-4",
+    "title": "winget - 将所有包升级到最新版本：",
+    "content": "winget upgrade --all",
+    "group": "Windows",
+    "description": "winget: Windows 软件包管理器命令行工具。 更多信息：. (将所有包升级到最新版本：)",
+    "tags": [
+      "windows",
+      "winget",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-winget-5",
+    "title": "winget - 列出所有可以通过 `winget` 管理的已安装包：",
+    "content": "winget list --source winget",
+    "group": "Windows",
+    "description": "winget: Windows 软件包管理器命令行工具。 更多信息：. (列出所有可以通过 `winget` 管理的已安装包：)",
+    "tags": [
+      "windows",
+      "winget",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-winget-6",
+    "title": "winget - 从文件导入包，或将已安装的包导出到文件：",
+    "content": "winget {{import|export}} {{--import-file|--output}} {{路径/到/文件}}",
+    "group": "Windows",
+    "description": "winget: Windows 软件包管理器命令行工具。 更多信息：. (从文件导入包，或将已安装的包导出到文件：)",
+    "tags": [
+      "windows",
+      "winget",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-winget-7",
+    "title": "winget - 在提交合并到 winget-pkgs 仓库之前验证清单：",
+    "content": "winget validate {{路径/到/清单}}",
+    "group": "Windows",
+    "description": "winget: Windows 软件包管理器命令行工具。 更多信息：. (在提交合并到 winget-pkgs 仓库之前验证清单：)",
+    "tags": [
+      "windows",
+      "winget",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-unload-0",
+    "title": "reg-unload - 从使用`reg load`命令加载的注册表中删除数据：",
+    "content": "reg unload {{键名}}",
+    "group": "Windows",
+    "description": "reg-unload: 从使用`reg load`命令加载的注册表中删除数据。 更多信息：. (从使用`reg load`命令加载的注册表中删除数据：)",
+    "tags": [
+      "windows",
+      "reg-unload",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-rmdir-0",
+    "title": "rmdir - 查看等效的 PowerShell 命令的文档：",
+    "content": "tldr remove-item",
+    "group": "Windows",
+    "description": "rmdir: 删除目录及其内容。 在 PowerShell 中，此命令是 `Remove-Item` 的别名。此文档基于 `cmd` 版本的 `rmdir`。 更多信息：. (查看等效的 PowerShell 命令的文档：)",
+    "tags": [
+      "windows",
+      "rmdir",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-rmdir-1",
+    "title": "rmdir - 删除一个空目录：",
+    "content": "rmdir {{路径\\到\\目录}}",
+    "group": "Windows",
+    "description": "rmdir: 删除目录及其内容。 在 PowerShell 中，此命令是 `Remove-Item` 的别名。此文档基于 `cmd` 版本的 `rmdir`。 更多信息：. (删除一个空目录：)",
+    "tags": [
+      "windows",
+      "rmdir",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-rmdir-2",
+    "title": "rmdir - 递归删除目录及其内容：",
+    "content": "rmdir {{路径\\到\\目录}} /s",
+    "group": "Windows",
+    "description": "rmdir: 删除目录及其内容。 在 PowerShell 中，此命令是 `Remove-Item` 的别名。此文档基于 `cmd` 版本的 `rmdir`。 更多信息：. (递归删除目录及其内容：)",
+    "tags": [
+      "windows",
+      "rmdir",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-rmdir-3",
+    "title": "rmdir - 递归删除目录及其内容，无需提示：",
+    "content": "rmdir {{路径\\到\\目录}} /s /q",
+    "group": "Windows",
+    "description": "rmdir: 删除目录及其内容。 在 PowerShell 中，此命令是 `Remove-Item` 的别名。此文档基于 `cmd` 版本的 `rmdir`。 更多信息：. (递归删除目录及其内容，无需提示：)",
+    "tags": [
+      "windows",
+      "rmdir",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cls-0",
+    "title": "cls - 清屏：",
+    "content": "cls",
+    "group": "Windows",
+    "description": "cls: 清屏。 更多信息：. (清屏：)",
+    "tags": [
+      "windows",
+      "cls",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-del-0",
+    "title": "del - 查阅 PowerShell 的对应命令",
+    "content": "tldr remove-item",
+    "group": "Windows",
+    "description": "del: 删除一个或多个文件。 在 PowerShell 中，此命令为 `Remove-Item` 的別名。本页的描述是基于命令提示符 (`cmd`) 中的 `del`。 更多信息：. (查阅 PowerShell 的对应命令)",
+    "tags": [
+      "windows",
+      "del",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-del-1",
+    "title": "del - 删除一个或多个文件 (可使用通配符)：",
+    "content": "del {{文件1 文件2 ...}}",
+    "group": "Windows",
+    "description": "del: 删除一个或多个文件。 在 PowerShell 中，此命令为 `Remove-Item` 的別名。本页的描述是基于命令提示符 (`cmd`) 中的 `del`。 更多信息：. (删除一个或多个文件 (可使用通配符)：)",
+    "tags": [
+      "windows",
+      "del",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-del-2",
+    "title": "del - 在删除每个文件之前提示确认：",
+    "content": "del {{文件}} /p",
+    "group": "Windows",
+    "description": "del: 删除一个或多个文件。 在 PowerShell 中，此命令为 `Remove-Item` 的別名。本页的描述是基于命令提示符 (`cmd`) 中的 `del`。 更多信息：. (在删除每个文件之前提示确认：)",
+    "tags": [
+      "windows",
+      "del",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-del-3",
+    "title": "del - 强制删除只读文件：",
+    "content": "del {{文件}} /f",
+    "group": "Windows",
+    "description": "del: 删除一个或多个文件。 在 PowerShell 中，此命令为 `Remove-Item` 的別名。本页的描述是基于命令提示符 (`cmd`) 中的 `del`。 更多信息：. (强制删除只读文件：)",
+    "tags": [
+      "windows",
+      "del",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-del-4",
+    "title": "del - 递归删除所有子目录中的文件：",
+    "content": "del {{文件}} /s",
+    "group": "Windows",
+    "description": "del: 删除一个或多个文件。 在 PowerShell 中，此命令为 `Remove-Item` 的別名。本页的描述是基于命令提示符 (`cmd`) 中的 `del`。 更多信息：. (递归删除所有子目录中的文件：)",
+    "tags": [
+      "windows",
+      "del",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-del-5",
+    "title": "del - 在基于全局通配符删除文件时不提示确认：",
+    "content": "del {{文件}} /q",
+    "group": "Windows",
+    "description": "del: 删除一个或多个文件。 在 PowerShell 中，此命令为 `Remove-Item` 的別名。本页的描述是基于命令提示符 (`cmd`) 中的 `del`。 更多信息：. (在基于全局通配符删除文件时不提示确认：)",
+    "tags": [
+      "windows",
+      "del",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-del-6",
+    "title": "del - 显示帮助和所有的属性列表：",
+    "content": "del /?",
+    "group": "Windows",
+    "description": "del: 删除一个或多个文件。 在 PowerShell 中，此命令为 `Remove-Item` 的別名。本页的描述是基于命令提示符 (`cmd`) 中的 `del`。 更多信息：. (显示帮助和所有的属性列表：)",
+    "tags": [
+      "windows",
+      "del",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-del-7",
+    "title": "del - 根据指定的属性删除文件：",
+    "content": "del {{文件}} /a {{属性}}",
+    "group": "Windows",
+    "description": "del: 删除一个或多个文件。 在 PowerShell 中，此命令为 `Remove-Item` 的別名。本页的描述是基于命令提示符 (`cmd`) 中的 `del`。 更多信息：. (根据指定的属性删除文件：)",
+    "tags": [
+      "windows",
+      "del",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-dir-0",
+    "title": "dir - 显示当前目录的内容：",
+    "content": "dir",
+    "group": "Windows",
+    "description": "dir: 列出目录的内容。 更多信息：. (显示当前目录的内容：)",
+    "tags": [
+      "windows",
+      "dir",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-dir-1",
+    "title": "dir - 显示指定目录的内容：",
+    "content": "dir {{目录的路径}}",
+    "group": "Windows",
+    "description": "dir: 列出目录的内容。 更多信息：. (显示指定目录的内容：)",
+    "tags": [
+      "windows",
+      "dir",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-dir-2",
+    "title": "dir - 显示当前目录的内容，包括隐藏的文件：",
+    "content": "dir /A",
+    "group": "Windows",
+    "description": "dir: 列出目录的内容。 更多信息：. (显示当前目录的内容，包括隐藏的文件：)",
+    "tags": [
+      "windows",
+      "dir",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-dir-3",
+    "title": "dir - 显示指定目录的内容，包括隐藏的文件：",
+    "content": "dir {{目录的路径}} /A",
+    "group": "Windows",
+    "description": "dir: 列出目录的内容。 更多信息：. (显示指定目录的内容，包括隐藏的文件：)",
+    "tags": [
+      "windows",
+      "dir",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-query-0",
+    "title": "reg-query - 显示一个键中的所有值：",
+    "content": "reg query {{键名}}",
+    "group": "Windows",
+    "description": "reg-query: 显示注册表中键和子键的值。 更多信息：. (显示一个键中的所有值：)",
+    "tags": [
+      "windows",
+      "reg-query",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-query-1",
+    "title": "reg-query - 显示键中指定的值：",
+    "content": "reg query {{键名}} /v {{值}}",
+    "group": "Windows",
+    "description": "reg-query: 显示注册表中键和子键的值。 更多信息：. (显示键中指定的值：)",
+    "tags": [
+      "windows",
+      "reg-query",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-query-2",
+    "title": "reg-query - 显示指定键和其子键中的所有的值：",
+    "content": "reg query {{键名}} /s",
+    "group": "Windows",
+    "description": "reg-query: 显示注册表中键和子键的值。 更多信息：. (显示指定键和其子键中的所有的值：)",
+    "tags": [
+      "windows",
+      "reg-query",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-query-3",
+    "title": "reg-query - 搜索与特定模式匹配的键和值：",
+    "content": "reg query {{键名}} /f \"{{查询语句}}\"",
+    "group": "Windows",
+    "description": "reg-query: 显示注册表中键和子键的值。 更多信息：. (搜索与特定模式匹配的键和值：)",
+    "tags": [
+      "windows",
+      "reg-query",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-query-4",
+    "title": "reg-query - 显示与指定数据类型匹配的键的值：",
+    "content": "reg query {{键名}} /t {{类型}}",
+    "group": "Windows",
+    "description": "reg-query: 显示注册表中键和子键的值。 更多信息：. (显示与指定数据类型匹配的键的值：)",
+    "tags": [
+      "windows",
+      "reg-query",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-fc-0",
+    "title": "fc - 比较两个指定的文件：",
+    "content": "fc {{文件 1 的路径}} {{文件 2 的路径}}",
+    "group": "Windows",
+    "description": "fc: 比较两个文件或文件集之间的差异。 使用通配符（*）来比较文件集。 更多信息：. (比较两个指定的文件：)",
+    "tags": [
+      "windows",
+      "fc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-fc-1",
+    "title": "fc - 比较时不区分大小写：",
+    "content": "fc /c {{文件 1 的路径}} {{文件 2 的路径}}",
+    "group": "Windows",
+    "description": "fc: 比较两个文件或文件集之间的差异。 使用通配符（*）来比较文件集。 更多信息：. (比较时不区分大小写：)",
+    "tags": [
+      "windows",
+      "fc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-fc-2",
+    "title": "fc - 将文件作为 Unicode 文本来进行比较：",
+    "content": "fc /u {{文件 1 的路径}} {{文件 2 的路径}}",
+    "group": "Windows",
+    "description": "fc: 比较两个文件或文件集之间的差异。 使用通配符（*）来比较文件集。 更多信息：. (将文件作为 Unicode 文本来进行比较：)",
+    "tags": [
+      "windows",
+      "fc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-fc-3",
+    "title": "fc - 将文件作为 ASCII 文本来进行比较：",
+    "content": "fc /l {{文件 1 的路径}} {{文件 2 的路径}}",
+    "group": "Windows",
+    "description": "fc: 比较两个文件或文件集之间的差异。 使用通配符（*）来比较文件集。 更多信息：. (将文件作为 ASCII 文本来进行比较：)",
+    "tags": [
+      "windows",
+      "fc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-fc-4",
+    "title": "fc - 将文件作为二进制来比较：",
+    "content": "fc /b {{文件 1 的路径}} {{文件 2 的路径}}",
+    "group": "Windows",
+    "description": "fc: 比较两个文件或文件集之间的差异。 使用通配符（*）来比较文件集。 更多信息：. (将文件作为二进制来比较：)",
+    "tags": [
+      "windows",
+      "fc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-fc-5",
+    "title": "fc - 禁用制表符到空格的扩展：",
+    "content": "fc /t {{文件 1 的路径}} {{文件 2 的路径}}",
+    "group": "Windows",
+    "description": "fc: 比较两个文件或文件集之间的差异。 使用通配符（*）来比较文件集。 更多信息：. (禁用制表符到空格的扩展：)",
+    "tags": [
+      "windows",
+      "fc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-fc-6",
+    "title": "fc - 压缩空格（制表符和空格）进行比较：",
+    "content": "fc /w {{文件 1 的路径}} {{文件 2 的路径}}",
+    "group": "Windows",
+    "description": "fc: 比较两个文件或文件集之间的差异。 使用通配符（*）来比较文件集。 更多信息：. (压缩空格（制表符和空格）进行比较：)",
+    "tags": [
+      "windows",
+      "fc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-msg-0",
+    "title": "msg - 向指定的用户或会话发送信息：",
+    "content": "msg {{用户名|会话名|会话 id}} {{信息}}",
+    "group": "Windows",
+    "description": "msg: 向指定的用户或会话发送信息。 更多信息：. (向指定的用户或会话发送信息：)",
+    "tags": [
+      "windows",
+      "msg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-msg-1",
+    "title": "msg - 从标准输入发送信息：",
+    "content": "echo \"{{信息}}\" | msg {{用户名|会话名|会话 id}}",
+    "group": "Windows",
+    "description": "msg: 向指定的用户或会话发送信息。 更多信息：. (从标准输入发送信息：)",
+    "tags": [
+      "windows",
+      "msg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-msg-2",
+    "title": "msg - 向指定的服务器发送消息：",
+    "content": "msg /server:{{服务器名称}} {{用户名|会话名|会话 id}}",
+    "group": "Windows",
+    "description": "msg: 向指定的用户或会话发送信息。 更多信息：. (向指定的服务器发送消息：)",
+    "tags": [
+      "windows",
+      "msg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-msg-3",
+    "title": "msg - 向当前计算机的所有用户发送消息：",
+    "content": "msg *",
+    "group": "Windows",
+    "description": "msg: 向指定的用户或会话发送信息。 更多信息：. (向当前计算机的所有用户发送消息：)",
+    "tags": [
+      "windows",
+      "msg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-msg-4",
+    "title": "msg - 设置发送消息的延迟：",
+    "content": "msg /time:{{秒}}",
+    "group": "Windows",
+    "description": "msg: 向指定的用户或会话发送信息。 更多信息：. (设置发送消息的延迟：)",
+    "tags": [
+      "windows",
+      "msg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-doskey-0",
+    "title": "doskey - 列出可用的宏：",
+    "content": "doskey /macros",
+    "group": "Windows",
+    "description": "doskey: 管理宏，Windows 命令和命令行。 更多信息：. (列出可用的宏：)",
+    "tags": [
+      "windows",
+      "doskey",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-doskey-1",
+    "title": "doskey - 创建一个新的宏：",
+    "content": "doskey {{宏的名称}} = \"{{命令}}\"",
+    "group": "Windows",
+    "description": "doskey: 管理宏，Windows 命令和命令行。 更多信息：. (创建一个新的宏：)",
+    "tags": [
+      "windows",
+      "doskey",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-doskey-2",
+    "title": "doskey - 为指定可执行文件创建新的宏：",
+    "content": "doskey /exename={{可执行文件名}} {{宏的名称}} = \"{{命令}}\"",
+    "group": "Windows",
+    "description": "doskey: 管理宏，Windows 命令和命令行。 更多信息：. (为指定可执行文件创建新的宏：)",
+    "tags": [
+      "windows",
+      "doskey",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-doskey-3",
+    "title": "doskey - 删除一个宏：",
+    "content": "doskey {{宏的名称}} =",
+    "group": "Windows",
+    "description": "doskey: 管理宏，Windows 命令和命令行。 更多信息：. (删除一个宏：)",
+    "tags": [
+      "windows",
+      "doskey",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-doskey-4",
+    "title": "doskey - 列出所有储存在内存中的命令：",
+    "content": "doskey /history",
+    "group": "Windows",
+    "description": "doskey: 管理宏，Windows 命令和命令行。 更多信息：. (列出所有储存在内存中的命令：)",
+    "tags": [
+      "windows",
+      "doskey",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-doskey-5",
+    "title": "doskey - 将宏保存到文件以便于移植：",
+    "content": "doskey /macros > {{保存宏的文件名}}",
+    "group": "Windows",
+    "description": "doskey: 管理宏，Windows 命令和命令行。 更多信息：. (将宏保存到文件以便于移植：)",
+    "tags": [
+      "windows",
+      "doskey",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-doskey-6",
+    "title": "doskey - 从文件中加载宏：",
+    "content": "doskey /macrofile = {{保存宏的文件名}}",
+    "group": "Windows",
+    "description": "doskey: 管理宏，Windows 命令和命令行。 更多信息：. (从文件中加载宏：)",
+    "tags": [
+      "windows",
+      "doskey",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-print.win-0",
+    "title": "print.win - 将文本文件打印到默认的打印机：",
+    "content": "print {{文件的路径}}",
+    "group": "Windows",
+    "description": "print.win: 将文本文件打印到打印机。 更多信息：. (将文本文件打印到默认的打印机：)",
+    "tags": [
+      "windows",
+      "print.win",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-print.win-1",
+    "title": "print.win - 将文本文件打印到指定的打印机：",
+    "content": "print /d:{{打印机}} {{文件的路径}}",
+    "group": "Windows",
+    "description": "print.win: 将文本文件打印到打印机。 更多信息：. (将文本文件打印到指定的打印机：)",
+    "tags": [
+      "windows",
+      "print.win",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-taskkill-0",
+    "title": "taskkill - 通过进程 ID 终止进程：",
+    "content": "taskkill /pid {{进程 id}}",
+    "group": "Windows",
+    "description": "taskkill: 按进程 ID 或进程名终止进程。 更多信息：. (通过进程 ID 终止进程：)",
+    "tags": [
+      "windows",
+      "taskkill",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-taskkill-1",
+    "title": "taskkill - 通过进程名终止进程：",
+    "content": "taskkill /im {{进程名}}",
+    "group": "Windows",
+    "description": "taskkill: 按进程 ID 或进程名终止进程。 更多信息：. (通过进程名终止进程：)",
+    "tags": [
+      "windows",
+      "taskkill",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-taskkill-2",
+    "title": "taskkill - 强制终止一个指定的进程：",
+    "content": "taskkill /pid {{进程名}} /f",
+    "group": "Windows",
+    "description": "taskkill: 按进程 ID 或进程名终止进程。 更多信息：. (强制终止一个指定的进程：)",
+    "tags": [
+      "windows",
+      "taskkill",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-taskkill-3",
+    "title": "taskkill - 终止一个进程及其子进程：",
+    "content": "taskkill /im {{进程名}} /t",
+    "group": "Windows",
+    "description": "taskkill: 按进程 ID 或进程名终止进程。 更多信息：. (终止一个进程及其子进程：)",
+    "tags": [
+      "windows",
+      "taskkill",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-taskkill-4",
+    "title": "taskkill - 终止远程计算机上的进程：",
+    "content": "taskkill /pid {{进程 id}} /s {{远程主机名}}",
+    "group": "Windows",
+    "description": "taskkill: 按进程 ID 或进程名终止进程。 更多信息：. (终止远程计算机上的进程：)",
+    "tags": [
+      "windows",
+      "taskkill",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-taskkill-5",
+    "title": "taskkill - 显示命令的帮助信息：",
+    "content": "taskkill /?",
+    "group": "Windows",
+    "description": "taskkill: 按进程 ID 或进程名终止进程。 更多信息：. (显示命令的帮助信息：)",
+    "tags": [
+      "windows",
+      "taskkill",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-ipconfig-0",
+    "title": "ipconfig - 显示网络适配器列表：",
+    "content": "ipconfig",
+    "group": "Windows",
+    "description": "ipconfig: 显示和管理 Windows 的网络配置。 更多信息：. (显示网络适配器列表：)",
+    "tags": [
+      "windows",
+      "ipconfig",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-ipconfig-1",
+    "title": "ipconfig - 显示网络适配器的详细列表：",
+    "content": "ipconfig /all",
+    "group": "Windows",
+    "description": "ipconfig: 显示和管理 Windows 的网络配置。 更多信息：. (显示网络适配器的详细列表：)",
+    "tags": [
+      "windows",
+      "ipconfig",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-ipconfig-2",
+    "title": "ipconfig - 为一个网络适配器重新获取 IP 地址：",
+    "content": "ipconfig /renew {{适配器}}",
+    "group": "Windows",
+    "description": "ipconfig: 显示和管理 Windows 的网络配置。 更多信息：. (为一个网络适配器重新获取 IP 地址：)",
+    "tags": [
+      "windows",
+      "ipconfig",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-ipconfig-3",
+    "title": "ipconfig - 为一个网络适配器释放 IP 地址：",
+    "content": "ipconfig /release {{适配器}}",
+    "group": "Windows",
+    "description": "ipconfig: 显示和管理 Windows 的网络配置。 更多信息：. (为一个网络适配器释放 IP 地址：)",
+    "tags": [
+      "windows",
+      "ipconfig",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-ipconfig-4",
+    "title": "ipconfig - 显示所有本地 DNS 缓存：",
+    "content": "ipconfig /displaydns",
+    "group": "Windows",
+    "description": "ipconfig: 显示和管理 Windows 的网络配置。 更多信息：. (显示所有本地 DNS 缓存：)",
+    "tags": [
+      "windows",
+      "ipconfig",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-ipconfig-5",
+    "title": "ipconfig - 清除所有本地 DNS 缓存：",
+    "content": "ipconfig /flushdns",
+    "group": "Windows",
+    "description": "ipconfig: 显示和管理 Windows 的网络配置。 更多信息：. (清除所有本地 DNS 缓存：)",
+    "tags": [
+      "windows",
+      "ipconfig",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-clist-0",
+    "title": "clist - 原命令的文档在：",
+    "content": "tldr choco list",
+    "group": "Windows",
+    "description": "clist: 这是 `choco list` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "windows",
+      "clist",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-type-0",
+    "title": "type - 显示特定文件的内容：",
+    "content": "type {{文件的路径}}",
+    "group": "Windows",
+    "description": "type: 显示文件的内容。 更多信息：. (显示特定文件的内容：)",
+    "tags": [
+      "windows",
+      "type",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-outdated-0",
+    "title": "choco-outdated - 用表格的形式列出过时的包：",
+    "content": "choco outdated",
+    "group": "Windows",
+    "description": "choco-outdated: 使用 Chocolatey 检查过时的包。 更多信息：. (用表格的形式列出过时的包：)",
+    "tags": [
+      "windows",
+      "choco-outdated",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-outdated-1",
+    "title": "choco-outdated - 忽略输出中的固定包：",
+    "content": "choco outdated --ignore-pinned",
+    "group": "Windows",
+    "description": "choco-outdated: 使用 Chocolatey 检查过时的包。 更多信息：. (忽略输出中的固定包：)",
+    "tags": [
+      "windows",
+      "choco-outdated",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-outdated-2",
+    "title": "choco-outdated - 从自定义的源处检查过时的包：",
+    "content": "choco outdated --source {{源 URL|别名}}",
+    "group": "Windows",
+    "description": "choco-outdated: 使用 Chocolatey 检查过时的包。 更多信息：. (从自定义的源处检查过时的包：)",
+    "tags": [
+      "windows",
+      "choco-outdated",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-outdated-3",
+    "title": "choco-outdated - 提供一个用户名和密码来进行验证：",
+    "content": "choco outdated --user {{用户名}} --password {{密码}}",
+    "group": "Windows",
+    "description": "choco-outdated: 使用 Chocolatey 检查过时的包。 更多信息：. (提供一个用户名和密码来进行验证：)",
+    "tags": [
+      "windows",
+      "choco-outdated",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-shutdown-0",
+    "title": "shutdown - 关闭当前计算机：",
+    "content": "shutdown /s",
+    "group": "Windows",
+    "description": "shutdown: 用于关闭、重启或注销计算机的工具。 更多信息：. (关闭当前计算机：)",
+    "tags": [
+      "windows",
+      "shutdown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-shutdown-1",
+    "title": "shutdown - 强制关闭当前计算机的所有应用程序：",
+    "content": "shutdown /s /f",
+    "group": "Windows",
+    "description": "shutdown: 用于关闭、重启或注销计算机的工具。 更多信息：. (强制关闭当前计算机的所有应用程序：)",
+    "tags": [
+      "windows",
+      "shutdown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-shutdown-2",
+    "title": "shutdown - 立即重启当前计算机：",
+    "content": "shutdown /r /t 0",
+    "group": "Windows",
+    "description": "shutdown: 用于关闭、重启或注销计算机的工具。 更多信息：. (立即重启当前计算机：)",
+    "tags": [
+      "windows",
+      "shutdown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-shutdown-3",
+    "title": "shutdown - 休眠当前计算机：",
+    "content": "shutdown /h",
+    "group": "Windows",
+    "description": "shutdown: 用于关闭、重启或注销计算机的工具。 更多信息：. (休眠当前计算机：)",
+    "tags": [
+      "windows",
+      "shutdown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-shutdown-4",
+    "title": "shutdown - 注销当前计算机：",
+    "content": "shutdown /l",
+    "group": "Windows",
+    "description": "shutdown: 用于关闭、重启或注销计算机的工具。 更多信息：. (注销当前计算机：)",
+    "tags": [
+      "windows",
+      "shutdown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-shutdown-5",
+    "title": "shutdown - 指定在关闭前等待的秒数：",
+    "content": "shutdown /s /t {{秒}}",
+    "group": "Windows",
+    "description": "shutdown: 用于关闭、重启或注销计算机的工具。 更多信息：. (指定在关闭前等待的秒数：)",
+    "tags": [
+      "windows",
+      "shutdown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-shutdown-6",
+    "title": "shutdown - 中止尚未超时的关机序列：",
+    "content": "shutdown /a",
+    "group": "Windows",
+    "description": "shutdown: 用于关闭、重启或注销计算机的工具。 更多信息：. (中止尚未超时的关机序列：)",
+    "tags": [
+      "windows",
+      "shutdown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-shutdown-7",
+    "title": "shutdown - 关闭远程计算机：",
+    "content": "shutdown /m {{\\\\ 主机名}}",
+    "group": "Windows",
+    "description": "shutdown: 用于关闭、重启或注销计算机的工具。 更多信息：. (关闭远程计算机：)",
+    "tags": [
+      "windows",
+      "shutdown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-where-0",
+    "title": "where - 显示匹配的文件的位置：",
+    "content": "where {{文件模式}}",
+    "group": "Windows",
+    "description": "where: 显示与搜索模式匹配的文件的位置。 在默认情况下，搜索是在当前目录和 PATH 环境变量指定的路径中执行的。 更多信息：. (显示匹配的文件的位置：)",
+    "tags": [
+      "windows",
+      "where",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-where-1",
+    "title": "where - 显示匹配的文件的位置、大小和日期：",
+    "content": "where /T {{文件模式}}",
+    "group": "Windows",
+    "description": "where: 显示与搜索模式匹配的文件的位置。 在默认情况下，搜索是在当前目录和 PATH 环境变量指定的路径中执行的。 更多信息：. (显示匹配的文件的位置、大小和日期：)",
+    "tags": [
+      "windows",
+      "where",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-where-2",
+    "title": "where - 在指定的路径下递归搜索要匹配的文件：",
+    "content": "where /R {{目录的路径}} {{文件模式}}",
+    "group": "Windows",
+    "description": "where: 显示与搜索模式匹配的文件的位置。 在默认情况下，搜索是在当前目录和 PATH 环境变量指定的路径中执行的。 更多信息：. (在指定的路径下递归搜索要匹配的文件：)",
+    "tags": [
+      "windows",
+      "where",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-where-3",
+    "title": "where - 只返回退出代码，不显示匹配文件列表：",
+    "content": "where /Q {{文件模式}}",
+    "group": "Windows",
+    "description": "where: 显示与搜索模式匹配的文件的位置。 在默认情况下，搜索是在当前目录和 PATH 环境变量指定的路径中执行的。 更多信息：. (只返回退出代码，不显示匹配文件列表：)",
+    "tags": [
+      "windows",
+      "where",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-more-0",
+    "title": "more - 分页显示标准输入的输出：",
+    "content": "{{echo test}} | more",
+    "group": "Windows",
+    "description": "more: 分页显示标准输入或文件的输出。 更多信息：. (分页显示标准输入的输出：)",
+    "tags": [
+      "windows",
+      "more",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-more-1",
+    "title": "more - 分页显示一个或多个文件的内容：",
+    "content": "more {{文件的路径}}",
+    "group": "Windows",
+    "description": "more: 分页显示标准输入或文件的输出。 更多信息：. (分页显示一个或多个文件的内容：)",
+    "tags": [
+      "windows",
+      "more",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-more-2",
+    "title": "more - 将制表符转换为指定的空格数：",
+    "content": "more {{文件的路径}} /t{{空格数}}",
+    "group": "Windows",
+    "description": "more: 分页显示标准输入或文件的输出。 更多信息：. (将制表符转换为指定的空格数：)",
+    "tags": [
+      "windows",
+      "more",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-more-3",
+    "title": "more - 显示内容前先清屏：",
+    "content": "more {{文件的路径}} /c",
+    "group": "Windows",
+    "description": "more: 分页显示标准输入或文件的输出。 更多信息：. (显示内容前先清屏：)",
+    "tags": [
+      "windows",
+      "more",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-more-4",
+    "title": "more - 从第 5 行开始显示输出：",
+    "content": "more {{文件的路径}} +{{5}}",
+    "group": "Windows",
+    "description": "more: 分页显示标准输入或文件的输出。 更多信息：. (从第 5 行开始显示输出：)",
+    "tags": [
+      "windows",
+      "more",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-more-5",
+    "title": "more - 启用扩展交互模式（请参阅使用帮助）：",
+    "content": "more {{文件的路径}} /e",
+    "group": "Windows",
+    "description": "more: 分页显示标准输入或文件的输出。 更多信息：. (启用扩展交互模式（请参阅使用帮助）：)",
+    "tags": [
+      "windows",
+      "more",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-more-6",
+    "title": "more - 显示全部帮助信息：",
+    "content": "more /?",
+    "group": "Windows",
+    "description": "more: 分页显示标准输入或文件的输出。 更多信息：. (显示全部帮助信息：)",
+    "tags": [
+      "windows",
+      "more",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-save-0",
+    "title": "reg-save - 将注册表键、子键的所有值保存到一个文件中：",
+    "content": "reg save {{键名}} {{文件的路径}}",
+    "group": "Windows",
+    "description": "reg-save: 将注册表键、子键的所有值保存到一个文件中。 更多信息：. (将注册表键、子键的所有值保存到一个文件中：)",
+    "tags": [
+      "windows",
+      "reg-save",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-save-1",
+    "title": "reg-save - 在没有提示的情况下强制覆盖现有文件：",
+    "content": "reg save {{键名}} {{文件的路径}} /y",
+    "group": "Windows",
+    "description": "reg-save: 将注册表键、子键的所有值保存到一个文件中。 更多信息：. (在没有提示的情况下强制覆盖现有文件：)",
+    "tags": [
+      "windows",
+      "reg-save",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-info-0",
+    "title": "choco-info - 显示指定包的信息：",
+    "content": "choco info {{包名}}",
+    "group": "Windows",
+    "description": "choco-info: 显示有关 Chocolatey 包的详细信息。 更多信息：. (显示指定包的信息：)",
+    "tags": [
+      "windows",
+      "choco-info",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-info-1",
+    "title": "choco-info - 显示一个本地已安装包的信息：",
+    "content": "choco info {{包名}} --local-only",
+    "group": "Windows",
+    "description": "choco-info: 显示有关 Chocolatey 包的详细信息。 更多信息：. (显示一个本地已安装包的信息：)",
+    "tags": [
+      "windows",
+      "choco-info",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-info-2",
+    "title": "choco-info - 从一个自定义的源来获取包的信息：",
+    "content": "choco info {{包名}} --source {{源 URL|别名}}",
+    "group": "Windows",
+    "description": "choco-info: 显示有关 Chocolatey 包的详细信息。 更多信息：. (从一个自定义的源来获取包的信息：)",
+    "tags": [
+      "windows",
+      "choco-info",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-info-3",
+    "title": "choco-info - 提供一个用户名和密码来进行验证：",
+    "content": "choco info {{包名}} --user {{用户名}} --password {{密码}}",
+    "group": "Windows",
+    "description": "choco-info: 显示有关 Chocolatey 包的详细信息。 更多信息：. (提供一个用户名和密码来进行验证：)",
+    "tags": [
+      "windows",
+      "choco-info",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-pin-0",
+    "title": "choco-pin - 显示被固定的包以及他们对应的版本号：",
+    "content": "choco pin list",
+    "group": "Windows",
+    "description": "choco-pin: 使用 Chocolatey 将一个包固定到指定的版本。 被固定版本的包会在更新时自动忽略。 更多信息：. (显示被固定的包以及他们对应的版本号：)",
+    "tags": [
+      "windows",
+      "choco-pin",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-pin-1",
+    "title": "choco-pin - 将一个包固定至当前版本：",
+    "content": "choco pin add --name {{包名}}",
+    "group": "Windows",
+    "description": "choco-pin: 使用 Chocolatey 将一个包固定到指定的版本。 被固定版本的包会在更新时自动忽略。 更多信息：. (将一个包固定至当前版本：)",
+    "tags": [
+      "windows",
+      "choco-pin",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-pin-2",
+    "title": "choco-pin - 将一个包固定直指定的版本：",
+    "content": "choco pin add --name {{包名}} --version {{版本号}}",
+    "group": "Windows",
+    "description": "choco-pin: 使用 Chocolatey 将一个包固定到指定的版本。 被固定版本的包会在更新时自动忽略。 更多信息：. (将一个包固定直指定的版本：)",
+    "tags": [
+      "windows",
+      "choco-pin",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-pin-3",
+    "title": "choco-pin - 移除指定包的固定状态：",
+    "content": "choco pin remove --name {{包名}}",
+    "group": "Windows",
+    "description": "choco-pin: 使用 Chocolatey 将一个包固定到指定的版本。 被固定版本的包会在更新时自动忽略。 更多信息：. (移除指定包的固定状态：)",
+    "tags": [
+      "windows",
+      "choco-pin",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-sfc-0",
+    "title": "sfc - 显示命令的使用方法：",
+    "content": "sfc",
+    "group": "Windows",
+    "description": "sfc: 扫描 Windows 系统文件的完整性。 更多信息：. (显示命令的使用方法：)",
+    "tags": [
+      "windows",
+      "sfc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-sfc-1",
+    "title": "sfc - 扫描所有的系统文件，如果可能的话，修复所有出现的问题：",
+    "content": "sfc /scannow",
+    "group": "Windows",
+    "description": "sfc: 扫描 Windows 系统文件的完整性。 更多信息：. (扫描所有的系统文件，如果可能的话，修复所有出现的问题：)",
+    "tags": [
+      "windows",
+      "sfc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-sfc-2",
+    "title": "sfc - 扫描系统文件，但不修复出现的问题：",
+    "content": "sfc /verifyonly",
+    "group": "Windows",
+    "description": "sfc: 扫描 Windows 系统文件的完整性。 更多信息：. (扫描系统文件，但不修复出现的问题：)",
+    "tags": [
+      "windows",
+      "sfc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-sfc-3",
+    "title": "sfc - 扫描指定的文件，如果可能的话，修复所有出现的问题：",
+    "content": "sfc /scanfile={{文件的路径}}",
+    "group": "Windows",
+    "description": "sfc: 扫描 Windows 系统文件的完整性。 更多信息：. (扫描指定的文件，如果可能的话，修复所有出现的问题：)",
+    "tags": [
+      "windows",
+      "sfc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-sfc-4",
+    "title": "sfc - 扫描指定的文件，但不修复出现的问题：",
+    "content": "sfc /verifyfile={{文件的路径}}",
+    "group": "Windows",
+    "description": "sfc: 扫描 Windows 系统文件的完整性。 更多信息：. (扫描指定的文件，但不修复出现的问题：)",
+    "tags": [
+      "windows",
+      "sfc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-sfc-5",
+    "title": "sfc - 当离线修复时，指定引导目录：",
+    "content": "sfc /offbootdir={{目录的路径}}",
+    "group": "Windows",
+    "description": "sfc: 扫描 Windows 系统文件的完整性。 更多信息：. (当离线修复时，指定引导目录：)",
+    "tags": [
+      "windows",
+      "sfc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-sfc-6",
+    "title": "sfc - 当离线修复时，指定 Windows 目录：",
+    "content": "sfc /offwindir={{文件的路径}}",
+    "group": "Windows",
+    "description": "sfc: 扫描 Windows 系统文件的完整性。 更多信息：. (当离线修复时，指定 Windows 目录：)",
+    "tags": [
+      "windows",
+      "sfc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-new-0",
+    "title": "choco-new - 创建一个新的包框架：",
+    "content": "choco new {{包名}}",
+    "group": "Windows",
+    "description": "choco-new: 使用 Chocolatey 生成新的包规范文件。 更多信息：. (创建一个新的包框架：)",
+    "tags": [
+      "windows",
+      "choco-new",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-new-1",
+    "title": "choco-new - 创建一个新的指定版本的包：",
+    "content": "choco new {{包名}} --version {{版本号}}",
+    "group": "Windows",
+    "description": "choco-new: 使用 Chocolatey 生成新的包规范文件。 更多信息：. (创建一个新的指定版本的包：)",
+    "tags": [
+      "windows",
+      "choco-new",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-new-2",
+    "title": "choco-new - 创建一个新的包并指定维护者的名字：",
+    "content": "choco new {{包名}} --maintainer {{维护者名字}}",
+    "group": "Windows",
+    "description": "choco-new: 使用 Chocolatey 生成新的包规范文件。 更多信息：. (创建一个新的包并指定维护者的名字：)",
+    "tags": [
+      "windows",
+      "choco-new",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-new-3",
+    "title": "choco-new - 在指定目录下创建新的包：",
+    "content": "choco new {{包名}} --output-directory {{指定的目录路径}}",
+    "group": "Windows",
+    "description": "choco-new: 使用 Chocolatey 生成新的包规范文件。 更多信息：. (在指定目录下创建新的包：)",
+    "tags": [
+      "windows",
+      "choco-new",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-new-4",
+    "title": "choco-new - 创建一个新的包并指定其 32 位版和 64 位版的安装 URL：",
+    "content": "choco new {{package_name}} url=\"{{url}}\" url64=\"{{url}}\"",
+    "group": "Windows",
+    "description": "choco-new: 使用 Chocolatey 生成新的包规范文件。 更多信息：. (创建一个新的包并指定其 32 位版和 64 位版的安装 URL：)",
+    "tags": [
+      "windows",
+      "choco-new",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-source-0",
+    "title": "choco-source - 列出当前可用的源：",
+    "content": "choco source list",
+    "group": "Windows",
+    "description": "choco-source: 使用 Chocolatey 管理包的源。 更多信息：. (列出当前可用的源：)",
+    "tags": [
+      "windows",
+      "choco-source",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-source-1",
+    "title": "choco-source - 添加一个新的包源：",
+    "content": "choco source add --name {{名称}} --source {{url}}",
+    "group": "Windows",
+    "description": "choco-source: 使用 Chocolatey 管理包的源。 更多信息：. (添加一个新的包源：)",
+    "tags": [
+      "windows",
+      "choco-source",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-source-2",
+    "title": "choco-source - 添加包含凭据的新包源：",
+    "content": "choco source add --name {{名称}} --source {{url}} --user {{用户名}} --password {{密码}}",
+    "group": "Windows",
+    "description": "choco-source: 使用 Chocolatey 管理包的源。 更多信息：. (添加包含凭据的新包源：)",
+    "tags": [
+      "windows",
+      "choco-source",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-source-3",
+    "title": "choco-source - 使用客户端证书添加新的包源：",
+    "content": "choco source add --name {{名称}} --source {{url}} --cert {{证书的路径}}",
+    "group": "Windows",
+    "description": "choco-source: 使用 Chocolatey 管理包的源。 更多信息：. (使用客户端证书添加新的包源：)",
+    "tags": [
+      "windows",
+      "choco-source",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-source-4",
+    "title": "choco-source - 启用一个包源：",
+    "content": "choco source enable --name {{名称}}",
+    "group": "Windows",
+    "description": "choco-source: 使用 Chocolatey 管理包的源。 更多信息：. (启用一个包源：)",
+    "tags": [
+      "windows",
+      "choco-source",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-source-5",
+    "title": "choco-source - 禁用一个包源：",
+    "content": "choco source disable --name {{名称}}",
+    "group": "Windows",
+    "description": "choco-source: 使用 Chocolatey 管理包的源。 更多信息：. (禁用一个包源：)",
+    "tags": [
+      "windows",
+      "choco-source",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-source-6",
+    "title": "choco-source - 移除一个包源：",
+    "content": "choco source remove --name {{名称}}",
+    "group": "Windows",
+    "description": "choco-source: 使用 Chocolatey 管理包的源。 更多信息：. (移除一个包源：)",
+    "tags": [
+      "windows",
+      "choco-source",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-clip-0",
+    "title": "clip - 用管道将命令的输出内容复制到 Windows 剪贴板：",
+    "content": "{{dir}} | clip",
+    "group": "Windows",
+    "description": "clip: 将输入的内容复制到 Windows 的剪贴板。 更多信息：. (用管道将命令的输出内容复制到 Windows 剪贴板：)",
+    "tags": [
+      "windows",
+      "clip",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-clip-1",
+    "title": "clip - 将一个文件中的内容复制到 Windows 剪贴板：",
+    "content": "clip < {{文件的路径}}",
+    "group": "Windows",
+    "description": "clip: 将输入的内容复制到 Windows 的剪贴板。 更多信息：. (将一个文件中的内容复制到 Windows 剪贴板：)",
+    "tags": [
+      "windows",
+      "clip",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-mkdir-0",
+    "title": "mkdir - 创建一个目录：",
+    "content": "mkdir {{目录名}}",
+    "group": "Windows",
+    "description": "mkdir: 创建一个目录。 更多信息：. (创建一个目录：)",
+    "tags": [
+      "windows",
+      "mkdir",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-mkdir-1",
+    "title": "mkdir - 递归创建目录及子目录：",
+    "content": "mkdir {{子目录名}}",
+    "group": "Windows",
+    "description": "mkdir: 创建一个目录。 更多信息：. (递归创建目录及子目录：)",
+    "tags": [
+      "windows",
+      "mkdir",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-feature-0",
+    "title": "choco-feature - 显示可用的功能列表：",
+    "content": "choco feature list",
+    "group": "Windows",
+    "description": "choco-feature: Chocolatey 的交互功能。 更多信息：. (显示可用的功能列表：)",
+    "tags": [
+      "windows",
+      "choco-feature",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-feature-1",
+    "title": "choco-feature - 启用一个功能：",
+    "content": "choco feature enable --name {{功能名称}}",
+    "group": "Windows",
+    "description": "choco-feature: Chocolatey 的交互功能。 更多信息：. (启用一个功能：)",
+    "tags": [
+      "windows",
+      "choco-feature",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-feature-2",
+    "title": "choco-feature - 禁用一个功能：",
+    "content": "choco feature disable --name {{功能名称}}",
+    "group": "Windows",
+    "description": "choco-feature: Chocolatey 的交互功能。 更多信息：. (禁用一个功能：)",
+    "tags": [
+      "windows",
+      "choco-feature",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-pushd-0",
+    "title": "pushd - 切换目录并将它放至栈：",
+    "content": "pushd {{目录}}",
+    "group": "Windows",
+    "description": "pushd: 将目录储存在栈顶以便稍后访问。 参考`popd`命令来切换到原目录。 更多信息：. (切换目录并将它放至栈：)",
+    "tags": [
+      "windows",
+      "pushd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-systeminfo-0",
+    "title": "systeminfo - 显示本地计算机的操作系统配置：",
+    "content": "systeminfo",
+    "group": "Windows",
+    "description": "systeminfo: 显示本地或远程计算机的操作系统配置。 更多信息：. (显示本地计算机的操作系统配置：)",
+    "tags": [
+      "windows",
+      "systeminfo",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-systeminfo-1",
+    "title": "systeminfo - 以指定的输出格式显示系统配置：",
+    "content": "systeminfo /fo {{table|list|csv}}",
+    "group": "Windows",
+    "description": "systeminfo: 显示本地或远程计算机的操作系统配置。 更多信息：. (以指定的输出格式显示系统配置：)",
+    "tags": [
+      "windows",
+      "systeminfo",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-systeminfo-2",
+    "title": "systeminfo - 显示远程计算机的系统配置：",
+    "content": "systeminfo /s {{远程主机名}} /u {{用户名}} /p {{密码}}",
+    "group": "Windows",
+    "description": "systeminfo: 显示本地或远程计算机的操作系统配置。 更多信息：. (显示远程计算机的系统配置：)",
+    "tags": [
+      "windows",
+      "systeminfo",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-systeminfo-3",
+    "title": "systeminfo - 显示详细的帮助信息：",
+    "content": "systeminfo /?",
+    "group": "Windows",
+    "description": "systeminfo: 显示本地或远程计算机的操作系统配置。 更多信息：. (显示详细的帮助信息：)",
+    "tags": [
+      "windows",
+      "systeminfo",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-pwsh-where-0",
+    "title": "pwsh-where - 原命令的文档在：",
+    "content": "tldr Where-Object",
+    "group": "Windows",
+    "description": "pwsh-where: 这是 `Where-Object` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "windows",
+      "pwsh-where",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-iscc-0",
+    "title": "iscc - 编译一个 Inno Setup 脚本：",
+    "content": "iscc {{脚本路径.iss}}",
+    "group": "Windows",
+    "description": "iscc: Inno Setup 安装程序的编译器。 它将 Inno Setup 脚本编译为 Windows 安装程序可执行文件。 更多信息：. (编译一个 Inno Setup 脚本：)",
+    "tags": [
+      "windows",
+      "iscc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-iscc-1",
+    "title": "iscc - 静默编译一个 Inno Setup 安装程序：",
+    "content": "iscc /Q {{脚本路径.iss}}",
+    "group": "Windows",
+    "description": "iscc: Inno Setup 安装程序的编译器。 它将 Inno Setup 脚本编译为 Windows 安装程序可执行文件。 更多信息：. (静默编译一个 Inno Setup 安装程序：)",
+    "tags": [
+      "windows",
+      "iscc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-iscc-2",
+    "title": "iscc - 编译已签名的 Inno Setup 安装程序：",
+    "content": "iscc /S={{名称}}={{命令}} {{脚本路径.iss}}",
+    "group": "Windows",
+    "description": "iscc: Inno Setup 安装程序的编译器。 它将 Inno Setup 脚本编译为 Windows 安装程序可执行文件。 更多信息：. (编译已签名的 Inno Setup 安装程序：)",
+    "tags": [
+      "windows",
+      "iscc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-scoop-bucket-0",
+    "title": "scoop-bucket - 列出所有正在使用的 bucket：",
+    "content": "scoop bucket list",
+    "group": "Windows",
+    "description": "scoop-bucket: 管理 bucket: 包含描述 scoop 应如何安装应用程序的文件的 Git 存储库。 如果 Scoop 不知道 bucket 在哪里，则必须指定其存储库位置。 更多信息：. (列出所有正在使用的 bucket：)",
+    "tags": [
+      "windows",
+      "scoop-bucket",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-scoop-bucket-1",
+    "title": "scoop-bucket - 列出所有已知 bucket：",
+    "content": "scoop bucket known",
+    "group": "Windows",
+    "description": "scoop-bucket: 管理 bucket: 包含描述 scoop 应如何安装应用程序的文件的 Git 存储库。 如果 Scoop 不知道 bucket 在哪里，则必须指定其存储库位置。 更多信息：. (列出所有已知 bucket：)",
+    "tags": [
+      "windows",
+      "scoop-bucket",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-scoop-bucket-2",
+    "title": "scoop-bucket - 按名称添加一个已知 bucket：",
+    "content": "scoop bucket add {{名称}}",
+    "group": "Windows",
+    "description": "scoop-bucket: 管理 bucket: 包含描述 scoop 应如何安装应用程序的文件的 Git 存储库。 如果 Scoop 不知道 bucket 在哪里，则必须指定其存储库位置。 更多信息：. (按名称添加一个已知 bucket：)",
+    "tags": [
+      "windows",
+      "scoop-bucket",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-scoop-bucket-3",
+    "title": "scoop-bucket - 通过名称和 Git 存储库 URL 添加未知 bucket：",
+    "content": "scoop bucket add {{名称}} {{https://example.com/repository.git}}",
+    "group": "Windows",
+    "description": "scoop-bucket: 管理 bucket: 包含描述 scoop 应如何安装应用程序的文件的 Git 存储库。 如果 Scoop 不知道 bucket 在哪里，则必须指定其存储库位置。 更多信息：. (通过名称和 Git 存储库 URL 添加未知 bucket：)",
+    "tags": [
+      "windows",
+      "scoop-bucket",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-scoop-bucket-4",
+    "title": "scoop-bucket - 按名称删除 bucket：",
+    "content": "scoop bucket rm {{名称}}",
+    "group": "Windows",
+    "description": "scoop-bucket: 管理 bucket: 包含描述 scoop 应如何安装应用程序的文件的 Git 存储库。 如果 Scoop 不知道 bucket 在哪里，则必须指定其存储库位置。 更多信息：. (按名称删除 bucket：)",
+    "tags": [
+      "windows",
+      "scoop-bucket",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-rdpsign-0",
+    "title": "rdpsign - 为一个 RDP 文件签名：",
+    "content": "rdpsign {{文件路径.rdp}}",
+    "group": "Windows",
+    "description": "rdpsign: 用于签名远程桌面协议（RDP）文件的工具。 更多信息：. (为一个 RDP 文件签名：)",
+    "tags": [
+      "windows",
+      "rdpsign",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-rdpsign-1",
+    "title": "rdpsign - 使用一个指定的 sha256 哈希值为 RDP 文件签名：",
+    "content": "rdpsign {{文件路径.rdp}} /sha265 {{哈希值}}",
+    "group": "Windows",
+    "description": "rdpsign: 用于签名远程桌面协议（RDP）文件的工具。 更多信息：. (使用一个指定的 sha256 哈希值为 RDP 文件签名：)",
+    "tags": [
+      "windows",
+      "rdpsign",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-rdpsign-2",
+    "title": "rdpsign - 启用静默输出：",
+    "content": "rdpsign {{文件路径.rdp}} /q",
+    "group": "Windows",
+    "description": "rdpsign: 用于签名远程桌面协议（RDP）文件的工具。 更多信息：. (启用静默输出：)",
+    "tags": [
+      "windows",
+      "rdpsign",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-rdpsign-3",
+    "title": "rdpsign - 显示详细的信息、警告和状态：",
+    "content": "rdpsign {{文件路径.rdp}} /v",
+    "group": "Windows",
+    "description": "rdpsign: 用于签名远程桌面协议（RDP）文件的工具。 更多信息：. (显示详细的信息、警告和状态：)",
+    "tags": [
+      "windows",
+      "rdpsign",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-rdpsign-4",
+    "title": "rdpsign - 在不更新文件的情况下将输出显示到标准输出来测试签名：",
+    "content": "rdpsign {{文件路径.rdp}} /l",
+    "group": "Windows",
+    "description": "rdpsign: 用于签名远程桌面协议（RDP）文件的工具。 更多信息：. (在不更新文件的情况下将输出显示到标准输出来测试签名：)",
+    "tags": [
+      "windows",
+      "rdpsign",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-mklink-0",
+    "title": "mklink - 创建指向文件的符号链接：",
+    "content": "mklink {{链接文件的路径}} {{源文件路径}}",
+    "group": "Windows",
+    "description": "mklink: 创建符号链接。 更多信息：. (创建指向文件的符号链接：)",
+    "tags": [
+      "windows",
+      "mklink",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-mklink-1",
+    "title": "mklink - 创建指向目录的符号链接：",
+    "content": "mklink /d {{链接文件的路径}} {{源目录路径}}",
+    "group": "Windows",
+    "description": "mklink: 创建符号链接。 更多信息：. (创建指向目录的符号链接：)",
+    "tags": [
+      "windows",
+      "mklink",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-mklink-2",
+    "title": "mklink - 创建指向文件的硬链接：",
+    "content": "mklink /h {{链接文件的路径}} {{源目录路径}}",
+    "group": "Windows",
+    "description": "mklink: 创建符号链接。 更多信息：. (创建指向文件的硬链接：)",
+    "tags": [
+      "windows",
+      "mklink",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-mklink-3",
+    "title": "mklink - 创建目录链接：",
+    "content": "mklink /j {{链接文件的路径}} {{源目录路径}}",
+    "group": "Windows",
+    "description": "mklink: 创建符号链接。 更多信息：. (创建目录链接：)",
+    "tags": [
+      "windows",
+      "mklink",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-add-0",
+    "title": "reg-add - 添加一个新的注册表键：",
+    "content": "reg add {{键名}}",
+    "group": "Windows",
+    "description": "reg-add: 将新的键值添加到注册表中。 更多信息：. (添加一个新的注册表键：)",
+    "tags": [
+      "windows",
+      "reg-add",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-add-1",
+    "title": "reg-add - 在指定的键下添加新值：",
+    "content": "reg add {{键名}} /v {{值}}",
+    "group": "Windows",
+    "description": "reg-add: 将新的键值添加到注册表中。 更多信息：. (在指定的键下添加新值：)",
+    "tags": [
+      "windows",
+      "reg-add",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-add-2",
+    "title": "reg-add - Add a new value with specific data：",
+    "content": "reg add {{键名}} /d {{数据}}",
+    "group": "Windows",
+    "description": "reg-add: 将新的键值添加到注册表中。 更多信息：. (Add a new value with specific data：)",
+    "tags": [
+      "windows",
+      "reg-add",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-add-3",
+    "title": "reg-add - 向具有特定数据类型的键添加新值：",
+    "content": "reg add {{键名}} /t {{类型}}",
+    "group": "Windows",
+    "description": "reg-add: 将新的键值添加到注册表中。 更多信息：. (向具有特定数据类型的键添加新值：)",
+    "tags": [
+      "windows",
+      "reg-add",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-add-4",
+    "title": "reg-add - 在没有提示的情况下强制覆盖现有的注册表值：",
+    "content": "reg add {{键名}} /f",
+    "group": "Windows",
+    "description": "reg-add: 将新的键值添加到注册表中。 更多信息：. (在没有提示的情况下强制覆盖现有的注册表值：)",
+    "tags": [
+      "windows",
+      "reg-add",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-pack-0",
+    "title": "choco-pack - 将 nuspec 打包到已编译的 nupkg：",
+    "content": "choco pack {{nuspec 的路径}}",
+    "group": "Windows",
+    "description": "choco-pack: 将 nuspec 打包到已编译的 nupkg. 更多信息：. (将 nuspec 打包到已编译的 nupkg：)",
+    "tags": [
+      "windows",
+      "choco-pack",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-pack-1",
+    "title": "choco-pack - 将 nuspec 打包到已编译的 nupkg, 并指定生成的版本：",
+    "content": "choco pack {{nuspec 的路径}} --version {{版本号}}",
+    "group": "Windows",
+    "description": "choco-pack: 将 nuspec 打包到已编译的 nupkg. 更多信息：. (将 nuspec 打包到已编译的 nupkg, 并指定生成的版本：)",
+    "tags": [
+      "windows",
+      "choco-pack",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-pack-2",
+    "title": "choco-pack - 将 nuspec 打包到已编译的 nupkg, 并输出到指定的目录：",
+    "content": "choco pack {{nuspec 的路径}} --output-directory {{输出目录的路径}}",
+    "group": "Windows",
+    "description": "choco-pack: 将 nuspec 打包到已编译的 nupkg. 更多信息：. (将 nuspec 打包到已编译的 nupkg, 并输出到指定的目录：)",
+    "tags": [
+      "windows",
+      "choco-pack",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-logoff-0",
+    "title": "logoff - 注销当前会话：",
+    "content": "logoff",
+    "group": "Windows",
+    "description": "logoff: 注销登录会话。 更多信息：. (注销当前会话：)",
+    "tags": [
+      "windows",
+      "logoff",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-logoff-1",
+    "title": "logoff - 通过名称和 ID 注销会话：",
+    "content": "logoff {{会话名|会话 id}}",
+    "group": "Windows",
+    "description": "logoff: 注销登录会话。 更多信息：. (通过名称和 ID 注销会话：)",
+    "tags": [
+      "windows",
+      "logoff",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-logoff-2",
+    "title": "logoff - 在通过 RDP 连接的特定服务器上注销会话：",
+    "content": "logoff {{会话名|会话 id}} /server:{{服务器名}}",
+    "group": "Windows",
+    "description": "logoff: 注销登录会话。 更多信息：. (在通过 RDP 连接的特定服务器上注销会话：)",
+    "tags": [
+      "windows",
+      "logoff",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-import-0",
+    "title": "reg-import - 从一个文件导入所有可用的键、子键和值：",
+    "content": "reg import {{reg 文件的路径}}",
+    "group": "Windows",
+    "description": "reg-import: 从一个文件导入所有可用的键、子键和值。 更多信息：. (从一个文件导入所有可用的键、子键和值：)",
+    "tags": [
+      "windows",
+      "reg-import",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-export-0",
+    "title": "reg-export - 导出指定键下所有的子键和值：",
+    "content": "reg export {{键名}} {{导出文件的路径.reg}}",
+    "group": "Windows",
+    "description": "reg-export: 将指定的子键和值导出到文件中。 更多信息：. (导出指定键下所有的子键和值：)",
+    "tags": [
+      "windows",
+      "reg-export",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-reg-export-1",
+    "title": "reg-export - 在没有提示的情况下强制覆盖现有文件：",
+    "content": "reg export {{键名}} {{导出文件的路径.reg}} /y",
+    "group": "Windows",
+    "description": "reg-export: 将指定的子键和值导出到文件中。 更多信息：. (在没有提示的情况下强制覆盖现有文件：)",
+    "tags": [
+      "windows",
+      "reg-export",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-tree-0",
+    "title": "tree - 显示当前目录的目录树：",
+    "content": "tree",
+    "group": "Windows",
+    "description": "tree: 以目录树的形式显示指定目录的所有文件夹和文件。 更多信息：. (显示当前目录的目录树：)",
+    "tags": [
+      "windows",
+      "tree",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-tree-1",
+    "title": "tree - 显示指定目录的目录树：",
+    "content": "tree {{目录的路径}}",
+    "group": "Windows",
+    "description": "tree: 以目录树的形式显示指定目录的所有文件夹和文件。 更多信息：. (显示指定目录的目录树：)",
+    "tags": [
+      "windows",
+      "tree",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-tree-2",
+    "title": "tree - 显示目录中文件的目录树：",
+    "content": "tree {{目录的路径}} /f",
+    "group": "Windows",
+    "description": "tree: 以目录树的形式显示指定目录的所有文件夹和文件。 更多信息：. (显示目录中文件的目录树：)",
+    "tags": [
+      "windows",
+      "tree",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-tree-3",
+    "title": "tree - 使用 ASCII 字符而不是扩展字符显示目录树：",
+    "content": "tree {{目录的路径}} /a",
+    "group": "Windows",
+    "description": "tree: 以目录树的形式显示指定目录的所有文件夹和文件。 更多信息：. (使用 ASCII 字符而不是扩展字符显示目录树：)",
+    "tags": [
+      "windows",
+      "tree",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-finger-0",
+    "title": "finger - 显示有关特定用户的信息：",
+    "content": "finger {{用户名}}@{{主机名}}",
+    "group": "Windows",
+    "description": "finger: 返回有关指定系统上的一个或多个用户的信息。 远程系统必须运行 Finger 服务。 更多信息：. (显示有关特定用户的信息：)",
+    "tags": [
+      "windows",
+      "finger",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-finger-1",
+    "title": "finger - 在指定的主机上显示所有用户的信息：",
+    "content": "finger @{{主机名}}",
+    "group": "Windows",
+    "description": "finger: 返回有关指定系统上的一个或多个用户的信息。 远程系统必须运行 Finger 服务。 更多信息：. (在指定的主机上显示所有用户的信息：)",
+    "tags": [
+      "windows",
+      "finger",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-finger-2",
+    "title": "finger - 以更长的格式显示信息：",
+    "content": "finger {{用户名}}@{{主机名}} -l",
+    "group": "Windows",
+    "description": "finger: 返回有关指定系统上的一个或多个用户的信息。 远程系统必须运行 Finger 服务。 更多信息：. (以更长的格式显示信息：)",
+    "tags": [
+      "windows",
+      "finger",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-finger-3",
+    "title": "finger - 显示帮助信息：",
+    "content": "finger /?",
+    "group": "Windows",
+    "description": "finger: 返回有关指定系统上的一个或多个用户的信息。 远程系统必须运行 Finger 服务。 更多信息：. (显示帮助信息：)",
+    "tags": [
+      "windows",
+      "finger",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-comp-0",
+    "title": "comp - 交互式比较文件：",
+    "content": "comp",
+    "group": "Windows",
+    "description": "comp: 比较两个文件或文件集的内容。 使用通配符（*）来比较文件集。 更多信息：. (交互式比较文件：)",
+    "tags": [
+      "windows",
+      "comp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-comp-1",
+    "title": "comp - 比较两个指定的文件：",
+    "content": "comp {{文件 1 的路径}} {{文件 2 的路径}}",
+    "group": "Windows",
+    "description": "comp: 比较两个文件或文件集的内容。 使用通配符（*）来比较文件集。 更多信息：. (比较两个指定的文件：)",
+    "tags": [
+      "windows",
+      "comp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-comp-2",
+    "title": "comp - 比较两个文件集：",
+    "content": "comp {{路径\\到\\目录1}}\\* {{路径\\到\\目录2}}\\*",
+    "group": "Windows",
+    "description": "comp: 比较两个文件或文件集的内容。 使用通配符（*）来比较文件集。 更多信息：. (比较两个文件集：)",
+    "tags": [
+      "windows",
+      "comp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-comp-3",
+    "title": "comp - 以十进制格式显示差异：",
+    "content": "comp /d {{文件 1 的路径}} {{文件 2 的路径}}",
+    "group": "Windows",
+    "description": "comp: 比较两个文件或文件集的内容。 使用通配符（*）来比较文件集。 更多信息：. (以十进制格式显示差异：)",
+    "tags": [
+      "windows",
+      "comp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-comp-4",
+    "title": "comp - 以 ASCII 字符显示差异：",
+    "content": "comp /a {{文件 1 的路径}} {{文件 2 的路径}}",
+    "group": "Windows",
+    "description": "comp: 比较两个文件或文件集的内容。 使用通配符（*）来比较文件集。 更多信息：. (以 ASCII 字符显示差异：)",
+    "tags": [
+      "windows",
+      "comp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-comp-5",
+    "title": "comp - 显示不同的行数：",
+    "content": "comp /l {{文件 1 的路径}} {{文件 2 的路径}}",
+    "group": "Windows",
+    "description": "comp: 比较两个文件或文件集的内容。 使用通配符（*）来比较文件集。 更多信息：. (显示不同的行数：)",
+    "tags": [
+      "windows",
+      "comp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-comp-6",
+    "title": "comp - 比较文件时不区分大小写：",
+    "content": "comp /c {{文件 1 的路径}} {{文件 2 的路径}}",
+    "group": "Windows",
+    "description": "comp: 比较两个文件或文件集的内容。 使用通配符（*）来比较文件集。 更多信息：. (比较文件时不区分大小写：)",
+    "tags": [
+      "windows",
+      "comp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-comp-7",
+    "title": "comp - 只比较每个文件前 5 行的内容：",
+    "content": "comp /n=5 {{文件 1 的路径}} {{文件 2 的路径}}",
+    "group": "Windows",
+    "description": "comp: 比较两个文件或文件集的内容。 使用通配符（*）来比较文件集。 更多信息：. (只比较每个文件前 5 行的内容：)",
+    "tags": [
+      "windows",
+      "comp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-eventcreate-0",
+    "title": "eventcreate - 在日志中创建一个具有给定 id（1-1000）的新事件：",
+    "content": "eventcreate /t {{success|error|warning|information}} /id {{id}} /d \"{{消息}}\"",
+    "group": "Windows",
+    "description": "eventcreate: 在事件日志中创建自定义条目。 事件 ID 可以是 1 到 1000 之间的任意数值。 更多信息：. (在日志中创建一个具有给定 id（1-1000）的新事件：)",
+    "tags": [
+      "windows",
+      "eventcreate",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-eventcreate-1",
+    "title": "eventcreate - 在特定事件日志中创建事件：",
+    "content": "eventcreate /l {{日志名}} /t {{类型}} /id {{id}} /d \"{{消息}}\"",
+    "group": "Windows",
+    "description": "eventcreate: 在事件日志中创建自定义条目。 事件 ID 可以是 1 到 1000 之间的任意数值。 更多信息：. (在特定事件日志中创建事件：)",
+    "tags": [
+      "windows",
+      "eventcreate",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-eventcreate-2",
+    "title": "eventcreate - 为新创建的事件指定来源：",
+    "content": "eventcreate /so {{来源名}} /t {{类型}} /id {{id}} /d \"{{消息}}\"",
+    "group": "Windows",
+    "description": "eventcreate: 在事件日志中创建自定义条目。 事件 ID 可以是 1 到 1000 之间的任意数值。 更多信息：. (为新创建的事件指定来源：)",
+    "tags": [
+      "windows",
+      "eventcreate",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-eventcreate-3",
+    "title": "eventcreate - 在远程计算机的事件日志中创建事件：",
+    "content": "eventcreate /s {{主机名}} /u {{用户名}} /p {{密码}} /t {{类型}} /id {{id}} /d \"{{消息}}\"",
+    "group": "Windows",
+    "description": "eventcreate: 在事件日志中创建自定义条目。 事件 ID 可以是 1 到 1000 之间的任意数值。 更多信息：. (在远程计算机的事件日志中创建事件：)",
+    "tags": [
+      "windows",
+      "eventcreate",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-set-0",
+    "title": "set - 列出当前所有环境变量：",
+    "content": "set",
+    "group": "Windows",
+    "description": "set: 显示或设置当前命令行实例的环境变量。 更多信息：. (列出当前所有环境变量：)",
+    "tags": [
+      "windows",
+      "set",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-set-1",
+    "title": "set - 为一个环境变量设置指定的值：",
+    "content": "set {{变量名}}={{值}}",
+    "group": "Windows",
+    "description": "set: 显示或设置当前命令行实例的环境变量。 更多信息：. (为一个环境变量设置指定的值：)",
+    "tags": [
+      "windows",
+      "set",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-set-2",
+    "title": "set - 列出以指定字符串开头的环境变量：",
+    "content": "set {{变量名}}",
+    "group": "Windows",
+    "description": "set: 显示或设置当前命令行实例的环境变量。 更多信息：. (列出以指定字符串开头的环境变量：)",
+    "tags": [
+      "windows",
+      "set",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-set-3",
+    "title": "set - 提示用户输入指定变量的值：",
+    "content": "set /p {{变量名}}={{提示信息}}",
+    "group": "Windows",
+    "description": "set: 显示或设置当前命令行实例的环境变量。 更多信息：. (提示用户输入指定变量的值：)",
+    "tags": [
+      "windows",
+      "set",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-ftype-0",
+    "title": "ftype - 显示所有文件类型的列表：",
+    "content": "ftype",
+    "group": "Windows",
+    "description": "ftype: 显示或修改用于文件扩展名关联的文件类型。 更多信息：. (显示所有文件类型的列表：)",
+    "tags": [
+      "windows",
+      "ftype",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-ftype-1",
+    "title": "ftype - 显示特定文件类型的关联程序：",
+    "content": "ftype {{文件类型}}",
+    "group": "Windows",
+    "description": "ftype: 显示或修改用于文件扩展名关联的文件类型。 更多信息：. (显示特定文件类型的关联程序：)",
+    "tags": [
+      "windows",
+      "ftype",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-ftype-2",
+    "title": "ftype - 设置特定文件类型的关联程序：",
+    "content": "ftype {{文件类型}}=\"{{可执行命令的路径}}\"",
+    "group": "Windows",
+    "description": "ftype: 显示或修改用于文件扩展名关联的文件类型。 更多信息：. (设置特定文件类型的关联程序：)",
+    "tags": [
+      "windows",
+      "ftype",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-findstr-0",
+    "title": "findstr - 在所有文件中查找以空格分隔的字符串：",
+    "content": "findstr \"{{查询语句 查询语句 ..}}\" *",
+    "group": "Windows",
+    "description": "findstr: 在一个或多个文件中查找指定的文本。 更多信息：. (在所有文件中查找以空格分隔的字符串：)",
+    "tags": [
+      "windows",
+      "findstr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-findstr-1",
+    "title": "findstr - 以递归方式在所有文件中查找以空格分隔的字符串：",
+    "content": "findstr /s \"{{查询语句 查询语句 ..}}\" *",
+    "group": "Windows",
+    "description": "findstr: 在一个或多个文件中查找指定的文本。 更多信息：. (以递归方式在所有文件中查找以空格分隔的字符串：)",
+    "tags": [
+      "windows",
+      "findstr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-findstr-2",
+    "title": "findstr - 查找时不区分大小写：",
+    "content": "findstr /i \"{{查询语句}}\" *\"",
+    "group": "Windows",
+    "description": "findstr: 在一个或多个文件中查找指定的文本。 更多信息：. (查找时不区分大小写：)",
+    "tags": [
+      "windows",
+      "findstr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-findstr-3",
+    "title": "findstr - 使用正则表达式搜索：",
+    "content": "findstr /r \"{{正则表达式}}\" *",
+    "group": "Windows",
+    "description": "findstr: 在一个或多个文件中查找指定的文本。 更多信息：. (使用正则表达式搜索：)",
+    "tags": [
+      "windows",
+      "findstr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-findstr-4",
+    "title": "findstr - 在所有文本文件中查找文字字符串（包含空格）：",
+    "content": "findstr /c:\"{{查询语句}}\" *.txt",
+    "group": "Windows",
+    "description": "findstr: 在一个或多个文件中查找指定的文本。 更多信息：. (在所有文本文件中查找文字字符串（包含空格）：)",
+    "tags": [
+      "windows",
+      "findstr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-findstr-5",
+    "title": "findstr - 显示匹配的行的行数：",
+    "content": "findstr /n \"{{查询语句}}\" *",
+    "group": "Windows",
+    "description": "findstr: 在一个或多个文件中查找指定的文本。 更多信息：. (显示匹配的行的行数：)",
+    "tags": [
+      "windows",
+      "findstr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-findstr-6",
+    "title": "findstr - 只显示匹配的文件名：",
+    "content": "findstr /m \"{{查询语句}}\" *",
+    "group": "Windows",
+    "description": "findstr: 在一个或多个文件中查找指定的文本。 更多信息：. (只显示匹配的文件名：)",
+    "tags": [
+      "windows",
+      "findstr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cpush-0",
+    "title": "cpush - 原命令的文档在：",
+    "content": "tldr choco push",
+    "group": "Windows",
+    "description": "cpush: 这是 `choco push` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "windows",
+      "cpush",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-vol-0",
+    "title": "vol - 显示当前驱动器的标签和序列号：",
+    "content": "vol",
+    "group": "Windows",
+    "description": "vol: 显示有关卷的信息。 更多信息：. (显示当前驱动器的标签和序列号：)",
+    "tags": [
+      "windows",
+      "vol",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-vol-1",
+    "title": "vol - 显示指定驱动器的标签和序列号：",
+    "content": "vol {{D:}}",
+    "group": "Windows",
+    "description": "vol: 显示有关卷的信息。 更多信息：. (显示指定驱动器的标签和序列号：)",
+    "tags": [
+      "windows",
+      "vol",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cmd-0",
+    "title": "cmd - 开启一个新的命令行实例：",
+    "content": "cmd",
+    "group": "Windows",
+    "description": "cmd: Windows 命令解释器。 更多信息：. (开启一个新的命令行实例：)",
+    "tags": [
+      "windows",
+      "cmd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cmd-1",
+    "title": "cmd - 运行指定的命令然后退出：",
+    "content": "cmd /c {{echo 命令}}",
+    "group": "Windows",
+    "description": "cmd: Windows 命令解释器。 更多信息：. (运行指定的命令然后退出：)",
+    "tags": [
+      "windows",
+      "cmd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cmd-2",
+    "title": "cmd - 执行一个指定的命令，之后进入一个交互式 shell：",
+    "content": "cmd /k {{echo 命令}}",
+    "group": "Windows",
+    "description": "cmd: Windows 命令解释器。 更多信息：. (执行一个指定的命令，之后进入一个交互式 shell：)",
+    "tags": [
+      "windows",
+      "cmd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cmd-3",
+    "title": "cmd - 不显示命令的输出结果：",
+    "content": "cmd /q",
+    "group": "Windows",
+    "description": "cmd: Windows 命令解释器。 更多信息：. (不显示命令的输出结果：)",
+    "tags": [
+      "windows",
+      "cmd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cmd-4",
+    "title": "cmd - 启用或禁用环境变量扩展：",
+    "content": "cmd /v:{{on|off}}",
+    "group": "Windows",
+    "description": "cmd: Windows 命令解释器。 更多信息：. (启用或禁用环境变量扩展：)",
+    "tags": [
+      "windows",
+      "cmd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cmd-5",
+    "title": "cmd - 启用或禁用命令扩展：",
+    "content": "cmd /e:{{on|off}}",
+    "group": "Windows",
+    "description": "cmd: Windows 命令解释器。 更多信息：. (启用或禁用命令扩展：)",
+    "tags": [
+      "windows",
+      "cmd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cmd-6",
+    "title": "cmd - 强制输出内容使用 Unicode 编码：",
+    "content": "cmd /u",
+    "group": "Windows",
+    "description": "cmd: Windows 命令解释器。 更多信息：. (强制输出内容使用 Unicode 编码：)",
+    "tags": [
+      "windows",
+      "cmd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-explorer-0",
+    "title": "explorer - 打开 Windows 文件资源管理器：",
+    "content": "explorer",
+    "group": "Windows",
+    "description": "explorer: Windows 文件资源管理器。 更多信息：. (打开 Windows 文件资源管理器：)",
+    "tags": [
+      "windows",
+      "explorer",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-explorer-1",
+    "title": "explorer - 在当前目录打开 Windows 文件资源管理器：",
+    "content": "explorer .",
+    "group": "Windows",
+    "description": "explorer: Windows 文件资源管理器。 更多信息：. (在当前目录打开 Windows 文件资源管理器：)",
+    "tags": [
+      "windows",
+      "explorer",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-explorer-2",
+    "title": "explorer - 在指定目录打开 Windows 文件资源管理器：",
+    "content": "explorer {{path/to/directory}}",
+    "group": "Windows",
+    "description": "explorer: Windows 文件资源管理器。 更多信息：. (在指定目录打开 Windows 文件资源管理器：)",
+    "tags": [
+      "windows",
+      "explorer",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-fondue-0",
+    "title": "fondue - 启用一个指定的 Windows 功能：",
+    "content": "fondue /enable-feature:{{功能}}",
+    "group": "Windows",
+    "description": "fondue: 可选 Windows 功能的命令行安装程序。 更多信息：. (启用一个指定的 Windows 功能：)",
+    "tags": [
+      "windows",
+      "fondue",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-fondue-1",
+    "title": "fondue - 向用户隐藏所有输出信息：",
+    "content": "fondue /enable-feature:{{功能}} /hide-ux:all",
+    "group": "Windows",
+    "description": "fondue: 可选 Windows 功能的命令行安装程序。 更多信息：. (向用户隐藏所有输出信息：)",
+    "tags": [
+      "windows",
+      "fondue",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-fondue-2",
+    "title": "fondue - 为错误报告指定调用者进程名称：",
+    "content": "fondue /enable-feature:{{功能}} /caller-name:{{名称}}",
+    "group": "Windows",
+    "description": "fondue: 可选 Windows 功能的命令行安装程序。 更多信息：. (为错误报告指定调用者进程名称：)",
+    "tags": [
+      "windows",
+      "fondue",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-tasklist-0",
+    "title": "tasklist - 显示当前正在运行的进程：",
+    "content": "tasklist",
+    "group": "Windows",
+    "description": "tasklist: 显示本地或远程计算机上当前正在运行的进程的列表。 更多信息：. (显示当前正在运行的进程：)",
+    "tags": [
+      "windows",
+      "tasklist",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-tasklist-1",
+    "title": "tasklist - 使用指定的格式显示当前进程列表：",
+    "content": "tasklist /fo {{table|list|csv}}",
+    "group": "Windows",
+    "description": "tasklist: 显示本地或远程计算机上当前正在运行的进程的列表。 更多信息：. (使用指定的格式显示当前进程列表：)",
+    "tags": [
+      "windows",
+      "tasklist",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-tasklist-2",
+    "title": "tasklist - 已匹配的方式（.exe, .dll）显示当前运行的进程：",
+    "content": "tasklist /m {{匹配模式}}",
+    "group": "Windows",
+    "description": "tasklist: 显示本地或远程计算机上当前正在运行的进程的列表。 更多信息：. (已匹配的方式（.exe, .dll）显示当前运行的进程：)",
+    "tags": [
+      "windows",
+      "tasklist",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-tasklist-3",
+    "title": "tasklist - 显示在远程计算机上运行的进程：",
+    "content": "tasklist /s {{远程主机名}} /u {{用户名}} /p {{密码}}",
+    "group": "Windows",
+    "description": "tasklist: 显示本地或远程计算机上当前正在运行的进程的列表。 更多信息：. (显示在远程计算机上运行的进程：)",
+    "tags": [
+      "windows",
+      "tasklist",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-tasklist-4",
+    "title": "tasklist - 显示每个进程中的服务信息：",
+    "content": "tasklist /svc",
+    "group": "Windows",
+    "description": "tasklist: 显示本地或远程计算机上当前正在运行的进程的列表。 更多信息：. (显示每个进程中的服务信息：)",
+    "tags": [
+      "windows",
+      "tasklist",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-subst-0",
+    "title": "subst - 列出已激活的关联：",
+    "content": "subst",
+    "group": "Windows",
+    "description": "subst: 将路径与虚拟驱动器号关联。 更多信息：. (列出已激活的关联：)",
+    "tags": [
+      "windows",
+      "subst",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-subst-1",
+    "title": "subst - 添加一个关联：",
+    "content": "subst {{Z:}} {{C:\\Python2.7}}",
+    "group": "Windows",
+    "description": "subst: 将路径与虚拟驱动器号关联。 更多信息：. (添加一个关联：)",
+    "tags": [
+      "windows",
+      "subst",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-subst-2",
+    "title": "subst - 删除一个关联：",
+    "content": "subst {{Z:}} /d",
+    "group": "Windows",
+    "description": "subst: 将路径与虚拟驱动器号关联。 更多信息：. (删除一个关联：)",
+    "tags": [
+      "windows",
+      "subst",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-uninstall-0",
+    "title": "choco-uninstall - 卸载一个或多个用空格分隔的软件包：",
+    "content": "choco uninstall {{包名 『包名』 ..}}",
+    "group": "Windows",
+    "description": "choco-uninstall: 使用 Chocolatey 卸载一个或多个包。 更多信息：. (卸载一个或多个用空格分隔的软件包：)",
+    "tags": [
+      "windows",
+      "choco-uninstall",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-uninstall-1",
+    "title": "choco-uninstall - 卸载一个指定版本的包：",
+    "content": "choco uninstall {{包名}} --version {{版本号}}",
+    "group": "Windows",
+    "description": "choco-uninstall: 使用 Chocolatey 卸载一个或多个包。 更多信息：. (卸载一个指定版本的包：)",
+    "tags": [
+      "windows",
+      "choco-uninstall",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-uninstall-2",
+    "title": "choco-uninstall - 自动确认所有提示：",
+    "content": "choco uninstall {{包名}} --yes",
+    "group": "Windows",
+    "description": "choco-uninstall: 使用 Chocolatey 卸载一个或多个包。 更多信息：. (自动确认所有提示：)",
+    "tags": [
+      "windows",
+      "choco-uninstall",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-uninstall-3",
+    "title": "choco-uninstall - 卸载时同时删除其所有的依赖：",
+    "content": "choco uninstall {{包名}} --remove-dependencies",
+    "group": "Windows",
+    "description": "choco-uninstall: 使用 Chocolatey 卸载一个或多个包。 更多信息：. (卸载时同时删除其所有的依赖：)",
+    "tags": [
+      "windows",
+      "choco-uninstall",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-uninstall-4",
+    "title": "choco-uninstall - 卸载全部包：",
+    "content": "choco uninstall all",
+    "group": "Windows",
+    "description": "choco-uninstall: 使用 Chocolatey 卸载一个或多个包。 更多信息：. (卸载全部包：)",
+    "tags": [
+      "windows",
+      "choco-uninstall",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-whoami-0",
+    "title": "whoami - 显示当前用户的用户名：",
+    "content": "whoami",
+    "group": "Windows",
+    "description": "whoami: 显示当前用户的详细信息。 更多信息：. (显示当前用户的用户名：)",
+    "tags": [
+      "windows",
+      "whoami",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-whoami-1",
+    "title": "whoami - 显示当前用户所属的组：",
+    "content": "whoami /groups",
+    "group": "Windows",
+    "description": "whoami: 显示当前用户的详细信息。 更多信息：. (显示当前用户所属的组：)",
+    "tags": [
+      "windows",
+      "whoami",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-whoami-2",
+    "title": "whoami - 显示当前用户的权限：",
+    "content": "whoami /priv",
+    "group": "Windows",
+    "description": "whoami: 显示当前用户的详细信息。 更多信息：. (显示当前用户的权限：)",
+    "tags": [
+      "windows",
+      "whoami",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-whoami-3",
+    "title": "whoami - 显示当前用户的用户主体名称（UPN）：",
+    "content": "whoami /upn",
+    "group": "Windows",
+    "description": "whoami: 显示当前用户的详细信息。 更多信息：. (显示当前用户的用户主体名称（UPN）：)",
+    "tags": [
+      "windows",
+      "whoami",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-whoami-4",
+    "title": "whoami - 显示当前用户的登录 ID：",
+    "content": "whoami /logonid",
+    "group": "Windows",
+    "description": "whoami: 显示当前用户的详细信息。 更多信息：. (显示当前用户的登录 ID：)",
+    "tags": [
+      "windows",
+      "whoami",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-whoami-5",
+    "title": "whoami - 显示当前用户的所有信息：",
+    "content": "whoami /all",
+    "group": "Windows",
+    "description": "whoami: 显示当前用户的详细信息。 更多信息：. (显示当前用户的所有信息：)",
+    "tags": [
+      "windows",
+      "whoami",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-find-0",
+    "title": "find - 查找包含指定字符串的行：",
+    "content": "find \"{{字符串}}\" {{文件或目录的路径}}",
+    "group": "Windows",
+    "description": "find: 在一个或多个文件里查找指定字符串。 更多信息：. (查找包含指定字符串的行：)",
+    "tags": [
+      "windows",
+      "find",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-find-1",
+    "title": "find - 查找不包含指定字符串的行：",
+    "content": "find \"{{字符串}}\" {{文件或目录的路径}} /v",
+    "group": "Windows",
+    "description": "find: 在一个或多个文件里查找指定字符串。 更多信息：. (查找不包含指定字符串的行：)",
+    "tags": [
+      "windows",
+      "find",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-find-2",
+    "title": "find - 显示包含指定字符串的行的总数：",
+    "content": "find \"{{字符串}}\" {{文件或目录的路径}} /c",
+    "group": "Windows",
+    "description": "find: 在一个或多个文件里查找指定字符串。 更多信息：. (显示包含指定字符串的行的总数：)",
+    "tags": [
+      "windows",
+      "find",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-find-3",
+    "title": "find - 显示匹配的行的行数：",
+    "content": "find \"{{字符串}}\" {{文件或目录的路径}} /n",
+    "group": "Windows",
+    "description": "find: 在一个或多个文件里查找指定字符串。 更多信息：. (显示匹配的行的行数：)",
+    "tags": [
+      "windows",
+      "find",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-attrib-0",
+    "title": "attrib - 显示当前目录下所有文件的属性：",
+    "content": "attrib",
+    "group": "Windows",
+    "description": "attrib: 显示或修改文件和目录的属性。 更多信息：. (显示当前目录下所有文件的属性：)",
+    "tags": [
+      "windows",
+      "attrib",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-path-0",
+    "title": "path - 显示当前的路径：",
+    "content": "path",
+    "group": "Windows",
+    "description": "path: 显示或设置可执行文件的搜索路径。 更多信息：. (显示当前的路径：)",
+    "tags": [
+      "windows",
+      "path",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-path-1",
+    "title": "path - 将路径设置为一个或多个以分号分隔的目录：",
+    "content": "path {{目录的路径 1[; 目录的路径 2]}}",
+    "group": "Windows",
+    "description": "path: 显示或设置可执行文件的搜索路径。 更多信息：. (将路径设置为一个或多个以分号分隔的目录：)",
+    "tags": [
+      "windows",
+      "path",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-path-2",
+    "title": "path - 将新的目录添加到源路径后：",
+    "content": "path {{目录的路径}};%path%",
+    "group": "Windows",
+    "description": "path: 显示或设置可执行文件的搜索路径。 更多信息：. (将新的目录添加到源路径后：)",
+    "tags": [
+      "windows",
+      "path",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-path-3",
+    "title": "path - 将命令提示符设置为仅搜索当前目录中的可执行文件：",
+    "content": "path ;",
+    "group": "Windows",
+    "description": "path: 显示或设置可执行文件的搜索路径。 更多信息：. (将命令提示符设置为仅搜索当前目录中的可执行文件：)",
+    "tags": [
+      "windows",
+      "path",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-assoc-0",
+    "title": "assoc - 显示所有当前文件扩展名关联的列表：",
+    "content": "assoc",
+    "group": "Windows",
+    "description": "assoc: 显示或修改文件扩展名关联。 更多信息：. (显示所有当前文件扩展名关联的列表：)",
+    "tags": [
+      "windows",
+      "assoc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-assoc-1",
+    "title": "assoc - 显示指定扩展名的关联文件类型：",
+    "content": "assoc {{.txt}}",
+    "group": "Windows",
+    "description": "assoc: 显示或修改文件扩展名关联。 更多信息：. (显示指定扩展名的关联文件类型：)",
+    "tags": [
+      "windows",
+      "assoc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-assoc-2",
+    "title": "assoc - 将文件扩展名与特定的文件类型关联：",
+    "content": "assoc {{.txt}}={{txtfile}}",
+    "group": "Windows",
+    "description": "assoc: 显示或修改文件扩展名关联。 更多信息：. (将文件扩展名与特定的文件类型关联：)",
+    "tags": [
+      "windows",
+      "assoc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-getmac-0",
+    "title": "getmac - 显示当前系统的 MAC 地址：",
+    "content": "getmac",
+    "group": "Windows",
+    "description": "getmac: 显示系统的 MAC 地址。 更多信息：. (显示当前系统的 MAC 地址：)",
+    "tags": [
+      "windows",
+      "getmac",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-getmac-1",
+    "title": "getmac - 以特定格式显示详细信息：",
+    "content": "getmac /fo {{table|list|csv}}",
+    "group": "Windows",
+    "description": "getmac: 显示系统的 MAC 地址。 更多信息：. (以特定格式显示详细信息：)",
+    "tags": [
+      "windows",
+      "getmac",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-getmac-2",
+    "title": "getmac - 排除输出列表中的标题：",
+    "content": "getmac /nh",
+    "group": "Windows",
+    "description": "getmac: 显示系统的 MAC 地址。 更多信息：. (排除输出列表中的标题：)",
+    "tags": [
+      "windows",
+      "getmac",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-getmac-3",
+    "title": "getmac - 显示一个远程主机的 MAC 地址：",
+    "content": "getmac /s {{主机名}} /u {{用户名}} /p {{密码}}",
+    "group": "Windows",
+    "description": "getmac: 显示系统的 MAC 地址。 更多信息：. (显示一个远程主机的 MAC 地址：)",
+    "tags": [
+      "windows",
+      "getmac",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-getmac-4",
+    "title": "getmac - 详细显示 MAC 地址信息：",
+    "content": "getmac /v",
+    "group": "Windows",
+    "description": "getmac: 显示系统的 MAC 地址。 更多信息：. (详细显示 MAC 地址信息：)",
+    "tags": [
+      "windows",
+      "getmac",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-getmac-5",
+    "title": "getmac - 显示详细的帮助信息：",
+    "content": "getmac /?",
+    "group": "Windows",
+    "description": "getmac: 显示系统的 MAC 地址。 更多信息：. (显示详细的帮助信息：)",
+    "tags": [
+      "windows",
+      "getmac",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-wget-0",
+    "title": "wget - 查看原始 `wget` 命令的文档：",
+    "content": "tldr wget {{[-p|--platform]}} common",
+    "group": "Windows",
+    "description": "wget: 在 PowerShell 中，当原始 `wget` 程序（）未正确安装时，此命令可能是 `Invoke-WebRequest` 的别名。 注意：如果 version 命令返回错误，则 PowerShell 可能已将此命令替换为 `Invoke-WebRequest`。 更多信息：. (查看原始 `wget` 命令的文档：)",
+    "tags": [
+      "windows",
+      "wget",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-wget-1",
+    "title": "wget - 查看 PowerShell 的 `Invoke-WebRequest` 命令的文档：",
+    "content": "tldr invoke-webrequest",
+    "group": "Windows",
+    "description": "wget: 在 PowerShell 中，当原始 `wget` 程序（）未正确安装时，此命令可能是 `Invoke-WebRequest` 的别名。 注意：如果 version 命令返回错误，则 PowerShell 可能已将此命令替换为 `Invoke-WebRequest`。 更多信息：. (查看 PowerShell 的 `Invoke-WebRequest` 命令的文档：)",
+    "tags": [
+      "windows",
+      "wget",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-wget-2",
+    "title": "wget - 显示版本：",
+    "content": "wget --version",
+    "group": "Windows",
+    "description": "wget: 在 PowerShell 中，当原始 `wget` 程序（）未正确安装时，此命令可能是 `Invoke-WebRequest` 的别名。 注意：如果 version 命令返回错误，则 PowerShell 可能已将此命令替换为 `Invoke-WebRequest`。 更多信息：. (显示版本：)",
+    "tags": [
+      "windows",
+      "wget",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-0",
+    "title": "choco - 执行 Chocolatey 命令：",
+    "content": "choco {{命令}}",
+    "group": "Windows",
+    "description": "choco: Chocolatey 包管理器的命令行界面。 此命令也有关于其子命令的文件，例如：`install`. 更多信息：. (执行 Chocolatey 命令：)",
+    "tags": [
+      "windows",
+      "choco",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-1",
+    "title": "choco - 显示基本的帮助页面：",
+    "content": "choco -?",
+    "group": "Windows",
+    "description": "choco: Chocolatey 包管理器的命令行界面。 此命令也有关于其子命令的文件，例如：`install`. 更多信息：. (显示基本的帮助页面：)",
+    "tags": [
+      "windows",
+      "choco",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-2",
+    "title": "choco - 显示指定命令的帮助页面：",
+    "content": "choco {{命令}} -?",
+    "group": "Windows",
+    "description": "choco: Chocolatey 包管理器的命令行界面。 此命令也有关于其子命令的文件，例如：`install`. 更多信息：. (显示指定命令的帮助页面：)",
+    "tags": [
+      "windows",
+      "choco",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-3",
+    "title": "choco - 显示 Chocolatey 的版本：",
+    "content": "choco --version",
+    "group": "Windows",
+    "description": "choco: Chocolatey 包管理器的命令行界面。 此命令也有关于其子命令的文件，例如：`install`. 更多信息：. (显示 Chocolatey 的版本：)",
+    "tags": [
+      "windows",
+      "choco",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-pwlauncher-0",
+    "title": "pwlauncher - 显示当前 Windows To Go 的状态：",
+    "content": "pwlauncher",
+    "group": "Windows",
+    "description": "pwlauncher: 用于管理 Windows To Go 启动选项的命令行工具。 更多信息：. (显示当前 Windows To Go 的状态：)",
+    "tags": [
+      "windows",
+      "pwlauncher",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-pwlauncher-1",
+    "title": "pwlauncher - 启用或禁用 Windows To Go 的启动选项：",
+    "content": "pwlauncher /{{enable|disable}}",
+    "group": "Windows",
+    "description": "pwlauncher: 用于管理 Windows To Go 启动选项的命令行工具。 更多信息：. (启用或禁用 Windows To Go 的启动选项：)",
+    "tags": [
+      "windows",
+      "pwlauncher",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-takeown-0",
+    "title": "takeown - 取得指定文件的所有权：",
+    "content": "takeown /f {{路径/文件}}",
+    "group": "Windows",
+    "description": "takeown: 取得文件或目录的所有权。 更多信息：. (取得指定文件的所有权：)",
+    "tags": [
+      "windows",
+      "takeown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-takeown-1",
+    "title": "takeown - 取得指定目录的所有权：",
+    "content": "takeown /d {{路径/目录}}",
+    "group": "Windows",
+    "description": "takeown: 取得文件或目录的所有权。 更多信息：. (取得指定目录的所有权：)",
+    "tags": [
+      "windows",
+      "takeown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-takeown-2",
+    "title": "takeown - 取得指定目录和所有子目录的所有权：",
+    "content": "takeown /r /d {{路径/目录}}",
+    "group": "Windows",
+    "description": "takeown: 取得文件或目录的所有权。 更多信息：. (取得指定目录和所有子目录的所有权：)",
+    "tags": [
+      "windows",
+      "takeown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-takeown-3",
+    "title": "takeown - 将所有权更改为管理员组，而不是当前用户：",
+    "content": "takeown /a /f {{路径/文件}}",
+    "group": "Windows",
+    "description": "takeown: 取得文件或目录的所有权。 更多信息：. (将所有权更改为管理员组，而不是当前用户：)",
+    "tags": [
+      "windows",
+      "takeown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cuninst-0",
+    "title": "cuninst - 原命令的文档在：",
+    "content": "tldr choco uninstall",
+    "group": "Windows",
+    "description": "cuninst: 这是 `choco uninstall` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "windows",
+      "cuninst",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-search-0",
+    "title": "choco-search - 搜索一个包：",
+    "content": "choco search {{查询语句}}",
+    "group": "Windows",
+    "description": "choco-search: 使用 Chocolatey 搜索一个本地或远程的包。 更多信息：. (搜索一个包：)",
+    "tags": [
+      "windows",
+      "choco-search",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-search-1",
+    "title": "choco-search - 搜索一个本地的包：",
+    "content": "choco search {{查询语句}} --local-only",
+    "group": "Windows",
+    "description": "choco-search: 使用 Chocolatey 搜索一个本地或远程的包。 更多信息：. (搜索一个本地的包：)",
+    "tags": [
+      "windows",
+      "choco-search",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-search-2",
+    "title": "choco-search - 只显示包含完全匹配的结果：",
+    "content": "choco search {{查询语句}} --exact",
+    "group": "Windows",
+    "description": "choco-search: 使用 Chocolatey 搜索一个本地或远程的包。 更多信息：. (只显示包含完全匹配的结果：)",
+    "tags": [
+      "windows",
+      "choco-search",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-search-3",
+    "title": "choco-search - 自动确认所有提示：",
+    "content": "choco search {{查询语句}} --yes",
+    "group": "Windows",
+    "description": "choco-search: 使用 Chocolatey 搜索一个本地或远程的包。 更多信息：. (自动确认所有提示：)",
+    "tags": [
+      "windows",
+      "choco-search",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-search-4",
+    "title": "choco-search - 从自定义的源处搜索包：",
+    "content": "choco search {{查询语句}} --source {{源 URL|别名}}",
+    "group": "Windows",
+    "description": "choco-search: 使用 Chocolatey 搜索一个本地或远程的包。 更多信息：. (从自定义的源处搜索包：)",
+    "tags": [
+      "windows",
+      "choco-search",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-search-5",
+    "title": "choco-search - 提供一个用户名和密码来进行验证：",
+    "content": "choco search {{查询语句}} --user {{用户名}} --password {{密码}}",
+    "group": "Windows",
+    "description": "choco-search: 使用 Chocolatey 搜索一个本地或远程的包。 更多信息：. (提供一个用户名和密码来进行验证：)",
+    "tags": [
+      "windows",
+      "choco-search",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-driverquery-0",
+    "title": "driverquery - 显示所有已安装设备驱动程序的列表：",
+    "content": "driverquery",
+    "group": "Windows",
+    "description": "driverquery: 显示已安装设备驱动程序的信息。 更多信息：. (显示所有已安装设备驱动程序的列表：)",
+    "tags": [
+      "windows",
+      "driverquery",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-driverquery-1",
+    "title": "driverquery - 以指定格式显示驱动程序的列表：",
+    "content": "driverquery /fo {{table|list|csv}}",
+    "group": "Windows",
+    "description": "driverquery: 显示已安装设备驱动程序的信息。 更多信息：. (以指定格式显示驱动程序的列表：)",
+    "tags": [
+      "windows",
+      "driverquery",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-driverquery-2",
+    "title": "driverquery - 显示带有列的驱动程序列表，以表明它们是否已签名：",
+    "content": "driverquery /si",
+    "group": "Windows",
+    "description": "driverquery: 显示已安装设备驱动程序的信息。 更多信息：. (显示带有列的驱动程序列表，以表明它们是否已签名：)",
+    "tags": [
+      "windows",
+      "driverquery",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-driverquery-3",
+    "title": "driverquery - 排除输出列表中的标题：",
+    "content": "driverquery /nh",
+    "group": "Windows",
+    "description": "driverquery: 显示已安装设备驱动程序的信息。 更多信息：. (排除输出列表中的标题：)",
+    "tags": [
+      "windows",
+      "driverquery",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-driverquery-4",
+    "title": "driverquery - 显示远程计算机的驱动程序列表：",
+    "content": "driverquery /s {{主机名}} /u {{用户名}} /p {{密码}}",
+    "group": "Windows",
+    "description": "driverquery: 显示已安装设备驱动程序的信息。 更多信息：. (显示远程计算机的驱动程序列表：)",
+    "tags": [
+      "windows",
+      "driverquery",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-driverquery-5",
+    "title": "driverquery - 显示详细信息的驱动程序列表：",
+    "content": "driverquery /v",
+    "group": "Windows",
+    "description": "driverquery: 显示已安装设备驱动程序的信息。 更多信息：. (显示详细信息的驱动程序列表：)",
+    "tags": [
+      "windows",
+      "driverquery",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-driverquery-6",
+    "title": "driverquery - 显示详细的使用信息：",
+    "content": "driverquery /?",
+    "group": "Windows",
+    "description": "driverquery: 显示已安装设备驱动程序的信息。 更多信息：. (显示详细的使用信息：)",
+    "tags": [
+      "windows",
+      "driverquery",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-upgrade-0",
+    "title": "choco-upgrade - 升级一个或多个用空格分隔的软件包：",
+    "content": "choco upgrade {{包名 包名 ..}}",
+    "group": "Windows",
+    "description": "choco-upgrade: 使用 Chocolatey 升级一个或多个包。 更多信息：. (升级一个或多个用空格分隔的软件包：)",
+    "tags": [
+      "windows",
+      "choco-upgrade",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-upgrade-1",
+    "title": "choco-upgrade - 将一个包升级到指定版本：",
+    "content": "choco upgrade {{包名}} --version {{版本号}}",
+    "group": "Windows",
+    "description": "choco-upgrade: 使用 Chocolatey 升级一个或多个包。 更多信息：. (将一个包升级到指定版本：)",
+    "tags": [
+      "windows",
+      "choco-upgrade",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-upgrade-2",
+    "title": "choco-upgrade - 升级全部包：",
+    "content": "choco upgrade all",
+    "group": "Windows",
+    "description": "choco-upgrade: 使用 Chocolatey 升级一个或多个包。 更多信息：. (升级全部包：)",
+    "tags": [
+      "windows",
+      "choco-upgrade",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-upgrade-3",
+    "title": "choco-upgrade - 升级除指定的用逗号分隔的包之外的所有包：",
+    "content": "choco upgrade all --except \"{{包名 , 包名 ..}}\"",
+    "group": "Windows",
+    "description": "choco-upgrade: 使用 Chocolatey 升级一个或多个包。 更多信息：. (升级除指定的用逗号分隔的包之外的所有包：)",
+    "tags": [
+      "windows",
+      "choco-upgrade",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-upgrade-4",
+    "title": "choco-upgrade - 自动确认所有提示：",
+    "content": "choco upgrade {{包名}} --yes",
+    "group": "Windows",
+    "description": "choco-upgrade: 使用 Chocolatey 升级一个或多个包。 更多信息：. (自动确认所有提示：)",
+    "tags": [
+      "windows",
+      "choco-upgrade",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-upgrade-5",
+    "title": "choco-upgrade - 从自定义源处升级包：",
+    "content": "choco upgrade {{包名}} --source {{源 URL|别名}}",
+    "group": "Windows",
+    "description": "choco-upgrade: 使用 Chocolatey 升级一个或多个包。 更多信息：. (从自定义源处升级包：)",
+    "tags": [
+      "windows",
+      "choco-upgrade",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-choco-upgrade-6",
+    "title": "choco-upgrade - 提供一个用户名和密码来进行验证：",
+    "content": "choco upgrade {{包}} --user {{用户名}} --password {{密码}}",
+    "group": "Windows",
+    "description": "choco-upgrade: 使用 Chocolatey 升级一个或多个包。 更多信息：. (提供一个用户名和密码来进行验证：)",
+    "tags": [
+      "windows",
+      "choco-upgrade",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-ver-0",
+    "title": "ver - Display the current version number：",
+    "content": "ver",
+    "group": "Windows",
+    "description": "ver: 显示当前 Windows 或 MS-DOS 的版本号。 更多信息：. (Display the current version number：)",
+    "tags": [
+      "windows",
+      "ver",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-rd-0",
+    "title": "rd - 原命令的文档在：",
+    "content": "tldr rmdir",
+    "group": "Windows",
+    "description": "rd: 这是 `rmdir` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "windows",
+      "rd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-xcopy-0",
+    "title": "xcopy - 复制文件到指定的路径：",
+    "content": "xcopy {{被复制的目录路径}} {{目标路径}}",
+    "group": "Windows",
+    "description": "xcopy: 复制文件和目录树。 更多信息：. (复制文件到指定的路径：)",
+    "tags": [
+      "windows",
+      "xcopy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-xcopy-1",
+    "title": "xcopy - 列出在复制前将要被复制的文件：",
+    "content": "xcopy {{文件或目录的路径}} {{目标路径}} /p",
+    "group": "Windows",
+    "description": "xcopy: 复制文件和目录树。 更多信息：. (列出在复制前将要被复制的文件：)",
+    "tags": [
+      "windows",
+      "xcopy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-xcopy-2",
+    "title": "xcopy - 仅复制目录结构，不包括文件：",
+    "content": "xcopy {{文件或目录的路径}} {{目标路径}} /t",
+    "group": "Windows",
+    "description": "xcopy: 复制文件和目录树。 更多信息：. (仅复制目录结构，不包括文件：)",
+    "tags": [
+      "windows",
+      "xcopy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-xcopy-3",
+    "title": "xcopy - 复制时包含空目录：",
+    "content": "xcopy {{文件或目录的路径}} {{目标路径}} /e",
+    "group": "Windows",
+    "description": "xcopy: 复制文件和目录树。 更多信息：. (复制时包含空目录：)",
+    "tags": [
+      "windows",
+      "xcopy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-xcopy-4",
+    "title": "xcopy - 复制文件时保留 ACL 信息：",
+    "content": "xcopy {{文件或目录的路径}} {{目标路径}} /o",
+    "group": "Windows",
+    "description": "xcopy: 复制文件和目录树。 更多信息：. (复制文件时保留 ACL 信息：)",
+    "tags": [
+      "windows",
+      "xcopy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-xcopy-5",
+    "title": "xcopy - 网络连接丢失时允许恢复：",
+    "content": "xcopy {{文件或目录的路径}} {{目标路径}} /z",
+    "group": "Windows",
+    "description": "xcopy: 复制文件和目录树。 更多信息：. (网络连接丢失时允许恢复：)",
+    "tags": [
+      "windows",
+      "xcopy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-xcopy-6",
+    "title": "xcopy - 当文件存在于目标路径中时禁用提示：",
+    "content": "xcopy {{文件或目录的路径}} {{目标路径}} /y",
+    "group": "Windows",
+    "description": "xcopy: 复制文件和目录树。 更多信息：. (当文件存在于目标路径中时禁用提示：)",
+    "tags": [
+      "windows",
+      "xcopy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-xcopy-7",
+    "title": "xcopy - 显示详细的使用帮助：",
+    "content": "xcopy /?",
+    "group": "Windows",
+    "description": "xcopy: 复制文件和目录树。 更多信息：. (显示详细的使用帮助：)",
+    "tags": [
+      "windows",
+      "xcopy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-cinst-0",
+    "title": "cinst - 原命令的文档在：",
+    "content": "tldr choco install",
+    "group": "Windows",
+    "description": "cinst: 这是 `choco install` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "windows",
+      "cinst",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-title-0",
+    "title": "title - 设置当前的命令提示符窗口的标题：",
+    "content": "title {{新标题}}",
+    "group": "Windows",
+    "description": "title: 设置命令提示符窗口的标题。 更多信息：. (设置当前的命令提示符窗口的标题：)",
+    "tags": [
+      "windows",
+      "title",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-py-0",
+    "title": "py - 启动一个 REPL（交互式命令行），可以选择使用 `python` 支持的参数（如 `-c`、`-m` 等）：",
+    "content": "py {{python 参数}}",
+    "group": "Windows",
+    "description": "py: 用于 Windows 的 Python 启动器，可运行指定的 Python 版本。 另见： `python`. 更多信息：. (启动一个 REPL（交互式命令行），可以选择使用 `python` 支持的参数（如 `-c`、`-m` 等）：)",
+    "tags": [
+      "windows",
+      "py",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-py-1",
+    "title": "py - 执行指定的 Python 文件：",
+    "content": "py {{路径/到/文件.py}}",
+    "group": "Windows",
+    "description": "py: 用于 Windows 的 Python 启动器，可运行指定的 Python 版本。 另见： `python`. 更多信息：. (执行指定的 Python 文件：)",
+    "tags": [
+      "windows",
+      "py",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-py-2",
+    "title": "py - 运行指定版本的 Python. 若缺少该版本且设置了 `PYLAUNCHER_ALLOW_INSTALL` 环境变量，则通过 Microsoft Store 或 Winget 自动安装：",
+    "content": "py {{-2|-3.7|...}}",
+    "group": "Windows",
+    "description": "py: 用于 Windows 的 Python 启动器，可运行指定的 Python 版本。 另见： `python`. 更多信息：. (运行指定版本的 Python. 若缺少该版本且设置了 `PYLAUNCHER_ALLOW_INSTALL` 环境变量，则通过 Microsoft Store 或 Winget 自动安装：)",
+    "tags": [
+      "windows",
+      "py",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-py-3",
+    "title": "py - 列出已安装的 Python 版本：",
+    "content": "py --list",
+    "group": "Windows",
+    "description": "py: 用于 Windows 的 Python 启动器，可运行指定的 Python 版本。 另见： `python`. 更多信息：. (列出已安装的 Python 版本：)",
+    "tags": [
+      "windows",
+      "py",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  }
+]

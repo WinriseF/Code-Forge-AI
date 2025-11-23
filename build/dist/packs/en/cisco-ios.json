@@ -1,0 +1,590 @@
+[
+  {
+    "id": "tldr-en-cisco-ios-transport-0",
+    "title": "transport - Restrict line protocols to `ssh`",
+    "content": "transport input ssh",
+    "group": "Cisco-Ios",
+    "description": "transport: Manage line transport protocols. Accessed in configuration mode under `line`. More information: . (Restrict line protocols to `ssh`)",
+    "tags": [
+      "cisco-ios",
+      "transport",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-transport-1",
+    "title": "transport - Restrict line protocols to `telnet`",
+    "content": "transport input telnet",
+    "group": "Cisco-Ios",
+    "description": "transport: Manage line transport protocols. Accessed in configuration mode under `line`. More information: . (Restrict line protocols to `telnet`)",
+    "tags": [
+      "cisco-ios",
+      "transport",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-configure-0",
+    "title": "configure - Configure from the terminal",
+    "content": "{{[conf|configure]}} {{[t|terminal]}}",
+    "group": "Cisco-Ios",
+    "description": "configure: Enter configuration mode. More information: . (Configure from the terminal)",
+    "tags": [
+      "cisco-ios",
+      "configure",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-configure-1",
+    "title": "configure - Back out one level in configuration mode",
+    "content": "exit",
+    "group": "Cisco-Ios",
+    "description": "configure: Enter configuration mode. More information: . (Back out one level in configuration mode)",
+    "tags": [
+      "cisco-ios",
+      "configure",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-configure-2",
+    "title": "configure - Exit out of configuration mode",
+    "content": "end",
+    "group": "Cisco-Ios",
+    "description": "configure: Enter configuration mode. More information: . (Exit out of configuration mode)",
+    "tags": [
+      "cisco-ios",
+      "configure",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-erase-0",
+    "title": "erase - Erase the startup configuration",
+    "content": "erase startup-config",
+    "group": "Cisco-Ios",
+    "description": "erase: Delete preset things. More information: . (Erase the startup configuration)",
+    "tags": [
+      "cisco-ios",
+      "erase",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-erase-1",
+    "title": "erase - Erase a filesystem",
+    "content": "erase {{flash}}:",
+    "group": "Cisco-Ios",
+    "description": "erase: Delete preset things. More information: . (Erase a filesystem)",
+    "tags": [
+      "cisco-ios",
+      "erase",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-reload-0",
+    "title": "reload - Reboot the system",
+    "content": "reload",
+    "group": "Cisco-Ios",
+    "description": "reload: Control reboot behavior. More information: . (Reboot the system)",
+    "tags": [
+      "cisco-ios",
+      "reload",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-reload-1",
+    "title": "reload - Reboot after `n` seconds",
+    "content": "reload in {{n}}",
+    "group": "Cisco-Ios",
+    "description": "reload: Control reboot behavior. More information: . (Reboot after `n` seconds)",
+    "tags": [
+      "cisco-ios",
+      "reload",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-reload-2",
+    "title": "reload - Cancel pending reboots",
+    "content": "reload cancel",
+    "group": "Cisco-Ios",
+    "description": "reload: Control reboot behavior. More information: . (Cancel pending reboots)",
+    "tags": [
+      "cisco-ios",
+      "reload",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-clock-0",
+    "title": "clock - Enter privileged execution mode",
+    "content": "clock set {{23}}:{{59}}:{{59}} {{31}} {{april}} {{2000}}",
+    "group": "Cisco-Ios",
+    "description": "clock: Set the system clock. More information: . (Enter privileged execution mode)",
+    "tags": [
+      "cisco-ios",
+      "clock",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-clock-1",
+    "title": "clock - Auto negotiate with the far end of the link, defaulting to active-clock",
+    "content": "clock active prefer",
+    "group": "Cisco-Ios",
+    "description": "clock: Set the system clock. More information: . (Auto negotiate with the far end of the link, defaulting to active-clock)",
+    "tags": [
+      "cisco-ios",
+      "clock",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-clock-2",
+    "title": "clock - Auto negotiate with the far end of the link, defaulting to passive-clock",
+    "content": "clock passive prefer",
+    "group": "Cisco-Ios",
+    "description": "clock: Set the system clock. More information: . (Auto negotiate with the far end of the link, defaulting to passive-clock)",
+    "tags": [
+      "cisco-ios",
+      "clock",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-clock-3",
+    "title": "clock - Show the current clock mode negotiated by the firmware",
+    "content": "clock show interfaces",
+    "group": "Cisco-Ios",
+    "description": "clock: Set the system clock. More information: . (Show the current clock mode negotiated by the firmware)",
+    "tags": [
+      "cisco-ios",
+      "clock",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-line-0",
+    "title": "line - Configure lines from 0 to 15",
+    "content": "line vty 0 15",
+    "group": "Cisco-Ios",
+    "description": "line: Manage lines. Accessed in configuration mode. More information: . (Configure lines from 0 to 15)",
+    "tags": [
+      "cisco-ios",
+      "line",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-dir-0",
+    "title": "dir - List files in the current working directory",
+    "content": "dir",
+    "group": "Cisco-Ios",
+    "description": "dir: List files. More information: . (List files in the current working directory)",
+    "tags": [
+      "cisco-ios",
+      "dir",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-dir-1",
+    "title": "dir - List files in a specific filesystem",
+    "content": "dir {{flash}}:",
+    "group": "Cisco-Ios",
+    "description": "dir: List files. More information: . (List files in a specific filesystem)",
+    "tags": [
+      "cisco-ios",
+      "dir",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-dir-2",
+    "title": "dir - List available filesystems",
+    "content": "dir ?",
+    "group": "Cisco-Ios",
+    "description": "dir: List files. More information: . (List available filesystems)",
+    "tags": [
+      "cisco-ios",
+      "dir",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-enable-0",
+    "title": "enable - Enter privileged execution mode",
+    "content": "enable",
+    "group": "Cisco-Ios",
+    "description": "enable: Enter privileged execution mode. More information: . (Enter privileged execution mode)",
+    "tags": [
+      "cisco-ios",
+      "enable",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-interface-0",
+    "title": "interface - Configure a VLAN",
+    "content": "interface vlan {{1}}",
+    "group": "Cisco-Ios",
+    "description": "interface: Manage interfaces. Accessed in configuration mode. More information: . (Configure a VLAN)",
+    "tags": [
+      "cisco-ios",
+      "interface",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-interface-1",
+    "title": "interface - Set an interface to be active or inactive (this is run inside the interface command)",
+    "content": "{{no shutdown|shutdown}}",
+    "group": "Cisco-Ios",
+    "description": "interface: Manage interfaces. Accessed in configuration mode. More information: . (Set an interface to be active or inactive (this is run inside the interface command))",
+    "tags": [
+      "cisco-ios",
+      "interface",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-delete-0",
+    "title": "delete - Delete a file from flash memory",
+    "content": "delete {{vlan.dat}}",
+    "group": "Cisco-Ios",
+    "description": "delete: Delete individual files. More information: . (Delete a file from flash memory)",
+    "tags": [
+      "cisco-ios",
+      "delete",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-login-0",
+    "title": "login - Use local username and password for authentication",
+    "content": "login local",
+    "group": "Cisco-Ios",
+    "description": "login: Manage console and virtual line authentication. Accessed in configuration mode under `line`. More information: . (Use local username and password for authentication)",
+    "tags": [
+      "cisco-ios",
+      "login",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-crypto-0",
+    "title": "crypto - Generate an `rsa` key",
+    "content": "crypto key generate rsa",
+    "group": "Cisco-Ios",
+    "description": "crypto: Manage cryptography. Accessed in configuration mode. More information: . (Generate an `rsa` key)",
+    "tags": [
+      "cisco-ios",
+      "crypto",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-crypto-1",
+    "title": "crypto - Define a modulus for a key",
+    "content": "crypto key generate rsa modulus {{1024}}",
+    "group": "Cisco-Ios",
+    "description": "crypto: Manage cryptography. Accessed in configuration mode. More information: . (Define a modulus for a key)",
+    "tags": [
+      "cisco-ios",
+      "crypto",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-crypto-2",
+    "title": "crypto - Remove all keys",
+    "content": "crypto key zeroize",
+    "group": "Cisco-Ios",
+    "description": "crypto: Manage cryptography. Accessed in configuration mode. More information: . (Remove all keys)",
+    "tags": [
+      "cisco-ios",
+      "crypto",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-show-0",
+    "title": "show - Show switch IP addresses",
+    "content": "{{[sh|show]}} ip interface brief",
+    "group": "Cisco-Ios",
+    "description": "show: Show various system information. More information: . (Show switch IP addresses)",
+    "tags": [
+      "cisco-ios",
+      "show",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-show-1",
+    "title": "show - Show specific interface configuration",
+    "content": "{{[sh|show]}} ip interface {{vlan1}}",
+    "group": "Cisco-Ios",
+    "description": "show: Show various system information. More information: . (Show specific interface configuration)",
+    "tags": [
+      "cisco-ios",
+      "show",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-show-2",
+    "title": "show - Show vlan configuration",
+    "content": "{{[sh|show]}} vlan",
+    "group": "Cisco-Ios",
+    "description": "show: Show various system information. More information: . (Show vlan configuration)",
+    "tags": [
+      "cisco-ios",
+      "show",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-show-3",
+    "title": "show - Show currently running configuration",
+    "content": "{{[sh|show]}} running-config",
+    "group": "Cisco-Ios",
+    "description": "show: Show various system information. More information: . (Show currently running configuration)",
+    "tags": [
+      "cisco-ios",
+      "show",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-show-4",
+    "title": "show - Show SSH configuration",
+    "content": "{{[sh|show]}} ip ssh",
+    "group": "Cisco-Ios",
+    "description": "show: Show various system information. More information: . (Show SSH configuration)",
+    "tags": [
+      "cisco-ios",
+      "show",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-ip-0",
+    "title": "ip - Set the SSH version",
+    "content": "ip ssh version {{2}}",
+    "group": "Cisco-Ios",
+    "description": "ip: Manage IP configurations. Accessed in configuration mode. More information: . (Set the SSH version)",
+    "tags": [
+      "cisco-ios",
+      "ip",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-ip-1",
+    "title": "ip - Set the address of the device (This is done under `interface command`)",
+    "content": "ip address {{10.0.0.1}} {{255.255.255.0}}",
+    "group": "Cisco-Ios",
+    "description": "ip: Manage IP configurations. Accessed in configuration mode. More information: . (Set the address of the device (This is done under `interface command`))",
+    "tags": [
+      "cisco-ios",
+      "ip",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-ip-2",
+    "title": "ip - Set the address to be determined with DHCP (This is done under `interface command`)",
+    "content": "ip address dhcp",
+    "group": "Cisco-Ios",
+    "description": "ip: Manage IP configurations. Accessed in configuration mode. More information: . (Set the address to be determined with DHCP (This is done under `interface command`))",
+    "tags": [
+      "cisco-ios",
+      "ip",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-ip-3",
+    "title": "ip - Define a domain name",
+    "content": "ip domain-name {{example.com}}",
+    "group": "Cisco-Ios",
+    "description": "ip: Manage IP configurations. Accessed in configuration mode. More information: . (Define a domain name)",
+    "tags": [
+      "cisco-ios",
+      "ip",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-write-0",
+    "title": "write - Write current configuration to memory",
+    "content": "write memory",
+    "group": "Cisco-Ios",
+    "description": "write: Write data to memory. More information: . (Write current configuration to memory)",
+    "tags": [
+      "cisco-ios",
+      "write",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-write-1",
+    "title": "write - Delete the configuration in memory",
+    "content": "write erase",
+    "group": "Cisco-Ios",
+    "description": "write: Write data to memory. More information: . (Delete the configuration in memory)",
+    "tags": [
+      "cisco-ios",
+      "write",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-write-2",
+    "title": "write - Display help",
+    "content": "write ?",
+    "group": "Cisco-Ios",
+    "description": "write: Write data to memory. More information: . (Display help)",
+    "tags": [
+      "cisco-ios",
+      "write",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-username-0",
+    "title": "username - Set up an admin account",
+    "content": "username {{admin}} privilege 15 secret {{password}}",
+    "group": "Cisco-Ios",
+    "description": "username: Manage users. Accessed in configuration mode. More information: . (Set up an admin account)",
+    "tags": [
+      "cisco-ios",
+      "username",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-question-mark-0",
+    "title": "question-mark - Get available commands",
+    "content": "?",
+    "group": "Cisco-Ios",
+    "description": "question-mark: Get context sensitive. More information: . (Get available commands)",
+    "tags": [
+      "cisco-ios",
+      "question-mark",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-question-mark-1",
+    "title": "question-mark - Get storages that are listable",
+    "content": "dir ?",
+    "group": "Cisco-Ios",
+    "description": "question-mark: Get context sensitive. More information: . (Get storages that are listable)",
+    "tags": [
+      "cisco-ios",
+      "question-mark",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-question-mark-2",
+    "title": "question-mark - Show what IP information is viewable",
+    "content": "ip show ?",
+    "group": "Cisco-Ios",
+    "description": "question-mark: Get context sensitive. More information: . (Show what IP information is viewable)",
+    "tags": [
+      "cisco-ios",
+      "question-mark",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  }
+]

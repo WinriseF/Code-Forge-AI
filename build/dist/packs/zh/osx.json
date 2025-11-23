@@ -1,0 +1,6470 @@
+[
+  {
+    "id": "tldr-zh-osx-caffeinate-0",
+    "title": "caffeinate - 防止进入休眠模式 , 1 小时内（3600 秒）：",
+    "content": "caffeinate -u -t {{3600}}",
+    "group": "macOS",
+    "description": "caffeinate: 防止 Mac 进入休眠模式。 更多信息：. (防止进入休眠模式 , 1 小时内（3600 秒）：)",
+    "tags": [
+      "osx",
+      "caffeinate",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-caffeinate-1",
+    "title": "caffeinate - 在指定命令执行完前，禁止进入休眠：",
+    "content": "caffeinate -s {{命令}}",
+    "group": "macOS",
+    "description": "caffeinate: 防止 Mac 进入休眠模式。 更多信息：. (在指定命令执行完前，禁止进入休眠：)",
+    "tags": [
+      "osx",
+      "caffeinate",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-caffeinate-2",
+    "title": "caffeinate - 在你按 `<Ctrl c>` 之前禁止进入休眠模式：",
+    "content": "caffeinate -i",
+    "group": "macOS",
+    "description": "caffeinate: 防止 Mac 进入休眠模式。 更多信息：. (在你按 `<Ctrl c>` 之前禁止进入休眠模式：)",
+    "tags": [
+      "osx",
+      "caffeinate",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gdirname-0",
+    "title": "gdirname - 原命令的文档在：",
+    "content": "tldr dirname",
+    "group": "macOS",
+    "description": "gdirname: 这是 `dirname` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gdirname",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-iostat-0",
+    "title": "iostat - 显示设备统计快照（每传输千字节数、每秒传输次数、每秒兆字节数）、CPU统计（用户模式、系统模式和空闲模式的时间百分比）以及系统负载平均值（过去1、5和15分钟）：",
+    "content": "iostat",
+    "group": "macOS",
+    "description": "iostat: 报告设备统计信息。 更多信息：. (显示设备统计快照（每传输千字节数、每秒传输次数、每秒兆字节数）、CPU统计（用户模式、系统模式和空闲模式的时间百分比）以及系统负载平均值（过去1、5和15分钟）：)",
+    "tags": [
+      "osx",
+      "iostat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-iostat-1",
+    "title": "iostat - 仅显示设备统计信息：",
+    "content": "iostat -d",
+    "group": "macOS",
+    "description": "iostat: 报告设备统计信息。 更多信息：. (仅显示设备统计信息：)",
+    "tags": [
+      "osx",
+      "iostat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-iostat-2",
+    "title": "iostat - 每2秒显示一次CPU和磁盘的增量统计报告：",
+    "content": "iostat 2",
+    "group": "macOS",
+    "description": "iostat: 报告设备统计信息。 更多信息：. (每2秒显示一次CPU和磁盘的增量统计报告：)",
+    "tags": [
+      "osx",
+      "iostat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-iostat-3",
+    "title": "iostat - 无限期每秒显示第一个磁盘的统计信息：",
+    "content": "iostat -w 1 disk0",
+    "group": "macOS",
+    "description": "iostat: 报告设备统计信息。 更多信息：. (无限期每秒显示第一个磁盘的统计信息：)",
+    "tags": [
+      "osx",
+      "iostat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-iostat-4",
+    "title": "iostat - 每3秒显示一次第二个磁盘的统计信息，共显示10次：",
+    "content": "iostat -w 3 -c 10 disk1",
+    "group": "macOS",
+    "description": "iostat: 报告设备统计信息。 更多信息：. (每3秒显示一次第二个磁盘的统计信息，共显示10次：)",
+    "tags": [
+      "osx",
+      "iostat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-iostat-5",
+    "title": "iostat - 使用旧式iostat显示格式。显示每秒传输的扇区数、每秒传输次数、每次传输的平均毫秒数，以及默认显示格式的CPU统计和负载平均值：",
+    "content": "iostat -o",
+    "group": "macOS",
+    "description": "iostat: 报告设备统计信息。 更多信息：. (使用旧式iostat显示格式。显示每秒传输的扇区数、每秒传输次数、每次传输的平均毫秒数，以及默认显示格式的CPU统计和负载平均值：)",
+    "tags": [
+      "osx",
+      "iostat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-iostat-6",
+    "title": "iostat - 显示设备总统计信息（KB/t：每次传输的千字节数，xfrs：总传输次数，MB：总传输兆字节数）：",
+    "content": "iostat -I",
+    "group": "macOS",
+    "description": "iostat: 报告设备统计信息。 更多信息：. (显示设备总统计信息（KB/t：每次传输的千字节数，xfrs：总传输次数，MB：总传输兆字节数）：)",
+    "tags": [
+      "osx",
+      "iostat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-pbcopy-0",
+    "title": "pbcopy - 将文件的内容放入剪贴板：",
+    "content": "pbcopy < {{路径/到/文件}}",
+    "group": "macOS",
+    "description": "pbcopy: 将来自标准输入的数据放入剪贴板。 相当于在键盘上按下 ``. 更多信息：. (将文件的内容放入剪贴板：)",
+    "tags": [
+      "osx",
+      "pbcopy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-pbcopy-1",
+    "title": "pbcopy - 将命令的执行结果放入剪贴板：",
+    "content": "find . -type t -name \"*.png\" | pbcopy",
+    "group": "macOS",
+    "description": "pbcopy: 将来自标准输入的数据放入剪贴板。 相当于在键盘上按下 ``. 更多信息：. (将命令的执行结果放入剪贴板：)",
+    "tags": [
+      "osx",
+      "pbcopy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-open-0",
+    "title": "open - 使用系统关联的应用程序打开文件：",
+    "content": "open {{文件名.扩展名}}",
+    "group": "macOS",
+    "description": "open: 打开文件、目录和应用程序。 更多信息：. (使用系统关联的应用程序打开文件：)",
+    "tags": [
+      "osx",
+      "open",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-open-1",
+    "title": "open - 运行图形化的 macOS 应用程序：",
+    "content": "open -a \"{{应用程序名}}\"",
+    "group": "macOS",
+    "description": "open: 打开文件、目录和应用程序。 更多信息：. (运行图形化的 macOS 应用程序：)",
+    "tags": [
+      "osx",
+      "open",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-open-2",
+    "title": "open - 运行指定包标识符的图形化 macOS 应用程序（请参阅`OSascript`命令，查询如何获取应用程序的包标识符）：",
+    "content": "open -b {{com.domain.application}}",
+    "group": "macOS",
+    "description": "open: 打开文件、目录和应用程序。 更多信息：. (运行指定包标识符的图形化 macOS 应用程序（请参阅`OSascript`命令，查询如何获取应用程序的包标识符）：)",
+    "tags": [
+      "osx",
+      "open",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-open-3",
+    "title": "open - 在\"访达（finder）\"中打开当前文件夹：",
+    "content": "open .",
+    "group": "macOS",
+    "description": "open: 打开文件、目录和应用程序。 更多信息：. (在\"访达（finder）\"中打开当前文件夹：)",
+    "tags": [
+      "osx",
+      "open",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-open-4",
+    "title": "open - 打开\"访达（finder）\", 并且给出指定文件：",
+    "content": "open -R {{路径/到/文件}}",
+    "group": "macOS",
+    "description": "open: 打开文件、目录和应用程序。 更多信息：. (打开\"访达（finder）\", 并且给出指定文件：)",
+    "tags": [
+      "osx",
+      "open",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-open-5",
+    "title": "open - 使用系统默认应用程序，打开当前目录中所有给定扩展名的文件：",
+    "content": "open {{*.扩展名}}",
+    "group": "macOS",
+    "description": "open: 打开文件、目录和应用程序。 更多信息：. (使用系统默认应用程序，打开当前目录中所有给定扩展名的文件：)",
+    "tags": [
+      "osx",
+      "open",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-open-6",
+    "title": "open - 通过包标识符打开应用程序的新实例：",
+    "content": "open -n -b {{com.domain.application}}",
+    "group": "macOS",
+    "description": "open: 打开文件、目录和应用程序。 更多信息：. (通过包标识符打开应用程序的新实例：)",
+    "tags": [
+      "osx",
+      "open",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-grsh-0",
+    "title": "grsh - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux rsh",
+    "group": "macOS",
+    "description": "grsh: 这是 `-p linux rsh` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "grsh",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gsplit-0",
+    "title": "gsplit - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} common split",
+    "group": "macOS",
+    "description": "gsplit: 这是 `split` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gsplit",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-launchctl-0",
+    "title": "launchctl - 每当用户登录时，自动将 plist 文件加载到 `launchd`：",
+    "content": "launchctl load ~/Library/LaunchAgents/{{我的脚本}}.plist",
+    "group": "macOS",
+    "description": "launchctl: 用于启动守护程序（系统范围的服务）和启动代理程序（每个用户程序）的命令行界面，该界面指向苹果的`launchd` 管理工具。 `launchd`加载放置在适当位置的基于 XML 的`*.plist`文件，并根据其定义的计划运行相应的命令。 更多信息：. (每当用户登录时，自动将 plist 文件加载到 `launchd`：)",
+    "tags": [
+      "osx",
+      "launchctl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-launchctl-1",
+    "title": "launchctl - 激活需要 root 权限才能运行和 / 或在任何用户登录时都应加载的脚本（注意路径中不能有`~`）：",
+    "content": "sudo launchctl load /Library/LaunchAgents/{{root 脚本}}.plist",
+    "group": "macOS",
+    "description": "launchctl: 用于启动守护程序（系统范围的服务）和启动代理程序（每个用户程序）的命令行界面，该界面指向苹果的`launchd` 管理工具。 `launchd`加载放置在适当位置的基于 XML 的`*.plist`文件，并根据其定义的计划运行相应的命令。 更多信息：. (激活需要 root 权限才能运行和 / 或在任何用户登录时都应加载的脚本（注意路径中不能有`~`）：)",
+    "tags": [
+      "osx",
+      "launchctl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-launchctl-2",
+    "title": "launchctl - 激活一个系统范围的守护程序，以便在系统启动时加载（即使没有用户登录也会加载）：",
+    "content": "sudo launchctl load /Library/LaunchDaemons/{{系统脚本}}.plist",
+    "group": "macOS",
+    "description": "launchctl: 用于启动守护程序（系统范围的服务）和启动代理程序（每个用户程序）的命令行界面，该界面指向苹果的`launchd` 管理工具。 `launchd`加载放置在适当位置的基于 XML 的`*.plist`文件，并根据其定义的计划运行相应的命令。 更多信息：. (激活一个系统范围的守护程序，以便在系统启动时加载（即使没有用户登录也会加载）：)",
+    "tags": [
+      "osx",
+      "launchctl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-launchctl-3",
+    "title": "launchctl - 显示所有加载的代理 / 守护进程，如果它们指定的进程当前正在运行，则显示 pid，如果停止那么返回了它们上次运行的时间和退出代码：",
+    "content": "launchctl list",
+    "group": "macOS",
+    "description": "launchctl: 用于启动守护程序（系统范围的服务）和启动代理程序（每个用户程序）的命令行界面，该界面指向苹果的`launchd` 管理工具。 `launchd`加载放置在适当位置的基于 XML 的`*.plist`文件，并根据其定义的计划运行相应的命令。 更多信息：. (显示所有加载的代理 / 守护进程，如果它们指定的进程当前正在运行，则显示 pid，如果停止那么返回了它们上次运行的时间和退出代码：)",
+    "tags": [
+      "osx",
+      "launchctl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-launchctl-4",
+    "title": "launchctl - 卸载当前加载的脚本，例如进行更改（注意：重新启动和 / 或登录后，plist 文件将自动加载到`launchd`）：",
+    "content": "launchctl unload ~/Library/LaunchAgents/{{我的脚本}}.plist",
+    "group": "macOS",
+    "description": "launchctl: 用于启动守护程序（系统范围的服务）和启动代理程序（每个用户程序）的命令行界面，该界面指向苹果的`launchd` 管理工具。 `launchd`加载放置在适当位置的基于 XML 的`*.plist`文件，并根据其定义的计划运行相应的命令。 更多信息：. (卸载当前加载的脚本，例如进行更改（注意：重新启动和 / 或登录后，plist 文件将自动加载到`launchd`）：)",
+    "tags": [
+      "osx",
+      "launchctl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-launchctl-5",
+    "title": "launchctl - 手动运行一个已知的（已加载的）脚本 / 守护进程，即使它不是正确的时间（注意：此命令使用脚本的标签，而不是文件名）：",
+    "content": "launchctl start {{我的脚本}}",
+    "group": "macOS",
+    "description": "launchctl: 用于启动守护程序（系统范围的服务）和启动代理程序（每个用户程序）的命令行界面，该界面指向苹果的`launchd` 管理工具。 `launchd`加载放置在适当位置的基于 XML 的`*.plist`文件，并根据其定义的计划运行相应的命令。 更多信息：. (手动运行一个已知的（已加载的）脚本 / 守护进程，即使它不是正确的时间（注意：此命令使用脚本的标签，而不是文件名）：)",
+    "tags": [
+      "osx",
+      "launchctl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-launchctl-6",
+    "title": "launchctl - 手动终止与已知脚本 / 守护进程关联的进程（如果该进程正在运行）：",
+    "content": "launchctl stop {{我的脚本}}",
+    "group": "macOS",
+    "description": "launchctl: 用于启动守护程序（系统范围的服务）和启动代理程序（每个用户程序）的命令行界面，该界面指向苹果的`launchd` 管理工具。 `launchd`加载放置在适当位置的基于 XML 的`*.plist`文件，并根据其定义的计划运行相应的命令。 更多信息：. (手动终止与已知脚本 / 守护进程关联的进程（如果该进程正在运行）：)",
+    "tags": [
+      "osx",
+      "launchctl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gifconfig-0",
+    "title": "gifconfig - 原命令的文档在：",
+    "content": "tldr ifconfig",
+    "group": "macOS",
+    "description": "gifconfig: 这是 `ifconfig` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gifconfig",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-glink-0",
+    "title": "glink - 原命令的文档在：",
+    "content": "tldr link",
+    "group": "macOS",
+    "description": "glink: 这是 `link` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "glink",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-split-0",
+    "title": "split - 分割一个文件，每个分割部分有 10 行（除了最后一个）：",
+    "content": "split -l 10 {{路径/到/文件}}",
+    "group": "macOS",
+    "description": "split: 把一个文件拆分成几块。 更多信息：. (分割一个文件，每个分割部分有 10 行（除了最后一个）：)",
+    "tags": [
+      "osx",
+      "split",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-split-1",
+    "title": "split - 用正则表达式拆分文件。匹配行将是下一个输出文件的第一行：",
+    "content": "split -p {{cat|^[dh]og}} {{路径/到/文件}}",
+    "group": "macOS",
+    "description": "split: 把一个文件拆分成几块。 更多信息：. (用正则表达式拆分文件。匹配行将是下一个输出文件的第一行：)",
+    "tags": [
+      "osx",
+      "split",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-split-2",
+    "title": "split - 拆分一个文件，每个拆分中有 512 个字节（除了最后一个文件，使用 512K 表示 Kb，512M 表示 Mb）：",
+    "content": "split -b 512 {{路径/到/文件}}",
+    "group": "macOS",
+    "description": "split: 把一个文件拆分成几块。 更多信息：. (拆分一个文件，每个拆分中有 512 个字节（除了最后一个文件，使用 512K 表示 Kb，512M 表示 Mb）：)",
+    "tags": [
+      "osx",
+      "split",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-textutil-0",
+    "title": "textutil - 显示有关 `foo.rtf` 的信息：",
+    "content": "textutil -info {{foo.rtf}}",
+    "group": "macOS",
+    "description": "textutil: 用于操作各种格式的文本文件。 更多信息：. (显示有关 `foo.rtf` 的信息：)",
+    "tags": [
+      "osx",
+      "textutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-textutil-1",
+    "title": "textutil - 将 `foo.rtf` 转换为 `foo.html`：",
+    "content": "textutil -convert {{html}} {{foo.rtf}}",
+    "group": "macOS",
+    "description": "textutil: 用于操作各种格式的文本文件。 更多信息：. (将 `foo.rtf` 转换为 `foo.html`：)",
+    "tags": [
+      "osx",
+      "textutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-textutil-2",
+    "title": "textutil - 将带格式的 rtf 文本转换为普通 txt 文本：",
+    "content": "textutil {{foo.rtf}} -convert {{txt}}",
+    "group": "macOS",
+    "description": "textutil: 用于操作各种格式的文本文件。 更多信息：. (将带格式的 rtf 文本转换为普通 txt 文本：)",
+    "tags": [
+      "osx",
+      "textutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-textutil-3",
+    "title": "textutil - 将 `foo.txt` 转换为 `foo.rtf`, 字体使用 Times 字号 10：",
+    "content": "textutil -convert {{rtf}} -font {{Times}} -fontsize {{10}} {{foo.txt}}",
+    "group": "macOS",
+    "description": "textutil: 用于操作各种格式的文本文件。 更多信息：. (将 `foo.txt` 转换为 `foo.rtf`, 字体使用 Times 字号 10：)",
+    "tags": [
+      "osx",
+      "textutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-textutil-4",
+    "title": "textutil - 加载当前目录中的所有 RTF 文件，连接其内容，并将结果作为 `index.html` 写入，HTML 标题设置为\"多个文件\"：",
+    "content": "textutil -cat {{html}} -title \"多个文件\" -output {{index.html}} *.rtf",
+    "group": "macOS",
+    "description": "textutil: 用于操作各种格式的文本文件。 更多信息：. (加载当前目录中的所有 RTF 文件，连接其内容，并将结果作为 `index.html` 写入，HTML 标题设置为\"多个文件\"：)",
+    "tags": [
+      "osx",
+      "textutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-ggrep-0",
+    "title": "ggrep - 原命令的文档在：",
+    "content": "tldr grep",
+    "group": "macOS",
+    "description": "ggrep: 这是 `grep` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "ggrep",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-arch-0",
+    "title": "arch - 显示系统的架构：",
+    "content": "arch",
+    "group": "macOS",
+    "description": "arch: 显示系统架构的名称，或者在不同的架构下运行命令。 另见: `uname`. 更多信息：. (显示系统的架构：)",
+    "tags": [
+      "osx",
+      "arch",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-arch-1",
+    "title": "arch - 使用 x86_64 来运行一个命令：",
+    "content": "arch -x86_64 {{命令}}",
+    "group": "macOS",
+    "description": "arch: 显示系统架构的名称，或者在不同的架构下运行命令。 另见: `uname`. 更多信息：. (使用 x86_64 来运行一个命令：)",
+    "tags": [
+      "osx",
+      "arch",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gstdbuf-0",
+    "title": "gstdbuf - 原命令的文档在：",
+    "content": "tldr stdbuf",
+    "group": "macOS",
+    "description": "gstdbuf: 这是 `stdbuf` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gstdbuf",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-ggroups-0",
+    "title": "ggroups - 原命令的文档在：",
+    "content": "tldr groups",
+    "group": "macOS",
+    "description": "ggroups: 这是 `groups` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "ggroups",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gbase32-0",
+    "title": "gbase32 - 原命令的文档在：",
+    "content": "tldr base32",
+    "group": "macOS",
+    "description": "gbase32: 这是 `base32` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gbase32",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-xed-0",
+    "title": "xed - 用 Xcode 打开文件：",
+    "content": "xed {{文件名}}",
+    "group": "macOS",
+    "description": "xed: 用 Xcode 打开要编辑的文件。 更多信息：. (用 Xcode 打开文件：)",
+    "tags": [
+      "osx",
+      "xed",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-xed-1",
+    "title": "xed - 在 Xcode 中打开文件，如果不存在则创建：",
+    "content": "xed --create {{文件名}}",
+    "group": "macOS",
+    "description": "xed: 用 Xcode 打开要编辑的文件。 更多信息：. (在 Xcode 中打开文件，如果不存在则创建：)",
+    "tags": [
+      "osx",
+      "xed",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-xed-2",
+    "title": "xed - 在 Xcode 中打开一个文件并跳转到第 75 行：",
+    "content": "xed --line 75 {{文件名}}",
+    "group": "macOS",
+    "description": "xed: 用 Xcode 打开要编辑的文件。 更多信息：. (在 Xcode 中打开一个文件并跳转到第 75 行：)",
+    "tags": [
+      "osx",
+      "xed",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-grmdir-0",
+    "title": "grmdir - 原命令的文档在：",
+    "content": "tldr rmdir",
+    "group": "macOS",
+    "description": "grmdir: 这是 `rmdir` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "grmdir",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gstty-0",
+    "title": "gstty - 原命令的文档在：",
+    "content": "tldr stty",
+    "group": "macOS",
+    "description": "gstty: 这是 `stty` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gstty",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-xcodebuild-0",
+    "title": "xcodebuild - 构建工作区：",
+    "content": "xcodebuild -workspace {{工作区名.工作区}} -scheme {{主题名}} -configuration {{配置名}} clean build SYMROOT={{SYMROOT_路径}}",
+    "group": "macOS",
+    "description": "xcodebuild: 构建 Xcode 项目。 更多信息：. (构建工作区：)",
+    "tags": [
+      "osx",
+      "xcodebuild",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-xcodebuild-1",
+    "title": "xcodebuild - 构建项目：",
+    "content": "xcodebuild -target {{目标名}} -configuration {{配置名}} clean build SYMROOT={{SYMROOT_路径}}",
+    "group": "macOS",
+    "description": "xcodebuild: 构建 Xcode 项目。 更多信息：. (构建项目：)",
+    "tags": [
+      "osx",
+      "xcodebuild",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-xcodebuild-2",
+    "title": "xcodebuild - 显示 SDK：",
+    "content": "xcodebuild -showsdks",
+    "group": "macOS",
+    "description": "xcodebuild: 构建 Xcode 项目。 更多信息：. (显示 SDK：)",
+    "tags": [
+      "osx",
+      "xcodebuild",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gchmod-0",
+    "title": "gchmod - 原命令的文档在：",
+    "content": "tldr chmod",
+    "group": "macOS",
+    "description": "gchmod: 这是 `chmod` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gchmod",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gpinky-0",
+    "title": "gpinky - 原命令的文档在：",
+    "content": "tldr pinky",
+    "group": "macOS",
+    "description": "gpinky: 这是 `pinky` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gpinky",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gping6-0",
+    "title": "gping6 - 原命令的文档在：",
+    "content": "tldr ping6",
+    "group": "macOS",
+    "description": "gping6: 这是 `ping6` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gping6",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-scutil-0",
+    "title": "scutil - 显示 DNS 配置：",
+    "content": "scutil --dns",
+    "group": "macOS",
+    "description": "scutil: 管理系统配置参数。 设置配置时必须是 root 权限。 更多信息：. (显示 DNS 配置：)",
+    "tags": [
+      "osx",
+      "scutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-scutil-1",
+    "title": "scutil - 显示代理配置：",
+    "content": "scutil --proxy",
+    "group": "macOS",
+    "description": "scutil: 管理系统配置参数。 设置配置时必须是 root 权限。 更多信息：. (显示代理配置：)",
+    "tags": [
+      "osx",
+      "scutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-scutil-2",
+    "title": "scutil - 获取计算机名称：",
+    "content": "scutil --get ComputerName",
+    "group": "macOS",
+    "description": "scutil: 管理系统配置参数。 设置配置时必须是 root 权限。 更多信息：. (获取计算机名称：)",
+    "tags": [
+      "osx",
+      "scutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-scutil-3",
+    "title": "scutil - 设置计算机名称：",
+    "content": "sudo scutil --set ComputerName {{我的计算机名}}",
+    "group": "macOS",
+    "description": "scutil: 管理系统配置参数。 设置配置时必须是 root 权限。 更多信息：. (设置计算机名称：)",
+    "tags": [
+      "osx",
+      "scutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-scutil-4",
+    "title": "scutil - 获取主机名（HostName）：",
+    "content": "scutil --get HostName",
+    "group": "macOS",
+    "description": "scutil: 管理系统配置参数。 设置配置时必须是 root 权限。 更多信息：. (获取主机名（HostName）：)",
+    "tags": [
+      "osx",
+      "scutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-scutil-5",
+    "title": "scutil - 设置主机名：",
+    "content": "scutil --set HostName {{hostname}}",
+    "group": "macOS",
+    "description": "scutil: 管理系统配置参数。 设置配置时必须是 root 权限。 更多信息：. (设置主机名：)",
+    "tags": [
+      "osx",
+      "scutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gfind-0",
+    "title": "gfind - 原命令的文档在：",
+    "content": "tldr find",
+    "group": "macOS",
+    "description": "gfind: 这是 `find` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gfind",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-du-0",
+    "title": "du - 以给定单位（KiB/MiB/GiB）列出目录和所有子目录的大小：",
+    "content": "du -{{k|m|g}} {{目标文件夹}}",
+    "group": "macOS",
+    "description": "du: 磁盘使用率：估计和汇总文件和目录空间使用率。 更多信息：. (以给定单位（KiB/MiB/GiB）列出目录和所有子目录的大小：)",
+    "tags": [
+      "osx",
+      "du",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-du-1",
+    "title": "du - 以可读形式列出目录和任何子目录的大小（即自动为转换为选择的适当单位 kb|mb|gb）：",
+    "content": "du -h {{目标文件夹}}",
+    "group": "macOS",
+    "description": "du: 磁盘使用率：估计和汇总文件和目录空间使用率。 更多信息：. (以可读形式列出目录和任何子目录的大小（即自动为转换为选择的适当单位 kb|mb|gb）：)",
+    "tags": [
+      "osx",
+      "du",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-du-2",
+    "title": "du - 以可读单位显示目录大小：",
+    "content": "du -sh {{目标文件夹}}",
+    "group": "macOS",
+    "description": "du: 磁盘使用率：估计和汇总文件和目录空间使用率。 更多信息：. (以可读单位显示目录大小：)",
+    "tags": [
+      "osx",
+      "du",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-du-3",
+    "title": "du - 列出目录以及其中所有文件和目录的可读大小：",
+    "content": "du -ah {{目标文件夹}}",
+    "group": "macOS",
+    "description": "du: 磁盘使用率：估计和汇总文件和目录空间使用率。 更多信息：. (列出目录以及其中所有文件和目录的可读大小：)",
+    "tags": [
+      "osx",
+      "du",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-du-4",
+    "title": "du - 列出一个目录和任何子目录的可读大小，最深可达 n 级：",
+    "content": "du -h -d {{N}} {{目标文件夹}}",
+    "group": "macOS",
+    "description": "du: 磁盘使用率：估计和汇总文件和目录空间使用率。 更多信息：. (列出一个目录和任何子目录的可读大小，最深可达 n 级：)",
+    "tags": [
+      "osx",
+      "du",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-du-5",
+    "title": "du - 列出当前目录子目录中所有.jpg 文件的可读大小，并在末尾显示累计总数：",
+    "content": "du -ch {{*/*.jpg}}",
+    "group": "macOS",
+    "description": "du: 磁盘使用率：估计和汇总文件和目录空间使用率。 更多信息：. (列出当前目录子目录中所有.jpg 文件的可读大小，并在末尾显示累计总数：)",
+    "tags": [
+      "osx",
+      "du",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gtar-0",
+    "title": "gtar - 原命令的文档在：",
+    "content": "tldr tar",
+    "group": "macOS",
+    "description": "gtar: 这是 `tar` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gtar",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-pbpaste-0",
+    "title": "pbpaste - 将剪贴板的内容写入文件：",
+    "content": "pbpaste > {{路径/到/文件}}",
+    "group": "macOS",
+    "description": "pbpaste: 将剪贴板的内容发送到标准输出。 相当于在键盘上按下 ``. 更多信息：. (将剪贴板的内容写入文件：)",
+    "tags": [
+      "osx",
+      "pbpaste",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-pbpaste-1",
+    "title": "pbpaste - 将剪贴板的内容用作命令的输入：",
+    "content": "pbpaste | grep foo",
+    "group": "macOS",
+    "description": "pbpaste: 将剪贴板的内容发送到标准输出。 相当于在键盘上按下 ``. 更多信息：. (将剪贴板的内容用作命令的输入：)",
+    "tags": [
+      "osx",
+      "pbpaste",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-ghead-0",
+    "title": "ghead - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux head",
+    "group": "macOS",
+    "description": "ghead: 这是 `-p linux head` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "ghead",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gsleep-0",
+    "title": "gsleep - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux sleep",
+    "group": "macOS",
+    "description": "gsleep: 这是 `-p linux sleep` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gsleep",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gsha512sum-0",
+    "title": "gsha512sum - 原命令的文档在：",
+    "content": "tldr sha512sum",
+    "group": "macOS",
+    "description": "gsha512sum: 这是 `sha512sum` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gsha512sum",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-reboot-0",
+    "title": "reboot - 立刻重启：",
+    "content": "sudo reboot",
+    "group": "macOS",
+    "description": "reboot: 重启系统。 更多信息：. (立刻重启：)",
+    "tags": [
+      "osx",
+      "reboot",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-reboot-1",
+    "title": "reboot - 立即重启，而无需正常关机：",
+    "content": "sudo reboot -q",
+    "group": "macOS",
+    "description": "reboot: 重启系统。 更多信息：. (立即重启，而无需正常关机：)",
+    "tags": [
+      "osx",
+      "reboot",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-mdfind-0",
+    "title": "mdfind - 按文件名查找文件：",
+    "content": "mdfind -name {{文件}}",
+    "group": "macOS",
+    "description": "mdfind: 列出与给定查询匹配的文件。 更多信息：. (按文件名查找文件：)",
+    "tags": [
+      "osx",
+      "mdfind",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-mdfind-1",
+    "title": "mdfind - 按内容查找文件：",
+    "content": "mdfind \"{{查找的字符串}}\"",
+    "group": "macOS",
+    "description": "mdfind: 列出与给定查询匹配的文件。 更多信息：. (按内容查找文件：)",
+    "tags": [
+      "osx",
+      "mdfind",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-mdfind-2",
+    "title": "mdfind - 在给定目录中查找包含字符串的文件：",
+    "content": "mdfind -onlyin {{目录}} \"{{字符串}}\"",
+    "group": "macOS",
+    "description": "mdfind: 列出与给定查询匹配的文件。 更多信息：. (在给定目录中查找包含字符串的文件：)",
+    "tags": [
+      "osx",
+      "mdfind",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-grealpath-0",
+    "title": "grealpath - 原命令的文档在：",
+    "content": "tldr realpath",
+    "group": "macOS",
+    "description": "grealpath: 这是 `realpath` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "grealpath",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gsync-0",
+    "title": "gsync - 原命令的文档在：",
+    "content": "tldr sync",
+    "group": "macOS",
+    "description": "gsync: 这是 `sync` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gsync",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gtail-0",
+    "title": "gtail - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} common tail",
+    "group": "macOS",
+    "description": "gtail: 这是 `tail` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gtail",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gmd5sum-0",
+    "title": "gmd5sum - 原命令的文档在：",
+    "content": "tldr md5sum",
+    "group": "macOS",
+    "description": "gmd5sum: 这是 `md5sum` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gmd5sum",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-xsltproc-0",
+    "title": "xsltproc - 使用特定的 XSLT 样式表转换 XML 文件：",
+    "content": "xsltproc --output {{输出.html}} {{样式表.xslt}} {{xml 文件.xml}}",
+    "group": "macOS",
+    "description": "xsltproc: 用 XSLT 转换 XML 以生成输出（通常是 HTML 或 XML）。 更多信息：. (使用特定的 XSLT 样式表转换 XML 文件：)",
+    "tags": [
+      "osx",
+      "xsltproc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-xsltproc-1",
+    "title": "xsltproc - 将值传递给样式表中的参数：",
+    "content": "xsltproc --output {{输出.html}} --stringparam \"{{键名}}\" \"{{值}}\" {{样式表.xslt}} {{xml 文件.xml}}",
+    "group": "macOS",
+    "description": "xsltproc: 用 XSLT 转换 XML 以生成输出（通常是 HTML 或 XML）。 更多信息：. (将值传递给样式表中的参数：)",
+    "tags": [
+      "osx",
+      "xsltproc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gdf-0",
+    "title": "gdf - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux df",
+    "group": "macOS",
+    "description": "gdf: 这是 `-p linux df` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gdf",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gsed-0",
+    "title": "gsed - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux sed",
+    "group": "macOS",
+    "description": "gsed: 这是 `-p linux sed` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gsed",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-mas-0",
+    "title": "mas - 首次登录 Mac 应用商店：",
+    "content": "mas signin \"{{user@example.com}}\"",
+    "group": "macOS",
+    "description": "mas: Mac 应用商店的命令行界面。 更多信息：. (首次登录 Mac 应用商店：)",
+    "tags": [
+      "osx",
+      "mas",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-mas-1",
+    "title": "mas - 显示所有已安装的应用程序和它们的产品标识符：",
+    "content": "mas list",
+    "group": "macOS",
+    "description": "mas: Mac 应用商店的命令行界面。 更多信息：. (显示所有已安装的应用程序和它们的产品标识符：)",
+    "tags": [
+      "osx",
+      "mas",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-mas-2",
+    "title": "mas - 搜索一个应用程序，在结果旁边显示价格：",
+    "content": "mas search \"{{应用程序}}\" --price",
+    "group": "macOS",
+    "description": "mas: Mac 应用商店的命令行界面。 更多信息：. (搜索一个应用程序，在结果旁边显示价格：)",
+    "tags": [
+      "osx",
+      "mas",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-mas-3",
+    "title": "mas - 安装或更新一个应用程序：",
+    "content": "mas install {{产品标识符}}",
+    "group": "macOS",
+    "description": "mas: Mac 应用商店的命令行界面。 更多信息：. (安装或更新一个应用程序：)",
+    "tags": [
+      "osx",
+      "mas",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-mas-4",
+    "title": "mas - 安装所有待定的更新：",
+    "content": "mas upgrade",
+    "group": "macOS",
+    "description": "mas: Mac 应用商店的命令行界面。 更多信息：. (安装所有待定的更新：)",
+    "tags": [
+      "osx",
+      "mas",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gsha384sum-0",
+    "title": "gsha384sum - 原命令的文档在：",
+    "content": "tldr sha384sum",
+    "group": "macOS",
+    "description": "gsha384sum: 这是 `sha384sum` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gsha384sum",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-guptime-0",
+    "title": "guptime - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} common uptime",
+    "group": "macOS",
+    "description": "guptime: 这是 `uptime` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "guptime",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-shuf-0",
+    "title": "shuf - 随机化文件中的行顺序并输出结果：",
+    "content": "shuf {{文件名}}",
+    "group": "macOS",
+    "description": "shuf: 生成随机排列。 更多信息：. (随机化文件中的行顺序并输出结果：)",
+    "tags": [
+      "osx",
+      "shuf",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-shuf-1",
+    "title": "shuf - 只输出结果的前 5 条：",
+    "content": "shuf --head-count=5 {{路径/到/文件}}",
+    "group": "macOS",
+    "description": "shuf: 生成随机排列。 更多信息：. (只输出结果的前 5 条：)",
+    "tags": [
+      "osx",
+      "shuf",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-shuf-2",
+    "title": "shuf - 将结果输出写入另一个文件：",
+    "content": "shuf {{路径/到/输入文件}} --output {{路径/到/输出文件}}",
+    "group": "macOS",
+    "description": "shuf: 生成随机排列。 更多信息：. (将结果输出写入另一个文件：)",
+    "tags": [
+      "osx",
+      "shuf",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-shuf-3",
+    "title": "shuf - 生成范围（1-10）内的随机数：",
+    "content": "shuf --input-range=1-10",
+    "group": "macOS",
+    "description": "shuf: 生成随机排列。 更多信息：. (生成范围（1-10）内的随机数：)",
+    "tags": [
+      "osx",
+      "shuf",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-brightness-0",
+    "title": "brightness - 显示当前亮度：",
+    "content": "brightness -l",
+    "group": "macOS",
+    "description": "brightness: 获取或设置所有显示设备的亮度等级。 更多信息：. (显示当前亮度：)",
+    "tags": [
+      "osx",
+      "brightness",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-brightness-1",
+    "title": "brightness - 设置亮度到 100%:：",
+    "content": "brightness {{1}}",
+    "group": "macOS",
+    "description": "brightness: 获取或设置所有显示设备的亮度等级。 更多信息：. (设置亮度到 100%:：)",
+    "tags": [
+      "osx",
+      "brightness",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-brightness-2",
+    "title": "brightness - 设置亮度到 50%:：",
+    "content": "brightness {{0.5}}",
+    "group": "macOS",
+    "description": "brightness: 获取或设置所有显示设备的亮度等级。 更多信息：. (设置亮度到 50%:：)",
+    "tags": [
+      "osx",
+      "brightness",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-guname-0",
+    "title": "guname - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} common uname",
+    "group": "macOS",
+    "description": "guname: 这是 `uname` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "guname",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gfactor-0",
+    "title": "gfactor - 原命令的文档在：",
+    "content": "tldr factor",
+    "group": "macOS",
+    "description": "gfactor: 这是 `factor` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gfactor",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-grcp-0",
+    "title": "grcp - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux rcp",
+    "group": "macOS",
+    "description": "grcp: 这是 `-p linux rcp` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "grcp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gseq-0",
+    "title": "gseq - 原命令的文档在：",
+    "content": "tldr seq",
+    "group": "macOS",
+    "description": "gseq: 这是 `seq` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gseq",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-apachectl-0",
+    "title": "apachectl - 启动 org.apache.httpd 服务：",
+    "content": "apachectl start",
+    "group": "macOS",
+    "description": "apachectl: 用于 macOS 的 Apache HTTP Server 控制接口（工具）。 更多信息：. (启动 org.apache.httpd 服务：)",
+    "tags": [
+      "osx",
+      "apachectl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-apachectl-1",
+    "title": "apachectl - 停止已启动的服务：",
+    "content": "apachectl stop",
+    "group": "macOS",
+    "description": "apachectl: 用于 macOS 的 Apache HTTP Server 控制接口（工具）。 更多信息：. (停止已启动的服务：)",
+    "tags": [
+      "osx",
+      "apachectl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-apachectl-2",
+    "title": "apachectl - 重新启动服务：",
+    "content": "apachectl restart",
+    "group": "macOS",
+    "description": "apachectl: 用于 macOS 的 Apache HTTP Server 控制接口（工具）。 更多信息：. (重新启动服务：)",
+    "tags": [
+      "osx",
+      "apachectl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-g[-0",
+    "title": "g[ - 原命令的文档在：",
+    "content": "tldr [",
+    "group": "macOS",
+    "description": "g[: 这是 `[` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "g[",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-glibtoolize-0",
+    "title": "glibtoolize - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux libtoolize",
+    "group": "macOS",
+    "description": "glibtoolize: 这是 `-p linux libtoolize` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "glibtoolize",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-genv-0",
+    "title": "genv - 原命令的文档在：",
+    "content": "tldr env",
+    "group": "macOS",
+    "description": "genv: 这是 `env` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "genv",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-m-0",
+    "title": "m - 获取电池状态：",
+    "content": "m battery status",
+    "group": "macOS",
+    "description": "m: macOS 上的瑞士军刀。 更多信息：. (获取电池状态：)",
+    "tags": [
+      "osx",
+      "m",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-m-1",
+    "title": "m - 关闭蓝牙：",
+    "content": "m bluetooth off",
+    "group": "macOS",
+    "description": "m: macOS 上的瑞士军刀。 更多信息：. (关闭蓝牙：)",
+    "tags": [
+      "osx",
+      "m",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-m-2",
+    "title": "m - 列出可用于格式化的文件系统：",
+    "content": "m disk filesystems",
+    "group": "macOS",
+    "description": "m: macOS 上的瑞士军刀。 更多信息：. (列出可用于格式化的文件系统：)",
+    "tags": [
+      "osx",
+      "m",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-m-3",
+    "title": "m - 启用 Dock（桌面程序坞）的自动隐藏功能：",
+    "content": "m dock autohide YES",
+    "group": "macOS",
+    "description": "m: macOS 上的瑞士军刀。 更多信息：. (启用 Dock（桌面程序坞）的自动隐藏功能：)",
+    "tags": [
+      "osx",
+      "m",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-m-4",
+    "title": "m - 禁用防火墙：",
+    "content": "m firewall disable",
+    "group": "macOS",
+    "description": "m: macOS 上的瑞士军刀。 更多信息：. (禁用防火墙：)",
+    "tags": [
+      "osx",
+      "m",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-dmesg-0",
+    "title": "dmesg - 显示内核消息：",
+    "content": "dmesg",
+    "group": "macOS",
+    "description": "dmesg: 将内核消息写入标准输出。 更多信息：. (显示内核消息：)",
+    "tags": [
+      "osx",
+      "dmesg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-dmesg-1",
+    "title": "dmesg - 显示此系统上有多少可用的物理内存：",
+    "content": "dmesg | grep -i memory",
+    "group": "macOS",
+    "description": "dmesg: 将内核消息写入标准输出。 更多信息：. (显示此系统上有多少可用的物理内存：)",
+    "tags": [
+      "osx",
+      "dmesg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-dmesg-2",
+    "title": "dmesg - 一次显示一页内核消息：",
+    "content": "dmesg | less",
+    "group": "macOS",
+    "description": "dmesg: 将内核消息写入标准输出。 更多信息：. (一次显示一页内核消息：)",
+    "tags": [
+      "osx",
+      "dmesg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sw_vers-0",
+    "title": "sw_vers - 打印所有可用信息（操作系统名称、版本号和构建版本）：",
+    "content": "sw_vers",
+    "group": "macOS",
+    "description": "sw_vers: 打印 macOS 操作系统的版本信息。 更多信息：. (打印所有可用信息（操作系统名称、版本号和构建版本）：)",
+    "tags": [
+      "osx",
+      "sw_vers",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sw_vers-1",
+    "title": "sw_vers - 只打印操作系统的版本号：",
+    "content": "sw_vers -productVersion",
+    "group": "macOS",
+    "description": "sw_vers: 打印 macOS 操作系统的版本信息。 更多信息：. (只打印操作系统的版本号：)",
+    "tags": [
+      "osx",
+      "sw_vers",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sw_vers-2",
+    "title": "sw_vers - 只打印构建版本的标识符：",
+    "content": "sw_vers -buildVersion",
+    "group": "macOS",
+    "description": "sw_vers: 打印 macOS 操作系统的版本信息。 更多信息：. (只打印构建版本的标识符：)",
+    "tags": [
+      "osx",
+      "sw_vers",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-archey-0",
+    "title": "archey - 显示系统信息（彩色的）：",
+    "content": "archey",
+    "group": "macOS",
+    "description": "archey: 漂亮地显示简单系统信息工具。 更多信息：. (显示系统信息（彩色的）：)",
+    "tags": [
+      "osx",
+      "archey",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-archey-1",
+    "title": "archey - 显示系统信息（单色的）：",
+    "content": "archey --nocolor",
+    "group": "macOS",
+    "description": "archey: 漂亮地显示简单系统信息工具。 更多信息：. (显示系统信息（单色的）：)",
+    "tags": [
+      "osx",
+      "archey",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-archey-2",
+    "title": "archey - 显示系统信息，使用 MacPorts（命令行软件安装管理工具 port）来替代 Homebrew（另一种更常用的 mac 命令行软件安装管理工具）：",
+    "content": "archey --macports",
+    "group": "macOS",
+    "description": "archey: 漂亮地显示简单系统信息工具。 更多信息：. (显示系统信息，使用 MacPorts（命令行软件安装管理工具 port）来替代 Homebrew（另一种更常用的 mac 命令行软件安装管理工具）：)",
+    "tags": [
+      "osx",
+      "archey",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-archey-3",
+    "title": "archey - 显示系统信息，但不进行 IP 地址获取和验证：",
+    "content": "archey --offline",
+    "group": "macOS",
+    "description": "archey: 漂亮地显示简单系统信息工具。 更多信息：. (显示系统信息，但不进行 IP 地址获取和验证：)",
+    "tags": [
+      "osx",
+      "archey",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gusers-0",
+    "title": "gusers - 原命令的文档在：",
+    "content": "tldr users",
+    "group": "macOS",
+    "description": "gusers: 这是 `users` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gusers",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gbasenc-0",
+    "title": "gbasenc - 原命令的文档在：",
+    "content": "tldr basenc",
+    "group": "macOS",
+    "description": "gbasenc: 这是 `basenc` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gbasenc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-glibtool-0",
+    "title": "glibtool - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux libtool",
+    "group": "macOS",
+    "description": "glibtool: 这是 `-p linux libtool` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "glibtool",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gvdir-0",
+    "title": "gvdir - 原命令的文档在：",
+    "content": "tldr vdir",
+    "group": "macOS",
+    "description": "gvdir: 这是 `vdir` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gvdir",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-top-0",
+    "title": "top - 执行 top 命令，界面中提供所有选项：",
+    "content": "top",
+    "group": "macOS",
+    "description": "top: 显示运行进程的动态实时信息。 更多信息：. (执行 top 命令，界面中提供所有选项：)",
+    "tags": [
+      "osx",
+      "top",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-top-1",
+    "title": "top - 按内部内存大小排序进程（默认顺序 - 进程 ID）：",
+    "content": "top -o mem",
+    "group": "macOS",
+    "description": "top: 显示运行进程的动态实时信息。 更多信息：. (按内部内存大小排序进程（默认顺序 - 进程 ID）：)",
+    "tags": [
+      "osx",
+      "top",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-top-2",
+    "title": "top - 首先按 CPU 启动顺序排序进程，然后按运行时间排序：",
+    "content": "top -o cpu -O time",
+    "group": "macOS",
+    "description": "top: 显示运行进程的动态实时信息。 更多信息：. (首先按 CPU 启动顺序排序进程，然后按运行时间排序：)",
+    "tags": [
+      "osx",
+      "top",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-top-3",
+    "title": "top - 只显示给定用户拥有的进程：",
+    "content": "top -user {{用户名}}",
+    "group": "macOS",
+    "description": "top: 显示运行进程的动态实时信息。 更多信息：. (只显示给定用户拥有的进程：)",
+    "tags": [
+      "osx",
+      "top",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-top-4",
+    "title": "top - 获取有关交互式命令的帮助（我测试并没看到这个功能）：",
+    "content": "<?>",
+    "group": "macOS",
+    "description": "top: 显示运行进程的动态实时信息。 更多信息：. (获取有关交互式命令的帮助（我测试并没看到这个功能）：)",
+    "tags": [
+      "osx",
+      "top",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-ditto-0",
+    "title": "ditto - 用源目录的内容覆盖目标目录的内容：",
+    "content": "ditto {{源文件路径}} {{目标文件路径}}",
+    "group": "macOS",
+    "description": "ditto: 复制文件和目录。 更多信息：. (用源目录的内容覆盖目标目录的内容：)",
+    "tags": [
+      "osx",
+      "ditto",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-ditto-1",
+    "title": "ditto - 为复制的每个文件打印一行到终端窗口：",
+    "content": "ditto -V {{源文件路径}} {{目标文件路径}}",
+    "group": "macOS",
+    "description": "ditto: 复制文件和目录。 更多信息：. (为复制的每个文件打印一行到终端窗口：)",
+    "tags": [
+      "osx",
+      "ditto",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-ditto-2",
+    "title": "ditto - 复制给定的文件或目录，同时保留原始文件权限：",
+    "content": "ditto -rsrc {{源文件路径}} {{目标文件路径}}",
+    "group": "macOS",
+    "description": "ditto: 复制文件和目录。 更多信息：. (复制给定的文件或目录，同时保留原始文件权限：)",
+    "tags": [
+      "osx",
+      "ditto",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sysctl-0",
+    "title": "sysctl - 显示所有可用变量及其值：",
+    "content": "sysctl -a",
+    "group": "macOS",
+    "description": "sysctl: 访问内核状态信息。 更多信息：. (显示所有可用变量及其值：)",
+    "tags": [
+      "osx",
+      "sysctl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sysctl-1",
+    "title": "sysctl - 显示 Apple 型号标识符：",
+    "content": "sysctl -n hw.model",
+    "group": "macOS",
+    "description": "sysctl: 访问内核状态信息。 更多信息：. (显示 Apple 型号标识符：)",
+    "tags": [
+      "osx",
+      "sysctl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sysctl-2",
+    "title": "sysctl - 显示 CPU 模型：",
+    "content": "sysctl -n machdep.cpu.brand_string",
+    "group": "macOS",
+    "description": "sysctl: 访问内核状态信息。 更多信息：. (显示 CPU 模型：)",
+    "tags": [
+      "osx",
+      "sysctl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sysctl-3",
+    "title": "sysctl - 显示可用的 CPU 功能（MMX, SSE, SSE2, SSE3, AES, 等）：",
+    "content": "sysctl -n machdep.cpu.features",
+    "group": "macOS",
+    "description": "sysctl: 访问内核状态信息。 更多信息：. (显示可用的 CPU 功能（MMX, SSE, SSE2, SSE3, AES, 等）：)",
+    "tags": [
+      "osx",
+      "sysctl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sysctl-4",
+    "title": "sysctl - 设置一个可更改的内核状态变量：",
+    "content": "sysctl -w {{部分。可修改的变量}}={{值}}",
+    "group": "macOS",
+    "description": "sysctl: 访问内核状态信息。 更多信息：. (设置一个可更改的内核状态变量：)",
+    "tags": [
+      "osx",
+      "sysctl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gnl-0",
+    "title": "gnl - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux nl",
+    "group": "macOS",
+    "description": "gnl: 这是 `-p linux nl` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gnl",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gegrep-0",
+    "title": "gegrep - 原命令的文档在：",
+    "content": "tldr egrep",
+    "group": "macOS",
+    "description": "gegrep: 这是 `egrep` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gegrep",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-port-0",
+    "title": "port - 搜索包：",
+    "content": "port search {{搜索的包名}}",
+    "group": "macOS",
+    "description": "port: macOS 包管理器软件（类似 brew）。 更多信息：. (搜索包：)",
+    "tags": [
+      "osx",
+      "port",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-port-1",
+    "title": "port - 安装软件包：",
+    "content": "sudo port install {{报名}}",
+    "group": "macOS",
+    "description": "port: macOS 包管理器软件（类似 brew）。 更多信息：. (安装软件包：)",
+    "tags": [
+      "osx",
+      "port",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-port-2",
+    "title": "port - 列出已安装的软件包：",
+    "content": "port installed",
+    "group": "macOS",
+    "description": "port: macOS 包管理器软件（类似 brew）。 更多信息：. (列出已安装的软件包：)",
+    "tags": [
+      "osx",
+      "port",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-port-3",
+    "title": "port - 更新 port 自身，并获取可用包的最新列表：",
+    "content": "sudo port selfupdate",
+    "group": "macOS",
+    "description": "port: macOS 包管理器软件（类似 brew）。 更多信息：. (更新 port 自身，并获取可用包的最新列表：)",
+    "tags": [
+      "osx",
+      "port",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-port-4",
+    "title": "port - 升级过时的软件包：",
+    "content": "sudo port upgrade outdated",
+    "group": "macOS",
+    "description": "port: macOS 包管理器软件（类似 brew）。 更多信息：. (升级过时的软件包：)",
+    "tags": [
+      "osx",
+      "port",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-port-5",
+    "title": "port - 删除已安装的软件包的旧版本：",
+    "content": "sudo port uninstall inactive",
+    "group": "macOS",
+    "description": "port: macOS 包管理器软件（类似 brew）。 更多信息：. (删除已安装的软件包的旧版本：)",
+    "tags": [
+      "osx",
+      "port",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-ged-0",
+    "title": "ged - 原命令的文档在：",
+    "content": "tldr ed",
+    "group": "macOS",
+    "description": "ged: 这是 `ed` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "ged",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-system_profiler-0",
+    "title": "system_profiler - 显示可由 System Profiler.app 打开的完整系统资源报告：",
+    "content": "system_profiler -xml > MyReport.spx",
+    "group": "macOS",
+    "description": "system_profiler: 报告系统硬件和软件配置。 更多信息：. (显示可由 System Profiler.app 打开的完整系统资源报告：)",
+    "tags": [
+      "osx",
+      "system_profiler",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-system_profiler-1",
+    "title": "system_profiler - 显示硬件概述（型号、CPU、内存、串行等）：",
+    "content": "system_profiler SPHardwareDataType",
+    "group": "macOS",
+    "description": "system_profiler: 报告系统硬件和软件配置。 更多信息：. (显示硬件概述（型号、CPU、内存、串行等）：)",
+    "tags": [
+      "osx",
+      "system_profiler",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-system_profiler-2",
+    "title": "system_profiler - 打印系统序列号：",
+    "content": "system_profiler SPHardwareDataType|grep \"Serial Number (system)\" |awk '{print $4}'",
+    "group": "macOS",
+    "description": "system_profiler: 报告系统硬件和软件配置。 更多信息：. (打印系统序列号：)",
+    "tags": [
+      "osx",
+      "system_profiler",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-istats-0",
+    "title": "istats - 显示所有的统计数据：",
+    "content": "istats",
+    "group": "macOS",
+    "description": "istats: 一个显示 CPU 温度、风扇速度和电池状态等统计数据的命令行工具。 更多信息：. (显示所有的统计数据：)",
+    "tags": [
+      "osx",
+      "istats",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-istats-1",
+    "title": "istats - 显示所有 CPU 的统计数据：",
+    "content": "istats cpu",
+    "group": "macOS",
+    "description": "istats: 一个显示 CPU 温度、风扇速度和电池状态等统计数据的命令行工具。 更多信息：. (显示所有 CPU 的统计数据：)",
+    "tags": [
+      "osx",
+      "istats",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-istats-2",
+    "title": "istats - 显示所有风扇的统计数据：",
+    "content": "istats fan",
+    "group": "macOS",
+    "description": "istats: 一个显示 CPU 温度、风扇速度和电池状态等统计数据的命令行工具。 更多信息：. (显示所有风扇的统计数据：)",
+    "tags": [
+      "osx",
+      "istats",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-istats-3",
+    "title": "istats - 扫描和打印温度：",
+    "content": "istats scan",
+    "group": "macOS",
+    "description": "istats: 一个显示 CPU 温度、风扇速度和电池状态等统计数据的命令行工具。 更多信息：. (扫描和打印温度：)",
+    "tags": [
+      "osx",
+      "istats",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-glogger-0",
+    "title": "glogger - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux logger",
+    "group": "macOS",
+    "description": "glogger: 这是 `-p linux logger` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "glogger",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-codesign-0",
+    "title": "codesign - 用证书签名：",
+    "content": "codesign --sign \"{{公司名称}}\" {{路径 / 应用名.app}}",
+    "group": "macOS",
+    "description": "codesign: 为 macOS 的应用程序签名。 更多信息：. (用证书签名：)",
+    "tags": [
+      "osx",
+      "codesign",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-codesign-1",
+    "title": "codesign - 验证应用程序的签名：",
+    "content": "codesign --verify {{路径 / 应用名.app}}",
+    "group": "macOS",
+    "description": "codesign: 为 macOS 的应用程序签名。 更多信息：. (验证应用程序的签名：)",
+    "tags": [
+      "osx",
+      "codesign",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gcp-0",
+    "title": "gcp - 原命令的文档在：",
+    "content": "tldr cp",
+    "group": "macOS",
+    "description": "gcp: 这是 `cp` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gcp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-carthage-0",
+    "title": "carthage - 下载 Cartfile 中提到的所有依赖项的最新版本，并编译它们：",
+    "content": "carthage update",
+    "group": "macOS",
+    "description": "carthage: Cocoa 应用程序的依赖性管理工具。 更多信息：. (下载 Cartfile 中提到的所有依赖项的最新版本，并编译它们：)",
+    "tags": [
+      "osx",
+      "carthage",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-carthage-1",
+    "title": "carthage - 仅针对 IOS 平台，升级依赖文件：",
+    "content": "carthage update --platform ios",
+    "group": "macOS",
+    "description": "carthage: Cocoa 应用程序的依赖性管理工具。 更多信息：. (仅针对 IOS 平台，升级依赖文件：)",
+    "tags": [
+      "osx",
+      "carthage",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-carthage-2",
+    "title": "carthage - 仅更新依赖，但不编译它们：",
+    "content": "carthage update --no-build",
+    "group": "macOS",
+    "description": "carthage: Cocoa 应用程序的依赖性管理工具。 更多信息：. (仅更新依赖，但不编译它们：)",
+    "tags": [
+      "osx",
+      "carthage",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-carthage-3",
+    "title": "carthage - 下载并重新生成依赖项的当前版本（不更新它们）：",
+    "content": "carthage bootstrap",
+    "group": "macOS",
+    "description": "carthage: Cocoa 应用程序的依赖性管理工具。 更多信息：. (下载并重新生成依赖项的当前版本（不更新它们）：)",
+    "tags": [
+      "osx",
+      "carthage",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-carthage-4",
+    "title": "carthage - 重新编译特定依赖项：",
+    "content": "carthage build {{依赖包}}",
+    "group": "macOS",
+    "description": "carthage: Cocoa 应用程序的依赖性管理工具。 更多信息：. (重新编译特定依赖项：)",
+    "tags": [
+      "osx",
+      "carthage",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gshuf-0",
+    "title": "gshuf - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} coomon shuf",
+    "group": "macOS",
+    "description": "gshuf: 这是 `shuf` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gshuf",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gmktemp-0",
+    "title": "gmktemp - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux mktemp",
+    "group": "macOS",
+    "description": "gmktemp: 这是 `-p linux mktemp` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gmktemp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-softwareupdate-0",
+    "title": "softwareupdate - 列出所有可用的更新：",
+    "content": "softwareupdate --list",
+    "group": "macOS",
+    "description": "softwareupdate: 通过命令行更新 macOS 应用商店中应用程序的工具。 更多信息：. (列出所有可用的更新：)",
+    "tags": [
+      "osx",
+      "softwareupdate",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-softwareupdate-1",
+    "title": "softwareupdate - 下载并安装所有更新：",
+    "content": "softwareupdate --install --all",
+    "group": "macOS",
+    "description": "softwareupdate: 通过命令行更新 macOS 应用商店中应用程序的工具。 更多信息：. (下载并安装所有更新：)",
+    "tags": [
+      "osx",
+      "softwareupdate",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-softwareupdate-2",
+    "title": "softwareupdate - 下载并安装所有推荐的更新：",
+    "content": "softwareupdate --install --recommended",
+    "group": "macOS",
+    "description": "softwareupdate: 通过命令行更新 macOS 应用商店中应用程序的工具。 更多信息：. (下载并安装所有推荐的更新：)",
+    "tags": [
+      "osx",
+      "softwareupdate",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-softwareupdate-3",
+    "title": "softwareupdate - 下载并安装特定的应用程序：",
+    "content": "softwareupdate --install {{更新应用程序名}}",
+    "group": "macOS",
+    "description": "softwareupdate: 通过命令行更新 macOS 应用商店中应用程序的工具。 更多信息：. (下载并安装特定的应用程序：)",
+    "tags": [
+      "osx",
+      "softwareupdate",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-airport-0",
+    "title": "airport - 显示当前的无线状态信息：",
+    "content": "airport --getinfo",
+    "group": "macOS",
+    "description": "airport: 无线网络配置工具。 更多信息：. (显示当前的无线状态信息：)",
+    "tags": [
+      "osx",
+      "airport",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-airport-1",
+    "title": "airport - 在通道 1 上监察（嗅探）无线流量：",
+    "content": "airport sniff {{1}}",
+    "group": "macOS",
+    "description": "airport: 无线网络配置工具。 更多信息：. (在通道 1 上监察（嗅探）无线流量：)",
+    "tags": [
+      "osx",
+      "airport",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-airport-2",
+    "title": "airport - 扫描可用的无线网络：",
+    "content": "airport --scan",
+    "group": "macOS",
+    "description": "airport: 无线网络配置工具。 更多信息：. (扫描可用的无线网络：)",
+    "tags": [
+      "osx",
+      "airport",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-airport-3",
+    "title": "airport - 与当前的 Airport 网络脱离连接：",
+    "content": "sudo airport --disassociate",
+    "group": "macOS",
+    "description": "airport: 无线网络配置工具。 更多信息：. (与当前的 Airport 网络脱离连接：)",
+    "tags": [
+      "osx",
+      "airport",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gupdatedb-0",
+    "title": "gupdatedb - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux updatedb",
+    "group": "macOS",
+    "description": "gupdatedb: 这是 `-p linux updatedb` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gupdatedb",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-ipconfig-0",
+    "title": "ipconfig - 列出所有的网卡：",
+    "content": "ipconfig getiflist",
+    "group": "macOS",
+    "description": "ipconfig: 查看和编辑网卡信息. 更多信息：. (列出所有的网卡：)",
+    "tags": [
+      "osx",
+      "ipconfig",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-ipconfig-1",
+    "title": "ipconfig - 获取特定网卡的地址信息：",
+    "content": "ipconfig getifaddr {{接口名称}}",
+    "group": "macOS",
+    "description": "ipconfig: 查看和编辑网卡信息. 更多信息：. (获取特定网卡的地址信息：)",
+    "tags": [
+      "osx",
+      "ipconfig",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gfmt-0",
+    "title": "gfmt - 原命令的文档在：",
+    "content": "tldr fmt",
+    "group": "macOS",
+    "description": "gfmt: 这是 `fmt` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gfmt",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gsha256sum-0",
+    "title": "gsha256sum - 原命令的文档在：",
+    "content": "tldr sha256sum",
+    "group": "macOS",
+    "description": "gsha256sum: 这是 `sha256sum` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gsha256sum",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gunits-0",
+    "title": "gunits - 原命令的文档在：",
+    "content": "tldr units",
+    "group": "macOS",
+    "description": "gunits: 这是 `units` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gunits",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gb2sum-0",
+    "title": "gb2sum - 原命令的文档在：",
+    "content": "tldr b2sum",
+    "group": "macOS",
+    "description": "gb2sum: 这是 `b2sum` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gb2sum",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-shutdown-0",
+    "title": "shutdown - 立即关机：",
+    "content": "shutdown -h now",
+    "group": "macOS",
+    "description": "shutdown: 关闭并重新启动系统。 更多信息：. (立即关机：)",
+    "tags": [
+      "osx",
+      "shutdown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-shutdown-1",
+    "title": "shutdown - 立即休眠：",
+    "content": "shutdown -s now",
+    "group": "macOS",
+    "description": "shutdown: 关闭并重新启动系统。 更多信息：. (立即休眠：)",
+    "tags": [
+      "osx",
+      "shutdown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-shutdown-2",
+    "title": "shutdown - 立即重启：",
+    "content": "shutdown -r now",
+    "group": "macOS",
+    "description": "shutdown: 关闭并重新启动系统。 更多信息：. (立即重启：)",
+    "tags": [
+      "osx",
+      "shutdown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-shutdown-3",
+    "title": "shutdown - 倒计时 5 分钟重启：",
+    "content": "shutdown -r \"+{{5}}\"",
+    "group": "macOS",
+    "description": "shutdown: 关闭并重新启动系统。 更多信息：. (倒计时 5 分钟重启：)",
+    "tags": [
+      "osx",
+      "shutdown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-shutdown-4",
+    "title": "shutdown - 在下午 1:00（使用 24 小时时钟）关机：",
+    "content": "shutdown -h {{1300}}",
+    "group": "macOS",
+    "description": "shutdown: 关闭并重新启动系统。 更多信息：. (在下午 1:00（使用 24 小时时钟）关机：)",
+    "tags": [
+      "osx",
+      "shutdown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-shutdown-5",
+    "title": "shutdown - 在 2042 年 5 月 10 日上午 11:30 重新启动（输入格式：年年月月日日时时分分）：",
+    "content": "shutdown -r {{4205101130}}",
+    "group": "macOS",
+    "description": "shutdown: 关闭并重新启动系统。 更多信息：. (在 2042 年 5 月 10 日上午 11:30 重新启动（输入格式：年年月月日日时时分分）：)",
+    "tags": [
+      "osx",
+      "shutdown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-grlogin-0",
+    "title": "grlogin - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux rlogin",
+    "group": "macOS",
+    "description": "grlogin: 这是 `-p linux rlogin` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "grlogin",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gfold-0",
+    "title": "gfold - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux fold",
+    "group": "macOS",
+    "description": "gfold: 这是 `-p linux fold` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gfold",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-ghostname-0",
+    "title": "ghostname - 原命令的文档在：",
+    "content": "tldr hostname",
+    "group": "macOS",
+    "description": "ghostname: 这是 `hostname` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "ghostname",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gpaste-0",
+    "title": "gpaste - 原命令的文档在：",
+    "content": "tldr paste",
+    "group": "macOS",
+    "description": "gpaste: 这是 `paste` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gpaste",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gwhois-0",
+    "title": "gwhois - 原命令的文档在：",
+    "content": "tldr whois",
+    "group": "macOS",
+    "description": "gwhois: 这是 `whois` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gwhois",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gtr-0",
+    "title": "gtr - 原命令的文档在：",
+    "content": "tldr tr",
+    "group": "macOS",
+    "description": "gtr: 这是 `tr` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gtr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gexpr-0",
+    "title": "gexpr - 原命令的文档在：",
+    "content": "tldr expr",
+    "group": "macOS",
+    "description": "gexpr: 这是 `expr` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gexpr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-locate-0",
+    "title": "locate - 在数据库中查找关键字。注意：数据库定期重新更新（通常每周或每天）：",
+    "content": "locate \"{{关键字}}\"",
+    "group": "macOS",
+    "description": "locate: 快速查找文件名。 更多信息：. (在数据库中查找关键字。注意：数据库定期重新更新（通常每周或每天）：)",
+    "tags": [
+      "osx",
+      "locate",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-locate-1",
+    "title": "locate - 按文件名查找文件（不包含填充字符的模式被解释为 `*关键字*`）：",
+    "content": "locate */{{文件名}}",
+    "group": "macOS",
+    "description": "locate: 快速查找文件名。 更多信息：. (按文件名查找文件（不包含填充字符的模式被解释为 `*关键字*`）：)",
+    "tags": [
+      "osx",
+      "locate",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-locate-2",
+    "title": "locate - 重新建立文件数据索引数据库。如果要查找最近添加的文件，则需要执行此操作：",
+    "content": "sudo /usr/libexec/locate.updatedb",
+    "group": "macOS",
+    "description": "locate: 快速查找文件名。 更多信息：. (重新建立文件数据索引数据库。如果要查找最近添加的文件，则需要执行此操作：)",
+    "tags": [
+      "osx",
+      "locate",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gln-0",
+    "title": "gln - 原命令的文档在：",
+    "content": "tldr ln",
+    "group": "macOS",
+    "description": "gln: 这是 `ln` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gln",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-md5-0",
+    "title": "md5 - 计算一个文件的 MD5 校验值：",
+    "content": "md5 {{路径/到/文件}}",
+    "group": "macOS",
+    "description": "md5: 计算 MD5 加密和校验。 更多信息：. (计算一个文件的 MD5 校验值：)",
+    "tags": [
+      "osx",
+      "md5",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-md5-1",
+    "title": "md5 - 计算多个文件的 MD5 校验值：",
+    "content": "md5 {{路径/到/文件1 路径/到/文件2 ...}}",
+    "group": "macOS",
+    "description": "md5: 计算 MD5 加密和校验。 更多信息：. (计算多个文件的 MD5 校验值：)",
+    "tags": [
+      "osx",
+      "md5",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-md5-2",
+    "title": "md5 - 仅输出 MD5 校验值（无文件名）：",
+    "content": "md5 -q {{路径/到/文件}}",
+    "group": "macOS",
+    "description": "md5: 计算 MD5 加密和校验。 更多信息：. (仅输出 MD5 校验值（无文件名）：)",
+    "tags": [
+      "osx",
+      "md5",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-md5-3",
+    "title": "md5 - 打印给定字符串的 MD5 校验值：",
+    "content": "md5 -s \"{{字符串}}\"",
+    "group": "macOS",
+    "description": "md5: 计算 MD5 加密和校验。 更多信息：. (打印给定字符串的 MD5 校验值：)",
+    "tags": [
+      "osx",
+      "md5",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-say-0",
+    "title": "say - 大声说出一个句子：",
+    "content": "say \"{{我喜欢骑脚踏车。}}\"",
+    "group": "macOS",
+    "description": "say: 将文本转换为语音。 更多信息：. (大声说出一个句子：)",
+    "tags": [
+      "osx",
+      "say",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-say-1",
+    "title": "say - 播放文本文件内容音频：",
+    "content": "say --input-file {{文件名.txt}}",
+    "group": "macOS",
+    "description": "say: 将文本转换为语音。 更多信息：. (播放文本文件内容音频：)",
+    "tags": [
+      "osx",
+      "say",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-say-2",
+    "title": "say - 用自定义的语音和语音速率说出一个句子：",
+    "content": "say --voice {{语音库名}} --rate {{每分钟多少词}} \"{{戴夫，我很抱歉，我不能让你那么干。}}\"",
+    "group": "macOS",
+    "description": "say: 将文本转换为语音。 更多信息：. (用自定义的语音和语音速率说出一个句子：)",
+    "tags": [
+      "osx",
+      "say",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-say-3",
+    "title": "say - 列出可用的语音库（不同的语音用于不同的语言）：",
+    "content": "say --voice \"?\"",
+    "group": "macOS",
+    "description": "say: 将文本转换为语音。 更多信息：. (列出可用的语音库（不同的语音用于不同的语言）：)",
+    "tags": [
+      "osx",
+      "say",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-say-4",
+    "title": "say - 用波兰语说一个句子：",
+    "content": "say --voice {{Zosia}} \"{{Litwo, ojczyzno moja!}}\"",
+    "group": "macOS",
+    "description": "say: 将文本转换为语音。 更多信息：. (用波兰语说一个句子：)",
+    "tags": [
+      "osx",
+      "say",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-say-5",
+    "title": "say - 创建文本的音频文件：",
+    "content": "say --output-file {{文件名.aiff}} \"{{献给疯狂的人们。}}\"",
+    "group": "macOS",
+    "description": "say: 将文本转换为语音。 更多信息：. (创建文本的音频文件：)",
+    "tags": [
+      "osx",
+      "say",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gptx-0",
+    "title": "gptx - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux ptx",
+    "group": "macOS",
+    "description": "gptx: 这是 `-p linux ptx` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gptx",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-look-0",
+    "title": "look - 它开始寻找一个给定的前缀：",
+    "content": "look {{前缀}} {{文件}}",
+    "group": "macOS",
+    "description": "look: 查找已排序的文件行（注意，必须是已排序的文件）。 更多信息：. (它开始寻找一个给定的前缀：)",
+    "tags": [
+      "osx",
+      "look",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-look-1",
+    "title": "look - 查找行，忽略大小写：",
+    "content": "look {{[-f|--ignore-case]}} {{前缀}} {{文件}}",
+    "group": "macOS",
+    "description": "look: 查找已排序的文件行（注意，必须是已排序的文件）。 更多信息：. (查找行，忽略大小写：)",
+    "tags": [
+      "osx",
+      "look",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-grm-0",
+    "title": "grm - 原命令的文档在：",
+    "content": "tldr rm",
+    "group": "macOS",
+    "description": "grm: 这是 `rm` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "grm",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-stat-0",
+    "title": "stat - 显示文件属性，如大小、权限、创建和访问日期等：",
+    "content": "stat {{文件}}",
+    "group": "macOS",
+    "description": "stat: 显示文件状态。 更多信息：. (显示文件属性，如大小、权限、创建和访问日期等：)",
+    "tags": [
+      "osx",
+      "stat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-stat-1",
+    "title": "stat - 与上面相同，但更详细（更类似于 Linux 的 `stat`）：",
+    "content": "stat -x {{文件}}",
+    "group": "macOS",
+    "description": "stat: 显示文件状态。 更多信息：. (与上面相同，但更详细（更类似于 Linux 的 `stat`）：)",
+    "tags": [
+      "osx",
+      "stat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-stat-2",
+    "title": "stat - 只显示文件权限：",
+    "content": "stat -f %Mp%Lp {{文件}}",
+    "group": "macOS",
+    "description": "stat: 显示文件状态。 更多信息：. (只显示文件权限：)",
+    "tags": [
+      "osx",
+      "stat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-stat-3",
+    "title": "stat - 显示文件的所有者和所属组：",
+    "content": "stat -f \"%Su %Sg\" {{文件}}",
+    "group": "macOS",
+    "description": "stat: 显示文件状态。 更多信息：. (显示文件的所有者和所属组：)",
+    "tags": [
+      "osx",
+      "stat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-stat-4",
+    "title": "stat - 以字节为单位显示文件的大小：",
+    "content": "stat -f \"%z %N\" {{文件}}",
+    "group": "macOS",
+    "description": "stat: 显示文件状态。 更多信息：. (以字节为单位显示文件的大小：)",
+    "tags": [
+      "osx",
+      "stat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gtest-0",
+    "title": "gtest - 原命令的文档在：",
+    "content": "tldr test",
+    "group": "macOS",
+    "description": "gtest: 这是 `test` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gtest",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sed-0",
+    "title": "sed - 替换文件中第一个出现的字符串，并打印结果：",
+    "content": "sed 's/{{查找内容}}/{{替换内容}}/' {{文件名}}",
+    "group": "macOS",
+    "description": "sed: 以可用脚本的来批量编辑文本。 更多信息：. (替换文件中第一个出现的字符串，并打印结果：)",
+    "tags": [
+      "osx",
+      "sed",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sed-1",
+    "title": "sed - 替换文件中所有符合正则表达式的部分：",
+    "content": "sed -E 's/{{正则表达式}}/{{替换内容}}/g' {{文件名}}",
+    "group": "macOS",
+    "description": "sed: 以可用脚本的来批量编辑文本。 更多信息：. (替换文件中所有符合正则表达式的部分：)",
+    "tags": [
+      "osx",
+      "sed",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sed-2",
+    "title": "sed - 替换文件中所有出现的字符串，覆盖文件（直接覆盖文件）：",
+    "content": "sed --in-place='' 's/{{查找内容}}/{{替换内容}}/g' {{文件名}}",
+    "group": "macOS",
+    "description": "sed: 以可用脚本的来批量编辑文本。 更多信息：. (替换文件中所有出现的字符串，覆盖文件（直接覆盖文件）：)",
+    "tags": [
+      "osx",
+      "sed",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sed-3",
+    "title": "sed - 仅替换与行模式（一种搜索条件）匹配的行内容：",
+    "content": "sed '/{{行模式}}/s/{{查找内容}}/{{替换内容}}/' {{文件名}}",
+    "group": "macOS",
+    "description": "sed: 以可用脚本的来批量编辑文本。 更多信息：. (仅替换与行模式（一种搜索条件）匹配的行内容：)",
+    "tags": [
+      "osx",
+      "sed",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sed-4",
+    "title": "sed - 只打印第 n 行到下一行之间的文本：",
+    "content": "sed -n '{{行号}},/^$/p' {{文件名}}",
+    "group": "macOS",
+    "description": "sed: 以可用脚本的来批量编辑文本。 更多信息：. (只打印第 n 行到下一行之间的文本：)",
+    "tags": [
+      "osx",
+      "sed",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sed-5",
+    "title": "sed - 将多个查找替换表达式应用于文件：",
+    "content": "sed -e 's/{{查找内容}}/{{替换内容}}/' -e 's/{{查找内容}}/{{替换内容}}/' {{文件名}}",
+    "group": "macOS",
+    "description": "sed: 以可用脚本的来批量编辑文本。 更多信息：. (将多个查找替换表达式应用于文件：)",
+    "tags": [
+      "osx",
+      "sed",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sed-6",
+    "title": "sed - 将分隔符 / 替换为查找或替换模式中没有用到的的任何其他字符，例如 #（用于查找或替换内容中使用了 / 的情况）：",
+    "content": "sed 's#{{查找内容}}#{{替换内容}}#' {{文件名}}",
+    "group": "macOS",
+    "description": "sed: 以可用脚本的来批量编辑文本。 更多信息：. (将分隔符 / 替换为查找或替换模式中没有用到的的任何其他字符，例如 #（用于查找或替换内容中使用了 / 的情况）：)",
+    "tags": [
+      "osx",
+      "sed",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gtrue-0",
+    "title": "gtrue - 原命令的文档在：",
+    "content": "tldr true",
+    "group": "macOS",
+    "description": "gtrue: 这是 `true` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gtrue",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-god-0",
+    "title": "god - 原命令的文档在：",
+    "content": "tldr od",
+    "group": "macOS",
+    "description": "god: 这是 `od` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "god",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gtelnet-0",
+    "title": "gtelnet - 原命令的文档在：",
+    "content": "tldr telnet",
+    "group": "macOS",
+    "description": "gtelnet: 这是 `telnet` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gtelnet",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gstat-0",
+    "title": "gstat - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} common stat",
+    "group": "macOS",
+    "description": "gstat: 这是 `stat` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gstat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-uname-0",
+    "title": "uname - 打印内核名称：",
+    "content": "uname",
+    "group": "macOS",
+    "description": "uname: 打印当前计算机及其上运行的操作系统的详细信息。 注意：有关操作系统的其他信息，请尝试使用 `sw-vers` 命令。 更多信息：. (打印内核名称：)",
+    "tags": [
+      "osx",
+      "uname",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-uname-1",
+    "title": "uname - 打印系统架构和处理器信息：",
+    "content": "uname -mp",
+    "group": "macOS",
+    "description": "uname: 打印当前计算机及其上运行的操作系统的详细信息。 注意：有关操作系统的其他信息，请尝试使用 `sw-vers` 命令。 更多信息：. (打印系统架构和处理器信息：)",
+    "tags": [
+      "osx",
+      "uname",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-uname-2",
+    "title": "uname - 打印内核名称、内核版本号和内核版本详细信息：",
+    "content": "uname -srv",
+    "group": "macOS",
+    "description": "uname: 打印当前计算机及其上运行的操作系统的详细信息。 注意：有关操作系统的其他信息，请尝试使用 `sw-vers` 命令。 更多信息：. (打印内核名称、内核版本号和内核版本详细信息：)",
+    "tags": [
+      "osx",
+      "uname",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-uname-3",
+    "title": "uname - 打印系统主机名：",
+    "content": "uname -n",
+    "group": "macOS",
+    "description": "uname: 打印当前计算机及其上运行的操作系统的详细信息。 注意：有关操作系统的其他信息，请尝试使用 `sw-vers` 命令。 更多信息：. (打印系统主机名：)",
+    "tags": [
+      "osx",
+      "uname",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-uname-4",
+    "title": "uname - 打印所有可用的系统信息：",
+    "content": "uname -a",
+    "group": "macOS",
+    "description": "uname: 打印当前计算机及其上运行的操作系统的详细信息。 注意：有关操作系统的其他信息，请尝试使用 `sw-vers` 命令。 更多信息：. (打印所有可用的系统信息：)",
+    "tags": [
+      "osx",
+      "uname",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gcksum-0",
+    "title": "gcksum - 原命令的文档在：",
+    "content": "tldr cksum",
+    "group": "macOS",
+    "description": "gcksum: 这是 `cksum` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gcksum",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-wifi-password-0",
+    "title": "wifi-password - 获取你当前登录的 Wi-Fi 的密码：",
+    "content": "wifi-password",
+    "group": "macOS",
+    "description": "wifi-password: 获取 Wi-Fi 的密码。 更多信息：. (获取你当前登录的 Wi-Fi 的密码：)",
+    "tags": [
+      "osx",
+      "wifi-password",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-wifi-password-1",
+    "title": "wifi-password - 获取特定 SSID 的 Wi-Fi 的密码：",
+    "content": "wifi-password {{ssid}}",
+    "group": "macOS",
+    "description": "wifi-password: 获取 Wi-Fi 的密码。 更多信息：. (获取特定 SSID 的 Wi-Fi 的密码：)",
+    "tags": [
+      "osx",
+      "wifi-password",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-wifi-password-2",
+    "title": "wifi-password - 仅输出密码：",
+    "content": "wifi-password -q",
+    "group": "macOS",
+    "description": "wifi-password: 获取 Wi-Fi 的密码。 更多信息：. (仅输出密码：)",
+    "tags": [
+      "osx",
+      "wifi-password",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-dd-0",
+    "title": "dd - 从 isohybrid 文件（如 archlinux-xxx.iso）制作可用于引导系统启动的 USB 驱动器：",
+    "content": "dd if={{文件.iso}} of={{/dev/usb 设备}}",
+    "group": "macOS",
+    "description": "dd: 转换并复制文件。 更多信息：. (从 isohybrid 文件（如 archlinux-xxx.iso）制作可用于引导系统启动的 USB 驱动器：)",
+    "tags": [
+      "osx",
+      "dd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-dd-1",
+    "title": "dd - 将驱动器克隆到具有 4MB 块的另一个驱动器并忽略错误：",
+    "content": "dd bs=4m conv=noerror if={{/dev/源设备}} of={{/dev/目标设备}}",
+    "group": "macOS",
+    "description": "dd: 转换并复制文件。 更多信息：. (将驱动器克隆到具有 4MB 块的另一个驱动器并忽略错误：)",
+    "tags": [
+      "osx",
+      "dd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-dd-2",
+    "title": "dd - 使用内核随机驱动程序生成指定数量个随机字节的文件：",
+    "content": "dd bs={{100}} count={{1}} if=/dev/urandom of={{目标驱动器，接收随机数据文件名}}",
+    "group": "macOS",
+    "description": "dd: 转换并复制文件。 更多信息：. (使用内核随机驱动程序生成指定数量个随机字节的文件：)",
+    "tags": [
+      "osx",
+      "dd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-dd-3",
+    "title": "dd - 对磁盘的写入性能进行基准测试：",
+    "content": "dd bs={{1024}} count={{1000000}} if=/dev/zero of={{1GB 的文件名}}",
+    "group": "macOS",
+    "description": "dd: 转换并复制文件。 更多信息：. (对磁盘的写入性能进行基准测试：)",
+    "tags": [
+      "osx",
+      "dd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-drutil-0",
+    "title": "drutil - 从驱动器中弹出磁盘：",
+    "content": "drutil eject",
+    "group": "macOS",
+    "description": "drutil: 与 DVD 刻录机交互。 更多信息：. (从驱动器中弹出磁盘：)",
+    "tags": [
+      "osx",
+      "drutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-drutil-1",
+    "title": "drutil - 将目录作为 iso9660 文件系统刻录到 DVD 上。完成后不验证和弹出：",
+    "content": "drutil burn -noverify -eject -iso9660",
+    "group": "macOS",
+    "description": "drutil: 与 DVD 刻录机交互。 更多信息：. (将目录作为 iso9660 文件系统刻录到 DVD 上。完成后不验证和弹出：)",
+    "tags": [
+      "osx",
+      "drutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gnice-0",
+    "title": "gnice - 原命令的文档在：",
+    "content": "tldr nice",
+    "group": "macOS",
+    "description": "gnice: 这是 `nice` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gnice",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gchgrp-0",
+    "title": "gchgrp - 原命令的文档在：",
+    "content": "tldr chgrp",
+    "group": "macOS",
+    "description": "gchgrp: 这是 `chgrp` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gchgrp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gxargs-0",
+    "title": "gxargs - 原命令的文档在：",
+    "content": "tldr xargs",
+    "group": "macOS",
+    "description": "gxargs: 这是 `xargs` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gxargs",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gtimeout-0",
+    "title": "gtimeout - 原命令的文档在：",
+    "content": "tldr timeout",
+    "group": "macOS",
+    "description": "gtimeout: 这是 `timeout` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gtimeout",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gruncon-0",
+    "title": "gruncon - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux runcon",
+    "group": "macOS",
+    "description": "gruncon: 这是 `-p linux runcon` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gruncon",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-opensnoop-0",
+    "title": "opensnoop - 输出当前系统内被打开的所有文件：",
+    "content": "sudo opensnoop",
+    "group": "macOS",
+    "description": "opensnoop: 跟踪系统中打开的文件标识符。 更多信息：. (输出当前系统内被打开的所有文件：)",
+    "tags": [
+      "osx",
+      "opensnoop",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-opensnoop-1",
+    "title": "opensnoop - 跟踪给定进程名，打开的所有文件：",
+    "content": "sudo opensnoop -n \"{{进程名}}\"",
+    "group": "macOS",
+    "description": "opensnoop: 跟踪系统中打开的文件标识符。 更多信息：. (跟踪给定进程名，打开的所有文件：)",
+    "tags": [
+      "osx",
+      "opensnoop",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-opensnoop-2",
+    "title": "opensnoop - 跟踪给定 PID（进程号），打开的所有文件：",
+    "content": "sudo opensnoop -p {{PID 进程号}}",
+    "group": "macOS",
+    "description": "opensnoop: 跟踪系统中打开的文件标识符。 更多信息：. (跟踪给定 PID（进程号），打开的所有文件：)",
+    "tags": [
+      "osx",
+      "opensnoop",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-opensnoop-3",
+    "title": "opensnoop - 跟踪打开了指定文件的继承：",
+    "content": "sudo opensnoop -f {{路径 / 文件}}",
+    "group": "macOS",
+    "description": "opensnoop: 跟踪系统中打开的文件标识符。 更多信息：. (跟踪打开了指定文件的继承：)",
+    "tags": [
+      "osx",
+      "opensnoop",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-chflags-0",
+    "title": "chflags - 给文件设置 hidden（隐藏）标签：",
+    "content": "chflags {{hidden}} {{文件路径}}",
+    "group": "macOS",
+    "description": "chflags: 更改文件或文件夹的标志。 更多信息：. (给文件设置 hidden（隐藏）标签：)",
+    "tags": [
+      "osx",
+      "chflags",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-chflags-1",
+    "title": "chflags - 取消文件的 hidden 标签：",
+    "content": "chflags {{hidden}} {{文件路径}}",
+    "group": "macOS",
+    "description": "chflags: 更改文件或文件夹的标志。 更多信息：. (取消文件的 hidden 标签：)",
+    "tags": [
+      "osx",
+      "chflags",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-chflags-2",
+    "title": "chflags - 递归地给文件夹中每个文件设置 uchg 标志：",
+    "content": "chflags -R {{uchg}} {{文件夹路径}}",
+    "group": "macOS",
+    "description": "chflags: 更改文件或文件夹的标志。 更多信息：. (递归地给文件夹中每个文件设置 uchg 标志：)",
+    "tags": [
+      "osx",
+      "chflags",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-chflags-3",
+    "title": "chflags - 递归地撤销文件夹中每个文件设置的 uchg 标志：",
+    "content": "chflags -R {{nouchg}} {{文件夹路径}}",
+    "group": "macOS",
+    "description": "chflags: 更改文件或文件夹的标志。 更多信息：. (递归地撤销文件夹中每个文件设置的 uchg 标志：)",
+    "tags": [
+      "osx",
+      "chflags",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-qlmanage-0",
+    "title": "qlmanage - 快速显示一个或多个文件：",
+    "content": "qlmanage -p {{路径/到/文件1 路径/到/文件2 ...}}",
+    "group": "macOS",
+    "description": "qlmanage: QuickLook 服务器工具。 更多信息：. (快速显示一个或多个文件：)",
+    "tags": [
+      "osx",
+      "qlmanage",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-qlmanage-1",
+    "title": "qlmanage - 计算生成当前目录中所有 JPEG 文件的缩略图，300px 宽 PNG 格式，并将它们放在一个指定目录中：",
+    "content": "qlmanage {{*.jpg}} -t -s {{300}} {{指定目录}}",
+    "group": "macOS",
+    "description": "qlmanage: QuickLook 服务器工具。 更多信息：. (计算生成当前目录中所有 JPEG 文件的缩略图，300px 宽 PNG 格式，并将它们放在一个指定目录中：)",
+    "tags": [
+      "osx",
+      "qlmanage",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-qlmanage-2",
+    "title": "qlmanage - 重置快速查看：",
+    "content": "qlmanage -r",
+    "group": "macOS",
+    "description": "qlmanage: QuickLook 服务器工具。 更多信息：. (重置快速查看：)",
+    "tags": [
+      "osx",
+      "qlmanage",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-greadlink-0",
+    "title": "greadlink - 原命令的文档在：",
+    "content": "tldr readlink",
+    "group": "macOS",
+    "description": "greadlink: 这是 `readlink` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "greadlink",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gcat-0",
+    "title": "gcat - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux cat",
+    "group": "macOS",
+    "description": "gcat: 这是 `-p linux cat` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gcat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gprintf-0",
+    "title": "gprintf - 原命令的文档在：",
+    "content": "tldr printf",
+    "group": "macOS",
+    "description": "gprintf: 这是 `printf` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gprintf",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gindent-0",
+    "title": "gindent - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} common indent",
+    "group": "macOS",
+    "description": "gindent: 这是 `indent` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gindent",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gtouch-0",
+    "title": "gtouch - 原命令的文档在：",
+    "content": "tldr touch",
+    "group": "macOS",
+    "description": "gtouch: 这是 `touch` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gtouch",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gdircolors-0",
+    "title": "gdircolors - 原命令的文档在：",
+    "content": "tldr dircolors",
+    "group": "macOS",
+    "description": "gdircolors: 这是 `dircolors` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gdircolors",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-defaults-0",
+    "title": "defaults - 读取应用程序选项的系统默认值：",
+    "content": "defaults read {{应用名}} {{选项}}",
+    "group": "macOS",
+    "description": "defaults: 读取和写入 macOS 应用程序的用户配置。 更多信息：. (读取应用程序选项的系统默认值：)",
+    "tags": [
+      "osx",
+      "defaults",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-defaults-1",
+    "title": "defaults - 读取应用程序选项的默认值：",
+    "content": "defaults read -app {{应用名}} {{选项}}",
+    "group": "macOS",
+    "description": "defaults: 读取和写入 macOS 应用程序的用户配置。 更多信息：. (读取应用程序选项的默认值：)",
+    "tags": [
+      "osx",
+      "defaults",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-defaults-2",
+    "title": "defaults - 写入应用程序选项的默认值：",
+    "content": "defaults write {{应用名}} {{选项}} {{- 类型}} {{值}}",
+    "group": "macOS",
+    "description": "defaults: 读取和写入 macOS 应用程序的用户配置。 更多信息：. (写入应用程序选项的默认值：)",
+    "tags": [
+      "osx",
+      "defaults",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-defaults-3",
+    "title": "defaults - 加速任务控制界面弹出动画（时间设置为 0.1）：",
+    "content": "defaults write com.apple.Dock expose-animation-duration -float 0.1",
+    "group": "macOS",
+    "description": "defaults: 读取和写入 macOS 应用程序的用户配置。 更多信息：. (加速任务控制界面弹出动画（时间设置为 0.1）：)",
+    "tags": [
+      "osx",
+      "defaults",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-defaults-4",
+    "title": "defaults - 删除应用程序的所有默认值：",
+    "content": "defaults delete {{应用名}}",
+    "group": "macOS",
+    "description": "defaults: 读取和写入 macOS 应用程序的用户配置。 更多信息：. (删除应用程序的所有默认值：)",
+    "tags": [
+      "osx",
+      "defaults",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-systemsetup-0",
+    "title": "systemsetup - 启用远程登录（SSH）：",
+    "content": "systemsetup -setremotelogin on",
+    "group": "macOS",
+    "description": "systemsetup: 配置系统首选项计算机设置。 更多信息：. (启用远程登录（SSH）：)",
+    "tags": [
+      "osx",
+      "systemsetup",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-systemsetup-1",
+    "title": "systemsetup - 指定时区、NTP 服务器并启用网络时间：",
+    "content": "systemsetup -settimezone \"{{美国 / 太平洋}}\" -setnetworktimeserver {{us.pool.ntp.org}} -setusingnetworktime on",
+    "group": "macOS",
+    "description": "systemsetup: 配置系统首选项计算机设置。 更多信息：. (指定时区、NTP 服务器并启用网络时间：)",
+    "tags": [
+      "osx",
+      "systemsetup",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-systemsetup-2",
+    "title": "systemsetup - 使机器从不休眠，并在电源故障或内核死机时自动重新启动：",
+    "content": "systemsetup -setsleep off -setrestartpowerfailure on -setrestartfreeze on",
+    "group": "macOS",
+    "description": "systemsetup: 配置系统首选项计算机设置。 更多信息：. (使机器从不休眠，并在电源故障或内核死机时自动重新启动：)",
+    "tags": [
+      "osx",
+      "systemsetup",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-systemsetup-3",
+    "title": "systemsetup - disks 选择启动：",
+    "content": "systemsetup -liststartupdisks",
+    "group": "macOS",
+    "description": "systemsetup: 配置系统首选项计算机设置。 更多信息：. (disks 选择启动：)",
+    "tags": [
+      "osx",
+      "systemsetup",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-systemsetup-4",
+    "title": "systemsetup - 指定新的启动盘：",
+    "content": "systemsetup -setstartupdisk {{路径}}",
+    "group": "macOS",
+    "description": "systemsetup: 配置系统首选项计算机设置。 更多信息：. (指定新的启动盘：)",
+    "tags": [
+      "osx",
+      "systemsetup",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gchown-0",
+    "title": "gchown - 原命令的文档在：",
+    "content": "tldr chown",
+    "group": "macOS",
+    "description": "gchown: 这是 `chown` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gchown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gpr-0",
+    "title": "gpr - 原命令的文档在：",
+    "content": "tldr pr",
+    "group": "macOS",
+    "description": "gpr: 这是 `pr` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gpr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gkill-0",
+    "title": "gkill - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux kill",
+    "group": "macOS",
+    "description": "gkill: 这是 `-p linux kill` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gkill",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-wacaw-0",
+    "title": "wacaw - 从网络摄像机拍照：",
+    "content": "wacaw {{文件名}}",
+    "group": "macOS",
+    "description": "wacaw: 一个用于 macOS 的小命令行工具，允许您从连接的摄像头捕获静止图片和视频。 更多信息：. (从网络摄像机拍照：)",
+    "tags": [
+      "osx",
+      "wacaw",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-wacaw-1",
+    "title": "wacaw - 录制视频：",
+    "content": "wacaw --video {{文件名}} --duration {{录制多少秒}}",
+    "group": "macOS",
+    "description": "wacaw: 一个用于 macOS 的小命令行工具，允许您从连接的摄像头捕获静止图片和视频。 更多信息：. (录制视频：)",
+    "tags": [
+      "osx",
+      "wacaw",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-wacaw-2",
+    "title": "wacaw - 用自定义分辨率拍照：",
+    "content": "wacaw --width {{宽}} --height {{高}} {{文件名}}",
+    "group": "macOS",
+    "description": "wacaw: 一个用于 macOS 的小命令行工具，允许您从连接的摄像头捕获静止图片和视频。 更多信息：. (用自定义分辨率拍照：)",
+    "tags": [
+      "osx",
+      "wacaw",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-wacaw-3",
+    "title": "wacaw - 将刚拍摄的图像复制到剪贴板：",
+    "content": "wacaw --to-clipboard",
+    "group": "macOS",
+    "description": "wacaw: 一个用于 macOS 的小命令行工具，允许您从连接的摄像头捕获静止图片和视频。 更多信息：. (将刚拍摄的图像复制到剪贴板：)",
+    "tags": [
+      "osx",
+      "wacaw",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-wacaw-4",
+    "title": "wacaw - 可用设备列表：",
+    "content": "wacaw --list-devices",
+    "group": "macOS",
+    "description": "wacaw: 一个用于 macOS 的小命令行工具，允许您从连接的摄像头捕获静止图片和视频。 更多信息：. (可用设备列表：)",
+    "tags": [
+      "osx",
+      "wacaw",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gchcon-0",
+    "title": "gchcon - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux chcon",
+    "group": "macOS",
+    "description": "gchcon: 这是 `-p linux chcon` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gchcon",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gnohup-0",
+    "title": "gnohup - 原命令的文档在：",
+    "content": "tldr nohup",
+    "group": "macOS",
+    "description": "gnohup: 这是 `nohup` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gnohup",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gshred-0",
+    "title": "gshred - 原命令的文档在：",
+    "content": "tldr shred",
+    "group": "macOS",
+    "description": "gshred: 这是 `shred` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gshred",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gmv-0",
+    "title": "gmv - 原命令的文档在：",
+    "content": "tldr mv",
+    "group": "macOS",
+    "description": "gmv: 这是 `mv` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gmv",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gfalse-0",
+    "title": "gfalse - 原命令的文档在：",
+    "content": "tldr false",
+    "group": "macOS",
+    "description": "gfalse: 这是 `false` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gfalse",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gdd-0",
+    "title": "gdd - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux dd",
+    "group": "macOS",
+    "description": "gdd: 这是 `-p linux dd` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gdd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gmake-0",
+    "title": "gmake - 原命令的文档在：",
+    "content": "tldr make",
+    "group": "macOS",
+    "description": "gmake: 这是 `make` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gmake",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-xctool-0",
+    "title": "xctool - 在没有任何工作区的情况下生成单个项目：",
+    "content": "xctool -project {{你的项目.名称}} -scheme {{方案}} build",
+    "group": "macOS",
+    "description": "xctool: 用于构建 Xcode 项目的工具。 更多信息：. (在没有任何工作区的情况下生成单个项目：)",
+    "tags": [
+      "osx",
+      "xctool",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-xctool-1",
+    "title": "xctool - 构建属于工作区的项目：",
+    "content": "xctool -workspace {{你的工作区.名字}} -scheme {{方案}} build",
+    "group": "macOS",
+    "description": "xctool: 用于构建 Xcode 项目的工具。 更多信息：. (构建属于工作区的项目：)",
+    "tags": [
+      "osx",
+      "xctool",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-xctool-2",
+    "title": "xctool - 清理、构建和执行所有测试：",
+    "content": "xctool -workspace {{你的工作区.名字}} -scheme {{方案}} clean build test",
+    "group": "macOS",
+    "description": "xctool: 用于构建 Xcode 项目的工具。 更多信息：. (清理、构建和执行所有测试：)",
+    "tags": [
+      "osx",
+      "xctool",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gnproc-0",
+    "title": "gnproc - 原命令的文档在：",
+    "content": "tldr nproc",
+    "group": "macOS",
+    "description": "gnproc: 这是 `nproc` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gnproc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sips-0",
+    "title": "sips - S 指定一个输出目录，这样原始文件就不会被修改：",
+    "content": "sips --out {{目标 / 文件夹 / 输出文件夹}}",
+    "group": "macOS",
+    "description": "sips: 苹果的处理文件脚本系统。 光栅 / 查询图像 和 颜色同步 ICC 配置文件。 更多信息：. (S 指定一个输出目录，这样原始文件就不会被修改：)",
+    "tags": [
+      "osx",
+      "sips",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sips-1",
+    "title": "sips - 以指定的大小对图像重新采样，图像纵横比可能会更改：",
+    "content": "sips --resampleHeightWidth {{1920}} {{300}} {{图片文件。扩展名}}",
+    "group": "macOS",
+    "description": "sips: 苹果的处理文件脚本系统。 光栅 / 查询图像 和 颜色同步 ICC 配置文件。 更多信息：. (以指定的大小对图像重新采样，图像纵横比可能会更改：)",
+    "tags": [
+      "osx",
+      "sips",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sips-2",
+    "title": "sips - 对图像重新取样，使高度和宽度不大于指定的大小（注意大写 Z）：",
+    "content": "sips --resampleHeightWidthMax {{1920}} {{300}} {{图片文件。扩展名}}",
+    "group": "macOS",
+    "description": "sips: 苹果的处理文件脚本系统。 光栅 / 查询图像 和 颜色同步 ICC 配置文件。 更多信息：. (对图像重新取样，使高度和宽度不大于指定的大小（注意大写 Z）：)",
+    "tags": [
+      "osx",
+      "sips",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sips-3",
+    "title": "sips - 对目录中的所有图像重新取样，以适应 960px 的宽度（保持纵横比）：",
+    "content": "sips --resampleWidth {{960}} {{目标 / 文件夹 / 所有图片文件}}",
+    "group": "macOS",
+    "description": "sips: 苹果的处理文件脚本系统。 光栅 / 查询图像 和 颜色同步 ICC 配置文件。 更多信息：. (对目录中的所有图像重新取样，以适应 960px 的宽度（保持纵横比）：)",
+    "tags": [
+      "osx",
+      "sips",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sips-4",
+    "title": "sips - 将图像从 CMYK 转换为 RGB：",
+    "content": "sips --matchTo \"/System/Library/ColorSync/Profiles/Generic RGB Profile.icc\" {{目标 / 文件夹 / 图片。扩展}} {{目标 / 文件夹 / 输出文件夹}}",
+    "group": "macOS",
+    "description": "sips: 苹果的处理文件脚本系统。 光栅 / 查询图像 和 颜色同步 ICC 配置文件。 更多信息：. (将图像从 CMYK 转换为 RGB：)",
+    "tags": [
+      "osx",
+      "sips",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-sips-5",
+    "title": "sips - 从图像中删除 ColorSync ICC 配置：",
+    "content": "sips --deleteProperty profile --deleteColorManagementProperties {{目标 / 文件夹 / 图片。扩展}}",
+    "group": "macOS",
+    "description": "sips: 苹果的处理文件脚本系统。 光栅 / 查询图像 和 颜色同步 ICC 配置文件。 更多信息：. (从图像中删除 ColorSync ICC 配置：)",
+    "tags": [
+      "osx",
+      "sips",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gecho-0",
+    "title": "gecho - 原命令的文档在：",
+    "content": "tldr echo",
+    "group": "macOS",
+    "description": "gecho: 这是 `echo` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gecho",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gchroot-0",
+    "title": "gchroot - 原命令的文档在：",
+    "content": "tldr chroot",
+    "group": "macOS",
+    "description": "gchroot: 这是 `chroot` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gchroot",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-ginstall-0",
+    "title": "ginstall - 原命令的文档在：",
+    "content": "tldr install",
+    "group": "macOS",
+    "description": "ginstall: 这是 `install` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "ginstall",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-fsck-0",
+    "title": "fsck - 检查文件系统 /dev/sda，报告损坏的块：",
+    "content": "fsck {{/dev/sda}}",
+    "group": "macOS",
+    "description": "fsck: 检查或修复文件系统的完整性，运行命令时应卸载文件系统。 它是一个包装器，包含 `fsck_hfs`, `fsck_apfs`, `fsck_msdos`, `fsck_exfat`, `fsck_udf` 作为可选。 更多信息：. (检查文件系统 /dev/sda，报告损坏的块：)",
+    "tags": [
+      "osx",
+      "fsck",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-fsck-1",
+    "title": "fsck - 仅当文件系统 /dev/sda 是干净的时才检查它，报告任何损坏的块并以交互方式让用户选择修复每个块：",
+    "content": "fsck -f {{/dev/sda}}",
+    "group": "macOS",
+    "description": "fsck: 检查或修复文件系统的完整性，运行命令时应卸载文件系统。 它是一个包装器，包含 `fsck_hfs`, `fsck_apfs`, `fsck_msdos`, `fsck_exfat`, `fsck_udf` 作为可选。 更多信息：. (仅当文件系统 /dev/sda 是干净的时才检查它，报告任何损坏的块并以交互方式让用户选择修复每个块：)",
+    "tags": [
+      "osx",
+      "fsck",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-fsck-2",
+    "title": "fsck - 仅当文件系统 /dev/sda 干净时才检查它，报告任何损坏的块并自动修复它们：",
+    "content": "fsck -fy {{/dev/sda}}",
+    "group": "macOS",
+    "description": "fsck: 检查或修复文件系统的完整性，运行命令时应卸载文件系统。 它是一个包装器，包含 `fsck_hfs`, `fsck_apfs`, `fsck_msdos`, `fsck_exfat`, `fsck_udf` 作为可选。 更多信息：. (仅当文件系统 /dev/sda 干净时才检查它，报告任何损坏的块并自动修复它们：)",
+    "tags": [
+      "osx",
+      "fsck",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-fsck-3",
+    "title": "fsck - 检查文件系统 /dev/sda, 报告是否已完全卸载：",
+    "content": "fsck -q {{/dev/sda}}",
+    "group": "macOS",
+    "description": "fsck: 检查或修复文件系统的完整性，运行命令时应卸载文件系统。 它是一个包装器，包含 `fsck_hfs`, `fsck_apfs`, `fsck_msdos`, `fsck_exfat`, `fsck_udf` 作为可选。 更多信息：. (检查文件系统 /dev/sda, 报告是否已完全卸载：)",
+    "tags": [
+      "osx",
+      "fsck",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-mdutil-0",
+    "title": "mdutil - 显示指定卷（'/'）的索引状态：",
+    "content": "mdutil -s {{/}}",
+    "group": "macOS",
+    "description": "mdutil: 管理 Spotlight（聚焦搜索）用于搜索的索引数据。 更多信息：. (显示指定卷（'/'）的索引状态：)",
+    "tags": [
+      "osx",
+      "mdutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-mdutil-1",
+    "title": "mdutil - 打开 / 关闭给定卷的 Spotlight 索引：",
+    "content": "mdutil -i {{on|off}} {{指定卷文件夹}}",
+    "group": "macOS",
+    "description": "mdutil: 管理 Spotlight（聚焦搜索）用于搜索的索引数据。 更多信息：. (打开 / 关闭给定卷的 Spotlight 索引：)",
+    "tags": [
+      "osx",
+      "mdutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-mdutil-2",
+    "title": "mdutil - 清除索引数据并重新建立索引：",
+    "content": "mdutil -E {{指定卷文件夹}}",
+    "group": "macOS",
+    "description": "mdutil: 管理 Spotlight（聚焦搜索）用于搜索的索引数据。 更多信息：. (清除索引数据并重新建立索引：)",
+    "tags": [
+      "osx",
+      "mdutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-diskutil-0",
+    "title": "diskutil - 列出所有当前可用的磁盘、分区和已装入的卷：",
+    "content": "diskutil list",
+    "group": "macOS",
+    "description": "diskutil: 用于管理本地磁盘和卷的实用程序。 更多信息：. (列出所有当前可用的磁盘、分区和已装入的卷：)",
+    "tags": [
+      "osx",
+      "diskutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-diskutil-1",
+    "title": "diskutil - 修复卷的文件系统数据结构：",
+    "content": "diskutil repairVolume {{目标卷文件}}",
+    "group": "macOS",
+    "description": "diskutil: 用于管理本地磁盘和卷的实用程序。 更多信息：. (修复卷的文件系统数据结构：)",
+    "tags": [
+      "osx",
+      "diskutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-diskutil-2",
+    "title": "diskutil - 卸载卷：",
+    "content": "diskutil unmountDisk {{目标卷文件}}",
+    "group": "macOS",
+    "description": "diskutil: 用于管理本地磁盘和卷的实用程序。 更多信息：. (卸载卷：)",
+    "tags": [
+      "osx",
+      "diskutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-diskutil-3",
+    "title": "diskutil - 弹出 CD/DVD（先卸载）：",
+    "content": "diskutil eject {{/dev/ 光驱文件名}}",
+    "group": "macOS",
+    "description": "diskutil: 用于管理本地磁盘和卷的实用程序。 更多信息：. (弹出 CD/DVD（先卸载）：)",
+    "tags": [
+      "osx",
+      "diskutil",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-pmset-0",
+    "title": "pmset - 显示当前电源管理设置：",
+    "content": "pmset -g",
+    "group": "macOS",
+    "description": "pmset: 配置 macOS 电源管理设置，就像在系统首选项 > 节能程序中一样。 修改设置的命令必须以 `sudo` 开头。 更多信息：. (显示当前电源管理设置：)",
+    "tags": [
+      "osx",
+      "pmset",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-pmset-1",
+    "title": "pmset - 显示当前电源和电池电量：",
+    "content": "pmset -g batt",
+    "group": "macOS",
+    "description": "pmset: 配置 macOS 电源管理设置，就像在系统首选项 > 节能程序中一样。 修改设置的命令必须以 `sudo` 开头。 更多信息：. (显示当前电源和电池电量：)",
+    "tags": [
+      "osx",
+      "pmset",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-pmset-2",
+    "title": "pmset - 立即让显示器进入休眠状态：",
+    "content": "pmset displaysleepnow",
+    "group": "macOS",
+    "description": "pmset: 配置 macOS 电源管理设置，就像在系统首选项 > 节能程序中一样。 修改设置的命令必须以 `sudo` 开头。 更多信息：. (立即让显示器进入休眠状态：)",
+    "tags": [
+      "osx",
+      "pmset",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-pmset-3",
+    "title": "pmset - 当充电器通电时，将显示器设置为从不休眠：",
+    "content": "sudo pmset -c displaysleep 0",
+    "group": "macOS",
+    "description": "pmset: 配置 macOS 电源管理设置，就像在系统首选项 > 节能程序中一样。 修改设置的命令必须以 `sudo` 开头。 更多信息：. (当充电器通电时，将显示器设置为从不休眠：)",
+    "tags": [
+      "osx",
+      "pmset",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-pmset-4",
+    "title": "pmset - 使用电池电源 15 分钟后将显示器设置为休眠：",
+    "content": "sudo pmset -b displaysleep 15",
+    "group": "macOS",
+    "description": "pmset: 配置 macOS 电源管理设置，就像在系统首选项 > 节能程序中一样。 修改设置的命令必须以 `sudo` 开头。 更多信息：. (使用电池电源 15 分钟后将显示器设置为休眠：)",
+    "tags": [
+      "osx",
+      "pmset",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-pmset-5",
+    "title": "pmset - 安排计算机在每个工作日上午 9 点自动唤醒：",
+    "content": "sudo pmset repeat wake MTWRF 09:00:00",
+    "group": "macOS",
+    "description": "pmset: 配置 macOS 电源管理设置，就像在系统首选项 > 节能程序中一样。 修改设置的命令必须以 `sudo` 开头。 更多信息：. (安排计算机在每个工作日上午 9 点自动唤醒：)",
+    "tags": [
+      "osx",
+      "pmset",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-pmset-6",
+    "title": "pmset - 还原为系统默认值：",
+    "content": "sudo pmset -a displaysleep 10 disksleep 10 sleep 30 womp 1",
+    "group": "macOS",
+    "description": "pmset: 配置 macOS 电源管理设置，就像在系统首选项 > 节能程序中一样。 修改设置的命令必须以 `sudo` 开头。 更多信息：. (还原为系统默认值：)",
+    "tags": [
+      "osx",
+      "pmset",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-afinfo-0",
+    "title": "afinfo - 显示给定音频文件的详细信息：",
+    "content": "afinfo {{路径/到/文件}}",
+    "group": "macOS",
+    "description": "afinfo: 显示音频文件元数据（Metadata）详细信息（OS X）。 OS X 自带命令。 更多信息：. (显示给定音频文件的详细信息：)",
+    "tags": [
+      "osx",
+      "afinfo",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-afinfo-1",
+    "title": "afinfo - 显示简化的音频文件信息（单行）：",
+    "content": "afinfo --brief {{路径/到/文件}}",
+    "group": "macOS",
+    "description": "afinfo: 显示音频文件元数据（Metadata）详细信息（OS X）。 OS X 自带命令。 更多信息：. (显示简化的音频文件信息（单行）：)",
+    "tags": [
+      "osx",
+      "afinfo",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-afinfo-2",
+    "title": "afinfo - 显示音频文件的元数据信息以及其 InfoDictionary 词典：",
+    "content": "afinfo --info {{路径/到/文件}}",
+    "group": "macOS",
+    "description": "afinfo: 显示音频文件元数据（Metadata）详细信息（OS X）。 OS X 自带命令。 更多信息：. (显示音频文件的元数据信息以及其 InfoDictionary 词典：)",
+    "tags": [
+      "osx",
+      "afinfo",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-afinfo-3",
+    "title": "afinfo - 以 xml 格式显示音频文件信息：",
+    "content": "afinfo --xml {{路径/到/文件}}",
+    "group": "macOS",
+    "description": "afinfo: 显示音频文件元数据（Metadata）详细信息（OS X）。 OS X 自带命令。 更多信息：. (以 xml 格式显示音频文件信息：)",
+    "tags": [
+      "osx",
+      "afinfo",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-afinfo-4",
+    "title": "afinfo - 显示警告信息（如存在）：",
+    "content": "afinfo --warnings {{路径/到/文件}}",
+    "group": "macOS",
+    "description": "afinfo: 显示音频文件元数据（Metadata）详细信息（OS X）。 OS X 自带命令。 更多信息：. (显示警告信息（如存在）：)",
+    "tags": [
+      "osx",
+      "afinfo",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-afinfo-5",
+    "title": "afinfo - 显示完整用法帮助：",
+    "content": "afinfo --help",
+    "group": "macOS",
+    "description": "afinfo: 显示音频文件元数据（Metadata）详细信息（OS X）。 OS X 自带命令。 更多信息：. (显示完整用法帮助：)",
+    "tags": [
+      "osx",
+      "afinfo",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-w-0",
+    "title": "w - 显示登录用户信息：",
+    "content": "w",
+    "group": "macOS",
+    "description": "w: 显示谁登录以及他们在做什么。 打印用户登录、tty、远程主机、登录时间、空闲时间、当前进程。 更多信息：. (显示登录用户信息：)",
+    "tags": [
+      "osx",
+      "w",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-w-1",
+    "title": "w - 显示没有标题的登录用户信息：",
+    "content": "w -h",
+    "group": "macOS",
+    "description": "w: 显示谁登录以及他们在做什么。 打印用户登录、tty、远程主机、登录时间、空闲时间、当前进程。 更多信息：. (显示没有标题的登录用户信息：)",
+    "tags": [
+      "osx",
+      "w",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-w-2",
+    "title": "w - 显示有关已登录用户的信息，按其空闲时间排序：",
+    "content": "w -i",
+    "group": "macOS",
+    "description": "w: 显示谁登录以及他们在做什么。 打印用户登录、tty、远程主机、登录时间、空闲时间、当前进程。 更多信息：. (显示有关已登录用户的信息，按其空闲时间排序：)",
+    "tags": [
+      "osx",
+      "w",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gunlink-0",
+    "title": "gunlink - 原命令的文档在：",
+    "content": "tldr unlink",
+    "group": "macOS",
+    "description": "gunlink: 这是 `unlink` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gunlink",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gmkdir-0",
+    "title": "gmkdir - 原命令的文档在：",
+    "content": "tldr mkdir",
+    "group": "macOS",
+    "description": "gmkdir: 这是 `mkdir` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gmkdir",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gbasename-0",
+    "title": "gbasename - 原命令的文档在：",
+    "content": "tldr basename",
+    "group": "macOS",
+    "description": "gbasename: 这是 `basename` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gbasename",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-guniq-0",
+    "title": "guniq - 原命令的文档在：",
+    "content": "tldr uniq",
+    "group": "macOS",
+    "description": "guniq: 这是 `uniq` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "guniq",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gwho-0",
+    "title": "gwho - 原命令的文档在：",
+    "content": "tldr who",
+    "group": "macOS",
+    "description": "gwho: 这是 `who` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gwho",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gsha224sum-0",
+    "title": "gsha224sum - 原命令的文档在：",
+    "content": "tldr sha224sum",
+    "group": "macOS",
+    "description": "gsha224sum: 这是 `sha224sum` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gsha224sum",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gmkfifo-0",
+    "title": "gmkfifo - 原命令的文档在：",
+    "content": "tldr mkfifo",
+    "group": "macOS",
+    "description": "gmkfifo: 这是 `mkfifo` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gmkfifo",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gcsplit-0",
+    "title": "gcsplit - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux csplit",
+    "group": "macOS",
+    "description": "gcsplit: 这是 `-p linux csplit` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gcsplit",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gexpand-0",
+    "title": "gexpand - 原命令的文档在：",
+    "content": "tldr expand",
+    "group": "macOS",
+    "description": "gexpand: 这是 `expand` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gexpand",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-grexec-0",
+    "title": "grexec - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux rexec",
+    "group": "macOS",
+    "description": "grexec: 这是 `-p linux rexec` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "grexec",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gnumfmt-0",
+    "title": "gnumfmt - 原命令的文档在：",
+    "content": "tldr numfmt",
+    "group": "macOS",
+    "description": "gnumfmt: 这是 `numfmt` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gnumfmt",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-xattr-0",
+    "title": "xattr - 列出 键：值 列表，显示指定文件的值扩展属性：",
+    "content": "xattr -l {{文件名}}",
+    "group": "macOS",
+    "description": "xattr: 用于扩展文件系统属性的实用程序。 更多信息：. (列出 键：值 列表，显示指定文件的值扩展属性：)",
+    "tags": [
+      "osx",
+      "xattr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-xattr-1",
+    "title": "xattr - 为给定文件写入属性：",
+    "content": "xattr -w {{属性键名}} {{属性值}} {{文件名}}",
+    "group": "macOS",
+    "description": "xattr: 用于扩展文件系统属性的实用程序。 更多信息：. (为给定文件写入属性：)",
+    "tags": [
+      "osx",
+      "xattr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-xattr-2",
+    "title": "xattr - 从给定文件中删除属性：",
+    "content": "xattr -d {{com.apple.quarantine}} {{文件名}}",
+    "group": "macOS",
+    "description": "xattr: 用于扩展文件系统属性的实用程序。 更多信息：. (从给定文件中删除属性：)",
+    "tags": [
+      "osx",
+      "xattr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-xattr-3",
+    "title": "xattr - 从给定文件中删除所有扩展属性：",
+    "content": "xattr -c {{文件名}}",
+    "group": "macOS",
+    "description": "xattr: 用于扩展文件系统属性的实用程序。 更多信息：. (从给定文件中删除所有扩展属性：)",
+    "tags": [
+      "osx",
+      "xattr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-xattr-4",
+    "title": "xattr - 递归删除给定目录中文件的属性：",
+    "content": "xattr -rd {{属性键名}} {{目录}}",
+    "group": "macOS",
+    "description": "xattr: 用于扩展文件系统属性的实用程序。 更多信息：. (递归删除给定目录中文件的属性：)",
+    "tags": [
+      "osx",
+      "xattr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gtalk-0",
+    "title": "gtalk - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux talk",
+    "group": "macOS",
+    "description": "gtalk: 这是 `-p linux talk` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gtalk",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gsha1sum-0",
+    "title": "gsha1sum - 原命令的文档在：",
+    "content": "tldr sha1sum",
+    "group": "macOS",
+    "description": "gsha1sum: 这是 `sha1sum` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gsha1sum",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-lldb-0",
+    "title": "lldb - 调试可执行文件：",
+    "content": "lldb \"{{可执行的命令}}\"",
+    "group": "macOS",
+    "description": "lldb: LLVM 低级调试器。 更多信息：. (调试可执行文件：)",
+    "tags": [
+      "osx",
+      "lldb",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-lldb-1",
+    "title": "lldb - 将 `lldb` 附加到具有给定 PID 的正在运行的进程：",
+    "content": "lldb -p {{进程号 PID}}",
+    "group": "macOS",
+    "description": "lldb: LLVM 低级调试器。 更多信息：. (将 `lldb` 附加到具有给定 PID 的正在运行的进程：)",
+    "tags": [
+      "osx",
+      "lldb",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-lldb-2",
+    "title": "lldb - 等待使用给定名称的进程启动，然后附加到该进程上：",
+    "content": "lldb -w -n \"{{进程名}}\"",
+    "group": "macOS",
+    "description": "lldb: LLVM 低级调试器。 更多信息：. (等待使用给定名称的进程启动，然后附加到该进程上：)",
+    "tags": [
+      "osx",
+      "lldb",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-ping-0",
+    "title": "ping - Ping 指定的主机：",
+    "content": "ping \"{{主机}}\"",
+    "group": "macOS",
+    "description": "ping: 向网络主机发送 ICMP 回显请求数据包。 更多信息：. (Ping 指定的主机：)",
+    "tags": [
+      "osx",
+      "ping",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-ping-1",
+    "title": "ping - 对主机执行指定定次数的 ping 操作：",
+    "content": "ping -c {{次数}} \"{{主机}}\"",
+    "group": "macOS",
+    "description": "ping: 向网络主机发送 ICMP 回显请求数据包。 更多信息：. (对主机执行指定定次数的 ping 操作：)",
+    "tags": [
+      "osx",
+      "ping",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-ping-2",
+    "title": "ping - Ping 主机 , 指定请求之间的间隔（以秒为单位）（默认为 1 秒）：",
+    "content": "ping -i {{秒}} \"{{主机}}\"",
+    "group": "macOS",
+    "description": "ping: 向网络主机发送 ICMP 回显请求数据包。 更多信息：. (Ping 主机 , 指定请求之间的间隔（以秒为单位）（默认为 1 秒）：)",
+    "tags": [
+      "osx",
+      "ping",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-ping-3",
+    "title": "ping - Ping 主机, 但不尝试查找地址的符号名：",
+    "content": "ping -n \"{{主机}}\"",
+    "group": "macOS",
+    "description": "ping: 向网络主机发送 ICMP 回显请求数据包。 更多信息：. (Ping 主机, 但不尝试查找地址的符号名：)",
+    "tags": [
+      "osx",
+      "ping",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-ping-4",
+    "title": "ping - Ping 主机 并在收到数据包时响铃（如果您的终端支持）：",
+    "content": "ping -a \"{{主机}}\"",
+    "group": "macOS",
+    "description": "ping: 向网络主机发送 ICMP 回显请求数据包。 更多信息：. (Ping 主机 并在收到数据包时响铃（如果您的终端支持）：)",
+    "tags": [
+      "osx",
+      "ping",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-ping-5",
+    "title": "ping - Ping 主机 并打印接收数据包的时间（此选项是 Apple 的附加项）：",
+    "content": "ping --apple-time \"{{主机}}\"",
+    "group": "macOS",
+    "description": "ping: 向网络主机发送 ICMP 回显请求数据包。 更多信息：. (Ping 主机 并打印接收数据包的时间（此选项是 Apple 的附加项）：)",
+    "tags": [
+      "osx",
+      "ping",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gtftp-0",
+    "title": "gtftp - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux tftp",
+    "group": "macOS",
+    "description": "gtftp: 这是 `-p linux tftp` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gtftp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gbase64-0",
+    "title": "gbase64 - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} common base64",
+    "group": "macOS",
+    "description": "gbase64: 这是 `base64` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gbase64",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gcomm-0",
+    "title": "gcomm - 原命令的文档在：",
+    "content": "tldr comm",
+    "group": "macOS",
+    "description": "gcomm: 这是 `comm` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gcomm",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-date-0",
+    "title": "date - 使用默认区域设置的格式显示当前日期：",
+    "content": "date +%c",
+    "group": "macOS",
+    "description": "date: 设置或显示系统日期。 更多信息：. (使用默认区域设置的格式显示当前日期：)",
+    "tags": [
+      "osx",
+      "date",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-date-1",
+    "title": "date - 以 UTC 和 ISO 8601 格式显示当前日期：",
+    "content": "date -u +%Y-%m-%dT%H:%M:%SZ",
+    "group": "macOS",
+    "description": "date: 设置或显示系统日期。 更多信息：. (以 UTC 和 ISO 8601 格式显示当前日期：)",
+    "tags": [
+      "osx",
+      "date",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-date-2",
+    "title": "date - 将当前日期显示为 unix 时间戳（自 1970-01-01 00:00:00 以来的秒数）：",
+    "content": "date +%s",
+    "group": "macOS",
+    "description": "date: 设置或显示系统日期。 更多信息：. (将当前日期显示为 unix 时间戳（自 1970-01-01 00:00:00 以来的秒数）：)",
+    "tags": [
+      "osx",
+      "date",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-date-3",
+    "title": "date - 使用默认格式显示特定日期（格式化指定 UNIX 时间戳）：",
+    "content": "date -r {{1473305798}}",
+    "group": "macOS",
+    "description": "date: 设置或显示系统日期。 更多信息：. (使用默认格式显示特定日期（格式化指定 UNIX 时间戳）：)",
+    "tags": [
+      "osx",
+      "date",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-date-4",
+    "title": "date - 使用默认格式显示相对于当前日期的日期：",
+    "content": "date -v {{+1d}} -v {{-20m}}",
+    "group": "macOS",
+    "description": "date: 设置或显示系统日期。 更多信息：. (使用默认格式显示相对于当前日期的日期：)",
+    "tags": [
+      "osx",
+      "date",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gwhoami-0",
+    "title": "gwhoami - 原命令的文档在：",
+    "content": "tldr whoami",
+    "group": "macOS",
+    "description": "gwhoami: 这是 `whoami` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gwhoami",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gtime-0",
+    "title": "gtime - 原命令的文档在：",
+    "content": "tldr time",
+    "group": "macOS",
+    "description": "gtime: 这是 `time` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gtime",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gls-0",
+    "title": "gls - 原命令的文档在：",
+    "content": "tldr ls",
+    "group": "macOS",
+    "description": "gls: 这是 `ls` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gls",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gpwd-0",
+    "title": "gpwd - 原命令的文档在：",
+    "content": "tldr pwd",
+    "group": "macOS",
+    "description": "gpwd: 这是 `pwd` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gpwd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-networksetup-0",
+    "title": "networksetup - 列出可用的网络服务源（以太网、Wi-Fi、蓝牙等）：",
+    "content": "networksetup -listallnetworkservices",
+    "group": "macOS",
+    "description": "networksetup: 网络系统首选项配置工具。 更多信息：. (列出可用的网络服务源（以太网、Wi-Fi、蓝牙等）：)",
+    "tags": [
+      "osx",
+      "networksetup",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-networksetup-1",
+    "title": "networksetup - 显示特定网络设备的配置信息：",
+    "content": "networksetup -getinfo \"{{Wi-Fi}}\"",
+    "group": "macOS",
+    "description": "networksetup: 网络系统首选项配置工具。 更多信息：. (显示特定网络设备的配置信息：)",
+    "tags": [
+      "osx",
+      "networksetup",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-networksetup-2",
+    "title": "networksetup - 获取当前连接的 Wi-Fi 网络名称（Wi-Fi 设备通常为 en0 或 en1）：",
+    "content": "networksetup -getairportnetwork {{en0}}",
+    "group": "macOS",
+    "description": "networksetup: 网络系统首选项配置工具。 更多信息：. (获取当前连接的 Wi-Fi 网络名称（Wi-Fi 设备通常为 en0 或 en1）：)",
+    "tags": [
+      "osx",
+      "networksetup",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-networksetup-3",
+    "title": "networksetup - 连接到给定的 Wi-Fi 网络 Connect to a particular Wi-Fi network：",
+    "content": "networksetup -setairportnetwork {{en0}} {{无线网 SSID}} {{密码}}",
+    "group": "macOS",
+    "description": "networksetup: 网络系统首选项配置工具。 更多信息：. (连接到给定的 Wi-Fi 网络 Connect to a particular Wi-Fi network：)",
+    "tags": [
+      "osx",
+      "networksetup",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-osascript-0",
+    "title": "osascript - 运行一个 AppleScript 命令：",
+    "content": "osascript -e '{{say \"你好世界\"}}'",
+    "group": "macOS",
+    "description": "osascript: 在命令行中运行指定的 AppleScript 或 JavaScript 脚本程序。 更多信息：. (运行一个 AppleScript 命令：)",
+    "tags": [
+      "osx",
+      "osascript",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-osascript-1",
+    "title": "osascript - 运行多条 AppleScript 命令：",
+    "content": "osascript -e '{{say \"你好\"}}' -e '{{say \"世界\"}}'",
+    "group": "macOS",
+    "description": "osascript: 在命令行中运行指定的 AppleScript 或 JavaScript 脚本程序。 更多信息：. (运行多条 AppleScript 命令：)",
+    "tags": [
+      "osx",
+      "osascript",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-osascript-2",
+    "title": "osascript - 运行一个已编译的脚本（`*.scpt`），包脚本（`*.scptd`），或明文的（`*.applescript`）AppleScript 文件：",
+    "content": "osascript {{目录 / 脚本文件.scpt}}",
+    "group": "macOS",
+    "description": "osascript: 在命令行中运行指定的 AppleScript 或 JavaScript 脚本程序。 更多信息：. (运行一个已编译的脚本（`*.scpt`），包脚本（`*.scptd`），或明文的（`*.applescript`）AppleScript 文件：)",
+    "tags": [
+      "osx",
+      "osascript",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-osascript-3",
+    "title": "osascript - 获取应用程序的包名（这个包名，可以用在命令 `open -b` 中）：",
+    "content": "osascript -e 'id of app \"{{应用程序名}}\"'",
+    "group": "macOS",
+    "description": "osascript: 在命令行中运行指定的 AppleScript 或 JavaScript 脚本程序。 更多信息：. (获取应用程序的包名（这个包名，可以用在命令 `open -b` 中）：)",
+    "tags": [
+      "osx",
+      "osascript",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-osascript-4",
+    "title": "osascript - 运行一个 JavaScript 命令：",
+    "content": "osascript -l JavaScript -e \"{{console.log('你好世界！');}}\"",
+    "group": "macOS",
+    "description": "osascript: 在命令行中运行指定的 AppleScript 或 JavaScript 脚本程序。 更多信息：. (运行一个 JavaScript 命令：)",
+    "tags": [
+      "osx",
+      "osascript",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-osascript-5",
+    "title": "osascript - 运行 JavaScript 文件：",
+    "content": "osascript -l JavaScript {{路径 / 文件名.js}}",
+    "group": "macOS",
+    "description": "osascript: 在命令行中运行指定的 AppleScript 或 JavaScript 脚本程序。 更多信息：. (运行 JavaScript 文件：)",
+    "tags": [
+      "osx",
+      "osascript",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-as-0",
+    "title": "as - 汇编文件，将输出写入 a.out：",
+    "content": "as {{路径/到/文件.s}}",
+    "group": "macOS",
+    "description": "as: 便携式 GNU 汇编程序。 主要用于汇编 `gcc` 的输出以供 `ld` 使用。 更多信息：. (汇编文件，将输出写入 a.out：)",
+    "tags": [
+      "osx",
+      "as",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-as-1",
+    "title": "as - 将输出汇编到给定文件：",
+    "content": "as {{路径/到/文件.s}} -o {{路径/到/输出.o}}",
+    "group": "macOS",
+    "description": "as: 便携式 GNU 汇编程序。 主要用于汇编 `gcc` 的输出以供 `ld` 使用。 更多信息：. (将输出汇编到给定文件：)",
+    "tags": [
+      "osx",
+      "as",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-as-2",
+    "title": "as - 通过跳过空白和注释预处理来更快地生成输出.（应该只用于受信任的编译器）：",
+    "content": "as -f {{路径/到/文件.s}}",
+    "group": "macOS",
+    "description": "as: 便携式 GNU 汇编程序。 主要用于汇编 `gcc` 的输出以供 `ld` 使用。 更多信息：. (通过跳过空白和注释预处理来更快地生成输出.（应该只用于受信任的编译器）：)",
+    "tags": [
+      "osx",
+      "as",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-as-3",
+    "title": "as - 在目录列表中包含一个给定路径，以搜索 .include 指令中指定的文件：",
+    "content": "as -I {{目标文件夹}} {{路径/到/文件.s}}",
+    "group": "macOS",
+    "description": "as: 便携式 GNU 汇编程序。 主要用于汇编 `gcc` 的输出以供 `ld` 使用。 更多信息：. (在目录列表中包含一个给定路径，以搜索 .include 指令中指定的文件：)",
+    "tags": [
+      "osx",
+      "as",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gdir-0",
+    "title": "gdir - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux dir",
+    "group": "macOS",
+    "description": "gdir: 这是 `-p linux dir` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gdir",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gjoin-0",
+    "title": "gjoin - 原命令的文档在：",
+    "content": "tldr join",
+    "group": "macOS",
+    "description": "gjoin: 这是 `join` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gjoin",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-getfileinfo-0",
+    "title": "getfileinfo - 显示有关给定文件的信息：",
+    "content": "GetFileInfo {{路径/文件名}}",
+    "group": "macOS",
+    "description": "getfileinfo: 获取有关 HFS+ 目录中文件的信息。 更多信息：. (显示有关给定文件的信息：)",
+    "tags": [
+      "osx",
+      "getfileinfo",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-getfileinfo-1",
+    "title": "getfileinfo - 显示给定文件的创建日期和时间：",
+    "content": "GetFileInfo -d {{路径/文件名}}",
+    "group": "macOS",
+    "description": "getfileinfo: 获取有关 HFS+ 目录中文件的信息。 更多信息：. (显示给定文件的创建日期和时间：)",
+    "tags": [
+      "osx",
+      "getfileinfo",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-getfileinfo-2",
+    "title": "getfileinfo - 显示给定文件的上次修改日期和时间：",
+    "content": "GetFileInfo -m {{路径/文件名}}",
+    "group": "macOS",
+    "description": "getfileinfo: 获取有关 HFS+ 目录中文件的信息。 更多信息：. (显示给定文件的上次修改日期和时间：)",
+    "tags": [
+      "osx",
+      "getfileinfo",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-getfileinfo-3",
+    "title": "getfileinfo - 显示给定文件的创建者：",
+    "content": "GetFileInfo -c {{路径/文件名}}",
+    "group": "macOS",
+    "description": "getfileinfo: 获取有关 HFS+ 目录中文件的信息。 更多信息：. (显示给定文件的创建者：)",
+    "tags": [
+      "osx",
+      "getfileinfo",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-ghostid-0",
+    "title": "ghostid - 原命令的文档在：",
+    "content": "tldr hostid",
+    "group": "macOS",
+    "description": "ghostid: 这是 `hostid` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "ghostid",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-dark-mode-0",
+    "title": "dark-mode - 切换深色模式（如果目前是关闭的，就把它打开，如果目前是打开的，就把它关闭）：",
+    "content": "dark-mode",
+    "group": "macOS",
+    "description": "dark-mode: 从命令行控制 macOS 的深色模式。 更多信息：. (切换深色模式（如果目前是关闭的，就把它打开，如果目前是打开的，就把它关闭）：)",
+    "tags": [
+      "osx",
+      "dark-mode",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-dark-mode-1",
+    "title": "dark-mode - 打开深色模式：",
+    "content": "dark-mode on",
+    "group": "macOS",
+    "description": "dark-mode: 从命令行控制 macOS 的深色模式。 更多信息：. (打开深色模式：)",
+    "tags": [
+      "osx",
+      "dark-mode",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-dark-mode-2",
+    "title": "dark-mode - 关闭深色模式：",
+    "content": "dark-mode off",
+    "group": "macOS",
+    "description": "dark-mode: 从命令行控制 macOS 的深色模式。 更多信息：. (关闭深色模式：)",
+    "tags": [
+      "osx",
+      "dark-mode",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-dark-mode-3",
+    "title": "dark-mode - 检查深色模式是否开启：",
+    "content": "dark-mode status",
+    "group": "macOS",
+    "description": "dark-mode: 从命令行控制 macOS 的深色模式。 更多信息：. (检查深色模式是否开启：)",
+    "tags": [
+      "osx",
+      "dark-mode",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-route-0",
+    "title": "route - 通过网关向目标添加路由：",
+    "content": "sudo route add \"{{路由 ip 地址}}\" \"{{网关地址}}\"",
+    "group": "macOS",
+    "description": "route: 手动操作路由表。 需要 root 权限。 更多信息：. (通过网关向目标添加路由：)",
+    "tags": [
+      "osx",
+      "route",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-route-1",
+    "title": "route - 通过网关向 子网 / 24 添加路由：",
+    "content": "sudo route add \"{{子网 ip}}/24\" \"{{网关地址}}\"",
+    "group": "macOS",
+    "description": "route: 手动操作路由表。 需要 root 权限。 更多信息：. (通过网关向 子网 / 24 添加路由：)",
+    "tags": [
+      "osx",
+      "route",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-route-2",
+    "title": "route - 在测试模式下运行（不做任何操作，只打印）：",
+    "content": "sudo route -t add \"{{路由 ip 地址}}/24\" \"{{网关地址}}\"",
+    "group": "macOS",
+    "description": "route: 手动操作路由表。 需要 root 权限。 更多信息：. (在测试模式下运行（不做任何操作，只打印）：)",
+    "tags": [
+      "osx",
+      "route",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-route-3",
+    "title": "route - 删除所有路由：",
+    "content": "sudo route flush",
+    "group": "macOS",
+    "description": "route: 手动操作路由表。 需要 root 权限。 更多信息：. (删除所有路由：)",
+    "tags": [
+      "osx",
+      "route",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-route-4",
+    "title": "route - 删除特定路由：",
+    "content": "sudo route delete \"{{路由 ip 地址}}/24\"",
+    "group": "macOS",
+    "description": "route: 手动操作路由表。 需要 root 权限。 更多信息：. (删除特定路由：)",
+    "tags": [
+      "osx",
+      "route",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-route-5",
+    "title": "route - 查找并显示目标的路由（主机名或 IP 地址）：",
+    "content": "sudo route get \"{{目标}}\"",
+    "group": "macOS",
+    "description": "route: 手动操作路由表。 需要 root 权限。 更多信息：. (查找并显示目标的路由（主机名或 IP 地址）：)",
+    "tags": [
+      "osx",
+      "route",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gdnsdomainname-0",
+    "title": "gdnsdomainname - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux dnsdomainname",
+    "group": "macOS",
+    "description": "gdnsdomainname: 这是 `-p linux dnsdomainname` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gdnsdomainname",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gwc-0",
+    "title": "gwc - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} common wc",
+    "group": "macOS",
+    "description": "gwc: 这是 `wc` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gwc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gcut-0",
+    "title": "gcut - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} common cut",
+    "group": "macOS",
+    "description": "gcut: 这是 `cut` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gcut",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-glogname-0",
+    "title": "glogname - 原命令的文档在：",
+    "content": "tldr logname",
+    "group": "macOS",
+    "description": "glogname: 这是 `logname` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "glogname",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-aa-0",
+    "title": "aa - 原命令的文档在：",
+    "content": "tldr yaa",
+    "group": "macOS",
+    "description": "aa: 这是 `yaa` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "aa",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gyes-0",
+    "title": "gyes - 原命令的文档在：",
+    "content": "tldr yes",
+    "group": "macOS",
+    "description": "gyes: 这是 `yes` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gyes",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gsort-0",
+    "title": "gsort - 原命令的文档在：",
+    "content": "tldr sort",
+    "group": "macOS",
+    "description": "gsort: 这是 `sort` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gsort",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gid-0",
+    "title": "gid - 原命令的文档在：",
+    "content": "tldr id",
+    "group": "macOS",
+    "description": "gid: 这是 `id` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gid",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gmknod-0",
+    "title": "gmknod - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux mknod",
+    "group": "macOS",
+    "description": "gmknod: 这是 `-p linux mknod` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gmknod",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gtraceroute-0",
+    "title": "gtraceroute - 原命令的文档在：",
+    "content": "tldr traceroute",
+    "group": "macOS",
+    "description": "gtraceroute: 这是 `traceroute` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gtraceroute",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gtruncate-0",
+    "title": "gtruncate - 原命令的文档在：",
+    "content": "tldr truncate",
+    "group": "macOS",
+    "description": "gtruncate: 这是 `truncate` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gtruncate",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-uptime-0",
+    "title": "uptime - 打印当前时间，运行时间，登录用户数量和其他信息：",
+    "content": "uptime",
+    "group": "macOS",
+    "description": "uptime: 告知当前系统运行多长时间和其他信息。 更多信息：. (打印当前时间，运行时间，登录用户数量和其他信息：)",
+    "tags": [
+      "osx",
+      "uptime",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gtty-0",
+    "title": "gtty - 原命令的文档在：",
+    "content": "tldr tty",
+    "group": "macOS",
+    "description": "gtty: 这是 `tty` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gtty",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gwhich-0",
+    "title": "gwhich - 原命令的文档在：",
+    "content": "tldr which",
+    "group": "macOS",
+    "description": "gwhich: 这是 `which` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gwhich",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gftp-0",
+    "title": "gftp - 原命令的文档在：",
+    "content": "tldr ftp",
+    "group": "macOS",
+    "description": "gftp: 这是 `ftp` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gftp",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-head-0",
+    "title": "head - 输出文件的前几行：",
+    "content": "head -n {{行数}} {{文件名}}",
+    "group": "macOS",
+    "description": "head: 输出文件的开头部分。 更多信息：. (输出文件的前几行：)",
+    "tags": [
+      "osx",
+      "head",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-head-1",
+    "title": "head - 输出文件的前几个字节：",
+    "content": "head -c {{字节数}} {{文件名}}",
+    "group": "macOS",
+    "description": "head: 输出文件的开头部分。 更多信息：. (输出文件的前几个字节：)",
+    "tags": [
+      "osx",
+      "head",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-asr-0",
+    "title": "asr - 将磁盘映像复制到目标卷：",
+    "content": "sudo asr restore --source {{映像名.dmg}} --target {{卷路径}}",
+    "group": "macOS",
+    "description": "asr: 将磁盘映像还原（复制）到卷上。 命令名称是 Apple Software Restore 的缩写。 更多信息：. (将磁盘映像复制到目标卷：)",
+    "tags": [
+      "osx",
+      "asr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-asr-1",
+    "title": "asr - 在复制之前擦除目标卷：",
+    "content": "sudo asr restore --source {{映像名.dmg}} --target {{卷路径}} --erase",
+    "group": "macOS",
+    "description": "asr: 将磁盘映像还原（复制）到卷上。 命令名称是 Apple Software Restore 的缩写。 更多信息：. (在复制之前擦除目标卷：)",
+    "tags": [
+      "osx",
+      "asr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-asr-2",
+    "title": "asr - 恢复后跳过验证步骤：",
+    "content": "sudo asr restore --source {{映像名.dmg}} --target {{卷路径}} --noverify",
+    "group": "macOS",
+    "description": "asr: 将磁盘映像还原（复制）到卷上。 命令名称是 Apple Software Restore 的缩写。 更多信息：. (恢复后跳过验证步骤：)",
+    "tags": [
+      "osx",
+      "asr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-asr-3",
+    "title": "asr - 不使用中间磁盘映像直接复制卷中的数据：",
+    "content": "sudo asr restore --source {{卷路径}} --target {{复制卷路径}}",
+    "group": "macOS",
+    "description": "asr: 将磁盘映像还原（复制）到卷上。 命令名称是 Apple Software Restore 的缩写。 更多信息：. (不使用中间磁盘映像直接复制卷中的数据：)",
+    "tags": [
+      "osx",
+      "asr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gping-0",
+    "title": "gping - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} common ping",
+    "group": "macOS",
+    "description": "gping: 这是 `ping` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gping",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-glocate-0",
+    "title": "glocate - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} linux locate",
+    "group": "macOS",
+    "description": "glocate: 这是 `-p linux locate` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "glocate",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gunexpand-0",
+    "title": "gunexpand - 原命令的文档在：",
+    "content": "tldr unexpand",
+    "group": "macOS",
+    "description": "gunexpand: 这是 `unexpand` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gunexpand",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gdate-0",
+    "title": "gdate - 原命令的文档在：",
+    "content": "tldr {{[-p|--platform]}} common date",
+    "group": "macOS",
+    "description": "gdate: 这是 `date` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gdate",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gprintenv-0",
+    "title": "gprintenv - 原命令的文档在：",
+    "content": "tldr printenv",
+    "group": "macOS",
+    "description": "gprintenv: 这是 `printenv` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gprintenv",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-duti-0",
+    "title": "duti - 将 Safari 设置为 HTML 文档的默认打开程序：",
+    "content": "duti -s {{com.apple.Safari}} {{public.html}} all",
+    "group": "macOS",
+    "description": "duti: 在 macOS 上为文档类型和网页设置默认打开的应用程序。 更多信息：. (将 Safari 设置为 HTML 文档的默认打开程序：)",
+    "tags": [
+      "osx",
+      "duti",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-duti-1",
+    "title": "duti - 将 vlc 设置为扩展名为.m4v 的文件的默认查看器：",
+    "content": "duti -s {{org.videolan.vlc}} {{m4v}} viewer",
+    "group": "macOS",
+    "description": "duti: 在 macOS 上为文档类型和网页设置默认打开的应用程序。 更多信息：. (将 vlc 设置为扩展名为.m4v 的文件的默认查看器：)",
+    "tags": [
+      "osx",
+      "duti",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-duti-2",
+    "title": "duti - 将 Finder 设置为 ftp:// URL 访问的应用：",
+    "content": "duti -s {{com.apple.Finder}} \"{{ftp}}\"",
+    "group": "macOS",
+    "description": "duti: 在 macOS 上为文档类型和网页设置默认打开的应用程序。 更多信息：. (将 Finder 设置为 ftp:// URL 访问的应用：)",
+    "tags": [
+      "osx",
+      "duti",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-duti-3",
+    "title": "duti - 显示有关给定扩展名的默认应用程序的信息：",
+    "content": "duti -x {{ext}}",
+    "group": "macOS",
+    "description": "duti: 在 macOS 上为文档类型和网页设置默认打开的应用程序。 更多信息：. (显示有关给定扩展名的默认应用程序的信息：)",
+    "tags": [
+      "osx",
+      "duti",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-duti-4",
+    "title": "duti - 显示给定的 UTI 对应默认的处理程序：",
+    "content": "duti -d {{uti}}",
+    "group": "macOS",
+    "description": "duti: 在 macOS 上为文档类型和网页设置默认打开的应用程序。 更多信息：. (显示给定的 UTI 对应默认的处理程序：)",
+    "tags": [
+      "osx",
+      "duti",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-duti-5",
+    "title": "duti - 显示给定 UTI 对应所有的处理程序：",
+    "content": "duti -l {{uti}}",
+    "group": "macOS",
+    "description": "duti: 在 macOS 上为文档类型和网页设置默认打开的应用程序。 更多信息：. (显示给定 UTI 对应所有的处理程序：)",
+    "tags": [
+      "osx",
+      "duti",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gsum-0",
+    "title": "gsum - 原命令的文档在：",
+    "content": "tldr sum",
+    "group": "macOS",
+    "description": "gsum: 这是 `sum` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gsum",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-cal-0",
+    "title": "cal - 显示本月日历：",
+    "content": "cal",
+    "group": "macOS",
+    "description": "cal: 打印日历信息。 更多信息：. (显示本月日历：)",
+    "tags": [
+      "osx",
+      "cal",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-cal-1",
+    "title": "cal - 显示上月、本月和下月的日历：",
+    "content": "cal -3",
+    "group": "macOS",
+    "description": "cal: 打印日历信息。 更多信息：. (显示上月、本月和下月的日历：)",
+    "tags": [
+      "osx",
+      "cal",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-cal-2",
+    "title": "cal - 显示指定月份的日历（月份为 1-12 月）：",
+    "content": "cal -m {{月}}",
+    "group": "macOS",
+    "description": "cal: 打印日历信息。 更多信息：. (显示指定月份的日历（月份为 1-12 月）：)",
+    "tags": [
+      "osx",
+      "cal",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-cal-3",
+    "title": "cal - 显示本年日历：",
+    "content": "cal -y",
+    "group": "macOS",
+    "description": "cal: 打印日历信息。 更多信息：. (显示本年日历：)",
+    "tags": [
+      "osx",
+      "cal",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-cal-4",
+    "title": "cal - 显示指定年份的日历（年份为 4 个数字）：",
+    "content": "cal {{年}}",
+    "group": "macOS",
+    "description": "cal: 打印日历信息。 更多信息：. (显示指定年份的日历（年份为 4 个数字）：)",
+    "tags": [
+      "osx",
+      "cal",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-cal-5",
+    "title": "cal - 显示指定年月的日历：",
+    "content": "cal {{月}} {{年}}",
+    "group": "macOS",
+    "description": "cal: 打印日历信息。 更多信息：. (显示指定年月的日历：)",
+    "tags": [
+      "osx",
+      "cal",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-cal-6",
+    "title": "cal - 显示指定年份的复活节日期：",
+    "content": "ncal -e {{年}}",
+    "group": "macOS",
+    "description": "cal: 打印日历信息。 更多信息：. (显示指定年份的复活节日期：)",
+    "tags": [
+      "osx",
+      "cal",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gpathchk-0",
+    "title": "gpathchk - 原命令的文档在：",
+    "content": "tldr pathchk",
+    "group": "macOS",
+    "description": "gpathchk: 这是 `pathchk` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gpathchk",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gfgrep-0",
+    "title": "gfgrep - 原命令的文档在：",
+    "content": "tldr fgrep",
+    "group": "macOS",
+    "description": "gfgrep: 这是 `fgrep` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gfgrep",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-base64-0",
+    "title": "base64 - 编码目标文件：",
+    "content": "base64 {{[-i|--input]}} {{目标文件}}",
+    "group": "macOS",
+    "description": "base64: 使用 Base64 来进行编码和解码。 更多信息：. (编码目标文件：)",
+    "tags": [
+      "osx",
+      "base64",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-base64-1",
+    "title": "base64 - 解码目标文件：",
+    "content": "base64 {{[-d|--decode]}} {{[-i|--input]}} {{base64 编码文件}}",
+    "group": "macOS",
+    "description": "base64: 使用 Base64 来进行编码和解码。 更多信息：. (解码目标文件：)",
+    "tags": [
+      "osx",
+      "base64",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-base64-2",
+    "title": "base64 - 通过标准输入管道进行解码：",
+    "content": "echo -n \"{{目标字符串}}\" | base64",
+    "group": "macOS",
+    "description": "base64: 使用 Base64 来进行编码和解码。 更多信息：. (通过标准输入管道进行解码：)",
+    "tags": [
+      "osx",
+      "base64",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-base64-3",
+    "title": "base64 - 解码标准输入管道内容：",
+    "content": "echo -n {{base64 字符串}} | base64 {{[-d|--decode]}}",
+    "group": "macOS",
+    "description": "base64: 使用 Base64 来进行编码和解码。 更多信息：. (解码标准输入管道内容：)",
+    "tags": [
+      "osx",
+      "base64",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-pod-0",
+    "title": "pod - 为当前项目初始化包含默认内容的 podfile：",
+    "content": "pod init",
+    "group": "macOS",
+    "description": "pod: Swift 和 Objective-C Cocoa 项目的依赖关系管理。 更多信息：. (为当前项目初始化包含默认内容的 podfile：)",
+    "tags": [
+      "osx",
+      "pod",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-pod-1",
+    "title": "pod - 下载并安装 pod 文件中定义的所有 pod（以前未安装）：",
+    "content": "pod install",
+    "group": "macOS",
+    "description": "pod: Swift 和 Objective-C Cocoa 项目的依赖关系管理。 更多信息：. (下载并安装 pod 文件中定义的所有 pod（以前未安装）：)",
+    "tags": [
+      "osx",
+      "pod",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-pod-2",
+    "title": "pod - 列出所有可用的 pod：",
+    "content": "pod list",
+    "group": "macOS",
+    "description": "pod: Swift 和 Objective-C Cocoa 项目的依赖关系管理。 更多信息：. (列出所有可用的 pod：)",
+    "tags": [
+      "osx",
+      "pod",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-pod-3",
+    "title": "pod - 显示过时的 pod（当前安装的 pod）：",
+    "content": "pod outdated",
+    "group": "macOS",
+    "description": "pod: Swift 和 Objective-C Cocoa 项目的依赖关系管理。 更多信息：. (显示过时的 pod（当前安装的 pod）：)",
+    "tags": [
+      "osx",
+      "pod",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-pod-4",
+    "title": "pod - 将当前安装的所有 pod 更新到其最新版本：",
+    "content": "pod update",
+    "group": "macOS",
+    "description": "pod: Swift 和 Objective-C Cocoa 项目的依赖关系管理。 更多信息：. (将当前安装的所有 pod 更新到其最新版本：)",
+    "tags": [
+      "osx",
+      "pod",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-pod-5",
+    "title": "pod - 将特定（以前安装的）pod 更新为其最新版本：",
+    "content": "pod update {{pod_名}}",
+    "group": "macOS",
+    "description": "pod: Swift 和 Objective-C Cocoa 项目的依赖关系管理。 更多信息：. (将特定（以前安装的）pod 更新为其最新版本：)",
+    "tags": [
+      "osx",
+      "pod",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-pod-6",
+    "title": "pod - 从 Xcode 项目中删除 CocoaPods：",
+    "content": "pod deintegrate {{xcode_项目}}",
+    "group": "macOS",
+    "description": "pod: Swift 和 Objective-C Cocoa 项目的依赖关系管理。 更多信息：. (从 Xcode 项目中删除 CocoaPods：)",
+    "tags": [
+      "osx",
+      "pod",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gtsort-0",
+    "title": "gtsort - 原命令的文档在：",
+    "content": "tldr tsort",
+    "group": "macOS",
+    "description": "gtsort: 这是 `tsort` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gtsort",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gtee-0",
+    "title": "gtee - 原命令的文档在：",
+    "content": "tldr tee",
+    "group": "macOS",
+    "description": "gtee: 这是 `tee` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gtee",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-osx-gtac-0",
+    "title": "gtac - 原命令的文档在：",
+    "content": "tldr tac",
+    "group": "macOS",
+    "description": "gtac: 这是 `tac` 命令的一个别名。 (原命令的文档在：)",
+    "tags": [
+      "osx",
+      "gtac",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  }
+]

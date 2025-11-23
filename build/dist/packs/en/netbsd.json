@@ -1,0 +1,576 @@
+[
+  {
+    "id": "tldr-en-netbsd-chpass-0",
+    "title": "chpass - Set a specific login shell for the current user interactively",
+    "content": "su -c chpass",
+    "group": "Netbsd",
+    "description": "chpass: Add or change user database information, including login shell and password. See also: `passwd`. More information: . (Set a specific login shell for the current user interactively)",
+    "tags": [
+      "netbsd",
+      "chpass",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-chpass-1",
+    "title": "chpass - Set a specific login [s]hell for the current user",
+    "content": "chpass -s {{path/to/shell}}",
+    "group": "Netbsd",
+    "description": "chpass: Add or change user database information, including login shell and password. See also: `passwd`. More information: . (Set a specific login [s]hell for the current user)",
+    "tags": [
+      "netbsd",
+      "chpass",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-chpass-2",
+    "title": "chpass - Set a login [s]hell for a specific user",
+    "content": "chpass -s {{path/to/shell}} {{username}}",
+    "group": "Netbsd",
+    "description": "chpass: Add or change user database information, including login shell and password. See also: `passwd`. More information: . (Set a login [s]hell for a specific user)",
+    "tags": [
+      "netbsd",
+      "chpass",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-chpass-3",
+    "title": "chpass - Specify a user database entry in the `passwd` file format",
+    "content": "su -c 'chpass -a {{username:encrypted_password:uid:gid:...}} -s {{path/to/shell}}' {{username}}",
+    "group": "Netbsd",
+    "description": "chpass: Add or change user database information, including login shell and password. See also: `passwd`. More information: . (Specify a user database entry in the `passwd` file format)",
+    "tags": [
+      "netbsd",
+      "chpass",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-chpass-4",
+    "title": "chpass - Only update the [l]ocal password file",
+    "content": "su -c 'chpass -l -s {{path/to/shell}}' {{username}}",
+    "group": "Netbsd",
+    "description": "chpass: Add or change user database information, including login shell and password. See also: `passwd`. More information: . (Only update the [l]ocal password file)",
+    "tags": [
+      "netbsd",
+      "chpass",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-chpass-5",
+    "title": "chpass - Forcedly change the database [y]P password database entry",
+    "content": "su -c 'chpass -y -s {{path/to/shell}}' {{username}}",
+    "group": "Netbsd",
+    "description": "chpass: Add or change user database information, including login shell and password. See also: `passwd`. More information: . (Forcedly change the database [y]P password database entry)",
+    "tags": [
+      "netbsd",
+      "chpass",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-pkgin-0",
+    "title": "pkgin - Install a package",
+    "content": "pkgin install {{package}}",
+    "group": "Netbsd",
+    "description": "pkgin: Manage `pkgsrc` binary packages on NetBSD. More information: . (Install a package)",
+    "tags": [
+      "netbsd",
+      "pkgin",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-pkgin-1",
+    "title": "pkgin - Remove a package and its dependencies",
+    "content": "pkgin remove {{package}}",
+    "group": "Netbsd",
+    "description": "pkgin: Manage `pkgsrc` binary packages on NetBSD. More information: . (Remove a package and its dependencies)",
+    "tags": [
+      "netbsd",
+      "pkgin",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-pkgin-2",
+    "title": "pkgin - Upgrade all packages",
+    "content": "pkgin full-upgrade",
+    "group": "Netbsd",
+    "description": "pkgin: Manage `pkgsrc` binary packages on NetBSD. More information: . (Upgrade all packages)",
+    "tags": [
+      "netbsd",
+      "pkgin",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-pkgin-3",
+    "title": "pkgin - Search for a package",
+    "content": "pkgin search {{keyword}}",
+    "group": "Netbsd",
+    "description": "pkgin: Manage `pkgsrc` binary packages on NetBSD. More information: . (Search for a package)",
+    "tags": [
+      "netbsd",
+      "pkgin",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-pkgin-4",
+    "title": "pkgin - List installed packages",
+    "content": "pkgin list",
+    "group": "Netbsd",
+    "description": "pkgin: Manage `pkgsrc` binary packages on NetBSD. More information: . (List installed packages)",
+    "tags": [
+      "netbsd",
+      "pkgin",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-pkgin-5",
+    "title": "pkgin - Remove unneeded dependencies",
+    "content": "pkgin autoremove",
+    "group": "Netbsd",
+    "description": "pkgin: Manage `pkgsrc` binary packages on NetBSD. More information: . (Remove unneeded dependencies)",
+    "tags": [
+      "netbsd",
+      "pkgin",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-0",
+    "title": "sed - Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in all input lines and print the result to `stdout`",
+    "content": "{{command}} | sed 's/apple/mango/g'",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. See also: `awk`, `ed`. More information: . (Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in all input lines and print the result to `stdout`)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-1",
+    "title": "sed - Execute a specific script [f]ile and print the result to `stdout`",
+    "content": "{{command}} | sed -f {{path/to/script.sed}}",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. See also: `awk`, `ed`. More information: . (Execute a specific script [f]ile and print the result to `stdout`)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-2",
+    "title": "sed - Delay opening each file until a command containing the related `w` function or flag is applied to a line of input",
+    "content": "{{command}} | sed -fa {{path/to/script.sed}}",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. See also: `awk`, `ed`. More information: . (Delay opening each file until a command containing the related `w` function or flag is applied to a line of input)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-3",
+    "title": "sed - Turn on GNU re[g]ex extension",
+    "content": "{{command}} | sed -fg {{path/to/script.sed}}",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. See also: `awk`, `ed`. More information: . (Turn on GNU re[g]ex extension)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-4",
+    "title": "sed - Replace all `apple` (extended `regex`) occurrences with `APPLE` (extended `regex`) in all input lines and print the result to `stdout`",
+    "content": "{{command}} | sed -E 's/(apple)/\\U\\1/g'",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. See also: `awk`, `ed`. More information: . (Replace all `apple` (extended `regex`) occurrences with `APPLE` (extended `regex`) in all input lines and print the result to `stdout`)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-5",
+    "title": "sed - Print just a first line to `stdout`",
+    "content": "{{command}} | sed -n '1p'",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. See also: `awk`, `ed`. More information: . (Print just a first line to `stdout`)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-6",
+    "title": "sed - Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in a specific file and overwrite the original file in place",
+    "content": "sed -i 's/apple/mango/g' {{path/to/file}}",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. See also: `awk`, `ed`. More information: . (Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in a specific file and overwrite the original file in place)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-chfn-0",
+    "title": "chfn - View documentation for the original command",
+    "content": "tldr chpass",
+    "group": "Netbsd",
+    "description": "chfn: This command is an alias of `chpass`. (View documentation for the original command)",
+    "tags": [
+      "netbsd",
+      "chfn",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sockstat-0",
+    "title": "sockstat - Show information for IPv4, IPv6 and Unix sockets for both listening and connected sockets",
+    "content": "sockstat",
+    "group": "Netbsd",
+    "description": "sockstat: List open Internet or UNIX domain sockets. Note: This program is a rewrite for NetBSD 3.0 from FreeBSD's `sockstat`. See also: `netstat`. More information: . (Show information for IPv4, IPv6 and Unix sockets for both listening and connected sockets)",
+    "tags": [
+      "netbsd",
+      "sockstat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sockstat-1",
+    "title": "sockstat - Show information for IPv[4]/IPv[6] sockets [l]istening on specific [p]orts using a specific [P]rotocol",
+    "content": "sockstat -{{4|6}} -l -P {{tcp|udp|sctp|divert}} -p {{port1,port2...}}",
+    "group": "Netbsd",
+    "description": "sockstat: List open Internet or UNIX domain sockets. Note: This program is a rewrite for NetBSD 3.0 from FreeBSD's `sockstat`. See also: `netstat`. More information: . (Show information for IPv[4]/IPv[6] sockets [l]istening on specific [p]orts using a specific [P]rotocol)",
+    "tags": [
+      "netbsd",
+      "sockstat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sockstat-2",
+    "title": "sockstat - Also show [c]onnected sockets, showing [u]nix sockets",
+    "content": "sockstat -cu",
+    "group": "Netbsd",
+    "description": "sockstat: List open Internet or UNIX domain sockets. Note: This program is a rewrite for NetBSD 3.0 from FreeBSD's `sockstat`. See also: `netstat`. More information: . (Also show [c]onnected sockets, showing [u]nix sockets)",
+    "tags": [
+      "netbsd",
+      "sockstat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sockstat-3",
+    "title": "sockstat - Only show [n]umeric output, without resolving symbolic names for addresses and ports",
+    "content": "sockstat -n",
+    "group": "Netbsd",
+    "description": "sockstat: List open Internet or UNIX domain sockets. Note: This program is a rewrite for NetBSD 3.0 from FreeBSD's `sockstat`. See also: `netstat`. More information: . (Only show [n]umeric output, without resolving symbolic names for addresses and ports)",
+    "tags": [
+      "netbsd",
+      "sockstat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sockstat-4",
+    "title": "sockstat - Only list sockets of the specified address [f]amily",
+    "content": "sockstat -f {{inet|inet6|local|unix}}",
+    "group": "Netbsd",
+    "description": "sockstat: List open Internet or UNIX domain sockets. Note: This program is a rewrite for NetBSD 3.0 from FreeBSD's `sockstat`. See also: `netstat`. More information: . (Only list sockets of the specified address [f]amily)",
+    "tags": [
+      "netbsd",
+      "sockstat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-0",
+    "title": "df - Display all filesystems and their disk usage (using 512-byte units)",
+    "content": "df",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. More information: . (Display all filesystems and their disk usage (using 512-byte units))",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-1",
+    "title": "df - Use [h]uman-readable units (based on powers of 1024)",
+    "content": "df -h",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. More information: . (Use [h]uman-readable units (based on powers of 1024))",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-2",
+    "title": "df - Display all the fields of the structure(s) returned by `statvfs`",
+    "content": "df -G",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. More information: . (Display all the fields of the structure(s) returned by `statvfs`)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-3",
+    "title": "df - Display the filesystem containing the specified file or directory",
+    "content": "df {{path/to/file_or_directory}}",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. More information: . (Display the filesystem containing the specified file or directory)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-4",
+    "title": "df - Include statistics on the number of free and used [i]nodes",
+    "content": "df -i",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. More information: . (Include statistics on the number of free and used [i]nodes)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-5",
+    "title": "df - Use [k]ibibyte (1024 byte) units when showing size figures",
+    "content": "df -k",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. More information: . (Use [k]ibibyte (1024 byte) units when showing size figures)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-6",
+    "title": "df - Display information in a [P]ortable way",
+    "content": "df -P",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. More information: . (Display information in a [P]ortable way)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-chsh-0",
+    "title": "chsh - View documentation for the original command",
+    "content": "tldr chpass",
+    "group": "Netbsd",
+    "description": "chsh: This command is an alias of `chpass`. (View documentation for the original command)",
+    "tags": [
+      "netbsd",
+      "chsh",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-cal-0",
+    "title": "cal - Display a calendar for the current month",
+    "content": "cal",
+    "group": "Netbsd",
+    "description": "cal: Display a calendar. More information: . (Display a calendar for the current month)",
+    "tags": [
+      "netbsd",
+      "cal",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-cal-1",
+    "title": "cal - Display a calendar for a specific year",
+    "content": "cal {{year}}",
+    "group": "Netbsd",
+    "description": "cal: Display a calendar. More information: . (Display a calendar for a specific year)",
+    "tags": [
+      "netbsd",
+      "cal",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-cal-2",
+    "title": "cal - Display a calendar for a specific month and year",
+    "content": "cal {{month}} {{year}}",
+    "group": "Netbsd",
+    "description": "cal: Display a calendar. More information: . (Display a calendar for a specific month and year)",
+    "tags": [
+      "netbsd",
+      "cal",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-cal-3",
+    "title": "cal - Display the whole calendar for the current year using [j]ulian days (one-based, numbered from January 1)",
+    "content": "cal -y -j",
+    "group": "Netbsd",
+    "description": "cal: Display a calendar. More information: . (Display the whole calendar for the current year using [j]ulian days (one-based, numbered from January 1))",
+    "tags": [
+      "netbsd",
+      "cal",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-cal-4",
+    "title": "cal - [h]ighlight today and display [3] months spanning the date",
+    "content": "cal -h -3 {{month}} {{year}}",
+    "group": "Netbsd",
+    "description": "cal: Display a calendar. More information: . ([h]ighlight today and display [3] months spanning the date)",
+    "tags": [
+      "netbsd",
+      "cal",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-cal-5",
+    "title": "cal - Display the 2 months [B]efore and 3 [A]fter a specific [m]onth of the current year",
+    "content": "cal -A 3 -B 2 {{month}}",
+    "group": "Netbsd",
+    "description": "cal: Display a calendar. More information: . (Display the 2 months [B]efore and 3 [A]fter a specific [m]onth of the current year)",
+    "tags": [
+      "netbsd",
+      "cal",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-cal-6",
+    "title": "cal - Display a specific number of months before and after ([C]ontext) the specified month",
+    "content": "cal -C {{months}} {{month}}",
+    "group": "Netbsd",
+    "description": "cal: Display a calendar. More information: . (Display a specific number of months before and after ([C]ontext) the specified month)",
+    "tags": [
+      "netbsd",
+      "cal",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-cal-7",
+    "title": "cal - Specify the starting [d]ay of the week (0: Sunday, 1: Monday, ..., 6: Saturday)",
+    "content": "cal -d {{0..6}}",
+    "group": "Netbsd",
+    "description": "cal: Display a calendar. More information: . (Specify the starting [d]ay of the week (0: Sunday, 1: Monday, ..., 6: Saturday))",
+    "tags": [
+      "netbsd",
+      "cal",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  }
+]
