@@ -3,13 +3,13 @@ import { TitleBar } from "@/components/layout/TitleBar";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { SettingsModal } from "@/components/settings/SettingsModal";
 import { useAppStore } from "@/store/useAppStore";
-import { usePromptStore } from "@/store/usePromptStore"; // ✨ 引入 PromptStore
 import { ContextView } from "@/components/features/context/ContextView";
 import { PromptView } from "@/components/features/prompts/PromptView";
 
 function App() {
   const { currentView, theme, syncModels, lastUpdated } = useAppStore();
-  const { initStore } = usePromptStore(); // ✨ 获取初始化方法
+  // ✨ 注意：这里不再解构 initStore，我们把它移到 Store 内部自动触发
+  // const { initStore } = usePromptStore(); 
 
   // 主题初始化
   useEffect(() => {
@@ -18,18 +18,41 @@ function App() {
     root.classList.add(theme);
   }, [theme]);
 
-  // ✨ 启动时任务
+  // ✨ 1. 禁止右键菜单 & 快捷键刷新
   useEffect(() => {
-    // 1. 同步模型
+    // 禁止右键
+    const handleContextMenu = (e: MouseEvent) => {
+      // 如果是开发环境，按住 Ctrl 还可以呼出右键（方便调试），生产环境直接禁止
+      if (import.meta.env.PROD || !e.ctrlKey) {
+        e.preventDefault();
+      }
+    };
+    
+    // 禁止 F5 和 Ctrl+R 刷新
+    const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'F5' || (e.ctrlKey && e.key === 'r')) {
+            e.preventDefault();
+        }
+    };
+
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  // 启动时任务
+  useEffect(() => {
     const ONE_DAY = 24 * 60 * 60 * 1000;
     if (Date.now() - lastUpdated > ONE_DAY) {
         syncModels();
     } else {
         syncModels();
     }
-
-    // 2. ✨ 初始化 Prompt Store (加载已下载的包)
-    initStore();
+    // ✨ 注意：删除了这里的 initStore() 调用，防止竞态条件
   }, []);
 
   return (

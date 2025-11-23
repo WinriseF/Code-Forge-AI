@@ -287,6 +287,15 @@ export const usePromptStore = create<PromptState>()(
         groups: state.groups,
         installedPackIds: state.installedPackIds
       }),
+
+      onRehydrateStorage: () => {
+        return (state, _error) => {
+          if (state) {
+            console.log('数据恢复完成，开始加载指令...');
+            state.initStore(); // 👈 这里会自动调用，所以 App.tsx 里不需要了
+          }
+        };
+      },
     }
   )
 );
