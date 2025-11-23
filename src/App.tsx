@@ -3,11 +3,13 @@ import { TitleBar } from "@/components/layout/TitleBar";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { SettingsModal } from "@/components/settings/SettingsModal";
 import { useAppStore } from "@/store/useAppStore";
+import { usePromptStore } from "@/store/usePromptStore"; // ✨ 引入 PromptStore
 import { ContextView } from "@/components/features/context/ContextView";
 import { PromptView } from "@/components/features/prompts/PromptView";
 
 function App() {
   const { currentView, theme, syncModels, lastUpdated } = useAppStore();
+  const { initStore } = usePromptStore(); // ✨ 获取初始化方法
 
   // 主题初始化
   useEffect(() => {
@@ -16,16 +18,18 @@ function App() {
     root.classList.add(theme);
   }, [theme]);
 
-  // ✨ 启动时检查更新
+  // ✨ 启动时任务
   useEffect(() => {
-    // 策略：每次打开 App 都尝试更新，或者设置一个时间间隔（比如 24小时）
+    // 1. 同步模型
     const ONE_DAY = 24 * 60 * 60 * 1000;
     if (Date.now() - lastUpdated > ONE_DAY) {
         syncModels();
     } else {
-        // 也可以选择每次启动都 sync，因为 json 文件很小
         syncModels();
     }
+
+    // 2. ✨ 初始化 Prompt Store (加载已下载的包)
+    initStore();
   }, []);
 
   return (

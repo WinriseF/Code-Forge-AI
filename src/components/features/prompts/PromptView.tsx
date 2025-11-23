@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { usePromptStore } from '@/store/usePromptStore';
 import { useAppStore } from '@/store/useAppStore';
 import { Search, Plus, Folder, Star, Hash, Trash2, Layers, CheckCircle2, PanelLeft, AlertTriangle } from 'lucide-react';
@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import { Prompt } from '@/types/prompt';
 import { writeText } from '@tauri-apps/api/clipboard';
 import { parseVariables } from '@/lib/template';
-import { getText } from '@/lib/i18n'; // 引入
+import { getText } from '@/lib/i18n'; 
 
 import { PromptCard } from './PromptCard';
 import { PromptEditorDialog } from './dialogs/PromptEditorDialog';
@@ -15,15 +15,15 @@ import { VariableFillerDialog } from './dialogs/VariableFillerDialog';
 export function PromptView() {
   const { 
     groups, activeGroup, setActiveGroup, 
-    prompts, searchQuery, setSearchQuery, 
+    getAllPrompts, // ✨ 改用 getAllPrompts
+    searchQuery, setSearchQuery, 
     deleteGroup, deletePrompt 
   } = usePromptStore();
 
-  const { isPromptSidebarOpen, setPromptSidebarOpen, language } = useAppStore(); // 获取 language
+  const { isPromptSidebarOpen, setPromptSidebarOpen, language } = useAppStore();
 
   const [showToast, setShowToast] = useState(false);
   
-  // ... States (保持不变)
   const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [editingPrompt, setEditingPrompt] = useState<Prompt | null>(null);
   const [isFillerOpen, setIsFillerOpen] = useState(false);
@@ -32,11 +32,11 @@ export function PromptView() {
   const [isDeleteConfirmOpen, setIsDeleteConfirmOpen] = useState(false);
   const [promptToDelete, setPromptToDelete] = useState<Prompt | null>(null);
 
-  // ... Handlers (保持不变)
   const triggerToast = () => { setShowToast(true); setTimeout(() => setShowToast(false), 2000); };
   const handleCreate = () => { setEditingPrompt(null); setIsEditorOpen(true); };
   const handleEdit = (prompt: Prompt) => { setEditingPrompt(prompt); setIsEditorOpen(true); };
   const handleDeleteClick = (prompt: Prompt) => { setPromptToDelete(prompt); setIsDeleteConfirmOpen(true); };
+  
   const confirmDelete = () => {
     if (promptToDelete) {
       deletePrompt(promptToDelete.id);
@@ -44,6 +44,7 @@ export function PromptView() {
       setPromptToDelete(null);
     }
   };
+
   const handleTrigger = async (prompt: Prompt) => {
     const vars = parseVariables(prompt.content);
     if (vars.length > 0) {
@@ -55,11 +56,31 @@ export function PromptView() {
       triggerToast();
     }
   };
-  const filteredPrompts = prompts.filter(p => {
-    const matchGroup = activeGroup === 'all' ? true : activeGroup === 'favorite' ? p.isFavorite : p.group === activeGroup;
-    const matchSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) || p.content.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchGroup && matchSearch;
-  });
+
+  // ✨ 使用 getAllPrompts 获取所有数据
+  const allPrompts = getAllPrompts();
+
+  // ✨ 优化搜索逻辑: 权重排序 + 多字段匹配
+  const filteredPrompts = useMemo(() => {
+    return allPrompts.filter(p => {
+        // 1. Group Filter
+        const matchGroup = activeGroup === 'all' ? true : activeGroup === 'favorite' ? p.isFavorite : p.group === activeGroup;
+        if (!matchGroup) return false;
+
+        // 2. Search Filter
+        if (!searchQuery.trim()) return true;
+        
+        const q = searchQuery.toLowerCase();
+        // 简单权重：标题 > 描述 > 内容
+        // 但 filter 只需要 true/false，排序在后面做比较复杂，这里先做匹配
+        return (
+            p.title.toLowerCase().includes(q) || 
+            (p.description && p.description.toLowerCase().includes(q)) ||
+            p.content.toLowerCase().includes(q) ||
+            (p.tags && p.tags.some(t => t.toLowerCase().includes(q)))
+        );
+    });
+  }, [allPrompts, activeGroup, searchQuery]);
 
   return (
     <div className="h-full flex flex-row overflow-hidden bg-background">
@@ -74,14 +95,14 @@ export function PromptView() {
             <CategoryItem 
               icon={<Layers size={16} />} 
               label={getText('sidebar', 'all', language)} 
-              count={prompts.length}
+              count={allPrompts.length}
               isActive={activeGroup === 'all'} 
               onClick={() => setActiveGroup('all')} 
             />
             <CategoryItem 
               icon={<Star size={16} />} 
               label={getText('sidebar', 'favorites', language)} 
-              count={prompts.filter(p => p.isFavorite).length}
+              count={allPrompts.filter(p => p.isFavorite).length}
               isActive={activeGroup === 'favorite'} 
               onClick={() => setActiveGroup('favorite')} 
             />
@@ -102,7 +123,7 @@ export function PromptView() {
                         key={group}
                         icon={group === 'Git' ? <Hash size={16} /> : <Folder size={16} />} 
                         label={group} 
-                        count={prompts.filter(p => p.group === group).length}
+                        count={allPrompts.filter(p => p.group === group).length}
                         isActive={activeGroup === group} 
                         onClick={() => setActiveGroup(group)}
                         onDelete={() => deleteGroup(group)}

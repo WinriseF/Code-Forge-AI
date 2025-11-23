@@ -1,18 +1,21 @@
 import { useState } from 'react';
-import { Copy, Edit3, Trash2, Star, Hash, Terminal } from 'lucide-react';
+import { Copy, Edit3, Trash2, Star, Hash, Terminal, BadgeCheck } from 'lucide-react'; // ✨ 引入 BadgeCheck
 import { Prompt } from '@/types/prompt';
 import { cn } from '@/lib/utils';
 import { usePromptStore } from '@/store/usePromptStore';
+import { useAppStore } from '@/store/useAppStore';
+import { getText } from '@/lib/i18n';
 
 interface PromptCardProps {
   prompt: Prompt;
   onEdit: (prompt: Prompt) => void;
-  onDelete: (prompt: Prompt) => void; // ✨ 新增：删除回调
+  onDelete: (prompt: Prompt) => void;
   onTrigger: (prompt: Prompt) => void;
 }
 
 export function PromptCard({ prompt, onEdit, onDelete, onTrigger }: PromptCardProps) {
-  const { toggleFavorite } = usePromptStore(); // 这里不再需要 deletePrompt
+  const { toggleFavorite } = usePromptStore();
+  const { language } = useAppStore();
   const [isHovered, setIsHovered] = useState(false);
 
   const handleClick = (e: React.MouseEvent) => {
@@ -30,6 +33,8 @@ export function PromptCard({ prompt, onEdit, onDelete, onTrigger }: PromptCardPr
       default: return 'bg-primary/10 text-primary';
     }
   };
+
+  const isOfficial = prompt.source === 'official';
 
   return (
     <div 
@@ -50,6 +55,12 @@ export function PromptCard({ prompt, onEdit, onDelete, onTrigger }: PromptCardPr
             <h3 className="font-semibold text-foreground truncate text-sm" title={prompt.title}>
                 {prompt.title}
             </h3>
+            {/* ✨ 官方认证图标：修复 TS 类型报错，使用 div 包裹来显示 title */}
+            {isOfficial && (
+                <div title={getText('prompts', 'official', language)} className="shrink-0 text-blue-500 flex items-center">
+                    <BadgeCheck size={14} />
+                </div>
+            )}
         </div>
         
         <button 
@@ -82,15 +93,19 @@ export function PromptCard({ prompt, onEdit, onDelete, onTrigger }: PromptCardPr
             "flex items-center gap-1 transition-all duration-200 translate-y-8 opacity-0",
             isHovered && "translate-y-0 opacity-100"
         )}>
-           <ActionButton icon={<Edit3 size={14} />} onClick={() => onEdit(prompt)} title="编辑" />
-           {/* ✨ 这里改为调用 onDelete 回调 */}
-           <ActionButton icon={<Trash2 size={14} />} onClick={() => onDelete(prompt)} title="删除" danger />
-           <div className="w-px h-3 bg-border mx-1" />
+            {/* 只有本地指令才允许编辑和删除 */}
+           {!isOfficial && (
+                <>
+                    <ActionButton icon={<Edit3 size={14} />} onClick={() => onEdit(prompt)} title={getText('actions', 'edit', language)} />
+                    <ActionButton icon={<Trash2 size={14} />} onClick={() => onDelete(prompt)} title={getText('actions', 'delete', language)} danger />
+                    <div className="w-px h-3 bg-border mx-1" />
+                </>
+           )}
            <button 
              className="flex items-center gap-1 bg-primary/90 hover:bg-primary text-primary-foreground px-2 py-1 rounded text-xs font-medium transition-colors active:scale-95"
              onClick={handleClick}
            >
-             <Copy size={12} /> 复制
+             <Copy size={12} /> {getText('actions', 'copy', language)}
            </button>
         </div>
       </div>

@@ -2,7 +2,6 @@ import { AppView } from "@/store/useAppStore";
 
 export type LangKey = 'zh' | 'en';
 
-// 定义翻译字典的结构
 const translations = {
   en: {
     menu: {
@@ -19,17 +18,17 @@ const translations = {
       newGroup: "New Group"
     },
     prompts: {
-      searchPlaceholder: "Search prompts...",
+      searchPlaceholder: "Search prompts (cmd, desc...)",
       new: "New",
       noResults: "No prompts found",
       copySuccess: "Copied to clipboard!",
       deleteTitle: "Delete Prompt?",
       deleteMessage: "Are you sure you want to delete \"{name}\"? This action cannot be undone.",
       confirmDelete: "Delete",
-      cancel: "Cancel"
+      cancel: "Cancel",
+      official: "Official"
     },
     context: {
-      // Toolbar & Sidebar
       searchPlaceholder: "Paste path or browse...",
       browse: "Browse...",
       scanning: "Scanning...",
@@ -39,37 +38,25 @@ const translations = {
       filters: "Filters",
       emptyDir: "Empty directory",
       enterPath: "Enter a path to open",
-      
-      // Tabs
       tabDashboard: "Dashboard",
       tabPreview: "Preview",
-      
-      // Toast Messages
       toastCopied: "Context copied to clipboard!",
       toastCopyFail: "Failed to copy context",
       toastSaved: "Context saved to file!",
       toastSaveFail: "Failed to save file",
-      
-      // Filter Manager
       filterDirs: "Folders",
       filterFiles: "Files",
       filterExts: "Exts",
-      filterPlaceholder: "Ignore {type}...", // e.g. Ignore name...
+      filterPlaceholder: "Ignore {type}...",
       noFilters: "No filters active",
-      
-      // Preview
       previewTitle: "Content Preview",
       chars: "{count} characters",
       generating: "Generating Preview...",
       noFiles: "No files selected.",
       copied: "Copied!",
-      
-      // Dashboard - Stats
       statSelected: "Selected Files",
       statSize: "Total Size",
       statTokens: "Est. Tokens",
-      
-      // Dashboard - Analysis
       langBreakdown: "Language Breakdown",
       bySize: "By Size",
       estCost: "Est. API Cost (Input)",
@@ -77,8 +64,6 @@ const translations = {
       contextUsage: "Context Usage",
       topFiles: "Top Token Hogs",
       largestFiles: "Largest Files",
-      
-      // Actions
       tipSelect: "Select files from the left tree",
       btnCopy: "Copy to Clipboard",
       btnSave: "Save to File...",
@@ -109,6 +94,7 @@ const translations = {
       navAppearance: "Appearance",
       navLanguage: "Language",
       navFilters: "Global Filters",
+      navLibrary: "Prompt Library", // ✨
       appearance: "Appearance",
       language: "Language",
       themeDark: "Dark Theme",
@@ -118,6 +104,17 @@ const translations = {
       filtersTitle: "Global Ignore Rules",
       filtersDesc: "Files matching these rules will be excluded from ALL projects by default.",
       close: "Close"
+    },
+    library: { // ✨ 新增
+      title: "Official Library",
+      desc: "Download offline prompt packs for instant access.",
+      update: "Update",
+      download: "Download",
+      installed: "Installed",
+      uninstall: "Uninstall",
+      prompts: "prompts",
+      noPacks: "No packs available for current language.",
+      loading: "Loading library..."
     },
     actions: {
       collapse: "Collapse Sidebar",
@@ -142,17 +139,17 @@ const translations = {
       newGroup: "新建分组"
     },
     prompts: {
-      searchPlaceholder: "搜索指令...",
+      searchPlaceholder: "搜索指令 (名称、描述、代码)...",
       new: "新建指令",
       noResults: "没有找到相关指令",
       copySuccess: "已复制到剪贴板",
       deleteTitle: "确认删除?",
       deleteMessage: "您确定要删除指令 “{name}” 吗？此操作无法撤销。",
       confirmDelete: "确认删除",
-      cancel: "取消"
+      cancel: "取消",
+      official: "官方"
     },
     context: {
-      // Toolbar & Sidebar
       searchPlaceholder: "粘贴路径或浏览...",
       browse: "浏览...",
       scanning: "扫描中...",
@@ -162,37 +159,25 @@ const translations = {
       filters: "过滤规则",
       emptyDir: "空目录",
       enterPath: "请输入或选择路径",
-      
-      // Tabs
       tabDashboard: "仪表盘",
       tabPreview: "预览",
-      
-      // Toast Messages
       toastCopied: "上下文已复制到剪贴板！",
       toastCopyFail: "复制失败",
       toastSaved: "上下文已保存到文件！",
       toastSaveFail: "保存文件失败",
-      
-      // Filter Manager
       filterDirs: "文件夹",
       filterFiles: "文件",
       filterExts: "后缀",
       filterPlaceholder: "忽略 {type}...", 
       noFilters: "暂无过滤规则",
-      
-      // Preview
       previewTitle: "内容预览",
       chars: "{count} 字符",
       generating: "正在生成预览...",
       noFiles: "未选择任何文件",
       copied: "已复制!",
-      
-      // Dashboard - Stats
       statSelected: "选中文件",
       statSize: "总大小",
       statTokens: "预估 Token",
-      
-      // Dashboard - Analysis
       langBreakdown: "语言分布",
       bySize: "按比例",
       estCost: "预估 API 成本 (输入)",
@@ -200,8 +185,6 @@ const translations = {
       contextUsage: "上下文窗口占用",
       topFiles: "Token 消耗大户",
       largestFiles: "最大文件 Top 5",
-      
-      // Actions
       tipSelect: "请从左侧文件树选择文件",
       btnCopy: "复制上下文",
       btnSave: "保存为文件...",
@@ -232,6 +215,7 @@ const translations = {
       navAppearance: "外观设置",
       navLanguage: "语言选项",
       navFilters: "全局过滤",
+      navLibrary: "指令商店", // ✨
       appearance: "外观与显示",
       language: "语言偏好",
       themeDark: "深色模式",
@@ -241,6 +225,17 @@ const translations = {
       filtersTitle: "全局忽略规则",
       filtersDesc: "匹配这些规则的文件将默认从所有项目中排除（如 node_modules）。",
       close: "关闭"
+    },
+    library: { // ✨ 新增
+      title: "官方指令库",
+      desc: "下载离线指令包到本地，随时调用。",
+      update: "更新",
+      download: "下载",
+      installed: "已安装",
+      uninstall: "卸载",
+      prompts: "条指令",
+      noPacks: "当前语言暂无可用数据包。",
+      loading: "正在加载商店..."
     },
     actions: {
       collapse: "收起侧栏",
@@ -256,16 +251,14 @@ export function getMenuLabel(view: AppView, lang: LangKey): string {
   return translations[lang].menu[view];
 }
 
-// 这是一个通用的获取文本函数
-// 使用方法: getText('prompts', 'searchPlaceholder', 'zh')
 export function getText(
   section: keyof typeof translations['en'], 
   key: string, 
   lang: LangKey,
-  vars?: Record<string, string> // 支持变量替换，例如 {name}
+  vars?: Record<string, string>
 ): string {
   // @ts-ignore
-  let text = translations[lang][section][key] || key;
+  let text = translations[lang][section]?.[key] || key;
   
   if (vars) {
     Object.entries(vars).forEach(([k, v]) => {
