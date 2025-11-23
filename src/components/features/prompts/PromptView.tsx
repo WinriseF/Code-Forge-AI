@@ -1,7 +1,7 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import { usePromptStore } from '@/store/usePromptStore';
 import { useAppStore } from '@/store/useAppStore';
-import { Search, Plus, Folder, Star, Hash, Trash2, Layers, CheckCircle2, PanelLeft, AlertTriangle } from 'lucide-react';
+import { Search, Plus, Folder, Star, Hash, Trash2, Layers, CheckCircle2, PanelLeft, AlertTriangle, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Prompt } from '@/types/prompt';
 import { writeText } from '@tauri-apps/api/clipboard';
@@ -12,10 +12,23 @@ import { PromptCard } from './PromptCard';
 import { PromptEditorDialog } from './dialogs/PromptEditorDialog';
 import { VariableFillerDialog } from './dialogs/VariableFillerDialog';
 
+// ✨ 工具 Hook: 防抖
+function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+  useEffect(() => {
+    const handler = setTimeout(() => setDebouncedValue(value), delay);
+    return () => clearTimeout(handler);
+  }, [value, delay]);
+  return debouncedValue;
+}
+
+const PAGE_SIZE = 24; // 每页显示数量
+
 export function PromptView() {
   const { 
     groups, activeGroup, setActiveGroup, 
-    getAllPrompts, // ✨ 改用 getAllPrompts
+    getAllPrompts, // 注意：Zustand Hook 触发时，如果是对象解构，任何 state 变化都会触发重绘
+    localPrompts, repoPrompts, // ✨ 显式解构数据依赖，确保 useMemo 正确响应
     searchQuery, setSearchQuery, 
     deleteGroup, deletePrompt 
   } = usePromptStore();
@@ -31,6 +44,59 @@ export function PromptView() {
   const [fillVars, setFillVars] = useState<string[]>([]);
   const [isDeleteConfirmOpen, setIsDeleteConfirmOpen] = useState(false);
   const [promptToDelete, setPromptToDelete] = useState<Prompt | null>(null);
+
+  // ✨ 性能优化 State
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  // 对搜索词进行防抖，输入时只更新 store，不立即触发高耗时的过滤计算
+  const debouncedSearchQuery = useDebounce(searchQuery, 300); 
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // 1. 获取所有数据
+  // 依赖 localPrompts 和 repoPrompts，当下载新包或添加指令时自动更新
+  const allPrompts = useMemo(() => getAllPrompts(), [localPrompts, repoPrompts, groups]);
+
+  // 2. 过滤逻辑 (High Cost) - 依赖防抖后的搜索词
+  const filteredPrompts = useMemo(() => {
+    return allPrompts.filter(p => {
+        // Group Filter
+        const matchGroup = activeGroup === 'all' ? true : activeGroup === 'favorite' ? p.isFavorite : p.group === activeGroup;
+        if (!matchGroup) return false;
+
+        // Search Filter
+        if (!debouncedSearchQuery.trim()) return true;
+        
+        const q = debouncedSearchQuery.toLowerCase();
+        return (
+            p.title.toLowerCase().includes(q) || 
+            (p.description && p.description.toLowerCase().includes(q)) ||
+            p.content.toLowerCase().includes(q) ||
+            (p.tags && p.tags.some(t => t.toLowerCase().includes(q)))
+        );
+    });
+  }, [allPrompts, activeGroup, debouncedSearchQuery]);
+
+  // 3. 切片数据 (用于渲染)
+  const visiblePrompts = useMemo(() => {
+    return filteredPrompts.slice(0, visibleCount);
+  }, [filteredPrompts, visibleCount]);
+
+  // 当搜索条件或分组改变时，重置页码并回到顶部
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+    scrollContainerRef.current?.scrollTo(0, 0);
+  }, [activeGroup, debouncedSearchQuery]);
+
+  // ✨ 无限滚动处理函数
+  const handleScroll = useCallback((e: React.UIEvent<HTMLDivElement>) => {
+    const { scrollTop, scrollHeight, clientHeight } = e.currentTarget;
+    // 距离底部 200px 时加载更多
+    if (scrollHeight - scrollTop - clientHeight < 200) {
+      if (visibleCount < filteredPrompts.length) {
+        // 使用函数式更新，避免依赖 visibleCount 导致频繁 recreate
+        setVisibleCount(prev => Math.min(prev + PAGE_SIZE, filteredPrompts.length));
+      }
+    }
+  }, [filteredPrompts.length, visibleCount]); // 添加 visibleCount 依赖以确保逻辑正确，虽 React 批处理会优化
 
   const triggerToast = () => { setShowToast(true); setTimeout(() => setShowToast(false), 2000); };
   const handleCreate = () => { setEditingPrompt(null); setIsEditorOpen(true); };
@@ -57,31 +123,6 @@ export function PromptView() {
     }
   };
 
-  // ✨ 使用 getAllPrompts 获取所有数据
-  const allPrompts = getAllPrompts();
-
-  // ✨ 优化搜索逻辑: 权重排序 + 多字段匹配
-  const filteredPrompts = useMemo(() => {
-    return allPrompts.filter(p => {
-        // 1. Group Filter
-        const matchGroup = activeGroup === 'all' ? true : activeGroup === 'favorite' ? p.isFavorite : p.group === activeGroup;
-        if (!matchGroup) return false;
-
-        // 2. Search Filter
-        if (!searchQuery.trim()) return true;
-        
-        const q = searchQuery.toLowerCase();
-        // 简单权重：标题 > 描述 > 内容
-        // 但 filter 只需要 true/false，排序在后面做比较复杂，这里先做匹配
-        return (
-            p.title.toLowerCase().includes(q) || 
-            (p.description && p.description.toLowerCase().includes(q)) ||
-            p.content.toLowerCase().includes(q) ||
-            (p.tags && p.tags.some(t => t.toLowerCase().includes(q)))
-        );
-    });
-  }, [allPrompts, activeGroup, searchQuery]);
-
   return (
     <div className="h-full flex flex-row overflow-hidden bg-background">
       
@@ -95,7 +136,7 @@ export function PromptView() {
             <CategoryItem 
               icon={<Layers size={16} />} 
               label={getText('sidebar', 'all', language)} 
-              count={allPrompts.length}
+              count={allPrompts.length} // 显示总数
               isActive={activeGroup === 'all'} 
               onClick={() => setActiveGroup('all')} 
             />
@@ -157,12 +198,26 @@ export function PromptView() {
           </button>
         </header>
 
-        <div className="flex-1 overflow-y-auto p-4 md:p-6 scroll-smooth">
+        {/* ✨ 滚动区域：绑定 ref 和 onScroll */}
+        <div 
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="flex-1 overflow-y-auto p-4 md:p-6 scroll-smooth"
+        >
           <div className="max-w-[1600px] mx-auto">
              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 pb-20">
-                {filteredPrompts.map(prompt => (
+                {/* 渲染可见部分 */}
+                {visiblePrompts.map(prompt => (
                     <PromptCard key={prompt.id} prompt={prompt} onEdit={handleEdit} onDelete={handleDeleteClick} onTrigger={handleTrigger} />
                 ))}
+
+                {/* 加载指示器 */}
+                {visibleCount < filteredPrompts.length && (
+                    <div className="col-span-full flex justify-center py-6 text-muted-foreground">
+                        <Loader2 className="animate-spin w-6 h-6" />
+                    </div>
+                )}
+
                 {filteredPrompts.length === 0 && (
                     <div className="col-span-full flex flex-col items-center justify-center py-20 text-muted-foreground opacity-60">
                         <div className="w-16 h-16 bg-secondary/50 rounded-2xl flex items-center justify-center mb-4"><Search size={32} /></div>
@@ -221,7 +276,8 @@ function CategoryItem({ icon, label, count, isActive, onClick, onDelete }: any) 
         <div className="flex items-center gap-3 overflow-hidden"><div className="shrink-0">{icon}</div><span className="truncate">{label}</span></div>
         <div className="flex items-center">
           {onDelete && <button onClick={(e) => { e.stopPropagation(); onDelete(); }} className="mr-2 opacity-0 group-hover:opacity-100 hover:text-destructive transition-opacity p-1 rounded hover:bg-background"><Trash2 size={12} /></button>}
-          {count > 0 && <span className="text-xs opacity-60 min-w-[1.5em] text-center">{count}</span>}
+          {/* 简单的数字截断优化 */}
+          {count >= 0 && <span className="text-xs opacity-60 min-w-[1.5em] text-center">{count > 999 ? '999+' : count}</span>}
         </div>
       </div>
     );

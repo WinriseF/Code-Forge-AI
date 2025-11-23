@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import { Download, Trash2, RefreshCw, Box, Check, Loader2, Globe } from 'lucide-react';
+import { Download, Trash2, RefreshCw, Box, Check, Loader2, Globe, ExternalLink } from 'lucide-react'; // ✨ 引入 ExternalLink
 import { usePromptStore } from '@/store/usePromptStore';
 import { useAppStore } from '@/store/useAppStore';
 import { cn } from '@/lib/utils';
 import { getText } from '@/lib/i18n';
+import { open } from '@tauri-apps/api/shell'; // ✨ 引入 open API
 
 export function PromptLibraryManager() {
   const { 
@@ -14,13 +15,9 @@ export function PromptLibraryManager() {
   const { language } = useAppStore();
 
   useEffect(() => {
-    // 首次打开自动刷新
-    if (!manifest) {
-        fetchManifest();
-    }
+    fetchManifest();
   }, []);
 
-  // 过滤当前语言的包
   const availablePacks = manifest?.packages.filter(p => p.language === language) || [];
 
   return (
@@ -31,10 +28,21 @@ export function PromptLibraryManager() {
                 <Globe size={16} className="text-primary"/> 
                 {getText('library', 'title', language)}
             </h3>
-            <p className="text-xs text-muted-foreground mt-1">
-                {getText('library', 'desc', language)}
-            </p>
+            
+            {/* ✨ 修改这里：将描述文字和链接组合在一起 */}
+            <div className="text-xs text-muted-foreground mt-1 flex flex-wrap items-center gap-1">
+                <span>{getText('library', 'desc', language)}</span>
+                <button 
+                    onClick={() => open('https://tldr.sh/')} 
+                    className="inline-flex items-center gap-0.5 text-blue-500 hover:text-blue-600 hover:underline font-medium transition-colors"
+                    title="Visit tldr-pages"
+                >
+                    tldr-pages
+                    <ExternalLink size={10} />
+                </button>
+            </div>
          </div>
+         
          <button 
            onClick={() => fetchManifest()} 
            disabled={isStoreLoading}

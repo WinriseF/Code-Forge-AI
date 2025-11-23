@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Copy, Edit3, Trash2, Star, Hash, Terminal, BadgeCheck } from 'lucide-react'; // ✨ 引入 BadgeCheck
+import { useState, memo } from 'react';
+import { Copy, Edit3, Trash2, Star, Hash, Terminal, BadgeCheck } from 'lucide-react';
 import { Prompt } from '@/types/prompt';
 import { cn } from '@/lib/utils';
 import { usePromptStore } from '@/store/usePromptStore';
@@ -13,7 +13,7 @@ interface PromptCardProps {
   onTrigger: (prompt: Prompt) => void;
 }
 
-export function PromptCard({ prompt, onEdit, onDelete, onTrigger }: PromptCardProps) {
+function PromptCardComponent({ prompt, onEdit, onDelete, onTrigger }: PromptCardProps) {
   const { toggleFavorite } = usePromptStore();
   const { language } = useAppStore();
   const [isHovered, setIsHovered] = useState(false);
@@ -55,7 +55,7 @@ export function PromptCard({ prompt, onEdit, onDelete, onTrigger }: PromptCardPr
             <h3 className="font-semibold text-foreground truncate text-sm" title={prompt.title}>
                 {prompt.title}
             </h3>
-            {/* ✨ 官方认证图标：修复 TS 类型报错，使用 div 包裹来显示 title */}
+            {/* 官方认证图标 (修复了之前的类型报错) */}
             {isOfficial && (
                 <div title={getText('prompts', 'official', language)} className="shrink-0 text-blue-500 flex items-center">
                     <BadgeCheck size={14} />
@@ -93,7 +93,6 @@ export function PromptCard({ prompt, onEdit, onDelete, onTrigger }: PromptCardPr
             "flex items-center gap-1 transition-all duration-200 translate-y-8 opacity-0",
             isHovered && "translate-y-0 opacity-100"
         )}>
-            {/* 只有本地指令才允许编辑和删除 */}
            {!isOfficial && (
                 <>
                     <ActionButton icon={<Edit3 size={14} />} onClick={() => onEdit(prompt)} title={getText('actions', 'edit', language)} />
@@ -127,3 +126,14 @@ function ActionButton({ icon, onClick, title, danger }: any) {
         </button>
     )
 }
+
+// ✨ 使用 memo 包裹组件，只在 props 关键属性变化时重绘
+export const PromptCard = memo(PromptCardComponent, (prev, next) => {
+    return (
+        prev.prompt.id === next.prompt.id &&
+        prev.prompt.isFavorite === next.prompt.isFavorite &&
+        prev.prompt.title === next.prompt.title &&
+        prev.prompt.content === next.prompt.content &&
+        prev.prompt.group === next.prompt.group
+    );
+});

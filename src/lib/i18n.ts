@@ -94,7 +94,7 @@ const translations = {
       navAppearance: "Appearance",
       navLanguage: "Language",
       navFilters: "Global Filters",
-      navLibrary: "Prompt Library", // ✨
+      navLibrary: "Library", // ✨
       appearance: "Appearance",
       language: "Language",
       themeDark: "Dark Theme",
@@ -107,7 +107,7 @@ const translations = {
     },
     library: { // ✨ 新增
       title: "Official Library",
-      desc: "Download offline prompt packs for instant access.",
+      desc: "Download offline prompt packs. Data source: ",
       update: "Update",
       download: "Download",
       installed: "Installed",
@@ -228,7 +228,7 @@ const translations = {
     },
     library: { // ✨ 新增
       title: "官方指令库",
-      desc: "下载离线指令包到本地，随时调用。",
+      desc: "下载离线指令包到本地。数据来源：",
       update: "更新",
       download: "下载",
       installed: "已安装",
