@@ -3,14 +3,14 @@ import { X, Monitor, Moon, Sun, Languages, Check, Filter } from 'lucide-react';
 import { useAppStore } from '@/store/useAppStore';
 import { getText } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
-import { FilterManager } from '../features/context/FilterManager'; // 引入过滤器组件
+import { FilterManager } from '../features/context/FilterManager';
 
 export function SettingsModal() {
   const { 
     isSettingsOpen, setSettingsOpen, 
     theme, setTheme, 
     language, setLanguage,
-    globalIgnore, updateGlobalIgnore // ✨ 获取全局配置
+    globalIgnore, updateGlobalIgnore
   } = useAppStore();
 
   // 增加 Tab 切换状态
