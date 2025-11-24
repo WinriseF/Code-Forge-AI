@@ -57,11 +57,9 @@ def parse_markdown(content, cmd_name, platform, lang, platform_display_name):
             clean_line = line[1:].strip()
             
             # 1.1 去除 Markdown 链接和 HTML 标签
-            # 例如: <https://example.com> 或 [link](url)
             clean_line = re.sub(r'<[^>]+>|\[([^\]]+)\]\([^\)]+\)', '', clean_line)
             
             # 1.2 ✨ 核心清洗：直接丢弃包含 "更多信息" 或 "More information" 的行
-            # 这样就不会出现 "更多信息：." 这种残留了
             if re.search(r'(?:More information|更多信息|See also|参见)\s*[:：]', clean_line, re.IGNORECASE):
                 continue
             
@@ -82,8 +80,6 @@ def parse_markdown(content, cmd_name, platform, lang, platform_display_name):
         
         if line.startswith('- '):
             # ✨ 核心清洗：去除末尾的 英文冒号(:)、中文冒号(：)、句号(.) 和 空格
-            # 原始内容: "- 归档一个文件或目录："
-            # 清洗后: "归档一个文件或目录"
             raw_action = line[2:]
             current_action = re.sub(r'[:：\.\s]+$', '', raw_action)
         
@@ -92,11 +88,11 @@ def parse_markdown(content, cmd_name, platform, lang, platform_display_name):
             
             prompts.append({
                 "id": f"tldr-{lang}-{platform}-{cmd_name}-{index}",
-                # 标题现在会非常干净，没有冒号
+                # 增加 type 字段，方便前端双轨制区分
+                "type": "command", 
                 "title": f"{cmd_name} - {current_action}",
                 "content": code_content,
                 "group": platform_display_name, 
-                # 描述里的 current_action 也没有冒号了，看起来会像 (归档一个文件或目录)
                 "description": f"{cmd_name}: {description} ({current_action})",
                 "tags": [platform, cmd_name, 'tldr', lang],
                 "source": "official"
@@ -172,20 +168,20 @@ def main():
                     "description": f"Contains {len(all_platform_prompts)} {lang} commands for {platform}.",
                     "count": len(all_platform_prompts),
                     "size_kb": size_kb,
-                    "url": f"packs/{lang}/{output_filename}"
+                    "url": f"packs/{lang}/{output_filename}",
+                    "category": "command" # ✨ 新增：标记为指令包，用于商店分类
                 })
 
-    # 生成总索引 manifest.json
-    manifest = {
-        "updated_at": int(time.time() * 1000),
-        "version": "1.0.0",
-        "packages": manifest_packages
-    }
+    # --- 修改重点：生成局部索引清单 (Partial Manifest) ---
+    # 不再生成完整的 manifest.json，而是生成一个列表文件
+    # 具体的 Version 和 Timestamp 由 Workflow 合并脚本统一生成
+    
+    partial_manifest_path = OUTPUT_DIR / 'manifest_tldr_partial.json'
+    
+    with open(partial_manifest_path, 'w', encoding='utf-8') as f:
+        json.dump(manifest_packages, f, ensure_ascii=False, indent=2)
 
-    with open(OUTPUT_DIR / 'manifest.json', 'w', encoding='utf-8') as f:
-        json.dump(manifest, f, ensure_ascii=False, indent=2)
-
-    print("\n🎉 全构建完成!")
+    print(f"\n✅ 局部构建完成! 清单片段已生成: {partial_manifest_path}")
     print(f"👉 产物目录: {OUTPUT_DIR}")
 
 if __name__ == "__main__":

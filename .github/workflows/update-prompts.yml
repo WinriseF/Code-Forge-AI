@@ -2,11 +2,11 @@ name: Update Prompt Library
 
 on:
   schedule:
-    - cron: '0 0 * * 1'
-  workflow_dispatch:
+    - cron: '0 0 * * 1' # 每周一国际标准时间 0点 运行
+  workflow_dispatch:    # 允许手动触发
   push:
     paths:
-      - 'build/build_tldr.py'
+      - 'build/**'      # 当 build 目录有脚本修改时触发
 
 permissions:
   contents: write
@@ -16,14 +16,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. 拉取 GitHub 代码 (此时包含 src, models, build 等所有代码)
+      # 1. 拉取代码
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
           ref: main
 
-      # 2. 拉取 tldr 数据
-      - name: Checkout Official Data
+      # 2. 拉取 tldr 官方数据
+      - name: Checkout Official Tldr Data
         uses: actions/checkout@v4
         with:
           repository: tldr-pages/tldr
@@ -33,36 +33,89 @@ jobs:
             pages.zh
           fetch-depth: 1
 
-      # 3. 设置 Python
+      # 3. 设置 Python 环境
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
-      # 4. 运行脚本 (生成数据到 build/dist)
-      - name: Run ETL Script
+      # 4. 安装依赖 (Prompt 脚本需要 requests)
+      - name: Install Dependencies
+        run: pip install requests
+
+      # 5. 运行 TLDR 构建脚本 (生成 commands-*.json 和 manifest_tldr_partial.json)
+      - name: Build Commands (Tldr)
         run: python build/build_tldr.py
 
-      # 5. 提交生成的 JSON 到 GitHub (这一步保持不变，GitHub 依然保留完整代码)
+      # 6. 运行 Prompt 构建脚本 (生成 prompts-*.json 和 manifest_prompts_partial.json)
+      - name: Build Prompts (Roles)
+        run: python build/build_prompts.py
+
+      # 7. ✨ 核心步骤：合并清单 (Merge Manifests)
+      # 这段 Python 脚本会扫描所有 *_partial.json 并合并为最终的 manifest.json
+      - name: Merge Manifests
+        run: |
+          python -c "
+          import json
+          import os
+          import time
+
+          dist_dir = 'build/dist'
+          all_packages = []
+          
+          print('🔄 Merging manifests...')
+
+          # 扫描所有以 _partial.json 结尾的文件
+          if os.path.exists(dist_dir):
+              for f in os.listdir(dist_dir):
+                  if f.endswith('_partial.json'):
+                      path = os.path.join(dist_dir, f)
+                      try:
+                          with open(path, 'r', encoding='utf-8') as fp:
+                              data = json.load(fp)
+                              if isinstance(data, list):
+                                  all_packages.extend(data)
+                                  print(f'  ➕ Added {len(data)} packs from {f}')
+                              else:
+                                  print(f'  ⚠️ Warning: {f} is not a list, skipping.')
+                          
+                          # 合并后删除片段文件，保持整洁
+                          os.remove(path) 
+                      except Exception as e:
+                          print(f'  ❌ Error reading {f}: {e}')
+
+          # 构建最终清单对象
+          final_manifest = {
+              'updated_at': int(time.time() * 1000),
+              'version': '2.0.0', # 升级版本号
+              'packages': all_packages
+          }
+
+          # 写入最终文件
+          with open(os.path.join(dist_dir, 'manifest.json'), 'w', encoding='utf-8') as f:
+              json.dump(final_manifest, f, indent=2, ensure_ascii=False)
+          
+          print(f'✅ Final manifest.json created with {len(all_packages)} total packages.')
+          "
+
+      # 8. 提交结果到 GitHub
       - name: Commit and Push to GitHub
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
-          # 确保 build/dist 被添加到 git (即便是被忽略的)
+          # 强制添加 dist 目录 (即使被 gitignore)
           git add -f build/dist
           
           if git diff --staged --quiet; then
             echo "✅ GitHub: 数据没有变化。"
           else
-            git commit -m "chore(data): auto-update tldr prompts [skip ci]"
+            git commit -m "chore(data): auto-update prompts library [skip ci]"
             git push origin main
-            echo "🚀 GitHub: 数据已推送到 main 分支！"
+            echo "🚀 GitHub: 数据已更新！"
           fi
 
-      # ----------------------------------------------------------------
-      # 6. ✨ 核心修改：纯净同步 build 和 models 到 Gitee
-      # ----------------------------------------------------------------
+      # 9. 同步到 Gitee (保持原样，纯净同步 build 和 models)
       - name: Sync Only build & models to Gitee
         env:
           GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
@@ -75,44 +128,30 @@ jobs:
           echo "📥 Cloning Gitee repo..."
           git clone https://oauth2:${GITEE_TOKEN}@gitee.com/winriseF/models.git gitee_workspace
 
-          # --- A. 清理 Gitee 目录 (实现“只有这两个文件夹”) ---
           echo "🧹 Cleaning Gitee workspace..."
           cd gitee_workspace
-          # 删除当前目录下除了 .git 目录以外的所有文件和文件夹
-          # find . -maxdepth 1 -not -name '.git' -not -name '.' -exec rm -rf {} +
-          # 上面命令比较复杂，用 git rm 更简单暴力（删除所有被 git 追踪的文件）
           git rm -rf . --ignore-unmatch
-          # 清理可能残留的未追踪文件
           git clean -fdx
           cd ..
 
-          # --- B. 复制指定文件夹 ---
           echo "Dg Copying specific folders..."
-          
-          # 1. 复制 build (包含脚本和生成的 dist)
-          # 确保目标目录结构存在
           mkdir -p gitee_workspace/build
-          # 复制 build 下的所有内容
           cp -r build/* gitee_workspace/build/
           
-          # 2. 复制 models (你的 json 配置)
           mkdir -p gitee_workspace/models
           cp -r models/* gitee_workspace/models/
           
-          # --- C. 提交并推送 ---
           cd gitee_workspace
-          
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
 
-          # 添加所有变更 (包括删除的文件和新复制的文件)
           git add .
 
           if git diff --staged --quiet; then
-            echo "✅ Gitee: 内容与 GitHub 完全一致，无需推送。"
+            echo "✅ Gitee: 内容一致，无需推送。"
           else
             echo "📦 Pushing clean state to Gitee..."
             git commit -m "chore(sync): sync build and models only [skip ci]"
             git push https://oauth2:${GITEE_TOKEN}@gitee.com/winriseF/models.git master
-            echo "🚀 Gitee: 同步成功！现在 Gitee 上只有 build 和 models。"
+            echo "🚀 Gitee: 同步成功！"
           fi
