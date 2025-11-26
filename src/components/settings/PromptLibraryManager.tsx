@@ -1,10 +1,9 @@
-import { useEffect } from 'react';
-import { Download, Trash2, RefreshCw, Box, Check, Loader2, Globe, ExternalLink } from 'lucide-react'; // ✨ 引入 ExternalLink
+import { useEffect, useState } from 'react';
+import { Download, Trash2, RefreshCw, Box, Check, Loader2, Globe, Sparkles, Terminal, AlertCircle } from 'lucide-react';
 import { usePromptStore } from '@/store/usePromptStore';
 import { useAppStore } from '@/store/useAppStore';
 import { cn } from '@/lib/utils';
 import { getText } from '@/lib/i18n';
-import { open } from '@tauri-apps/api/shell'; // ✨ 引入 open API
 
 export function PromptLibraryManager() {
   const { 
@@ -13,12 +12,32 @@ export function PromptLibraryManager() {
   } = usePromptStore();
   
   const { language } = useAppStore();
+  const [activeTab, setActiveTab] = useState<'prompt' | 'command'>('prompt');
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   useEffect(() => {
     fetchManifest();
   }, []);
 
-  const availablePacks = manifest?.packages.filter(p => p.language === language) || [];
+  const handleInstall = async (pack: any) => {
+      try {
+          setErrorMsg(null); // 清除旧错误
+          await installPack(pack);
+      } catch (err: any) {
+          // 显示错误信息
+          const msg = err.message || "Unknown error";
+          setErrorMsg(msg);
+          
+          // 5秒后自动消失，或者保留直到用户点击
+          setTimeout(() => setErrorMsg(null), 8000);
+      }
+  };
+
+  // 过滤：当前语言 + 当前 Tab 分类
+  const availablePacks = manifest?.packages.filter(p => 
+      p.language === language && 
+      (p.category || 'command') === activeTab // 兼容旧数据，没 category 默认为 command
+  ) || [];
 
   return (
     <div className="flex flex-col h-full">
@@ -28,18 +47,8 @@ export function PromptLibraryManager() {
                 <Globe size={16} className="text-primary"/> 
                 {getText('library', 'title', language)}
             </h3>
-            
-            {/* ✨ 修改这里：将描述文字和链接组合在一起 */}
             <div className="text-xs text-muted-foreground mt-1 flex flex-wrap items-center gap-1">
                 <span>{getText('library', 'desc', language)}</span>
-                <button 
-                    onClick={() => open('https://tldr.sh/')} 
-                    className="inline-flex items-center gap-0.5 text-blue-500 hover:text-blue-600 hover:underline font-medium transition-colors"
-                    title="Visit tldr-pages"
-                >
-                    tldr-pages
-                    <ExternalLink size={10} />
-                </button>
             </div>
          </div>
          
@@ -51,6 +60,39 @@ export function PromptLibraryManager() {
          >
             <RefreshCw size={16} className={cn(isStoreLoading && "animate-spin")} />
          </button>
+      </div>
+
+      {errorMsg && (
+        <div className="mb-4 p-3 rounded-lg bg-destructive/10 border border-destructive/20 flex gap-3 items-start animate-in fade-in slide-in-from-top-2">
+            <AlertCircle size={16} className="text-destructive shrink-0 mt-0.5" />
+            <div className="flex-1 min-w-0">
+                <h4 className="text-xs font-bold text-destructive mb-0.5">Error</h4>
+                <p className="text-xs text-destructive/80 break-all whitespace-pre-wrap">{errorMsg}</p>
+            </div>
+            <button onClick={() => setErrorMsg(null)} className="text-destructive/60 hover:text-destructive text-xs">✕</button>
+        </div>
+      )}
+
+      {/* Tab 切换 */}
+      <div className="flex gap-2 mb-4 border-b border-border/50">
+          <button 
+              onClick={() => setActiveTab('prompt')}
+              className={cn(
+                  "px-4 py-2 text-xs font-bold border-b-2 transition-colors flex items-center gap-2",
+                  activeTab === 'prompt' ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-foreground"
+              )}
+          >
+              <Sparkles size={14} /> Prompts
+          </button>
+          <button 
+              onClick={() => setActiveTab('command')}
+              className={cn(
+                  "px-4 py-2 text-xs font-bold border-b-2 transition-colors flex items-center gap-2",
+                  activeTab === 'command' ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-foreground"
+              )}
+          >
+              <Terminal size={14} /> Commands
+          </button>
       </div>
 
       <div className="flex-1 overflow-y-auto custom-scrollbar space-y-3 pr-2">
@@ -93,7 +135,7 @@ export function PromptLibraryManager() {
                         {isInstalled ? (
                             <>
                                 <button 
-                                    onClick={() => installPack(pack)}
+                                    onClick={() => handleInstall(pack)}
                                     disabled={isStoreLoading}
                                     className="px-3 py-1.5 text-xs font-medium bg-secondary hover:bg-secondary/80 rounded-md transition-colors"
                                 >
@@ -110,7 +152,7 @@ export function PromptLibraryManager() {
                             </>
                         ) : (
                             <button 
-                                onClick={() => installPack(pack)}
+                                onClick={() => handleInstall(pack)}
                                 disabled={isStoreLoading}
                                 className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-primary text-primary-foreground hover:bg-primary/90 rounded-md transition-colors shadow-sm"
                             >

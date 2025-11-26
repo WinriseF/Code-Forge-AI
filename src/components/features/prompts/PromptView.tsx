@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import { usePromptStore } from '@/store/usePromptStore';
 import { useAppStore } from '@/store/useAppStore';
-import { Search, Plus, Folder, Star, Hash, Trash2, Layers, CheckCircle2, PanelLeft, AlertTriangle, Loader2 } from 'lucide-react';
+import { Search, Plus, Folder, Star, Hash, Trash2, Layers, CheckCircle2, PanelLeft, AlertTriangle, Loader2, Terminal, Sparkles } from 'lucide-react'; // 引入新图标
 import { cn } from '@/lib/utils';
 import { Prompt } from '@/types/prompt';
 import { writeText } from '@tauri-apps/api/clipboard';
@@ -12,7 +12,6 @@ import { PromptCard } from './PromptCard';
 import { PromptEditorDialog } from './dialogs/PromptEditorDialog';
 import { VariableFillerDialog } from './dialogs/VariableFillerDialog';
 
-// ✨ 工具 Hook: 防抖
 function useDebounce<T>(value: T, delay: number): T {
   const [debouncedValue, setDebouncedValue] = useState(value);
   useEffect(() => {
@@ -22,21 +21,23 @@ function useDebounce<T>(value: T, delay: number): T {
   return debouncedValue;
 }
 
-const PAGE_SIZE = 24; // 每页显示数量
+const PAGE_SIZE = 24;
 
 export function PromptView() {
   const { 
     groups, activeGroup, setActiveGroup, 
-    getAllPrompts, // 注意：Zustand Hook 触发时，如果是对象解构，任何 state 变化都会触发重绘
-    localPrompts, repoPrompts, // ✨ 显式解构数据依赖，确保 useMemo 正确响应
+    getAllPrompts, 
     searchQuery, setSearchQuery, 
-    deleteGroup, deletePrompt 
+    deleteGroup, deletePrompt,
+    localPrompts, repoPrompts // 确保解构出来用于依赖检查
   } = usePromptStore();
 
   const { isPromptSidebarOpen, setPromptSidebarOpen, language } = useAppStore();
 
+  // 默认为 'prompt' (提示词) 或 'command' (指令)，看你偏好
+  const [activeCategory, setActiveCategory] = useState<'command' | 'prompt'>('prompt');
+
   const [showToast, setShowToast] = useState(false);
-  
   const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [editingPrompt, setEditingPrompt] = useState<Prompt | null>(null);
   const [isFillerOpen, setIsFillerOpen] = useState(false);
@@ -44,38 +45,64 @@ export function PromptView() {
   const [fillVars, setFillVars] = useState<string[]>([]);
   const [isDeleteConfirmOpen, setIsDeleteConfirmOpen] = useState(false);
   const [promptToDelete, setPromptToDelete] = useState<Prompt | null>(null);
-
-  // ✨ 性能优化 State
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
-  // 对搜索词进行防抖，输入时只更新 store，不立即触发高耗时的过滤计算
   const debouncedSearchQuery = useDebounce(searchQuery, 300); 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // 1. 获取所有数据
-  // 依赖 localPrompts 和 repoPrompts，当下载新包或添加指令时自动更新
+  // 获取所有数据
   const allPrompts = useMemo(() => getAllPrompts(), [localPrompts, repoPrompts, groups]);
 
-  // 2. 过滤逻辑 (High Cost) - 依赖防抖后的搜索词，引入权重评分，分词
+  // 根据 activeCategory 将 Group 分类
+  const { commandGroups, promptGroups } = useMemo(() => {
+    const cGroups = new Set<string>();
+    const pGroups = new Set<string>();
+
+    // 遍历所有 prompt 来归类 group
+    allPrompts.forEach(p => {
+       // 默认如果没有 type，根据 source 或内容猜测，或者归为 prompt
+       const type = p.type || (p.content.length < 50 ? 'command' : 'prompt');
+       if (p.group && p.group !== 'Default') {
+         if (type === 'command') cGroups.add(p.group);
+         else pGroups.add(p.group);
+       }
+    });
+
+    // 将原本 store 中的 groups 列表(用户自定义的) 也分配一下
+    
+    return {
+        commandGroups: Array.from(cGroups).sort(),
+        promptGroups: Array.from(pGroups).sort()
+    };
+  }, [allPrompts]);
+
+  // 2. 过滤逻辑
   const filteredPrompts = useMemo(() => {
     const rawQuery = debouncedSearchQuery.trim().toLowerCase();
+    
+    // Category (指令还是提示词)
+    let baseList = allPrompts.filter(p => {
+        const type = p.type || (p.content.length < 50 ? 'command' : 'prompt');
+        return type === activeCategory;
+    });
 
-    // A. 如果没搜索词，只按分组过滤 (快速路径)
+    // 如果没搜索词，按分组过滤
     if (!rawQuery) {
-      return allPrompts.filter(p => {
-        return activeGroup === 'all' ? true : activeGroup === 'favorite' ? p.isFavorite : p.group === activeGroup;
+      return baseList.filter(p => {
+        if (activeGroup === 'all') return true;
+        if (activeGroup === 'favorite') return p.isFavorite;
+        return p.group === activeGroup;
       });
     }
 
-    // B. 分词处理：将 "docker  run" 拆分为 ["docker", "run"]
+    // 搜索逻辑 (保持不变，但作用于 baseList)
     const terms = rawQuery.split(/\s+/).filter(t => t.length > 0);
-
-    return allPrompts
+    return baseList
       .map(p => {
-        // 1. 先检查分组
-        const matchGroup = activeGroup === 'all' ? true : activeGroup === 'favorite' ? p.isFavorite : p.group === activeGroup;
+        // 分组检查 (搜索模式下是否限制在当前组？通常搜索是全局的，但限制在当前 Category 下)
+        // 如果用户选了特定组，就在该组内搜；如果是 All，就在当前 Category 下搜
+        const matchGroup = activeGroup === 'all' || activeGroup === 'favorite' ? true : p.group === activeGroup;
         if (!matchGroup) return { ...p, score: -1 };
 
-        // 2. 准备数据源
         const title = p.title.toLowerCase();
         const desc = p.description?.toLowerCase() || '';
         const content = p.content.toLowerCase();
@@ -84,68 +111,47 @@ export function PromptView() {
         let totalScore = 0;
         let matchAllTerms = true;
 
-        // 3. 遍历每一个搜索词 (AND 逻辑)
         for (const term of terms) {
             let termScore = 0;
-
-            // --- 权重规则 ---
-            
-            // 规则1: 标题命中 (权重高)
             if (title.includes(term)) {
                 termScore += 50;
-                // 额外奖励：开头匹配或完全匹配
                 if (title.startsWith(term)) termScore += 10; 
                 if (title === term) termScore += 20;
             }
-
-            // 规则2: 标签命中 (权重中)
-            if (tags.some(t => t.includes(term))) {
-                termScore += 30;
-            }
-
-            // 规则3: 描述或内容命中 (权重低)
+            if (tags.some(t => t.includes(term))) termScore += 30;
             if (desc.includes(term)) termScore += 5;
             if (content.includes(term)) termScore += 5;
 
-            // 关键逻辑：如果当前这个词在 p 里完全找不到，则 p 不符合要求 (AND 逻辑)
             if (termScore === 0) {
                 matchAllTerms = false;
-                break; // 只要有一个词没匹配，这单就废了，不用往下算了
+                break;
             }
-
             totalScore += termScore;
         }
-
         return { ...p, score: matchAllTerms ? totalScore : 0 };
       })
-      .filter(p => p.score > 0) // 过滤掉不匹配的
-      .sort((a, b) => b.score - a.score); // 按总分排序
+      .filter(p => p.score > 0)
+      .sort((a, b) => b.score - a.score);
 
-  }, [allPrompts, activeGroup, debouncedSearchQuery]);
+  }, [allPrompts, activeGroup, activeCategory, debouncedSearchQuery]);
 
-  // 3. 切片数据 (用于渲染)
-  const visiblePrompts = useMemo(() => {
-    return filteredPrompts.slice(0, visibleCount);
-  }, [filteredPrompts, visibleCount]);
+  // 3. 切片数据 (保持不变)
+  const visiblePrompts = useMemo(() => filteredPrompts.slice(0, visibleCount), [filteredPrompts, visibleCount]);
 
-  // 当搜索条件或分组改变时，重置页码并回到顶部
   useEffect(() => {
     setVisibleCount(PAGE_SIZE);
     scrollContainerRef.current?.scrollTo(0, 0);
-  }, [activeGroup, debouncedSearchQuery]);
+  }, [activeGroup, activeCategory, debouncedSearchQuery]);
 
-  // ✨ 无限滚动处理函数
   const handleScroll = useCallback((e: React.UIEvent<HTMLDivElement>) => {
     const { scrollTop, scrollHeight, clientHeight } = e.currentTarget;
-    // 距离底部 200px 时加载更多
     if (scrollHeight - scrollTop - clientHeight < 200) {
       if (visibleCount < filteredPrompts.length) {
-        // 使用函数式更新，避免依赖 visibleCount 导致频繁 recreate
         setVisibleCount(prev => Math.min(prev + PAGE_SIZE, filteredPrompts.length));
       }
     }
-  }, [filteredPrompts.length, visibleCount]); // 添加 visibleCount 依赖以确保逻辑正确，虽 React 批处理会优化
-
+  }, [filteredPrompts.length, visibleCount]);
+  
   const triggerToast = () => { setShowToast(true); setTimeout(() => setShowToast(false), 2000); };
   const handleCreate = () => { setEditingPrompt(null); setIsEditorOpen(true); };
   const handleEdit = (prompt: Prompt) => { setEditingPrompt(prompt); setIsEditorOpen(true); };
@@ -171,27 +177,49 @@ export function PromptView() {
     }
   };
 
+  // --- 切换 Category 的处理 ---
+  const switchCategory = (cat: 'command' | 'prompt') => {
+      setActiveCategory(cat);
+      setActiveGroup('all'); // 切换大类时重置分组
+  };
+
   return (
     <div className="h-full flex flex-row overflow-hidden bg-background">
       
       {/* --- Sidebar --- */}
-      <aside className={cn("flex flex-col bg-secondary/5 select-none transition-all duration-300 ease-in-out overflow-hidden", isPromptSidebarOpen ? "w-52 border-r border-border opacity-100" : "w-0 border-none opacity-0")}>
+      <aside className={cn("flex flex-col bg-secondary/5 select-none transition-all duration-300 ease-in-out overflow-hidden", isPromptSidebarOpen ? "w-56 border-r border-border opacity-100" : "w-0 border-none opacity-0")}>
+        
+        {/* 1. 大类切换 (Tabs) */}
+        <div className="p-3 pb-0 flex gap-1 shrink-0">
+            <button 
+                onClick={() => switchCategory('prompt')}
+                className={cn("flex-1 py-2 text-xs font-bold rounded-md flex items-center justify-center gap-2 transition-colors", activeCategory === 'prompt' ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-secondary")}
+            >
+                <Sparkles size={14} /> Prompts
+            </button>
+            <button 
+                onClick={() => switchCategory('command')}
+                className={cn("flex-1 py-2 text-xs font-bold rounded-md flex items-center justify-center gap-2 transition-colors", activeCategory === 'command' ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-secondary")}
+            >
+                <Terminal size={14} /> Commands
+            </button>
+        </div>
+
         <div className="p-4 pb-2 min-w-[13rem]">
-           <h2 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-4 px-2">
-             {getText('sidebar', 'library', language)}
-           </h2>
            <div className="space-y-1">
             <CategoryItem 
               icon={<Layers size={16} />} 
               label={getText('sidebar', 'all', language)} 
-              count={allPrompts.length} // 显示总数
+              // 计算当前大类下的总数
+              count={allPrompts.filter(p => (p.type || (p.content.length<50?'command':'prompt')) === activeCategory).length} 
               isActive={activeGroup === 'all'} 
               onClick={() => setActiveGroup('all')} 
             />
             <CategoryItem 
               icon={<Star size={16} />} 
               label={getText('sidebar', 'favorites', language)} 
-              count={allPrompts.filter(p => p.isFavorite).length}
+              // 计算当前大类下的收藏数
+              count={allPrompts.filter(p => p.isFavorite && (p.type || (p.content.length<50?'command':'prompt')) === activeCategory).length}
               isActive={activeGroup === 'favorite'} 
               onClick={() => setActiveGroup('favorite')} 
             />
@@ -206,18 +234,17 @@ export function PromptView() {
                 </button>
             </h2>
             <div className="space-y-1">
-                {groups.map(group => (
-                  group !== 'Default' && (
-                    <CategoryItem 
+                {/* 根据当前 Category 渲染对应的 Group 列表 */}
+                {(activeCategory === 'command' ? commandGroups : promptGroups).map(group => (
+                   <CategoryItem 
                         key={group}
                         icon={group === 'Git' ? <Hash size={16} /> : <Folder size={16} />} 
                         label={group} 
-                        count={allPrompts.filter(p => p.group === group).length}
+                        count={allPrompts.filter(p => p.group === group && (p.type || (p.content.length<50?'command':'prompt')) === activeCategory).length}
                         isActive={activeGroup === group} 
                         onClick={() => setActiveGroup(group)}
                         onDelete={() => deleteGroup(group)}
                     />
-                  )
                 ))}
             </div>
         </div>
@@ -246,7 +273,6 @@ export function PromptView() {
           </button>
         </header>
 
-        {/* ✨ 滚动区域：绑定 ref 和 onScroll */}
         <div 
             ref={scrollContainerRef}
             onScroll={handleScroll}
@@ -254,12 +280,10 @@ export function PromptView() {
         >
           <div className="max-w-[1600px] mx-auto">
              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 pb-20">
-                {/* 渲染可见部分 */}
                 {visiblePrompts.map(prompt => (
                     <PromptCard key={prompt.id} prompt={prompt} onEdit={handleEdit} onDelete={handleDeleteClick} onTrigger={handleTrigger} />
                 ))}
 
-                {/* 加载指示器 */}
                 {visibleCount < filteredPrompts.length && (
                     <div className="col-span-full flex justify-center py-6 text-muted-foreground">
                         <Loader2 className="animate-spin w-6 h-6" />
@@ -276,13 +300,12 @@ export function PromptView() {
           </div>
         </div>
 
-        {/* --- Modals --- */}
         <PromptEditorDialog isOpen={isEditorOpen} onClose={() => setIsEditorOpen(false)} initialData={editingPrompt} />
         <VariableFillerDialog isOpen={isFillerOpen} onClose={() => setIsFillerOpen(false)} prompt={fillPrompt} variables={fillVars} onSuccess={triggerToast} />
 
         {isDeleteConfirmOpen && promptToDelete && (
           <div className="fixed inset-0 z-[70] bg-black/60 backdrop-blur-sm flex items-center justify-center animate-in fade-in duration-200">
-            <div className="w-[400px] bg-background border border-border rounded-xl shadow-2xl p-6 animate-in zoom-in-95 duration-200">
+             <div className="w-[400px] bg-background border border-border rounded-xl shadow-2xl p-6 animate-in zoom-in-95 duration-200">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 rounded-full bg-destructive/10 flex items-center justify-center shrink-0 text-destructive">
                   <AlertTriangle size={24} />
@@ -324,7 +347,6 @@ function CategoryItem({ icon, label, count, isActive, onClick, onDelete }: any) 
         <div className="flex items-center gap-3 overflow-hidden"><div className="shrink-0">{icon}</div><span className="truncate">{label}</span></div>
         <div className="flex items-center">
           {onDelete && <button onClick={(e) => { e.stopPropagation(); onDelete(); }} className="mr-2 opacity-0 group-hover:opacity-100 hover:text-destructive transition-opacity p-1 rounded hover:bg-background"><Trash2 size={12} /></button>}
-          {/* 简单的数字截断优化 */}
           {count >= 0 && <span className="text-xs opacity-60 min-w-[1.5em] text-center">{count > 999 ? '999+' : count}</span>}
         </div>
       </div>

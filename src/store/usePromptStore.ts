@@ -5,7 +5,7 @@ import { fileStorage } from '@/lib/storage';
 import { Prompt, DEFAULT_GROUP, PackManifest, PackManifestItem } from '@/types/prompt';
 import { fetch } from '@tauri-apps/api/http';
 
-// ✨ 多源 URL 配置 (GitHub + Gitee)
+// 多源 URL 配置 (GitHub + Gitee)
 const MANIFEST_URLS = [
     'https://raw.githubusercontent.com/WinriseF/Code-Forge-AI/main/build/dist/manifest.json', // GitHub Source
     'https://gitee.com/winriseF/models/raw/master/build/dist/manifest.json' // Gitee Source
@@ -69,7 +69,7 @@ export const usePromptStore = create<PromptState>()(
       activeManifestUrl: MANIFEST_URLS[0],
       installedPackIds: [], 
 
-      // ✨ 核心修复 1: 实现 Shadowing (遮蔽) 逻辑
+      // 实现 Shadowing (遮蔽) 逻辑
       // 如果本地有一个 prompt 标记了 originalId 指向官方 prompt，则隐藏官方那个，防止重复显示
       getAllPrompts: () => {
         const { localPrompts, repoPrompts } = get();
@@ -81,7 +81,7 @@ export const usePromptStore = create<PromptState>()(
                 .filter(id => !!id) // 过滤掉 undefined
         );
 
-        // 2. 过滤掉被覆盖的官方指令
+        // 过滤掉被覆盖的官方指令
         const visibleRepoPrompts = repoPrompts.filter(p => !shadowedIds.has(p.id));
 
         return [...localPrompts, ...visibleRepoPrompts];
@@ -90,12 +90,12 @@ export const usePromptStore = create<PromptState>()(
       setSearchQuery: (query) => set({ searchQuery: query }),
       setActiveGroup: (group) => set({ activeGroup: group }),
 
-      // ✨ 核心修复 2: 并发加载文件，提升启动速度
+      // 并发加载文件，提升启动速度
       initStore: async () => {
         console.log('[Store] Initializing prompts...');
         const installed = get().installedPackIds; 
         
-        // 1. 并发读取所有包文件
+        // 并发读取所有包文件
         const loadPromises = installed.map(async (packId) => {
              const content = await fileStorage.packs.readPack(`${packId}.json`);
              if (!content) return [];
@@ -113,11 +113,11 @@ export const usePromptStore = create<PromptState>()(
              }
         });
 
-        // 2. 等待所有读取完成并展平数组
+        // 等待所有读取完成并展平数组
         const results = await Promise.all(loadPromises);
         const loadedPrompts = results.flat();
 
-        // 3. 收集所有涉及的 Group (包括本地的和官方的)
+        // 收集所有涉及的 Group (包括本地的和官方的)
         const loadedGroups = new Set(get().localPrompts.map(p => p.group).filter(Boolean));
         loadedGroups.add(DEFAULT_GROUP);
         // 合并用户手动创建的空组
@@ -151,9 +151,9 @@ export const usePromptStore = create<PromptState>()(
         localPrompts: state.localPrompts.filter(p => p.id !== id)
       })),
 
-      // ✨ 核心修复 3: 收藏官方指令时记录 originalId
+      // 收藏官方指令时记录 originalId
       toggleFavorite: (id) => set((state) => {
-        // 1. 先在本地找
+        // 先在本地找
         const localIndex = state.localPrompts.findIndex(p => p.id === id);
         if (localIndex !== -1) {
              // 是本地数据，直接 toggle
@@ -162,7 +162,7 @@ export const usePromptStore = create<PromptState>()(
              return { localPrompts: newLocal };
         }
 
-        // 2. 如果本地没找到，去官方库找
+        // 如果本地没找到，去官方库找
         const repoPrompt = state.repoPrompts.find(p => p.id === id);
         if (repoPrompt) {
             // 是官方数据 -> 克隆到本地并设为已收藏
@@ -174,7 +174,7 @@ export const usePromptStore = create<PromptState>()(
                 createdAt: Date.now(),
                 updatedAt: Date.now(),
                 packId: undefined, // 清除 packId (因为它现在属于用户了)
-                originalId: repoPrompt.id // ✨ 关键：认祖归宗，用于 getAllPrompts 遮蔽原版
+                originalId: repoPrompt.id
             };
             return {
                 localPrompts: [newPrompt, ...state.localPrompts]
@@ -224,14 +224,30 @@ export const usePromptStore = create<PromptState>()(
         set({ isStoreLoading: true });
         try {
             const baseUrl = getBaseUrl(get().activeManifestUrl);
+            // 兼容路径问题修复
             const url = `${baseUrl}${pack.url}`; 
+            
             console.log(`[Store] Downloading pack from ${url}`);
 
             const response = await fetch<Prompt[]>(url);
             
-            if (!response.ok) throw new Error("Download failed");
+            // 详细检查状态码
+            if (!response.ok) {
+                if (response.status === 404) {
+                    throw new Error(`404 Not Found: 无法在服务器找到文件。\nURL: ${url}`);
+                }
+                if (response.status === 403) {
+                    throw new Error(`403 Forbidden: 访问被拒绝 (可能是 Gitee 拦截了敏感词)。`);
+                }
+                throw new Error(`下载失败 (Status: ${response.status})`);
+            }
             
+            // 解析数据
             const data = response.data;
+            if (!Array.isArray(data)) {
+                 throw new Error("数据格式错误：下载的内容不是数组。");
+            }
+
             const filename = `${pack.id}.json`;
             await fileStorage.packs.savePack(filename, JSON.stringify(data));
             
@@ -253,8 +269,10 @@ export const usePromptStore = create<PromptState>()(
             
             console.log(`Pack ${pack.id} installed.`);
 
-        } catch (e) {
-            console.error(e);
+        } catch (e: any) {
+            console.error("Install failed:", e);
+            // 把错误抛出去，让 UI 层能捕获到
+            throw e; 
         } finally {
             set({ isStoreLoading: false });
         }
@@ -292,7 +310,7 @@ export const usePromptStore = create<PromptState>()(
         return (state, _error) => {
           if (state) {
             console.log('数据恢复完成，开始加载指令...');
-            state.initStore(); // 👈 这里会自动调用，所以 App.tsx 里不需要了
+            state.initStore();
           }
         };
       },

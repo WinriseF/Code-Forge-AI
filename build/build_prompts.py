@@ -22,9 +22,16 @@ SOURCES = {
     }
 }
 
+# 1. 根目录 dist
 DIST_DIR = os.path.join(os.path.dirname(__file__), "dist")
+# 2. 子目录 dist/packs (确保文件生成在这里)
+PACKS_DIR = os.path.join(DIST_DIR, "packs")
+
+# 确保目录存在
 if not os.path.exists(DIST_DIR):
     os.makedirs(DIST_DIR)
+if not os.path.exists(PACKS_DIR):
+    os.makedirs(PACKS_DIR)
 
 # --- 分类映射 ---
 CATEGORY_MAP = {
@@ -69,19 +76,15 @@ def clean_raw_content(content):
     """
     深度清洗源文本，去除元数据、链接和格式噪音
     """
-    # 1. 移除贡献者行 (Contributed by... / 贡献者：...)
-    # 改进：^\s* 匹配行首可能存在的空格
-    # 改进：兼容中文冒号和英文冒号
     content = re.sub(r'(?i)(?m)^\s*(?:Contributed by|贡献者|From|Author)[\s:：].*?(\n|$)', '', content)
 
-    # 2. 移除 Markdown 链接，只保留文字 [Text](URL) -> Text
-    # 改进：处理多行链接或复杂 URL
+    # 移除 Markdown 链接，只保留文字 [Text](URL) -> Text
     content = re.sub(r'\[([^\]]+)\]\([^\)]+\)', r'\1', content)
 
-    # 3. 移除行首的引用符号 '>'
+    # 移除行首的引用符号 '>'
     content = re.sub(r'(?m)^>\s*', '', content)
 
-    # 4. 移除可能残留的 Markdown 图片 ![alt](url)
+    # 移除可能残留的 Markdown 图片 ![alt](url)
     content = re.sub(r'!\[[^\]]*\]\([^\)]+\)', '', content)
 
     return content.strip()
@@ -90,14 +93,13 @@ def normalize_placeholders(content):
     """
     将各种格式的占位符统一转换为 {{variable}} 格式
     """
-    # 1. 处理 ${Variable:Default} 或 ${Variable} (VS Code 风格)
+    # 处理 ${Variable:Default} 或 ${Variable} (VS Code 风格)
     content = re.sub(r'\$\{([a-zA-Z0-9_]+)(?::[^}]+)?\}', r'{{\1}}', content)
 
-    # 2. 处理 [Variable] 格式
-    # 改进：确保不是 Markdown 链接 (虽然前面洗过了，防止漏网之鱼)
+    # 处理 [Variable] 格式
     content = re.sub(r'\[([a-zA-Z0-9_\s\u4e00-\u9fa5]+)\](?!\()', r'{{\1}}', content)
     
-    # 3. 处理 {Variable} 格式 (且不是已经被 {{}} 包裹的)
+    # 处理 {Variable} 格式 (且不是已经被 {{}} 包裹的)
     content = re.sub(r'(?<!\{)\{([a-zA-Z0-9_\s\u4e00-\u9fa5]+)\}(?!\})', r'{{\1}}', content)
     
     return content
@@ -169,21 +171,20 @@ def process_source(key, config):
         title = item['act']
         raw_content = item['prompt']
         
-        # 1. 深度清洗
+        # 深度清洗
         cleaned_content = clean_raw_content(raw_content)
         
-        # ✨ 关键修复：如果清洗后内容为空，直接跳过
         if not cleaned_content:
             print(f"⚠️ Skipped empty prompt: {title}")
             continue
 
-        # 2. 归类
+        # 归类
         group = determine_group(title + " " + cleaned_content)
         
-        # 3. 占位符标准化
+        # 占位符标准化
         normalized_content = normalize_placeholders(cleaned_content)
         
-        # 4. 智能变量注入
+        # 智能变量注入
         final_content = inject_variables_advanced(normalized_content, config['lang'])
         
         # 构建对象
@@ -203,12 +204,14 @@ def process_source(key, config):
         final_prompts.append(prompt_obj)
 
     filename = f"prompts-{config['lang']}-roles.json"
-    output_path = os.path.join(DIST_DIR, filename)
+    
+    # --- 写入到 PACKS_DIR 而不是 DIST_DIR ---
+    output_path = os.path.join(PACKS_DIR, filename)
     
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(final_prompts, f, ensure_ascii=False, indent=2)
     
-    print(f"✅ Generated {filename}: {len(final_prompts)} prompts.")
+    print(f"✅ Generated {filename}: {len(final_prompts)} prompts in packs/ folder.")
     
     return {
         "id": f"{config['lang']}-roles",
