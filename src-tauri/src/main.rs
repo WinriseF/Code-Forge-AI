@@ -4,15 +4,14 @@
 )]
 
 use std::fs;
+use tauri::{GlobalShortcutManager, Manager};
 
-// 原有的示例命令
 #[tauri::command]
 fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
 
-// ✨ 新增：获取文件大小的命令
-// Rust 读取 Metadata 非常快，几乎不消耗性能
+// 获取文件大小的命令
 #[tauri::command]
 fn get_file_size(path: String) -> u64 {
     match fs::metadata(path) {
@@ -23,8 +22,31 @@ fn get_file_size(path: String) -> u64 {
 
 fn main() {
     tauri::Builder::default()
-        // ✨ 记得在这里注册 get_file_size
+        // 注册 get_file_size
         .invoke_handler(tauri::generate_handler![greet, get_file_size])
+        
+        // 在 setup 钩子中注册快捷键
+        .setup(|app| {
+            let app_handle = app.handle();
+            
+            // 注册 Alt+Space (macOS 上通常是 Option+Space，Windows 是 Alt+Space)
+            let mut shortcut = app.global_shortcut_manager();
+            
+            // 尝试注册快捷键
+            let _ = shortcut.register("Alt+S", move || {
+                let window = app_handle.get_window("spotlight").unwrap();
+                
+                if window.is_visible().unwrap() {
+                    window.hide().unwrap();
+                } else {
+                    // 显示并强制聚焦，确保用户可以直接输入
+                    window.show().unwrap();
+                    window.set_focus().unwrap();
+                }
+            });
+
+            Ok(())
+        })
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

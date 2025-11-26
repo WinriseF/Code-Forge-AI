@@ -34,6 +34,9 @@
             "all": false,
             "open": true
           },
+          "globalShortcut": {
+            "all": true
+          },
           "window": {
             "all": true
           }
@@ -79,14 +82,30 @@
     },
     "windows": [
           {
+            "label": "main",
             "fullscreen": false,
             "height": 600,
             "resizable": true,
-            "title": "code-forge-ai",
+            "title": "CodeForge AI",
             "width": 800,
             "decorations": false,
             "center": true,
             "transparent": true
+          },
+          {
+            "label": "spotlight",
+            "title": "Spotlight",
+            "width": 640,
+            "height": 400, 
+            "resizable": false,
+            "fullscreen": false,
+            "center": true,
+            "decorations": false,
+            "transparent": true,
+            "alwaysOnTop": true,
+            "visible": false,
+            "skipTaskbar": true, 
+            "focus": true
           }
         ]
   }
