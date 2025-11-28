@@ -156,12 +156,19 @@ const handleSendToAI = async () => {
           // 接收两个参数
           (contentDelta, reasoningDelta) => {
               setMessages(current => {
+                  // 如果当前数组为空（说明用户刚按了清空），直接返回，不进行任何操作
+                  if (current.length === 0) return current;
+
                   const updated = [...current];
                   const lastIndex = updated.length - 1;
-                  const lastMsg = updated[lastIndex];
+                  
+                  // 二重保险：确保索引有效
+                  if (lastIndex < 0) return current;
 
-                  if (lastMsg.role === 'assistant') {
-                      // 分别累加
+                  const lastMsg = updated[lastIndex];
+                  
+                  // 三重保险：确保最后一条消息存在且是 assistant
+                  if (lastMsg && lastMsg.role === 'assistant') {
                       updated[lastIndex] = {
                           ...lastMsg,
                           content: lastMsg.content + contentDelta,
@@ -173,8 +180,17 @@ const handleSendToAI = async () => {
           },
           (err) => {
               setMessages(current => {
+                  // 防崩溃检查
+                  if (current.length === 0) return current;
+
                   const updated = [...current];
-                  updated[updated.length - 1].content += `\n\n**[Error]**: ${err}`;
+                  const lastIndex = updated.length - 1;
+                  if (lastIndex >= 0 && updated[lastIndex]) {
+                      updated[lastIndex] = {
+                          ...updated[lastIndex],
+                          content: updated[lastIndex].content + `\n\n**[Error]**: ${err}`
+                      };
+                  }
                   return updated;
               });
           },
@@ -217,7 +233,7 @@ const handleSendToAI = async () => {
       
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
           e.preventDefault();
-          if (mode === 'chat') {
+          if (mode === 'chat' && !isStreaming) {
               handleClearChat();
           }
           return;
@@ -523,7 +539,7 @@ const handleSendToAI = async () => {
                       </>
                   ) : (
                       <>
-                      <span>Clear Ctrl+K</span> 
+                      <span className={cn(isStreaming && "opacity-30")}>Clear Ctrl+K</span> 
                       <span>Send ↵</span>
                       </>
                   )}
