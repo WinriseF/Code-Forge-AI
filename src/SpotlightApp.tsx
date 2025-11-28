@@ -51,11 +51,20 @@ export default function SpotlightApp() {
   useEffect(() => {
     const unlisten = appWindow.onFocusChanged(async ({ payload: isFocused }) => {
       if (isFocused) {
-        setTimeout(() => inputRef.current?.focus(), 50);
-        setQuery('');
+        // 延迟一小会儿，等待 React 渲染完成
+        setTimeout(() => {
+            if (inputRef.current) {
+                inputRef.current.focus();
+                inputRef.current.select(); 
+            }
+        }, 50);
+        
         setSelectedIndex(0);
         setCopiedId(null);
-        if (allPrompts.length === 0) initStore();
+        
+        if (allPrompts.length === 0) {
+            initStore();
+        }
       } 
     });
     return () => { unlisten.then(f => f()); };
