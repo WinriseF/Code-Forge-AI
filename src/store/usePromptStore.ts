@@ -96,41 +96,53 @@ export const usePromptStore = create<PromptState>()(
         console.log('[Store] Initializing prompts...');
         const installed = get().installedPackIds; 
         
+        // 临时容器，用于收集有效数据
+        const loadedPrompts: Prompt[] = [];
+        const validIds: string[] = [];
+
         // 并发读取所有包文件
         const loadPromises = installed.map(async (packId) => {
              const content = await fileStorage.packs.readPack(`${packId}.json`);
-             if (!content) return [];
+             
+             // 如果读不到内容（文件不存在），直接跳过，不加入 validIds
+             if (!content) {
+                 console.warn(`[Store] Pack ${packId} not found on disk, removing from registry.`);
+                 return; 
+             }
+
              try {
                  const parsed: Prompt[] = JSON.parse(content);
                  // 注入 packId 和 source 标记
-                 return parsed.map(p => ({ 
+                 const labeled = parsed.map(p => ({ 
                      ...p, 
                      packId, 
                      source: 'official' as const 
                  }));
+                 
+                 loadedPrompts.push(...labeled);
+                 validIds.push(packId); // ✨ 只有读成功的才算有效
              } catch (e) {
                  console.error(`Failed to parse pack ${packId}`, e);
-                 return [];
+                 // 解析失败的也不算有效，会被自动剔除
              }
         });
 
-        // 等待所有读取完成并展平数组
-        const results = await Promise.all(loadPromises);
-        const loadedPrompts = results.flat();
+        // 等待所有读取完成
+        await Promise.all(loadPromises);
 
-        // 收集所有涉及的 Group (包括本地的和官方的)
+        // 收集所有涉及的 Group
         const loadedGroups = new Set(get().localPrompts.map(p => p.group).filter(Boolean));
         loadedGroups.add(DEFAULT_GROUP);
-        // 合并用户手动创建的空组
         get().groups.forEach(g => loadedGroups.add(g));
-        // 合并官方包里的组
         loadedPrompts.forEach(p => { if(p.group) loadedGroups.add(p.group); });
 
         set({ 
             repoPrompts: loadedPrompts,
+            installedPackIds: validIds,
             groups: Array.from(loadedGroups)
         });
-        console.log(`[Store] Loaded ${loadedPrompts.length} official prompts.`);
+        
+        console.log(`[Store] Sync complete. Valid packs: ${validIds.length}/${installed.length}`);
       },
 
       addPrompt: (data) => {
@@ -292,15 +304,23 @@ export const usePromptStore = create<PromptState>()(
         set({ isStoreLoading: true });
         try {
             const filename = `${packId}.json`;
-            await fileStorage.packs.removePack(filename);
+            // 尝试删除文件
+            try {
+                await fileStorage.packs.removePack(filename);
+            } catch (fsErr) {
+                console.warn(`File ${filename} maybe already deleted or locked:`, fsErr);
+                // 忽略文件系统的错误，继续执行状态更新
+            }
             
+            // 无论文件删除是否成功，都强制在内存中移除这个 ID
             set(state => ({
                 installedPackIds: state.installedPackIds.filter(id => id !== packId),
                 repoPrompts: state.repoPrompts.filter(p => p.packId !== packId)
             }));
+            
             emit('prompts-updated');
         } catch (e) {
-            console.error(e);
+            console.error("Uninstall critical error:", e);
         } finally {
             set({ isStoreLoading: false });
         }
