@@ -47,6 +47,22 @@ export default function SpotlightApp() {
     return () => { unlistenPromise.then(unlisten => unlisten()); };
   }, [theme, setTheme]);
 
+  useEffect(() => {
+  // 1. 监听来自主窗口的广播
+  const unlistenPromise = listen('prompts-updated', () => {
+      console.log('[Spotlight] Received update signal, reloading...');
+      // 2. 收到通知后，重新从硬盘加载数据
+      initStore();
+      
+      // 3. 如果是 persist 的本地数据 (localPrompts)，Zustand 的 storage 监听通常会自动处理。
+      // 但 initStore 主要是为了加载那些 repoPrompts (下载的包)
+  });
+
+  return () => {
+      unlistenPromise.then(unlisten => unlisten());
+  };
+}, []);
+
   // --- Focus Logic ---
   useEffect(() => {
     const unlisten = appWindow.onFocusChanged(async ({ payload: isFocused }) => {

@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { fileStorage } from '@/lib/storage';
 import { Prompt, DEFAULT_GROUP, PackManifest, PackManifestItem } from '@/types/prompt';
 import { fetch } from '@tauri-apps/api/http';
+import { emit } from '@tauri-apps/api/event';
 
 // 多源 URL 配置 (GitHub + Gitee)
 const MANIFEST_URLS = [
@@ -132,24 +133,33 @@ export const usePromptStore = create<PromptState>()(
         console.log(`[Store] Loaded ${loadedPrompts.length} official prompts.`);
       },
 
-      addPrompt: (data) => set((state) => ({
-        localPrompts: [{
-          id: uuidv4(),
-          ...data,
-          isFavorite: false,
-          createdAt: Date.now(),
-          updatedAt: Date.now(),
-          source: 'local'
-        }, ...state.localPrompts]
-      })),
+      addPrompt: (data) => {
+        set((state) => ({
+          localPrompts: [{
+            id: uuidv4(),
+            ...data,
+            isFavorite: false,
+            createdAt: Date.now(),
+            updatedAt: Date.now(),
+            source: 'local'
+          }, ...state.localPrompts]
+        }));
+        emit('prompts-updated');
+      },
 
-      updatePrompt: (id, data) => set((state) => ({
-        localPrompts: state.localPrompts.map(p => p.id === id ? { ...p, ...data, updatedAt: Date.now() } : p)
-      })),
+      updatePrompt: (id, data) => {
+        set((state) => ({
+          localPrompts: state.localPrompts.map(p => p.id === id ? { ...p, ...data, updatedAt: Date.now() } : p)
+        }));
+        emit('prompts-updated');
+      },
 
-      deletePrompt: (id) => set((state) => ({
-        localPrompts: state.localPrompts.filter(p => p.id !== id)
-      })),
+      deletePrompt: (id) => {
+        set((state) => ({
+          localPrompts: state.localPrompts.filter(p => p.id !== id)
+        }));
+        emit('prompts-updated');
+      },
 
       // 收藏官方指令时记录 originalId
       toggleFavorite: (id) => set((state) => {
@@ -180,7 +190,6 @@ export const usePromptStore = create<PromptState>()(
                 localPrompts: [newPrompt, ...state.localPrompts]
             };
         }
-
         return state;
       }),
       
@@ -268,6 +277,7 @@ export const usePromptStore = create<PromptState>()(
             });
             
             console.log(`Pack ${pack.id} installed.`);
+            emit('prompts-updated');
 
         } catch (e: any) {
             console.error("Install failed:", e);
@@ -288,6 +298,7 @@ export const usePromptStore = create<PromptState>()(
                 installedPackIds: state.installedPackIds.filter(id => id !== packId),
                 repoPrompts: state.repoPrompts.filter(p => p.packId !== packId)
             }));
+            emit('prompts-updated');
         } catch (e) {
             console.error(e);
         } finally {
