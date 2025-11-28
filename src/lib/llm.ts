@@ -3,16 +3,17 @@ import { AIProviderConfig } from "@/types/model";
 export interface ChatMessage {
   role: 'system' | 'user' | 'assistant';
   content: string;
+  reasoning?: string; // 思考内容
 }
 
 /**
  * 通用的 SSE 流式请求处理函数
- * 兼容 OpenAI 格式 (DeepSeek 也是这个格式)
  */
 export async function streamChatCompletion(
   messages: ChatMessage[],
   config: AIProviderConfig,
-  onChunk: (delta: string) => void,
+  // 2. 修改回调签名：同时返回 content 和 reasoning
+  onChunk: (contentDelta: string, reasoningDelta: string) => void,
   onError: (err: string) => void,
   onFinish: () => void
 ) {
@@ -21,15 +22,13 @@ export async function streamChatCompletion(
       throw new Error("API Key not configured. Please go to Settings.");
     }
 
-    // 1. 构建请求体
     const body = {
       model: config.modelId,
       messages: messages,
-      stream: true, // ✨ 开启流式
+      stream: true,
       temperature: config.temperature,
     };
 
-    // 2. 发起请求
     const response = await fetch(`${config.baseUrl}/v1/chat/completions`, {
       method: "POST",
       headers: {
@@ -46,7 +45,6 @@ export async function streamChatCompletion(
 
     if (!response.body) throw new Error("No response body");
 
-    // 3. 处理流
     const reader = response.body.getReader();
     const decoder = new TextDecoder("utf-8");
     let buffer = "";
@@ -59,7 +57,6 @@ export async function streamChatCompletion(
       buffer += chunk;
       
       const lines = buffer.split("\n");
-      // 保留最后一个可能不完整的片段
       buffer = lines.pop() || ""; 
 
       for (const line of lines) {
@@ -67,17 +64,20 @@ export async function streamChatCompletion(
         if (!trimmed || !trimmed.startsWith("data: ")) continue;
         
         const dataStr = trimmed.replace("data: ", "");
-        if (dataStr === "[DONE]") {
-             // 流结束
-             break;
-        }
+        if (dataStr === "[DONE]") break;
 
         try {
           const json = JSON.parse(dataStr);
-          // OpenAI 格式: choices[0].delta.content
-          const delta = json.choices?.[0]?.delta?.content;
+          const delta = json.choices?.[0]?.delta;
+          
           if (delta) {
-            onChunk(delta);
+            // DeepSeek/SiliconFlow 的思考内容通常在 reasoning_content 字段
+            const contentDelta = delta.content || "";
+            const reasoningDelta = delta.reasoning_content || "";
+            
+            if (contentDelta || reasoningDelta) {
+                onChunk(contentDelta, reasoningDelta);
+            }
           }
         } catch (e) {
           console.warn("Failed to parse SSE line", e);

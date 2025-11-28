@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useMemo, useLayoutEffect } from 'react';
 import { appWindow, LogicalSize } from '@tauri-apps/api/window';
 import { writeText } from '@tauri-apps/api/clipboard';
 import { listen } from '@tauri-apps/api/event';
-import { Search as SearchIcon, Sparkles, Terminal, CornerDownLeft, Check, Command, Bot, User } from 'lucide-react';
+import { Search as SearchIcon, Sparkles, Terminal, CornerDownLeft, Check, Command, Bot, User, Brain, ChevronDown } from 'lucide-react';
 import { usePromptStore } from '@/store/usePromptStore';
 import { useAppStore, AppTheme } from '@/store/useAppStore';
 import { Prompt } from '@/types/prompt';
@@ -134,11 +134,11 @@ export default function SpotlightApp() {
     setTimeout(() => inputRef.current?.focus(), 10);
   };
 
-  const handleSendToAI = async () => {
+const handleSendToAI = async () => {
       if (!chatInput.trim() || isStreaming) return;
       
       const userText = chatInput.trim();
-      setChatInput('');
+      setChatInput(''); 
       
       const newMessages: ChatMessage[] = [
           ...messages,
@@ -147,21 +147,25 @@ export default function SpotlightApp() {
       setMessages(newMessages);
       setIsStreaming(true);
 
-      setMessages(prev => [...prev, { role: 'assistant', content: '' }]);
+      // 初始化时，reasoning 设为空字符串
+      setMessages(prev => [...prev, { role: 'assistant', content: '', reasoning: '' }]);
 
       await streamChatCompletion(
           newMessages,
           aiConfig,
-          (delta) => {
+          // 接收两个参数
+          (contentDelta, reasoningDelta) => {
               setMessages(current => {
                   const updated = [...current];
                   const lastIndex = updated.length - 1;
                   const lastMsg = updated[lastIndex];
 
                   if (lastMsg.role === 'assistant') {
+                      // 分别累加
                       updated[lastIndex] = {
                           ...lastMsg,
-                          content: lastMsg.content + delta
+                          content: lastMsg.content + contentDelta,
+                          reasoning: (lastMsg.reasoning || "") + reasoningDelta
                       };
                   }
                   return updated;
@@ -429,30 +433,52 @@ export default function SpotlightApp() {
                                            {msg.role === 'user' ? (
                                                <div className="whitespace-pre-wrap">{msg.content}</div>
                                            ) : (
-                                               <ReactMarkdown
-                                                   remarkPlugins={[remarkGfm]}
-                                                   components={{
-                                                       code({node, inline, className, children, ...props}: any) {
-                                                           const match = /language-(\w+)/.exec(className || '')
-                                                           return !inline && match ? (
-                                                               <SyntaxHighlighter
-                                                                   style={vscDarkPlus}
-                                                                   language={match[1]}
-                                                                   PreTag="div"
-                                                                   {...props}
-                                                               >
-                                                                   {String(children).replace(/\n$/, '')}
-                                                               </SyntaxHighlighter>
-                                                           ) : (
-                                                               <code className={cn("bg-black/20 px-1 py-0.5 rounded font-mono", className)} {...props}>
-                                                                   {children}
-                                                               </code>
-                                                           )
-                                                       }
-                                                   }}
-                                               >
-                                                   {msg.content || (isStreaming && idx === messages.length -1 ? "..." : "")}
-                                               </ReactMarkdown>
+                                              <>
+                                                  {/* 1. 思考过程模块 */}
+                                                  {msg.reasoning && (
+                                                      <details className="mb-2 group" open={isStreaming && idx === messages.length - 1}>
+                                                          <summary className="flex items-center gap-1.5 text-[10px] uppercase font-bold text-muted-foreground/60 cursor-pointer hover:text-purple-400 transition-colors select-none list-none outline-none">
+                                                              <Brain size={12} />
+                                                              <span>Thinking Process</span>
+                                                              <ChevronDown size={12} className="group-open:rotate-180 transition-transform duration-200" />
+                                                          </summary>
+                                                          <div className="mt-2 pl-2 border-l-2 border-purple-500/20 text-xs font-mono text-muted-foreground/80 whitespace-pre-wrap leading-relaxed opacity-80">
+                                                              {msg.reasoning}
+                                                              {/* 思考时的光标 */}
+                                                              {isStreaming && idx === messages.length - 1 && !msg.content && (
+                                                                  <span className="inline-block w-1.5 h-3 ml-1 bg-purple-500/50 align-middle animate-pulse" />
+                                                              )}
+                                                          </div>
+                                                      </details>
+                                                  )}
+
+                                                  {/* 2. Markdown 回复 */}
+                                                  <ReactMarkdown
+                                                      remarkPlugins={[remarkGfm]}
+                                                      components={{
+                                                          code({node, inline, className, children, ...props}: any) {
+                                                              const match = /language-(\w+)/.exec(className || '')
+                                                              return !inline && match ? (
+                                                                  <SyntaxHighlighter
+                                                                      style={vscDarkPlus}
+                                                                      language={match[1]}
+                                                                      PreTag="div"
+                                                                      {...props}
+                                                                  >
+                                                                      {String(children).replace(/\n$/, '')}
+                                                                  </SyntaxHighlighter>
+                                                              ) : (
+                                                                  <code className={cn("bg-black/20 px-1 py-0.5 rounded font-mono", className)} {...props}>
+                                                                      {children}
+                                                                  </code>
+                                                              )
+                                                          }
+                                                      }}
+                                                  >
+                                                      {/* 如果正在流式传输且正文为空（正在思考），显示省略号占位，否则显示正文 */}
+                                                      {msg.content || (isStreaming && idx === messages.length - 1 && !msg.reasoning ? "..." : "")}
+                                                  </ReactMarkdown>
+                                              </>
                                            )}
                                        </div>
                                    </div>
