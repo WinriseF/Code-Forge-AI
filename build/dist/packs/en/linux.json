@@ -1203,7 +1203,7 @@
     "id": "tldr-en-linux-retroarch-1",
     "type": "command",
     "title": "retroarch - Start in full screen mode",
-    "content": "retroarch --fullscreen",
+    "content": "retroarch {{[-f|--fullscreen]}}",
     "group": "Linux Ops",
     "description": "retroarch: A frontend for emulators, game engines and media players. The reference implementation of the libretro API. (Start in full screen mode)",
     "tags": [
@@ -1233,7 +1233,7 @@
     "id": "tldr-en-linux-retroarch-3",
     "type": "command",
     "title": "retroarch - Set the path of a configuration file",
-    "content": "retroarch --config={{path/to/config_file}}",
+    "content": "retroarch {{[-c|--config]}} {{path/to/config_file}}",
     "group": "Linux Ops",
     "description": "retroarch: A frontend for emulators, game engines and media players. The reference implementation of the libretro API. (Set the path of a configuration file)",
     "tags": [
@@ -1248,7 +1248,7 @@
     "id": "tldr-en-linux-retroarch-4",
     "type": "command",
     "title": "retroarch - Display help",
-    "content": "retroarch --help",
+    "content": "retroarch {{[-h|--help]}}",
     "group": "Linux Ops",
     "description": "retroarch: A frontend for emulators, game engines and media players. The reference implementation of the libretro API. (Display help)",
     "tags": [
@@ -17808,7 +17808,7 @@
     "id": "tldr-en-linux-navi-4",
     "type": "command",
     "title": "navi - Autoselect and execute the snippet that best matches a query",
-    "content": "navi --query '{{query}}' --best-match",
+    "content": "navi {{[-q|--query]}} '{{query}}' --best-match",
     "group": "Linux Ops",
     "description": "navi: An interactive cheatsheet tool for the command-line and application launchers. (Autoselect and execute the snippet that best matches a query)",
     "tags": [
@@ -19350,6 +19350,66 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-nft-monitor-0",
+    "type": "command",
+    "title": "nft-monitor - Monitor all nftables events",
+    "content": "sudo nft monitor",
+    "group": "Linux Ops",
+    "description": "nft-monitor: Show real-time changes happening inside the Linux firewall `nftables`. (Monitor all nftables events)",
+    "tags": [
+      "linux",
+      "nft-monitor",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-nft-monitor-1",
+    "type": "command",
+    "title": "nft-monitor - Monitor only rule updates (add, delete, replace)",
+    "content": "sudo nft monitor rules",
+    "group": "Linux Ops",
+    "description": "nft-monitor: Show real-time changes happening inside the Linux firewall `nftables`. (Monitor only rule updates (add, delete, replace))",
+    "tags": [
+      "linux",
+      "nft-monitor",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-nft-monitor-2",
+    "type": "command",
+    "title": "nft-monitor - Monitor set and element updates",
+    "content": "sudo nft monitor sets",
+    "group": "Linux Ops",
+    "description": "nft-monitor: Show real-time changes happening inside the Linux firewall `nftables`. (Monitor set and element updates)",
+    "tags": [
+      "linux",
+      "nft-monitor",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-nft-monitor-3",
+    "type": "command",
+    "title": "nft-monitor - Monitor events and print JSON output",
+    "content": "sudo nft {{[-j|--json]}} monitor",
+    "group": "Linux Ops",
+    "description": "nft-monitor: Show real-time changes happening inside the Linux firewall `nftables`. (Monitor events and print JSON output)",
+    "tags": [
+      "linux",
+      "nft-monitor",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-ip-route-show-0",
     "type": "command",
     "title": "ip-route-show - View documentation for the original command",
@@ -20267,10 +20327,10 @@
   {
     "id": "tldr-en-linux-aura-0",
     "type": "command",
-    "title": "aura - Search for packages from the official repositories and AUR",
-    "content": "aura --aursync --both --search {{keyword|regex}}",
+    "title": "aura - Search for packages from the AUR",
+    "content": "aura {{[-As|--aursync --search]}} {{keyword|regex}}",
     "group": "Linux Ops",
-    "description": "aura: The Aura Package Manager: a secure, multilingual package manager for Arch Linux and the AUR. (Search for packages from the official repositories and AUR)",
+    "description": "aura: The Aura Package Manager: a secure, multilingual package manager for Arch Linux and the AUR. (Search for packages from the AUR)",
     "tags": [
       "linux",
       "aura",
@@ -20283,7 +20343,7 @@
     "id": "tldr-en-linux-aura-1",
     "type": "command",
     "title": "aura - Install a package from the AUR",
-    "content": "aura --aursync {{package}}",
+    "content": "aura {{[-A|--aursync]}} {{package}}",
     "group": "Linux Ops",
     "description": "aura: The Aura Package Manager: a secure, multilingual package manager for Arch Linux and the AUR. (Install a package from the AUR)",
     "tags": [
@@ -20298,7 +20358,7 @@
     "id": "tldr-en-linux-aura-2",
     "type": "command",
     "title": "aura - Update all AUR packages in a verbose mode and remove all make dependencies",
-    "content": "aura --aursync --diff --sysupgrade --delmakedeps --unsuppress",
+    "content": "aura {{[-Akua|--aursync --diff --sysupgrade --delmakedeps]}}",
     "group": "Linux Ops",
     "description": "aura: The Aura Package Manager: a secure, multilingual package manager for Arch Linux and the AUR. (Update all AUR packages in a verbose mode and remove all make dependencies)",
     "tags": [
@@ -20313,7 +20373,7 @@
     "id": "tldr-en-linux-aura-3",
     "type": "command",
     "title": "aura - Install a package from the official repositories",
-    "content": "aura --sync {{package}}",
+    "content": "aura {{[-S|--sync]}} {{package}}",
     "group": "Linux Ops",
     "description": "aura: The Aura Package Manager: a secure, multilingual package manager for Arch Linux and the AUR. (Install a package from the official repositories)",
     "tags": [
@@ -20328,7 +20388,7 @@
     "id": "tldr-en-linux-aura-4",
     "type": "command",
     "title": "aura - Synchronize and update all packages from the official repositories",
-    "content": "aura --sync --refresh --sysupgrade",
+    "content": "aura {{[-Syu|--sync --refresh --sysupgrade]}}",
     "group": "Linux Ops",
     "description": "aura: The Aura Package Manager: a secure, multilingual package manager for Arch Linux and the AUR. (Synchronize and update all packages from the official repositories)",
     "tags": [
@@ -20342,23 +20402,8 @@
   {
     "id": "tldr-en-linux-aura-5",
     "type": "command",
-    "title": "aura - Downgrade a package using the package cache",
-    "content": "aura --downgrade {{package}}",
-    "group": "Linux Ops",
-    "description": "aura: The Aura Package Manager: a secure, multilingual package manager for Arch Linux and the AUR. (Downgrade a package using the package cache)",
-    "tags": [
-      "linux",
-      "aura",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-aura-6",
-    "type": "command",
     "title": "aura - Remove a package and its dependencies",
-    "content": "aura --remove --recursive --unneeded {{package}}",
+    "content": "aura {{[-Rsu|--remove --recursive --unneeded]}} {{package}}",
     "group": "Linux Ops",
     "description": "aura: The Aura Package Manager: a secure, multilingual package manager for Arch Linux and the AUR. (Remove a package and its dependencies)",
     "tags": [
@@ -20370,10 +20415,10 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-linux-aura-7",
+    "id": "tldr-en-linux-aura-6",
     "type": "command",
     "title": "aura - Remove orphan packages (installed as dependencies but not required by any package)",
-    "content": "aura --orphans --abandon",
+    "content": "aura {{[-Oj|--orphans --abandon]}}",
     "group": "Linux Ops",
     "description": "aura: The Aura Package Manager: a secure, multilingual package manager for Arch Linux and the AUR. (Remove orphan packages (installed as dependencies but not required by any package))",
     "tags": [
@@ -27992,10 +28037,55 @@
   {
     "id": "tldr-en-linux-pveum-2",
     "type": "command",
+    "title": "pveum - Add a user with an email, description, and password",
+    "content": "pveum {{[u|user]}} {{[a|add]}} {{username}}@pve --email {{email_address}} --comment {{description}} --password {{password}}",
+    "group": "Linux Ops",
+    "description": "pveum: Manage proxmox users. (Add a user with an email, description, and password)",
+    "tags": [
+      "linux",
+      "pveum",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-pveum-3",
+    "type": "command",
+    "title": "pveum - Change user password",
+    "content": "pveum {{[pa|passwd]}} {{[username}}@pve",
+    "group": "Linux Ops",
+    "description": "pveum: Manage proxmox users. (Change user password)",
+    "tags": [
+      "linux",
+      "pveum",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-pveum-4",
+    "type": "command",
     "title": "pveum - Delete a user",
     "content": "pveum {{[u|user]}} {{[d|delete]}} {{username}}@pve",
     "group": "Linux Ops",
     "description": "pveum: Manage proxmox users. (Delete a user)",
+    "tags": [
+      "linux",
+      "pveum",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-pveum-5",
+    "type": "command",
+    "title": "pveum - Give a user access to a specific VM with specific permissions",
+    "content": "pveum {{[a|acl]}} {{[m|modify]}} /vms/{{1000}} --user {{username}}@pve --role {{PVEVMUser}}",
+    "group": "Linux Ops",
+    "description": "pveum: Manage proxmox users. (Give a user access to a specific VM with specific permissions)",
     "tags": [
       "linux",
       "pveum",
@@ -30048,7 +30138,7 @@
     "id": "tldr-en-linux-rpmconf-0",
     "type": "command",
     "title": "rpmconf - List leftover files and interactively choose what to do with each of them",
-    "content": "sudo rpmconf --all",
+    "content": "sudo rpmconf {{[-a|--all]}}",
     "group": "Linux Ops",
     "description": "rpmconf: Handle RPMNEW, RPMSAVE and RPMORIG files left over by package upgrades. (List leftover files and interactively choose what to do with each of them)",
     "tags": [
@@ -30063,7 +30153,7 @@
     "id": "tldr-en-linux-rpmconf-1",
     "type": "command",
     "title": "rpmconf - Delete orphaned RPMNEW and RPMSAVE files",
-    "content": "sudo rpmconf --all --clean",
+    "content": "sudo rpmconf {{[-a|--all]}} {{[-c|--clean]}}",
     "group": "Linux Ops",
     "description": "rpmconf: Handle RPMNEW, RPMSAVE and RPMORIG files left over by package upgrades. (Delete orphaned RPMNEW and RPMSAVE files)",
     "tags": [
@@ -34173,7 +34263,7 @@
     "id": "tldr-en-linux-woeusb-0",
     "type": "command",
     "title": "woeusb - Format a USB then create a bootable Windows installation drive",
-    "content": "woeusb --device {{path/to/windows.iso}} {{/dev/sdX}}",
+    "content": "woeusb {{[-d|--device]}} {{path/to/windows.iso}} {{/dev/sdX}}",
     "group": "Linux Ops",
     "description": "woeusb: Windows media creation tool. (Format a USB then create a bootable Windows installation drive)",
     "tags": [
@@ -34188,7 +34278,7 @@
     "id": "tldr-en-linux-woeusb-1",
     "type": "command",
     "title": "woeusb - Copy Windows files to an existing partition of a USB storage device and make it bootable, without erasing the current data",
-    "content": "woeusb --partition {{path/to/windows.iso}} {{/dev/sdXN}}",
+    "content": "woeusb {{[-p|--partition]}} {{path/to/windows.iso}} {{/dev/sdXN}}",
     "group": "Linux Ops",
     "description": "woeusb: Windows media creation tool. (Copy Windows files to an existing partition of a USB storage device and make it bootable, without erasing the current data)",
     "tags": [
@@ -40143,7 +40233,7 @@
     "id": "tldr-en-linux-radeontop-1",
     "type": "command",
     "title": "radeontop - Enable colored output",
-    "content": "radeontop --color",
+    "content": "radeontop {{[-c|--color]}}",
     "group": "Linux Ops",
     "description": "radeontop: Show utilization of AMD GPUs. May require root privileges depending on your system. (Enable colored output)",
     "tags": [
@@ -40158,7 +40248,7 @@
     "id": "tldr-en-linux-radeontop-2",
     "type": "command",
     "title": "radeontop - Select a specific GPU (the bus number is the first number in the output of `lspci`)",
-    "content": "radeontop --bus {{bus_number}}",
+    "content": "radeontop {{[-b|--bus]}} {{bus_number}}",
     "group": "Linux Ops",
     "description": "radeontop: Show utilization of AMD GPUs. May require root privileges depending on your system. (Select a specific GPU (the bus number is the first number in the output of `lspci`))",
     "tags": [
@@ -40173,7 +40263,7 @@
     "id": "tldr-en-linux-radeontop-3",
     "type": "command",
     "title": "radeontop - Specify the display refresh rate (higher means more GPU overhead)",
-    "content": "radeontop --ticks {{samples_per_second}}",
+    "content": "radeontop {{[-t|--ticks]}} {{samples_per_second}}",
     "group": "Linux Ops",
     "description": "radeontop: Show utilization of AMD GPUs. May require root privileges depending on your system. (Specify the display refresh rate (higher means more GPU overhead))",
     "tags": [
@@ -44343,7 +44433,7 @@
     "id": "tldr-en-linux-pacstall-0",
     "type": "command",
     "title": "pacstall - Search the package database for a package name",
-    "content": "pacstall --search {{query}}",
+    "content": "pacstall {{[-S|--search]}} {{query}}",
     "group": "Linux Ops",
     "description": "pacstall: An AUR package manager for Ubuntu. (Search the package database for a package name)",
     "tags": [
@@ -44358,7 +44448,7 @@
     "id": "tldr-en-linux-pacstall-1",
     "type": "command",
     "title": "pacstall - Install a package",
-    "content": "pacstall --install {{package}}",
+    "content": "pacstall {{[-I|--install]}} {{package}}",
     "group": "Linux Ops",
     "description": "pacstall: An AUR package manager for Ubuntu. (Install a package)",
     "tags": [
@@ -44373,7 +44463,7 @@
     "id": "tldr-en-linux-pacstall-2",
     "type": "command",
     "title": "pacstall - Remove a package",
-    "content": "pacstall --remove {{package}}",
+    "content": "pacstall {{[-R|--remove]}} {{package}}",
     "group": "Linux Ops",
     "description": "pacstall: An AUR package manager for Ubuntu. (Remove a package)",
     "tags": [
@@ -44388,7 +44478,7 @@
     "id": "tldr-en-linux-pacstall-3",
     "type": "command",
     "title": "pacstall - Add a repository to the database (only GitHub and GitLab are supported)",
-    "content": "pacstall --add-repo {{remote_repository_location}}",
+    "content": "pacstall {{[-A|--add-repo]}} {{remote_repository_location}}",
     "group": "Linux Ops",
     "description": "pacstall: An AUR package manager for Ubuntu. (Add a repository to the database (only GitHub and GitLab are supported))",
     "tags": [
@@ -44403,7 +44493,7 @@
     "id": "tldr-en-linux-pacstall-4",
     "type": "command",
     "title": "pacstall - Update pacstall's scripts",
-    "content": "pacstall --update",
+    "content": "pacstall {{[-U|--update]}}",
     "group": "Linux Ops",
     "description": "pacstall: An AUR package manager for Ubuntu. (Update pacstall's scripts)",
     "tags": [
@@ -44418,7 +44508,7 @@
     "id": "tldr-en-linux-pacstall-5",
     "type": "command",
     "title": "pacstall - Update all packages",
-    "content": "pacstall --upgrade",
+    "content": "pacstall {{[-Up|--upgrade]}}",
     "group": "Linux Ops",
     "description": "pacstall: An AUR package manager for Ubuntu. (Update all packages)",
     "tags": [
@@ -44433,7 +44523,7 @@
     "id": "tldr-en-linux-pacstall-6",
     "type": "command",
     "title": "pacstall - Display information about a package",
-    "content": "pacstall --cache-info {{package}}",
+    "content": "pacstall {{[-Ci|--cache-info]}} {{package}}",
     "group": "Linux Ops",
     "description": "pacstall: An AUR package manager for Ubuntu. (Display information about a package)",
     "tags": [
@@ -44448,7 +44538,7 @@
     "id": "tldr-en-linux-pacstall-7",
     "type": "command",
     "title": "pacstall - List all installed packages",
-    "content": "pacstall --list",
+    "content": "pacstall {{[-L|--list]}}",
     "group": "Linux Ops",
     "description": "pacstall: An AUR package manager for Ubuntu. (List all installed packages)",
     "tags": [
@@ -58308,7 +58398,7 @@
     "id": "tldr-en-linux-pacgraph-1",
     "type": "command",
     "title": "pacgraph - Produce an SVG graph",
-    "content": "pacgraph --svg",
+    "content": "pacgraph {{[-s|--svg]}}",
     "group": "Linux Ops",
     "description": "pacgraph: Draw a graph of installed packages to PNG/SVG/GUI/console. (Produce an SVG graph)",
     "tags": [
@@ -58323,7 +58413,7 @@
     "id": "tldr-en-linux-pacgraph-2",
     "type": "command",
     "title": "pacgraph - Print summary to console",
-    "content": "pacgraph --console",
+    "content": "pacgraph {{[-c|--console]}}",
     "group": "Linux Ops",
     "description": "pacgraph: Draw a graph of installed packages to PNG/SVG/GUI/console. (Print summary to console)",
     "tags": [
@@ -58338,7 +58428,7 @@
     "id": "tldr-en-linux-pacgraph-3",
     "type": "command",
     "title": "pacgraph - Override the default filename/location (Note: Do not specify the file extension)",
-    "content": "pacgraph --file={{path/to/file}}",
+    "content": "pacgraph {{[-f|--file]}} {{path/to/file}}",
     "group": "Linux Ops",
     "description": "pacgraph: Draw a graph of installed packages to PNG/SVG/GUI/console. (Override the default filename/location (Note: Do not specify the file extension))",
     "tags": [
@@ -58353,7 +58443,7 @@
     "id": "tldr-en-linux-pacgraph-4",
     "type": "command",
     "title": "pacgraph - Change the color of packages that are not dependencies",
-    "content": "pacgraph --top={{color}}",
+    "content": "pacgraph {{[-t|--top]}} {{color}}",
     "group": "Linux Ops",
     "description": "pacgraph: Draw a graph of installed packages to PNG/SVG/GUI/console. (Change the color of packages that are not dependencies)",
     "tags": [
@@ -58368,7 +58458,7 @@
     "id": "tldr-en-linux-pacgraph-5",
     "type": "command",
     "title": "pacgraph - Change the color of package dependencies",
-    "content": "pacgraph --dep={{color}}",
+    "content": "pacgraph {{[-d|--dep]}} {{color}}",
     "group": "Linux Ops",
     "description": "pacgraph: Draw a graph of installed packages to PNG/SVG/GUI/console. (Change the color of package dependencies)",
     "tags": [
@@ -58383,7 +58473,7 @@
     "id": "tldr-en-linux-pacgraph-6",
     "type": "command",
     "title": "pacgraph - Change the background color of a graph",
-    "content": "pacgraph --background={{color}}",
+    "content": "pacgraph {{[-b|--background]}} {{color}}",
     "group": "Linux Ops",
     "description": "pacgraph: Draw a graph of installed packages to PNG/SVG/GUI/console. (Change the background color of a graph)",
     "tags": [
@@ -58398,7 +58488,7 @@
     "id": "tldr-en-linux-pacgraph-7",
     "type": "command",
     "title": "pacgraph - Change the color of links between packages",
-    "content": "pacgraph --link={{color}}",
+    "content": "pacgraph {{[-l|--link]}} {{color}}",
     "group": "Linux Ops",
     "description": "pacgraph: Draw a graph of installed packages to PNG/SVG/GUI/console. (Change the color of links between packages)",
     "tags": [
@@ -58638,7 +58728,7 @@
     "id": "tldr-en-linux-pct-clone-0",
     "type": "command",
     "title": "pct-clone - Clone a container",
-    "content": "pct clone {{template_id}} {{copy_id}}",
+    "content": "pct {{[cl|clone]}} {{template_id}} {{copy_id}}",
     "group": "Linux Ops",
     "description": "pct-clone: Clone a container. (Clone a container)",
     "tags": [
@@ -73353,7 +73443,7 @@
     "id": "tldr-en-linux-pokego-1",
     "type": "command",
     "title": "pokego - Print a specific shiny Pokémon",
-    "content": "pokego --name spheal -shiny",
+    "content": "pokego --name spheal {{[-s|-shiny]}}",
     "group": "Linux Ops",
     "description": "pokego: Display Pokémon sprites in color directly in your terminal. Inspired by Phoney badger's `pokemon-colorscripts` but offers enhanced speed and efficiency. (Print a specific shiny Pokémon)",
     "tags": [
@@ -76983,7 +77073,7 @@
     "id": "tldr-en-linux-goldeneye.py-0",
     "type": "command",
     "title": "goldeneye.py - Test a specific website",
-    "content": "./goldeneye.py {{url}}",
+    "content": "{{path/to/}}goldeneye.py {{url}}",
     "group": "Linux Ops",
     "description": "goldeneye.py: A HTTP DoS test tool. (Test a specific website)",
     "tags": [
@@ -76998,7 +77088,7 @@
     "id": "tldr-en-linux-goldeneye.py-1",
     "type": "command",
     "title": "goldeneye.py - Test a specific website with 100 user agents and 200 concurrent sockets",
-    "content": "./goldeneye.py {{url}} --useragents 100 --sockets 200",
+    "content": "{{path/to/}}goldeneye.py {{url}} {{[-u|--useragents]}} 100 {{[-s|--sockets]}} 200",
     "group": "Linux Ops",
     "description": "goldeneye.py: A HTTP DoS test tool. (Test a specific website with 100 user agents and 200 concurrent sockets)",
     "tags": [
@@ -77013,7 +77103,7 @@
     "id": "tldr-en-linux-goldeneye.py-2",
     "type": "command",
     "title": "goldeneye.py - Test a specific website without verifying the SSL certificate",
-    "content": "./goldeneye.py {{url}} --nosslcheck",
+    "content": "{{path/to/}}goldeneye.py {{url}} {{[-n|--nosslcheck]}}",
     "group": "Linux Ops",
     "description": "goldeneye.py: A HTTP DoS test tool. (Test a specific website without verifying the SSL certificate)",
     "tags": [
@@ -77028,7 +77118,7 @@
     "id": "tldr-en-linux-goldeneye.py-3",
     "type": "command",
     "title": "goldeneye.py - Test a specific website in debug mode",
-    "content": "./goldeneye.py {{url}} --debug",
+    "content": "{{path/to/}}goldeneye.py {{url}} {{-d|--debug}}",
     "group": "Linux Ops",
     "description": "goldeneye.py: A HTTP DoS test tool. (Test a specific website in debug mode)",
     "tags": [
@@ -77043,7 +77133,7 @@
     "id": "tldr-en-linux-goldeneye.py-4",
     "type": "command",
     "title": "goldeneye.py - Display help",
-    "content": "./goldeneye.py --help",
+    "content": "{{path/to/}}goldeneye.py {{[-h|--help]}}",
     "group": "Linux Ops",
     "description": "goldeneye.py: A HTTP DoS test tool. (Display help)",
     "tags": [
@@ -78078,7 +78168,7 @@
     "id": "tldr-en-linux-lci-1",
     "type": "command",
     "title": "lci - Display help",
-    "content": "lci -h",
+    "content": "lci {{[-h|--help]}}",
     "group": "Linux Ops",
     "description": "lci: LOLCODE interpreter written in C. (Display help)",
     "tags": [
@@ -78093,7 +78183,7 @@
     "id": "tldr-en-linux-lci-2",
     "type": "command",
     "title": "lci - Display version",
-    "content": "lci -v",
+    "content": "lci {{[-v|--version]}}",
     "group": "Linux Ops",
     "description": "lci: LOLCODE interpreter written in C. (Display version)",
     "tags": [
@@ -88455,6 +88545,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-systemctl-link-0",
+    "type": "command",
+    "title": "systemctl-link - Link a unit file to make it available for systemd commands",
+    "content": "systemctl link {{path/to/service}}",
+    "group": "Linux Ops",
+    "description": "systemctl-link: Link a unit file located outside the unit file search path into the search path. (Link a unit file to make it available for systemd commands)",
+    "tags": [
+      "linux",
+      "systemctl-link",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-systemctl-link-1",
+    "type": "command",
+    "title": "systemctl-link - Link multiple unit files at once",
+    "content": "systemctl link {{path/to/service1 path/to/service2 ...}}",
+    "group": "Linux Ops",
+    "description": "systemctl-link: Link a unit file located outside the unit file search path into the search path. (Link multiple unit files at once)",
+    "tags": [
+      "linux",
+      "systemctl-link",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-systemctl-disable-0",
     "type": "command",
     "title": "systemctl-disable - Stop a service from running on boot",
@@ -95133,7 +95253,7 @@
     "id": "tldr-en-linux-mokutil-3",
     "type": "command",
     "title": "mokutil - List enrolled keys",
-    "content": "mokutil --list-enrolled",
+    "content": "mokutil {{[-l|--list-enrolled]}}",
     "group": "Linux Ops",
     "description": "mokutil: Configure Secure Boot Machine Owner Keys (MOK). Some operations, such as enabling and disabling Secure Boot or enrolling keys require a reboot. (List enrolled keys)",
     "tags": [
@@ -95148,7 +95268,7 @@
     "id": "tldr-en-linux-mokutil-4",
     "type": "command",
     "title": "mokutil - Enroll a new key",
-    "content": "mokutil --import {{path/to/key.der}}",
+    "content": "mokutil {{[-i|--import]}} {{path/to/key.der}}",
     "group": "Linux Ops",
     "description": "mokutil: Configure Secure Boot Machine Owner Keys (MOK). Some operations, such as enabling and disabling Secure Boot or enrolling keys require a reboot. (Enroll a new key)",
     "tags": [
@@ -95163,7 +95283,7 @@
     "id": "tldr-en-linux-mokutil-5",
     "type": "command",
     "title": "mokutil - List the keys to be enrolled",
-    "content": "mokutil --list-new",
+    "content": "mokutil {{[-N|--list-new]}}",
     "group": "Linux Ops",
     "description": "mokutil: Configure Secure Boot Machine Owner Keys (MOK). Some operations, such as enabling and disabling Secure Boot or enrolling keys require a reboot. (List the keys to be enrolled)",
     "tags": [
@@ -100382,10 +100502,10 @@
   {
     "id": "tldr-en-linux-mons-1",
     "type": "command",
-    "title": "mons - Enable only the secondary monitor",
+    "title": "mons - Enable only the [s]econdary monitor",
     "content": "mons -s",
     "group": "Linux Ops",
-    "description": "mons: Quickly manage two displays. (Enable only the secondary monitor)",
+    "description": "mons: Quickly manage two displays. (Enable only the [s]econdary monitor)",
     "tags": [
       "linux",
       "mons",
@@ -100397,10 +100517,10 @@
   {
     "id": "tldr-en-linux-mons-2",
     "type": "command",
-    "title": "mons - Duplicate the primary monitor onto the secondary monitor, using the resolution of the primary monitor",
+    "title": "mons - [d]uplicate the primary monitor onto the secondary monitor, using the resolution of the primary monitor",
     "content": "mons -d",
     "group": "Linux Ops",
-    "description": "mons: Quickly manage two displays. (Duplicate the primary monitor onto the secondary monitor, using the resolution of the primary monitor)",
+    "description": "mons: Quickly manage two displays. ([d]uplicate the primary monitor onto the secondary monitor, using the resolution of the primary monitor)",
     "tags": [
       "linux",
       "mons",
@@ -100412,10 +100532,10 @@
   {
     "id": "tldr-en-linux-mons-3",
     "type": "command",
-    "title": "mons - Mirror the primary monitor onto the secondary monitor, using the resolution of the secondary monitor",
+    "title": "mons - [m]irror the primary monitor onto the secondary monitor, using the resolution of the secondary monitor",
     "content": "mons -m",
     "group": "Linux Ops",
-    "description": "mons: Quickly manage two displays. (Mirror the primary monitor onto the secondary monitor, using the resolution of the secondary monitor)",
+    "description": "mons: Quickly manage two displays. ([m]irror the primary monitor onto the secondary monitor, using the resolution of the secondary monitor)",
     "tags": [
       "linux",
       "mons",
@@ -103008,7 +103128,7 @@
     "id": "tldr-en-linux-ytfzf-0",
     "type": "command",
     "title": "ytfzf - Search for videos on YouTube with thumbnail previews",
-    "content": "ytfzf --show-thumbnails {{search_pattern}}",
+    "content": "ytfzf {{[-t|--show-thumbnails]}} {{search_pattern}}",
     "group": "Linux Ops",
     "description": "ytfzf: Find and download videos and music. Written in POSIX shell. (Search for videos on YouTube with thumbnail previews)",
     "tags": [
@@ -103023,7 +103143,7 @@
     "id": "tldr-en-linux-ytfzf-1",
     "type": "command",
     "title": "ytfzf - Play only the audio of the first item in a loop",
-    "content": "ytfzf --audio-only --auto-select --loop {{search_pattern}}",
+    "content": "ytfzf {{[-m|--audio-only]}} {{[-a|--auto-select]}} {{[-l|--loop]}} {{search_pattern}}",
     "group": "Linux Ops",
     "description": "ytfzf: Find and download videos and music. Written in POSIX shell. (Play only the audio of the first item in a loop)",
     "tags": [
@@ -103038,7 +103158,7 @@
     "id": "tldr-en-linux-ytfzf-2",
     "type": "command",
     "title": "ytfzf - Download a video from the history",
-    "content": "ytfzf --download --choose-from-history",
+    "content": "ytfzf {{[-d|--download]}} --choose-from-history",
     "group": "Linux Ops",
     "description": "ytfzf: Find and download videos and music. Written in POSIX shell. (Download a video from the history)",
     "tags": [
@@ -103053,7 +103173,7 @@
     "id": "tldr-en-linux-ytfzf-3",
     "type": "command",
     "title": "ytfzf - Play all the music found in a search",
-    "content": "ytfzf --audio-only --select-all {{search_pattern}}",
+    "content": "ytfzf {{[-m|--audio-only]}} {{[-A|--select-all]}} {{search_pattern}}",
     "group": "Linux Ops",
     "description": "ytfzf: Find and download videos and music. Written in POSIX shell. (Play all the music found in a search)",
     "tags": [
