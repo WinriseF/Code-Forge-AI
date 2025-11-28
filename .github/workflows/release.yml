@@ -3,12 +3,13 @@ name: Release App
 on:
   push:
     tags:
-      - 'v*' # 触发条件：推送 v 开头的 tag
+      - 'v*'
+
+permissions:
+  contents: write
 
 jobs:
   create-release:
-    permissions:
-      contents: write
     runs-on: ubuntu-latest
     outputs:
       release_id: ${{ steps.create_release.outputs.id }}
@@ -27,8 +28,6 @@ jobs:
 
   build-tauri:
     needs: create-release
-    permissions:
-      contents: write
     strategy:
       fail-fast: false
       matrix:
@@ -41,6 +40,10 @@ jobs:
             args: ''
 
     runs-on: ${{ matrix.platform }}
+    
+    permissions:
+      contents: write
+      
     steps:
       - uses: actions/checkout@v4
 
