@@ -42,7 +42,7 @@ export function SettingsModal() {
                 <NavBtn active={activeSection === 'language'} onClick={() => setActiveSection('language')} icon={<Languages size={14} />} label={getText('settings', 'navLanguage', language)} />
                 <NavBtn active={activeSection === 'filters'} onClick={() => setActiveSection('filters')} icon={<Filter size={14} />} label={getText('settings', 'navFilters', language)} />
                 <NavBtn active={activeSection === 'library'} onClick={() => setActiveSection('library')} icon={<DownloadCloud size={14} />} label={getText('settings', 'navLibrary', language)} />
-                <NavBtn active={activeSection === 'ai'} onClick={() => setActiveSection('ai')} icon={<Bot size={14} />} label="AI配置" />
+                <NavBtn active={activeSection === 'ai'} onClick={() => setActiveSection('ai')} icon={<Bot size={14} />} label={getText('settings', 'navAI', language)} />
             </div>
 
             <div className="flex-1 p-6 overflow-y-auto custom-scrollbar">
@@ -58,7 +58,7 @@ export function SettingsModal() {
                         </div>
                         <div className="space-y-4 pt-4 border-t border-border/50">
                             <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
-                                Spotlight Window Size
+                                {getText('settings', 'spotlightSize', language)}
                             </h3>
                             
                             {/* Width Slider */}
@@ -137,14 +137,14 @@ export function SettingsModal() {
                 {activeSection === 'ai' && (
                     <div className="space-y-5 animate-in fade-in slide-in-from-right-4 duration-200">
                         <div>
-                            <h3 className="text-sm font-medium text-foreground">AI Provider Settings</h3>
-                            <p className="text-xs text-muted-foreground mt-1">Configure your LLM provider to enable Spotlight AI Chat.</p>
+                            <h3 className="text-sm font-medium text-foreground">{getText('settings', 'aiTitle', language)}</h3>
+                            <p className="text-xs text-muted-foreground mt-1">{getText('settings', 'aiDesc', language)}</p>
                         </div>
                         
                         <div className="space-y-4">
                             {/* Provider Select */}
                             <div className="space-y-1.5">
-                                <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Provider</label>
+                                <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">{getText('settings', 'provider', language)}</label>
                                 <div className="grid grid-cols-3 gap-2">
                                     {['deepseek', 'openai', 'anthropic'].map((p) => (
                                         <button
@@ -165,7 +165,7 @@ export function SettingsModal() {
 
                             {/* API Key */}
                             <div className="space-y-1.5">
-                                <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">API Key</label>
+                                <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">{getText('settings', 'apiKey', language)}</label>
                                 <input 
                                     type="password"
                                     className="w-full bg-secondary/30 border border-border rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 transition-all placeholder:text-muted-foreground/30 font-mono"
@@ -173,12 +173,12 @@ export function SettingsModal() {
                                     value={aiConfig.apiKey}
                                     onChange={e => setAIConfig({ apiKey: e.target.value })}
                                 />
-                                <p className="text-[10px] text-muted-foreground/60">Your key is stored locally and never synced.</p>
+                                <p className="text-[10px] text-muted-foreground/60">{getText('settings', 'apiKeyTip', language)}</p>
                             </div>
                             
                             <div className="space-y-1.5">
                                 <div className="flex justify-between items-center">
-                                    <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Temperature</label>
+                                    <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">{getText('settings', 'temp', language)}</label>
                                     <span className="font-mono text-sm text-foreground">{aiConfig.temperature.toFixed(1)}</span>
                                 </div>
                                 <input 
@@ -191,14 +191,14 @@ export function SettingsModal() {
                                     onChange={e => setAIConfig({ temperature: parseFloat(e.target.value) })}
                                 />
                                 <p className="text-[10px] text-muted-foreground/60">
-                                    Controls randomness: Lower values are more deterministic, higher values are more creative.
+                                    {getText('settings', 'tempTip', language)}
                                 </p>
                             </div>
                             
                             {/* Base URL & Model */}
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-1.5">
-                                    <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Base URL (Optional)</label>
+                                    <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">{getText('settings', 'baseUrl', language)}</label>
                                     <input 
                                         type="text"
                                         className="w-full bg-secondary/30 border border-border rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 transition-all placeholder:text-muted-foreground/30"
@@ -208,7 +208,7 @@ export function SettingsModal() {
                                     />
                                 </div>
                                 <div className="space-y-1.5">
-                                    <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Model ID</label>
+                                    <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">{getText('settings', 'modelId', language)}</label>
                                     <input 
                                         type="text"
                                         className="w-full bg-secondary/30 border border-border rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 transition-all placeholder:text-muted-foreground/30"

@@ -26,7 +26,8 @@ const translations = {
       deleteMessage: "Are you sure you want to delete \"{name}\"? This action cannot be undone.",
       confirmDelete: "Delete",
       cancel: "Cancel",
-      official: "Official"
+      official: "Official",
+      local: "Local" // Added
     },
     context: {
       searchPlaceholder: "Paste path or browse...",
@@ -67,7 +68,8 @@ const translations = {
       tipSelect: "Select files from the left tree",
       btnCopy: "Copy to Clipboard",
       btnSave: "Save to File...",
-      processing: "Processing..."
+      processing: "Processing...",
+      removeComments: "Remove Comments"
     },
     editor: {
       titleNew: "New Prompt",
@@ -94,7 +96,8 @@ const translations = {
       navAppearance: "Appearance",
       navLanguage: "Language",
       navFilters: "Global Filters",
-      navLibrary: "Library", // ✨
+      navLibrary: "Library",
+      navAI: "AI Configuration",
       appearance: "Appearance",
       language: "Language",
       themeDark: "Dark Theme",
@@ -103,9 +106,22 @@ const translations = {
       langZh: "Chinese (Simplified)",
       filtersTitle: "Global Ignore Rules",
       filtersDesc: "Files matching these rules will be excluded from ALL projects by default.",
-      close: "Close"
+      close: "Close",
+      spotlightSize: "Spotlight Window Size",
+      width: "Width",
+      widthTip: "Adjust the width of the command palette (500px - 1000px).",
+      chatHeight: "Max Chat Height",
+      aiTitle: "AI Provider Settings",
+      aiDesc: "Configure your LLM provider to enable Spotlight AI Chat.",
+      provider: "Provider",
+      apiKey: "API Key",
+      apiKeyTip: "Your key is stored locally and never synced.",
+      temp: "Temperature",
+      tempTip: "Controls randomness: Lower values are more deterministic, higher values are more creative.",
+      baseUrl: "Base URL (Optional)",
+      modelId: "Model ID"
     },
-    library: { // ✨ 新增
+    library: {
       title: "Official Library",
       desc: "Download offline prompt packs. Data source: ",
       update: "Update",
@@ -115,6 +131,23 @@ const translations = {
       prompts: "prompts",
       noPacks: "No packs available for current language.",
       loading: "Loading library..."
+    },
+    spotlight: {
+      searchPlaceholder: "Search commands...",
+      chatPlaceholder: "Ask AI anything...",
+      noCommands: "No matching commands.",
+      aiReady: "AI Assistant Ready",
+      aiDesc: "Type your question and press Enter to start chatting with",
+      ephemeral: "Ephemeral Mode (History not saved)",
+      thinking: "Thinking Process",
+      results: "results",
+      console: "AI Console",
+      nav: "Navigate",
+      enter: "Enter",
+      copy: "Copy",
+      clear: "Clear",
+      send: "Send",
+      close: "Close"
     },
     actions: {
       collapse: "Collapse Sidebar",
@@ -147,7 +180,8 @@ const translations = {
       deleteMessage: "您确定要删除指令 “{name}” 吗？此操作无法撤销。",
       confirmDelete: "确认删除",
       cancel: "取消",
-      official: "官方"
+      official: "官方",
+      local: "本地" // Added
     },
     context: {
       searchPlaceholder: "粘贴路径或浏览...",
@@ -168,7 +202,7 @@ const translations = {
       filterDirs: "文件夹",
       filterFiles: "文件",
       filterExts: "后缀",
-      filterPlaceholder: "忽略 {type}...", 
+      filterPlaceholder: "忽略 {type}...",
       noFilters: "暂无过滤规则",
       previewTitle: "内容预览",
       chars: "{count} 字符",
@@ -188,7 +222,8 @@ const translations = {
       tipSelect: "请从左侧文件树选择文件",
       btnCopy: "复制上下文",
       btnSave: "保存为文件...",
-      processing: "处理中..."
+      processing: "处理中...",
+      removeComments: "移除注释"
     },
     editor: {
       titleNew: "新建指令",
@@ -215,7 +250,8 @@ const translations = {
       navAppearance: "外观设置",
       navLanguage: "语言选项",
       navFilters: "全局过滤",
-      navLibrary: "指令商店", // ✨
+      navLibrary: "指令商店",
+      navAI: "AI 配置",
       appearance: "外观与显示",
       language: "语言偏好",
       themeDark: "深色模式",
@@ -224,9 +260,24 @@ const translations = {
       langZh: "简体中文",
       filtersTitle: "全局忽略规则",
       filtersDesc: "匹配这些规则的文件将默认从所有项目中排除（如 node_modules）。",
-      close: "关闭"
+      close: "关闭",
+      // Appearance Section Added
+      spotlightSize: "Spotlight 窗口尺寸",
+      width: "宽度",
+      widthTip: "调整命令面板的宽度 (500px - 1000px)。",
+      chatHeight: "对话最大高度",
+      // AI Section Added
+      aiTitle: "AI 服务商设置",
+      aiDesc: "配置您的大模型服务商以启用 Spotlight AI 对话功能。",
+      provider: "服务商",
+      apiKey: "API Key",
+      apiKeyTip: "您的 Key 仅存储在本地，不会上传到云端。",
+      temp: "温度 (Temperature)",
+      tempTip: "控制随机性：数值越低越严谨，数值越高越有创造力。",
+      baseUrl: "API 地址 (可选)",
+      modelId: "模型 ID"
     },
-    library: { // ✨ 新增
+    library: {
       title: "官方指令库",
       desc: "下载离线指令包到本地。数据来源：",
       update: "更新",
@@ -236,6 +287,23 @@ const translations = {
       prompts: "条指令",
       noPacks: "当前语言暂无可用数据包。",
       loading: "正在加载商店..."
+    },
+    spotlight: {
+      searchPlaceholder: "搜索指令...",
+      chatPlaceholder: "询问 AI...",
+      noCommands: "没有匹配的指令。",
+      aiReady: "AI 助手就绪",
+      aiDesc: "输入问题并按回车键，开始与",
+      ephemeral: "即时模式 (不保存历史记录)",
+      thinking: "思考过程",
+      results: "项结果",
+      console: "AI 控制台",
+      nav: "选择",
+      enter: "确认",
+      copy: "复制",
+      clear: "清空",
+      send: "发送",
+      close: "关闭"
     },
     actions: {
       collapse: "收起侧栏",

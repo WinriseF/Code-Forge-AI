@@ -12,6 +12,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { getText } from './lib/i18n';
 
 // 常量定义
 const FIXED_HEIGHT = 106; 
@@ -38,7 +39,7 @@ export default function SpotlightApp() {
   const chatEndRef = useRef<HTMLDivElement>(null); 
   
   const { getAllPrompts, initStore } = usePromptStore();
-  const { theme, setTheme, aiConfig, spotlightAppearance } = useAppStore(); 
+  const { theme, setTheme, aiConfig, spotlightAppearance, language } = useAppStore(); 
   
   const allPrompts = getAllPrompts();
 
@@ -329,7 +330,7 @@ const handleSendToAI = async () => {
             <input
               ref={inputRef}
               className="flex-1 bg-transparent border-none outline-none text-xl placeholder:text-muted-foreground/40 h-full text-foreground caret-primary relative z-10"
-              placeholder={mode === 'search' ? "Search commands..." : "Ask AI anything..."}
+              placeholder={mode === 'search' ? getText('spotlight', 'searchPlaceholder', language) : getText('spotlight', 'chatPlaceholder', language)}
               value={mode === 'search' ? query : chatInput}
               onChange={e => mode === 'search' ? setQuery(e.target.value) : setChatInput(e.target.value)}
               autoFocus
@@ -343,7 +344,7 @@ const handleSendToAI = async () => {
                )}>
                   TAB
                </span>
-               {mode === 'search' && query && <span className="text-[10px] bg-secondary px-1.5 py-0.5 rounded text-muted-foreground font-medium border border-border">ESC Clear</span>}
+               {mode === 'search' && query && <span className="text-[10px] bg-secondary px-1.5 py-0.5 rounded text-muted-foreground font-medium border border-border">ESC {getText('spotlight', 'clear', language)}</span>}
             </div>
           </div>
 
@@ -358,7 +359,7 @@ const handleSendToAI = async () => {
                   {filtered.length === 0 ? (
                       <div className="h-full flex flex-col items-center justify-center text-muted-foreground gap-2 opacity-60 min-h-[100px]">
                           <Command size={24} strokeWidth={1.5} />
-                          <span className="text-sm">No matching commands.</span>
+                          <span className="text-sm">{getText('spotlight', 'noCommands', language)}</span>
                       </div>
                   ) : (
                       filtered.map((item, index) => {
@@ -392,7 +393,7 @@ const handleSendToAI = async () => {
                                       </span>
                                       {isActive && !isCopied && (
                                           <span className="text-[10px] opacity-70 flex items-center gap-1 font-medium bg-black/10 px-1.5 rounded whitespace-nowrap">
-                                              <CornerDownLeft size={10} /> Enter
+                                              <CornerDownLeft size={10} /> {getText('spotlight', 'enter', language)}
                                           </span>
                                       )}
                                   </div>
@@ -428,12 +429,12 @@ const handleSendToAI = async () => {
                                <div className="w-12 h-12 bg-purple-500/10 rounded-full flex items-center justify-center mb-4 text-purple-500 shadow-[0_0_15px_rgba(168,85,247,0.15)] animate-pulse">
                                    <Sparkles size={24} />
                                </div>
-                               <h3 className="text-foreground font-medium mb-1">AI Assistant Ready</h3>
+                               <h3 className="text-foreground font-medium mb-1">{getText('spotlight', 'aiReady', language)}</h3>
                                <p className="text-xs text-center max-w-[200px] opacity-70 leading-relaxed">
-                                   Type your question and press Enter to start chatting with <span className="text-purple-500 font-medium">{useAppStore.getState().aiConfig.providerId}</span>.
+                                   {getText('spotlight', 'aiDesc', language)} <span className="text-purple-500 font-medium">{useAppStore.getState().aiConfig.providerId}</span>.
                                </p>
                                <div className="mt-8 text-[10px] opacity-40 font-mono bg-background/50 border border-border/50 px-2 py-1 rounded">
-                                   Ephemeral Mode (History not saved)
+                                   {getText('spotlight', 'ephemeral', language)}
                                </div>
                            </div>
                       ) : (
@@ -470,7 +471,7 @@ const handleSendToAI = async () => {
                                                       <details className="mb-2 group" open={isStreaming && idx === messages.length - 1}>
                                                           <summary className="flex items-center gap-1.5 text-[10px] uppercase font-bold text-muted-foreground/60 cursor-pointer hover:text-purple-400 transition-colors select-none list-none outline-none">
                                                               <Brain size={12} />
-                                                              <span>Thinking Process</span>
+                                                              <span>{getText('spotlight', 'thinking', language)}</span>
                                                               <ChevronDown size={12} className="group-open:rotate-180 transition-transform duration-200" />
                                                           </summary>
                                                           <div className="mt-2 pl-2 border-l-2 border-purple-500/20 text-xs font-mono text-muted-foreground/80 whitespace-pre-wrap leading-relaxed opacity-80">
@@ -528,22 +529,22 @@ const handleSendToAI = async () => {
               className="h-8 shrink-0 bg-secondary/30 border-t border-border/40 flex items-center justify-between px-4 text-[10px] text-muted-foreground/60 select-none backdrop-blur-sm cursor-move relative z-10"
           >
               <span className="pointer-events-none flex items-center gap-2">
-                  {mode === 'search' ? `${filtered.length} results` : 'AI Console'}
+                  {mode === 'search' ? `${filtered.length} ${getText('spotlight', 'results', language)}` : getText('spotlight', 'console', language)}
                   {isStreaming && <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse" />}
               </span>
               <div className="flex gap-4 pointer-events-none">
                   {mode === 'search' ? (
                       <>
-                          <span>Navigate ↑↓</span>
-                          <span>Copy ↵</span>
+                          <span>{getText('spotlight', 'nav', language)} ↑↓</span>
+                          <span>{getText('spotlight', 'copy', language)} ↵</span>
                       </>
                   ) : (
                       <>
-                      <span className={cn(isStreaming && "opacity-30")}>Clear Ctrl+K</span> 
-                      <span>Send ↵</span>
+                      <span className={cn(isStreaming && "opacity-30")}>{getText('spotlight', 'clear', language)} Ctrl+K</span> 
+                      <span>{getText('spotlight', 'send', language)} ↵</span>
                       </>
                   )}
-                  <span>Close Esc</span>
+                  <span>{getText('spotlight', 'close', language)} Esc</span>
               </div>
           </div>
         </div>

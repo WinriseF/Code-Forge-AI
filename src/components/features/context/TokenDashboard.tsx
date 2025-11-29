@@ -81,7 +81,7 @@ export function TokenDashboard({
             </div>
             <div className="flex items-center gap-2">
                 <Eraser size={16} />
-                <span className="text-sm font-medium">Remove Comments</span>
+                <span className="text-sm font-medium">{getText('context', 'removeComments', language)}</span>
             </div>
          </button>
       </div>

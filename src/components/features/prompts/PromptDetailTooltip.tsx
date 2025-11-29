@@ -88,11 +88,11 @@ export function PromptDetailTooltip({ prompt, anchorRect, isOpen, onMouseEnter, 
                 <h3 className="font-bold text-base leading-tight">{prompt.title}</h3>
                 {prompt.source === 'official' ? (
                     <span className="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] bg-blue-500/10 text-blue-500 font-medium border border-blue-500/20">
-                        <Globe size={10} /> Official
+                        <Globe size={10} /> {getText('prompts', 'official', language)}
                     </span>
                 ) : (
                     <span className="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] bg-green-500/10 text-green-500 font-medium border border-green-500/20">
-                        <Terminal size={10} /> Local
+                        <Terminal size={10} /> {getText('prompts', 'local', language)}
                     </span>
                 )}
             </div>
