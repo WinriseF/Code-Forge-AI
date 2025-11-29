@@ -176,6 +176,25 @@ export function SettingsModal() {
                                 <p className="text-[10px] text-muted-foreground/60">Your key is stored locally and never synced.</p>
                             </div>
                             
+                            <div className="space-y-1.5">
+                                <div className="flex justify-between items-center">
+                                    <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Temperature</label>
+                                    <span className="font-mono text-sm text-foreground">{aiConfig.temperature.toFixed(1)}</span>
+                                </div>
+                                <input 
+                                    type="range"
+                                    min="0"
+                                    max="1"
+                                    step="0.1"
+                                    className="w-full h-2 bg-secondary rounded-lg appearance-none cursor-pointer accent-primary"
+                                    value={aiConfig.temperature}
+                                    onChange={e => setAIConfig({ temperature: parseFloat(e.target.value) })}
+                                />
+                                <p className="text-[10px] text-muted-foreground/60">
+                                    Controls randomness: Lower values are more deterministic, higher values are more creative.
+                                </p>
+                            </div>
+                            
                             {/* Base URL & Model */}
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-1.5">
