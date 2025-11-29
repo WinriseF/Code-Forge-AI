@@ -29,7 +29,7 @@ export async function streamChatCompletion(
       temperature: config.temperature,
     };
 
-    const response = await fetch(`${config.baseUrl}/v1/chat/completions`, {
+    const response = await fetch(`${config.baseUrl}/chat/completions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
