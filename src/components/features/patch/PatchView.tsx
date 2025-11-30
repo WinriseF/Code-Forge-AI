@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { open as openDialog, confirm } from '@tauri-apps/api/dialog';
+import { open as openDialog } from '@tauri-apps/api/dialog';
 import { readTextFile, writeTextFile } from '@tauri-apps/api/fs';
 import { writeText as writeClipboard } from '@tauri-apps/api/clipboard';
 import { useAppStore } from '@/store/useAppStore';
@@ -10,7 +10,7 @@ import { DiffWorkspace } from './DiffWorkspace';
 import { PatchMode, PatchFileItem } from './patch_types';
 import { Toast } from '@/components/ui/Toast';
 import { cn } from '@/lib/utils';
-import { Loader2, Wand2 } from 'lucide-react';
+import { Loader2, Wand2, AlertTriangle, FileText, Check } from 'lucide-react';
 import { streamChatCompletion } from '@/lib/llm';
 
 const MANUAL_DIFF_ID = 'manual-scratchpad';
@@ -27,6 +27,12 @@ export function PatchView() {
   const [toastMsg, setToastMsg] = useState('');
   const [showToast, setShowToast] = useState(false);
   const [isFixing, setIsFixing] = useState(false);
+  
+  // 自定义确认框状态
+  const [confirmDialog, setConfirmDialog] = useState<{ show: boolean; file: PatchFileItem | null }>({
+      show: false,
+      file: null
+  });
 
   const showNotification = (msg: string) => {
     setToastMsg(msg);
@@ -170,35 +176,32 @@ ${patchData.operations.map(op => `<<<<<<< SEARCH\n${op.originalBlock}\n=======\n
       }
   };
 
-  const handleSave = async (file: PatchFileItem) => {
+  // 点击保存时触发弹窗
+  const handleSaveClick = (file: PatchFileItem) => {
     if (!file.modified || file.isManual) return;
-    
-    let warning = getText('patch', 'saveConfirmMessage', language, { path: file.path });
-    if (file.status === 'error') {
-        warning = `⚠️ This file has errors! Ensure you have verified the result.\n\n${warning}`;
-    }
+    setConfirmDialog({ show: true, file });
+  };
 
-    const confirmed = await confirm(
-        warning,
-        { title: getText('patch', 'saveConfirmTitle', language), type: file.status === 'error' ? 'error' : 'warning' }
-    );
-    
-    if (confirmed) {
-        try {
-            await writeTextFile(file.id, file.modified);
-            showNotification(getText('patch', 'toastSaved', language));
-            setFiles(prev => prev.map(f => f.id === file.id ? { ...f, original: file.modified, status: 'success', errorMsg: undefined } : f));
-        } catch (e) {
-            console.error(e);
-            showNotification("Save Failed");
-        }
+  // 确认框中的实际执行逻辑
+  const executeSave = async () => {
+    const file = confirmDialog.file;
+    if (!file) return;
+
+    try {
+        await writeTextFile(file.id, file.modified);
+        showNotification(getText('patch', 'toastSaved', language));
+        setFiles(prev => prev.map(f => f.id === file.id ? { ...f, original: file.modified, status: 'success', errorMsg: undefined } : f));
+        setConfirmDialog({ show: false, file: null });
+    } catch (e) {
+        console.error(e);
+        showNotification("Save Failed");
     }
   };
 
   const currentFile = files.find(f => f.id === selectedFileId);
 
   return (
-    <div className="h-full flex overflow-hidden bg-background">
+    <div className="h-full flex overflow-hidden bg-background relative">
       
       <div 
         className={cn(
@@ -238,13 +241,72 @@ ${patchData.operations.map(op => `<<<<<<< SEARCH\n${op.originalBlock}\n=======\n
 
           <DiffWorkspace 
              selectedFile={currentFile || null}
-             onSave={handleSave}
+             onSave={handleSaveClick}
              onCopy={async (txt) => { await writeClipboard(txt); showNotification("Copied"); }}
              onManualUpdate={handleManualUpdate}
              isSidebarOpen={isSidebarOpen}
              onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
           />
       </div>
+
+      {/* 自定义保存确认框 UI */}
+      {confirmDialog.show && confirmDialog.file && (
+          <div className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm flex items-center justify-center animate-in fade-in duration-200 p-4">
+              <div className="w-full max-w-[450px] bg-background border border-border rounded-xl shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
+                  <div className="p-6 pb-4">
+                      <div className="flex items-center gap-4">
+                          <div className={cn(
+                              "w-12 h-12 rounded-full flex items-center justify-center shrink-0",
+                              confirmDialog.file.status === 'error' ? "bg-red-500/10 text-red-500" : "bg-yellow-500/10 text-yellow-500"
+                          )}>
+                              <AlertTriangle size={24} />
+                          </div>
+                          <div>
+                              <h3 className="font-semibold text-lg text-foreground">
+                                  {getText('patch', 'saveConfirmTitle', language)}
+                              </h3>
+                              <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                                  {confirmDialog.file.status === 'error' 
+                                      ? "This file currently has errors. Saving might break your code."
+                                      : getText('patch', 'saveConfirmMessage', language, { path: '' }).replace('"{path}"', '')}
+                              </p>
+                          </div>
+                      </div>
+                      
+                      <div className="mt-5 bg-secondary/30 border border-border rounded-lg p-3 flex items-start gap-3">
+                          <FileText size={16} className="text-muted-foreground mt-0.5" />
+                          <code className="text-xs font-mono text-foreground break-all leading-relaxed">
+                              {confirmDialog.file.path}
+                          </code>
+                      </div>
+                  </div>
+
+                  <div className="p-4 bg-secondary/5 border-t border-border flex justify-end gap-3">
+                      <button 
+                          onClick={() => setConfirmDialog({ show: false, file: null })}
+                          className="px-4 py-2 text-sm font-medium rounded-lg hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                          {getText('patch', 'cancel', language)}
+                      </button>
+                      <button 
+                          onClick={executeSave}
+                          className={cn(
+                              "px-4 py-2 text-sm font-medium rounded-lg flex items-center gap-2 shadow-sm transition-colors",
+                              confirmDialog.file.status === 'error'
+                                  ? "bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                                  : "bg-primary text-primary-foreground hover:bg-primary/90"
+                          )}
+                      >
+                          {confirmDialog.file.status === 'error' ? (
+                             <><AlertTriangle size={16} /> Force Save</>
+                          ) : (
+                             <><Check size={16} /> {getText('patch', 'confirm', language)}</>
+                          )}
+                      </button>
+                  </div>
+              </div>
+          </div>
+      )}
 
       <Toast message={toastMsg} type="success" show={showToast} onDismiss={() => setShowToast(false)} />
     </div>

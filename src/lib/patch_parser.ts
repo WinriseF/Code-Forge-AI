@@ -37,7 +37,9 @@ export function parseMultiFilePatch(text: string): FilePatch[] {
     return filePatches;
   }
 
-  // 2. 解析每个文件的内容
+  // 2. 解析每个文件的内容 (修复：使用 Map 聚合，防止同文件多次出现被覆盖)
+  const patchesMap = new Map<string, PatchOperation[]>();
+
   for (let i = 0; i < fileMatches.length; i++) {
     const current = fileMatches[i];
     const next = fileMatches[i+1];
@@ -47,11 +49,15 @@ export function parseMultiFilePatch(text: string): FilePatch[] {
     const ops = parseOperations(content);
     
     if (ops.length > 0) {
-        filePatches.push({
-            filePath: current.path,
-            operations: ops
-        });
+        // 如果已存在该文件的补丁，则追加操作
+        const existing = patchesMap.get(current.path) || [];
+        patchesMap.set(current.path, existing.concat(ops));
     }
+  }
+
+  // 3. 转换为数组
+  for (const [filePath, operations] of patchesMap.entries()) {
+      filePatches.push({ filePath, operations });
   }
 
   return filePatches;
@@ -156,25 +162,15 @@ function fuzzyReplace(source: string, search: string, replacement: string): { su
     const lastCharIndexInStream = streamIndex + searchStream.length - 1;
     
     // 我们需要包含最后一个字符，所以 slice 的 end 应该是索引+1
-    // 但这只能覆盖到最后一个非空字符。
-    // 为了更自然，我们需要尝试“贪婪”匹配到行尾吗？
-    // 简单策略：直接取最后一个非空字符的位置+1
     const originalEndIndex = sourceMap[lastCharIndexInStream] + 1;
 
     // 5. 执行替换
-    // 我们保留 originalStartIndex 之前的部分，和 originalEndIndex 之后的部分
-    // 中间替换为 replacement
-    // ⚠️ 注意：这种替换会丢失 searchBlock 内部原有的缩进风格，而用 replacement 完全替代
-    // 这通常是符合预期的，因为 replacement 是 AI 写的新代码
-    
     // 进阶优化：尝试扩展 originalEndIndex 到行尾（如果后面只有空白）
     // 这样可以避免留下奇怪的空行
     let finalEndIndex = originalEndIndex;
     while (finalEndIndex < source.length && /[ \t]/.test(source[finalEndIndex])) {
         finalEndIndex++;
     }
-    // 如果碰到了换行符，把换行符留给下一行，或者包含进去？
-    // 通常保留换行符比较安全
 
     const newCode = source.slice(0, originalStartIndex) + replacement + source.slice(finalEndIndex);
     
