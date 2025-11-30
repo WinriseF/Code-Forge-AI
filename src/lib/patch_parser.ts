@@ -2,8 +2,7 @@ import yaml from 'js-yaml';
 import { PatchOperation, FilePatch } from '@/components/features/patch/patch_types';
 
 interface YamlPatchItem {
-  file?: string; // ✨ 新增：文件路径字段
-  // 操作字段
+  file?: string;
   replace?: {
     original: string;
     modified: string;
@@ -17,13 +16,7 @@ interface YamlPatchItem {
 }
 
 /**
- * 解析多文件 YAML Patch
- * 格式示例：
- * - file: src/App.tsx
- *   replace: ...
- * - replace: ... (继续上一个文件)
- * - file: src/utils.ts (切换文件)
- *   insert_after: ...
+ * 解析多文件 YAML Patch (保持不变)
  */
 export function parseMultiFilePatch(yamlContent: string): FilePatch[] {
   const filePatches: FilePatch[] = [];
@@ -34,9 +27,7 @@ export function parseMultiFilePatch(yamlContent: string): FilePatch[] {
     if (!Array.isArray(doc)) return [];
 
     for (const item of doc as YamlPatchItem[]) {
-      // 1. 如果遇到 file 字段，切换当前文件上下文
       if (item.file) {
-        // 查找是否已经有这个文件的记录 (支持分散写，自动合并)
         let existing = filePatches.find(f => f.filePath === item.file);
         if (!existing) {
           existing = { filePath: item.file, operations: [] };
@@ -45,14 +36,11 @@ export function parseMultiFilePatch(yamlContent: string): FilePatch[] {
         currentFile = existing;
       }
 
-      // 如果还没有文件上下文，且操作出现了，这是非法格式（或者归为 unknown）
       if (!currentFile && (item.replace || item.insert_after)) {
-         // 为了容错，可以创建一个 'unknown' 文件，或者跳过
          currentFile = { filePath: 'unknown_file', operations: [] };
          filePatches.push(currentFile);
       }
 
-      // 2. 解析具体操作
       if (item.replace && currentFile) {
         const { original, modified, context_before = '', context_after = '' } = item.replace;
         const originalBlock = `${context_before}\n${original}\n${context_after}`.trim();
@@ -60,13 +48,13 @@ export function parseMultiFilePatch(yamlContent: string): FilePatch[] {
         
         currentFile.operations.push({
           type: 'replace',
-          originalBlock,
+          originalBlock, // 注意：这里的 block 可能会被 parser 去掉首尾空行，下面 apply 时会处理
           modifiedBlock,
         });
       } else if (item.insert_after && currentFile) {
         const { anchor, content } = item.insert_after;
-        const originalBlock = anchor;
-        const modifiedBlock = `${anchor}\n${content}`;
+        const originalBlock = anchor.trim();
+        const modifiedBlock = `${anchor}\n${content}`.trim();
 
         currentFile.operations.push({
           type: 'insert_after',
@@ -83,13 +71,42 @@ export function parseMultiFilePatch(yamlContent: string): FilePatch[] {
 }
 
 /**
- * 保持原有的应用逻辑不变
+ * 增加了换行符标准化和容错匹配
  */
 export function applyPatches(originalCode: string, operations: PatchOperation[]): string {
-  let resultCode = originalCode;
+  // 1. 统一原代码的换行符为 LF (\n)，解决 Windows CRLF 问题
+  let resultCode = originalCode.replace(/\r\n/g, '\n');
+
   for (const op of operations) {
-    if (resultCode.includes(op.originalBlock)) {
-      resultCode = resultCode.replace(op.originalBlock, op.modifiedBlock);
+    // 2. 同样标准化补丁块的换行符
+    const searchBlock = op.originalBlock.replace(/\r\n/g, '\n');
+    const replaceBlock = op.modifiedBlock.replace(/\r\n/g, '\n');
+
+    // 3. 尝试严格匹配
+    if (resultCode.includes(searchBlock)) {
+      resultCode = resultCode.replace(searchBlock, replaceBlock);
+    } 
+    // 4. 容错匹配：如果严格匹配失败，尝试忽略首尾空白进行匹配
+    // (AI 生成的代码块经常在末尾多一个换行或少一个空格)
+    else {
+      const trimmedSearch = searchBlock.trim();
+      // 在代码中查找去掉首尾空白的版本
+      const idx = resultCode.indexOf(trimmedSearch);
+      
+      if (idx !== -1) {
+        // 找到了！构建新的字符串
+        const before = resultCode.substring(0, idx);
+        // 跳过原文中对应长度的内容
+        const after = resultCode.substring(idx + trimmedSearch.length);
+        
+        // 插入修改后的块 (也建议 trim 一下以防 AI 引入多余空行，或者根据情况保留)
+        // 这里选择 trim() 后的 replaceBlock 以保持紧凑，通常更加安全
+        resultCode = before + replaceBlock.trim() + after;
+        
+        console.log(`[Patch] Applied fuzzy match for block starting with: ${trimmedSearch.substring(0, 20)}...`);
+      } else {
+        console.warn(`[Patch] Failed to match block. Strict and fuzzy search failed.\nBlock:\n${searchBlock}`);
+      }
     }
   }
   return resultCode;
