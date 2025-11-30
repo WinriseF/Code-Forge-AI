@@ -4,7 +4,7 @@ import { fileStorage } from '@/lib/storage';
 import { IgnoreConfig, DEFAULT_GLOBAL_IGNORE } from '@/types/context';
 import { fetch } from '@tauri-apps/api/http';
 import { emit } from '@tauri-apps/api/event'; 
-import { AIModelConfig, AIProviderConfig, DEFAULT_AI_CONFIG } from '@/types/model';
+import { AIModelConfig, AIProviderConfig, AIProviderSetting, DEFAULT_AI_CONFIG, DEFAULT_PROVIDER_SETTINGS } from '@/types/model';
 
 // --- 1. 导出类型 ---
 export type AppView = 'prompts' | 'context' | 'patch';
@@ -80,6 +80,7 @@ interface AppState {
   lastUpdated: number;
 
   aiConfig: AIProviderConfig;
+  savedProviderSettings: Record<string, AIProviderSetting>;
 
   // Actions
   setView: (view: AppView) => void;
@@ -112,6 +113,7 @@ export const useAppStore = create<AppState>()(
       theme: 'dark',
       language: 'zh',
       aiConfig: DEFAULT_AI_CONFIG,
+      savedProviderSettings: DEFAULT_PROVIDER_SETTINGS,
       globalIgnore: DEFAULT_GLOBAL_IGNORE,
       
       // 模型初始值
@@ -138,9 +140,46 @@ export const useAppStore = create<AppState>()(
         }
         return { theme };
       }),
-      setAIConfig: (config) => set((state) => ({ 
-        aiConfig: { ...state.aiConfig, ...config } 
-      })),
+      setAIConfig: (config) => set((state) => {
+        const newConfig = { ...state.aiConfig, ...config };
+        const currentProviderId = newConfig.providerId;
+
+        // 情况1：切换了 Provider
+        if (config.providerId && config.providerId !== state.aiConfig.providerId) {
+            // 尝试从已保存的配置中加载
+            const saved = state.savedProviderSettings[config.providerId] || DEFAULT_PROVIDER_SETTINGS[config.providerId] || {
+                apiKey: '',
+                baseUrl: '',
+                modelId: '',
+                temperature: 0.7
+            };
+
+            return {
+                aiConfig: {
+                    ...newConfig,
+                    apiKey: saved.apiKey,
+                    baseUrl: saved.baseUrl,
+                    modelId: saved.modelId,
+                    temperature: saved.temperature
+                }
+            };
+        }
+
+        // 情况2：修改了当前 Provider 的具体配置 (apiKey/modelId/etc)
+        // 自动保存回 savedProviderSettings
+        const newSavedSettings = { ...state.savedProviderSettings };
+        newSavedSettings[currentProviderId] = {
+            apiKey: newConfig.apiKey,
+            baseUrl: newConfig.baseUrl,
+            modelId: newConfig.modelId,
+            temperature: newConfig.temperature
+        };
+
+        return { 
+          aiConfig: newConfig,
+          savedProviderSettings: newSavedSettings
+        };
+      }),
       setLanguage: (language) => set({ language }),
       updateGlobalIgnore: (type, action, value) => set((state) => {
         const currentList = state.globalIgnore[type];
@@ -204,6 +243,7 @@ export const useAppStore = create<AppState>()(
         models: state.models,
         lastUpdated: state.lastUpdated,
         aiConfig: state.aiConfig,
+        savedProviderSettings: state.savedProviderSettings,
         spotlightAppearance: state.spotlightAppearance
       }),
     }

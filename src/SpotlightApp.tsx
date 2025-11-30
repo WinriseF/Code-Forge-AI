@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useMemo, useLayoutEffect } from 'react';
 import { appWindow, LogicalSize } from '@tauri-apps/api/window';
 import { writeText } from '@tauri-apps/api/clipboard';
 import { listen } from '@tauri-apps/api/event';
-import { Search as SearchIcon, Sparkles, Terminal, CornerDownLeft, Check, Command, Bot, User, Brain, ChevronDown } from 'lucide-react';
+import { Search as SearchIcon, Sparkles, Terminal, CornerDownLeft, Check, Command, Bot, User, Brain, ChevronDown, Zap } from 'lucide-react';
 import { usePromptStore } from '@/store/usePromptStore';
 import { useAppStore, AppTheme } from '@/store/useAppStore';
 import { Prompt } from '@/types/prompt';
@@ -39,9 +39,17 @@ export default function SpotlightApp() {
   const chatEndRef = useRef<HTMLDivElement>(null); 
   
   const { getAllPrompts, initStore } = usePromptStore();
-  const { theme, setTheme, aiConfig, spotlightAppearance, language } = useAppStore(); 
+  const { theme, setTheme, aiConfig, setAIConfig, spotlightAppearance, language } = useAppStore(); 
   
   const allPrompts = getAllPrompts();
+
+  // 简单的 Provider 循环切换逻辑
+  const cycleProvider = () => {
+    const providers: Array<'openai' | 'deepseek' | 'anthropic'> = ['deepseek', 'openai', 'anthropic'];
+    const currentIndex = providers.indexOf(aiConfig.providerId);
+    const nextIndex = (currentIndex + 1) % providers.length;
+    setAIConfig({ providerId: providers[nextIndex] });
+  };
 
   useEffect(() => { initStore(); }, []);
 
@@ -337,14 +345,30 @@ const handleSendToAI = async () => {
               spellCheck={false}
             />
             
-            <div className="flex items-center gap-2 pointer-events-none opacity-50 relative z-10">
-               <span className={cn(
-                   "text-[10px] px-1.5 py-0.5 rounded font-medium border transition-colors duration-300",
-                   mode === 'chat' ? "bg-purple-500/10 text-purple-500 border-purple-500/20" : "bg-secondary text-muted-foreground border-border"
-               )}>
-                  TAB
-               </span>
-               {mode === 'search' && query && <span className="text-[10px] bg-secondary px-1.5 py-0.5 rounded text-muted-foreground font-medium border border-border">ESC {getText('spotlight', 'clear', language)}</span>}
+            <div className="flex items-center gap-2 relative z-10">
+               {mode === 'chat' && (
+                  <button 
+                    onClick={cycleProvider}
+                    className="flex items-center gap-1.5 px-2 py-1 rounded bg-secondary/50 hover:bg-secondary text-[10px] font-medium transition-colors border border-border/50 group"
+                    title={`Current: ${aiConfig.providerId}. Click to switch.`}
+                  >
+                      <Zap size={10} className={cn(
+                          aiConfig.providerId === 'deepseek' ? "text-blue-500" :
+                          aiConfig.providerId === 'openai' ? "text-green-500" : "text-orange-500"
+                      )} />
+                      <span className="opacity-70 group-hover:opacity-100 uppercase">{aiConfig.providerId}</span>
+                  </button>
+               )}
+
+               <div className="flex items-center gap-2 pointer-events-none opacity-50">
+                    <span className={cn(
+                        "text-[10px] px-1.5 py-0.5 rounded font-medium border transition-colors duration-300",
+                        mode === 'chat' ? "bg-purple-500/10 text-purple-500 border-purple-500/20" : "bg-secondary text-muted-foreground border-border"
+                    )}>
+                        TAB
+                    </span>
+                    {mode === 'search' && query && <span className="text-[10px] bg-secondary px-1.5 py-0.5 rounded text-muted-foreground font-medium border border-border">ESC {getText('spotlight', 'clear', language)}</span>}
+               </div>
             </div>
           </div>
 
