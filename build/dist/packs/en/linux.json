@@ -5057,21 +5057,6 @@
   {
     "id": "tldr-en-linux-kwriteconfig5-0",
     "type": "command",
-    "title": "kwriteconfig5 - Display help",
-    "content": "kwriteconfig5 --help",
-    "group": "Linux Ops",
-    "description": "kwriteconfig5: Write KConfig entries for KDE Plasma. (Display help)",
-    "tags": [
-      "linux",
-      "kwriteconfig5",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-kwriteconfig5-1",
-    "type": "command",
     "title": "kwriteconfig5 - Set a global configuration key",
     "content": "kwriteconfig5 --group {{group_name}} --key {{key}} {{value}}",
     "group": "Linux Ops",
@@ -5085,7 +5070,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-linux-kwriteconfig5-2",
+    "id": "tldr-en-linux-kwriteconfig5-1",
     "type": "command",
     "title": "kwriteconfig5 - Set a key in a specific configuration file",
     "content": "kwriteconfig5 --file {{path/to/file}} --group {{group_name}} --key {{key}} {{value}}",
@@ -5100,7 +5085,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-linux-kwriteconfig5-3",
+    "id": "tldr-en-linux-kwriteconfig5-2",
     "type": "command",
     "title": "kwriteconfig5 - Delete a key",
     "content": "kwriteconfig5 --group {{group_name}} --key {{key}} --delete",
@@ -5115,7 +5100,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-linux-kwriteconfig5-4",
+    "id": "tldr-en-linux-kwriteconfig5-3",
     "type": "command",
     "title": "kwriteconfig5 - Use systemd to start the Plasma session when available",
     "content": "kwriteconfig5 --file {{startkderc}} --group {{General}} --key {{systemdBoot}} {{true}}",
@@ -5130,7 +5115,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-linux-kwriteconfig5-5",
+    "id": "tldr-en-linux-kwriteconfig5-4",
     "type": "command",
     "title": "kwriteconfig5 - Hide the title bar when a window is maximized (like Ubuntu)",
     "content": "kwriteconfig5 --file {{~/.config/kwinrc}} --group {{Windows}} --key {{BorderlessMaximizedWindows}} {{true}}",
@@ -5145,12 +5130,27 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-linux-kwriteconfig5-6",
+    "id": "tldr-en-linux-kwriteconfig5-5",
     "type": "command",
     "title": "kwriteconfig5 - Configure KRunner to open with the Meta (Command/Windows) global hotkey",
     "content": "kwriteconfig5 --file {{~/.config/kwinrc}} --group {{ModifierOnlyShortcuts}} --key {{Meta}} \"{{org.kde.kglobalaccel,/component/krunner_desktop,org.kde.kglobalaccel.Component,invokeShortcut,_launch}}\"",
     "group": "Linux Ops",
     "description": "kwriteconfig5: Write KConfig entries for KDE Plasma. (Configure KRunner to open with the Meta (Command/Windows) global hotkey)",
+    "tags": [
+      "linux",
+      "kwriteconfig5",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-kwriteconfig5-6",
+    "type": "command",
+    "title": "kwriteconfig5 - Display help",
+    "content": "kwriteconfig5 --help",
+    "group": "Linux Ops",
+    "description": "kwriteconfig5: Write KConfig entries for KDE Plasma. (Display help)",
     "tags": [
       "linux",
       "kwriteconfig5",
@@ -82584,51 +82584,6 @@
     "tags": [
       "linux",
       "bully",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-picom-0",
-    "type": "command",
-    "title": "picom - Enable `picom` during a session",
-    "content": "picom &",
-    "group": "Linux Ops",
-    "description": "picom: Standalone compositor for Xorg. (Enable `picom` during a session)",
-    "tags": [
-      "linux",
-      "picom",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-picom-1",
-    "type": "command",
-    "title": "picom - Start `picom` as a background process",
-    "content": "picom {{[-b|--daemon]}}",
-    "group": "Linux Ops",
-    "description": "picom: Standalone compositor for Xorg. (Start `picom` as a background process)",
-    "tags": [
-      "linux",
-      "picom",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-picom-2",
-    "type": "command",
-    "title": "picom - Use a custom configuration file",
-    "content": "picom --config {{path/to/config_file}}",
-    "group": "Linux Ops",
-    "description": "picom: Standalone compositor for Xorg. (Use a custom configuration file)",
-    "tags": [
-      "linux",
-      "picom",
       "tldr",
       "en"
     ],
