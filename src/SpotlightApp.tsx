@@ -9,12 +9,12 @@ import {
 import { usePromptStore } from '@/store/usePromptStore';
 import { useAppStore, AppTheme } from '@/store/useAppStore';
 import { Prompt } from '@/types/prompt';
-import { cn, stripMarkdown } from '@/lib/utils'; // 引入工具函数
+import { cn, stripMarkdown } from '@/lib/utils';
 import { streamChatCompletion, ChatMessage } from '@/lib/llm';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { getText } from './lib/i18n';
-import { CodeBlock } from '@/components/ui/CodeBlock'; // 引入新组件
+import { CodeBlock } from '@/components/ui/CodeBlock';
 
 // 常量定义
 const FIXED_HEIGHT = 106; 
@@ -28,7 +28,7 @@ type SpotlightMode = 'search' | 'chat';
 
 /**
  * 内部组件：消息复制菜单
- * 处理悬停显示、点击展开下拉菜单、复制纯文本/Markdown的逻辑
+ * 将位置调整到气泡右侧外部，防止遮挡内容
  */
 function MessageCopyMenu({ content }: { content: string }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +48,6 @@ function MessageCopyMenu({ content }: { content: string }) {
 
   const handleCopy = async (type: 'text' | 'markdown') => {
     try {
-      // 根据类型处理文本
       const textToCopy = type === 'text' ? stripMarkdown(content) : content;
       await writeText(textToCopy);
       
@@ -61,7 +60,7 @@ function MessageCopyMenu({ content }: { content: string }) {
   };
 
   return (
-    <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity z-20" ref={menuRef}>
+    <div className="absolute top-2 left-[100%] ml-2 opacity-0 group-hover:opacity-100 transition-opacity z-20" ref={menuRef}>
        {/* 触发按钮 */}
        <button
          onClick={() => setIsOpen(!isOpen)}
@@ -544,7 +543,7 @@ export default function SpotlightApp() {
                                            "max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed shadow-sm border relative",
                                            msg.role === 'user'
                                               ? "bg-primary text-primary-foreground border-primary/50 rounded-tr-sm"
-                                              : "bg-secondary/50 border-border/50 text-foreground rounded-tl-sm markdown-body pr-8" // pr-8 留出复制按钮空间
+                                              : "bg-secondary/50 border-border/50 text-foreground rounded-tl-sm markdown-body" // ✨ 修改：移除了 pr-8，允许内容占据更多宽度
                                        )}>
                                            
                                            {/* AI 消息右上角的复制菜单 (只对 Assistant 显示) */}
