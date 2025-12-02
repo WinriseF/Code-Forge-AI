@@ -33,7 +33,7 @@
   },
   {
     "id": "Grok-4-1",
-    "name": "Grok 4",
+    "name": "Grok 4.1",
     "provider": "xAI",
     "contextLimit": 2000000,
     "inputPricePerMillion": 0.20,
