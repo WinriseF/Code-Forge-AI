@@ -2582,10 +2582,10 @@
   {
     "id": "tldr-en-windows-scb-0",
     "type": "command",
-    "title": "scb - View documentation",
+    "title": "scb - View documentation for the original command",
     "content": "tldr Set-Clipboard",
     "group": "Windows",
-    "description": "scb: This command is an alias of `Set-Clipboard`. (View documentation)",
+    "description": "scb: This command is an alias of `Set-Clipboard`. (View documentation for the original command)",
     "tags": [
       "windows",
       "scb",

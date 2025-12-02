@@ -4878,7 +4878,7 @@
     "id": "tldr-en-linux-scrot-1",
     "type": "command",
     "title": "scrot - Capture a screenshot and save it as `capture.png`",
-    "content": "scrot {{capture.png}}",
+    "content": "scrot capture.png",
     "group": "Linux Ops",
     "description": "scrot: Screen capture utility. (Capture a screenshot and save it as `capture.png`)",
     "tags": [
@@ -4893,7 +4893,7 @@
     "id": "tldr-en-linux-scrot-2",
     "type": "command",
     "title": "scrot - Capture a screenshot interactively",
-    "content": "scrot --select",
+    "content": "scrot {{[-s|--select]}}",
     "group": "Linux Ops",
     "description": "scrot: Screen capture utility. (Capture a screenshot interactively)",
     "tags": [
@@ -4908,7 +4908,7 @@
     "id": "tldr-en-linux-scrot-3",
     "type": "command",
     "title": "scrot - Capture a screenshot interactively without exiting on keyboard input, press `<Esc>` to exit",
-    "content": "scrot --select --ignorekeyboard",
+    "content": "scrot {{[-is|--ignorekeyboard --select]}}",
     "group": "Linux Ops",
     "description": "scrot: Screen capture utility. (Capture a screenshot interactively without exiting on keyboard input, press `<Esc>` to exit)",
     "tags": [
@@ -4923,7 +4923,7 @@
     "id": "tldr-en-linux-scrot-4",
     "type": "command",
     "title": "scrot - Capture a screenshot interactively delimiting the region with a colored line",
-    "content": "scrot --select --line color={{x11_color|rgb_color}}",
+    "content": "scrot {{[-s|--select]}} {{[-l|--line]}} color={{x11_color|rgb_color}}",
     "group": "Linux Ops",
     "description": "scrot: Screen capture utility. (Capture a screenshot interactively delimiting the region with a colored line)",
     "tags": [
@@ -4938,7 +4938,7 @@
     "id": "tldr-en-linux-scrot-5",
     "type": "command",
     "title": "scrot - Capture a screenshot from the currently focused window",
-    "content": "scrot --focused",
+    "content": "scrot {{[-u|--focused]}}",
     "group": "Linux Ops",
     "description": "scrot: Screen capture utility. (Capture a screenshot from the currently focused window)",
     "tags": [
@@ -4953,7 +4953,7 @@
     "id": "tldr-en-linux-scrot-6",
     "type": "command",
     "title": "scrot - Display a countdown of 10 seconds before taking a screenshot",
-    "content": "scrot --count --delay {{10}}",
+    "content": "scrot {{[-c|--count]}} {{[-d|--delay]}} 10",
     "group": "Linux Ops",
     "description": "scrot: Screen capture utility. (Display a countdown of 10 seconds before taking a screenshot)",
     "tags": [
@@ -13145,7 +13145,7 @@
     "title": "eselect-locale - List available locales",
     "content": "eselect locale list",
     "group": "Linux Ops",
-    "description": "eselect-locale: An `eselect` module for managing the `LANG` environment variable, which sets the system language. (List available locales)",
+    "description": "eselect-locale: An `eselect` module for managing the `$LANG` environment variable, which sets the system language. (List available locales)",
     "tags": [
       "linux",
       "eselect-locale",
@@ -13157,10 +13157,10 @@
   {
     "id": "tldr-en-linux-eselect-locale-1",
     "type": "command",
-    "title": "eselect-locale - Set the `LANG` environment variable in `/etc/profile.env` by name or index from the `list` command",
+    "title": "eselect-locale - Set the `$LANG` environment variable in `/etc/profile.env` by name or index from the `list` command",
     "content": "eselect locale set {{name|index}}",
     "group": "Linux Ops",
-    "description": "eselect-locale: An `eselect` module for managing the `LANG` environment variable, which sets the system language. (Set the `LANG` environment variable in `/etc/profile.env` by name or index from the `list` command)",
+    "description": "eselect-locale: An `eselect` module for managing the `$LANG` environment variable, which sets the system language. (Set the `$LANG` environment variable in `/etc/profile.env` by name or index from the `list` command)",
     "tags": [
       "linux",
       "eselect-locale",
@@ -13172,10 +13172,10 @@
   {
     "id": "tldr-en-linux-eselect-locale-2",
     "type": "command",
-    "title": "eselect-locale - Display the value of `LANG` in `/etc/profile.env`",
+    "title": "eselect-locale - Display the value of `$LANG` in `/etc/profile.env`",
     "content": "eselect locale show",
     "group": "Linux Ops",
-    "description": "eselect-locale: An `eselect` module for managing the `LANG` environment variable, which sets the system language. (Display the value of `LANG` in `/etc/profile.env`)",
+    "description": "eselect-locale: An `eselect` module for managing the `$LANG` environment variable, which sets the system language. (Display the value of `$LANG` in `/etc/profile.env`)",
     "tags": [
       "linux",
       "eselect-locale",
@@ -20177,10 +20177,10 @@
   {
     "id": "tldr-en-linux-agetty-2",
     "type": "command",
-    "title": "agetty - Assume the `tty` is 8-bit, overriding the `TERM` environment variable set by `init`",
+    "title": "agetty - Assume the `tty` is 8-bit, overriding the `$TERM` environment variable set by `init`",
     "content": "agetty {{[-8|--8bits]}} - {{term_var}}",
     "group": "Linux Ops",
-    "description": "agetty: Alternative `getty`: Open a `tty` port, prompt for a login name, and invoke the `/bin/login` command. It is normally invoked by `init`. Note: The baud rate is the speed of data transfer between a terminal and a device over a serial connection. (Assume the `tty` is 8-bit, overriding the `TERM` environment variable set by `init`)",
+    "description": "agetty: Alternative `getty`: Open a `tty` port, prompt for a login name, and invoke the `/bin/login` command. It is normally invoked by `init`. Note: The baud rate is the speed of data transfer between a terminal and a device over a serial connection. (Assume the `tty` is 8-bit, overriding the `$TERM` environment variable set by `init`)",
     "tags": [
       "linux",
       "agetty",
@@ -20300,7 +20300,7 @@
     "title": "pacman-upgrade - Install one or more packages from files",
     "content": "sudo pacman -U {{path/to/package1.pkg.tar.zst path/to/package2.pkg.tar.zst ...}}",
     "group": "Linux Ops",
-    "description": "pacman-upgrade: Arch Linux package manager utility. (Install one or more packages from files)",
+    "description": "pacman-upgrade: Install packages manually from archive files. (Install one or more packages from files)",
     "tags": [
       "linux",
       "pacman-upgrade",
@@ -20315,7 +20315,7 @@
     "title": "pacman-upgrade - Install a package without prompting",
     "content": "sudo pacman -U --noconfirm {{path/to/package.pkg.tar.zst}}",
     "group": "Linux Ops",
-    "description": "pacman-upgrade: Arch Linux package manager utility. (Install a package without prompting)",
+    "description": "pacman-upgrade: Install packages manually from archive files. (Install a package without prompting)",
     "tags": [
       "linux",
       "pacman-upgrade",
@@ -20330,7 +20330,7 @@
     "title": "pacman-upgrade - Overwrite conflicting files during a package installation",
     "content": "sudo pacman -U --overwrite {{path/to/file}} {{path/to/package.pkg.tar.zst}}",
     "group": "Linux Ops",
-    "description": "pacman-upgrade: Arch Linux package manager utility. (Overwrite conflicting files during a package installation)",
+    "description": "pacman-upgrade: Install packages manually from archive files. (Overwrite conflicting files during a package installation)",
     "tags": [
       "linux",
       "pacman-upgrade",
@@ -20345,7 +20345,7 @@
     "title": "pacman-upgrade - Install a package, skipping the [d]ependency version checks",
     "content": "sudo pacman -Ud {{path/to/package.pkg.tar.zst}}",
     "group": "Linux Ops",
-    "description": "pacman-upgrade: Arch Linux package manager utility. (Install a package, skipping the [d]ependency version checks)",
+    "description": "pacman-upgrade: Install packages manually from archive files. (Install a package, skipping the [d]ependency version checks)",
     "tags": [
       "linux",
       "pacman-upgrade",
@@ -20360,7 +20360,7 @@
     "title": "pacman-upgrade - Fetch and [p]rint packages that would be affected by upgrade (does not install any packages)",
     "content": "pacman -Up {{path/to/package.pkg.tar.zst}}",
     "group": "Linux Ops",
-    "description": "pacman-upgrade: Arch Linux package manager utility. (Fetch and [p]rint packages that would be affected by upgrade (does not install any packages))",
+    "description": "pacman-upgrade: Install packages manually from archive files. (Fetch and [p]rint packages that would be affected by upgrade (does not install any packages))",
     "tags": [
       "linux",
       "pacman-upgrade",
@@ -20375,7 +20375,7 @@
     "title": "pacman-upgrade - Display [h]elp",
     "content": "pacman -Uh",
     "group": "Linux Ops",
-    "description": "pacman-upgrade: Arch Linux package manager utility. (Display [h]elp)",
+    "description": "pacman-upgrade: Install packages manually from archive files. (Display [h]elp)",
     "tags": [
       "linux",
       "pacman-upgrade",
@@ -32432,10 +32432,10 @@
   {
     "id": "tldr-en-linux-gnome-software-3",
     "type": "command",
-    "title": "gnome-software - Display the version",
+    "title": "gnome-software - Display version",
     "content": "gnome-software --version",
     "group": "Linux Ops",
-    "description": "gnome-software: Add and remove applications and update your system. (Display the version)",
+    "description": "gnome-software: Add and remove applications and update your system. (Display version)",
     "tags": [
       "linux",
       "gnome-software",
@@ -44447,10 +44447,10 @@
   {
     "id": "tldr-en-linux-export-3",
     "type": "command",
-    "title": "export - Append a pathname to the environment variable `PATH`",
+    "title": "export - Append a pathname to the environment variable `$PATH`",
     "content": "export PATH=$PATH:{{path/to/append}}",
     "group": "Linux Ops",
-    "description": "export: Export shell variables to child processes. (Append a pathname to the environment variable `PATH`)",
+    "description": "export: Export shell variables to child processes. (Append a pathname to the environment variable `$PATH`)",
     "tags": [
       "linux",
       "export",
@@ -64593,7 +64593,7 @@
     "id": "tldr-en-linux-xdotool-0",
     "type": "command",
     "title": "xdotool - Retrieve the X-Windows window ID of the running Firefox window(s)",
-    "content": "xdotool search --onlyvisible --name {{firefox}}",
+    "content": "xdotool search --onlyvisible --name firefox",
     "group": "Linux Ops",
     "description": "xdotool: Automate X11 actions. (Retrieve the X-Windows window ID of the running Firefox window(s))",
     "tags": [
@@ -64608,7 +64608,7 @@
     "id": "tldr-en-linux-xdotool-1",
     "type": "command",
     "title": "xdotool - Perform a mouse `<RightClick>`",
-    "content": "xdotool click {{3}}",
+    "content": "xdotool click 3",
     "group": "Linux Ops",
     "description": "xdotool: Automate X11 actions. (Perform a mouse `<RightClick>`)",
     "tags": [
@@ -64637,10 +64637,10 @@
   {
     "id": "tldr-en-linux-xdotool-3",
     "type": "command",
-    "title": "xdotool - Focus on the window with ID of 12345",
+    "title": "xdotool - Focus on the window with a specific ID",
     "content": "xdotool windowfocus --sync {{12345}}",
     "group": "Linux Ops",
-    "description": "xdotool: Automate X11 actions. (Focus on the window with ID of 12345)",
+    "description": "xdotool: Automate X11 actions. (Focus on the window with a specific ID)",
     "tags": [
       "linux",
       "xdotool",
@@ -64653,7 +64653,7 @@
     "id": "tldr-en-linux-xdotool-4",
     "type": "command",
     "title": "xdotool - Type a message, with a 500ms delay for each letter",
-    "content": "xdotool type --delay {{500}} \"Hello world\"",
+    "content": "xdotool type --delay 500 \"{{Hello world}}\"",
     "group": "Linux Ops",
     "description": "xdotool: Automate X11 actions. (Type a message, with a 500ms delay for each letter)",
     "tags": [
@@ -64668,7 +64668,7 @@
     "id": "tldr-en-linux-xdotool-5",
     "type": "command",
     "title": "xdotool - Press the `<Enter>` key",
-    "content": "xdotool key {{KP_Enter}}",
+    "content": "xdotool key KP_Enter",
     "group": "Linux Ops",
     "description": "xdotool: Automate X11 actions. (Press the `<Enter>` key)",
     "tags": [
@@ -68147,10 +68147,10 @@
   {
     "id": "tldr-en-linux-torsocks-3",
     "type": "command",
-    "title": "torsocks - Check if current shell is Tor enabled (`LD_PRELOAD` value will be empty if disabled)",
+    "title": "torsocks - Check if current shell is Tor enabled (`$LD_PRELOAD` value will be empty if disabled)",
     "content": "torsocks show",
     "group": "Linux Ops",
-    "description": "torsocks: Route the traffic of any application through the Tor network. Note: `torsocks` will assume that it should connect to the Tor SOCKS proxy running at 127.0.0.1:9050 being the defaults of the Tor daemon. (Check if current shell is Tor enabled (`LD_PRELOAD` value will be empty if disabled))",
+    "description": "torsocks: Route the traffic of any application through the Tor network. Note: `torsocks` will assume that it should connect to the Tor SOCKS proxy running at 127.0.0.1:9050 being the defaults of the Tor daemon. (Check if current shell is Tor enabled (`$LD_PRELOAD` value will be empty if disabled))",
     "tags": [
       "linux",
       "torsocks",
@@ -78780,6 +78780,51 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-systemctl-import-environment-0",
+    "type": "command",
+    "title": "systemctl-import-environment - Import a variable",
+    "content": "systemctl import-environment {{variable}}",
+    "group": "Linux Ops",
+    "description": "systemctl-import-environment: Import environment variables from the shell into systemd's environment. (Import a variable)",
+    "tags": [
+      "linux",
+      "systemctl-import-environment",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-systemctl-import-environment-1",
+    "type": "command",
+    "title": "systemctl-import-environment - Import multiple variables",
+    "content": "systemctl import-environment {{variable_1 variable_2 ...}}",
+    "group": "Linux Ops",
+    "description": "systemctl-import-environment: Import environment variables from the shell into systemd's environment. (Import multiple variables)",
+    "tags": [
+      "linux",
+      "systemctl-import-environment",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-systemctl-import-environment-2",
+    "type": "command",
+    "title": "systemctl-import-environment - Import variables for user services",
+    "content": "systemctl import-environment {{variable}} --user",
+    "group": "Linux Ops",
+    "description": "systemctl-import-environment: Import environment variables from the shell into systemd's environment. (Import variables for user services)",
+    "tags": [
+      "linux",
+      "systemctl-import-environment",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-bluetoothd-0",
     "type": "command",
     "title": "bluetoothd - Start the daemon",
@@ -82172,10 +82217,10 @@
   {
     "id": "tldr-en-linux-gnome-screenshot-7",
     "type": "command",
-    "title": "gnome-screenshot - Display the version",
+    "title": "gnome-screenshot - Display version",
     "content": "gnome-screenshot --version",
     "group": "Linux Ops",
-    "description": "gnome-screenshot: Capture the screen, a window, or a user-defined area and save the image to a file. (Display the version)",
+    "description": "gnome-screenshot: Capture the screen, a window, or a user-defined area and save the image to a file. (Display version)",
     "tags": [
       "linux",
       "gnome-screenshot",
@@ -84350,7 +84395,7 @@
     "title": "pacman-query - [Q]uery the local package database and list installed packages and versions",
     "content": "pacman -Q",
     "group": "Linux Ops",
-    "description": "pacman-query: Arch Linux package manager utility. ([Q]uery the local package database and list installed packages and versions)",
+    "description": "pacman-query: Query the local package database. ([Q]uery the local package database and list installed packages and versions)",
     "tags": [
       "linux",
       "pacman-query",
@@ -84365,7 +84410,7 @@
     "title": "pacman-query - List only packages and versions that were [e]xplicitly installed",
     "content": "pacman -Qe",
     "group": "Linux Ops",
-    "description": "pacman-query: Arch Linux package manager utility. (List only packages and versions that were [e]xplicitly installed)",
+    "description": "pacman-query: Query the local package database. (List only packages and versions that were [e]xplicitly installed)",
     "tags": [
       "linux",
       "pacman-query",
@@ -84380,7 +84425,7 @@
     "title": "pacman-query - Find which package [o]wns a file",
     "content": "pacman -Qo {{filename}}",
     "group": "Linux Ops",
-    "description": "pacman-query: Arch Linux package manager utility. (Find which package [o]wns a file)",
+    "description": "pacman-query: Query the local package database. (Find which package [o]wns a file)",
     "tags": [
       "linux",
       "pacman-query",
@@ -84395,7 +84440,7 @@
     "title": "pacman-query - Display information about an [i]nstalled package",
     "content": "pacman -Qi {{package}}",
     "group": "Linux Ops",
-    "description": "pacman-query: Arch Linux package manager utility. (Display information about an [i]nstalled package)",
+    "description": "pacman-query: Query the local package database. (Display information about an [i]nstalled package)",
     "tags": [
       "linux",
       "pacman-query",
@@ -84410,7 +84455,7 @@
     "title": "pacman-query - Display the [l]ist of files owned by a specific package",
     "content": "pacman -Ql {{package}}",
     "group": "Linux Ops",
-    "description": "pacman-query: Arch Linux package manager utility. (Display the [l]ist of files owned by a specific package)",
+    "description": "pacman-query: Query the local package database. (Display the [l]ist of files owned by a specific package)",
     "tags": [
       "linux",
       "pacman-query",
@@ -84425,7 +84470,7 @@
     "title": "pacman-query - List orphan packages (installed as [d]ependencies but unrequired ([t]) by any package and print in [q]uiet mode (only package name is displayed))",
     "content": "pacman -Qdtq",
     "group": "Linux Ops",
-    "description": "pacman-query: Arch Linux package manager utility. (List orphan packages (installed as [d]ependencies but unrequired ([t]) by any package and print in [q]uiet mode (only package name is displayed)))",
+    "description": "pacman-query: Query the local package database. (List orphan packages (installed as [d]ependencies but unrequired ([t]) by any package and print in [q]uiet mode (only package name is displayed)))",
     "tags": [
       "linux",
       "pacman-query",
@@ -84440,7 +84485,7 @@
     "title": "pacman-query - List installed packages foreign ([m]) to the repository database",
     "content": "pacman -Qm",
     "group": "Linux Ops",
-    "description": "pacman-query: Arch Linux package manager utility. (List installed packages foreign ([m]) to the repository database)",
+    "description": "pacman-query: Query the local package database. (List installed packages foreign ([m]) to the repository database)",
     "tags": [
       "linux",
       "pacman-query",
@@ -84455,7 +84500,7 @@
     "title": "pacman-query - List packages that can be [u]pgraded",
     "content": "pacman -Qu",
     "group": "Linux Ops",
-    "description": "pacman-query: Arch Linux package manager utility. (List packages that can be [u]pgraded)",
+    "description": "pacman-query: Query the local package database. (List packages that can be [u]pgraded)",
     "tags": [
       "linux",
       "pacman-query",
@@ -92525,7 +92570,7 @@
     "title": "pacman-sync - Install a new package",
     "content": "sudo pacman -S {{package}}",
     "group": "Linux Ops",
-    "description": "pacman-sync: Arch Linux package manager utility. (Install a new package)",
+    "description": "pacman-sync: Synchronize packages from remote repositories. (Install a new package)",
     "tags": [
       "linux",
       "pacman-sync",
@@ -92540,7 +92585,7 @@
     "title": "pacman-sync - [S]ynchronize and refresh ([y]) the package database along with a sys[u]pgrade (add `--downloadonly` to only download the packages and not update them)",
     "content": "sudo pacman -Syu",
     "group": "Linux Ops",
-    "description": "pacman-sync: Arch Linux package manager utility. ([S]ynchronize and refresh ([y]) the package database along with a sys[u]pgrade (add `--downloadonly` to only download the packages and not update them))",
+    "description": "pacman-sync: Synchronize packages from remote repositories. ([S]ynchronize and refresh ([y]) the package database along with a sys[u]pgrade (add `--downloadonly` to only download the packages and not update them))",
     "tags": [
       "linux",
       "pacman-sync",
@@ -92555,7 +92600,7 @@
     "title": "pacman-sync - Update and [u]pgrade all packages and install a new one without prompting",
     "content": "sudo pacman -Syu --noconfirm {{package}}",
     "group": "Linux Ops",
-    "description": "pacman-sync: Arch Linux package manager utility. (Update and [u]pgrade all packages and install a new one without prompting)",
+    "description": "pacman-sync: Synchronize packages from remote repositories. (Update and [u]pgrade all packages and install a new one without prompting)",
     "tags": [
       "linux",
       "pacman-sync",
@@ -92570,7 +92615,7 @@
     "title": "pacman-sync - [s]earch the package database for a `regex` or keyword",
     "content": "pacman -Ss \"{{search_pattern}}\"",
     "group": "Linux Ops",
-    "description": "pacman-sync: Arch Linux package manager utility. ([s]earch the package database for a `regex` or keyword)",
+    "description": "pacman-sync: Synchronize packages from remote repositories. ([s]earch the package database for a `regex` or keyword)",
     "tags": [
       "linux",
       "pacman-sync",
@@ -92585,7 +92630,7 @@
     "title": "pacman-sync - Display [i]nformation about a package",
     "content": "pacman -Si {{package}}",
     "group": "Linux Ops",
-    "description": "pacman-sync: Arch Linux package manager utility. (Display [i]nformation about a package)",
+    "description": "pacman-sync: Synchronize packages from remote repositories. (Display [i]nformation about a package)",
     "tags": [
       "linux",
       "pacman-sync",
@@ -92600,7 +92645,7 @@
     "title": "pacman-sync - Overwrite conflicting files during a package update",
     "content": "sudo pacman -Syu --overwrite {{path/to/file}}",
     "group": "Linux Ops",
-    "description": "pacman-sync: Arch Linux package manager utility. (Overwrite conflicting files during a package update)",
+    "description": "pacman-sync: Synchronize packages from remote repositories. (Overwrite conflicting files during a package update)",
     "tags": [
       "linux",
       "pacman-sync",
@@ -92615,7 +92660,7 @@
     "title": "pacman-sync - Remove not installed packages and unused repositories from the cache (use the flags `Scc` to [c]lean all packages)",
     "content": "sudo pacman -Sc",
     "group": "Linux Ops",
-    "description": "pacman-sync: Arch Linux package manager utility. (Remove not installed packages and unused repositories from the cache (use the flags `Scc` to [c]lean all packages))",
+    "description": "pacman-sync: Synchronize packages from remote repositories. (Remove not installed packages and unused repositories from the cache (use the flags `Scc` to [c]lean all packages))",
     "tags": [
       "linux",
       "pacman-sync",
@@ -92630,7 +92675,7 @@
     "title": "pacman-sync - Specify the package version that should be installed",
     "content": "sudo pacman -S {{package}}={{version}}",
     "group": "Linux Ops",
-    "description": "pacman-sync: Arch Linux package manager utility. (Specify the package version that should be installed)",
+    "description": "pacman-sync: Synchronize packages from remote repositories. (Specify the package version that should be installed)",
     "tags": [
       "linux",
       "pacman-sync",
@@ -93182,10 +93227,10 @@
   {
     "id": "tldr-en-linux-rkhunter-3",
     "type": "command",
-    "title": "rkhunter - Display version",
-    "content": "sudo rkhunter --versioncheck",
+    "title": "rkhunter - Display help",
+    "content": "sudo rkhunter --help",
     "group": "Linux Ops",
-    "description": "rkhunter: Searches for rootkits and malware. (Display version)",
+    "description": "rkhunter: Searches for rootkits and malware. (Display help)",
     "tags": [
       "linux",
       "rkhunter",
@@ -93197,10 +93242,10 @@
   {
     "id": "tldr-en-linux-rkhunter-4",
     "type": "command",
-    "title": "rkhunter - Display help",
-    "content": "sudo rkhunter --help",
+    "title": "rkhunter - Display version",
+    "content": "sudo rkhunter --versioncheck",
     "group": "Linux Ops",
-    "description": "rkhunter: Searches for rootkits and malware. (Display help)",
+    "description": "rkhunter: Searches for rootkits and malware. (Display version)",
     "tags": [
       "linux",
       "rkhunter",
@@ -94310,7 +94355,7 @@
     "title": "pacman-files - Update the package database",
     "content": "sudo pacman -Fy",
     "group": "Linux Ops",
-    "description": "pacman-files: Arch Linux package manager utility. (Update the package database)",
+    "description": "pacman-files: Query the local files database. (Update the package database)",
     "tags": [
       "linux",
       "pacman-files",
@@ -94325,7 +94370,7 @@
     "title": "pacman-files - Find the package that owns a specific [F]ile",
     "content": "pacman -F {{filename}}",
     "group": "Linux Ops",
-    "description": "pacman-files: Arch Linux package manager utility. (Find the package that owns a specific [F]ile)",
+    "description": "pacman-files: Query the local files database. (Find the package that owns a specific [F]ile)",
     "tags": [
       "linux",
       "pacman-files",
@@ -94340,7 +94385,7 @@
     "title": "pacman-files - Find the package that owns a specific [F]ile, using a `rege[x]`",
     "content": "pacman -Fx '{{regex}}'",
     "group": "Linux Ops",
-    "description": "pacman-files: Arch Linux package manager utility. (Find the package that owns a specific [F]ile, using a `rege[x]`)",
+    "description": "pacman-files: Query the local files database. (Find the package that owns a specific [F]ile, using a `rege[x]`)",
     "tags": [
       "linux",
       "pacman-files",
@@ -94355,7 +94400,7 @@
     "title": "pacman-files - List only the package names",
     "content": "pacman -Fq {{filename}}",
     "group": "Linux Ops",
-    "description": "pacman-files: Arch Linux package manager utility. (List only the package names)",
+    "description": "pacman-files: Query the local files database. (List only the package names)",
     "tags": [
       "linux",
       "pacman-files",
@@ -94370,7 +94415,7 @@
     "title": "pacman-files - [l]ist the [F]iles owned by a specific package",
     "content": "pacman -Fl {{package}}",
     "group": "Linux Ops",
-    "description": "pacman-files: Arch Linux package manager utility. ([l]ist the [F]iles owned by a specific package)",
+    "description": "pacman-files: Query the local files database. ([l]ist the [F]iles owned by a specific package)",
     "tags": [
       "linux",
       "pacman-files",
@@ -94385,7 +94430,7 @@
     "title": "pacman-files - Display [h]elp",
     "content": "pacman -Fh",
     "group": "Linux Ops",
-    "description": "pacman-files: Arch Linux package manager utility. (Display [h]elp)",
+    "description": "pacman-files: Query the local files database. (Display [h]elp)",
     "tags": [
       "linux",
       "pacman-files",
@@ -100050,6 +100095,96 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-hyprpaper-0",
+    "type": "command",
+    "title": "hyprpaper - Start the hyprpaper service",
+    "content": "hyprpaper",
+    "group": "Linux Ops",
+    "description": "hyprpaper: Wallpaper utility for Hyprland with the ability to dynamically change wallpapers. Controlled by the config file `~/.config/hypr/hyprpaper.conf`. (Start the hyprpaper service)",
+    "tags": [
+      "linux",
+      "hyprpaper",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-hyprpaper-1",
+    "type": "command",
+    "title": "hyprpaper - Preload a wallpaper",
+    "content": "hyprctl hyprpaper preload \"{{path/to/image.png}}\"",
+    "group": "Linux Ops",
+    "description": "hyprpaper: Wallpaper utility for Hyprland with the ability to dynamically change wallpapers. Controlled by the config file `~/.config/hypr/hyprpaper.conf`. (Preload a wallpaper)",
+    "tags": [
+      "linux",
+      "hyprpaper",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-hyprpaper-2",
+    "type": "command",
+    "title": "hyprpaper - Switch wallpaper to a different preloaded image",
+    "content": "hyprctl hyprpaper wallpaper \"{{monitor}},{{path/to/image.png}}\"",
+    "group": "Linux Ops",
+    "description": "hyprpaper: Wallpaper utility for Hyprland with the ability to dynamically change wallpapers. Controlled by the config file `~/.config/hypr/hyprpaper.conf`. (Switch wallpaper to a different preloaded image)",
+    "tags": [
+      "linux",
+      "hyprpaper",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-hyprpaper-3",
+    "type": "command",
+    "title": "hyprpaper - Preload a wallpaper, set that wallpaper, then unload all unused wallpapers",
+    "content": "hyprctl hyprpaper reload \"{{monitor}},{{path/to/image.png}}\"",
+    "group": "Linux Ops",
+    "description": "hyprpaper: Wallpaper utility for Hyprland with the ability to dynamically change wallpapers. Controlled by the config file `~/.config/hypr/hyprpaper.conf`. (Preload a wallpaper, set that wallpaper, then unload all unused wallpapers)",
+    "tags": [
+      "linux",
+      "hyprpaper",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-hyprpaper-4",
+    "type": "command",
+    "title": "hyprpaper - List the wallpapers that are currently preloaded (useful for dynamically preloading and unloading)",
+    "content": "hyprctl hyprpaper listloaded",
+    "group": "Linux Ops",
+    "description": "hyprpaper: Wallpaper utility for Hyprland with the ability to dynamically change wallpapers. Controlled by the config file `~/.config/hypr/hyprpaper.conf`. (List the wallpapers that are currently preloaded (useful for dynamically preloading and unloading))",
+    "tags": [
+      "linux",
+      "hyprpaper",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-hyprpaper-5",
+    "type": "command",
+    "title": "hyprpaper - List the active wallpapers hyprpaper is displaying, along with their associated monitor",
+    "content": "hyprctl hyprpaper listactive",
+    "group": "Linux Ops",
+    "description": "hyprpaper: Wallpaper utility for Hyprland with the ability to dynamically change wallpapers. Controlled by the config file `~/.config/hypr/hyprpaper.conf`. (List the active wallpapers hyprpaper is displaying, along with their associated monitor)",
+    "tags": [
+      "linux",
+      "hyprpaper",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-col-0",
     "type": "command",
     "title": "col - Filter reverse line feeds from input",
@@ -104705,7 +104840,7 @@
     "title": "pacman-remove - [R]emove a package and its dependencies recur[s]ively",
     "content": "sudo pacman -Rs {{package}}",
     "group": "Linux Ops",
-    "description": "pacman-remove: Arch Linux package manager utility. ([R]emove a package and its dependencies recur[s]ively)",
+    "description": "pacman-remove: Remove packages from the system. ([R]emove a package and its dependencies recur[s]ively)",
     "tags": [
       "linux",
       "pacman-remove",
@@ -104720,7 +104855,7 @@
     "title": "pacman-remove - [R]emove a package and its dependencies. Also do [n]ot save backups of configuration files",
     "content": "sudo pacman -Rsn {{package}}",
     "group": "Linux Ops",
-    "description": "pacman-remove: Arch Linux package manager utility. ([R]emove a package and its dependencies. Also do [n]ot save backups of configuration files)",
+    "description": "pacman-remove: Remove packages from the system. ([R]emove a package and its dependencies. Also do [n]ot save backups of configuration files)",
     "tags": [
       "linux",
       "pacman-remove",
@@ -104735,7 +104870,7 @@
     "title": "pacman-remove - [R]emove a package without prompting",
     "content": "sudo pacman -R --noconfirm {{package}}",
     "group": "Linux Ops",
-    "description": "pacman-remove: Arch Linux package manager utility. ([R]emove a package without prompting)",
+    "description": "pacman-remove: Remove packages from the system. ([R]emove a package without prompting)",
     "tags": [
       "linux",
       "pacman-remove",
@@ -104750,7 +104885,7 @@
     "title": "pacman-remove - [R]emove orphan packages (installed as [d]ependencies but no[t] required by any package)",
     "content": "sudo pacman -Rsn $(pacman -Qdtq)",
     "group": "Linux Ops",
-    "description": "pacman-remove: Arch Linux package manager utility. ([R]emove orphan packages (installed as [d]ependencies but no[t] required by any package))",
+    "description": "pacman-remove: Remove packages from the system. ([R]emove orphan packages (installed as [d]ependencies but no[t] required by any package))",
     "tags": [
       "linux",
       "pacman-remove",
@@ -104765,7 +104900,7 @@
     "title": "pacman-remove - [R]emove a package and [c]ascade that to all packages that depend on it",
     "content": "sudo pacman -Rc {{package}}",
     "group": "Linux Ops",
-    "description": "pacman-remove: Arch Linux package manager utility. ([R]emove a package and [c]ascade that to all packages that depend on it)",
+    "description": "pacman-remove: Remove packages from the system. ([R]emove a package and [c]ascade that to all packages that depend on it)",
     "tags": [
       "linux",
       "pacman-remove",
@@ -104780,7 +104915,7 @@
     "title": "pacman-remove - List and [p]rint packages that would be affected (does not [R]emove any packages)",
     "content": "pacman -Rp {{package}}",
     "group": "Linux Ops",
-    "description": "pacman-remove: Arch Linux package manager utility. (List and [p]rint packages that would be affected (does not [R]emove any packages))",
+    "description": "pacman-remove: Remove packages from the system. (List and [p]rint packages that would be affected (does not [R]emove any packages))",
     "tags": [
       "linux",
       "pacman-remove",
@@ -104795,7 +104930,7 @@
     "title": "pacman-remove - Display [h]elp",
     "content": "pacman -Rh",
     "group": "Linux Ops",
-    "description": "pacman-remove: Arch Linux package manager utility. (Display [h]elp)",
+    "description": "pacman-remove: Remove packages from the system. (Display [h]elp)",
     "tags": [
       "linux",
       "pacman-remove",
