@@ -64,42 +64,39 @@ export async function executeCommand(commandStr: string, shell: ShellType = 'aut
 
   switch (osType) {
     case 'windows': {
-      const effectiveShell = (shell === 'auto' || (shell !== 'cmd' && shell !== 'powershell')) ? 'powershell' : shell;
-      
-      if (effectiveShell === 'powershell') {
-        // --- 核心修正：使用 EncodedCommand 方案 ---
+        const effectiveShell = (shell === 'auto' || (shell !== 'cmd' && shell !== 'powershell')) ? 'powershell' : shell;
         
-        // 1. 只有当 cwd 存在时才生成 Set-Location 命令，防止对 null 调用 replace
-        // 注意：PowerShell 中单引号转义为两个单引号 (' -> '')
-        const setLocationScript = cwd ? `Set-Location -Path '${cwd.replace(/'/g, "''")}';` : '';
+        if (effectiveShell === 'powershell') {
+            // 1. 构造要在新窗口中执行的脚本
+            const setLocationScript = cwd ? `Set-Location -Path '${cwd.replace(/'/g, "''")}';` : '';
+            const script = `
+            ${setLocationScript}
+            ${commandStr}
+            Write-Host -NoNewLine "\\n--- [CodeForge] Command finished. Press any key to continue... ---"
+            $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") | Out-Null
+            `;
+            
+            // 2. 编码脚本
+            const encodedCommand = toPowershellEncodedCommand(script);
 
-        // 2. 构造完整的 PowerShell 脚本
-        const script = `
-          ${setLocationScript}
-          ${commandStr}
-          Write-Host -NoNewLine "\\n--- [CodeForge] Command finished. Press any key to continue... ---"
-          $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") | Out-Null
-        `;
-        
-        // 3. 编码脚本
-        const encodedCommand = toPowershellEncodedCommand(script);
-        
-        // 4. 通过 cmd start 启动一个新的 powershell 窗口来执行编码后的命令
-        command = Command.create('cmd', [
-            '/c', 
-            'start', 
-            '""', 
-            'powershell', 
-            '-NoExit', 
-            '-EncodedCommand', 
-            encodedCommand
-        ]);
+            // 3. 【核心改动】使用 Start-Process 来启动新的 PowerShell 窗口
+            // 这是最稳定、最推荐的方式，可以完全避免 cmd start 的各种问题
+            const startProcessArgs = `-NoExit -EncodedCommand ${encodedCommand}`;
+            const workingDirectory = cwd ? cwd.replace(/'/g, "''") : undefined; // Start-Process 使用 -WorkingDirectory 参数
+            
+            // 构造完整的 Start-Process 命令字符串
+            // 注意：我们将参数列表作为一个整体传递给 -ArgumentList
+            const startProcessCommand = `Start-Process -FilePath 'powershell.exe' -ArgumentList '${startProcessArgs}'${workingDirectory ? ` -WorkingDirectory '${workingDirectory}'` : ''}`;
 
-      } else { // cmd
-        const cmdCommand = cwd ? `cd /d "${cwd}" && ${commandStr}` : commandStr;
-        command = Command.create('cmd', ['/k', `${cmdCommand} & echo. & pause`]);
-      }
-      break;
+            // 执行这个 Start-Process 命令
+            command = Command.create('powershell', ['-Command', startProcessCommand]);
+
+        } else { // cmd
+            const cmdCommand = cwd ? `cd /d "${cwd}" && ${commandStr}` : commandStr;
+            // 对于 cmd，我们也可以尝试用 Start-Process，但为了保持一致性，先保留原来的方法
+            command = Command.create('cmd', ['/k', `${cmdCommand} & echo. & pause`]);
+        }
+        break;
     }
 
     case 'macos': {
