@@ -22,9 +22,15 @@ export function SettingsModal() {
   if (!isSettingsOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm flex items-center justify-center animate-in fade-in duration-200">
-      <div className="w-[600px] h-[500px] bg-background border border-border rounded-xl shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm flex items-center justify-center animate-in fade-in duration-200 p-4">
+      
+      {/* 
+          - w-[600px] -> w-full max-w-[600px]: 尝试占满，但最大不超过 600
+          - h-[500px] -> h-full max-h-[500px]: 尝试占满，但最大不超过 500
+      */}
+      <div className="w-full max-w-[600px] h-full max-h-[500px] bg-background border border-border rounded-xl shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
         
+        {/* Header */}
         <div className="h-14 px-6 border-b border-border flex items-center justify-between bg-secondary/10 shrink-0">
           <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
             <SettingsIcon />
@@ -38,8 +44,10 @@ export function SettingsModal() {
           </button>
         </div>
 
-        <div className="flex flex-1 overflow-hidden">
-            <div className="w-40 bg-secondary/5 border-r border-border p-2 space-y-1">
+        {/* Content Body */}
+        <div className="flex flex-1 overflow-hidden min-h-0">
+            {/* Sidebar Navigation */}
+            <div className="w-40 bg-secondary/5 border-r border-border p-2 space-y-1 overflow-y-auto custom-scrollbar shrink-0">
                 <NavBtn active={activeSection === 'appearance'} onClick={() => setActiveSection('appearance')} icon={<Monitor size={14} />} label={getText('settings', 'navAppearance', language)}  />
                 <NavBtn active={activeSection === 'language'} onClick={() => setActiveSection('language')} icon={<Languages size={14} />} label={getText('settings', 'navLanguage', language)} />
                 <NavBtn active={activeSection === 'filters'} onClick={() => setActiveSection('filters')} icon={<Filter size={14} />} label={getText('settings', 'navFilters', language)} />
@@ -47,22 +55,24 @@ export function SettingsModal() {
                 <NavBtn active={activeSection === 'ai'} onClick={() => setActiveSection('ai')} icon={<Bot size={14} />} label={getText('settings', 'navAI', language)} />
             </div>
 
-            <div className="flex-1 p-6 overflow-y-auto custom-scrollbar">
+            {/* Main Content Area */}
+            <div className="flex-1 p-6 overflow-y-auto custom-scrollbar min-w-0">
                 
                 {activeSection === 'appearance' && (
                     <div className="space-y-4">
                         <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
                             {getText('settings', 'appearance', language)}
                         </h3>
-                        <div className="grid grid-cols-2 gap-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <ThemeCard active={theme === 'dark'} onClick={() => setTheme('dark')} icon={<Moon size={24} />} label={getText('settings', 'themeDark', language)} />
                             <ThemeCard active={theme === 'light'} onClick={() => setTheme('light')} icon={<Sun size={24} />} label={getText('settings', 'themeLight', language)} />
                         </div>
+                        
                         <div className="w-full h-px bg-border/50 my-4" />
-                        <ShortcutInput 
-                            value={spotlightShortcut} 
-                            onChange={setSpotlightShortcut} 
-                        />
+                        
+                        {/* 快捷键设置 */}
+                        <ShortcutInput value={spotlightShortcut} onChange={setSpotlightShortcut} />
+
                         <div className="space-y-4 pt-4 border-t border-border/50">
                             <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
                                 {getText('settings', 'spotlightSize', language)}
@@ -83,7 +93,6 @@ export function SettingsModal() {
                                     value={useAppStore.getState().spotlightAppearance.width}
                                     onChange={(e) => useAppStore.getState().setSpotlightAppearance({ width: parseInt(e.target.value) })}
                                 />
-                                <p className="text-[10px] text-muted-foreground/60">Adjust the width of the command palette (500px - 1000px).</p>
                             </div>
 
                             {/* Height Slider */}
@@ -126,7 +135,7 @@ export function SettingsModal() {
                                 {getText('settings', 'filtersDesc', language)}
                             </p>
                         </div>
-                        <div className="flex-1 border border-border rounded-lg p-4 bg-secondary/5 overflow-hidden flex flex-col">
+                        <div className="flex-1 border border-border rounded-lg p-4 bg-secondary/5 overflow-hidden flex flex-col min-h-[200px]">
                             <FilterManager 
                                 localConfig={globalIgnore} 
                                 onUpdate={updateGlobalIgnore}
@@ -152,7 +161,7 @@ export function SettingsModal() {
                             {/* Provider Select */}
                             <div className="space-y-1.5">
                                 <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">{getText('settings', 'provider', language)}</label>
-                                <div className="grid grid-cols-3 gap-2">
+                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                                     {['deepseek', 'openai', 'anthropic'].map((p) => (
                                         <button
                                             key={p}
@@ -203,7 +212,7 @@ export function SettingsModal() {
                             </div>
                             
                             {/* Base URL & Model */}
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div className="space-y-1.5">
                                     <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">{getText('settings', 'baseUrl', language)}</label>
                                     <input 
@@ -256,8 +265,8 @@ function ThemeCard({ active, onClick, icon, label }: any) {
   
   function NavBtn({ active, onClick, icon, label }: any) {
       return (
-          <button onClick={onClick} className={cn("w-full flex items-center gap-2 px-3 py-2 text-sm rounded-md transition-colors", active ? "bg-primary/10 text-primary font-medium" : "text-muted-foreground hover:bg-secondary hover:text-foreground")}>
-              {icon} {label}
+          <button onClick={onClick} className={cn("w-full flex items-center gap-2 px-3 py-2 text-sm rounded-md transition-colors whitespace-nowrap overflow-hidden text-ellipsis", active ? "bg-primary/10 text-primary font-medium" : "text-muted-foreground hover:bg-secondary hover:text-foreground")}>
+              <div className="shrink-0">{icon}</div> {label}
           </button>
       )
   }
