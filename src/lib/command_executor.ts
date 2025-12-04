@@ -26,7 +26,24 @@ const showNotification = async (msg: string, type: 'info' | 'error' = 'info') =>
 };
 
 /**
- * 核心执行函数
+ * 将字符串转换为 PowerShell -EncodedCommand 所需的 UTF-16LE Base64 格式
+ * 这能完美解决 Windows 命令行中复杂的引号和特殊字符转义问题
+ */
+function toPowershellEncodedCommand(script: string): string {
+  const utf16leBytes: number[] = [];
+  for (let i = 0; i < script.length; i++) {
+    const charCode = script.charCodeAt(i);
+    utf16leBytes.push(charCode & 0xFF); // low byte
+    utf16leBytes.push(charCode >> 8);  // high byte
+  }
+  // 将字节数组转换为二进制字符串
+  const binaryString = String.fromCharCode(...utf16leBytes);
+  // Base64 编码
+  return btoa(binaryString);
+}
+
+/**
+ * 核心执行函数 (V7 - 最终稳定版)
  * @param commandStr 要执行的命令
  * @param shell 用户指定的 Shell
  * @param cwd 可选的工作目录
@@ -42,42 +59,60 @@ export async function executeCommand(commandStr: string, shell: ShellType = 'aut
   }
 
   const osType = await getOsType();
-  let shellProcess: string;
-  let shellArgs: string[];
+  // 修复泛型类型错误
+  let command: Command<string>;
 
-  // 使用 switch 语句清晰地处理不同操作系统
   switch (osType) {
     case 'windows': {
       const effectiveShell = (shell === 'auto' || (shell !== 'cmd' && shell !== 'powershell')) ? 'powershell' : shell;
+      
       if (effectiveShell === 'powershell') {
-        shellProcess = 'powershell';
-        const psCommand = cwd ? `Set-Location -Path '${cwd}'; ${commandStr}` : commandStr;
-        // 在命令执行后添加 "pause" 效果
-        shellArgs = ['-NoExit', '-Command', `& { ${psCommand}; Write-Host -NoNewLine "\\n--- [CodeForge] Command finished. Press any key to continue... ---"; $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") | Out-Null }`];
+        // --- 核心修正：使用 EncodedCommand 方案 ---
+        
+        // 1. 只有当 cwd 存在时才生成 Set-Location 命令，防止对 null 调用 replace
+        // 注意：PowerShell 中单引号转义为两个单引号 (' -> '')
+        const setLocationScript = cwd ? `Set-Location -Path '${cwd.replace(/'/g, "''")}';` : '';
+
+        // 2. 构造完整的 PowerShell 脚本
+        const script = `
+          ${setLocationScript}
+          ${commandStr}
+          Write-Host -NoNewLine "\\n--- [CodeForge] Command finished. Press any key to continue... ---"
+          $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") | Out-Null
+        `;
+        
+        // 3. 编码脚本
+        const encodedCommand = toPowershellEncodedCommand(script);
+        
+        // 4. 通过 cmd start 启动一个新的 powershell 窗口来执行编码后的命令
+        command = Command.create('cmd', [
+            '/c', 
+            'start', 
+            '""', 
+            'powershell', 
+            '-NoExit', 
+            '-EncodedCommand', 
+            encodedCommand
+        ]);
+
       } else { // cmd
-        shellProcess = 'cmd';
         const cmdCommand = cwd ? `cd /d "${cwd}" && ${commandStr}` : commandStr;
-        // & pause 会在新行显示 "请按任意键继续. . ."
-        shellArgs = ['/k', `${cmdCommand} & echo. & pause`];
+        command = Command.create('cmd', ['/k', `${cmdCommand} & echo. & pause`]);
       }
       break;
     }
 
     case 'macos': {
-      // 在 macOS 上，用户选择的 shell (bash/zsh) 很有意义
       const effectiveShell = (shell === 'auto' || shell === 'cmd' || shell === 'powershell') ? 'bash' : shell;
-      // 将工作目录切换和命令执行串联起来
       const finalCommand = `${cwd ? `cd "${cwd}" && ` : ''}${commandStr}; echo; read -p "[CodeForge] Command finished. Press Enter to close."`;
       
-      shellProcess = 'osascript';
-      // 使用 AppleScript 来执行命令，并将 effectiveShell 作为参数
       const script = `
         tell application "Terminal"
           activate
           do script "exec ${effectiveShell} -c '${finalCommand.replace(/'/g, "'\\''")}'"
         end tell
       `;
-      shellArgs = ['-e', script];
+      command = Command.create('osascript', ['-e', script]);
       break;
     }
 
@@ -85,9 +120,10 @@ export async function executeCommand(commandStr: string, shell: ShellType = 'aut
       const effectiveShell = (shell === 'auto' || shell === 'cmd' || shell === 'powershell') ? 'bash' : shell;
       const finalCommand = `${cwd ? `cd "${cwd}" && ` : ''}${commandStr}; echo; read -p "[CodeForge] Command finished. Press Enter to close."`;
       
-      shellProcess = 'x-terminal-emulator'; 
-      // -e 参数后直接跟要执行的命令
-      shellArgs = ['-e', `${effectiveShell} -c "${finalCommand.replace(/"/g, '\\"')}"`];
+      command = Command.create('x-terminal-emulator', [
+          '-e', 
+          `${effectiveShell} -c "${finalCommand.replace(/"/g, '\\"')}"`
+      ]);
       break;
     }
 
@@ -97,8 +133,7 @@ export async function executeCommand(commandStr: string, shell: ShellType = 'aut
   }
 
   try {
-    console.log(`Executing in New Terminal: Process=${shellProcess}, Args=`, shellArgs);
-    const command = Command.create(shellProcess, shellArgs);
+    console.log(`Spawning command...`);
     await command.spawn();
   } catch (e: any) {
     console.error("Failed to execute command:", e);

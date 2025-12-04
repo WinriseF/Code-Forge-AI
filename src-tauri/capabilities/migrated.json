@@ -48,7 +48,7 @@
       "identifier": "shell:allow-open"
     },
     {
-      "identifier": "shell:allow-execute",
+      "identifier": "shell:allow-spawn",
       "allow": [
         { "name": "cmd", "cmd": "cmd", "args": true },
         { "name": "powershell", "cmd": "powershell", "args": true },
