@@ -53690,7 +53690,7 @@
     "title": "csplit - Split a file in two parts, starting the second one at line 10",
     "content": "csplit {{path/to/file}} 10",
     "group": "Linux Ops",
-    "description": "csplit: Split a file into pieces. This generates files named \"xx00\", \"xx01\", and so on. (Split a file in two parts, starting the second one at line 10)",
+    "description": "csplit: Split a file into pieces. This generates files named `xx00`, `xx01`, and so on. (Split a file in two parts, starting the second one at line 10)",
     "tags": [
       "linux",
       "csplit",
@@ -53705,7 +53705,7 @@
     "title": "csplit - Split a file in three parts, starting the latter parts in lines 7 and 23",
     "content": "csplit {{path/to/file}} 7 23",
     "group": "Linux Ops",
-    "description": "csplit: Split a file into pieces. This generates files named \"xx00\", \"xx01\", and so on. (Split a file in three parts, starting the latter parts in lines 7 and 23)",
+    "description": "csplit: Split a file into pieces. This generates files named `xx00`, `xx01`, and so on. (Split a file in three parts, starting the latter parts in lines 7 and 23)",
     "tags": [
       "linux",
       "csplit",
@@ -53720,7 +53720,7 @@
     "title": "csplit - Start a new part at every 5th line (will fail if number of lines is not divisible by 5)",
     "content": "csplit {{path/to/file}} 5 {*}",
     "group": "Linux Ops",
-    "description": "csplit: Split a file into pieces. This generates files named \"xx00\", \"xx01\", and so on. (Start a new part at every 5th line (will fail if number of lines is not divisible by 5))",
+    "description": "csplit: Split a file into pieces. This generates files named `xx00`, `xx01`, and so on. (Start a new part at every 5th line (will fail if number of lines is not divisible by 5))",
     "tags": [
       "linux",
       "csplit",
@@ -53735,7 +53735,7 @@
     "title": "csplit - Start a new part at every 5th line, ignoring exact-division error",
     "content": "csplit {{[-k|--keep-files]}} {{path/to/file}} 5 {*}",
     "group": "Linux Ops",
-    "description": "csplit: Split a file into pieces. This generates files named \"xx00\", \"xx01\", and so on. (Start a new part at every 5th line, ignoring exact-division error)",
+    "description": "csplit: Split a file into pieces. This generates files named `xx00`, `xx01`, and so on. (Start a new part at every 5th line, ignoring exact-division error)",
     "tags": [
       "linux",
       "csplit",
@@ -53750,7 +53750,7 @@
     "title": "csplit - Split a file above line 5 and use a custom prefix for the output files (default is `xx`)",
     "content": "csplit {{path/to/file}} 5 {{[-f|--prefix]}} {{prefix}}",
     "group": "Linux Ops",
-    "description": "csplit: Split a file into pieces. This generates files named \"xx00\", \"xx01\", and so on. (Split a file above line 5 and use a custom prefix for the output files (default is `xx`))",
+    "description": "csplit: Split a file into pieces. This generates files named `xx00`, `xx01`, and so on. (Split a file above line 5 and use a custom prefix for the output files (default is `xx`))",
     "tags": [
       "linux",
       "csplit",
@@ -53765,7 +53765,7 @@
     "title": "csplit - Split a file above the first line matching a `regex` pattern",
     "content": "csplit {{path/to/file}} /{{regex}}/",
     "group": "Linux Ops",
-    "description": "csplit: Split a file into pieces. This generates files named \"xx00\", \"xx01\", and so on. (Split a file above the first line matching a `regex` pattern)",
+    "description": "csplit: Split a file into pieces. This generates files named `xx00`, `xx01`, and so on. (Split a file above the first line matching a `regex` pattern)",
     "tags": [
       "linux",
       "csplit",
