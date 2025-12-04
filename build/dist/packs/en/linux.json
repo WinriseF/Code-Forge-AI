@@ -335,7 +335,7 @@
     "title": "xbps - View documentation for installing and updating packages",
     "content": "tldr xbps-install",
     "group": "Linux Ops",
-    "description": "xbps: The X Binary Package System is the package manager used by Void Linux. For equivalent commands in other package managers, see . (View documentation for installing and updating packages)",
+    "description": "xbps: The X Binary Package System is the package manager used by Void Linux. `xbps` isn't a command, but a set of commands. For equivalent commands in other package managers, see . (View documentation for installing and updating packages)",
     "tags": [
       "linux",
       "xbps",
@@ -350,7 +350,7 @@
     "title": "xbps - View documentation for removing packages",
     "content": "tldr xbps-remove",
     "group": "Linux Ops",
-    "description": "xbps: The X Binary Package System is the package manager used by Void Linux. For equivalent commands in other package managers, see . (View documentation for removing packages)",
+    "description": "xbps: The X Binary Package System is the package manager used by Void Linux. `xbps` isn't a command, but a set of commands. For equivalent commands in other package managers, see . (View documentation for removing packages)",
     "tags": [
       "linux",
       "xbps",
@@ -365,7 +365,7 @@
     "title": "xbps - View documentation for querying for package and repository information",
     "content": "tldr xbps-query",
     "group": "Linux Ops",
-    "description": "xbps: The X Binary Package System is the package manager used by Void Linux. For equivalent commands in other package managers, see . (View documentation for querying for package and repository information)",
+    "description": "xbps: The X Binary Package System is the package manager used by Void Linux. `xbps` isn't a command, but a set of commands. For equivalent commands in other package managers, see . (View documentation for querying for package and repository information)",
     "tags": [
       "linux",
       "xbps",
@@ -28128,7 +28128,7 @@
     "id": "tldr-en-linux-pveum-3",
     "type": "command",
     "title": "pveum - Change user password",
-    "content": "pveum {{[pa|passwd]}} {{[username}}@pve",
+    "content": "pveum {{[pa|passwd]}} {{username}}@pve",
     "group": "Linux Ops",
     "description": "pveum: Manage proxmox users. (Change user password)",
     "tags": [
@@ -46655,7 +46655,7 @@
     "title": "firewall-cmd - View all available firewall zones and rules in their runtime configuration state",
     "content": "firewall-cmd --list-all-zones",
     "group": "Linux Ops",
-    "description": "firewall-cmd: The firewalld command-line client. View and adapt the runtime or permanent firewall configuration state. (View all available firewall zones and rules in their runtime configuration state)",
+    "description": "firewall-cmd: The firewalld client. View and adapt the runtime or permanent firewall configuration state. (View all available firewall zones and rules in their runtime configuration state)",
     "tags": [
       "linux",
       "firewall-cmd",
@@ -46670,7 +46670,7 @@
     "title": "firewall-cmd - Permanently move the interface into the block zone, effectively blocking all communication",
     "content": "firewall-cmd --permanent --zone {{block}} --change-interface {{enp1s0}}",
     "group": "Linux Ops",
-    "description": "firewall-cmd: The firewalld command-line client. View and adapt the runtime or permanent firewall configuration state. (Permanently move the interface into the block zone, effectively blocking all communication)",
+    "description": "firewall-cmd: The firewalld client. View and adapt the runtime or permanent firewall configuration state. (Permanently move the interface into the block zone, effectively blocking all communication)",
     "tags": [
       "linux",
       "firewall-cmd",
@@ -46685,7 +46685,7 @@
     "title": "firewall-cmd - Permanently open the port for a service in the specified zone (like port 443 when in the `public` zone)",
     "content": "firewall-cmd --permanent --zone {{public}} --add-service {{https}}",
     "group": "Linux Ops",
-    "description": "firewall-cmd: The firewalld command-line client. View and adapt the runtime or permanent firewall configuration state. (Permanently open the port for a service in the specified zone (like port 443 when in the `public` zone))",
+    "description": "firewall-cmd: The firewalld client. View and adapt the runtime or permanent firewall configuration state. (Permanently open the port for a service in the specified zone (like port 443 when in the `public` zone))",
     "tags": [
       "linux",
       "firewall-cmd",
@@ -46700,7 +46700,7 @@
     "title": "firewall-cmd - Permanently close the port for a service in the specified zone (like port 80 when in the `public` zone)",
     "content": "firewall-cmd --permanent --zone {{public}} --remove-service {{http}}",
     "group": "Linux Ops",
-    "description": "firewall-cmd: The firewalld command-line client. View and adapt the runtime or permanent firewall configuration state. (Permanently close the port for a service in the specified zone (like port 80 when in the `public` zone))",
+    "description": "firewall-cmd: The firewalld client. View and adapt the runtime or permanent firewall configuration state. (Permanently close the port for a service in the specified zone (like port 80 when in the `public` zone))",
     "tags": [
       "linux",
       "firewall-cmd",
@@ -46715,7 +46715,7 @@
     "title": "firewall-cmd - Permanently forward a port for incoming packets in the specified zone (like port 443 to 8443 when entering the `public` zone)",
     "content": "firewall-cmd --permanent --zone {{public}} --add-rich-rule 'rule family \"{{ipv4|ipv6}}\" forward-port port \"{{443}}\" protocol \"{{udp|tcp}}\" to-port \"{{8443}}\"'",
     "group": "Linux Ops",
-    "description": "firewall-cmd: The firewalld command-line client. View and adapt the runtime or permanent firewall configuration state. (Permanently forward a port for incoming packets in the specified zone (like port 443 to 8443 when entering the `public` zone))",
+    "description": "firewall-cmd: The firewalld client. View and adapt the runtime or permanent firewall configuration state. (Permanently forward a port for incoming packets in the specified zone (like port 443 to 8443 when entering the `public` zone))",
     "tags": [
       "linux",
       "firewall-cmd",
@@ -46730,7 +46730,7 @@
     "title": "firewall-cmd - Reload firewalld to lose any runtime changes and force the permanent configuration to take effect immediately",
     "content": "firewall-cmd --reload",
     "group": "Linux Ops",
-    "description": "firewall-cmd: The firewalld command-line client. View and adapt the runtime or permanent firewall configuration state. (Reload firewalld to lose any runtime changes and force the permanent configuration to take effect immediately)",
+    "description": "firewall-cmd: The firewalld client. View and adapt the runtime or permanent firewall configuration state. (Reload firewalld to lose any runtime changes and force the permanent configuration to take effect immediately)",
     "tags": [
       "linux",
       "firewall-cmd",
@@ -46745,7 +46745,7 @@
     "title": "firewall-cmd - Save the runtime configuration state to the permanent configuration",
     "content": "firewall-cmd --runtime-to-permanent",
     "group": "Linux Ops",
-    "description": "firewall-cmd: The firewalld command-line client. View and adapt the runtime or permanent firewall configuration state. (Save the runtime configuration state to the permanent configuration)",
+    "description": "firewall-cmd: The firewalld client. View and adapt the runtime or permanent firewall configuration state. (Save the runtime configuration state to the permanent configuration)",
     "tags": [
       "linux",
       "firewall-cmd",
@@ -46760,7 +46760,7 @@
     "title": "firewall-cmd - Enable panic mode in case of Emergency. All traffic is dropped, any active connection will be terminated",
     "content": "firewall-cmd --panic-on",
     "group": "Linux Ops",
-    "description": "firewall-cmd: The firewalld command-line client. View and adapt the runtime or permanent firewall configuration state. (Enable panic mode in case of Emergency. All traffic is dropped, any active connection will be terminated)",
+    "description": "firewall-cmd: The firewalld client. View and adapt the runtime or permanent firewall configuration state. (Enable panic mode in case of Emergency. All traffic is dropped, any active connection will be terminated)",
     "tags": [
       "linux",
       "firewall-cmd",
@@ -55565,7 +55565,7 @@
     "title": "distrobox - View documentation for creating containers",
     "content": "tldr distrobox-create",
     "group": "Linux Ops",
-    "description": "distrobox: Use any Linux distribution inside your terminal in a container. Install & use packages inside it while tightly integrating with the host OS, sharing storage (`home` directory) and hardware. Note: It uses Podman or Docker to create your containers. (View documentation for creating containers)",
+    "description": "distrobox: Use any Linux distribution inside your terminal in a container. Install & use packages inside it while tightly integrating with the host OS, sharing storage (`home` directory) and hardware. `distrobox` isn't a command, but a set of commands. Note: It uses Podman or Docker to create your containers. (View documentation for creating containers)",
     "tags": [
       "linux",
       "distrobox",
@@ -55580,7 +55580,7 @@
     "title": "distrobox - View documentation for listing container's information",
     "content": "tldr distrobox-list",
     "group": "Linux Ops",
-    "description": "distrobox: Use any Linux distribution inside your terminal in a container. Install & use packages inside it while tightly integrating with the host OS, sharing storage (`home` directory) and hardware. Note: It uses Podman or Docker to create your containers. (View documentation for listing container's information)",
+    "description": "distrobox: Use any Linux distribution inside your terminal in a container. Install & use packages inside it while tightly integrating with the host OS, sharing storage (`home` directory) and hardware. `distrobox` isn't a command, but a set of commands. Note: It uses Podman or Docker to create your containers. (View documentation for listing container's information)",
     "tags": [
       "linux",
       "distrobox",
@@ -55595,7 +55595,7 @@
     "title": "distrobox - View documentation for entering the container",
     "content": "tldr distrobox-enter",
     "group": "Linux Ops",
-    "description": "distrobox: Use any Linux distribution inside your terminal in a container. Install & use packages inside it while tightly integrating with the host OS, sharing storage (`home` directory) and hardware. Note: It uses Podman or Docker to create your containers. (View documentation for entering the container)",
+    "description": "distrobox: Use any Linux distribution inside your terminal in a container. Install & use packages inside it while tightly integrating with the host OS, sharing storage (`home` directory) and hardware. `distrobox` isn't a command, but a set of commands. Note: It uses Podman or Docker to create your containers. (View documentation for entering the container)",
     "tags": [
       "linux",
       "distrobox",
@@ -55610,7 +55610,7 @@
     "title": "distrobox - View documentation for executing a command on the host from inside a container",
     "content": "tldr distrobox-host-exec",
     "group": "Linux Ops",
-    "description": "distrobox: Use any Linux distribution inside your terminal in a container. Install & use packages inside it while tightly integrating with the host OS, sharing storage (`home` directory) and hardware. Note: It uses Podman or Docker to create your containers. (View documentation for executing a command on the host from inside a container)",
+    "description": "distrobox: Use any Linux distribution inside your terminal in a container. Install & use packages inside it while tightly integrating with the host OS, sharing storage (`home` directory) and hardware. `distrobox` isn't a command, but a set of commands. Note: It uses Podman or Docker to create your containers. (View documentation for executing a command on the host from inside a container)",
     "tags": [
       "linux",
       "distrobox",
@@ -55625,7 +55625,7 @@
     "title": "distrobox - View documentation for exporting app/service/binary from the container to the host",
     "content": "tldr distrobox-export",
     "group": "Linux Ops",
-    "description": "distrobox: Use any Linux distribution inside your terminal in a container. Install & use packages inside it while tightly integrating with the host OS, sharing storage (`home` directory) and hardware. Note: It uses Podman or Docker to create your containers. (View documentation for exporting app/service/binary from the container to the host)",
+    "description": "distrobox: Use any Linux distribution inside your terminal in a container. Install & use packages inside it while tightly integrating with the host OS, sharing storage (`home` directory) and hardware. `distrobox` isn't a command, but a set of commands. Note: It uses Podman or Docker to create your containers. (View documentation for exporting app/service/binary from the container to the host)",
     "tags": [
       "linux",
       "distrobox",
@@ -55640,7 +55640,7 @@
     "title": "distrobox - View documentation for upgrading containers",
     "content": "tldr distrobox-upgrade",
     "group": "Linux Ops",
-    "description": "distrobox: Use any Linux distribution inside your terminal in a container. Install & use packages inside it while tightly integrating with the host OS, sharing storage (`home` directory) and hardware. Note: It uses Podman or Docker to create your containers. (View documentation for upgrading containers)",
+    "description": "distrobox: Use any Linux distribution inside your terminal in a container. Install & use packages inside it while tightly integrating with the host OS, sharing storage (`home` directory) and hardware. `distrobox` isn't a command, but a set of commands. Note: It uses Podman or Docker to create your containers. (View documentation for upgrading containers)",
     "tags": [
       "linux",
       "distrobox",
@@ -55655,7 +55655,7 @@
     "title": "distrobox - View documentation for stopping the containers",
     "content": "tldr distrobox-stop",
     "group": "Linux Ops",
-    "description": "distrobox: Use any Linux distribution inside your terminal in a container. Install & use packages inside it while tightly integrating with the host OS, sharing storage (`home` directory) and hardware. Note: It uses Podman or Docker to create your containers. (View documentation for stopping the containers)",
+    "description": "distrobox: Use any Linux distribution inside your terminal in a container. Install & use packages inside it while tightly integrating with the host OS, sharing storage (`home` directory) and hardware. `distrobox` isn't a command, but a set of commands. Note: It uses Podman or Docker to create your containers. (View documentation for stopping the containers)",
     "tags": [
       "linux",
       "distrobox",
@@ -55670,7 +55670,7 @@
     "title": "distrobox - View documentation for removing the containers",
     "content": "tldr distrobox-rm",
     "group": "Linux Ops",
-    "description": "distrobox: Use any Linux distribution inside your terminal in a container. Install & use packages inside it while tightly integrating with the host OS, sharing storage (`home` directory) and hardware. Note: It uses Podman or Docker to create your containers. (View documentation for removing the containers)",
+    "description": "distrobox: Use any Linux distribution inside your terminal in a container. Install & use packages inside it while tightly integrating with the host OS, sharing storage (`home` directory) and hardware. `distrobox` isn't a command, but a set of commands. Note: It uses Podman or Docker to create your containers. (View documentation for removing the containers)",
     "tags": [
       "linux",
       "distrobox",
@@ -60992,10 +60992,10 @@
   {
     "id": "tldr-en-linux-mount-6",
     "type": "command",
-    "title": "mount - Mount a specific filesystem described in `/etc/fstab` (e.g. `/dev/sda1 /my_drive ext2 defaults 0 2`)",
-    "content": "mount {{/my_drive}}",
+    "title": "mount - Mount a specific filesystem described in `/etc/fstab` (e.g. `/dev/sda1 /path/to/mount_point ext2 defaults 0 2`)",
+    "content": "mount {{path/to/mount_point}}",
     "group": "Linux Ops",
-    "description": "mount: Get access to an entire filesystem in one directory. (Mount a specific filesystem described in `/etc/fstab` (e.g. `/dev/sda1 /my_drive ext2 defaults 0 2`))",
+    "description": "mount: Get access to an entire filesystem in one directory. (Mount a specific filesystem described in `/etc/fstab` (e.g. `/dev/sda1 /path/to/mount_point ext2 defaults 0 2`))",
     "tags": [
       "linux",
       "mount",
@@ -63108,7 +63108,7 @@
     "id": "tldr-en-linux-koji-buildinfo-2",
     "type": "command",
     "title": "koji-buildinfo - Display help",
-    "content": "koji buildinfo {{-h|--help}}",
+    "content": "koji buildinfo {{[-h|--help]}}",
     "group": "Linux Ops",
     "description": "koji-buildinfo: Print basic information about a build. (Display help)",
     "tags": [
@@ -71687,6 +71687,21 @@
   {
     "id": "tldr-en-linux-lxc-start-4",
     "type": "command",
+    "title": "lxc-start - Write debug logs to a file",
+    "content": "sudo lxc-start {{container_name}} {{[-l|--logpriority]}} DEBUG {{[-o|--logfile]}} {{path/to/logfile}}",
+    "group": "Linux Ops",
+    "description": "lxc-start: Start a container. (Write debug logs to a file)",
+    "tags": [
+      "linux",
+      "lxc-start",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-lxc-start-5",
+    "type": "command",
     "title": "lxc-start - Display help",
     "content": "lxc-start {{[-?|--help]}}",
     "group": "Linux Ops",
@@ -77418,7 +77433,7 @@
     "id": "tldr-en-linux-goldeneye.py-3",
     "type": "command",
     "title": "goldeneye.py - Test a specific website in debug mode",
-    "content": "{{path/to/}}goldeneye.py {{url}} {{-d|--debug}}",
+    "content": "{{path/to/}}goldeneye.py {{url}} {{[-d|--debug]}}",
     "group": "Linux Ops",
     "description": "goldeneye.py: A HTTP DoS test tool. (Test a specific website in debug mode)",
     "tags": [
@@ -84980,7 +84995,7 @@
     "title": "pamac - Install a new package",
     "content": "pamac install {{package_name}}",
     "group": "Linux Ops",
-    "description": "pamac: A command-line utility for the GUI package manager pamac. If you can't see the AUR packages, enable it in `/etc/pamac.conf` or in the GUI. (Install a new package)",
+    "description": "pamac: Utility for the GUI package manager pamac. If you can't see the AUR packages, enable it in `/etc/pamac.conf` or in the GUI. (Install a new package)",
     "tags": [
       "linux",
       "pamac",
@@ -84995,7 +85010,7 @@
     "title": "pamac - Remove a package and its no longer required dependencies (orphans)",
     "content": "pamac remove --orphans {{package_name}}",
     "group": "Linux Ops",
-    "description": "pamac: A command-line utility for the GUI package manager pamac. If you can't see the AUR packages, enable it in `/etc/pamac.conf` or in the GUI. (Remove a package and its no longer required dependencies (orphans))",
+    "description": "pamac: Utility for the GUI package manager pamac. If you can't see the AUR packages, enable it in `/etc/pamac.conf` or in the GUI. (Remove a package and its no longer required dependencies (orphans))",
     "tags": [
       "linux",
       "pamac",
@@ -85010,7 +85025,7 @@
     "title": "pamac - Search the package database for a package",
     "content": "pamac search {{package_name}}",
     "group": "Linux Ops",
-    "description": "pamac: A command-line utility for the GUI package manager pamac. If you can't see the AUR packages, enable it in `/etc/pamac.conf` or in the GUI. (Search the package database for a package)",
+    "description": "pamac: Utility for the GUI package manager pamac. If you can't see the AUR packages, enable it in `/etc/pamac.conf` or in the GUI. (Search the package database for a package)",
     "tags": [
       "linux",
       "pamac",
@@ -85025,7 +85040,7 @@
     "title": "pamac - List installed packages",
     "content": "pamac list --installed",
     "group": "Linux Ops",
-    "description": "pamac: A command-line utility for the GUI package manager pamac. If you can't see the AUR packages, enable it in `/etc/pamac.conf` or in the GUI. (List installed packages)",
+    "description": "pamac: Utility for the GUI package manager pamac. If you can't see the AUR packages, enable it in `/etc/pamac.conf` or in the GUI. (List installed packages)",
     "tags": [
       "linux",
       "pamac",
@@ -85040,7 +85055,7 @@
     "title": "pamac - Check for package updates",
     "content": "pamac checkupdates",
     "group": "Linux Ops",
-    "description": "pamac: A command-line utility for the GUI package manager pamac. If you can't see the AUR packages, enable it in `/etc/pamac.conf` or in the GUI. (Check for package updates)",
+    "description": "pamac: Utility for the GUI package manager pamac. If you can't see the AUR packages, enable it in `/etc/pamac.conf` or in the GUI. (Check for package updates)",
     "tags": [
       "linux",
       "pamac",
@@ -85055,7 +85070,7 @@
     "title": "pamac - Upgrade all packages",
     "content": "pamac upgrade",
     "group": "Linux Ops",
-    "description": "pamac: A command-line utility for the GUI package manager pamac. If you can't see the AUR packages, enable it in `/etc/pamac.conf` or in the GUI. (Upgrade all packages)",
+    "description": "pamac: Utility for the GUI package manager pamac. If you can't see the AUR packages, enable it in `/etc/pamac.conf` or in the GUI. (Upgrade all packages)",
     "tags": [
       "linux",
       "pamac",
@@ -85937,10 +85952,10 @@
   {
     "id": "tldr-en-linux-chat-0",
     "type": "command",
-    "title": "chat - Execute a chat script directly from the command line",
+    "title": "chat - Execute a chat script directly",
     "content": "chat '{{expect_send_pairs}}'",
     "group": "Linux Ops",
-    "description": "chat: Automate conversations with a modem or serial device. Commonly used to establish PPP (Point-to-Point Protocol) connections. (Execute a chat script directly from the command line)",
+    "description": "chat: Automate conversations with a modem or serial device. Commonly used to establish PPP (Point-to-Point Protocol) connections. (Execute a chat script directly)",
     "tags": [
       "linux",
       "chat",
@@ -96995,7 +97010,7 @@
     "title": "calcurse - Start `calcurse` on interactive mode",
     "content": "calcurse",
     "group": "Linux Ops",
-    "description": "calcurse: A text-based calendar and scheduling application for the command-line. (Start `calcurse` on interactive mode)",
+    "description": "calcurse: A text-based calendar and scheduling application. (Start `calcurse` on interactive mode)",
     "tags": [
       "linux",
       "calcurse",
@@ -97010,7 +97025,7 @@
     "title": "calcurse - Print the appointments and events for the current day and exit",
     "content": "calcurse {{[-a|--appointment]}}",
     "group": "Linux Ops",
-    "description": "calcurse: A text-based calendar and scheduling application for the command-line. (Print the appointments and events for the current day and exit)",
+    "description": "calcurse: A text-based calendar and scheduling application. (Print the appointments and events for the current day and exit)",
     "tags": [
       "linux",
       "calcurse",
@@ -97025,7 +97040,7 @@
     "title": "calcurse - Remove all local calcurse items and import remote objects",
     "content": "calcurse-caldav --init=keep-remote",
     "group": "Linux Ops",
-    "description": "calcurse: A text-based calendar and scheduling application for the command-line. (Remove all local calcurse items and import remote objects)",
+    "description": "calcurse: A text-based calendar and scheduling application. (Remove all local calcurse items and import remote objects)",
     "tags": [
       "linux",
       "calcurse",
@@ -97040,7 +97055,7 @@
     "title": "calcurse - Remove all remote objects and push local calcurse items",
     "content": "calcurse-caldav --init=keep-local",
     "group": "Linux Ops",
-    "description": "calcurse: A text-based calendar and scheduling application for the command-line. (Remove all remote objects and push local calcurse items)",
+    "description": "calcurse: A text-based calendar and scheduling application. (Remove all remote objects and push local calcurse items)",
     "tags": [
       "linux",
       "calcurse",
@@ -97055,7 +97070,7 @@
     "title": "calcurse - Copy local objects to the CalDAV server and vice versa",
     "content": "calcurse-caldav --init=two-way",
     "group": "Linux Ops",
-    "description": "calcurse: A text-based calendar and scheduling application for the command-line. (Copy local objects to the CalDAV server and vice versa)",
+    "description": "calcurse: A text-based calendar and scheduling application. (Copy local objects to the CalDAV server and vice versa)",
     "tags": [
       "linux",
       "calcurse",
@@ -97173,7 +97188,7 @@
     "id": "tldr-en-linux-rtmon-1",
     "type": "command",
     "title": "rtmon - Specify the type of change to log",
-    "content": "sudo rtmon {{[f|file}} {{link|address|route}}",
+    "content": "sudo rtmon {{[f|file]}} {{link|address|route}}",
     "group": "Linux Ops",
     "description": "rtmon: Save network state changes to a file. (Specify the type of change to log)",
     "tags": [
@@ -99185,7 +99200,7 @@
     "title": "pkgctl - View documentation for authenticating `pkgctl` with services like GitLab",
     "content": "tldr pkgctl auth",
     "group": "Linux Ops",
-    "description": "pkgctl: Unified command-line frontend for Arch Linux devtools. (View documentation for authenticating `pkgctl` with services like GitLab)",
+    "description": "pkgctl: Unified frontend for Arch Linux devtools. (View documentation for authenticating `pkgctl` with services like GitLab)",
     "tags": [
       "linux",
       "pkgctl",
@@ -99200,7 +99215,7 @@
     "title": "pkgctl - View documentation for building packages inside a clean `chroot`",
     "content": "tldr pkgctl build",
     "group": "Linux Ops",
-    "description": "pkgctl: Unified command-line frontend for Arch Linux devtools. (View documentation for building packages inside a clean `chroot`)",
+    "description": "pkgctl: Unified frontend for Arch Linux devtools. (View documentation for building packages inside a clean `chroot`)",
     "tags": [
       "linux",
       "pkgctl",
@@ -99215,7 +99230,7 @@
     "title": "pkgctl - View documentation for updating the binary repository as final release step",
     "content": "tldr pkgctl db update",
     "group": "Linux Ops",
-    "description": "pkgctl: Unified command-line frontend for Arch Linux devtools. (View documentation for updating the binary repository as final release step)",
+    "description": "pkgctl: Unified frontend for Arch Linux devtools. (View documentation for updating the binary repository as final release step)",
     "tags": [
       "linux",
       "pkgctl",
@@ -99230,7 +99245,7 @@
     "title": "pkgctl - View documentation for comparing package files using different modes",
     "content": "tldr pkgctl diff",
     "group": "Linux Ops",
-    "description": "pkgctl: Unified command-line frontend for Arch Linux devtools. (View documentation for comparing package files using different modes)",
+    "description": "pkgctl: Unified frontend for Arch Linux devtools. (View documentation for comparing package files using different modes)",
     "tags": [
       "linux",
       "pkgctl",
@@ -99245,7 +99260,7 @@
     "title": "pkgctl - View documentation for releasing build artifacts",
     "content": "tldr pkgctl release",
     "group": "Linux Ops",
-    "description": "pkgctl: Unified command-line frontend for Arch Linux devtools. (View documentation for releasing build artifacts)",
+    "description": "pkgctl: Unified frontend for Arch Linux devtools. (View documentation for releasing build artifacts)",
     "tags": [
       "linux",
       "pkgctl",
@@ -99260,7 +99275,7 @@
     "title": "pkgctl - View documentation for managing Git packaging repositories and their configuration",
     "content": "tldr pkgctl repo",
     "group": "Linux Ops",
-    "description": "pkgctl: Unified command-line frontend for Arch Linux devtools. (View documentation for managing Git packaging repositories and their configuration)",
+    "description": "pkgctl: Unified frontend for Arch Linux devtools. (View documentation for managing Git packaging repositories and their configuration)",
     "tags": [
       "linux",
       "pkgctl",
@@ -99275,7 +99290,7 @@
     "title": "pkgctl - Display version",
     "content": "pkgctl version",
     "group": "Linux Ops",
-    "description": "pkgctl: Unified command-line frontend for Arch Linux devtools. (Display version)",
+    "description": "pkgctl: Unified frontend for Arch Linux devtools. (Display version)",
     "tags": [
       "linux",
       "pkgctl",

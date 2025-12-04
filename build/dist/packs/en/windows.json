@@ -20,7 +20,7 @@
     "title": "octo - Create a package",
     "content": "octo pack --id {{package}}",
     "group": "Windows",
-    "description": "octo: Command-line tools for Octopus Deploy. (Create a package)",
+    "description": "octo: Tools for Octopus Deploy. (Create a package)",
     "tags": [
       "windows",
       "octo",
@@ -35,7 +35,7 @@
     "title": "octo - Push a package to a repository on the Octopus server",
     "content": "octo push --package {{package}}",
     "group": "Windows",
-    "description": "octo: Command-line tools for Octopus Deploy. (Push a package to a repository on the Octopus server)",
+    "description": "octo: Tools for Octopus Deploy. (Push a package to a repository on the Octopus server)",
     "tags": [
       "windows",
       "octo",
@@ -50,7 +50,7 @@
     "title": "octo - Create a release",
     "content": "octo create-release --project {{project_name}} --packageversion {{version}}",
     "group": "Windows",
-    "description": "octo: Command-line tools for Octopus Deploy. (Create a release)",
+    "description": "octo: Tools for Octopus Deploy. (Create a release)",
     "tags": [
       "windows",
       "octo",
@@ -65,7 +65,7 @@
     "title": "octo - Deploy a release",
     "content": "octo deploy-release --project {{project_name}} --packageversion {{version}} --deployto {{environment_name}} --tenant {{deployment_target}}",
     "group": "Windows",
-    "description": "octo: Command-line tools for Octopus Deploy. (Deploy a release)",
+    "description": "octo: Tools for Octopus Deploy. (Deploy a release)",
     "tags": [
       "windows",
       "octo",
