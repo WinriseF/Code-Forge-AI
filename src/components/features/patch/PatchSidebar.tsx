@@ -9,8 +9,8 @@ import { PatchFileItem, PatchMode } from './patch_types';
 import { writeText } from '@tauri-apps/plugin-clipboard-manager';
 import { useAppStore } from '@/store/useAppStore'; 
 import { getText } from '@/lib/i18n';
+import { useSmartContextMenu } from '@/lib/hooks';
 
-// --- 新版 Prompt ---
 const AI_SYSTEM_PROMPT = `You are a top-tier software engineer. Generate a code patch based on the user's request.
 
 IMPORTANT: You must use the "SEARCH/REPLACE" block format. Do NOT use YAML or JSON. Reply in Chinese and wrap the content in Markdown code format.
@@ -69,6 +69,28 @@ export function PatchSidebar({
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
   };
+
+  // 定义粘贴逻辑并通过 Hook 获取 onContextMenu
+  const handlePaste = (pastedText: string, textarea: HTMLTextAreaElement | null) => {
+    // --- 增加空值检查 ---
+    if (!textarea) return;
+
+    const { selectionStart, selectionEnd, value } = textarea;
+    const newValue = value.substring(0, selectionStart) + pastedText + value.substring(selectionEnd);
+    onYamlChange(newValue);
+
+    // 异步更新光标位置
+    setTimeout(() => {
+      // 在 timeout 内部再次检查
+      if (textarea) {
+        const newCursorPos = selectionStart + pastedText.length;
+        textarea.focus();
+        textarea.setSelectionRange(newCursorPos, newCursorPos);
+      }
+    }, 0);
+  };
+
+  const { onContextMenu } = useSmartContextMenu({ onPaste: handlePaste });
 
   return (
     <div className="w-[350px] flex flex-col border-r border-border bg-secondary/10 h-full select-none">
@@ -173,6 +195,7 @@ export function PatchSidebar({
               <textarea
                 value={yamlInput}
                 onChange={e => onYamlChange(e.target.value)}
+                onContextMenu={onContextMenu}
                 placeholder={`Paste AI response here...\n\nFile: src/App.tsx\n<<<<<<< SEARCH\n...\n=======\n...\n>>>>>>> REPLACE`}
                 className="flex-1 w-full bg-transparent p-4 resize-none outline-none font-mono text-[11px] leading-relaxed custom-scrollbar placeholder:text-muted-foreground/30 text-muted-foreground focus:text-foreground transition-colors"
                 spellCheck="false"

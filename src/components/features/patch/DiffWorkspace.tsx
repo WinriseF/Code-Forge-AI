@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Save, Copy, ArrowDownUp, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+import { writeText } from '@tauri-apps/plugin-clipboard-manager';
 import { DiffViewer } from './DiffViewer';
 import { PatchFileItem } from './patch_types';
 import { cn } from '@/lib/utils';
 import { useAppStore } from '@/store/useAppStore';
 import { getText } from '@/lib/i18n';
+import { useSmartContextMenu } from '@/lib/hooks';
 
 interface DiffWorkspaceProps {
   selectedFile: PatchFileItem | null;
@@ -26,8 +28,54 @@ export function DiffWorkspace({
   const hasChanges = selectedFile ? selectedFile.original !== selectedFile.modified : false;
   const isManual = selectedFile ? !!selectedFile.isManual : false;
 
+  // 为两个输入框分别定义粘贴逻辑和 Hook 实例
+  const handlePaste = (
+    pastedText: string, 
+    textarea: HTMLTextAreaElement | null,
+    inputType: 'original' | 'modified'
+  ) => {
+    // --- 增加空值检查 ---
+    if (!textarea || !onManualUpdate || !selectedFile) return;
+
+    const { selectionStart, selectionEnd, value } = textarea;
+    const newValue = value.substring(0, selectionStart) + pastedText + value.substring(selectionEnd);
+
+    if (inputType === 'original') {
+      onManualUpdate(newValue, selectedFile.modified);
+    } else {
+      onManualUpdate(selectedFile.original, newValue);
+    }
+    
+    setTimeout(() => {
+      // 在 timeout 内部再次检查
+      if (textarea) {
+        const newCursorPos = selectionStart + pastedText.length;
+        textarea.focus();
+        textarea.setSelectionRange(newCursorPos, newCursorPos);
+      }
+    }, 0);
+  };
+  
+  const { onContextMenu: onOriginalContextMenu } = useSmartContextMenu({ 
+    onPaste: (text, textarea) => handlePaste(text, textarea, 'original') 
+  });
+  
+  const { onContextMenu: onModifiedContextMenu } = useSmartContextMenu({ 
+    onPaste: (text, textarea) => handlePaste(text, textarea, 'modified') 
+  });
+
   return (
-    <div className="flex-1 flex flex-col min-h-0 bg-background h-full animate-in fade-in duration-300">
+    <div 
+      className="flex-1 flex flex-col min-h-0 bg-background h-full animate-in fade-in duration-300"
+      // 全局右键只处理复制逻辑
+      onContextMenu={async (e) => {
+        const selection = window.getSelection()?.toString();
+        if (selection && selection.length > 0) {
+          e.preventDefault();
+          await writeText(selection);
+        }
+      }}
+    >
       
       {/* 1. Toolbar */}
       <div className="h-14 flex items-center justify-between px-4 border-b border-border bg-background/80 backdrop-blur shrink-0 z-20 gap-4">
@@ -114,6 +162,7 @@ export function DiffWorkspace({
                     <div className="flex-1 flex flex-col border-r border-border">
                         <div className="px-3 py-1 text-[10px] font-bold text-muted-foreground uppercase bg-secondary/10 border-b border-border/50">Original Text</div>
                         <textarea 
+                            onContextMenu={onOriginalContextMenu}
                             value={selectedFile.original}
                             onChange={(e) => onManualUpdate?.(e.target.value, selectedFile.modified)}
                             className="flex-1 bg-transparent p-3 resize-none outline-none font-mono text-xs leading-relaxed custom-scrollbar placeholder:text-muted-foreground/30"
@@ -124,6 +173,7 @@ export function DiffWorkspace({
                     <div className="flex-1 flex flex-col">
                         <div className="px-3 py-1 text-[10px] font-bold text-muted-foreground uppercase bg-secondary/10 border-b border-border/50">Modified Text</div>
                         <textarea 
+                            onContextMenu={onModifiedContextMenu}
                             value={selectedFile.modified}
                             onChange={(e) => onManualUpdate?.(selectedFile.original, e.target.value)}
                             className="flex-1 bg-transparent p-3 resize-none outline-none font-mono text-xs leading-relaxed custom-scrollbar placeholder:text-muted-foreground/30"
@@ -139,7 +189,7 @@ export function DiffWorkspace({
                 <DiffViewer 
                   original={selectedFile.original}
                   modified={selectedFile.modified}
-                  fileName={selectedFile.path} // ✨ 传递文件名，Monaco 会自动识别语言
+                  fileName={selectedFile.path}
                   placeholder={isManual ? "Paste text above to compare" : "Waiting for inputs..."}
                 />
             </div>
