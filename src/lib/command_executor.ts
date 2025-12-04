@@ -1,18 +1,14 @@
 import { Command } from '@tauri-apps/plugin-shell';
 import { type as getOsType } from '@tauri-apps/plugin-os';
 import { ask, message } from '@tauri-apps/plugin-dialog';
+import { writeTextFile } from '@tauri-apps/plugin-fs';
+import { join, tempDir } from '@tauri-apps/api/path';
 import { ShellType } from '@/types/prompt';
 
-// 定义高风险命令关键词
 const DANGEROUS_KEYWORDS = [
-  'rm ', 'del ', 'remove-item',
-  'mv ', 'move ',
-  'format', 'mkfs',
-  '>',
-  'chmod ', 'chown ', 'icacls '
+  'rm ', 'del ', 'remove-item', 'mv ', 'move ', 'format', 'mkfs', '>', 'chmod ', 'chown ', 'icacls '
 ];
 
-// 风险检测函数
 const checkCommandRisk = (commandStr: string): boolean => {
   const lowerCaseCmd = commandStr.toLowerCase().trim();
   return DANGEROUS_KEYWORDS.some(keyword => {
@@ -25,119 +21,104 @@ const showNotification = async (msg: string, type: 'info' | 'error' = 'info') =>
   await message(msg, { title: 'CodeForge AI', kind: type });
 };
 
-/**
- * 将字符串转换为 PowerShell -EncodedCommand 所需的 UTF-16LE Base64 格式
- * 这能完美解决 Windows 命令行中复杂的引号和特殊字符转义问题
- */
-function toPowershellEncodedCommand(script: string): string {
-  const utf16leBytes: number[] = [];
-  for (let i = 0; i < script.length; i++) {
-    const charCode = script.charCodeAt(i);
-    utf16leBytes.push(charCode & 0xFF); // low byte
-    utf16leBytes.push(charCode >> 8);  // high byte
-  }
-  // 将字节数组转换为二进制字符串
-  const binaryString = String.fromCharCode(...utf16leBytes);
-  // Base64 编码
-  return btoa(binaryString);
-}
-
-/**
- * 核心执行函数 (V7 - 最终稳定版)
- * @param commandStr 要执行的命令
- * @param shell 用户指定的 Shell
- * @param cwd 可选的工作目录
- */
-export async function executeCommand(commandStr: string, shell: ShellType = 'auto', cwd?: string | null) {
-  // 安全审查
+export async function executeCommand(commandStr: string, _shell: ShellType = 'auto', cwd?: string | null) {
   if (checkCommandRisk(commandStr)) {
     const confirmed = await ask(
-      `警告：此命令包含潜在的高风险操作 (如删除、覆盖、修改权限等)。\n\n命令: "${commandStr}"\n\n确定要继续执行吗？`,
-      { title: '高风险操作确认', kind: 'warning', okLabel: '继续执行', cancelLabel: '取消' }
+      `警告：此命令包含潜在风险。\n\n命令: "${commandStr}"\n\n确定执行吗？`,
+      { title: '操作确认', kind: 'warning', okLabel: '执行', cancelLabel: '取消' }
     );
     if (!confirmed) return;
   }
 
   const osType = await getOsType();
-  // 修复泛型类型错误
-  let command: Command<string>;
+  
+  try {
+    const baseDir = await tempDir();
+    // 移除路径末尾可能存在的反斜杠，防止转义引号
+    const cleanCwd = (cwd || baseDir).replace(/[\\/]$/, ''); 
+    const timestamp = Date.now();
 
-  switch (osType) {
-    case 'windows': {
-        const effectiveShell = (shell === 'auto' || (shell !== 'cmd' && shell !== 'powershell')) ? 'powershell' : shell;
-        
-        if (effectiveShell === 'powershell') {
-            // 1. 构造要在新窗口中执行的脚本
-            const setLocationScript = cwd ? `Set-Location -Path '${cwd.replace(/'/g, "''")}';` : '';
-            const script = `
-            ${setLocationScript}
-            ${commandStr}
-            Write-Host -NoNewLine "\\n--- [CodeForge] Command finished. Press any key to continue... ---"
-            $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") | Out-Null
-            `;
-            
-            // 2. 编码脚本
-            const encodedCommand = toPowershellEncodedCommand(script);
-
-            // 3. 【核心改动】使用 Start-Process 来启动新的 PowerShell 窗口
-            // 这是最稳定、最推荐的方式，可以完全避免 cmd start 的各种问题
-            const startProcessArgs = `-NoExit -EncodedCommand ${encodedCommand}`;
-            const workingDirectory = cwd ? cwd.replace(/'/g, "''") : undefined; // Start-Process 使用 -WorkingDirectory 参数
-            
-            // 构造完整的 Start-Process 命令字符串
-            // 注意：我们将参数列表作为一个整体传递给 -ArgumentList
-            const startProcessCommand = `Start-Process -FilePath 'powershell.exe' -ArgumentList '${startProcessArgs}'${workingDirectory ? ` -WorkingDirectory '${workingDirectory}'` : ''}`;
-
-            // 执行这个 Start-Process 命令
-            command = Command.create('powershell', ['-Command', startProcessCommand]);
-
-        } else { // cmd
-            const cmdCommand = cwd ? `cd /d "${cwd}" && ${commandStr}` : commandStr;
-            // 对于 cmd，我们也可以尝试用 Start-Process，但为了保持一致性，先保留原来的方法
-            command = Command.create('cmd', ['/k', `${cmdCommand} & echo. & pause`]);
-        }
-        break;
-    }
-
-    case 'macos': {
-      const effectiveShell = (shell === 'auto' || shell === 'cmd' || shell === 'powershell') ? 'bash' : shell;
-      const finalCommand = `${cwd ? `cd "${cwd}" && ` : ''}${commandStr}; echo; read -p "[CodeForge] Command finished. Press Enter to close."`;
+    if (osType === 'windows') {
+      const fileName = `codeforge_exec_${timestamp}.bat`;
+      const scriptPath = await join(baseDir, fileName);
       
-      const script = `
+      // 关键修复：
+      // 1. 移除所有中文注释，防止 GBK/UTF-8 编码冲突导致的乱码和语法错误
+      // 2. 确保 cd 路径被引号包裹
+      const fileContent = `
+@echo off
+cd /d "${cleanCwd}"
+cls
+ver
+echo (c) Microsoft Corporation. All rights reserved.
+echo.
+
+:: Enable echo to simulate terminal behavior
+@echo on
+${commandStr}
+@echo off
+
+echo.
+pause
+start /b "" cmd /c del "%~f0"&exit /b
+      `.trim();
+
+      await writeTextFile(scriptPath, fileContent);
+      const cmd = Command.create('cmd', ['/c', 'start', '', scriptPath]);
+      await cmd.spawn();
+
+    } else if (osType === 'macos') {
+      const fileName = `codeforge_exec_${timestamp}.sh`;
+      const scriptPath = await join(baseDir, fileName);
+
+      const fileContent = `
+#!/bin/bash
+clear
+cd "${cleanCwd}"
+echo "$(pwd) $ ${commandStr.split('\n').join('\n> ')}"
+${commandStr}
+echo ""
+echo "[Process completed]"
+read -n 1 -s -r -p "Press any key to close..."
+rm "$0"
+      `.trim();
+
+      await writeTextFile(scriptPath, fileContent);
+      
+      const appleScript = `
         tell application "Terminal"
           activate
-          do script "exec ${effectiveShell} -c '${finalCommand.replace(/'/g, "'\\''")}'"
+          do script "sh '${scriptPath}'"
         end tell
       `;
-      command = Command.create('osascript', ['-e', script]);
-      break;
-    }
+      const cmd = Command.create('osascript', ['-e', appleScript]);
+      await cmd.spawn();
 
-    case 'linux': {
-      const effectiveShell = (shell === 'auto' || shell === 'cmd' || shell === 'powershell') ? 'bash' : shell;
-      const finalCommand = `${cwd ? `cd "${cwd}" && ` : ''}${commandStr}; echo; read -p "[CodeForge] Command finished. Press Enter to close."`;
-      
-      command = Command.create('x-terminal-emulator', [
-          '-e', 
-          `${effectiveShell} -c "${finalCommand.replace(/"/g, '\\"')}"`
-      ]);
-      break;
-    }
+    } else if (osType === 'linux') {
+      const fileName = `codeforge_exec_${timestamp}.sh`;
+      const scriptPath = await join(baseDir, fileName);
 
-    default:
-      await showNotification(`Unsupported OS: ${osType}`, "error");
-      return;
-  }
+      const fileContent = `
+#!/bin/bash
+cd "${cleanCwd}"
+echo "$(pwd) $ ${commandStr.split('\n').join('\n> ')}"
+${commandStr}
+echo ""
+echo "Press Enter to close..."
+read
+rm "$0"
+      `.trim();
 
-  try {
-    console.log(`Spawning command...`);
-    await command.spawn();
-  } catch (e: any) {
-    console.error("Failed to execute command:", e);
-    if (osType === 'linux' && e.message?.includes('No such file or directory')) {
-        await showNotification(`执行失败: 未找到 'x-terminal-emulator'。请尝试安装它或配置您的系统。`, "error");
+      await writeTextFile(scriptPath, fileContent);
+      const cmd = Command.create('x-terminal-emulator', ['-e', `bash "${scriptPath}"`]);
+      await cmd.spawn();
+
     } else {
-        await showNotification(`执行失败: ${e.message || e}`, "error");
+      await showNotification("Unsupported OS", "error");
     }
+
+  } catch (e: any) {
+    console.error("Execution failed:", e);
+    await showNotification(`执行失败: ${e.message || e}`, "error");
   }
 }
