@@ -1,14 +1,30 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
+pub mod prompt;
+pub mod refinery;
+pub mod monitor;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+// Re-export main types for convenience
+pub use prompt::{
+    Prompt,
+    PromptCounts,
+    UrlHistoryItem,
+    ProjectConfig,
+    IgnoredSecret,
+    AppEntry,
+    ShellHistoryEntry,
+    PromptCsvRow,
+    ProjectConfigExportItem,
+};
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}
+pub use refinery::{
+    RefineryKind,
+    RefineryMetadata,
+    RefineryItem,
+};
+
+pub use monitor::{
+    SystemMetrics,
+    ProcessInfo,
+    PortInfo,
+    NetDiagResult,
+    LockedFileProcess,
+};
