@@ -1,0 +1,57 @@
+[package]
+name = "ctxrun"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+# 全部改为 workspace = true
+tauri.workspace = true
+tauri-plugin-shell.workspace = true
+tauri-plugin-fs.workspace = true
+tauri-plugin-dialog.workspace = true
+tauri-plugin-http.workspace = true
+tauri-plugin-clipboard-manager.workspace = true
+tauri-plugin-os.workspace = true
+tauri-plugin-notification.workspace = true
+tauri-plugin-global-shortcut.workspace = true
+tauri-plugin-single-instance.workspace = true
+
+serde_json.workspace = true
+serde.workspace = true
+sysinfo.workspace = true
+git2.workspace = true
+chrono.workspace = true
+similar.workspace = true
+regex.workspace = true
+once_cell.workspace = true
+rayon.workspace = true
+tiktoken-rs.workspace = true
+arboard.workspace = true
+entropy.workspace = true
+rusqlite.workspace = true
+refinery.workspace = true
+serde_rusqlite.workspace = true
+uuid.workspace = true
+reqwest.workspace = true
+listeners.workspace = true
+which.workspace = true
+wait-timeout.workspace = true
+csv.workspace = true
+walkdir.workspace = true
+tokio.workspace = true
+infer.workspace = true
+mime_guess.workspace = true
+url.workspace = true
+percent-encoding.workspace = true
+ignore.workspace = true
+clipboard-rs.workspace = true
+sha2.workspace = true
+hex.workspace = true
+image.workspace = true
+base64.workspace = true
+x-win.workspace = true
+
+[target.'cfg(windows)'.dependencies]
+windows.workspace = true

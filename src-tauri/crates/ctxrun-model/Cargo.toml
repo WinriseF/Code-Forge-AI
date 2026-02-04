@@ -1,0 +1,16 @@
+[package]
+name = "ctxrun-model"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+# 核心序列化与类型同步
+serde.workspace = true
+specta.workspace = true
+
+# 业务模型所需的类型支持
+chrono.workspace = true
+uuid.workspace = true
+serde_json.workspace = true

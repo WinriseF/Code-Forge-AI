@@ -1,0 +1,4 @@
+error: failed to parse manifest at `E:\Project\PROJECT\CodeForgeAI\CtxRun\src-tauri\Cargo.toml`
+
+Caused by:
+  this virtual manifest specifies a `target` section, which is not allowed
