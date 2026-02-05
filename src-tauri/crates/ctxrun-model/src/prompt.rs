@@ -1,6 +1,10 @@
 use serde::{Deserialize, Serialize};
 use specta::Type;
 
+// ============================================================================
+// Data Models
+// ============================================================================
+
 #[derive(Debug, Serialize, Deserialize, Clone, Type)]
 #[serde(rename_all = "camelCase")]
 pub struct Prompt {
@@ -24,58 +28,17 @@ pub struct Prompt {
     pub use_as_chat_template: Option<bool>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Type)]
+#[derive(serde::Serialize, Type)]
 pub struct PromptCounts {
     pub prompt: i64,
     pub command: i64,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, Type)]
-#[serde(rename_all = "camelCase")]
-pub struct UrlHistoryItem {
-    pub url: String,
-    pub title: Option<String>,
-    pub visit_count: i64,
-    pub last_visit: i64,
-}
-
-#[derive(Debug, Serialize, Deserialize, Clone, Type)]
-#[serde(rename_all = "camelCase")]
-pub struct ProjectConfig {
-    pub dirs: Vec<String>,
-    pub files: Vec<String>,
-    pub extensions: Vec<String>,
-}
-
-#[derive(Debug, Serialize, Deserialize, Clone, Type)]
-#[serde(rename_all = "camelCase")]
-pub struct IgnoredSecret {
-    pub id: String,
-    pub value: String,
-    pub rule_id: Option<String>,
-    pub created_at: i64,
-}
-
-#[derive(Debug, Serialize, Deserialize, Clone, Type)]
-#[serde(rename_all = "camelCase")]
-pub struct AppEntry {
-    pub name: String,
-    pub path: String,
-    pub icon: Option<String>,
-    pub usage_count: i64,
-}
-
-#[derive(Debug, Serialize, Deserialize, Clone, Type)]
-#[serde(rename_all = "camelCase")]
-pub struct ShellHistoryEntry {
-    pub id: i64,
-    pub command: String,
-    pub timestamp: i64,
-    pub execution_count: i64,
-}
+// ============================================================================
+// CSV Export/Import Models
+// ============================================================================
 
 #[derive(Debug, Serialize, Deserialize, Type)]
-#[serde(rename_all = "camelCase")]
 #[allow(dead_code)]
 pub struct PromptCsvRow {
     #[serde(default)]
@@ -99,12 +62,4 @@ pub struct PromptCsvRow {
 #[allow(dead_code)]
 fn default_type() -> String {
     "prompt".to_string()
-}
-
-#[derive(Debug, Serialize, Deserialize, Type)]
-#[serde(rename_all = "camelCase")]
-pub struct ProjectConfigExportItem {
-    pub path: String,
-    pub config: ProjectConfig,
-    pub updated_at: i64,
 }

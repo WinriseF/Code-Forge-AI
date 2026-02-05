@@ -53,5 +53,8 @@ image.workspace = true
 base64.workspace = true
 x-win.workspace = true
 
+# 内部模型库
+ctxrun-model = { path = "../crates/ctxrun-model" }
+
 [target.'cfg(windows)'.dependencies]
 windows.workspace = true

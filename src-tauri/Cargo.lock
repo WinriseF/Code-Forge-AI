@@ -922,6 +922,7 @@ dependencies = [
  "chrono",
  "clipboard-rs",
  "csv",
+ "ctxrun-model",
  "entropy",
  "git2",
  "hex",

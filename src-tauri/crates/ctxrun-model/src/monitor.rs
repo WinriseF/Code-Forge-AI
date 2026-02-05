@@ -1,16 +1,14 @@
 use serde::{Serialize, Deserialize};
 use specta::Type;
 
-#[derive(Debug, Serialize, Deserialize, Clone, Type)]
-#[serde(rename_all = "camelCase")]
+#[derive(Debug, Serialize, Clone, Type)]
 pub struct SystemMetrics {
     pub cpu_usage: f32,
     pub memory_used: u64,
     pub memory_total: u64,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, Type)]
-#[serde(rename_all = "camelCase")]
+#[derive(Debug, Serialize, Clone, Type)]
 pub struct ProcessInfo {
     pub pid: u32,
     pub name: String,
@@ -20,8 +18,7 @@ pub struct ProcessInfo {
     pub is_system: bool,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, Type)]
-#[serde(rename_all = "camelCase")]
+#[derive(Debug, Serialize, Clone, Type)]
 pub struct PortInfo {
     pub port: u16,
     pub protocol: String,
@@ -31,8 +28,7 @@ pub struct PortInfo {
     pub is_system: bool,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, Type)]
-#[serde(rename_all = "camelCase")]
+#[derive(Debug, Serialize, Clone, Type)]
 pub struct NetDiagResult {
     pub id: String,
     pub name: String,
@@ -42,8 +38,7 @@ pub struct NetDiagResult {
     pub status_code: u16,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, Type)]
-#[serde(rename_all = "camelCase")]
+#[derive(Debug, Serialize, Clone, Type)]
 pub struct LockedFileProcess {
     pub pid: u32,
     pub name: String,

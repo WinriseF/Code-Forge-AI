@@ -19,7 +19,6 @@ impl ToString for RefineryKind {
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone, Type)]
-#[serde(rename_all = "camelCase")]
 pub struct RefineryMetadata {
     pub width: Option<u32>,
     pub height: Option<u32>,
@@ -42,6 +41,8 @@ pub struct RefineryItem {
     pub metadata: String,       // JSON
     pub created_at: i64,
     pub updated_at: i64,
+
+    // --- V4 新增字段 ---
     pub title: Option<String>,
     pub tags: Option<Vec<String>>, // 数据库存 JSON 字符串，取出来转 Vec
     #[serde(default)]

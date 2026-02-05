@@ -1,4 +1,7 @@
 use serde::Serialize;
+// 影子重定向：从新库导入所有监控相关的模型
+pub use ctxrun_model::monitor::*;
+
 use std::collections::HashSet;
 use std::net::SocketAddr;
 use std::path::Path;
@@ -28,51 +31,7 @@ use windows::Win32::System::RestartManager::{
 #[cfg(target_os = "windows")]
 use windows::core::{PWSTR, PCWSTR, BOOL};
 
-#[derive(Debug, Serialize, Clone)]
-pub struct SystemMetrics {
-    pub cpu_usage: f32,
-    pub memory_used: u64,
-    pub memory_total: u64,
-}
-
-#[derive(Debug, Serialize, Clone)]
-pub struct ProcessInfo {
-    pub pid: u32,
-    pub name: String,
-    pub cpu_usage: f32,
-    pub memory: u64,
-    pub user: String,
-    pub is_system: bool,
-}
-
-#[derive(Debug, Serialize, Clone)]
-pub struct PortInfo {
-    pub port: u16,
-    pub protocol: String,
-    pub pid: u32,
-    pub process_name: String,
-    pub local_addr: String,
-    pub is_system: bool,
-}
-
-#[derive(Debug, Serialize, Clone)]
-pub struct NetDiagResult {
-    pub id: String,
-    pub name: String,
-    pub url: String,
-    pub status: String,
-    pub latency: u128,
-    pub status_code: u16,
-}
-
-#[derive(Debug, Serialize, Clone)]
-pub struct LockedFileProcess {
-    pub pid: u32,
-    pub name: String,
-    pub icon: Option<String>,
-    pub user: String,
-    pub is_system: bool,
-}
+// 结构体定义已从 ctxrun_model::monitor 导入
 
 fn is_critical_system_process(_sys: &System, process: &sysinfo::Process) -> bool {
     let pid = process.pid().as_u32();
