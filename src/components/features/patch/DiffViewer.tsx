@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { DiffEditor, DiffOnMount } from '@monaco-editor/react';
-import { Columns, Rows, FileCode, Loader2 } from 'lucide-react';
+import { Columns, Rows, FileCode, Loader2, Search } from 'lucide-react';
 import { useAppStore } from '@/store/useAppStore';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
@@ -110,6 +110,27 @@ export function DiffViewer({ original, modified, fileName = '', placeholder }: D
 
   return (
     <div className="flex flex-col h-full overflow-hidden bg-background">
+      <style>{`
+        .monaco-editor .find-widget {
+          top: -35px !important;
+          right: 18px !important;
+          border-radius: 6px !important;
+          box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.25) !important;
+          border: 1px solid var(--border) !important;
+          transition: top 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+          visibility: visible;
+        }
+
+        .monaco-editor .find-widget.visible {
+          top: 18px !important;
+        }
+
+        .monaco-editor .find-widget.hidden {
+          top: -60px !important;
+          visibility: hidden;
+        }
+      `}</style>
+
       <div className="flex items-center justify-between px-6 py-2 border-b border-border/50 bg-secondary/5 shrink-0 h-12">
          <div className="flex items-center gap-2 text-xs font-medium text-foreground">
             <FileCode size={14} className="text-primary" />
@@ -119,11 +140,21 @@ export function DiffViewer({ original, modified, fileName = '', placeholder }: D
             </span>
          </div>
 
-         <div className="flex bg-secondary/30 rounded-lg p-0.5 border border-border/50">
-            <button 
-              onClick={() => setRenderSideBySide(true)}
-              className={cn(
-                  "flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-medium transition-all",
+         <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => editorRef.current?.trigger('source', 'actions.find')}
+              className="flex items-center gap-1.5 rounded-md border border-border/50 bg-secondary/30 px-3 py-1.5 text-[10px] font-medium text-muted-foreground transition-all hover:text-foreground"
+            >
+              <Search size={12} />
+              {t('common.search')}
+            </button>
+
+            <div className="flex bg-secondary/30 rounded-lg p-0.5 border border-border/50">
+             <button 
+               onClick={() => setRenderSideBySide(true)}
+               className={cn(
+                   "flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-medium transition-all",
                   renderSideBySide ? "bg-background text-primary shadow-sm" : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
               )}
             >
@@ -137,7 +168,8 @@ export function DiffViewer({ original, modified, fileName = '', placeholder }: D
               )}
             >
                 <Rows size={12} /> Unified
-            </button>
+             </button>
+            </div>
          </div>
       </div>
 

@@ -2,13 +2,7 @@ import { useState, useMemo, useRef, useEffect } from 'react';
 import { Check, ChevronsUpDown, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useTranslation } from 'react-i18next';
-
-interface GitCommit {
-  hash: string;
-  author: string;
-  date: string;
-  message: string;
-}
+import type { GitCommit } from '@/types/git';
 
 interface CommitSelectorProps {
   commits: GitCommit[];
@@ -34,7 +28,8 @@ export function CommitSelector({ commits, selectedValue, onSelect, disabled }: C
       ? commits
       : commits.filter(c =>
           c.message.toLowerCase().includes(search.toLowerCase()) ||
-          c.hash.toLowerCase().startsWith(search.toLowerCase())
+          c.hash.toLowerCase().startsWith(search.toLowerCase()) ||
+          c.author.toLowerCase().includes(search.toLowerCase())
         ),
     [commits, search]
   );
@@ -77,7 +72,9 @@ export function CommitSelector({ commits, selectedValue, onSelect, disabled }: C
         {selectedCommit ? (
           <div className="flex flex-col gap-0.5 min-w-0">
             <span className="truncate font-medium text-foreground">{selectedCommit.message}</span>
-            <span className="text-[10px] text-muted-foreground">{selectedCommit.hash.slice(0, 7)} - {selectedCommit.author}, {selectedCommit.date}</span>
+            <span className="text-[10px] text-muted-foreground">
+              {formatCommitMeta(selectedCommit)}
+            </span>
           </div>
         ) : (
           <span className="text-muted-foreground">{t('patch.commitSelectPlaceholder')}</span>
@@ -115,7 +112,7 @@ export function CommitSelector({ commits, selectedValue, onSelect, disabled }: C
                   <span className={cn("text-xs truncate", selectedValue === commit.hash ? "text-primary font-bold" : "text-foreground font-medium")}>
                     {commit.message}
                   </span>
-                  <span className="text-[10px] text-muted-foreground">{commit.hash.slice(0, 7)} - {commit.author}, {commit.date}</span>
+                  <span className="text-[10px] text-muted-foreground">{formatCommitMeta(commit)}</span>
                 </div>
                 {selectedValue === commit.hash && <Check size={14} className="text-primary mt-0.5 shrink-0" />}
               </button>
@@ -125,4 +122,12 @@ export function CommitSelector({ commits, selectedValue, onSelect, disabled }: C
       )}
     </div>
   );
+}
+
+function formatCommitMeta(commit: GitCommit) {
+  if (commit.hash.startsWith('__')) {
+    return `${commit.author}, ${commit.date}`;
+  }
+
+  return `${commit.hash.slice(0, 7)} - ${commit.author}, ${commit.date}`;
 }

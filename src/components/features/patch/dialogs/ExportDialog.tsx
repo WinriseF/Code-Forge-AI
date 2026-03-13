@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { X, FileText, FileJson, FileCode, FileType, Columns, List, GitMerge } from 'lucide-react';
-import { ExportFormat, ExportLayout } from '../patch_types';
 import { cn } from '@/lib/utils';
 import { useTranslation } from 'react-i18next';
+import type { ExportFormat, ExportLayout } from '@/types/git';
 
 interface ExportDialogProps {
   isOpen: boolean;

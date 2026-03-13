@@ -4575,10 +4575,28 @@
           "markdownDescription": "Denies the scan_project_tree command without any pre-configured scope."
         },
         {
+          "description": "Enables the checkout_git_branch command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-git:allow-checkout-git-branch",
+          "markdownDescription": "Enables the checkout_git_branch command without any pre-configured scope."
+        },
+        {
           "description": "Enables the export_git_diff command without any pre-configured scope.",
           "type": "string",
           "const": "ctxrun-plugin-git:allow-export-git-diff",
           "markdownDescription": "Enables the export_git_diff command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the get_git_branch_commits command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-git:allow-get-git-branch-commits",
+          "markdownDescription": "Enables the get_git_branch_commits command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the get_git_commit_details command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-git:allow-get-git-commit-details",
+          "markdownDescription": "Enables the get_git_commit_details command without any pre-configured scope."
         },
         {
           "description": "Enables the get_git_commits command without any pre-configured scope.",
@@ -4599,10 +4617,40 @@
           "markdownDescription": "Enables the get_git_diff_text command without any pre-configured scope."
         },
         {
+          "description": "Enables the get_git_repository_summary command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-git:allow-get-git-repository-summary",
+          "markdownDescription": "Enables the get_git_repository_summary command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the list_git_branches command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-git:allow-list-git-branches",
+          "markdownDescription": "Enables the list_git_branches command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the checkout_git_branch command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-git:deny-checkout-git-branch",
+          "markdownDescription": "Denies the checkout_git_branch command without any pre-configured scope."
+        },
+        {
           "description": "Denies the export_git_diff command without any pre-configured scope.",
           "type": "string",
           "const": "ctxrun-plugin-git:deny-export-git-diff",
           "markdownDescription": "Denies the export_git_diff command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the get_git_branch_commits command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-git:deny-get-git-branch-commits",
+          "markdownDescription": "Denies the get_git_branch_commits command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the get_git_commit_details command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-git:deny-get-git-commit-details",
+          "markdownDescription": "Denies the get_git_commit_details command without any pre-configured scope."
         },
         {
           "description": "Denies the get_git_commits command without any pre-configured scope.",
@@ -4621,6 +4669,18 @@
           "type": "string",
           "const": "ctxrun-plugin-git:deny-get-git-diff-text",
           "markdownDescription": "Denies the get_git_diff_text command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the get_git_repository_summary command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-git:deny-get-git-repository-summary",
+          "markdownDescription": "Denies the get_git_repository_summary command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the list_git_branches command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-git:deny-list-git-branches",
+          "markdownDescription": "Denies the list_git_branches command without any pre-configured scope."
         },
         {
           "description": "Enables the extract_single_page command without any pre-configured scope.",

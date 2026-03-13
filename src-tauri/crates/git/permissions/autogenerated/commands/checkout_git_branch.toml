@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-checkout-git-branch"
+description = "Enables the checkout_git_branch command without any pre-configured scope."
+commands.allow = ["checkout_git_branch"]
+
+[[permission]]
+identifier = "deny-checkout-git-branch"
+description = "Denies the checkout_git_branch command without any pre-configured scope."
+commands.deny = ["checkout_git_branch"]

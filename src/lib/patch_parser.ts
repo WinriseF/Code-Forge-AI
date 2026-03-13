@@ -1,4 +1,4 @@
-import { FilePatch, PatchOperation } from '@/components/features/patch/patch_types';
+import { FilePatch, PatchOperation } from '@/types/patch';
 
 export interface ApplyResult {
   modified: string;
