@@ -7,7 +7,6 @@ import { MarkdownContent } from '@/components/ui/MarkdownContent';
 import { Select } from '@/components/ui/select';
 import { SUPPORTED_LANGUAGES, type SupportedLangCode } from '@/lib/aiTranslate';
 import { useAppStore } from '@/store/useAppStore';
-import { DEFAULT_PROVIDER_SETTINGS } from '@/types/model';
 import type { PreviewAiState } from './usePreviewAi';
 
 const PROVIDER_LABELS: Record<string, string> = {
@@ -35,9 +34,9 @@ export function PreviewAiPanel({
   const setAIConfig = useAppStore((s) => s.setAIConfig);
   const savedProviders = useAppStore(useShallow((s) => s.savedProviderSettings));
 
-  const providerOptions = Object.keys({ ...DEFAULT_PROVIDER_SETTINGS, ...savedProviders }).map(
-    (id) => ({ value: id, label: PROVIDER_LABELS[id] ?? id }),
-  );
+  const providerOptions = Object.keys(savedProviders)
+    .filter((id) => savedProviders[id]?.apiKey)
+    .map((id) => ({ value: id, label: PROVIDER_LABELS[id] ?? id }));
 
   const langOptions = SUPPORTED_LANGUAGES.map((lang) => ({
     value: lang.code,
@@ -45,7 +44,7 @@ export function PreviewAiPanel({
   }));
 
   const handleProviderChange = (id: string) => {
-    const saved = savedProviders[id] ?? DEFAULT_PROVIDER_SETTINGS[id];
+    const saved = savedProviders[id];
     if (saved) {
       setAIConfig({
         providerId: id,
@@ -59,7 +58,8 @@ export function PreviewAiPanel({
 
   const isBusy = state.isOcrRunning || state.isTranslating;
   const hasResult = Boolean(state.translatedContent);
-  const showOcrLoader = state.isOcrRunning;
+  const showLoader = (state.isOcrRunning || state.isTranslating) && !state.translatedContent;
+  const loaderTitle = state.isOcrRunning ? t('peek.aiOcrRunningTitle') : t('peek.aiTranslatingTitle');
   const content = state.translatedContent || (state.isTranslating ? '...' : '');
 
   return (
@@ -101,10 +101,10 @@ export function PreviewAiPanel({
 
       {/* Content area */}
       <div className="flex-1 overflow-y-auto px-5 py-4">
-        {showOcrLoader ? (
+        {showLoader ? (
           <div className="flex h-full flex-col items-center justify-center gap-3 text-center text-muted-foreground">
             <DotLottieReact src={liquidLoaderUrl} autoplay loop className="h-16 w-16" />
-            <p className="text-sm font-medium text-foreground">{t('peek.aiOcrRunningTitle')}</p>
+            <p className="text-sm font-medium text-foreground">{loaderTitle}</p>
           </div>
         ) : state.error ? (
           <div className="space-y-4">
@@ -118,12 +118,6 @@ export function PreviewAiPanel({
           </div>
         ) : content ? (
           <>
-            {state.isTranslating && (
-              <div className="mb-3 flex items-center gap-2 text-xs text-muted-foreground">
-                <RefreshCw size={12} className="animate-spin" />
-                <span>{t('peek.aiTranslatingTitle')}</span>
-              </div>
-            )}
             {state.truncated && (
               <div className="mb-3 rounded-lg border border-amber-500/20 bg-amber-500/8 px-3 py-2 text-xs text-amber-300">
                 {t('peek.aiTruncatedWarning')}

@@ -229,7 +229,9 @@ export function SearchBar({ onKeyDown, isResizeMode = false }: SearchBarProps) {
   const { onContextMenu } = useSmartContextMenu({ onPaste: handlePaste });
 
   const cycleProvider = () => {
-    const providers = Object.keys(savedProviderSettings);
+    const providers = Object.keys(savedProviderSettings).filter(
+      (id) => savedProviderSettings[id]?.apiKey,
+    );
     const currentIndex = providers.indexOf(aiConfig.providerId);
 
     if (providers.length > 0) {
