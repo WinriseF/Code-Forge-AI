@@ -590,7 +590,19 @@
     "ocrPreparingDescription": "OCR 模型正在初始化中，请稍后再试。",
     "ocrSettingsOnlyHint": "OCR 只能在 设置 -> AI -> OCR 服务 中初始化。",
     "ocrErrorTitle": "OCR 识别失败",
-    "ocrEmptyText": "未识别到可用文本。"
+    "ocrEmptyText": "未识别到可用文本。",
+    "aiRun": "AI 翻译",
+    "aiClosePanel": "关闭 AI 面板",
+    "aiTranslatingTitle": "翻译中...",
+    "aiOcrRunningTitle": "识别文字中...",
+    "aiErrorTitle": "翻译失败",
+    "aiTruncatedWarning": "仅翻译前 2000 行。",
+    "aiNoApiKey": "API Key 未配置，请前往 设置 → AI 配置。",
+    "aiCopy": "复制",
+    "aiRetranslate": "重新翻译",
+    "aiModel": "模型",
+    "aiLanguage": "语言",
+    "aiCopied": "已复制！"
   },
   "guard": {
     "holdAction": "长按解锁"

@@ -7,98 +7,7 @@ import { assembleChatPrompt } from '@/lib/template';
 import { ChatAttachment } from '@/types/spotlight';
 import { runDefaultAgentTurn } from '@/lib/agent';
 import type { AgentToolCallInfo, AgentToolExecutionResult } from '@/lib/agent/types';
-
-// 节流配置
-const THROTTLE_CONFIG = {
-  BUFFER_THRESHOLD: 10,      // 缓冲区字符数阈值
-  FLUSH_INTERVAL: 50,        // 定时刷新间隔
-} as const;
-
-/**
- * 流式更新节流 Hook
- * 累积内容到一定阈值或时间间隔后再批量更新状态，减少渲染次数
- */
-function useThrottledStreamUpdate(
-  onFlush: (content: string, reasoning: string) => void
-) {
-  const contentBufferRef = useRef("");
-  const reasoningBufferRef = useRef("");
-  const flushTimerRef = useRef<NodeJS.Timeout | null>(null);
-  const onFlushRef = useRef(onFlush);
-
-  // 保持 onFlush 引用最新
-  useEffect(() => {
-    onFlushRef.current = onFlush;
-  }, [onFlush]);
-
-  // 清理定时器
-  useEffect(() => {
-    return () => {
-      if (flushTimerRef.current) {
-        clearTimeout(flushTimerRef.current);
-      }
-    };
-  }, []);
-
-  // 刷新缓冲区到状态
-  const flush = useCallback(() => {
-    const content = contentBufferRef.current;
-    const reasoning = reasoningBufferRef.current;
-
-    if (content === "" && reasoning === "") {
-      return;
-    }
-
-    onFlushRef.current(content, reasoning);
-
-    // 清空缓冲区
-    contentBufferRef.current = "";
-    reasoningBufferRef.current = "";
-
-    // 清除定时器
-    if (flushTimerRef.current) {
-      clearTimeout(flushTimerRef.current);
-      flushTimerRef.current = null;
-    }
-  }, []);
-
-  // 节流模式：如果已有定时器在跑，不重置（避免慢速连接下的内容积攒）
-  const scheduleFlush = useCallback(() => {
-    if (flushTimerRef.current) return;
-
-    flushTimerRef.current = setTimeout(() => {
-      flush();
-      flushTimerRef.current = null;
-    }, THROTTLE_CONFIG.FLUSH_INTERVAL);
-  }, [flush]);
-
-  // 添加增量到缓冲区
-  const append = useCallback((contentDelta: string, reasoningDelta: string) => {
-    contentBufferRef.current += contentDelta;
-    reasoningBufferRef.current += reasoningDelta;
-
-    // 达到阈值立即刷新
-    if (contentBufferRef.current.length >= THROTTLE_CONFIG.BUFFER_THRESHOLD ||
-        reasoningBufferRef.current.length >= THROTTLE_CONFIG.BUFFER_THRESHOLD) {
-      flush();
-      return;
-    }
-
-    // 否则设置定时刷新（防抖）
-    scheduleFlush();
-  }, [flush, scheduleFlush]);
-
-  // 流式结束时强制刷新
-  const flushFinal = useCallback(() => {
-    if (flushTimerRef.current) {
-      clearTimeout(flushTimerRef.current);
-      flushTimerRef.current = null;
-    }
-    flush();
-  }, [flush]);
-
-  return { append, flushFinal };
-}
+import { useThrottledStreamUpdate } from '@/lib/hooks/useThrottledStreamUpdate';
 
 function buildDisplayAttachments(attachments: ChatAttachment[]): ChatMessageAttachment[] {
   return attachments.map(item => ({
@@ -323,7 +232,11 @@ export function useSpotlightChat() {
     });
   }, []);
 
-  const { append, flushFinal } = useThrottledStreamUpdate(throttledUpdate);
+  const { append, flushFinal } = useThrottledStreamUpdate(throttledUpdate, {
+    bufferThreshold: null,
+    flushInterval: 200,
+    flushOnNewline: true,
+  });
 
   const upsertLastAssistantToolCall = useCallback(
     (toolCallId: string, updater: (existing: ChatToolCallTrace | undefined) => ChatToolCallTrace) => {

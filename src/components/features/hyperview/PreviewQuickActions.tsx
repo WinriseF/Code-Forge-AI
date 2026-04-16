@@ -1,15 +1,20 @@
-import { Pin, PinOff, ScanText } from 'lucide-react';
+import { Languages, Pin, PinOff, ScanText } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
 interface PreviewQuickActionsProps {
   canUseOcr: boolean;
   isOcrOpen: boolean;
+  canUseAi: boolean;
+  isAiOpen: boolean;
   isPinned: boolean;
   onToggleOcr: () => void;
+  onToggleAi: () => void;
   onTogglePinned: () => void;
   ocrRunTitle: string;
   ocrCloseTitle: string;
+  aiRunTitle: string;
+  aiCloseTitle: string;
   pinTitle: string;
   unpinTitle: string;
   buttonClassName: string;
@@ -20,11 +25,16 @@ interface PreviewQuickActionsProps {
 export function PreviewQuickActions({
   canUseOcr,
   isOcrOpen,
+  canUseAi,
+  isAiOpen,
   isPinned,
   onToggleOcr,
+  onToggleAi,
   onTogglePinned,
   ocrRunTitle,
   ocrCloseTitle,
+  aiRunTitle,
+  aiCloseTitle,
   pinTitle,
   unpinTitle,
   buttonClassName,
@@ -41,6 +51,16 @@ export function PreviewQuickActions({
           title={isOcrOpen ? ocrCloseTitle : ocrRunTitle}
         >
           <ScanText size={iconSize} />
+        </button>
+      )}
+      {canUseAi && (
+        <button
+          type="button"
+          onClick={onToggleAi}
+          className={cn(buttonClassName, isAiOpen && activeButtonClassName)}
+          title={isAiOpen ? aiCloseTitle : aiRunTitle}
+        >
+          <Languages size={iconSize} />
         </button>
       )}
       <button

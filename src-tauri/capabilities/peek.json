@@ -19,6 +19,13 @@
     "fs:allow-read-text-file",
     "fs:allow-exists",
     "shell:allow-open",
+    {
+      "identifier": "http:default",
+      "allow": [
+        { "url": "https://*/*" },
+        { "url": "http://*/*" }
+      ]
+    },
     "ctxrun-plugin-ocr:allow-ocr-get-status",
     "ctxrun-plugin-ocr:allow-ocr-recognize-file"
   ]

@@ -2,6 +2,7 @@ import path from 'path';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
+  assetsInclude: ['**/*.lottie'],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

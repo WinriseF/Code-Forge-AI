@@ -11,6 +11,7 @@ import { PreviewQuickActions } from '@/components/features/hyperview/PreviewQuic
 import { PreviewModeSwitch } from '@/components/features/hyperview/PreviewModeSwitch';
 import { PreviewViewport } from '@/components/features/hyperview/PreviewViewport';
 import { usePreviewOcr } from '@/components/features/hyperview/usePreviewOcr';
+import { usePreviewAi } from '@/components/features/hyperview/usePreviewAi';
 import { MAX_INLINE_PREVIEW_BYTES, OVERSIZED_PREVIEW_ERROR } from '@/lib/previewLimits';
 import { applyThemeToDocument } from '@/lib/theme';
 import { formatBytes } from '@/lib/utils';
@@ -82,6 +83,10 @@ export default function PeekApp() {
     }))
   );
   const previewOcr = usePreviewOcr({
+    activeFile,
+    onAutoPin: () => setPinned(true),
+  });
+  const previewAi = usePreviewAi({
     activeFile,
     onAutoPin: () => setPinned(true),
   });
@@ -225,14 +230,30 @@ export default function PeekApp() {
   const canNavigate = paths.length > 1;
   const currentPosition = paths.length > 0 ? activeIndex + 1 : 0;
   const canUseOcr = Boolean(activeFile && !error && activeFile.previewType === 'image');
-  const showOcrPanel = canUseOcr && previewOcr.isOpen;
+  const canUseAi = Boolean(activeFile && !error);
+  const showOcrPanel = canUseOcr && previewOcr.isOpen && !previewAi.isOpen;
+  const showAiPanel = previewAi.isOpen;
   const handleToggleOcr = () => {
+    if (previewAi.isOpen) {
+      previewAi.closePanel();
+      return;
+    }
     if (previewOcr.isOpen) {
       previewOcr.closePanel();
       return;
     }
 
     void previewOcr.runOcr();
+  };
+  const handleToggleAi = () => {
+    if (previewOcr.isOpen) {
+      previewOcr.closePanel();
+    }
+    if (previewAi.isOpen) {
+      previewAi.closePanel();
+      return;
+    }
+    previewAi.openPanel();
   };
 
   return (
@@ -275,11 +296,16 @@ export default function PeekApp() {
           <PreviewQuickActions
             canUseOcr={canUseOcr}
             isOcrOpen={previewOcr.isOpen}
+            canUseAi={canUseAi}
+            isAiOpen={previewAi.isOpen}
             isPinned={isPinned}
             onToggleOcr={handleToggleOcr}
+            onToggleAi={handleToggleAi}
             onTogglePinned={togglePinned}
             ocrRunTitle={t('peek.ocrRun')}
             ocrCloseTitle={t('peek.ocrClosePanel')}
+            aiRunTitle={t('peek.aiRun')}
+            aiCloseTitle={t('peek.aiClosePanel')}
             pinTitle={t('peek.pinPreview')}
             unpinTitle={t('peek.unpinPreview')}
             buttonClassName="inline-flex items-center justify-center rounded p-1.5 text-muted-foreground transition-colors hover:bg-secondary/70 hover:text-foreground"
@@ -296,9 +322,13 @@ export default function PeekApp() {
           isLoading={isLoading}
           error={error}
           showOcrPanel={showOcrPanel}
+          showAiPanel={showAiPanel}
           previewOcr={previewOcr}
+          previewAi={previewAi}
           onHighlightOcrLine={previewOcr.highlightLine}
           onSelectOcrLine={previewOcr.selectLine}
+          onAiStartTranslate={previewAi.startTranslate}
+          onAiTargetLangChange={previewAi.setTargetLang}
           oversizedError={OVERSIZED_PREVIEW_ERROR}
           renderLoading={() => (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-muted-foreground">
