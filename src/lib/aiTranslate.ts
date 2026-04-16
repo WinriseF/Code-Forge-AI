@@ -44,8 +44,6 @@ export interface TranslateCallbacks {
 // Constants
 // ---------------------------------------------------------------------------
 
-export const MAX_TRANSLATE_LINES = 2000;
-
 export const SUPPORTED_LANGUAGES: LanguageOption[] = [
   { code: 'zh', label: '中文', nativeLabel: 'Chinese' },
   { code: 'en', label: 'English', nativeLabel: 'English' },
@@ -116,24 +114,6 @@ function getStrategyKey(previewType: PreviewType): string {
 }
 
 // ---------------------------------------------------------------------------
-// Content preparation
-// ---------------------------------------------------------------------------
-
-export function prepareContent(content: string): {
-  text: string;
-  truncated: boolean;
-} {
-  const lines = content.split('\n');
-  if (lines.length <= MAX_TRANSLATE_LINES) {
-    return { text: content, truncated: false };
-  }
-  return {
-    text: lines.slice(0, MAX_TRANSLATE_LINES).join('\n'),
-    truncated: true,
-  };
-}
-
-// ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
@@ -153,10 +133,7 @@ export async function translate(
 ): Promise<void> {
   const { content, previewType, targetLang, signal } = request;
 
-  // 1. Truncate if needed
-  const { text: preparedContent } = prepareContent(content);
-
-  // 2. Build prompt
+  // 1. Build prompt
   const strategyKey = getStrategyKey(previewType);
   const strategy = PROMPT_STRATEGIES[strategyKey] ?? PROMPT_STRATEGIES.default;
   const targetLangName = getLanguageName(targetLang);
@@ -168,7 +145,7 @@ export async function translate(
     },
     {
       role: 'user',
-      content: strategy.buildUserPrompt(preparedContent, targetLangName),
+      content: strategy.buildUserPrompt(content, targetLangName),
     },
   ];
 

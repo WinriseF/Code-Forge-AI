@@ -3,7 +3,6 @@ import {
   motion,
   useMotionValue,
   useReducedMotion,
-  useTransform,
   animate,
 } from 'framer-motion';
 
@@ -28,19 +27,15 @@ export function PreviewOcrSplitLayout({
   panel,
 }: PreviewOcrSplitLayoutProps) {
   const reduceMotion = useReducedMotion();
-  const transition = reduceMotion ? { duration: 0 } : LAYOUT_TRANSITION;
-
   const containerRef = useRef<HTMLDivElement>(null);
   const isResizingRef = useRef(false);
   const hasOpenedRef = useRef(false);
 
   // MotionValue lives outside React render cycle — zero re-renders on drag
   const panelWidth = useMotionValue(0);
-  const previewWidth = useTransform(panelWidth, (pw) =>
-    containerRef.current
-      ? containerRef.current.offsetWidth - pw - 1
-      : `calc(100% - ${pw}px - 1px)`,
-  );
+
+  // Stable transition: avoid creating new object every render
+  const transition = reduceMotion ? { duration: 0 } : LAYOUT_TRANSITION;
 
   // Open / close animation
   useEffect(() => {
@@ -50,15 +45,14 @@ export function PreviewOcrSplitLayout({
     if (showPanel) {
       if (!hasOpenedRef.current) {
         hasOpenedRef.current = true;
-        const target = container.offsetWidth * DEFAULT_PANEL_RATIO;
-        animate(panelWidth, target, transition);
+        animate(panelWidth, container.offsetWidth * DEFAULT_PANEL_RATIO, transition);
       }
-      // If already opened (user toggled content), keep current width
     } else {
       hasOpenedRef.current = false;
       animate(panelWidth, 0, transition);
     }
-  }, [showPanel, panelWidth, transition]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- transition is logically stable
+  }, [showPanel, panelWidth]);
 
   // Drag handlers — update MotionValue directly, no React re-render
   useEffect(() => {
@@ -72,12 +66,12 @@ export function PreviewOcrSplitLayout({
       const containerWidth = containerRect.width;
       const pointerOffset = e.clientX - containerRect.left;
 
-      const newPanelWidth = Math.min(
-        Math.max(containerWidth - pointerOffset, MIN_PANEL_PX),
-        containerWidth - MIN_PREVIEW_PX,
+      panelWidth.set(
+        Math.min(
+          Math.max(containerWidth - pointerOffset, MIN_PANEL_PX),
+          containerWidth - MIN_PREVIEW_PX,
+        ),
       );
-
-      panelWidth.set(newPanelWidth);
     };
 
     const onMouseUp = () => {
@@ -104,14 +98,15 @@ export function PreviewOcrSplitLayout({
 
   return (
     <div ref={containerRef} className="flex h-full overflow-hidden">
-      <motion.div
-        initial={false}
-        style={{ width: showPanel ? previewWidth : '100%' }}
-        transition={transition}
-        className="min-w-0 shrink-0 overflow-hidden pr-[2px]"
+      {/*
+        Preview uses flex:1 to fill remaining space.
+        No useTransform needed — flex handles container resize automatically.
+      */}
+      <div
+        className={`min-w-0 overflow-hidden pr-[2px] ${showPanel ? 'flex-1' : 'w-full'}`}
       >
         {preview}
-      </motion.div>
+      </div>
 
       {/* Draggable divider */}
       {showPanel && (
