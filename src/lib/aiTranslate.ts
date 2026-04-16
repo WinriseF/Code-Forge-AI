@@ -36,6 +36,7 @@ export interface TranslateRequest {
 
 export interface TranslateCallbacks {
   onContentDelta: (text: string) => void;
+  onChunkProgress?: (chunkIndex: number, totalChunks: number) => void;
   onDone: (fullText: string) => void;
   onError: (error: string) => void;
 }
@@ -59,6 +60,9 @@ export const SUPPORTED_LANGUAGES: LanguageOption[] = [
   { code: 'th', label: 'ไทย', nativeLabel: 'Thai' },
   { code: 'vi', label: 'Tiếng Việt', nativeLabel: 'Vietnamese' },
 ];
+
+/** Maximum characters per translation chunk (~3000 ≈ 1000-2000 tokens). */
+const MAX_CHUNK_CHARS = 3000;
 
 // ---------------------------------------------------------------------------
 // Prompt strategies
@@ -114,6 +118,145 @@ function getStrategyKey(previewType: PreviewType): string {
 }
 
 // ---------------------------------------------------------------------------
+// Chunking
+// ---------------------------------------------------------------------------
+
+/**
+ * Split text into chunks at natural boundaries.
+ * Priority: paragraphs → sentences → lines → characters.
+ * Each chunk stays within `maxChars` and ends at a clean boundary.
+ */
+function splitIntoChunks(text: string, maxChars: number): string[] {
+  if (text.length <= maxChars) return [text];
+
+  // Level 1: Split by paragraph boundaries (2+ newlines)
+  const paragraphs = text.split(/\n{2,}/);
+  const chunks: string[] = [];
+  let current = '';
+
+  for (const para of paragraphs) {
+    const candidate = current ? current + '\n\n' + para : para;
+    if (candidate.length > maxChars && current) {
+      chunks.push(...splitOversized(current, maxChars));
+      current = para;
+    } else {
+      current = candidate;
+    }
+  }
+
+  if (current) {
+    chunks.push(...splitOversized(current, maxChars));
+  }
+
+  return chunks;
+}
+
+/**
+ * Split oversized text: try sentences first, fall back to lines, then chars.
+ * Sentence matches include trailing whitespace so concatenation preserves format.
+ */
+function splitOversized(text: string, maxChars: number): string[] {
+  if (text.length <= maxChars) return [text];
+
+  // Level 2: Split by sentence boundaries
+  // Matches "content + punctuation + trailing whitespace"
+  const sentences = text.match(/[^.!?。！？]+[.!?。！？]+\s*/g);
+
+  if (sentences && sentences.length > 1) {
+    // Capture trailing text not ending with punctuation
+    const covered = sentences.join('');
+    if (covered.length < text.length) {
+      sentences.push(text.slice(covered.length));
+    }
+    return groupPieces(sentences, maxChars);
+  }
+
+  // Level 3+4: No sentence boundaries — fall back to lines → chars
+  return forceSplitLines(text, maxChars);
+}
+
+/** Group small pieces into chunks of <= maxChars. Preserves original formatting. */
+function groupPieces(pieces: string[], maxChars: number): string[] {
+  const chunks: string[] = [];
+  let current = '';
+
+  for (const piece of pieces) {
+    if (piece.length > maxChars) {
+      if (current) {
+        chunks.push(current);
+        current = '';
+      }
+      chunks.push(...forceSplitLines(piece, maxChars));
+    } else {
+      const candidate = current + piece;
+      if (candidate.length > maxChars && current) {
+        chunks.push(current);
+        current = piece;
+      } else {
+        current = candidate;
+      }
+    }
+  }
+
+  if (current) chunks.push(current);
+  return chunks;
+}
+
+/** Force-split by single newlines, then by character limit (last resort). */
+function forceSplitLines(text: string, maxChars: number): string[] {
+  const lines = text.split('\n');
+  const chunks: string[] = [];
+  let current = '';
+
+  for (const line of lines) {
+    const candidate = current ? current + '\n' + line : line;
+    if (candidate.length > maxChars && current) {
+      chunks.push(current);
+      current = line;
+    } else {
+      current = candidate;
+    }
+  }
+
+  if (current) {
+    if (current.length <= maxChars) {
+      chunks.push(current);
+    } else {
+      for (let i = 0; i < current.length; i += maxChars) {
+        chunks.push(current.slice(i, i + maxChars));
+      }
+    }
+  }
+
+  return chunks;
+}
+
+// ---------------------------------------------------------------------------
+// Output sanitization
+// ---------------------------------------------------------------------------
+
+/**
+ * Strip common LLM output artifacts: wrapping code fences, triple quotes,
+ * and preamble phrases. Applied per-chunk to keep concatenated output clean.
+ */
+function sanitizeChunkOutput(text: string): string {
+  let result = text.trim();
+
+  // Strip wrapping code block markers (```lang ... ```)
+  result = result.replace(/^```[a-zA-Z]*\n?/, '').replace(/\n?```\s*$/, '');
+  // Strip wrapping triple quotes
+  if (result.startsWith('"""') && result.endsWith('"""')) {
+    result = result.slice(3, -3);
+  } else if (result.startsWith('"""')) {
+    result = result.slice(3);
+  } else if (result.endsWith('"""')) {
+    result = result.slice(0, -3);
+  }
+
+  return result.trim();
+}
+
+// ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
@@ -133,42 +276,94 @@ export async function translate(
 ): Promise<void> {
   const { content, previewType, targetLang, signal } = request;
 
-  // 1. Build prompt
+  if (!content.trim()) {
+    callbacks.onDone('');
+    return;
+  }
+
   const strategyKey = getStrategyKey(previewType);
   const strategy = PROMPT_STRATEGIES[strategyKey] ?? PROMPT_STRATEGIES.default;
   const targetLangName = getLanguageName(targetLang);
+  const systemPrompt = strategy.systemPrompt.replace('{targetLang}', targetLangName);
 
-  const messages: ChatRequestMessage[] = [
-    {
-      role: 'system',
-      content: strategy.systemPrompt.replace('{targetLang}', targetLangName),
-    },
-    {
-      role: 'user',
-      content: strategy.buildUserPrompt(content, targetLangName),
-    },
-  ];
+  const chunks = splitIntoChunks(content, MAX_CHUNK_CHARS);
 
-  // 3. Call LLM with streaming
-  try {
-    const result = await streamChatCompletionWithTools(
-      messages,
-      config,
-      { temperature: 0.3 },
-      {
-        onContentDelta: (delta) => {
-          if (signal?.aborted) return;
-          callbacks.onContentDelta(delta);
+  // Short content — single request (original behaviour)
+  if (chunks.length === 1) {
+    const messages: ChatRequestMessage[] = [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: strategy.buildUserPrompt(content, targetLangName) },
+    ];
+
+    try {
+      const result = await streamChatCompletionWithTools(
+        messages,
+        config,
+        { temperature: 0.3 },
+        {
+          onContentDelta: (delta) => {
+            if (signal?.aborted) return;
+            callbacks.onContentDelta(delta);
+          },
         },
-      },
-    );
+      );
 
-    if (!signal?.aborted) {
-      callbacks.onDone(result.content);
+      if (!signal?.aborted) {
+        callbacks.onDone(result.content);
+      }
+    } catch (err) {
+      if (!signal?.aborted) {
+        callbacks.onError(err instanceof Error ? err.message : String(err));
+      }
     }
-  } catch (err) {
-    if (!signal?.aborted) {
-      callbacks.onError(err instanceof Error ? err.message : String(err));
+    return;
+  }
+
+  // Long content — serial chunked translation (OpenAI Cookbook best practice)
+  // Each chunk is translated independently with the same clean prompt.
+  // No overlap context — avoids repetition and format confusion.
+  let fullTranslated = '';
+
+  for (let i = 0; i < chunks.length; i++) {
+    if (signal?.aborted) return;
+
+    const messages: ChatRequestMessage[] = [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: strategy.buildUserPrompt(chunks[i], targetLangName) },
+    ];
+
+    // Inject separator between chunks
+    if (i > 0) {
+      callbacks.onContentDelta('\n\n');
     }
+
+    try {
+      const result = await streamChatCompletionWithTools(
+        messages,
+        config,
+        { temperature: 0 },
+        {
+          onContentDelta: (delta) => {
+            if (signal?.aborted) return;
+            callbacks.onContentDelta(delta);
+          },
+        },
+      );
+
+      if (signal?.aborted) return;
+
+      const sanitized = sanitizeChunkOutput(result.content);
+      fullTranslated += (i > 0 ? '\n\n' : '') + sanitized;
+      callbacks.onChunkProgress?.(i + 1, chunks.length);
+    } catch (err) {
+      if (!signal?.aborted) {
+        callbacks.onError(err instanceof Error ? err.message : String(err));
+      }
+      return;
+    }
+  }
+
+  if (!signal?.aborted) {
+    callbacks.onDone(fullTranslated);
   }
 }

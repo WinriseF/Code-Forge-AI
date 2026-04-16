@@ -59,7 +59,15 @@ export function PreviewAiPanel({
   const isBusy = state.isOcrRunning || state.isTranslating;
   const hasResult = Boolean(state.translatedContent);
   const showLoader = (state.isOcrRunning || state.isTranslating) && !state.translatedContent;
-  const loaderTitle = state.isOcrRunning ? t('peek.aiOcrRunningTitle') : t('peek.aiTranslatingTitle');
+  const chunkLabel =
+    state.chunkProgress && state.chunkProgress.total > 1
+      ? `${state.chunkProgress.current}/${state.chunkProgress.total}`
+      : null;
+  const loaderTitle = state.isOcrRunning
+    ? t('peek.aiOcrRunningTitle')
+    : chunkLabel
+      ? `${t('peek.aiTranslatingTitle')} ${chunkLabel}`
+      : t('peek.aiTranslatingTitle');
   const content = state.translatedContent || (state.isTranslating ? '...' : '');
 
   return (

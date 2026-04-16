@@ -16,6 +16,7 @@ export interface PreviewAiState {
   targetLang: SupportedLangCode;
   error: string | null;
   truncated: boolean;
+  chunkProgress: { current: number; total: number } | null;
 }
 
 const INITIAL_STATE: PreviewAiState = {
@@ -26,6 +27,7 @@ const INITIAL_STATE: PreviewAiState = {
   targetLang: 'zh',
   error: null,
   truncated: false,
+  chunkProgress: null,
 };
 
 interface UsePreviewAiOptions {
@@ -111,12 +113,20 @@ export function usePreviewAi({ activeFile, onAutoPin }: UsePreviewAiOptions) {
         targetLang,
         error: null,
         truncated: false,
+        chunkProgress: null,
       });
 
       const callbacks: TranslateCallbacks = {
         onContentDelta: (delta) => {
           if (requestId !== activeRequestIdRef.current) return;
           append(delta, '');
+        },
+        onChunkProgress: (chunkIndex, totalChunks) => {
+          if (requestId !== activeRequestIdRef.current) return;
+          setState((prev) => ({
+            ...prev,
+            chunkProgress: { current: chunkIndex, total: totalChunks },
+          }));
         },
         onDone: (fullText) => {
           if (requestId !== activeRequestIdRef.current) return;
@@ -125,6 +135,7 @@ export function usePreviewAi({ activeFile, onAutoPin }: UsePreviewAiOptions) {
             ...prev,
             isTranslating: false,
             translatedContent: fullText,
+            chunkProgress: null,
           }));
         },
         onError: (error) => {
@@ -134,6 +145,7 @@ export function usePreviewAi({ activeFile, onAutoPin }: UsePreviewAiOptions) {
             ...prev,
             isTranslating: false,
             error,
+            chunkProgress: null,
           }));
         },
       };
