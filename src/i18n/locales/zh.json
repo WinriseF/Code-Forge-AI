@@ -597,12 +597,7 @@
     "aiOcrRunningTitle": "识别文字中...",
     "aiErrorTitle": "翻译失败",
     "aiTruncatedWarning": "仅翻译前 2000 行。",
-    "aiNoApiKey": "API Key 未配置，请前往 设置 → AI 配置。",
-    "aiCopy": "复制",
-    "aiRetranslate": "重新翻译",
-    "aiModel": "模型",
-    "aiLanguage": "语言",
-    "aiCopied": "已复制！"
+    "aiRetranslate": "重新翻译"
   },
   "guard": {
     "holdAction": "长按解锁"

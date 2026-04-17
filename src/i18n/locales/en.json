@@ -597,12 +597,7 @@
     "aiOcrRunningTitle": "Recognizing text...",
     "aiErrorTitle": "Translation failed",
     "aiTruncatedWarning": "Only the first 2000 lines are translated.",
-    "aiNoApiKey": "API Key not configured. Please go to Settings \u2192 AI.",
-    "aiCopy": "Copy",
-    "aiRetranslate": "Retranslate",
-    "aiModel": "Model",
-    "aiLanguage": "Language",
-    "aiCopied": "Copied!"
+    "aiRetranslate": "Retranslate"
   },
   "guard": {
     "holdAction": "Hold to unlock"

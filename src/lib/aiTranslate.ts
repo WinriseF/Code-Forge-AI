@@ -299,7 +299,7 @@ export async function translate(
       const result = await streamChatCompletionWithTools(
         messages,
         config,
-        { temperature: 0.3 },
+        { temperature: 0.4 },
         {
           onContentDelta: (delta) => {
             if (signal?.aborted) return;
@@ -341,7 +341,7 @@ export async function translate(
       const result = await streamChatCompletionWithTools(
         messages,
         config,
-        { temperature: 0 },
+        { temperature: 0.4 },
         {
           onContentDelta: (delta) => {
             if (signal?.aborted) return;
