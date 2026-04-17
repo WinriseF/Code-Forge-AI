@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   FileText, Sparkles, FileCode,
   CheckCircle2, ArrowRightLeft, Loader2,
   Copy, ChevronDown, ChevronRight, Trash2, Info, GitMerge,
-  CheckSquare, Square, FileImage, AlertOctagon, RefreshCw, AlertCircle
+  RefreshCw, AlertCircle
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { CommitSelector } from './CommitSelector';
@@ -12,6 +12,8 @@ import { PatchFileItem, PatchMode } from './patch_types';
 import { writeText } from '@tauri-apps/plugin-clipboard-manager';
 import { useTranslation } from 'react-i18next';
 import { useSmartContextMenu } from '@/lib/hooks';
+import { buildPatchFileTree, flattenPatchTree, allDirIds } from '@/lib/patch_tree_utils';
+import { PatchFileTreeNode } from './PatchFileTreeNode';
 
 const AI_SYSTEM_PROMPT = `You are an elite coding agent. Generate precise code patches from the user's request.
 
@@ -72,12 +74,12 @@ interface GitCommit {
 interface PatchSidebarProps {
   mode: PatchMode;
   setMode: (m: PatchMode) => void;
-  
+
   workspaceRoot: string | null;
   yamlInput: string;
   onYamlChange: (val: string) => void;
   onClearYaml: () => void;
-  
+
   files: PatchFileItem[];
   selectedFileId: string | null;
   onSelectFile: (id: string) => void;
@@ -108,10 +110,60 @@ export function PatchSidebar({
   selectedExportIds,
   onToggleExport
 }: PatchSidebarProps) {
-  
+
   const [isPromptOpen, setIsPromptOpen] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
+  const [expandedDirIds, setExpandedDirIds] = useState<Set<string>>(new Set());
+  const prevFilesRef = useRef<PatchFileItem[]>([]);
   const { t } = useTranslation();
+
+  // Derive lists from `files` (stable state) — used for display counts + manual file
+  const manualFile = files.find(f => f.isManual);
+  const gitFileCount = files.filter(f => f.gitStatus).length;
+  const aiFileCount = files.filter(f => !f.isManual && !f.gitStatus).length;
+
+  // Build trees — dependency is `files` (stable state reference, won't cause loops)
+  const gitTree = useMemo(
+    () => buildPatchFileTree(files.filter(f => f.gitStatus)),
+    [files],
+  );
+  const aiTree = useMemo(
+    () => buildPatchFileTree(files.filter(f => !f.isManual && !f.gitStatus)),
+    [files],
+  );
+
+  // Flatten trees for rendering
+  const gitFlat = useMemo(
+    () => flattenPatchTree(gitTree, expandedDirIds),
+    [gitTree, expandedDirIds],
+  );
+  const aiFlat = useMemo(
+    () => flattenPatchTree(aiTree, expandedDirIds),
+    [aiTree, expandedDirIds],
+  );
+
+  // Auto-expand top-level dirs when the file list changes
+  useEffect(() => {
+    if (files === prevFilesRef.current) return;
+    prevFilesRef.current = files;
+
+    const ids = [...allDirIds(gitTree), ...allDirIds(aiTree)];
+    if (ids.length > 0) {
+      setExpandedDirIds(prev => {
+        const next = new Set(prev);
+        for (const id of ids) next.add(id);
+        return next;
+      });
+    }
+  }, [files, gitTree, aiTree]);
+
+  const toggleExpand = (id: string) => {
+    setExpandedDirIds(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+  };
 
   const handleCopyPrompt = async () => {
     await writeText(AI_SYSTEM_PROMPT);
@@ -135,9 +187,6 @@ export function PatchSidebar({
 
   const { onContextMenu } = useSmartContextMenu({ onPaste: handlePaste });
 
-  const gitFiles = files.filter(f => f.gitStatus);
-  const manualFile = files.find(f => f.isManual);
-  const aiPatchFiles = files.filter(f => !f.isManual && !f.gitStatus);
   const hasWorkspace = !!workspaceRoot;
   const canShowRepoControls = hasWorkspace && repositoryLoaded && !gitError;
 
@@ -146,7 +195,7 @@ export function PatchSidebar({
 
   return (
     <div className="w-[350px] flex flex-col border-r border-border bg-secondary/10 h-full select-none">
-      
+
       <div className="p-4 border-b border-border bg-background shadow-sm z-10 shrink-0">
         <div className="flex bg-secondary p-1 rounded-lg border border-border/50">
            <button
@@ -189,7 +238,7 @@ export function PatchSidebar({
       </div>
 
       <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
-          
+
           {mode === 'patch' && (
             <div className="flex-1 flex flex-col min-h-0">
               <div className="bg-background border-b border-border shrink-0">
@@ -220,12 +269,23 @@ export function PatchSidebar({
               </div>
               <div className="h-[40%] flex flex-col min-h-0 bg-secondary/5">
                 <div className="px-4 py-2 border-b border-border/50 flex items-center justify-between bg-secondary/10 shrink-0">
-                  <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5"><FileText size={12} /> Changes ({aiPatchFiles.length})</span>
+                  <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5"><FileText size={12} /> Changes ({aiFileCount})</span>
                 </div>
-                <div className="flex-1 overflow-y-auto p-2 space-y-1 custom-scrollbar">
-                  {aiPatchFiles.map(file => (
-                     <button key={file.id} onClick={() => onSelectFile(file.id)} className={cn("w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs transition-all group border border-transparent", selectedFileId === file.id ? "bg-background text-primary border-border shadow-sm" : "hover:bg-background/60 text-muted-foreground hover:text-foreground hover:border-border/50")}>
-                     </button>
+                <div className="flex-1 overflow-y-auto custom-scrollbar">
+                  {aiFlat.map(({ node, depth }) => (
+                    <div key={node.id} style={{ height: 28, position: 'relative' }}>
+                      <PatchFileTreeNode
+                        node={node}
+                        depth={depth}
+                        isExpanded={expandedDirIds.has(node.id)}
+                        isSelected={node.kind === 'file' && selectedFileId === node.id}
+                        isChecked={false}
+                        isDisabled={false}
+                        showCheckbox={false}
+                        onSelectFile={onSelectFile}
+                        onToggleExpand={toggleExpand}
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
@@ -291,12 +351,12 @@ export function PatchSidebar({
                   </div>
                 )}
               </div>
-              
+
               <div className="flex-1 flex flex-col min-h-0 bg-secondary/5">
                 <div className="px-4 py-2 border-b border-border/50 flex items-center justify-between bg-secondary/10 shrink-0">
-                  <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5"><FileText size={12} /> Changes ({gitFiles.length})</span>
+                  <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider flex items-center gap-1.5"><FileText size={12} /> Changes ({gitFileCount})</span>
                 </div>
-                <div className="flex-1 overflow-y-auto p-2 space-y-1 custom-scrollbar">
+                <div className="flex-1 overflow-y-auto p-2 custom-scrollbar">
                   {manualFile && (
                     <button onClick={() => onSelectFile(manualFile.id)} className={cn("w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs transition-all group border", selectedFileId === manualFile.id ? "bg-background text-primary border-border shadow-sm" : "border-dashed border-border/50 hover:bg-background/60 text-muted-foreground hover:text-foreground")}>
                       <ArrowRightLeft size={14} />
@@ -304,69 +364,24 @@ export function PatchSidebar({
                     </button>
                   )}
 
-                  {gitFiles.length > 0 && manualFile && <div className="h-px bg-border/50 my-2"/>}
+                  {gitFlat.length > 0 && manualFile && <div className="h-px bg-border/50 my-2"/>}
 
-                  {gitFiles.map(file => {
-                    const isSelected = selectedFileId === file.id;
-                    const isChecked = selectedExportIds?.has(file.id);
-                    const isDisabled = file.isBinary || file.isLarge;
-
-                    return (
-                        <div key={file.id} className={cn("flex items-center gap-1 rounded-lg transition-all group/row mb-1", isSelected ? "bg-background border border-border shadow-sm" : "hover:bg-background/60 border border-transparent")}>
-
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    if (!isDisabled && onToggleExport) {
-                                        onToggleExport(file.id, !isChecked);
-                                    }
-                                }}
-                                disabled={isDisabled}
-                                className={cn(
-                                    "pl-2 py-2 pr-1 cursor-pointer transition-opacity flex items-center justify-center",
-                                    isDisabled ? "opacity-30 cursor-not-allowed" : "hover:text-primary opacity-60 hover:opacity-100"
-                                )}
-                                title={isDisabled ? t('patch.binaryFile') : t('patch.export')}
-                            >
-                                {isDisabled ? (
-                                   <Square size={14} className="text-muted-foreground" />
-                                ) : isChecked ? (
-                                   <CheckSquare size={14} className="text-primary" />
-                                ) : (
-                                   <Square size={14} className="text-muted-foreground" />
-                                )}
-                            </button>
-
-                            <button 
-                                onClick={() => onSelectFile(file.id)} 
-                                className={cn(
-                                    "flex-1 flex items-center justify-between gap-2 pr-3 py-2 text-xs overflow-hidden",
-                                    isSelected ? "text-primary font-medium" : "text-muted-foreground group-hover/row:text-foreground"
-                                )}
-                            >
-                                <div className="flex items-center gap-2 min-w-0">
-                                    {file.isBinary ? (
-                                        <div title={t('patch.binaryFile')} className="shrink-0 text-orange-400 flex items-center">
-                                            <FileImage size={12} />
-                                        </div>
-                                    ) : file.isLarge ? (
-                                        <div title={t('patch.largeFile')} className="shrink-0 text-red-400 flex items-center">
-                                            <AlertOctagon size={12} />
-                                        </div>
-                                    ) : null}
-                                    
-                                    <span className={cn("truncate text-left", isDisabled && "opacity-60 decoration-slate-400")}>
-                                        {file.path}
-                                    </span>
-                                </div>
-                                
-                                <span className={cn("text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded shrink-0", file.gitStatus === 'Added' && "bg-green-500/20 text-green-500", file.gitStatus === 'Modified' && "bg-blue-500/20 text-blue-500", file.gitStatus === 'Deleted' && "bg-red-500/20 text-red-600", file.gitStatus === 'Renamed' && "bg-purple-500/20 text-purple-500")}>
-                                    {file.gitStatus?.charAt(0)}
-                                </span>
-                            </button>
-                        </div>
-                    );
-                  })}
+                  {gitFlat.map(({ node, depth }) => (
+                    <div key={node.id} style={{ height: 28, position: 'relative' }}>
+                      <PatchFileTreeNode
+                        node={node}
+                        depth={depth}
+                        isExpanded={expandedDirIds.has(node.id)}
+                        isSelected={node.kind === 'file' && selectedFileId === node.id}
+                        isChecked={selectedExportIds?.has(node.id) ?? false}
+                        isDisabled={node.fileData?.isBinary || node.fileData?.isLarge || false}
+                        showCheckbox={true}
+                        onSelectFile={onSelectFile}
+                        onToggleExpand={toggleExpand}
+                        onToggleExport={onToggleExport}
+                      />
+                    </div>
+                  ))}
 
                   {files.length <= 1 && (!workspaceRoot || !!gitError || !repositoryLoaded) && (
                     <div className="text-center text-xs text-muted-foreground/60 p-4">
