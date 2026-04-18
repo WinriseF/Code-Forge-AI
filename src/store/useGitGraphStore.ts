@@ -27,8 +27,9 @@ interface GitGraphState {
   diffOldHash: string | null;
   diffNewHash: string | null;
 
-  // Diff comparison
-  compareBaseHash: string | null;
+  // Compare view
+  isCompareView: boolean;
+  compareTargetHash: string | null;
 
   // UI
   showDiffPanel: boolean;
@@ -40,10 +41,10 @@ interface GitGraphState {
   loadCommits: (projectPath: string) => Promise<void>;
   loadMoreCommits: (projectPath: string) => Promise<void>;
   selectCommit: (hash: string, projectPath: string) => Promise<void>;
+  compareWith: (hash: string, projectPath: string) => Promise<void>;
   selectFile: (path: string) => void;
   closeDiff: () => void;
-  startCompare: (hash: string) => void;
-  cancelCompare: () => void;
+  cancelCompare: (projectPath: string) => void;
 }
 
 const BRANCH_COLORS = [
@@ -79,6 +80,8 @@ function errorToString(err: unknown): string {
   return String(err);
 }
 
+const EMPTY_TREE_HASH = '4b825dc642cb6eb9a060e54bf899d15363d7aa91';
+
 export const useGitGraphStore = create<GitGraphState>((set, get) => ({
   commits: [],
   selectedCommitHash: null,
@@ -87,7 +90,8 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
   hasMoreCommits: true,
   diffOldHash: null,
   diffNewHash: null,
-  compareBaseHash: null,
+  isCompareView: false,
+  compareTargetHash: null,
   showDiffPanel: false,
   isLoading: false,
   isLoadingMore: false,
@@ -103,7 +107,8 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
       selectedFilePath: null,
       hasMoreCommits: true,
       showDiffPanel: false,
-      compareBaseHash: null,
+      isCompareView: false,
+      compareTargetHash: null,
       diffOldHash: null,
       diffNewHash: null,
     });
@@ -157,53 +162,19 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
   },
 
   selectCommit: async (hash: string, projectPath: string) => {
-    const state = get();
-
-    // Compare mode: diff two commits
-    if (state.compareBaseHash && state.compareBaseHash !== hash) {
-      const baseHash = state.compareBaseHash;
-      // Keep compareBaseHash during loading so UI shows "Comparing..." indicator
-      set({ isLoading: true, error: null, selectedFilePath: null, showDiffPanel: false });
-      try {
-        const result = await invoke<GitDiffFile[]>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
-          projectPath,
-          oldHash: baseHash,
-          newHash: hash,
-        });
-        set({
-          selectedCommitHash: hash,
-          diffFiles: mapDiffFiles(result),
-          selectedFilePath: null,
-          showDiffPanel: false,
-          isLoading: false,
-          diffOldHash: baseHash,
-          diffNewHash: hash,
-          compareBaseHash: null,
-        });
-      } catch (err: unknown) {
-        set({ error: errorToString(err), isLoading: false, compareBaseHash: null });
-      }
-      return;
-    }
-
-    // Cancel compare if clicking same commit
-    if (state.compareBaseHash === hash) {
-      set({ compareBaseHash: null });
-      return;
-    }
-
-    // Normal: show single commit diff (commit^ vs commit)
     set({
       selectedCommitHash: hash,
       selectedFilePath: null,
       showDiffPanel: false,
       isLoading: true,
       error: null,
+      isCompareView: false,
+      compareTargetHash: null,
     });
 
     // Working tree: diff HEAD vs working directory
     if (hash === WORKING_TREE_HASH) {
-      const headCommit = state.commits.find((c) => c.refs.some((r) => r.kind === 'Head'));
+      const headCommit = get().commits.find((c) => c.refs.some((r) => r.kind === 'Head'));
       const headHash = headCommit?.hash ?? '';
       try {
         const result = await invoke<GitDiffFile[]>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
@@ -223,14 +194,14 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
       return;
     }
 
-    const commit = state.commits.find((c) => c.hash === hash);
-    if (!commit) { set({ isLoading: false }); return; }
+    const commit = get().commits.find((c) => c.hash === hash);
+    if (!commit) {
+      set({ isLoading: false });
+      return;
+    }
 
     try {
-      const oldHash = commit.parent_hashes.length > 0
-        ? commit.parent_hashes[0]
-        : '4b825dc642cb6eb9a060e54bf899d15363d7aa91'; // git empty tree
-
+      const oldHash = commit.parent_hashes.length > 0 ? commit.parent_hashes[0] : EMPTY_TREE_HASH;
       const result = await invoke<GitDiffFile[]>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
         projectPath,
         oldHash,
@@ -247,6 +218,32 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
     }
   },
 
+  compareWith: async (hash: string, projectPath: string) => {
+    const state = get();
+    // No base selected or clicking the same commit — ignore
+    if (!state.selectedCommitHash || state.selectedCommitHash === hash) return;
+
+    set({ isLoading: true, error: null, selectedFilePath: null, showDiffPanel: false });
+
+    try {
+      const result = await invoke<GitDiffFile[]>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
+        projectPath,
+        oldHash: state.selectedCommitHash,
+        newHash: hash,
+      });
+      set({
+        diffFiles: mapDiffFiles(result),
+        isLoading: false,
+        diffOldHash: state.selectedCommitHash,
+        diffNewHash: hash,
+        isCompareView: true,
+        compareTargetHash: hash,
+      });
+    } catch (err: unknown) {
+      set({ error: errorToString(err), isLoading: false });
+    }
+  },
+
   selectFile: (path: string) => {
     set({ selectedFilePath: path, showDiffPanel: true });
   },
@@ -255,12 +252,13 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
     set({ showDiffPanel: false, selectedFilePath: null });
   },
 
-  startCompare: (hash: string) => {
-    set({ compareBaseHash: hash, error: null });
-  },
-
-  cancelCompare: () => {
-    set({ compareBaseHash: null });
+  cancelCompare: (projectPath: string) => {
+    const state = get();
+    if (state.selectedCommitHash) {
+      void state.selectCommit(state.selectedCommitHash, projectPath);
+    } else {
+      set({ isCompareView: false, compareTargetHash: null });
+    }
   },
 }));
 

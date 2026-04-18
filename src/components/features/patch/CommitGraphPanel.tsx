@@ -2,7 +2,6 @@ import { useMemo, useRef, useCallback, useEffect, useState } from 'react';
 import { useGitGraphStore, BRANCH_COLORS, ROW_HEIGHT, WORKING_TREE_HASH } from '@/store/useGitGraphStore';
 import { computeGitGraphLayout, type GitGraphEdgeLayout } from './gitGraphLayout';
 import { CommitHoverCard } from './CommitHoverCard';
-import { CompareModeBanner } from './CompareModeBanner';
 import { FolderOpen } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { GraphCommit } from './patch_types';
@@ -12,6 +11,7 @@ const GRAPH_CENTER_X = Math.round(GRAPH_COLUMN_WIDTH / 2);
 const COMMIT_COLUMN_WIDTH = 16;
 const DOT_RADIUS = 5;
 const SELECTED_DOT_RADIUS = 6;
+const COMPARE_TARGET_DOT_RADIUS = 6;
 
 interface CommitGraphPanelProps {
   projectRoot: string | undefined;
@@ -23,13 +23,13 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
   const loadCommits = useGitGraphStore((s) => s.loadCommits);
   const loadMoreCommits = useGitGraphStore((s) => s.loadMoreCommits);
   const selectCommit = useGitGraphStore((s) => s.selectCommit);
+  const compareWith = useGitGraphStore((s) => s.compareWith);
   const hasMoreCommits = useGitGraphStore((s) => s.hasMoreCommits);
   const isLoading = useGitGraphStore((s) => s.isLoading);
   const isLoadingMore = useGitGraphStore((s) => s.isLoadingMore);
   const error = useGitGraphStore((s) => s.error);
-  const compareBaseHash = useGitGraphStore((s) => s.compareBaseHash);
-  const startCompare = useGitGraphStore((s) => s.startCompare);
-  const cancelCompare = useGitGraphStore((s) => s.cancelCompare);
+  const isCompareView = useGitGraphStore((s) => s.isCompareView);
+  const compareTargetHash = useGitGraphStore((s) => s.compareTargetHash);
 
   const { t } = useTranslation();
 
@@ -39,10 +39,6 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
   const [viewHeight, setViewHeight] = useState(800);
   const [hoveredCommit, setHoveredCommit] = useState<GraphCommit | null>(null);
   const [hoverAnchorRect, setHoverAnchorRect] = useState<DOMRect | null>(null);
-  const compareBaseCommit = useMemo(
-    () => commits.find((commit) => commit.hash === compareBaseHash),
-    [commits, compareBaseHash],
-  );
 
   const layout = useMemo(() => computeGitGraphLayout(commits), [commits]);
   const totalRows = commits.length + 1; // +1 for the working tree pseudo-row
@@ -110,14 +106,14 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && useGitGraphStore.getState().compareBaseHash) {
-        cancelCompare();
+      if (e.key === 'Escape' && projectRoot) {
+        useGitGraphStore.getState().cancelCompare(projectRoot);
       }
     };
 
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [cancelCompare]);
+  }, [projectRoot]);
 
   const handleClick = useCallback(
     (hash: string) => {
@@ -131,9 +127,11 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
   const handleContextMenu = useCallback(
     (e: React.MouseEvent, hash: string) => {
       e.preventDefault();
-      startCompare(hash);
+      if (projectRoot) {
+        void compareWith(hash, projectRoot);
+      }
     },
-    [startCompare],
+    [projectRoot, compareWith],
   );
 
   useEffect(() => {
@@ -239,14 +237,6 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
     );
   }
 
-  const compareBaseShortHash = compareBaseCommit?.short_hash ?? compareBaseHash?.slice(0, 7);
-  const compareBannerTitle = compareBaseShortHash
-    ? t('patch.compareBaseReady', { hash: compareBaseShortHash })
-    : '';
-  const compareBannerDescription = compareBaseCommit
-    ? `${compareBaseCommit.message} - ${t('patch.comparePickTarget', 'Click another commit or the working tree to compare')}`
-    : t('patch.comparePickTarget', 'Click another commit or the working tree to compare');
-
   return (
     <div className="w-[340px] min-w-[340px] border-r border-border bg-background flex flex-col">
       {error && commits.length > 0 && (
@@ -258,18 +248,6 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
       <div className="h-10 flex items-center justify-between px-3 border-b border-border">
         <span className="text-xs font-semibold text-muted-foreground">{t('patch.gitHistory', 'Git History')}</span>
       </div>
-
-      {compareBaseHash && compareBannerTitle && (
-        <div className="px-3 py-2 border-b border-border">
-          <CompareModeBanner
-            compact
-            title={compareBannerTitle}
-            description={compareBannerDescription}
-            cancelLabel={t('patch.cancelCompare', 'Cancel compare')}
-            onCancel={cancelCompare}
-          />
-        </div>
-      )}
 
       <div ref={scrollRef} className="flex-1 overflow-y-auto overflow-x-hidden relative">
         <svg
@@ -326,6 +304,7 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
             }`}
             style={{ height: ROW_HEIGHT }}
             onClick={() => handleClick(WORKING_TREE_HASH)}
+            onContextMenu={(e) => handleContextMenu(e, WORKING_TREE_HASH)}
           >
             <div className="shrink-0 relative" style={{ width: graphWidth }}>
               <FolderOpen
@@ -352,7 +331,7 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
       if (!node) continue;
 
       const isSelected = selectedCommitHash === commit.hash;
-      const isCompareBase = compareBaseHash === commit.hash;
+      const isCompareTarget = isCompareView && compareTargetHash === commit.hash;
       const laneColor = getLaneColor(node.colorIndex);
       const primaryRef = commit.refs.find((ref) => ref.kind !== 'RemoteBranch') ?? commit.refs[0];
       const extraRefCount = primaryRef ? commit.refs.length - 1 : 0;
@@ -363,7 +342,7 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
           className={`group flex items-stretch cursor-pointer transition-colors border-l-2 ${
             isSelected
               ? 'border-l-primary'
-              : isCompareBase
+              : isCompareTarget
                 ? 'border-l-yellow-500'
                 : 'border-l-transparent'
           }`}
@@ -378,10 +357,10 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
               <circle
                 cx={laneToX(node.lane)}
                 cy={10}
-                r={isSelected ? SELECTED_DOT_RADIUS : DOT_RADIUS}
-                fill={laneColor}
-                stroke={isSelected ? 'hsl(var(--foreground))' : laneColor}
-                strokeWidth={isSelected ? 2 : 0}
+                r={isSelected ? SELECTED_DOT_RADIUS : isCompareTarget ? COMPARE_TARGET_DOT_RADIUS : DOT_RADIUS}
+                fill={isCompareTarget ? '#eab308' : laneColor}
+                stroke={isSelected ? 'hsl(var(--foreground))' : isCompareTarget ? '#ca8a04' : laneColor}
+                strokeWidth={isSelected || isCompareTarget ? 2 : 0}
               />
             </svg>
           </div>
@@ -390,7 +369,7 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
             className={`flex-1 min-w-0 pr-3 flex items-center ${
               isSelected
                 ? 'bg-secondary'
-                : isCompareBase
+                : isCompareTarget
                   ? 'bg-yellow-500/10'
                   : 'group-hover:bg-secondary/30'
             }`}

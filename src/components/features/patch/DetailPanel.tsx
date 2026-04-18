@@ -2,8 +2,7 @@ import { useMemo, useState, useEffect } from 'react';
 import { useGitGraphStore, WORKING_TREE_HASH } from '@/store/useGitGraphStore';
 import { buildPatchFileTree, flattenPatchTree, allDirIds } from '@/lib/patch_tree_utils';
 import { PatchFileTreeNode } from './PatchFileTreeNode';
-import { CompareModeBanner } from './CompareModeBanner';
-import { FileDown, GitCompare, FolderOpen } from 'lucide-react';
+import { FileDown, FolderOpen, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 interface DetailPanelProps {
@@ -11,16 +10,14 @@ interface DetailPanelProps {
   projectRoot?: string;
 }
 
-export function DetailPanel({ onExport, projectRoot }: DetailPanelProps) {
+export function DetailPanel({ onExport }: DetailPanelProps) {
   const commits = useGitGraphStore((s) => s.commits);
   const selectedCommitHash = useGitGraphStore((s) => s.selectedCommitHash);
   const diffFiles = useGitGraphStore((s) => s.diffFiles);
   const selectedFilePath = useGitGraphStore((s) => s.selectedFilePath);
   const selectFile = useGitGraphStore((s) => s.selectFile);
-  const selectCommit = useGitGraphStore((s) => s.selectCommit);
-  const startCompare = useGitGraphStore((s) => s.startCompare);
-  const cancelCompare = useGitGraphStore((s) => s.cancelCompare);
-  const compareBaseHash = useGitGraphStore((s) => s.compareBaseHash);
+  const isCompareView = useGitGraphStore((s) => s.isCompareView);
+  const compareTargetHash = useGitGraphStore((s) => s.compareTargetHash);
   const isLoading = useGitGraphStore((s) => s.isLoading);
 
   const { t } = useTranslation();
@@ -31,24 +28,21 @@ export function DetailPanel({ onExport, projectRoot }: DetailPanelProps) {
     () => commits.find((c) => c.hash === selectedCommitHash),
     [commits, selectedCommitHash],
   );
-  const compareBaseCommit = useMemo(
-    () => commits.find((c) => c.hash === compareBaseHash),
-    [commits, compareBaseHash],
+  const compareTargetCommit = useMemo(
+    () => commits.find((c) => c.hash === compareTargetHash),
+    [commits, compareTargetHash],
   );
 
-  // Build tree once, derive both auto-expand and display from it
   const fileTree = useMemo(() => {
     if (diffFiles.length === 0) return null;
     return buildPatchFileTree(diffFiles);
   }, [diffFiles]);
 
-  // Auto-expand all dirs when tree changes
   useEffect(() => {
     if (!fileTree) return;
     setExpandedDirs(new Set(allDirIds(fileTree)));
   }, [fileTree]);
 
-  // Flatten tree for rendering
   const displayedNodes = useMemo(() => {
     if (!fileTree) return [];
     return flattenPatchTree(fileTree, expandedDirs, 0);
@@ -73,30 +67,45 @@ export function DetailPanel({ onExport, projectRoot }: DetailPanelProps) {
   }
 
   const isWorkingTree = selectedCommitHash === WORKING_TREE_HASH;
-
   const fileCount = diffFiles.length;
-  const compareBaseShortHash = compareBaseCommit?.short_hash ?? compareBaseHash?.slice(0, 7);
-  const compareBannerTitle = compareBaseShortHash
-    ? t('patch.compareBaseReady', { hash: compareBaseShortHash })
-    : '';
-  const compareBannerDescription = compareBaseCommit
-    ? `${compareBaseCommit.message} - ${t('patch.comparePickTarget', 'Click another commit or the working tree to compare')}`
-    : t('patch.comparePickTarget', 'Click another commit or the working tree to compare');
-  const canCompareSelectedToBase = Boolean(
-    projectRoot
-    && selectedCommit
-    && !isWorkingTree
-    && compareBaseHash
-    && compareBaseHash !== selectedCommit.hash,
-  );
-  const canSetSelectedAsBase = Boolean(selectedCommit && !isWorkingTree && compareBaseHash !== selectedCommit.hash);
-  const isSelectedCompareBase = Boolean(selectedCommit && compareBaseHash === selectedCommit.hash);
+
+  const baseShortHash = isWorkingTree
+    ? t('patch.workingTree', 'Working Tree')
+    : selectedCommit?.short_hash ?? selectedCommitHash?.slice(0, 7);
+
+  const targetShortHash = compareTargetCommit?.short_hash ?? compareTargetHash?.slice(0, 7);
+  const targetIsWorkingTree = compareTargetHash === WORKING_TREE_HASH;
 
   return (
     <div className="flex-1 flex flex-col bg-background min-w-0 overflow-hidden">
       {/* Header */}
       <div className="px-4 py-3 border-b border-border">
-        {isWorkingTree ? (
+        {isCompareView ? (
+          <>
+            <div className="flex items-center gap-2 text-sm font-semibold">
+              <span className="font-mono text-green-500">{baseShortHash}</span>
+              <ArrowRight size={14} className="text-muted-foreground shrink-0" />
+              <span className={`font-mono ${targetIsWorkingTree ? 'text-orange-400' : 'text-green-500'}`}>
+                {targetIsWorkingTree ? t('patch.workingTree', 'Working Tree') : targetShortHash}
+              </span>
+            </div>
+            {compareTargetCommit && (
+              <>
+                <p className="text-xs text-muted-foreground mt-1 truncate">{compareTargetCommit.message}</p>
+                <div className="flex items-center gap-2 mt-1 text-[11px] text-muted-foreground">
+                  <span>{compareTargetCommit.author}</span>
+                  <span>&middot;</span>
+                  <span>{compareTargetCommit.date}</span>
+                </div>
+              </>
+            )}
+            {targetIsWorkingTree && (
+              <p className="text-[11px] text-orange-400 mt-1">
+                {t('patch.unstagedChanges')}
+              </p>
+            )}
+          </>
+        ) : isWorkingTree ? (
           <>
             <h3 className="text-sm font-semibold leading-snug flex items-center gap-2 text-orange-400">
               <FolderOpen size={14} />
@@ -138,54 +147,11 @@ export function DetailPanel({ onExport, projectRoot }: DetailPanelProps) {
         ) : null}
       </div>
 
-      {compareBaseHash && compareBannerTitle && (
-        <div className="px-3 py-2 border-b border-border">
-          <CompareModeBanner
-            title={compareBannerTitle}
-            description={compareBannerDescription}
-            cancelLabel={t('patch.cancelCompare', 'Cancel compare')}
-            onCancel={cancelCompare}
-          />
-        </div>
-      )}
-
       {/* Toolbar */}
       <div className="flex items-center gap-1 px-3 py-1.5 border-b border-border bg-secondary/20">
         <span className="text-[10px] text-muted-foreground mr-auto">
           {isLoading ? t('patch.loadingCommits', 'Loading...') : t('patch.filesChanged', '{{count}} file(s) changed').replace('{{count}}', String(fileCount))}
         </span>
-
-        {canCompareSelectedToBase && selectedCommit && projectRoot && (
-          <button
-            onClick={() => void selectCommit(selectedCommit.hash, projectRoot)}
-            className="flex items-center gap-1 px-2 py-1 rounded text-[10px] bg-yellow-500/15 text-yellow-500 hover:bg-yellow-500/20 hover:text-yellow-400 transition-colors"
-          >
-            <GitCompare size={12} />
-            {t('patch.compareToBase', 'Compare to base')}
-          </button>
-        )}
-
-        {canSetSelectedAsBase && selectedCommit && (
-          <button
-            onClick={() => startCompare(selectedCommit.hash)}
-            className="flex items-center gap-1 px-2 py-1 rounded text-[10px] hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors"
-            title={t('patch.setCompareBase', 'Set base')}
-          >
-            <GitCompare size={12} />
-            {t('patch.setCompareBase', 'Set base')}
-          </button>
-        )}
-
-        {isSelectedCompareBase && (
-          <button
-            type="button"
-            disabled
-            className="flex items-center gap-1 px-2 py-1 rounded text-[10px] bg-yellow-500/10 text-yellow-500/80 cursor-default"
-          >
-            <GitCompare size={12} />
-            {t('patch.currentCompareBase', 'Current base')}
-          </button>
-        )}
 
         <button
           onClick={onExport}
