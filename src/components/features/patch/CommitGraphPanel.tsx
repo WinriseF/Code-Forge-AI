@@ -9,7 +9,6 @@ import type { GraphCommit } from './patch_types';
 const SW = 11;
 const CR = 5;
 const CIRCLE_R = 4;
-const GRAPH_COLUMN_WIDTH = 124;
 
 function laneX(index: number) {
   return SW * (index + 1);
@@ -157,7 +156,7 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
 
   if (isLoading && commits.length === 0) {
     return (
-      <div className="w-[340px] min-w-[340px] border-r border-border bg-background flex items-center justify-center">
+      <div className="w-full h-full bg-background flex items-center justify-center">
         <div className="flex flex-col items-center gap-2 text-muted-foreground">
           <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
           <span className="text-xs">{t('patch.loadingCommits', 'Loading commits...')}</span>
@@ -168,7 +167,7 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
 
   if (error && commits.length === 0) {
     return (
-      <div className="w-[340px] min-w-[340px] border-r border-border bg-background flex items-center justify-center p-4">
+      <div className="w-full h-full bg-background flex items-center justify-center p-4">
         <p className="text-xs text-destructive text-center">{error}</p>
       </div>
     );
@@ -176,21 +175,21 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
 
   if (commits.length === 0) {
     return (
-      <div className="w-[340px] min-w-[340px] border-r border-border bg-background flex items-center justify-center">
+      <div className="w-full h-full bg-background flex items-center justify-center">
         <span className="text-xs text-muted-foreground">{t('patch.noCommits', 'No commits yet')}</span>
       </div>
     );
   }
 
   return (
-    <div className="w-[340px] min-w-[340px] border-r border-border bg-background flex flex-col">
+    <div className="w-full h-full bg-background flex flex-col">
       {error && commits.length > 0 && (
         <div className="px-3 py-1.5 bg-destructive/10 border-b border-destructive/20 text-xs text-destructive">
           {error}
         </div>
       )}
 
-      <div className="h-10 flex items-center justify-between px-3 border-b border-border">
+      <div className="h-10 flex items-center px-3 border-b border-border">
         <span className="text-xs font-semibold text-muted-foreground">{t('patch.gitHistory', 'Git History')}</span>
       </div>
 
@@ -218,7 +217,10 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
     for (let i = visibleStart; i < visibleEnd; i++) {
       if (i === 0) {
         const isSelected = selectedCommitHash === WORKING_TREE_HASH;
-        const firstCommitX = layout.rows.length > 0 ? laneX(layout.rows[0].circleIndex) : laneX(0);
+        const firstRow = layout.rows[0];
+        const svgW = firstRow
+          ? SW * (Math.max(firstRow.inputSwimlanes.length, firstRow.outputSwimlanes.length, 1) + 1)
+          : SW * 2;
 
         rows.push(
           <div
@@ -232,12 +234,8 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
             onClick={() => handleClick(WORKING_TREE_HASH)}
             onContextMenu={(e) => handleContextMenu(e, WORKING_TREE_HASH)}
           >
-            <div className="shrink-0 relative" style={{ width: GRAPH_COLUMN_WIDTH, height: ROW_HEIGHT }}>
-              <FolderOpen
-                size={16}
-                className="text-orange-400 absolute"
-                style={{ left: `${firstCommitX - 8}px`, top: `${ROW_HEIGHT / 2 - 8}px` }}
-              />
+            <div className={`shrink-0 relative flex items-center justify-center ${isSelected ? 'bg-secondary' : 'group-hover:bg-secondary/30'}`} style={{ width: svgW }}>
+              <FolderOpen size={14} className="text-orange-400" />
             </div>
             <div className={`flex-1 min-w-0 pr-3 flex items-center ${isSelected ? 'bg-secondary' : 'group-hover:bg-secondary/30'}`}>
               <div className="min-w-0">
@@ -277,7 +275,13 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
           onMouseEnter={(e) => openHoverCard(commit, e.currentTarget)}
           onMouseLeave={scheduleHoverClose}
         >
-          <div className="shrink-0" style={{ width: GRAPH_COLUMN_WIDTH }}>
+          <div className={`shrink-0 ${
+              isSelected
+                ? 'bg-secondary'
+                : isCompareTarget
+                  ? 'bg-yellow-500/10'
+                  : 'group-hover:bg-secondary/30'
+            }`}>
             {renderRowGraph(row, isSelected, isCompareTarget)}
           </div>
 
@@ -491,8 +495,10 @@ function renderRowGraph(
     );
   }
 
+  const w = SW * (Math.max(inputSwimlanes.length, outputSwimlanes.length, 1) + 1);
+
   return (
-    <svg width={GRAPH_COLUMN_WIDTH} height={ROW_HEIGHT} viewBox={`0 0 ${GRAPH_COLUMN_WIDTH} ${ROW_HEIGHT}`}>
+    <svg width={w} height={ROW_HEIGHT} viewBox={`0 0 ${w} ${ROW_HEIGHT}`}>
       {elements}
     </svg>
   );

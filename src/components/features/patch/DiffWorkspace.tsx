@@ -18,7 +18,7 @@ interface DiffWorkspaceProps {
   isSidebarOpen?: boolean;
   onToggleSidebar?: () => void;
   isReadOnly?: boolean;
-  onExport?: () => void; 
+  onExport?: () => void;
 }
 
 export function DiffWorkspace({
@@ -110,26 +110,30 @@ export function DiffWorkspace({
         
         {/* Left Side: Sidebar Toggle & File Info */}
         <div className="flex items-center gap-3 min-w-0 flex-1">
-            <button
-                onClick={onToggleSidebar}
-                className="p-2 rounded-md hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors shrink-0"
-                title={isSidebarOpen ? t('common.hideSidebar') : t('common.showSidebar')}
-            >
-                {isSidebarOpen ? <PanelLeftClose size={18} /> : <PanelLeftOpen size={18} />}
-            </button>
+            {onToggleSidebar && (
+              <button
+                  onClick={onToggleSidebar}
+                  className="p-2 rounded-md hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors shrink-0"
+                  title={isSidebarOpen ? t('common.hideSidebar') : t('common.showSidebar')}
+              >
+                  {isSidebarOpen ? <PanelLeftClose size={18} /> : <PanelLeftOpen size={18} />}
+              </button>
+            )}
 
             {selectedFile && (
                 <div className="flex flex-col min-w-0">
                     <h2 className="text-sm font-semibold flex items-center gap-2 truncate">
                         <span className="truncate" title={selectedFile.path}>{selectedFile.path}</span>
-                        {hasChanges ? 
+                        {hasChanges ?
                             <span className="shrink-0 text-[10px] bg-yellow-500/10 text-yellow-600 px-2 py-0.5 rounded-full border border-yellow-500/20 font-medium">{t('patch.modified')}</span> :
                             <span className="shrink-0 text-[10px] bg-secondary text-muted-foreground px-2 py-0.5 rounded-full font-medium">{t('patch.noChangesLabel')}</span>
                         }
                     </h2>
-                    <span className="text-[10px] text-muted-foreground/60 truncate font-mono mt-0.5">
-                        {selectedFile.id}
-                    </span>
+                    {selectedFile.id !== selectedFile.path && (
+                      <span className="text-[10px] text-muted-foreground/60 truncate font-mono mt-0.5">
+                          {selectedFile.id}
+                      </span>
+                    )}
                 </div>
             )}
         </div>

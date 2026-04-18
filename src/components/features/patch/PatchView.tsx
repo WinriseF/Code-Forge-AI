@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { save } from '@tauri-apps/plugin-dialog';
 import { writeText as writeClipboard } from '@tauri-apps/plugin-clipboard-manager';
+import { motion, useMotionValue, AnimatePresence } from 'framer-motion';
 import { useAppStore } from '@/store/useAppStore';
 import { useGitGraphStore, GIT_PLUGIN_PREFIX } from '@/store/useGitGraphStore';
 import { CommitGraphPanel } from './CommitGraphPanel';
@@ -9,9 +10,12 @@ import { DiffWorkspace } from './DiffWorkspace';
 import { ExportDialog } from './dialogs/ExportDialog';
 import { Toast, ToastType } from '@/components/ui/Toast';
 import { PatchFileItem, ExportFormat, ExportLayout } from './patch_types';
-import { cn } from '@/lib/utils';
 import { invoke } from '@tauri-apps/api/core';
 import { useTranslation } from 'react-i18next';
+
+const MIN_GIT = 200;
+const MAX_GIT = 460;
+const DEFAULT_GIT = 300;
 
 export function PatchView() {
   const { t } = useTranslation();
@@ -32,16 +36,47 @@ export function PatchView() {
     type: 'success',
   });
 
+  const gitWidth = useMotionValue(DEFAULT_GIT);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const gitDragRef = useRef(false);
+
+  // Drag handler
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      if (!containerRef.current || !gitDragRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      gitWidth.set(Math.max(MIN_GIT, Math.min(e.clientX - rect.left, MAX_GIT)));
+    };
+    const onUp = () => {
+      if (gitDragRef.current) {
+        gitDragRef.current = false;
+        document.body.style.userSelect = '';
+        document.body.style.cursor = '';
+      }
+    };
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+    return () => {
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseup', onUp);
+    };
+  }, [gitWidth]);
+
+  const startGitDrag = (e: React.MouseEvent) => {
+    e.preventDefault();
+    gitDragRef.current = true;
+    document.body.style.userSelect = 'none';
+    document.body.style.cursor = 'col-resize';
+  };
+
   const showNotification = (msg: string, type: ToastType = 'success') => {
     setToastState({ show: true, msg, type });
   };
 
-  // Find selected file for DiffWorkspace
   const selectedFile: PatchFileItem | null = selectedFilePath
     ? diffFiles.find((f) => f.path === selectedFilePath) ?? null
     : null;
 
-  // Export handler
   const handleExportTrigger = () => {
     if (selectedExportPaths.size === 0) {
       showNotification(t('patch.selectOne'), 'warning');
@@ -70,7 +105,6 @@ export function PatchView() {
 
       if (filePath) {
         const selectedPaths = Array.from(selectedExportPaths);
-
         await invoke(`${GIT_PLUGIN_PREFIX}export_git_diff`, {
           projectPath: projectRoot,
           oldHash: diffOldHash,
@@ -88,34 +122,36 @@ export function PatchView() {
     }
   };
 
+  // ESC to close diff popup
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && showDiffPanel) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeDiff();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown, true);
+    return () => window.removeEventListener('keydown', handleKeyDown, true);
+  }, [showDiffPanel, closeDiff]);
+
   return (
-    <div className="h-full flex overflow-hidden bg-background relative">
-      {/* Left: Commit Graph */}
-      <CommitGraphPanel projectRoot={projectRoot ?? undefined} />
-
-      {/* Middle: Detail Panel */}
-      <DetailPanel onExport={handleExportTrigger} />
-
-      {/* Right: Diff Panel (slides in) */}
-      <div
-        className={cn(
-          'shrink-0 overflow-hidden border-l border-border transition-all duration-300 ease-in-out',
-          showDiffPanel && selectedFile ? 'w-[50%] opacity-100' : 'w-0 opacity-0 border-none',
-        )}
+    <div ref={containerRef} className="h-full flex overflow-hidden bg-background relative">
+      {/* Git panel */}
+      <motion.div
+        className="shrink-0 overflow-hidden border-r border-border"
+        style={{ width: gitWidth }}
       >
-        {selectedFile && (
-          <DiffWorkspace
-            selectedFile={selectedFile}
-            onSave={() => {}}
-            onCopy={async (txt) => {
-              await writeClipboard(txt);
-              showNotification(t('patch.copied'), 'success');
-            }}
-            isReadOnly={true}
-            isSidebarOpen={false}
-            onToggleSidebar={closeDiff}
-          />
-        )}
+        <CommitGraphPanel projectRoot={projectRoot ?? undefined} />
+      </motion.div>
+      <div
+        onMouseDown={startGitDrag}
+        className="w-1 shrink-0 cursor-col-resize bg-border transition-colors hover:bg-primary/50 active:bg-primary z-10"
+      />
+
+      {/* Detail panel */}
+      <div className="flex-1 min-w-0 overflow-hidden">
+        <DetailPanel onExport={handleExportTrigger} />
       </div>
 
       {/* Export Dialog */}
@@ -133,6 +169,39 @@ export function PatchView() {
         show={toastState.show}
         onDismiss={() => setToastState((prev) => ({ ...prev, show: false }))}
       />
+
+      {/* Diff popup overlay */}
+      <AnimatePresence>
+        {showDiffPanel && selectedFile && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/50 backdrop-blur-sm"
+            onClick={closeDiff}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 8 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 8 }}
+              transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+              className="w-[90vw] h-[85vh] bg-background border border-border rounded-xl shadow-2xl overflow-hidden flex flex-col"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <DiffWorkspace
+                  selectedFile={selectedFile}
+                  onSave={() => {}}
+                  onCopy={async (txt) => {
+                    await writeClipboard(txt);
+                    showNotification(t('patch.copied'), 'success');
+                  }}
+                  isReadOnly={true}
+                />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
