@@ -370,7 +370,6 @@ function renderRowGraph(
     if (inputSwimlanes[i].id === commit.hash) {
       if (i !== circleIndex) {
         const circleX = laneX(circleIndex);
-        // Arc from input position to circle (VS Code: large arc then horizontal)
         const d = inputX > circleX
           ? [
               `M ${inputX} 0`,
@@ -441,8 +440,6 @@ function renderRowGraph(
     const parentCenter = laneX(parentOutIdx);
     const circleX = laneX(circleIndex);
 
-    // Subpath 1: arc from parent left edge at midY down to parent center at bottom
-    // Subpath 2: horizontal from parent left edge at midY to circle
     const d = [
       `M ${parentLeftEdge} ${midY}`,
       `A ${SW} ${midY} 0 0 1 ${parentCenter} ${ROW_HEIGHT}`,
@@ -480,10 +477,10 @@ function renderRowGraph(
   // Circle node (VS Code style)
   const fill = isCompareTarget ? '#eab308' : circleColor;
   if (commit.parent_hashes.length > 1) {
-    // Merge commit: outer circle + inner circle
+    // Merge commit: ring shape (outer filled + inner cutout)
     elements.push(
       <circle key={key++} cx={laneX(circleIndex)} cy={midY} r={CIRCLE_R + 2} fill={fill} strokeWidth={0} />,
-      <circle key={key++} cx={laneX(circleIndex)} cy={midY} r={CIRCLE_R - 1} fill={fill} strokeWidth={0} />,
+      <circle key={key++} cx={laneX(circleIndex)} cy={midY} r={CIRCLE_R - 1} fill="hsl(var(--background))" strokeWidth={0} />,
     );
   } else {
     // Regular node

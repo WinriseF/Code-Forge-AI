@@ -15,7 +15,6 @@ export interface CommitRowViewModel {
 
 export interface GitGraphLayout {
   rows: CommitRowViewModel[];
-  maxSwimlanes: number;
 }
 
 const GRAPH_COLORS = [
@@ -70,10 +69,5 @@ export function computeGitGraphLayout(commits: GraphCommit[]): GitGraphLayout {
     rows.push({ commit, inputSwimlanes, outputSwimlanes, circleIndex, circleColor });
   }
 
-  const maxSwimlanes =
-    rows.length > 0
-      ? Math.max(...rows.map(r => Math.max(r.inputSwimlanes.length, r.outputSwimlanes.length, 1)))
-      : 1;
-
-  return { rows, maxSwimlanes };
+  return { rows };
 }

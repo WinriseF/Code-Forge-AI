@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import {
-  Save, Copy, ArrowDownUp, PanelLeftClose, PanelLeftOpen, Trash2,
-  FileDown
+  Save, Copy, ArrowDownUp, Trash2, FileText,
 } from 'lucide-react';
 import { writeText } from '@tauri-apps/plugin-clipboard-manager';
 import { DiffViewer } from './DiffViewer';
@@ -15,15 +14,11 @@ interface DiffWorkspaceProps {
   onSave: (file: PatchFileItem) => void;
   onCopy: (content: string) => void;
   onManualUpdate?: (original: string, modified: string) => void;
-  isSidebarOpen?: boolean;
-  onToggleSidebar?: () => void;
   isReadOnly?: boolean;
-  onExport?: () => void;
 }
 
 export function DiffWorkspace({
-    selectedFile, onSave, onCopy, onManualUpdate,
-    isSidebarOpen, onToggleSidebar, isReadOnly, onExport
+    selectedFile, onSave, onCopy, onManualUpdate, isReadOnly
 }: DiffWorkspaceProps) {
 
   const { t } = useTranslation();
@@ -31,24 +26,32 @@ export function DiffWorkspace({
   
   const [inputHeight, setInputHeight] = useState(200);
   const isResizingRef = useRef(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const hasChanges = selectedFile ? selectedFile.original !== selectedFile.modified : false;
   const isManual = selectedFile ? !!selectedFile.isManual : false;
 
-  // 拖拽调整高度逻辑
-  const startResizing = () => { isResizingRef.current = true; };
+  const startResizing = () => {
+    isResizingRef.current = true;
+    document.body.style.userSelect = 'none';
+    document.body.style.cursor = 'row-resize';
+  };
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (!isResizingRef.current) return;
-      const newHeight = e.clientY - 88;
+      if (!isResizingRef.current || !containerRef.current) return;
+      const top = containerRef.current.getBoundingClientRect().top;
+      const newHeight = e.clientY - top;
       if (newHeight > 100 && newHeight < window.innerHeight - 200) {
         setInputHeight(newHeight);
       }
     };
 
     const handleMouseUp = () => {
+      if (!isResizingRef.current) return;
       isResizingRef.current = false;
+      document.body.style.userSelect = '';
+      document.body.style.cursor = '';
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -94,7 +97,8 @@ export function DiffWorkspace({
   });
 
   return (
-    <div 
+    <div
+      ref={containerRef}
       className="flex-1 flex flex-col min-h-0 bg-background h-full animate-in fade-in duration-300"
       onContextMenu={async (e) => {
         const selection = window.getSelection()?.toString();
@@ -107,19 +111,9 @@ export function DiffWorkspace({
       
       {/* 1. Toolbar */}
       <div className="h-14 flex items-center justify-between px-4 border-b border-border bg-background/80 backdrop-blur shrink-0 z-20 gap-4">
-        
-        {/* Left Side: Sidebar Toggle & File Info */}
-        <div className="flex items-center gap-3 min-w-0 flex-1">
-            {onToggleSidebar && (
-              <button
-                  onClick={onToggleSidebar}
-                  className="p-2 rounded-md hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors shrink-0"
-                  title={isSidebarOpen ? t('common.hideSidebar') : t('common.showSidebar')}
-              >
-                  {isSidebarOpen ? <PanelLeftClose size={18} /> : <PanelLeftOpen size={18} />}
-              </button>
-            )}
 
+        {/* Left Side: File Info */}
+        <div className="flex items-center gap-3 min-w-0 flex-1">
             {selectedFile && (
                 <div className="flex flex-col min-w-0">
                     <h2 className="text-sm font-semibold flex items-center gap-2 truncate">
@@ -129,11 +123,6 @@ export function DiffWorkspace({
                             <span className="shrink-0 text-[10px] bg-secondary text-muted-foreground px-2 py-0.5 rounded-full font-medium">{t('patch.noChangesLabel')}</span>
                         }
                     </h2>
-                    {selectedFile.id !== selectedFile.path && (
-                      <span className="text-[10px] text-muted-foreground/60 truncate font-mono mt-0.5">
-                          {selectedFile.id}
-                      </span>
-                    )}
                 </div>
             )}
         </div>
@@ -169,17 +158,7 @@ export function DiffWorkspace({
                     <Copy size={14} /> {t('spotlight.copy')}
                 </button>
             )}
-            
-            {/* === Export 按钮 === */}
-            {onExport && (
-              <button
-                  onClick={onExport}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium bg-secondary hover:bg-secondary/80 text-foreground transition-colors active:scale-95"
-              >
-                  <FileDown size={14} />{t('patch.export')}
-              </button>
-            )}
-            
+
             {selectedFile && !isManual && !isReadOnly && (
                 <button
                     onClick={() => onSave(selectedFile)}
@@ -201,7 +180,7 @@ export function DiffWorkspace({
       {!selectedFile ? (
           <div className="flex-1 flex flex-col items-center justify-center bg-background/50 h-full text-muted-foreground/40 gap-2">
              <div className="p-4 bg-secondary/30 rounded-full">
-                <PanelLeftOpen size={32} className="opacity-50" />
+                <FileText size={32} className="opacity-50" />
              </div>
              <p className="text-xs">{t('patch.selectFile')}</p>
           </div>
