@@ -110,4 +110,30 @@ Denies the get_git_diff_text command without any pre-configured scope.
 
 </td>
 </tr>
+
+<tr>
+<td>
+
+`ctxrun-plugin-git:allow-get-git-log-graph`
+
+</td>
+<td>
+
+Enables the get_git_log_graph command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`ctxrun-plugin-git:deny-get-git-log-graph`
+
+</td>
+<td>
+
+Denies the get_git_log_graph command without any pre-configured scope.
+
+</td>
+</tr>
 </table>

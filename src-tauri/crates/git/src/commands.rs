@@ -1,10 +1,10 @@
 use crate::error::{GitError, Result};
 use crate::export::generate_export_content;
-use crate::models::{ExportFormat, ExportLayout, GitCommit, GitDiffFile};
+use crate::models::{ExportFormat, ExportLayout, GitCommit, GitDiffFile, GitRef, GitRefKind, GraphCommit};
 use chrono::{DateTime, Local};
 use git2::{Delta, DiffFormat, DiffOptions, Oid, Repository};
 use rayon::prelude::*;
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 use std::path::Path;
 
 struct DiffItem {
@@ -25,7 +25,9 @@ pub fn get_git_commits(project_path: String) -> Result<Vec<GitCommit>> {
         return Ok(Vec::new());
     }
 
-    revwalk.set_sorting(git2::Sort::TIME).unwrap_or(());
+    revwalk
+        .set_sorting(git2::Sort::TOPOLOGICAL | git2::Sort::TIME)
+        .unwrap_or(());
 
     let mut commits = Vec::new();
 
@@ -271,4 +273,114 @@ pub async fn export_git_diff(
     })
     .await
     .map_err(|e| GitError::JoinError(e.to_string()))?
+}
+
+#[tauri::command]
+pub fn get_git_log_graph(
+    project_path: String,
+    limit: Option<usize>,
+    skip: Option<usize>,
+) -> Result<Vec<GraphCommit>> {
+    let limit = limit.unwrap_or(300);
+    let skip = skip.unwrap_or(0);
+    let repo = Repository::open(&project_path)?;
+
+    // Build ref map: target OID -> list of (name, kind)
+    let mut ref_map: HashMap<Oid, Vec<GitRef>> = HashMap::new();
+
+    // HEAD
+    if let Ok(head) = repo.head() {
+        if let Ok(target_oid) = head.target().ok_or_else(|| git2::Error::from_str("no target")) {
+            let branch_name = head.shorthand().unwrap_or("HEAD");
+            ref_map.entry(target_oid).or_default().push(GitRef {
+                name: branch_name.to_string(),
+                kind: GitRefKind::Head,
+            });
+        }
+    }
+
+    // All references
+    if let Ok(references) = repo.references() {
+        for reference in references.flatten() {
+            if let Some(target_oid) = reference.target() {
+                let name = reference.shorthand().unwrap_or("").to_string();
+                if name.is_empty() {
+                    continue;
+                }
+
+                let kind = if reference.is_remote() {
+                    GitRefKind::RemoteBranch
+                } else if reference.is_tag() {
+                    GitRefKind::Tag
+                } else if reference.is_branch() {
+                    GitRefKind::Branch
+                } else {
+                    continue;
+                };
+
+                // Skip if already added as HEAD
+                if matches!(kind, GitRefKind::Branch) {
+                    let already_head = ref_map
+                        .get(&target_oid)
+                        .map(|refs| refs.iter().any(|r| matches!(r.kind, GitRefKind::Head) && r.name == name))
+                        .unwrap_or(false);
+                    if already_head {
+                        continue;
+                    }
+                }
+
+                ref_map.entry(target_oid).or_default().push(GitRef { name, kind });
+            }
+        }
+    }
+
+    // Walk commits
+    let mut revwalk = repo.revwalk()?;
+    if revwalk.push_head().is_err() {
+        return Ok(Vec::new());
+    }
+    revwalk
+        .set_sorting(git2::Sort::TOPOLOGICAL | git2::Sort::TIME)
+        .unwrap_or(());
+
+    let mut commits = Vec::new();
+
+    for (index, id) in revwalk.enumerate() {
+        if index < skip {
+            continue;
+        }
+
+        let oid = id?;
+        let commit = repo.find_commit(oid)?;
+
+        let time = commit.time();
+        let dt = DateTime::from_timestamp(time.seconds(), 0).unwrap_or_default();
+        let date_str = dt
+            .with_timezone(&Local)
+            .format("%Y-%m-%d %H:%M")
+            .to_string();
+
+        let parent_hashes: Vec<String> = commit.parent_ids().map(|p| p.to_string()).collect();
+
+        let refs = ref_map.remove(&oid).unwrap_or_default();
+
+        let hash = oid.to_string();
+        let short_hash = if hash.len() >= 7 { hash[..7].to_string() } else { hash.clone() };
+
+        commits.push(GraphCommit {
+            hash,
+            short_hash,
+            author: commit.author().name().unwrap_or("Unknown").to_string(),
+            date: date_str,
+            message: commit.summary().unwrap_or("").to_string(),
+            parent_hashes,
+            refs,
+        });
+
+        if commits.len() >= limit {
+            break;
+        }
+    }
+
+    Ok(commits)
 }

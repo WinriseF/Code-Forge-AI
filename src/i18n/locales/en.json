@@ -298,7 +298,21 @@
     "aiFixing": "AI is fixing...",
     "forceSave": "Force Save",
     "commitSelectPlaceholder": "Select a commit...",
-    "commitSearchPlaceholder": "Search by message or hash..."
+    "commitSearchPlaceholder": "Search by message or hash...",
+    "loadingCommits": "Loading commits...",
+    "noCommits": "No commits yet",
+    "gitHistory": "Git History",
+    "comparing": "Comparing...",
+    "clickToViewChanges": "Click a commit to view changes",
+    "filesChanged": "{{count}} file(s) changed",
+    "cancelCompare": "Cancel compare",
+    "compareBaseReady": "Base {{hash}} ready",
+    "comparePickTarget": "Click another commit or the working tree to compare",
+    "setCompareBase": "Set base",
+    "compareToBase": "Compare to base",
+    "currentCompareBase": "Current base",
+    "workingTree": "Working Tree",
+    "unstagedChanges": "Unstaged changes"
   },
   "editor": {
     "titleNew": "New Prompt",

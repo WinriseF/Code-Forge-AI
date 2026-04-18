@@ -341,6 +341,18 @@
           "type": "string",
           "const": "deny-get-git-diff-text",
           "markdownDescription": "Denies the get_git_diff_text command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the get_git_log_graph command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-get-git-log-graph",
+          "markdownDescription": "Enables the get_git_log_graph command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the get_git_log_graph command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-get-git-log-graph",
+          "markdownDescription": "Denies the get_git_log_graph command without any pre-configured scope."
         }
       ]
     }

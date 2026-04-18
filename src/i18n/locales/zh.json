@@ -298,7 +298,21 @@
     "aiFixing": "AI 正在修复...",
     "forceSave": "强制保存",
     "commitSelectPlaceholder": "选择一个提交...",
-    "commitSearchPlaceholder": "按消息或哈希搜索..."
+    "commitSearchPlaceholder": "按消息或哈希搜索...",
+    "loadingCommits": "加载提交中...",
+    "noCommits": "暂无提交",
+    "gitHistory": "Git 历史",
+    "comparing": "对比中...",
+    "clickToViewChanges": "点击提交查看变更",
+    "filesChanged": "{{count}} 个文件已变更",
+    "cancelCompare": "取消对比",
+    "compareBaseReady": "基准 {{hash}} 已就绪",
+    "comparePickTarget": "点击另一个提交或工作区开始对比",
+    "setCompareBase": "设为基准",
+    "compareToBase": "与基准对比",
+    "currentCompareBase": "当前基准",
+    "workingTree": "工作区",
+    "unstagedChanges": "未暂存的更改"
   },
   "editor": {
     "titleNew": "新建指令",

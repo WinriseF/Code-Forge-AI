@@ -43,7 +43,7 @@ export function PatchFileTreeNode({
     return (
       <div
         className={cn(
-          'flex items-center py-1 pr-2 cursor-pointer select-none transition-colors text-sm group absolute w-full box-border',
+          'flex items-center py-1 pr-2 cursor-pointer select-none transition-colors text-sm group w-full box-border',
           'hover:bg-secondary/50',
           !isSelected && 'opacity-60 hover:opacity-100',
         )}
@@ -89,7 +89,7 @@ export function PatchFileTreeNode({
   return (
     <div
       className={cn(
-        'flex items-center py-1 pr-2 cursor-pointer select-none transition-colors text-sm group absolute w-full box-border',
+        'flex items-center py-1 pr-2 cursor-pointer select-none transition-colors text-sm group w-full box-border',
         isSelected
           ? 'bg-secondary/50'
           : 'hover:bg-secondary/50',

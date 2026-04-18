@@ -17,6 +17,7 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             commands::get_git_diff,
             commands::get_git_diff_text,
             commands::export_git_diff,
+            commands::get_git_log_graph,
         ])
         .build()
 }
