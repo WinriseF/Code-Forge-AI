@@ -58,8 +58,8 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
 
   const visibleEdges = useMemo(() => {
     return layout.edges.filter((edge) => {
-      const top = (edge.fromRow + 1) * ROW_HEIGHT;
-      const bottom = (edge.toRow + 2) * ROW_HEIGHT;
+      const top = (edge.fromRow + 1) * ROW_HEIGHT + ROW_HEIGHT / 2;
+      const bottom = (edge.toRow + 1) * ROW_HEIGHT + ROW_HEIGHT / 2;
       return top < viewBottom && bottom > viewTop;
     });
   }, [layout.edges, viewBottom, viewTop]);
@@ -251,10 +251,10 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
 
       <div ref={scrollRef} className="flex-1 overflow-y-auto overflow-x-hidden relative">
         <svg
-          className="absolute top-0 left-0 pointer-events-none"
+          className="absolute top-0 pointer-events-none"
           width={graphWidth}
           height={totalHeight}
-          style={{ overflow: 'hidden' }}
+          style={{ overflow: 'hidden', left: '1px' }}
         >
           {visibleEdges.map((edge) => (
             <path
@@ -306,11 +306,11 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
             onClick={() => handleClick(WORKING_TREE_HASH)}
             onContextMenu={(e) => handleContextMenu(e, WORKING_TREE_HASH)}
           >
-            <div className="shrink-0 relative" style={{ width: graphWidth }}>
+            <div className="shrink-0 relative" style={{ width: graphWidth, height: ROW_HEIGHT }}>
               <FolderOpen
                 size={16}
-                className="text-orange-400 absolute top-1/2 -translate-y-1/2"
-                style={{ left: `${laneToX(0) - 8}px` }}
+                className="text-orange-400 absolute"
+                style={{ left: `${laneToX(0) - 8}px`, top: `${ROW_HEIGHT / 2 - 8}px` }}
               />
             </div>
             <div className={`flex-1 min-w-0 pr-3 flex items-center ${isSelected ? 'bg-secondary' : 'group-hover:bg-secondary/30'}`}>
@@ -353,10 +353,10 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
           onMouseLeave={scheduleHoverClose}
         >
           <div className="shrink-0" style={{ width: graphWidth }}>
-            <svg width={graphWidth} height={20} viewBox={`0 0 ${graphWidth} 20`}>
+            <svg width={graphWidth} height={ROW_HEIGHT} viewBox={`0 0 ${graphWidth} ${ROW_HEIGHT}`}>
               <circle
                 cx={laneToX(node.lane)}
-                cy={10}
+                cy={ROW_HEIGHT / 2}
                 r={isSelected ? SELECTED_DOT_RADIUS : isCompareTarget ? COMPARE_TARGET_DOT_RADIUS : DOT_RADIUS}
                 fill={isCompareTarget ? '#eab308' : laneColor}
                 stroke={isSelected ? 'hsl(var(--foreground))' : isCompareTarget ? '#ca8a04' : laneColor}
