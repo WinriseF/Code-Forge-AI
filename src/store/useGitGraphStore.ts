@@ -27,6 +27,9 @@ interface GitGraphState {
   diffOldHash: string | null;
   diffNewHash: string | null;
 
+  // Export selection
+  selectedExportPaths: Set<string>;
+
   // Compare view
   isCompareView: boolean;
   compareTargetHash: string | null;
@@ -45,6 +48,7 @@ interface GitGraphState {
   selectFile: (path: string) => void;
   closeDiff: () => void;
   cancelCompare: (projectPath: string) => void;
+  toggleExportPath: (path: string, checked: boolean) => void;
 }
 
 const BRANCH_COLORS = [
@@ -75,6 +79,10 @@ function mapDiffFiles(result: GitDiffFile[]): PatchFileItem[] {
   }));
 }
 
+function exportablePaths(files: PatchFileItem[]): Set<string> {
+  return new Set(files.filter((f) => !f.isBinary && !f.isLarge).map((f) => f.path));
+}
+
 function errorToString(err: unknown): string {
   if (err instanceof Error) return err.message;
   return String(err);
@@ -90,6 +98,7 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
   hasMoreCommits: true,
   diffOldHash: null,
   diffNewHash: null,
+  selectedExportPaths: new Set(),
   isCompareView: false,
   compareTargetHash: null,
   showDiffPanel: false,
@@ -170,6 +179,7 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
       error: null,
       isCompareView: false,
       compareTargetHash: null,
+      selectedExportPaths: new Set(),
     });
 
     // Working tree: diff HEAD vs working directory
@@ -182,11 +192,13 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
           oldHash: headHash,
           newHash: WORKING_TREE_HASH,
         });
+        const files = mapDiffFiles(result);
         set({
-          diffFiles: mapDiffFiles(result),
+          diffFiles: files,
           isLoading: false,
           diffOldHash: headHash,
           diffNewHash: WORKING_TREE_HASH,
+          selectedExportPaths: exportablePaths(files),
         });
       } catch (err: unknown) {
         set({ error: errorToString(err), isLoading: false });
@@ -207,11 +219,13 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
         oldHash,
         newHash: hash,
       });
+      const files = mapDiffFiles(result);
       set({
-        diffFiles: mapDiffFiles(result),
+        diffFiles: files,
         isLoading: false,
         diffOldHash: oldHash,
         diffNewHash: hash,
+        selectedExportPaths: exportablePaths(files),
       });
     } catch (err: unknown) {
       set({ error: errorToString(err), isLoading: false });
@@ -223,21 +237,31 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
     // No base selected or clicking the same commit — ignore
     if (!state.selectedCommitHash || state.selectedCommitHash === hash) return;
 
+    // Resolve working tree pseudo-hash to HEAD for oldHash
+    let oldHash = state.selectedCommitHash;
+    if (oldHash === WORKING_TREE_HASH) {
+      const headCommit = state.commits.find((c) => c.refs.some((r) => r.kind === 'Head'));
+      oldHash = headCommit?.hash ?? '';
+      if (!oldHash) return;
+    }
+
     set({ isLoading: true, error: null, selectedFilePath: null, showDiffPanel: false });
 
     try {
       const result = await invoke<GitDiffFile[]>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
         projectPath,
-        oldHash: state.selectedCommitHash,
+        oldHash,
         newHash: hash,
       });
+      const files = mapDiffFiles(result);
       set({
-        diffFiles: mapDiffFiles(result),
+        diffFiles: files,
         isLoading: false,
-        diffOldHash: state.selectedCommitHash,
+        diffOldHash: oldHash,
         diffNewHash: hash,
         isCompareView: true,
         compareTargetHash: hash,
+        selectedExportPaths: exportablePaths(files),
       });
     } catch (err: unknown) {
       set({ error: errorToString(err), isLoading: false });
@@ -259,6 +283,15 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
     } else {
       set({ isCompareView: false, compareTargetHash: null });
     }
+  },
+
+  toggleExportPath: (path: string, checked: boolean) => {
+    set((state) => {
+      const next = new Set(state.selectedExportPaths);
+      if (checked) next.add(path);
+      else next.delete(path);
+      return { selectedExportPaths: next };
+    });
   },
 }));
 

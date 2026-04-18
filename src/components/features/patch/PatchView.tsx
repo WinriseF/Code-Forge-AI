@@ -23,6 +23,7 @@ export function PatchView() {
   const closeDiff = useGitGraphStore((s) => s.closeDiff);
   const diffOldHash = useGitGraphStore((s) => s.diffOldHash);
   const diffNewHash = useGitGraphStore((s) => s.diffNewHash);
+  const selectedExportPaths = useGitGraphStore((s) => s.selectedExportPaths);
 
   const [isExportDialogOpen, setIsExportDialogOpen] = useState(false);
   const [toastState, setToastState] = useState<{ show: boolean; msg: string; type: ToastType }>({
@@ -42,7 +43,7 @@ export function PatchView() {
 
   // Export handler
   const handleExportTrigger = () => {
-    if (diffFiles.length === 0) {
+    if (selectedExportPaths.size === 0) {
       showNotification(t('patch.selectOne'), 'warning');
       return;
     }
@@ -68,9 +69,7 @@ export function PatchView() {
       });
 
       if (filePath) {
-        const selectedPaths = diffFiles
-          .filter((f) => !f.isBinary && !f.isLarge)
-          .map((f) => f.path);
+        const selectedPaths = Array.from(selectedExportPaths);
 
         await invoke(`${GIT_PLUGIN_PREFIX}export_git_diff`, {
           projectPath: projectRoot,
@@ -95,7 +94,7 @@ export function PatchView() {
       <CommitGraphPanel projectRoot={projectRoot ?? undefined} />
 
       {/* Middle: Detail Panel */}
-      <DetailPanel onExport={handleExportTrigger} projectRoot={projectRoot ?? undefined} />
+      <DetailPanel onExport={handleExportTrigger} />
 
       {/* Right: Diff Panel (slides in) */}
       <div
@@ -124,7 +123,7 @@ export function PatchView() {
         isOpen={isExportDialogOpen}
         onClose={() => setIsExportDialogOpen(false)}
         onConfirm={performExport}
-        count={diffFiles.filter((f) => !f.isBinary && !f.isLarge).length}
+        count={selectedExportPaths.size}
       />
 
       {/* Toast */}

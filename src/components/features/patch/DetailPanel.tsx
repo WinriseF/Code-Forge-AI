@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 
 interface DetailPanelProps {
   onExport: () => void;
-  projectRoot?: string;
 }
 
 export function DetailPanel({ onExport }: DetailPanelProps) {
@@ -19,6 +18,8 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
   const isCompareView = useGitGraphStore((s) => s.isCompareView);
   const compareTargetHash = useGitGraphStore((s) => s.compareTargetHash);
   const isLoading = useGitGraphStore((s) => s.isLoading);
+  const selectedExportPaths = useGitGraphStore((s) => s.selectedExportPaths);
+  const toggleExportPath = useGitGraphStore((s) => s.toggleExportPath);
 
   const { t } = useTranslation();
 
@@ -171,24 +172,28 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
             <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
           </div>
         ) : (
-          displayedNodes.map(({ node, depth }) => (
+          displayedNodes.map(({ node, depth }) => {
+            const isDisabled = node.kind === 'file' && !!(node.fileData?.isBinary || node.fileData?.isLarge);
+            return (
             <PatchFileTreeNode
               key={node.id}
               node={node}
               depth={depth}
               isExpanded={expandedDirs.has(node.id)}
               isSelected={selectedFilePath === node.path}
-              isChecked={false}
-              isDisabled={false}
-              showCheckbox={false}
+              isChecked={selectedExportPaths.has(node.path)}
+              isDisabled={isDisabled}
+              showCheckbox={node.kind === 'file'}
               onSelectFile={() => {
                 if (node.kind === 'file' && node.fileData) {
                   selectFile(node.fileData.path);
                 }
               }}
               onToggleExpand={() => toggleExpand(node.id)}
+              onToggleExport={(path, checked) => toggleExportPath(path, checked)}
             />
-          ))
+            );
+          })
         )}
       </div>
     </div>

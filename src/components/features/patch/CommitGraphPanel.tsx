@@ -106,7 +106,7 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && projectRoot) {
+      if (e.key === 'Escape' && useGitGraphStore.getState().isCompareView && projectRoot) {
         useGitGraphStore.getState().cancelCompare(projectRoot);
       }
     };
