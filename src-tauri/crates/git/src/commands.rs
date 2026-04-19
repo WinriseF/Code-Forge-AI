@@ -49,7 +49,7 @@ fn git_ref_priority(kind: &GitRefKind) -> u8 {
     }
 }
 
-fn sort_git_refs(refs: &mut Vec<GitRef>) {
+fn sort_git_refs(refs: &mut [GitRef]) {
     refs.sort_by(|left, right| {
         git_ref_priority(&left.kind)
             .cmp(&git_ref_priority(&right.kind))
@@ -308,9 +308,16 @@ pub fn get_git_diff(
     new_hash: String,
 ) -> Result<GitDiffResponse> {
     let repo = Repository::open(&project_path)?;
-    let old_oid = Oid::from_str(&old_hash)?;
-    let old_commit = repo.find_commit(old_oid)?;
-    let old_tree = old_commit.tree()?;
+    let old_tree = if old_hash == "4b825dc642cb6eb9a060e54bf899d15363d7aa91" {
+        repo.find_tree(Oid::from_str(&old_hash)?).unwrap_or_else(|_| {
+            let tb = repo.treebuilder(None).unwrap();
+            let oid = tb.write().unwrap();
+            repo.find_tree(oid).unwrap()
+        })
+    } else {
+        let old_oid = Oid::from_str(&old_hash)?;
+        repo.find_commit(old_oid)?.tree()?
+    };
 
     let mut diff_opts = DiffOptions::new();
     diff_opts.include_untracked(true);
@@ -424,10 +431,17 @@ pub fn get_git_diff_text(
     new_hash: String,
 ) -> Result<String> {
     let repo = Repository::open(&project_path)?;
-    let old_oid = Oid::from_str(&old_hash)?;
     let new_oid = Oid::from_str(&new_hash)?;
 
-    let old_tree = repo.find_commit(old_oid).and_then(|c| c.tree())?;
+    let old_tree = if old_hash == "4b825dc642cb6eb9a060e54bf899d15363d7aa91" {
+        repo.find_tree(Oid::from_str(&old_hash)?).unwrap_or_else(|_| {
+            let tb = repo.treebuilder(None).unwrap();
+            let oid = tb.write().unwrap();
+            repo.find_tree(oid).unwrap()
+        })
+    } else {
+        repo.find_commit(Oid::from_str(&old_hash)?).and_then(|c| c.tree())?
+    };
     let new_tree = repo.find_commit(new_oid).and_then(|c| c.tree())?;
 
     let mut diff = repo.diff_tree_to_tree(Some(&old_tree), Some(&new_tree), None)?;
