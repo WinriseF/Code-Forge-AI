@@ -16,6 +16,7 @@ interface DiffViewerProps {
 export function DiffViewer({ original, modified, fileName = '', placeholder }: DiffViewerProps) {
   const theme = useAppStore((state) => state.theme);
   const { t } = useTranslation();
+  const containerRef = useRef<HTMLDivElement>(null);
   const monacoRef = useRef<any>(null);
   const editorRef = useRef<any>(null);
 
@@ -26,6 +27,7 @@ export function DiffViewer({ original, modified, fileName = '', placeholder }: D
     monacoRef.current = monaco;
     ensureMonacoThemes(monaco);
     monaco.editor.setTheme(getMonacoTheme(theme));
+    editor.layout();
   };
 
   useEffect(() => {
@@ -33,6 +35,24 @@ export function DiffViewer({ original, modified, fileName = '', placeholder }: D
       monacoRef.current.editor.setTheme(getMonacoTheme(theme));
     }
   }, [theme]);
+
+  useEffect(() => {
+    editorRef.current?.layout?.();
+  }, [fileName, modified, original]);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || typeof ResizeObserver === 'undefined') {
+      return;
+    }
+
+    const observer = new ResizeObserver(() => {
+      editorRef.current?.layout?.();
+    });
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
 
   useLayoutEffect(() => {
     return () => {
@@ -70,7 +90,7 @@ export function DiffViewer({ original, modified, fileName = '', placeholder }: D
   }
 
   return (
-    <div className="flex flex-col h-full overflow-hidden bg-background">
+    <div ref={containerRef} className="flex flex-col h-full overflow-hidden bg-background">
       <div className="flex-1 relative group">
          <DiffEditor
             height="100%"
@@ -94,7 +114,7 @@ export function DiffViewer({ original, modified, fileName = '', placeholder }: D
                 fontFamily: 'JetBrains Mono, Menlo, Monaco, "Courier New", monospace',
                 lineHeight: 1.6,
                 padding: { top: 16, bottom: 16 },
-                automaticLayout: true, 
+                automaticLayout: false,
                 diffWordWrap: 'off',
                 wordWrap: 'on', 
                 ignoreTrimWhitespace: false,

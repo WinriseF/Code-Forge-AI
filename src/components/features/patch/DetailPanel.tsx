@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useGitGraphStore, WORKING_TREE_HASH } from '@/store/useGitGraphStore';
 import { buildPatchFileTree, flattenPatchTree, allDirIds } from '@/lib/patch_tree_utils';
 import { PatchFileTreeNode } from './PatchFileTreeNode';
@@ -25,18 +25,19 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
   const { t } = useTranslation();
 
   const [expandedDirs, setExpandedDirs] = useState<Set<string>>(new Set());
+  const commitByHash = useMemo(() => new Map(commits.map((commit) => [commit.hash, commit])), [commits]);
 
   const selectedCommit = useMemo(
-    () => commits.find((c) => c.hash === selectedCommitHash),
-    [commits, selectedCommitHash],
+    () => (selectedCommitHash ? commitByHash.get(selectedCommitHash) : undefined),
+    [commitByHash, selectedCommitHash],
   );
   const compareOldCommit = useMemo(
-    () => commits.find((c) => c.hash === diffOldHash),
-    [commits, diffOldHash],
+    () => (diffOldHash ? commitByHash.get(diffOldHash) : undefined),
+    [commitByHash, diffOldHash],
   );
   const compareNewCommit = useMemo(
-    () => commits.find((c) => c.hash === diffNewHash),
-    [commits, diffNewHash],
+    () => (diffNewHash ? commitByHash.get(diffNewHash) : undefined),
+    [commitByHash, diffNewHash],
   );
 
   const fileTree = useMemo(() => {
@@ -54,14 +55,14 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
     return flattenPatchTree(fileTree, expandedDirs, 0);
   }, [fileTree, expandedDirs]);
 
-  const toggleExpand = (id: string) => {
+  const toggleExpand = useCallback((id: string) => {
     setExpandedDirs((prev) => {
       const next = new Set(prev);
       if (next.has(id)) next.delete(id);
       else next.add(id);
       return next;
     });
-  };
+  }, []);
 
   // Empty state: nothing selected
   if (!selectedCommit && selectedCommitHash !== WORKING_TREE_HASH) {
@@ -197,13 +198,9 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
               isChecked={selectedExportPaths.has(node.path)}
               isDisabled={isDisabled}
               showCheckbox={node.kind === 'file'}
-              onSelectFile={() => {
-                if (node.kind === 'file' && node.fileData) {
-                  selectFile(node.fileData.path);
-                }
-              }}
-              onToggleExpand={() => toggleExpand(node.id)}
-              onToggleExport={(path, checked) => toggleExportPath(path, checked)}
+              onSelectFile={selectFile}
+              onToggleExpand={toggleExpand}
+              onToggleExport={toggleExportPath}
             />
             );
           })

@@ -128,3 +128,25 @@ describe('useGitGraphStore compareWith', () => {
     });
   });
 });
+
+describe('useGitGraphStore closeDiff', () => {
+  beforeEach(() => {
+    invokeMock.mockReset();
+  });
+
+  it('hides the diff panel without clearing the selected file', async () => {
+    const { useGitGraphStore } = await importFreshGitGraphStore();
+
+    useGitGraphStore.setState({
+      selectedFilePath: 'src/example.ts',
+      showDiffPanel: true,
+    });
+
+    useGitGraphStore.getState().closeDiff();
+
+    expect(useGitGraphStore.getState()).toMatchObject({
+      selectedFilePath: 'src/example.ts',
+      showDiffPanel: false,
+    });
+  });
+});

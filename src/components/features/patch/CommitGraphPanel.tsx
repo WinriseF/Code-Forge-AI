@@ -1,4 +1,4 @@
-import { useMemo, useRef, useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import { useGitGraphStore, ROW_HEIGHT, WORKING_TREE_HASH } from '@/store/useGitGraphStore';
 import { computeGitGraphLayout, type CommitRowViewModel } from './gitGraphLayout';
 import { CommitHoverCard } from './CommitHoverCard';
@@ -14,12 +14,299 @@ function laneX(index: number) {
   return SW * (index + 1);
 }
 
+function rowSurfaceClass(isSelected: boolean, isCompareTarget: boolean) {
+  if (isSelected) return 'bg-secondary';
+  if (isCompareTarget) return 'bg-yellow-500/10';
+  return 'group-hover:bg-secondary/30';
+}
+
+function rowBorderClass(isSelected: boolean, isCompareTarget: boolean) {
+  if (isSelected) return 'border-l-primary';
+  if (isCompareTarget) return 'border-l-yellow-500';
+  return 'border-l-transparent';
+}
+
+function rowSvgWidth(row?: CommitRowViewModel) {
+  if (!row) {
+    return SW * 2;
+  }
+
+  return SW * (Math.max(row.inputSwimlanes.length, row.outputSwimlanes.length, 1) + 1);
+}
+
 interface CommitGraphPanelProps {
   projectRoot: string | undefined;
 }
 
+interface WorkingTreeRowProps {
+  isSelected: boolean;
+  isCompareTarget: boolean;
+  onClick: () => void;
+  onContextMenu: (event: React.MouseEvent) => void;
+  svgWidth: number;
+  title: string;
+  subtitle: string;
+}
+
+const WorkingTreeRow = memo(function WorkingTreeRow({
+  isSelected,
+  isCompareTarget,
+  onClick,
+  onContextMenu,
+  svgWidth,
+  title,
+  subtitle,
+}: WorkingTreeRowProps) {
+  const surfaceClass = rowSurfaceClass(isSelected, isCompareTarget);
+
+  return (
+    <div
+      className={`group flex items-stretch cursor-pointer transition-colors border-l-2 ${rowBorderClass(isSelected, isCompareTarget)}`}
+      style={{ height: ROW_HEIGHT }}
+      onClick={onClick}
+      onContextMenu={onContextMenu}
+    >
+      <div
+        className={`shrink-0 relative flex items-center justify-center ${surfaceClass}`}
+        style={{ width: svgWidth }}
+      >
+        <FolderOpen size={14} className="text-orange-400" />
+      </div>
+      <div className={`flex-1 min-w-0 pr-3 flex items-center ${surfaceClass}`}>
+        <div className="min-w-0">
+          <p className="text-xs font-medium truncate leading-tight text-orange-400">{title}</p>
+          <span className="text-[10px] text-muted-foreground">{subtitle}</span>
+        </div>
+      </div>
+    </div>
+  );
+});
+
+interface CommitGraphRowProps {
+  row: CommitRowViewModel;
+  isSelected: boolean;
+  isCompareTarget: boolean;
+  onClick: (hash: string) => void;
+  onContextMenu: (event: React.MouseEvent, hash: string) => void;
+  onOpenHover: (commit: GraphCommit, target: HTMLElement) => void;
+  onCloseHover: () => void;
+}
+
+const CommitGraphRow = memo(function CommitGraphRow({
+  row,
+  isSelected,
+  isCompareTarget,
+  onClick,
+  onContextMenu,
+  onOpenHover,
+  onCloseHover,
+}: CommitGraphRowProps) {
+  const { commit } = row;
+  const primaryRef = commit.refs.find((ref) => ref.kind !== 'RemoteBranch') ?? commit.refs[0];
+  const extraRefCount = primaryRef ? commit.refs.length - 1 : 0;
+  const surfaceClass = rowSurfaceClass(isSelected, isCompareTarget);
+
+  return (
+    <div
+      className={`group flex items-stretch cursor-pointer transition-colors border-l-2 ${rowBorderClass(isSelected, isCompareTarget)}`}
+      style={{ height: ROW_HEIGHT }}
+      onClick={() => onClick(commit.hash)}
+      onContextMenu={(event) => onContextMenu(event, commit.hash)}
+      onMouseEnter={(event) => onOpenHover(commit, event.currentTarget)}
+      onMouseLeave={onCloseHover}
+    >
+      <div className={`shrink-0 ${surfaceClass}`}>
+        <CommitRowGraph row={row} isSelected={isSelected} isCompareTarget={isCompareTarget} />
+      </div>
+
+      <div className={`flex-1 min-w-0 pr-3 flex items-center ${surfaceClass}`}>
+        <div className="min-w-0">
+          <p className="text-xs truncate leading-tight font-medium" title={commit.message}>
+            {commit.message}
+          </p>
+          <div className="flex items-center gap-1.5 mt-0.5 min-w-0">
+            <span className="text-[10px] font-mono text-green-500">{commit.short_hash}</span>
+            {primaryRef && (
+              <span
+                className={`shrink-0 text-[9px] leading-none px-1.5 py-[2px] rounded-full font-semibold ${
+                  primaryRef.kind === 'Head'
+                    ? 'bg-red-500/20 text-red-400'
+                    : primaryRef.kind === 'Branch'
+                      ? 'bg-blue-500/20 text-blue-400'
+                      : primaryRef.kind === 'Tag'
+                        ? 'bg-green-500/20 text-green-400'
+                        : 'bg-secondary text-muted-foreground'
+                }`}
+              >
+                {primaryRef.kind === 'Head' ? 'HEAD' : primaryRef.name}
+              </span>
+            )}
+            {extraRefCount > 0 && (
+              <span className="shrink-0 text-[9px] leading-none px-1.5 py-[2px] rounded-full font-semibold bg-secondary text-muted-foreground">
+                +{extraRefCount}
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+});
+
+interface CommitRowGraphProps {
+  row: CommitRowViewModel;
+  isSelected: boolean;
+  isCompareTarget: boolean;
+}
+
+const CommitRowGraph = memo(function CommitRowGraph({
+  row,
+  isSelected,
+  isCompareTarget,
+}: CommitRowGraphProps) {
+  const { commit, inputSwimlanes, outputSwimlanes, circleIndex, circleColor } = row;
+  const midY = ROW_HEIGHT / 2;
+  const elements: React.ReactNode[] = [];
+  let key = 0;
+
+  const lp = (color: string) => ({
+    stroke: color,
+    strokeWidth: 1,
+    fill: 'none' as const,
+    strokeLinecap: 'round' as const,
+  });
+
+  let outputIdx = 0;
+
+  for (let i = 0; i < inputSwimlanes.length; i++) {
+    const color = inputSwimlanes[i].color;
+    const inputX = laneX(i);
+
+    if (inputSwimlanes[i].id === commit.hash) {
+      if (i !== circleIndex) {
+        const circleX = laneX(circleIndex);
+        const d = inputX > circleX
+          ? [
+              `M ${inputX} 0`,
+              `A ${SW} ${midY} 0 0 1 ${inputX - SW} ${midY}`,
+              `H ${circleX}`,
+            ]
+          : [
+              `M ${inputX} 0`,
+              `A ${SW} ${midY} 0 0 0 ${inputX + SW} ${midY}`,
+              `H ${circleX}`,
+            ];
+        elements.push(<path key={key++} d={d.join(' ')} {...lp(color)} />);
+      } else {
+        outputIdx++;
+      }
+    } else if (
+      outputIdx < outputSwimlanes.length &&
+      inputSwimlanes[i].id === outputSwimlanes[outputIdx].id
+    ) {
+      if (i === outputIdx) {
+        elements.push(
+          <path key={key++} d={`M ${inputX} 0 V ${ROW_HEIGHT}`} {...lp(color)} />,
+        );
+      } else {
+        const outputX = laneX(outputIdx);
+        const goingLeft = inputX > outputX;
+        const d = goingLeft
+          ? [
+              `M ${inputX} 0`,
+              `V ${midY - CR}`,
+              `A ${CR} ${CR} 0 0 1 ${inputX - CR} ${midY}`,
+              `H ${outputX + CR}`,
+              `A ${CR} ${CR} 0 0 0 ${outputX} ${midY + CR}`,
+              `V ${ROW_HEIGHT}`,
+            ]
+          : [
+              `M ${inputX} 0`,
+              `V ${midY - CR}`,
+              `A ${CR} ${CR} 0 0 0 ${inputX + CR} ${midY}`,
+              `H ${outputX - CR}`,
+              `A ${CR} ${CR} 0 0 1 ${outputX} ${midY + CR}`,
+              `V ${ROW_HEIGHT}`,
+            ];
+        elements.push(<path key={key++} d={d.join(' ')} {...lp(color)} />);
+      }
+      outputIdx++;
+    }
+  }
+
+  for (let i = 1; i < commit.parent_hashes.length; i++) {
+    let parentOutIdx = -1;
+    for (let j = outputSwimlanes.length - 1; j >= 0; j--) {
+      if (outputSwimlanes[j].id === commit.parent_hashes[i]) {
+        parentOutIdx = j;
+        break;
+      }
+    }
+    if (parentOutIdx === -1) continue;
+
+    const parentLeftEdge = SW * parentOutIdx;
+    const parentCenter = laneX(parentOutIdx);
+    const circleX = laneX(circleIndex);
+
+    const d = [
+      `M ${parentLeftEdge} ${midY}`,
+      `A ${SW} ${midY} 0 0 1 ${parentCenter} ${ROW_HEIGHT}`,
+      `M ${parentLeftEdge} ${midY}`,
+      `H ${circleX}`,
+    ].join(' ');
+    elements.push(
+      <path key={key++} d={d} {...lp(outputSwimlanes[parentOutIdx].color)} />,
+    );
+  }
+
+  const inputIndex = inputSwimlanes.findIndex((node) => node.id === commit.hash);
+  if (inputIndex !== -1) {
+    elements.push(
+      <path
+        key={key++}
+        d={`M ${laneX(circleIndex)} 0 V ${midY}`}
+        {...lp(inputSwimlanes[inputIndex].color)}
+      />,
+    );
+  }
+
+  if (commit.parent_hashes.length > 0) {
+    elements.push(
+      <path
+        key={key++}
+        d={`M ${laneX(circleIndex)} ${midY} V ${ROW_HEIGHT}`}
+        {...lp(circleColor)}
+      />,
+    );
+  }
+
+  const fill = isCompareTarget ? '#eab308' : circleColor;
+  if (commit.parent_hashes.length > 1) {
+    elements.push(
+      <circle key={key++} cx={laneX(circleIndex)} cy={midY} r={CIRCLE_R + 2} fill={fill} strokeWidth={0} />,
+      <circle key={key++} cx={laneX(circleIndex)} cy={midY} r={CIRCLE_R - 1} fill="hsl(var(--background))" strokeWidth={0} />,
+    );
+  } else {
+    const r = isSelected || isCompareTarget ? CIRCLE_R + 2 : CIRCLE_R + 1;
+    const stroke = isSelected ? 'hsl(var(--foreground))' : isCompareTarget ? '#ca8a04' : 'none';
+    const sw = isSelected || isCompareTarget ? 2 : 0;
+    elements.push(
+      <circle key={key++} cx={laneX(circleIndex)} cy={midY} r={r} fill={fill} stroke={stroke} strokeWidth={sw} />,
+    );
+  }
+
+  const width = rowSvgWidth(row);
+
+  return (
+    <svg width={width} height={ROW_HEIGHT} viewBox={`0 0 ${width} ${ROW_HEIGHT}`}>
+      {elements}
+    </svg>
+  );
+});
+
 export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
   const commits = useGitGraphStore((s) => s.commits);
+  const deferredCommits = useDeferredValue(commits);
   const selectedCommitHash = useGitGraphStore((s) => s.selectedCommitHash);
   const loadCommits = useGitGraphStore((s) => s.loadCommits);
   const loadMoreCommits = useGitGraphStore((s) => s.loadMoreCommits);
@@ -35,18 +322,30 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const hoverCloseTimerRef = useRef<number | null>(null);
+  const scrollFrameRef = useRef<number | null>(null);
+  const latestScrollTopRef = useRef(0);
   const [scrollTop, setScrollTop] = useState(0);
   const [viewHeight, setViewHeight] = useState(800);
   const [hoveredCommit, setHoveredCommit] = useState<GraphCommit | null>(null);
   const [hoverAnchorRect, setHoverAnchorRect] = useState<DOMRect | null>(null);
 
-  const layout = useMemo(() => computeGitGraphLayout(commits), [commits]);
-  const totalRows = commits.length + 1;
+  const layout = useMemo(() => computeGitGraphLayout(deferredCommits), [deferredCommits]);
+  const totalRows = deferredCommits.length + 1;
   const totalHeight = totalRows * ROW_HEIGHT;
+  const workingTreeWidth = layout.rows[0] ? rowSvgWidth(layout.rows[0]) : SW * 2;
 
   const visibleStart = Math.floor(scrollTop / ROW_HEIGHT);
   const visibleCount = Math.ceil(viewHeight / ROW_HEIGHT) + 2;
   const visibleEnd = Math.min(visibleStart + visibleCount, totalRows);
+  const visibleCommitRows = useMemo(() => {
+    const commitStart = Math.max(visibleStart - 1, 0);
+    const commitEnd = Math.max(visibleEnd - 1, 0);
+    return layout.rows.slice(commitStart, commitEnd);
+  }, [layout.rows, visibleEnd, visibleStart]);
+
+  const workingTreeTitle = t('patch.workingTree', 'Working Tree');
+  const unstagedChangesLabel = t('patch.unstagedChanges', 'Unstaged changes');
+  const loadingCommitsLabel = t('patch.loadingCommits', 'Loading commits...');
 
   const maybeLoadMore = useCallback(() => {
     const el = scrollRef.current;
@@ -60,21 +359,54 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
     }
   }, [hasMoreCommits, isLoading, isLoadingMore, loadMoreCommits, projectRoot]);
 
+  const flushScrollState = useCallback(() => {
+    scrollFrameRef.current = null;
+    const nextScrollTop = latestScrollTopRef.current;
+    setScrollTop((current) => (current === nextScrollTop ? current : nextScrollTop));
+  }, []);
+
   const handleScroll = useCallback(() => {
-    if (scrollRef.current) {
-      setScrollTop(scrollRef.current.scrollTop);
-      setViewHeight(scrollRef.current.clientHeight);
-      maybeLoadMore();
+    const el = scrollRef.current;
+    if (!el) {
+      return;
     }
-  }, [maybeLoadMore]);
+
+    latestScrollTopRef.current = el.scrollTop;
+    if (scrollFrameRef.current === null) {
+      scrollFrameRef.current = window.requestAnimationFrame(flushScrollState);
+    }
+    maybeLoadMore();
+  }, [flushScrollState, maybeLoadMore]);
 
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
-    setViewHeight(el.clientHeight);
+
     el.addEventListener('scroll', handleScroll, { passive: true });
     return () => el.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) {
+      return;
+    }
+
+    const syncHeight = () => {
+      const nextHeight = el.clientHeight;
+      setViewHeight((current) => (current === nextHeight ? current : nextHeight));
+    };
+
+    syncHeight();
+
+    if (typeof ResizeObserver === 'undefined') {
+      return;
+    }
+
+    const observer = new ResizeObserver(syncHeight);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     maybeLoadMore();
@@ -85,12 +417,15 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
       if (hoverCloseTimerRef.current !== null) {
         window.clearTimeout(hoverCloseTimerRef.current);
       }
+      if (scrollFrameRef.current !== null) {
+        window.cancelAnimationFrame(scrollFrameRef.current);
+      }
     };
   }, []);
 
   useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && useGitGraphStore.getState().compareTargetHash && projectRoot) {
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && useGitGraphStore.getState().compareTargetHash && projectRoot) {
         useGitGraphStore.getState().cancelCompare(projectRoot);
       }
     };
@@ -109,8 +444,8 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
   );
 
   const handleContextMenu = useCallback(
-    (e: React.MouseEvent, hash: string) => {
-      e.preventDefault();
+    (event: React.MouseEvent, hash: string) => {
+      event.preventDefault();
       if (projectRoot) {
         void compareWith(hash, projectRoot);
       }
@@ -153,18 +488,18 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
     }
   }, []);
 
-  if (isLoading && commits.length === 0) {
+  if (isLoading && deferredCommits.length === 0) {
     return (
       <div className="w-full h-full bg-background flex items-center justify-center">
         <div className="flex flex-col items-center gap-2 text-muted-foreground">
           <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-          <span className="text-xs">{t('patch.loadingCommits', 'Loading commits...')}</span>
+          <span className="text-xs">{loadingCommitsLabel}</span>
         </div>
       </div>
     );
   }
 
-  if (error && commits.length === 0) {
+  if (error && deferredCommits.length === 0) {
     return (
       <div className="w-full h-full bg-background flex items-center justify-center p-4">
         <p className="text-xs text-destructive text-center">{error}</p>
@@ -172,7 +507,7 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
     );
   }
 
-  if (commits.length === 0) {
+  if (deferredCommits.length === 0) {
     return (
       <div className="w-full h-full bg-background flex items-center justify-center">
         <span className="text-xs text-muted-foreground">{t('patch.noCommits', 'No commits yet')}</span>
@@ -182,7 +517,7 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
 
   return (
     <div className="w-full h-full bg-background flex flex-col">
-      {error && commits.length > 0 && (
+      {error && deferredCommits.length > 0 && (
         <div className="px-3 py-1.5 bg-destructive/10 border-b border-destructive/20 text-xs text-destructive">
           {error}
         </div>
@@ -195,7 +530,40 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
       <div ref={scrollRef} className="flex-1 overflow-y-auto overflow-x-hidden relative">
         <div style={{ height: totalHeight, position: 'relative' }}>
           <div style={{ transform: `translateY(${visibleStart * ROW_HEIGHT}px)` }}>
-            {renderRows()}
+            {visibleStart === 0 && (
+              <WorkingTreeRow
+                isSelected={selectedCommitHash === WORKING_TREE_HASH}
+                isCompareTarget={compareTargetHash === WORKING_TREE_HASH}
+                onClick={() => handleClick(WORKING_TREE_HASH)}
+                onContextMenu={(event) => handleContextMenu(event, WORKING_TREE_HASH)}
+                svgWidth={workingTreeWidth}
+                title={workingTreeTitle}
+                subtitle={unstagedChangesLabel}
+              />
+            )}
+
+            {visibleCommitRows.map((row) => (
+              <CommitGraphRow
+                key={row.commit.hash}
+                row={row}
+                isSelected={selectedCommitHash === row.commit.hash}
+                isCompareTarget={compareTargetHash === row.commit.hash}
+                onClick={handleClick}
+                onContextMenu={handleContextMenu}
+                onOpenHover={openHoverCard}
+                onCloseHover={scheduleHoverClose}
+              />
+            ))}
+
+            {isLoadingMore && (
+              <div
+                key="git-graph-loading-more"
+                className="flex items-center justify-center text-[10px] text-muted-foreground"
+                style={{ height: ROW_HEIGHT }}
+              >
+                {loadingCommitsLabel}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -208,314 +576,5 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
         onMouseLeave={scheduleHoverClose}
       />
     </div>
-  );
-
-  function renderRows() {
-    const rows: React.ReactNode[] = [];
-
-    for (let i = visibleStart; i < visibleEnd; i++) {
-      if (i === 0) {
-        const isSelected = selectedCommitHash === WORKING_TREE_HASH;
-        const isCompareTarget = compareTargetHash === WORKING_TREE_HASH;
-        const firstRow = layout.rows[0];
-        const svgW = firstRow
-          ? SW * (Math.max(firstRow.inputSwimlanes.length, firstRow.outputSwimlanes.length, 1) + 1)
-          : SW * 2;
-
-        rows.push(
-          <div
-            key={WORKING_TREE_HASH}
-            className={`group flex items-stretch cursor-pointer transition-colors border-l-2 ${
-              isSelected
-                ? 'border-l-primary'
-                : isCompareTarget
-                  ? 'border-l-yellow-500'
-                : 'border-l-transparent'
-            }`}
-            style={{ height: ROW_HEIGHT }}
-            onClick={() => handleClick(WORKING_TREE_HASH)}
-            onContextMenu={(e) => handleContextMenu(e, WORKING_TREE_HASH)}
-          >
-            <div
-              className={`shrink-0 relative flex items-center justify-center ${
-                isSelected
-                  ? 'bg-secondary'
-                  : isCompareTarget
-                    ? 'bg-yellow-500/10'
-                    : 'group-hover:bg-secondary/30'
-              }`}
-              style={{ width: svgW }}
-            >
-              <FolderOpen size={14} className="text-orange-400" />
-            </div>
-            <div
-              className={`flex-1 min-w-0 pr-3 flex items-center ${
-                isSelected
-                  ? 'bg-secondary'
-                  : isCompareTarget
-                    ? 'bg-yellow-500/10'
-                    : 'group-hover:bg-secondary/30'
-              }`}
-            >
-              <div className="min-w-0">
-                <p className="text-xs font-medium truncate leading-tight text-orange-400">
-                  {t('patch.workingTree', 'Working Tree')}
-                </p>
-                <span className="text-[10px] text-muted-foreground">{t('patch.unstagedChanges', 'Unstaged changes')}</span>
-              </div>
-            </div>
-          </div>,
-        );
-        continue;
-      }
-
-      const row = layout.rows[i - 1];
-      if (!row) continue;
-
-      const commit = row.commit;
-      const isSelected = selectedCommitHash === commit.hash;
-      const isCompareTarget = compareTargetHash === commit.hash;
-      const primaryRef = commit.refs.find((ref) => ref.kind !== 'RemoteBranch') ?? commit.refs[0];
-      const extraRefCount = primaryRef ? commit.refs.length - 1 : 0;
-
-      rows.push(
-        <div
-          key={commit.hash}
-          className={`group flex items-stretch cursor-pointer transition-colors border-l-2 ${
-            isSelected
-              ? 'border-l-primary'
-              : isCompareTarget
-                ? 'border-l-yellow-500'
-                : 'border-l-transparent'
-          }`}
-          style={{ height: ROW_HEIGHT }}
-          onClick={() => handleClick(commit.hash)}
-          onContextMenu={(e) => handleContextMenu(e, commit.hash)}
-          onMouseEnter={(e) => openHoverCard(commit, e.currentTarget)}
-          onMouseLeave={scheduleHoverClose}
-        >
-          <div className={`shrink-0 ${
-              isSelected
-                ? 'bg-secondary'
-                : isCompareTarget
-                  ? 'bg-yellow-500/10'
-                  : 'group-hover:bg-secondary/30'
-            }`}>
-            {renderRowGraph(row, isSelected, isCompareTarget)}
-          </div>
-
-          <div
-            className={`flex-1 min-w-0 pr-3 flex items-center ${
-              isSelected
-                ? 'bg-secondary'
-                : isCompareTarget
-                  ? 'bg-yellow-500/10'
-                  : 'group-hover:bg-secondary/30'
-            }`}
-          >
-            <div className="min-w-0">
-              <p className="text-xs truncate leading-tight font-medium" title={commit.message}>
-                {commit.message}
-              </p>
-              <div className="flex items-center gap-1.5 mt-0.5 min-w-0">
-                <span className="text-[10px] font-mono text-green-500">{commit.short_hash}</span>
-                {primaryRef && (
-                  <span
-                    className={`shrink-0 text-[9px] leading-none px-1.5 py-[2px] rounded-full font-semibold ${
-                      primaryRef.kind === 'Head'
-                        ? 'bg-red-500/20 text-red-400'
-                        : primaryRef.kind === 'Branch'
-                          ? 'bg-blue-500/20 text-blue-400'
-                          : primaryRef.kind === 'Tag'
-                            ? 'bg-green-500/20 text-green-400'
-                            : 'bg-secondary text-muted-foreground'
-                    }`}
-                  >
-                    {primaryRef.kind === 'Head' ? 'HEAD' : primaryRef.name}
-                  </span>
-                )}
-                {extraRefCount > 0 && (
-                  <span className="shrink-0 text-[9px] leading-none px-1.5 py-[2px] rounded-full font-semibold bg-secondary text-muted-foreground">
-                    +{extraRefCount}
-                  </span>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>,
-      );
-    }
-
-    if (isLoadingMore) {
-      rows.push(
-        <div
-          key="git-graph-loading-more"
-          className="flex items-center justify-center text-[10px] text-muted-foreground"
-          style={{ height: ROW_HEIGHT }}
-        >
-          {t('patch.loadingCommits', 'Loading commits...')}
-        </div>,
-      );
-    }
-
-    return rows;
-  }
-}
-
-function renderRowGraph(
-  row: CommitRowViewModel,
-  isSelected: boolean,
-  isCompareTarget: boolean,
-): React.ReactNode {
-  const { commit, inputSwimlanes, outputSwimlanes, circleIndex, circleColor } = row;
-  const midY = ROW_HEIGHT / 2;
-  const elements: React.ReactNode[] = [];
-  let key = 0;
-
-  const lp = (color: string) => ({
-    stroke: color,
-    strokeWidth: 1,
-    fill: 'none' as const,
-    strokeLinecap: 'round' as const,
-  });
-
-  let outputIdx = 0;
-
-  for (let i = 0; i < inputSwimlanes.length; i++) {
-    const color = inputSwimlanes[i].color;
-    const inputX = laneX(i);
-
-    // Current commit in input swimlanes
-    if (inputSwimlanes[i].id === commit.hash) {
-      if (i !== circleIndex) {
-        const circleX = laneX(circleIndex);
-        const d = inputX > circleX
-          ? [
-              `M ${inputX} 0`,
-              `A ${SW} ${midY} 0 0 1 ${inputX - SW} ${midY}`,
-              `H ${circleX}`,
-            ]
-          : [
-              `M ${inputX} 0`,
-              `A ${SW} ${midY} 0 0 0 ${inputX + SW} ${midY}`,
-              `H ${circleX}`,
-            ];
-        elements.push(<path key={key++} d={d.join(' ')} {...lp(color)} />);
-      } else {
-        outputIdx++;
-      }
-    } else {
-      // Continuing node
-      if (
-        outputIdx < outputSwimlanes.length &&
-        inputSwimlanes[i].id === outputSwimlanes[outputIdx].id
-      ) {
-        if (i === outputIdx) {
-          // Straight vertical
-          elements.push(
-            <path key={key++} d={`M ${inputX} 0 V ${ROW_HEIGHT}`} {...lp(color)} />,
-          );
-        } else {
-          // Curved path (VS Code: V, arc, H, arc, V)
-          const outputX = laneX(outputIdx);
-          const goingLeft = inputX > outputX;
-          const d = goingLeft
-            ? [
-                `M ${inputX} 0`,
-                `V ${midY - CR}`,
-                `A ${CR} ${CR} 0 0 1 ${inputX - CR} ${midY}`,
-                `H ${outputX + CR}`,
-                `A ${CR} ${CR} 0 0 0 ${outputX} ${midY + CR}`,
-                `V ${ROW_HEIGHT}`,
-              ]
-            : [
-                `M ${inputX} 0`,
-                `V ${midY - CR}`,
-                `A ${CR} ${CR} 0 0 0 ${inputX + CR} ${midY}`,
-                `H ${outputX - CR}`,
-                `A ${CR} ${CR} 0 0 1 ${outputX} ${midY + CR}`,
-                `V ${ROW_HEIGHT}`,
-              ];
-          elements.push(<path key={key++} d={d.join(' ')} {...lp(color)} />);
-        }
-        outputIdx++;
-      }
-    }
-  }
-
-  // Additional parents / merge (VS Code: two subpaths — horizontal to circle + arc down)
-  for (let i = 1; i < commit.parent_hashes.length; i++) {
-    // findLastIndex
-    let parentOutIdx = -1;
-    for (let j = outputSwimlanes.length - 1; j >= 0; j--) {
-      if (outputSwimlanes[j].id === commit.parent_hashes[i]) {
-        parentOutIdx = j;
-        break;
-      }
-    }
-    if (parentOutIdx === -1) continue;
-
-    const parentLeftEdge = SW * parentOutIdx;
-    const parentCenter = laneX(parentOutIdx);
-    const circleX = laneX(circleIndex);
-
-    const d = [
-      `M ${parentLeftEdge} ${midY}`,
-      `A ${SW} ${midY} 0 0 1 ${parentCenter} ${ROW_HEIGHT}`,
-      `M ${parentLeftEdge} ${midY}`,
-      `H ${circleX}`,
-    ].join(' ');
-    elements.push(
-      <path key={key++} d={d} {...lp(outputSwimlanes[parentOutIdx].color)} />,
-    );
-  }
-
-  // Vertical line to circle (from above)
-  const inputIndex = inputSwimlanes.findIndex((n) => n.id === commit.hash);
-  if (inputIndex !== -1) {
-    elements.push(
-      <path
-        key={key++}
-        d={`M ${laneX(circleIndex)} 0 V ${midY}`}
-        {...lp(inputSwimlanes[inputIndex].color)}
-      />,
-    );
-  }
-
-  // Vertical line from circle (to below)
-  if (commit.parent_hashes.length > 0) {
-    elements.push(
-      <path
-        key={key++}
-        d={`M ${laneX(circleIndex)} ${midY} V ${ROW_HEIGHT}`}
-        {...lp(circleColor)}
-      />,
-    );
-  }
-
-  // Circle node (VS Code style)
-  const fill = isCompareTarget ? '#eab308' : circleColor;
-  if (commit.parent_hashes.length > 1) {
-    // Merge commit: ring shape (outer filled + inner cutout)
-    elements.push(
-      <circle key={key++} cx={laneX(circleIndex)} cy={midY} r={CIRCLE_R + 2} fill={fill} strokeWidth={0} />,
-      <circle key={key++} cx={laneX(circleIndex)} cy={midY} r={CIRCLE_R - 1} fill="hsl(var(--background))" strokeWidth={0} />,
-    );
-  } else {
-    // Regular node
-    const r = isSelected || isCompareTarget ? CIRCLE_R + 2 : CIRCLE_R + 1;
-    const stroke = isSelected ? 'hsl(var(--foreground))' : isCompareTarget ? '#ca8a04' : 'none';
-    const sw = isSelected || isCompareTarget ? 2 : 0;
-    elements.push(
-      <circle key={key++} cx={laneX(circleIndex)} cy={midY} r={r} fill={fill} stroke={stroke} strokeWidth={sw} />,
-    );
-  }
-
-  const w = SW * (Math.max(inputSwimlanes.length, outputSwimlanes.length, 1) + 1);
-
-  return (
-    <svg width={w} height={ROW_HEIGHT} viewBox={`0 0 ${w} ${ROW_HEIGHT}`}>
-      {elements}
-    </svg>
   );
 }

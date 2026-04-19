@@ -24,6 +24,43 @@ fn reference_target_commit_oid(reference: &Reference<'_>) -> Option<Oid> {
         .or_else(|| reference.target())
 }
 
+fn build_diff_file(
+    item: DiffItem,
+    repo: Option<&Repository>,
+    project_path: &str,
+    is_workdir_mode: bool,
+    max_size: usize,
+) -> GitDiffFile {
+    let (original_content, old_binary, old_large) = if let Some(r) = repo {
+        read_blob_content(r, item.old_oid, max_size)
+    } else {
+        (String::new(), false, false)
+    };
+
+    let (modified_content, new_binary, new_large) = if is_workdir_mode {
+        if item.delta_status == Delta::Deleted {
+            (String::new(), false, false)
+        } else {
+            let full_path = Path::new(project_path).join(&item.path);
+            read_file_content(&full_path, max_size)
+        }
+    } else if let Some(r) = repo {
+        read_blob_content(r, item.new_oid, max_size)
+    } else {
+        (String::new(), false, false)
+    };
+
+    GitDiffFile {
+        path: item.path,
+        status: item.status,
+        old_path: item.old_path,
+        original_content,
+        modified_content,
+        is_binary: old_binary || new_binary,
+        is_large: old_large || new_large,
+    }
+}
+
 #[tauri::command]
 pub fn get_git_commits(project_path: String) -> Result<Vec<GitCommit>> {
     let repo = Repository::open(&project_path)?;
@@ -174,46 +211,25 @@ pub fn get_git_diff(
         .collect();
 
     const MAX_SIZE: usize = 2 * 1024 * 1024;
+    const PARALLEL_DIFF_THRESHOLD: usize = 4;
     let is_workdir_mode = new_hash == "__WORK_DIR__";
 
-    let files: Vec<GitDiffFile> = diff_items
-        .into_par_iter()
-        .map_init(
-            || Repository::open(&project_path).ok(),
-            |local_repo, item| {
-                let repo_ref = local_repo.as_ref();
-
-                let (original_content, old_binary, old_large) = if let Some(r) = repo_ref {
-                    read_blob_content(r, item.old_oid, MAX_SIZE)
-                } else {
-                    (String::new(), false, false)
-                };
-
-                let (modified_content, new_binary, new_large) = if is_workdir_mode {
-                    if item.delta_status == Delta::Deleted {
-                        (String::new(), false, false)
-                    } else {
-                        let full_path = Path::new(&project_path).join(&item.path);
-                        read_file_content(&full_path, MAX_SIZE)
-                    }
-                } else if let Some(r) = repo_ref {
-                    read_blob_content(r, item.new_oid, MAX_SIZE)
-                } else {
-                    (String::new(), false, false)
-                };
-
-                GitDiffFile {
-                    path: item.path,
-                    status: item.status,
-                    old_path: item.old_path,
-                    original_content,
-                    modified_content,
-                    is_binary: old_binary || new_binary,
-                    is_large: old_large || new_large,
-                }
-            },
-        )
-        .collect();
+    let files: Vec<GitDiffFile> = if diff_items.len() < PARALLEL_DIFF_THRESHOLD {
+        diff_items
+            .into_iter()
+            .map(|item| build_diff_file(item, Some(&repo), &project_path, is_workdir_mode, MAX_SIZE))
+            .collect()
+    } else {
+        diff_items
+            .into_par_iter()
+            .map_init(
+                || Repository::open(&project_path).ok(),
+                |local_repo, item| {
+                    build_diff_file(item, local_repo.as_ref(), &project_path, is_workdir_mode, MAX_SIZE)
+                },
+            )
+            .collect()
+    };
 
     Ok(files)
 }
