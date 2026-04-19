@@ -222,28 +222,34 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
     // No base selected or clicking the same commit — ignore
     if (!state.selectedCommitHash || state.selectedCommitHash === hash) return;
 
-    // Resolve working tree pseudo-hash to HEAD for oldHash
-    let oldHash = state.selectedCommitHash;
-    if (oldHash === WORKING_TREE_HASH) {
-      const headCommit = state.commits.find((c) => c.refs.some((r) => r.kind === 'Head'));
-      oldHash = headCommit?.hash ?? '';
-      if (!oldHash) return;
-    }
+    const selectedHash = state.selectedCommitHash;
+    const oldHash = selectedHash === WORKING_TREE_HASH ? hash : selectedHash;
+    const newHash = hash === WORKING_TREE_HASH || selectedHash !== WORKING_TREE_HASH
+      ? hash
+      : WORKING_TREE_HASH;
 
-    set({ isLoading: true, error: null, selectedFilePath: null, showDiffPanel: false });
+    set({
+      isLoading: true,
+      error: null,
+      selectedFilePath: null,
+      showDiffPanel: false,
+      selectedExportPaths: new Set(),
+      diffOldHash: null,
+      diffNewHash: null,
+    });
 
     try {
       const result = await invoke<GitDiffFile[]>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
         projectPath,
         oldHash,
-        newHash: hash,
+        newHash,
       });
       const files = mapDiffFiles(result);
       set({
         diffFiles: files,
         isLoading: false,
         diffOldHash: oldHash,
-        diffNewHash: hash,
+        diffNewHash: newHash,
         compareTargetHash: hash,
         selectedExportPaths: exportablePaths(files),
       });

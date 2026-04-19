@@ -216,6 +216,7 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
     for (let i = visibleStart; i < visibleEnd; i++) {
       if (i === 0) {
         const isSelected = selectedCommitHash === WORKING_TREE_HASH;
+        const isCompareTarget = compareTargetHash === WORKING_TREE_HASH;
         const firstRow = layout.rows[0];
         const svgW = firstRow
           ? SW * (Math.max(firstRow.inputSwimlanes.length, firstRow.outputSwimlanes.length, 1) + 1)
@@ -227,16 +228,35 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
             className={`group flex items-stretch cursor-pointer transition-colors border-l-2 ${
               isSelected
                 ? 'border-l-primary'
+                : isCompareTarget
+                  ? 'border-l-yellow-500'
                 : 'border-l-transparent'
             }`}
             style={{ height: ROW_HEIGHT }}
             onClick={() => handleClick(WORKING_TREE_HASH)}
             onContextMenu={(e) => handleContextMenu(e, WORKING_TREE_HASH)}
           >
-            <div className={`shrink-0 relative flex items-center justify-center ${isSelected ? 'bg-secondary' : 'group-hover:bg-secondary/30'}`} style={{ width: svgW }}>
+            <div
+              className={`shrink-0 relative flex items-center justify-center ${
+                isSelected
+                  ? 'bg-secondary'
+                  : isCompareTarget
+                    ? 'bg-yellow-500/10'
+                    : 'group-hover:bg-secondary/30'
+              }`}
+              style={{ width: svgW }}
+            >
               <FolderOpen size={14} className="text-orange-400" />
             </div>
-            <div className={`flex-1 min-w-0 pr-3 flex items-center ${isSelected ? 'bg-secondary' : 'group-hover:bg-secondary/30'}`}>
+            <div
+              className={`flex-1 min-w-0 pr-3 flex items-center ${
+                isSelected
+                  ? 'bg-secondary'
+                  : isCompareTarget
+                    ? 'bg-yellow-500/10'
+                    : 'group-hover:bg-secondary/30'
+              }`}
+            >
               <div className="min-w-0">
                 <p className="text-xs font-medium truncate leading-tight text-orange-400">
                   {t('patch.workingTree', 'Working Tree')}

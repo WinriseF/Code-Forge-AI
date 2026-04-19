@@ -1,5 +1,24 @@
 import type { GraphCommit } from './patch_types';
 
+interface GitGraphNodeLayout {
+  hash: string;
+  row: number;
+  lane: number;
+  colorIndex: number;
+}
+
+interface GitGraphEdgeLayout {
+  id: string;
+  fromHash: string;
+  toHash: string;
+  fromRow: number;
+  toRow: number;
+  fromLane: number;
+  toLane: number;
+  colorIndex: number;
+  isFirstParent: boolean;
+}
+
 export interface SwimlaneNode {
   id: string;
   color: string;
@@ -13,8 +32,11 @@ export interface CommitRowViewModel {
   circleColor: string;
 }
 
-export interface GitGraphLayout {
+interface GitGraphLayout {
   rows: CommitRowViewModel[];
+  nodes: Map<string, GitGraphNodeLayout>;
+  edges: GitGraphEdgeLayout[];
+  laneCount: number;
 }
 
 const GRAPH_COLORS = [
@@ -23,11 +45,12 @@ const GRAPH_COLORS = [
 ];
 
 export function computeGitGraphLayout(commits: GraphCommit[]): GitGraphLayout {
+  const commitHashes = new Set(commits.map((commit) => commit.hash));
   const rows: CommitRowViewModel[] = [];
   let colorIdx = 0;
 
   for (const commit of commits) {
-    const parents = commit.parent_hashes;
+    const parents = commit.parent_hashes.filter((parentHash) => commitHashes.has(parentHash));
     const prevOutput = rows.length > 0 ? rows[rows.length - 1].outputSwimlanes : [];
     const inputSwimlanes = prevOutput.map(n => ({ ...n }));
     const outputSwimlanes: SwimlaneNode[] = [];
@@ -66,8 +89,53 @@ export function computeGitGraphLayout(commits: GraphCommit[]): GitGraphLayout {
           ? inputSwimlanes[circleIndex].color
           : GRAPH_COLORS[0];
 
-    rows.push({ commit, inputSwimlanes, outputSwimlanes, circleIndex, circleColor });
+    rows.push({
+      commit: { ...commit, parent_hashes: parents },
+      inputSwimlanes,
+      outputSwimlanes,
+      circleIndex,
+      circleColor,
+    });
   }
 
-  return { rows };
+  const nodes = new Map<string, GitGraphNodeLayout>();
+  let laneCount = 0;
+
+  rows.forEach((row, rowIndex) => {
+    nodes.set(row.commit.hash, {
+      hash: row.commit.hash,
+      row: rowIndex,
+      lane: row.circleIndex,
+      colorIndex: row.circleIndex,
+    });
+
+    laneCount = Math.max(
+      laneCount,
+      row.circleIndex + 1,
+      row.inputSwimlanes.length,
+      row.outputSwimlanes.length,
+    );
+  });
+
+  const edges: GitGraphEdgeLayout[] = [];
+  rows.forEach((row, rowIndex) => {
+    row.commit.parent_hashes.forEach((parentHash, parentIndex) => {
+      const targetNode = nodes.get(parentHash);
+      if (!targetNode) return;
+
+      edges.push({
+        id: `${row.commit.hash}:${parentHash}:${parentIndex}`,
+        fromHash: row.commit.hash,
+        toHash: parentHash,
+        fromRow: rowIndex,
+        toRow: targetNode.row,
+        fromLane: row.circleIndex,
+        toLane: targetNode.lane,
+        colorIndex: Math.max(row.circleIndex, targetNode.lane),
+        isFirstParent: parentIndex === 0,
+      });
+    });
+  });
+
+  return { rows, nodes, edges, laneCount };
 }

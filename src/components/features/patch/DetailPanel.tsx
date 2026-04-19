@@ -16,6 +16,8 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
   const selectedFilePath = useGitGraphStore((s) => s.selectedFilePath);
   const selectFile = useGitGraphStore((s) => s.selectFile);
   const compareTargetHash = useGitGraphStore((s) => s.compareTargetHash);
+  const diffOldHash = useGitGraphStore((s) => s.diffOldHash);
+  const diffNewHash = useGitGraphStore((s) => s.diffNewHash);
   const isLoading = useGitGraphStore((s) => s.isLoading);
   const selectedExportPaths = useGitGraphStore((s) => s.selectedExportPaths);
   const toggleExportPath = useGitGraphStore((s) => s.toggleExportPath);
@@ -28,9 +30,13 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
     () => commits.find((c) => c.hash === selectedCommitHash),
     [commits, selectedCommitHash],
   );
-  const compareTargetCommit = useMemo(
-    () => commits.find((c) => c.hash === compareTargetHash),
-    [commits, compareTargetHash],
+  const compareOldCommit = useMemo(
+    () => commits.find((c) => c.hash === diffOldHash),
+    [commits, diffOldHash],
+  );
+  const compareNewCommit = useMemo(
+    () => commits.find((c) => c.hash === diffNewHash),
+    [commits, diffNewHash],
   );
 
   const fileTree = useMemo(() => {
@@ -69,12 +75,20 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
   const isWorkingTree = selectedCommitHash === WORKING_TREE_HASH;
   const fileCount = diffFiles.length;
 
-  const baseShortHash = isWorkingTree
+  const isCompareView = compareTargetHash !== null;
+  const baseHash = isCompareView ? diffOldHash : selectedCommitHash;
+  const targetHash = isCompareView ? diffNewHash : null;
+  const baseIsWorkingTree = baseHash === WORKING_TREE_HASH;
+  const targetIsWorkingTree = targetHash === WORKING_TREE_HASH;
+  const baseShortHash = baseIsWorkingTree
     ? t('patch.workingTree', 'Working Tree')
-    : selectedCommit?.short_hash ?? selectedCommitHash?.slice(0, 7);
-
-  const targetShortHash = compareTargetCommit?.short_hash ?? compareTargetHash?.slice(0, 7);
-  const targetIsWorkingTree = compareTargetHash === WORKING_TREE_HASH;
+    : compareOldCommit?.short_hash
+      ?? selectedCommit?.short_hash
+      ?? baseHash?.slice(0, 7);
+  const targetShortHash = targetIsWorkingTree
+    ? t('patch.workingTree', 'Working Tree')
+    : compareNewCommit?.short_hash
+      ?? targetHash?.slice(0, 7);
 
   return (
     <div className="h-full flex flex-col bg-background min-w-0 overflow-hidden">
@@ -86,16 +100,16 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
               <span className="font-mono text-green-500">{baseShortHash}</span>
               <ArrowRight size={14} className="text-muted-foreground shrink-0" />
               <span className={`font-mono ${targetIsWorkingTree ? 'text-orange-400' : 'text-green-500'}`}>
-                {targetIsWorkingTree ? t('patch.workingTree', 'Working Tree') : targetShortHash}
+                {targetShortHash}
               </span>
             </div>
-            {compareTargetCommit && (
+            {compareNewCommit && (
               <>
-                <p className="text-xs text-muted-foreground mt-1 truncate">{compareTargetCommit.message}</p>
+                <p className="text-xs text-muted-foreground mt-1 truncate">{compareNewCommit.message}</p>
                 <div className="flex items-center gap-2 mt-1 text-[11px] text-muted-foreground">
-                  <span>{compareTargetCommit.author}</span>
+                  <span>{compareNewCommit.author}</span>
                   <span>&middot;</span>
-                  <span>{compareTargetCommit.date}</span>
+                  <span>{compareNewCommit.date}</span>
                 </div>
               </>
             )}
