@@ -29,7 +29,6 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
   const isLoading = useGitGraphStore((s) => s.isLoading);
   const isLoadingMore = useGitGraphStore((s) => s.isLoadingMore);
   const error = useGitGraphStore((s) => s.error);
-  const isCompareView = useGitGraphStore((s) => s.isCompareView);
   const compareTargetHash = useGitGraphStore((s) => s.compareTargetHash);
 
   const { t } = useTranslation();
@@ -91,7 +90,7 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && useGitGraphStore.getState().isCompareView && projectRoot) {
+      if (e.key === 'Escape' && useGitGraphStore.getState().compareTargetHash && projectRoot) {
         useGitGraphStore.getState().cancelCompare(projectRoot);
       }
     };
@@ -255,7 +254,7 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
 
       const commit = row.commit;
       const isSelected = selectedCommitHash === commit.hash;
-      const isCompareTarget = isCompareView && compareTargetHash === commit.hash;
+      const isCompareTarget = compareTargetHash === commit.hash;
       const primaryRef = commit.refs.find((ref) => ref.kind !== 'RemoteBranch') ?? commit.refs[0];
       const extraRefCount = primaryRef ? commit.refs.length - 1 : 0;
 

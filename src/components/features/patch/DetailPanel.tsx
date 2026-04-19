@@ -15,7 +15,6 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
   const diffFiles = useGitGraphStore((s) => s.diffFiles);
   const selectedFilePath = useGitGraphStore((s) => s.selectedFilePath);
   const selectFile = useGitGraphStore((s) => s.selectFile);
-  const isCompareView = useGitGraphStore((s) => s.isCompareView);
   const compareTargetHash = useGitGraphStore((s) => s.compareTargetHash);
   const isLoading = useGitGraphStore((s) => s.isLoading);
   const selectedExportPaths = useGitGraphStore((s) => s.selectedExportPaths);
@@ -81,7 +80,7 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
     <div className="h-full flex flex-col bg-background min-w-0 overflow-hidden">
       {/* Header */}
       <div className="px-4 py-3 border-b border-border">
-        {isCompareView ? (
+        {compareTargetHash ? (
           <>
             <div className="flex items-center gap-2 text-sm font-semibold">
               <span className="font-mono text-green-500">{baseShortHash}</span>

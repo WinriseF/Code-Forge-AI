@@ -31,7 +31,6 @@ interface GitGraphState {
   selectedExportPaths: Set<string>;
 
   // Compare view
-  isCompareView: boolean;
   compareTargetHash: string | null;
 
   // UI
@@ -50,17 +49,6 @@ interface GitGraphState {
   cancelCompare: (projectPath: string) => void;
   toggleExportPath: (path: string, checked: boolean) => void;
 }
-
-const BRANCH_COLORS = [
-  '#89b4fa', // blue
-  '#a6e3a1', // green
-  '#f9e2af', // yellow
-  '#f38ba8', // red
-  '#cba6f7', // mauve
-  '#fab387', // peach
-  '#94e2d5', // teal
-  '#f5c2e7', // pink
-];
 
 const ROW_HEIGHT = 44;
 const COMMITS_PAGE_SIZE = 300;
@@ -99,7 +87,6 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
   diffOldHash: null,
   diffNewHash: null,
   selectedExportPaths: new Set(),
-  isCompareView: false,
   compareTargetHash: null,
   showDiffPanel: false,
   isLoading: false,
@@ -116,7 +103,6 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
       selectedFilePath: null,
       hasMoreCommits: true,
       showDiffPanel: false,
-      isCompareView: false,
       compareTargetHash: null,
       diffOldHash: null,
       diffNewHash: null,
@@ -177,7 +163,6 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
       showDiffPanel: false,
       isLoading: true,
       error: null,
-      isCompareView: false,
       compareTargetHash: null,
       selectedExportPaths: new Set(),
     });
@@ -259,7 +244,6 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
         isLoading: false,
         diffOldHash: oldHash,
         diffNewHash: hash,
-        isCompareView: true,
         compareTargetHash: hash,
         selectedExportPaths: exportablePaths(files),
       });
@@ -281,7 +265,7 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
     if (state.selectedCommitHash) {
       void state.selectCommit(state.selectedCommitHash, projectPath);
     } else {
-      set({ isCompareView: false, compareTargetHash: null });
+      set({ compareTargetHash: null });
     }
   },
 
@@ -295,4 +279,4 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
   },
 }));
 
-export { BRANCH_COLORS, ROW_HEIGHT };
+export { ROW_HEIGHT };
