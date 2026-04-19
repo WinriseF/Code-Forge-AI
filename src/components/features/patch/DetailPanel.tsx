@@ -78,7 +78,7 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
   const targetIsWorkingTree = compareTargetHash === WORKING_TREE_HASH;
 
   return (
-    <div className="flex-1 flex flex-col bg-background min-w-0 overflow-hidden">
+    <div className="h-full flex flex-col bg-background min-w-0 overflow-hidden">
       {/* Header */}
       <div className="px-4 py-3 border-b border-border">
         {isCompareView ? (

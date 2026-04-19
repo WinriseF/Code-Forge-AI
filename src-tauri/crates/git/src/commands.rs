@@ -289,14 +289,14 @@ pub fn get_git_log_graph(
     let mut ref_map: HashMap<Oid, Vec<GitRef>> = HashMap::new();
 
     // HEAD
-    if let Ok(head) = repo.head() {
-        if let Ok(target_oid) = head.target().ok_or_else(|| git2::Error::from_str("no target")) {
-            let branch_name = head.shorthand().unwrap_or("HEAD");
-            ref_map.entry(target_oid).or_default().push(GitRef {
-                name: branch_name.to_string(),
-                kind: GitRefKind::Head,
-            });
-        }
+    if let Ok(head) = repo.head()
+        && let Ok(target_oid) = head.target().ok_or_else(|| git2::Error::from_str("no target"))
+    {
+        let branch_name = head.shorthand().unwrap_or("HEAD");
+        ref_map.entry(target_oid).or_default().push(GitRef {
+            name: branch_name.to_string(),
+            kind: GitRefKind::Head,
+        });
     }
 
     // All references
