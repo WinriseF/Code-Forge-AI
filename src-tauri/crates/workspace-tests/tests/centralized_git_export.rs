@@ -13,6 +13,8 @@ fn sample_file() -> GitDiffFile {
         modified_content: "fn main() {\n    println!(\"new\");\n}\n".to_string(),
         is_binary: false,
         is_large: false,
+        additions: 1,
+        deletions: 1,
     }
 }
 

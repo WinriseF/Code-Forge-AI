@@ -14,6 +14,18 @@ export interface PatchFileItem {
   renameFrom?: string;
   isBinary?: boolean;
   isLarge?: boolean;
+  additions?: number;
+  deletions?: number;
+}
+
+export interface GitDiffSummary {
+  files_changed: number;
+  files_added: number;
+  files_modified: number;
+  files_deleted: number;
+  files_renamed: number;
+  insertions: number;
+  deletions: number;
 }
 
 // --- Git Graph Types ---
@@ -30,5 +42,5 @@ export interface GraphCommit {
 
 export interface GitRef {
   name: string;
-  kind: 'Head' | 'Branch' | 'RemoteBranch' | 'Tag';
+  kind: 'Head' | 'Branch' | 'RemoteBranch' | 'Tag' | 'Stash' | 'DeletedBranch';
 }

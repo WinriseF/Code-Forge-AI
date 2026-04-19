@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Calendar, GitCommit, Tag, User } from 'lucide-react';
+import { GitRefBadges } from './GitRefBadges';
 import type { GraphCommit } from './patch_types';
 
 interface CommitHoverCardProps {
@@ -87,24 +88,7 @@ export function CommitHoverCard({
                 <Tag size={12} />
                 <span>Refs</span>
               </div>
-              <div className="flex flex-wrap gap-1.5">
-                {commit.refs.map((ref, index) => (
-                  <span
-                    key={`${ref.kind}-${ref.name}-${index}`}
-                    className={`px-2 py-1 rounded-full text-[10px] font-semibold leading-none ${
-                      ref.kind === 'Head'
-                        ? 'bg-red-500/20 text-red-400'
-                        : ref.kind === 'Branch'
-                          ? 'bg-blue-500/20 text-blue-400'
-                          : ref.kind === 'Tag'
-                            ? 'bg-green-500/20 text-green-400'
-                            : 'bg-secondary text-muted-foreground'
-                    }`}
-                  >
-                    {ref.kind === 'Head' ? 'HEAD' : ref.name}
-                  </span>
-                ))}
-              </div>
+              <GitRefBadges refs={commit.refs} />
             </div>
           )}
           <div className="flex items-center gap-2 text-muted-foreground">

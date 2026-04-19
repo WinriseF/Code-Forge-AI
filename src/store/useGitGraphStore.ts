@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { invoke } from '@tauri-apps/api/core';
-import { GraphCommit, PatchFileItem } from '@/components/features/patch/patch_types';
+import { GitDiffSummary, GraphCommit, PatchFileItem } from '@/components/features/patch/patch_types';
 
 export const GIT_PLUGIN_PREFIX = 'plugin:ctxrun-plugin-git|';
 export const WORKING_TREE_HASH = '__WORK_DIR__';
@@ -13,6 +13,13 @@ interface GitDiffFile {
   modified_content: string;
   is_binary: boolean;
   is_large: boolean;
+  additions: number;
+  deletions: number;
+}
+
+interface GitDiffResponse {
+  files: GitDiffFile[];
+  summary: GitDiffSummary;
 }
 
 interface GitGraphState {
@@ -20,6 +27,7 @@ interface GitGraphState {
   commits: GraphCommit[];
   selectedCommitHash: string | null;
   diffFiles: PatchFileItem[];
+  diffSummary: GitDiffSummary | null;
   selectedFilePath: string | null;
   hasMoreCommits: boolean;
 
@@ -64,6 +72,8 @@ function mapDiffFiles(result: GitDiffFile[]): PatchFileItem[] {
     renameFrom: file.status === 'Renamed' && file.old_path ? file.old_path : undefined,
     isBinary: file.is_binary,
     isLarge: file.is_large,
+    additions: file.additions,
+    deletions: file.deletions,
   }));
 }
 
@@ -82,6 +92,7 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
   commits: [],
   selectedCommitHash: null,
   diffFiles: [],
+  diffSummary: null,
   selectedFilePath: null,
   hasMoreCommits: true,
   diffOldHash: null,
@@ -100,6 +111,7 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
       error: null,
       selectedCommitHash: null,
       diffFiles: [],
+      diffSummary: null,
       selectedFilePath: null,
       hasMoreCommits: true,
       showDiffPanel: false,
@@ -165,6 +177,7 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
       error: null,
       compareTargetHash: null,
       selectedExportPaths: new Set(),
+      diffSummary: null,
     });
 
     // Working tree: diff HEAD vs working directory
@@ -172,14 +185,15 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
       const headCommit = get().commits.find((c) => c.refs.some((r) => r.kind === 'Head'));
       const headHash = headCommit?.hash ?? '';
       try {
-        const result = await invoke<GitDiffFile[]>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
+        const result = await invoke<GitDiffResponse>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
           projectPath,
           oldHash: headHash,
           newHash: WORKING_TREE_HASH,
         });
-        const files = mapDiffFiles(result);
+        const files = mapDiffFiles(result.files);
         set({
           diffFiles: files,
+          diffSummary: result.summary,
           isLoading: false,
           diffOldHash: headHash,
           diffNewHash: WORKING_TREE_HASH,
@@ -199,14 +213,15 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
 
     try {
       const oldHash = commit.parent_hashes.length > 0 ? commit.parent_hashes[0] : EMPTY_TREE_HASH;
-      const result = await invoke<GitDiffFile[]>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
+      const result = await invoke<GitDiffResponse>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
         projectPath,
         oldHash,
         newHash: hash,
       });
-      const files = mapDiffFiles(result);
+      const files = mapDiffFiles(result.files);
       set({
         diffFiles: files,
+        diffSummary: result.summary,
         isLoading: false,
         diffOldHash: oldHash,
         diffNewHash: hash,
@@ -236,17 +251,19 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
       selectedExportPaths: new Set(),
       diffOldHash: null,
       diffNewHash: null,
+      diffSummary: null,
     });
 
     try {
-      const result = await invoke<GitDiffFile[]>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
+      const result = await invoke<GitDiffResponse>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
         projectPath,
         oldHash,
         newHash,
       });
-      const files = mapDiffFiles(result);
+      const files = mapDiffFiles(result.files);
       set({
         diffFiles: files,
+        diffSummary: result.summary,
         isLoading: false,
         diffOldHash: oldHash,
         diffNewHash: newHash,

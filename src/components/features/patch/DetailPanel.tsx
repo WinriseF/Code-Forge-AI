@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useGitGraphStore, WORKING_TREE_HASH } from '@/store/useGitGraphStore';
 import { buildPatchFileTree, flattenPatchTree, allDirIds } from '@/lib/patch_tree_utils';
+import { GitRefBadges } from './GitRefBadges';
 import { PatchFileTreeNode } from './PatchFileTreeNode';
 import { FileDown, FolderOpen, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -18,6 +19,7 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
   const compareTargetHash = useGitGraphStore((s) => s.compareTargetHash);
   const diffOldHash = useGitGraphStore((s) => s.diffOldHash);
   const diffNewHash = useGitGraphStore((s) => s.diffNewHash);
+  const diffSummary = useGitGraphStore((s) => s.diffSummary);
   const isLoading = useGitGraphStore((s) => s.isLoading);
   const selectedExportPaths = useGitGraphStore((s) => s.selectedExportPaths);
   const toggleExportPath = useGitGraphStore((s) => s.toggleExportPath);
@@ -74,7 +76,7 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
   }
 
   const isWorkingTree = selectedCommitHash === WORKING_TREE_HASH;
-  const fileCount = diffFiles.length;
+  const fileCount = diffSummary?.files_changed ?? diffFiles.length;
 
   const isCompareView = compareTargetHash !== null;
   const baseHash = isCompareView ? diffOldHash : selectedCommitHash;
@@ -119,6 +121,11 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
                 {t('patch.unstagedChanges')}
               </p>
             )}
+            {compareNewCommit?.refs.length ? (
+              <div className="mt-2">
+                <GitRefBadges refs={compareNewCommit.refs} />
+              </div>
+            ) : null}
           </>
         ) : isWorkingTree ? (
           <>
@@ -139,23 +146,8 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
               <span className="font-mono text-green-500">{selectedCommit.short_hash}</span>
             </div>
             {selectedCommit.refs.length > 0 && (
-              <div className="flex gap-1 mt-2 flex-wrap">
-                {selectedCommit.refs.map((ref, i) => (
-                  <span
-                    key={i}
-                    className={`text-[9px] px-1.5 py-[2px] rounded-full font-semibold ${
-                      ref.kind === 'Head'
-                        ? 'bg-red-500/20 text-red-400'
-                        : ref.kind === 'Branch'
-                          ? 'bg-blue-500/20 text-blue-400'
-                          : ref.kind === 'Tag'
-                            ? 'bg-green-500/20 text-green-400'
-                            : 'bg-secondary text-muted-foreground'
-                    }`}
-                  >
-                    {ref.kind === 'Head' ? 'HEAD' : ref.name}
-                  </span>
-                ))}
+              <div className="mt-2">
+                <GitRefBadges refs={selectedCommit.refs} />
               </div>
             )}
           </>
@@ -163,10 +155,33 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
       </div>
 
       {/* Toolbar */}
-      <div className="flex items-center gap-1 px-3 py-1.5 border-b border-border bg-secondary/20">
+      <div className="flex flex-wrap items-center gap-1.5 px-3 py-1.5 border-b border-border bg-secondary/20">
         <span className="text-[10px] text-muted-foreground mr-auto">
           {isLoading ? t('patch.loadingCommits', 'Loading...') : t('patch.filesChanged', '{{count}} file(s) changed').replace('{{count}}', String(fileCount))}
         </span>
+
+        {diffSummary && !isLoading && (
+          <>
+            <span className="rounded-full border border-border/60 px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+              A {diffSummary.files_added}
+            </span>
+            <span className="rounded-full border border-border/60 px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+              M {diffSummary.files_modified}
+            </span>
+            <span className="rounded-full border border-border/60 px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+              D {diffSummary.files_deleted}
+            </span>
+            <span className="rounded-full border border-border/60 px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+              R {diffSummary.files_renamed}
+            </span>
+            <span className="rounded-full border border-green-500/30 bg-green-500/10 px-2 py-0.5 text-[10px] font-medium text-green-400">
+              +{diffSummary.insertions}
+            </span>
+            <span className="rounded-full border border-red-500/30 bg-red-500/10 px-2 py-0.5 text-[10px] font-medium text-red-400">
+              -{diffSummary.deletions}
+            </span>
+          </>
+        )}
 
         <button
           onClick={onExport}

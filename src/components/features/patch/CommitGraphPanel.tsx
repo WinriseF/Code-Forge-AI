@@ -2,6 +2,7 @@ import { memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useSta
 import { useGitGraphStore, ROW_HEIGHT, WORKING_TREE_HASH } from '@/store/useGitGraphStore';
 import { computeGitGraphLayout, type CommitRowViewModel } from './gitGraphLayout';
 import { CommitHoverCard } from './CommitHoverCard';
+import { GitRefBadges } from './GitRefBadges';
 import { FolderOpen } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { GraphCommit } from './patch_types';
@@ -102,8 +103,6 @@ const CommitGraphRow = memo(function CommitGraphRow({
   onCloseHover,
 }: CommitGraphRowProps) {
   const { commit } = row;
-  const primaryRef = commit.refs.find((ref) => ref.kind !== 'RemoteBranch') ?? commit.refs[0];
-  const extraRefCount = primaryRef ? commit.refs.length - 1 : 0;
   const surfaceClass = rowSurfaceClass(isSelected, isCompareTarget);
 
   return (
@@ -124,27 +123,10 @@ const CommitGraphRow = memo(function CommitGraphRow({
           <p className="text-xs truncate leading-tight font-medium" title={commit.message}>
             {commit.message}
           </p>
-          <div className="flex items-center gap-1.5 mt-0.5 min-w-0">
+          <div className="flex items-center gap-1.5 mt-0.5 min-w-0 overflow-hidden">
             <span className="text-[10px] font-mono text-green-500">{commit.short_hash}</span>
-            {primaryRef && (
-              <span
-                className={`shrink-0 text-[9px] leading-none px-1.5 py-[2px] rounded-full font-semibold ${
-                  primaryRef.kind === 'Head'
-                    ? 'bg-red-500/20 text-red-400'
-                    : primaryRef.kind === 'Branch'
-                      ? 'bg-blue-500/20 text-blue-400'
-                      : primaryRef.kind === 'Tag'
-                        ? 'bg-green-500/20 text-green-400'
-                        : 'bg-secondary text-muted-foreground'
-                }`}
-              >
-                {primaryRef.kind === 'Head' ? 'HEAD' : primaryRef.name}
-              </span>
-            )}
-            {extraRefCount > 0 && (
-              <span className="shrink-0 text-[9px] leading-none px-1.5 py-[2px] rounded-full font-semibold bg-secondary text-muted-foreground">
-                +{extraRefCount}
-              </span>
+            {commit.refs.length > 0 && (
+              <GitRefBadges refs={commit.refs} maxVisible={2} size="compact" wrap={false} />
             )}
           </div>
         </div>
@@ -281,7 +263,17 @@ const CommitRowGraph = memo(function CommitRowGraph({
   }
 
   const fill = isCompareTarget ? '#eab308' : circleColor;
-  if (commit.parent_hashes.length > 1) {
+  const isStash = commit.refs.some((r) => r.kind === 'Stash');
+
+  if (isStash) {
+    const sz = isSelected || isCompareTarget ? 7 : 6;
+    const cx = laneX(circleIndex);
+    const stroke = isSelected ? 'hsl(var(--foreground))' : isCompareTarget ? '#ca8a04' : 'none';
+    const sw = isSelected || isCompareTarget ? 2 : 0;
+    elements.push(
+      <rect key={key++} x={cx - sz} y={midY - sz} width={sz * 2} height={sz * 2} rx={1} fill={fill} stroke={stroke} strokeWidth={sw} />,
+    );
+  } else if (commit.parent_hashes.length > 1) {
     elements.push(
       <circle key={key++} cx={laneX(circleIndex)} cy={midY} r={CIRCLE_R + 2} fill={fill} strokeWidth={0} />,
       <circle key={key++} cx={laneX(circleIndex)} cy={midY} r={CIRCLE_R - 1} fill="hsl(var(--background))" strokeWidth={0} />,

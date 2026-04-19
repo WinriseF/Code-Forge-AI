@@ -136,6 +136,13 @@ export function PatchFileTreeNode({
         )}
       </div>
 
+      {typeof fileData?.additions === 'number' && typeof fileData?.deletions === 'number' && (
+        <div className="mr-2 mt-0.5 flex items-center gap-1 shrink-0 text-[10px] font-mono">
+          <span className="text-green-400">+{fileData.additions}</span>
+          <span className="text-red-400">-{fileData.deletions}</span>
+        </div>
+      )}
+
       {/* Git status badge */}
       {gitStatus && (
         <span

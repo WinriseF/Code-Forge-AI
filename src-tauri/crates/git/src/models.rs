@@ -18,6 +18,25 @@ pub struct GitDiffFile {
     pub modified_content: String,
     pub is_binary: bool,
     pub is_large: bool,
+    pub additions: usize,
+    pub deletions: usize,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug, Default)]
+pub struct GitDiffSummary {
+    pub files_changed: usize,
+    pub files_added: usize,
+    pub files_modified: usize,
+    pub files_deleted: usize,
+    pub files_renamed: usize,
+    pub insertions: usize,
+    pub deletions: usize,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct GitDiffResponse {
+    pub files: Vec<GitDiffFile>,
+    pub summary: GitDiffSummary,
 }
 
 // --- Git Graph Types ---
@@ -39,12 +58,14 @@ pub struct GitRef {
     pub kind: GitRefKind,
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug)]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 pub enum GitRefKind {
     Head,
     Branch,
     RemoteBranch,
     Tag,
+    Stash,
+    DeletedBranch,
 }
 
 // 来自 export.rs
