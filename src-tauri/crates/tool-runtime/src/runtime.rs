@@ -10,7 +10,6 @@ use crate::miner_tools::{
     MinerStartCrawlTool, MinerStopCrawlTool,
 };
 use crate::models::{ToolAnnotations, ToolCallRequest, ToolCallResponse, ToolSpec};
-use crate::patch_tools::{PatchApplyFileTool, PatchPreviewTool};
 
 #[derive(Debug, Clone, Copy)]
 pub(crate) enum ApprovalPolicy {
@@ -37,10 +36,8 @@ pub(crate) enum ApprovalRequirement {
     NeedsApproval { reason: String },
 }
 
-#[derive(Debug, Clone)]
-pub(crate) struct ToolExecutionContext {
-    pub tool_name: String,
-}
+#[derive(Debug, Clone, Copy, Default)]
+pub(crate) struct ToolExecutionContext;
 
 #[derive(Debug, thiserror::Error)]
 pub(crate) enum ToolRuntimeError {
@@ -174,9 +171,7 @@ impl ToolOrchestrator {
             }
         }
 
-        let context = ToolExecutionContext {
-            tool_name: request.name.clone(),
-        };
+        let context = ToolExecutionContext;
         match handler.call(request.arguments, context).await {
             Ok(data) => ToolCallResponse::ok(data),
             Err(err) => ToolCallResponse::error(err.to_string()),
@@ -206,9 +201,6 @@ impl ToolRuntime {
         registry.register(MinerStartCrawlTool::new(crawl_manager.clone()));
         registry.register(MinerGetCrawlStatusTool::new(crawl_manager.clone()));
         registry.register(MinerStopCrawlTool::new(crawl_manager));
-
-        registry.register(PatchPreviewTool);
-        registry.register(PatchApplyFileTool);
 
         let orchestrator = ToolOrchestrator::new(registry, ApprovalPolicy::from_env());
         Self {

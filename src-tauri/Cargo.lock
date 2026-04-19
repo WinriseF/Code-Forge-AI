@@ -1455,7 +1455,6 @@ dependencies = [
  "ctxrun-plugin-miner",
  "ctxrun-process-utils",
  "futures",
- "once_cell",
  "regex",
  "serde",
  "serde_json",

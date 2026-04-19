@@ -108,11 +108,7 @@ fn centralized_runtime_command_wrapper_lists_registered_tools() {
     let tools =
         commands::list_tools(state_of(&runtime)).expect("list tools through command wrapper");
     assert!(tools.iter().any(|tool| tool.name == "read_file"));
-    assert!(
-        tools
-            .iter()
-            .any(|tool| tool.name == "patch.preview_search_replace")
-    );
+    assert!(!tools.iter().any(|tool| tool.name == "patch.preview_search_replace"));
 }
 
 #[tokio::test]
@@ -205,98 +201,6 @@ async fn centralized_list_dir_tool_respects_depth_and_paging() {
 }
 
 #[tokio::test]
-async fn centralized_patch_preview_merges_same_file_sections() {
-    let root = temp_root("patch-merge");
-    let src_dir = root.join("src");
-    fs::create_dir_all(&src_dir).expect("create src");
-    fs::write(src_dir.join("main.ts"), "console.log(\"a\")\nconst x = 1\n").expect("write file");
-
-    let patch = r#"
-File: src/main.ts
-<<<<<<< SEARCH
-console.log("a")
-=======
-console.log("b")
->>>>>>> REPLACE
-
-File: src/main.ts
-<<<<<<< SEARCH
-const x = 1
-=======
-const x = 2
->>>>>>> REPLACE
-"#;
-
-    let runtime = ToolRuntime::new();
-    let response = runtime
-        .call_tool(ToolCallRequest {
-            name: "patch.preview_search_replace".to_string(),
-            arguments: json!({
-                "rootDir": root.to_string_lossy(),
-                "patch": patch
-            }),
-            approved: false,
-        })
-        .await;
-
-    let data = ensure_success(&response, "patch.preview_search_replace should succeed");
-    let files = data["files"].as_array().expect("files should be an array");
-    assert_eq!(files.len(), 1, "same file sections should be merged");
-    assert_eq!(files[0]["success"], json!(true));
-    let modified = files[0]["modified"]
-        .as_str()
-        .expect("modified should be a string");
-    assert!(modified.contains("console.log(\"b\")"));
-    assert!(modified.contains("const x = 2"));
-
-    let _ = fs::remove_dir_all(root);
-}
-
-#[tokio::test]
-async fn centralized_patch_preview_supports_fuzzy_whitespace_match() {
-    let root = temp_root("patch-fuzzy");
-    let src_dir = root.join("src");
-    fs::create_dir_all(&src_dir).expect("create src");
-    fs::write(
-        src_dir.join("lib.rs"),
-        "fn demo() {\n    let value = 1;\n}\n",
-    )
-    .expect("write file");
-
-    let patch = r#"
-File: src/lib.rs
-<<<<<<< SEARCH
-let value=1;
-=======
-let value = 2;
->>>>>>> REPLACE
-"#;
-
-    let runtime = ToolRuntime::new();
-    let response = runtime
-        .call_tool(ToolCallRequest {
-            name: "patch.preview_search_replace".to_string(),
-            arguments: json!({
-                "rootDir": root.to_string_lossy(),
-                "patch": patch
-            }),
-            approved: false,
-        })
-        .await;
-
-    let data = ensure_success(&response, "patch.preview_search_replace should succeed");
-    let files = data["files"].as_array().expect("files should be an array");
-    assert_eq!(files.len(), 1);
-    assert_eq!(files[0]["success"], json!(true));
-    let modified = files[0]["modified"]
-        .as_str()
-        .expect("modified should be a string");
-    assert!(modified.contains("let value = 2;"));
-
-    let _ = fs::remove_dir_all(root);
-}
-
-#[tokio::test]
 async fn centralized_grep_files_respects_limit() {
     if !has_ripgrep() {
         return;
@@ -379,63 +283,6 @@ async fn centralized_runtime_reports_not_found_for_unknown_tool() {
         .await;
 
     assert_eq!(response.status, ToolCallStatus::NotFound);
-}
-
-#[tokio::test]
-async fn centralized_patch_apply_requires_approval_by_default() {
-    let root = temp_root("patch-approval");
-    let target = root.join("note.txt");
-    fs::write(&target, "before").expect("write initial file");
-
-    let runtime = ToolRuntime::new();
-    let response = runtime
-        .call_tool(ToolCallRequest {
-            name: "patch.apply_file_content".to_string(),
-            arguments: json!({
-                "rootDir": root.to_string_lossy(),
-                "filePath": "note.txt",
-                "content": "after"
-            }),
-            approved: false,
-        })
-        .await;
-
-    assert_eq!(response.status, ToolCallStatus::ApprovalRequired);
-    let current = fs::read_to_string(&target).expect("read after denied apply");
-    assert_eq!(current, "before");
-
-    let _ = fs::remove_dir_all(root);
-}
-
-#[tokio::test]
-async fn centralized_patch_apply_writes_file_when_approved() {
-    let root = temp_root("patch-approved");
-    let target = root.join("note.txt");
-    fs::write(&target, "before").expect("write initial file");
-
-    let runtime = ToolRuntime::new();
-    let response = runtime
-        .call_tool(ToolCallRequest {
-            name: "patch.apply_file_content".to_string(),
-            arguments: json!({
-                "rootDir": root.to_string_lossy(),
-                "filePath": "note.txt",
-                "content": "after"
-            }),
-            approved: true,
-        })
-        .await;
-
-    let data = ensure_success(
-        &response,
-        "approved patch.apply_file_content should succeed",
-    );
-    assert_eq!(data["filePath"], json!("note.txt"));
-    assert_eq!(data["bytesWritten"], json!(5));
-    let current = fs::read_to_string(&target).expect("read after approved apply");
-    assert_eq!(current, "after");
-
-    let _ = fs::remove_dir_all(root);
 }
 
 #[tokio::test]

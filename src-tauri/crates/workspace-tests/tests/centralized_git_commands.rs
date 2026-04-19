@@ -6,8 +6,8 @@ use std::{
 };
 
 use ctxrun_plugin_git::{
-    commands::{export_git_diff, get_git_commits, get_git_diff, get_git_diff_text},
-    models::{ExportFormat, ExportLayout},
+    commands::{export_git_diff, get_git_commits, get_git_diff, get_git_diff_text, get_git_log_graph},
+    models::{ExportFormat, ExportLayout, GitRefKind},
 };
 use git2::{IndexAddOption, Repository, Signature};
 
@@ -72,6 +72,37 @@ fn centralized_git_commands_get_commits_returns_recent_history() {
     assert!(commits.len() >= 2);
     assert!(!commits[0].hash.is_empty());
     assert!(!commits[0].message.is_empty());
+
+    let _ = fs::remove_dir_all(root);
+}
+
+#[test]
+fn centralized_git_log_graph_peels_annotated_tags_to_the_commit() {
+    let root = temp_root("git-log-graph");
+    let repo = Repository::init(&root).expect("init git repo");
+
+    fs::write(root.join("file.txt"), "line-1\n").expect("write initial file");
+    let commit_hash = commit_all(&repo, "initial");
+    let commit_oid = git2::Oid::from_str(&commit_hash).expect("parse commit oid");
+    let commit_object = repo
+        .find_object(commit_oid, Some(git2::ObjectType::Commit))
+        .expect("find commit object");
+    let sig = Signature::now("Tester", "tester@example.com").expect("signature");
+    repo.tag("v1.0.0", &commit_object, &sig, "release", false)
+        .expect("create annotated tag");
+
+    let commits = get_git_log_graph(root.to_string_lossy().to_string(), Some(20), Some(0))
+        .expect("get git log graph");
+    let head_commit = commits.first().expect("head commit");
+
+    assert!(head_commit
+        .refs
+        .iter()
+        .any(|reference| matches!(reference.kind, GitRefKind::Head)));
+    assert!(head_commit
+        .refs
+        .iter()
+        .any(|reference| matches!(reference.kind, GitRefKind::Tag) && reference.name == "v1.0.0"));
 
     let _ = fs::remove_dir_all(root);
 }

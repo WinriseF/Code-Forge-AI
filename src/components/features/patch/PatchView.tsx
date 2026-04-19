@@ -191,12 +191,10 @@ export function PatchView() {
             >
               <DiffWorkspace
                   selectedFile={selectedFile}
-                  onSave={() => {}}
                   onCopy={async (txt) => {
                     await writeClipboard(txt);
                     showNotification(t('patch.copied'), 'success');
                   }}
-                  isReadOnly={true}
                 />
             </motion.div>
           </motion.div>

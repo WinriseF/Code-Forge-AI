@@ -2,7 +2,7 @@
 name = "ctxrun-plugin-tool-runtime"
 version = "2.0.0"
 edition = "2024"
-description = "Tool runtime and secure patch execution plugin for CtxRun"
+description = "Tool runtime plugin for CtxRun"
 links = "ctxrun-plugin-tool-runtime"
 
 [package.metadata.cargo-machete]
@@ -14,7 +14,6 @@ serde = { workspace = true }
 serde_json = { workspace = true }
 thiserror = { workspace = true }
 regex = { workspace = true }
-once_cell = { workspace = true }
 futures = { workspace = true }
 tokio = { workspace = true }
 chrono = { workspace = true }

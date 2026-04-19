@@ -89,7 +89,7 @@ export function PatchFileTreeNode({
   return (
     <div
       className={cn(
-        'flex items-center py-1 pr-2 cursor-pointer select-none transition-colors text-sm group w-full box-border',
+        'flex items-start py-1 pr-2 cursor-pointer select-none transition-colors text-sm group w-full box-border',
         isSelected
           ? 'bg-secondary/50'
           : 'hover:bg-secondary/50',
@@ -101,7 +101,7 @@ export function PatchFileTreeNode({
       title={node.path}
     >
       {/* Expand spacer (files don't have arrow) */}
-      <div className="w-5 h-5 shrink-0" />
+      <div className="w-5 h-5 shrink-0 mt-0.5" />
 
       {/* Checkbox (diff mode export) */}
       {showCheckbox && (
@@ -117,23 +117,30 @@ export function PatchFileTreeNode({
 
       {/* File icon */}
       {fileData?.isBinary ? (
-        <FileImage size={14} className="mr-2 shrink-0 text-orange-400" />
+        <FileImage size={14} className="mr-2 mt-0.5 shrink-0 text-orange-400" />
       ) : fileData?.isLarge ? (
-        <AlertOctagon size={14} className="mr-2 shrink-0 text-red-400" />
+        <AlertOctagon size={14} className="mr-2 mt-0.5 shrink-0 text-red-400" />
       ) : (
-        <FileCode size={14} className="mr-2 shrink-0 text-muted-foreground" />
+        <FileCode size={14} className="mr-2 mt-0.5 shrink-0 text-muted-foreground" />
       )}
 
       {/* File name */}
-      <span className={cn('truncate flex-1', isSelected && 'font-medium')}>
-        {node.name}
-      </span>
+      <div className="min-w-0 flex-1">
+        <span className={cn('block truncate', isSelected && 'font-medium')}>
+          {node.name}
+        </span>
+        {fileData?.renameFrom && (
+          <span className="block truncate text-[10px] text-muted-foreground">
+            {fileData.renameFrom}
+          </span>
+        )}
+      </div>
 
       {/* Git status badge */}
       {gitStatus && (
         <span
           className={cn(
-            'text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded shrink-0 mr-1',
+            'text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded shrink-0 mr-1 mt-0.5',
             gitStatus === 'Added' && 'bg-green-500/20 text-green-500',
             gitStatus === 'Modified' && 'bg-blue-500/20 text-blue-500',
             gitStatus === 'Deleted' && 'bg-red-500/20 text-red-600',

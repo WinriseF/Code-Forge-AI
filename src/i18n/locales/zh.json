@@ -2,7 +2,7 @@
   "menu": {
     "prompts": "提词库",
     "context": "文件整合",
-    "patch": "代码对比",
+    "patch": "Git 对比",
     "refinery": "剪贴板",
     "automator": "自动化",
     "miner": "知识抓取",
@@ -304,6 +304,7 @@
     "gitHistory": "Git 历史",
     "clickToViewChanges": "点击提交查看变更",
     "filesChanged": "{{count}} 个文件已变更",
+    "renamedFrom": "从 {{path}} 重命名",
     "workingTree": "工作区",
     "unstagedChanges": "未暂存的更改"
   },

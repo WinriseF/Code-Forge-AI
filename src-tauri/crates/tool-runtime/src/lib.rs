@@ -8,7 +8,6 @@ pub mod commands;
 mod fs_tools;
 mod miner_tools;
 pub mod models;
-mod patch_tools;
 mod runtime;
 mod sandbox;
 

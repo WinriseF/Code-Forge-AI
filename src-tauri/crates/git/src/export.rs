@@ -58,7 +58,11 @@ fn to_markdown(files: Vec<GitDiffFile>, layout: ExportLayout) -> String {
 
     for file in files {
         let ext = file.path.split('.').next_back().unwrap_or("txt");
-        let _ = writeln!(output, "## File: {} ({})\n", file.path, file.status);
+        let file_title = match &file.old_path {
+            Some(old_path) => format!("{} (from {})", file.path, old_path),
+            None => file.path.clone(),
+        };
+        let _ = writeln!(output, "## File: {} ({})\n", file_title, file.status);
 
         if layout == ExportLayout::Split {
             if !file.original_content.is_empty() {
@@ -112,6 +116,7 @@ fn to_json(files: Vec<GitDiffFile>, layout: ExportLayout) -> String {
 
         serde_json::json!({
             "path": f.path,
+            "oldPath": f.old_path,
             "status": f.status,
             "layout": format!("{:?}", layout),
             "content": content
@@ -130,8 +135,9 @@ fn to_xml(files: Vec<GitDiffFile>, layout: ExportLayout) -> String {
     for file in files {
         let _ = writeln!(
             output,
-            "  <file path=\"{}\" status=\"{}\">",
+            "  <file path=\"{}\" old_path=\"{}\" status=\"{}\">",
             escape_xml_attr(&file.path),
+            escape_xml_attr(file.old_path.as_deref().unwrap_or("")),
             file.status
         );
 
@@ -173,6 +179,9 @@ fn to_custom_text(files: Vec<GitDiffFile>, layout: ExportLayout) -> String {
             "=================================================================="
         );
         let _ = writeln!(output, "FILE: {}  STATUS: {}", file.path, file.status);
+        if let Some(old_path) = &file.old_path {
+            let _ = writeln!(output, "OLD PATH: {}", old_path);
+        }
         let _ = writeln!(
             output,
             "=================================================================="

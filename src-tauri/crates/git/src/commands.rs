@@ -2,7 +2,7 @@ use crate::error::{GitError, Result};
 use crate::export::generate_export_content;
 use crate::models::{ExportFormat, ExportLayout, GitCommit, GitDiffFile, GitRef, GitRefKind, GraphCommit};
 use chrono::{DateTime, Local};
-use git2::{Delta, DiffFormat, DiffOptions, Oid, Repository};
+use git2::{Delta, DiffFormat, DiffOptions, Oid, Reference, Repository};
 use rayon::prelude::*;
 use std::collections::{HashMap, HashSet};
 use std::path::Path;
@@ -14,6 +14,14 @@ struct DiffItem {
     old_oid: Oid,
     new_oid: Oid,
     delta_status: Delta,
+}
+
+fn reference_target_commit_oid(reference: &Reference<'_>) -> Option<Oid> {
+    reference
+        .peel_to_commit()
+        .ok()
+        .map(|commit| commit.id())
+        .or_else(|| reference.target())
 }
 
 #[tauri::command]
@@ -290,7 +298,7 @@ pub fn get_git_log_graph(
 
     // HEAD
     if let Ok(head) = repo.head()
-        && let Ok(target_oid) = head.target().ok_or_else(|| git2::Error::from_str("no target"))
+        && let Some(target_oid) = reference_target_commit_oid(&head)
     {
         let branch_name = head.shorthand().unwrap_or("HEAD");
         ref_map.entry(target_oid).or_default().push(GitRef {
@@ -302,7 +310,7 @@ pub fn get_git_log_graph(
     // All references
     if let Ok(references) = repo.references() {
         for reference in references.flatten() {
-            if let Some(target_oid) = reference.target() {
+            if let Some(target_oid) = reference_target_commit_oid(&reference) {
                 let name = reference.shorthand().unwrap_or("").to_string();
                 if name.is_empty() {
                     continue;

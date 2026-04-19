@@ -2,7 +2,7 @@
   "menu": {
     "prompts": "Prompt Verse",
     "context": "Context Forge",
-    "patch": "Patch Weaver",
+    "patch": "Git Diff",
     "refinery": "Refinery",
     "automator": "Automator",
     "miner": "Knowledge Miner",
@@ -304,6 +304,7 @@
     "gitHistory": "Git History",
     "clickToViewChanges": "Click a commit to view changes",
     "filesChanged": "{{count}} file(s) changed",
+    "renamedFrom": "Renamed from {{path}}",
     "workingTree": "Working Tree",
     "unstagedChanges": "Unstaged changes"
   },
