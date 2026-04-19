@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { save } from '@tauri-apps/plugin-dialog';
 import { writeText as writeClipboard } from '@tauri-apps/plugin-clipboard-manager';
-import { motion, useMotionValue } from 'framer-motion';
+import { motion, useMotionValue, AnimatePresence } from 'framer-motion';
 import { useAppStore } from '@/store/useAppStore';
 import { useGitGraphStore, GIT_PLUGIN_PREFIX } from '@/store/useGitGraphStore';
 import { CommitGraphPanel } from './CommitGraphPanel';
@@ -12,7 +12,6 @@ import { Toast, ToastType } from '@/components/ui/Toast';
 import { PatchFileItem, ExportFormat, ExportLayout } from './patch_types';
 import { invoke } from '@tauri-apps/api/core';
 import { useTranslation } from 'react-i18next';
-import { cn } from '@/lib/utils';
 
 const MIN_GIT = 200;
 const MAX_GIT = 460;
@@ -174,39 +173,35 @@ export function PatchView() {
       />
 
       {/* Diff popup overlay */}
-      {selectedFile && (
-        <motion.div
-          initial={false}
-          animate={{ opacity: showDiffPanel ? 1 : 0 }}
-          transition={{ duration: 0.15 }}
-          className={cn(
-            'fixed inset-0 z-[200] flex items-center justify-center bg-black/50 backdrop-blur-sm',
-            showDiffPanel ? 'pointer-events-auto' : 'pointer-events-none',
-          )}
-          aria-hidden={!showDiffPanel}
-          onClick={() => {
-            if (showDiffPanel) {
-              closeDiff();
-            }
-          }}
-        >
+      <AnimatePresence>
+        {showDiffPanel && selectedFile && (
           <motion.div
-            initial={false}
-            animate={showDiffPanel ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.96, y: 8 }}
-            transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-            className="w-[90vw] h-[85vh] bg-background border border-border rounded-xl shadow-2xl overflow-hidden flex flex-col"
-            onClick={(e) => e.stopPropagation()}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/50 backdrop-blur-sm"
+            onClick={closeDiff}
           >
-            <DiffWorkspace
-              selectedFile={selectedFile}
-              onCopy={async (txt) => {
-                await writeClipboard(txt);
-                showNotification(t('patch.copied'), 'success');
-              }}
-            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 8 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 8 }}
+              transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+              className="w-[90vw] h-[85vh] bg-background border border-border rounded-xl shadow-2xl overflow-hidden flex flex-col"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <DiffWorkspace
+                selectedFile={selectedFile}
+                onCopy={async (txt) => {
+                  await writeClipboard(txt);
+                  showNotification(t('patch.copied'), 'success');
+                }}
+              />
+            </motion.div>
           </motion.div>
-        </motion.div>
-      )}
+        )}
+      </AnimatePresence>
     </div>
   );
 }

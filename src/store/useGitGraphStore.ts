@@ -263,7 +263,7 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
   },
 
   closeDiff: () => {
-    set({ showDiffPanel: false });
+    set({ showDiffPanel: false, selectedFilePath: null });
   },
 
   cancelCompare: (projectPath: string) => {
