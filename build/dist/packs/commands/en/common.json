@@ -5117,10 +5117,10 @@
   {
     "id": "tldr-en-common-tig-4",
     "type": "command",
-    "title": "tig - Browse git blame interactively (press `<,>` to jump to parent)",
+    "title": "tig - Browse `git blame` interactively (press `<,>` to jump to parent)",
     "content": "tig blame {{path/to/file}}",
     "group": "Common Tools",
-    "description": "tig: A configurable `ncurses`-based TUI for Git. (Browse git blame interactively (press `<,>` to jump to parent))",
+    "description": "tig: A configurable `ncurses`-based TUI for Git. (Browse `git blame` interactively (press `<,>` to jump to parent))",
     "tags": [
       "common",
       "tig",
@@ -29895,6 +29895,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-git-switch-7",
+    "type": "command",
+    "title": "git-switch - Switch to another remote's branch",
+    "content": "git switch {{[-t|--track]}} {{remote_name}}/{{branch}}",
+    "group": "Common Tools",
+    "description": "git-switch: Switch between Git branches. Requires Git version 2.23+. (Switch to another remote's branch)",
+    "tags": [
+      "common",
+      "git-switch",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-ticketconverter.py-0",
     "type": "command",
     "title": "ticketconverter.py - Convert kirbi to ccache",
@@ -33707,10 +33722,10 @@
   {
     "id": "tldr-en-common-hn-1",
     "type": "command",
-    "title": "hn - View _number_ of stories on Hacker News",
+    "title": "hn - View a specified number of stories on Hacker News",
     "content": "hn {{[-l|--limit]}} {{number}}",
     "group": "Common Tools",
-    "description": "hn: Command-line interface for Hacker News. (View _number_ of stories on Hacker News)",
+    "description": "hn: Command-line interface for Hacker News. (View a specified number of stories on Hacker News)",
     "tags": [
       "common",
       "hn",
@@ -43605,6 +43620,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-gst-launch-1.0-videoscale-0",
+    "type": "command",
+    "title": "gst-launch-1.0-videoscale - Scale video to fit the capabilities of both input and output",
+    "content": "gst-launch-1.0 {{input}} ! videoscale ! {{output}}",
+    "group": "Common Tools",
+    "description": "gst-launch-1.0-videoscale: Resize video frames. (Scale video to fit the capabilities of both input and output)",
+    "tags": [
+      "common",
+      "gst-launch-1.0-videoscale",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gst-launch-1.0-videoscale-1",
+    "type": "command",
+    "title": "gst-launch-1.0-videoscale - Scale video to an arbitrary resolution",
+    "content": "gst-launch-1.0 {{input}} ! videoscale ! video/x-raw,width={{width}},height={{height}} ! {{output}}",
+    "group": "Common Tools",
+    "description": "gst-launch-1.0-videoscale: Resize video frames. (Scale video to an arbitrary resolution)",
+    "tags": [
+      "common",
+      "gst-launch-1.0-videoscale",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-cancel-0",
     "type": "command",
     "title": "cancel - Cancel the current job of the default printer (set with `lpoptions -d printer_name`)",
@@ -51950,7 +51995,7 @@
     "title": "yadm-git-crypt - Initialize repo to use Git Crypt",
     "content": "yadm git-crypt init",
     "group": "Common Tools",
-    "description": "yadm-git-crypt: Git Crypt enables transparent encryption and decryption of files in a git repository. (Initialize repo to use Git Crypt)",
+    "description": "yadm-git-crypt: Git Crypt enables transparent encryption and decryption of files in a Git repository. (Initialize repo to use Git Crypt)",
     "tags": [
       "common",
       "yadm-git-crypt",
@@ -51965,7 +52010,7 @@
     "title": "yadm-git-crypt - Share the repository using GPG",
     "content": "yadm git-crypt add-gpg-user {{user_id}}",
     "group": "Common Tools",
-    "description": "yadm-git-crypt: Git Crypt enables transparent encryption and decryption of files in a git repository. (Share the repository using GPG)",
+    "description": "yadm-git-crypt: Git Crypt enables transparent encryption and decryption of files in a Git repository. (Share the repository using GPG)",
     "tags": [
       "common",
       "yadm-git-crypt",
@@ -51980,7 +52025,7 @@
     "title": "yadm-git-crypt - After cloning a repository with encrypted files, unlock them",
     "content": "yadm git-crypt unlock",
     "group": "Common Tools",
-    "description": "yadm-git-crypt: Git Crypt enables transparent encryption and decryption of files in a git repository. (After cloning a repository with encrypted files, unlock them)",
+    "description": "yadm-git-crypt: Git Crypt enables transparent encryption and decryption of files in a Git repository. (After cloning a repository with encrypted files, unlock them)",
     "tags": [
       "common",
       "yadm-git-crypt",
@@ -51995,7 +52040,7 @@
     "title": "yadm-git-crypt - Export a symmetric secret key",
     "content": "yadm git-crypt export-key {{path/to/key_file}}",
     "group": "Common Tools",
-    "description": "yadm-git-crypt: Git Crypt enables transparent encryption and decryption of files in a git repository. (Export a symmetric secret key)",
+    "description": "yadm-git-crypt: Git Crypt enables transparent encryption and decryption of files in a Git repository. (Export a symmetric secret key)",
     "tags": [
       "common",
       "yadm-git-crypt",
@@ -53160,6 +53205,96 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-pgrep-0",
+    "type": "command",
+    "title": "pgrep - Return PIDs of any running processes with a matching command string",
+    "content": "pgrep {{process_name}}",
+    "group": "Common Tools",
+    "description": "pgrep: Find processes by name. (Return PIDs of any running processes with a matching command string)",
+    "tags": [
+      "common",
+      "pgrep",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-pgrep-1",
+    "type": "command",
+    "title": "pgrep - Print the process name in addition to the PID ([l]ong output)",
+    "content": "pgrep -l {{process_name}}",
+    "group": "Common Tools",
+    "description": "pgrep: Find processes by name. (Print the process name in addition to the PID ([l]ong output))",
+    "tags": [
+      "common",
+      "pgrep",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-pgrep-2",
+    "type": "command",
+    "title": "pgrep - Match processes against the [f]ull argument list instead of just the process name",
+    "content": "pgrep -f \"{{process_name}} {{parameter}}\"",
+    "group": "Common Tools",
+    "description": "pgrep: Find processes by name. (Match processes against the [f]ull argument list instead of just the process name)",
+    "tags": [
+      "common",
+      "pgrep",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-pgrep-3",
+    "type": "command",
+    "title": "pgrep - Print the PID together with the [f]ull argument [l]ist for each match",
+    "content": "pgrep -fl \"{{process_name}}\"",
+    "group": "Common Tools",
+    "description": "pgrep: Find processes by name. (Print the PID together with the [f]ull argument [l]ist for each match)",
+    "tags": [
+      "common",
+      "pgrep",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-pgrep-4",
+    "type": "command",
+    "title": "pgrep - Search for processes run by a specific [u]ser (effective UID)",
+    "content": "pgrep -u {{username}} {{process_name}}",
+    "group": "Common Tools",
+    "description": "pgrep: Find processes by name. (Search for processes run by a specific [u]ser (effective UID))",
+    "tags": [
+      "common",
+      "pgrep",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-pgrep-5",
+    "type": "command",
+    "title": "pgrep - Select only the [n]ewest (most recently started) matching process",
+    "content": "pgrep -n {{process_name}}",
+    "group": "Common Tools",
+    "description": "pgrep: Find processes by name. (Select only the [n]ewest (most recently started) matching process)",
+    "tags": [
+      "common",
+      "pgrep",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-gitmoji-0",
     "type": "command",
     "title": "gitmoji - Start the commit wizard",
@@ -53342,10 +53477,10 @@
   {
     "id": "tldr-en-common-ssh-add-1",
     "type": "command",
-    "title": "ssh-add - Add a specific key to the ssh-agent",
+    "title": "ssh-add - Add a specific key to the `ssh-agent`",
     "content": "ssh-add {{path/to/private_key}}",
     "group": "Common Tools",
-    "description": "ssh-add: Manage loaded SSH keys in the `ssh-agent`. Ensure that `ssh-agent` is up and running for the keys to be loaded in it. (Add a specific key to the ssh-agent)",
+    "description": "ssh-add: Manage loaded SSH keys in the `ssh-agent`. Ensure that `ssh-agent` is up and running for the keys to be loaded in it. (Add a specific key to the `ssh-agent`)",
     "tags": [
       "common",
       "ssh-add",
@@ -53372,10 +53507,10 @@
   {
     "id": "tldr-en-common-ssh-add-3",
     "type": "command",
-    "title": "ssh-add - Delete a key from the ssh-agent",
+    "title": "ssh-add - Delete a key from the `ssh-agent`",
     "content": "ssh-add -d {{path/to/private_key}}",
     "group": "Common Tools",
-    "description": "ssh-add: Manage loaded SSH keys in the `ssh-agent`. Ensure that `ssh-agent` is up and running for the keys to be loaded in it. (Delete a key from the ssh-agent)",
+    "description": "ssh-add: Manage loaded SSH keys in the `ssh-agent`. Ensure that `ssh-agent` is up and running for the keys to be loaded in it. (Delete a key from the `ssh-agent`)",
     "tags": [
       "common",
       "ssh-add",
@@ -53387,10 +53522,10 @@
   {
     "id": "tldr-en-common-ssh-add-4",
     "type": "command",
-    "title": "ssh-add - Delete all currently loaded keys from the ssh-agent",
+    "title": "ssh-add - Delete all currently loaded keys from the `ssh-agent`",
     "content": "ssh-add -D",
     "group": "Common Tools",
-    "description": "ssh-add: Manage loaded SSH keys in the `ssh-agent`. Ensure that `ssh-agent` is up and running for the keys to be loaded in it. (Delete all currently loaded keys from the ssh-agent)",
+    "description": "ssh-add: Manage loaded SSH keys in the `ssh-agent`. Ensure that `ssh-agent` is up and running for the keys to be loaded in it. (Delete all currently loaded keys from the `ssh-agent`)",
     "tags": [
       "common",
       "ssh-add",
@@ -53402,10 +53537,10 @@
   {
     "id": "tldr-en-common-ssh-add-5",
     "type": "command",
-    "title": "ssh-add - Add a key to the ssh-agent and the keychain",
+    "title": "ssh-add - Add a key to the `ssh-agent` and the keychain",
     "content": "ssh-add -K {{path/to/private_key}}",
     "group": "Common Tools",
-    "description": "ssh-add: Manage loaded SSH keys in the `ssh-agent`. Ensure that `ssh-agent` is up and running for the keys to be loaded in it. (Add a key to the ssh-agent and the keychain)",
+    "description": "ssh-add: Manage loaded SSH keys in the `ssh-agent`. Ensure that `ssh-agent` is up and running for the keys to be loaded in it. (Add a key to the `ssh-agent` and the keychain)",
     "tags": [
       "common",
       "ssh-add",
@@ -54860,7 +54995,7 @@
     "title": "f3read - Validate a device by checking the files in a given directory",
     "content": "f3read {{path/to/mount_point}}",
     "group": "Common Tools",
-    "description": "f3read: Validate .h2w files to test the real capacity of the drive. (Validate a device by checking the files in a given directory)",
+    "description": "f3read: Validate `.h2w` files to test the real capacity of the drive. (Validate a device by checking the files in a given directory)",
     "tags": [
       "common",
       "f3read",
@@ -61385,7 +61520,7 @@
     "title": "bfg - Remove a file with sensitive data but leave the latest commit untouched",
     "content": "bfg --delete-files {{file_with_sensitive_data}}",
     "group": "Common Tools",
-    "description": "bfg: Remove large files or passwords from Git history like git-filter-branch. Note: If your repository is connected to a remote, you will need to force push to it. (Remove a file with sensitive data but leave the latest commit untouched)",
+    "description": "bfg: Remove large files or passwords from Git history like `git filter-branch`. Note: If your repository is connected to a remote, you will need to force push to it. (Remove a file with sensitive data but leave the latest commit untouched)",
     "tags": [
       "common",
       "bfg",
@@ -61400,7 +61535,7 @@
     "title": "bfg - Remove all text mentioned in the specified file wherever it can be found in the repository's history",
     "content": "bfg --replace-text {{path/to/file.txt}}",
     "group": "Common Tools",
-    "description": "bfg: Remove large files or passwords from Git history like git-filter-branch. Note: If your repository is connected to a remote, you will need to force push to it. (Remove all text mentioned in the specified file wherever it can be found in the repository's history)",
+    "description": "bfg: Remove large files or passwords from Git history like `git filter-branch`. Note: If your repository is connected to a remote, you will need to force push to it. (Remove all text mentioned in the specified file wherever it can be found in the repository's history)",
     "tags": [
       "common",
       "bfg",
@@ -77177,10 +77312,10 @@
   {
     "id": "tldr-en-common-nix-why-depends-1",
     "type": "command",
-    "title": "nix-why-depends - Show why a package from nixpkgs requires another package as a _build-time_ dependency",
+    "title": "nix-why-depends - Show why a package from nixpkgs requires another package as a build-time dependency",
     "content": "nix why-depends --derivation {{nixpkgs#dependent}} {{nixpkgs#dependency}}",
     "group": "Common Tools",
-    "description": "nix-why-depends: Show why a package depends on another package. (Show why a package from nixpkgs requires another package as a _build-time_ dependency)",
+    "description": "nix-why-depends: Show why a package depends on another package. (Show why a package from nixpkgs requires another package as a build-time dependency)",
     "tags": [
       "common",
       "nix-why-depends",
@@ -79517,10 +79652,10 @@
   {
     "id": "tldr-en-common-kubectl-replace-2",
     "type": "command",
-    "title": "kubectl-replace - Force replace, delete and then re-create the resource",
+    "title": "kubectl-replace - Force replace, delete, and then re-create the resource",
     "content": "kubectl replace {{[-f|--filename]}} {{path/to/file.yml}} --force",
     "group": "Common Tools",
-    "description": "kubectl-replace: Replace a resource by file or `stdin`. (Force replace, delete and then re-create the resource)",
+    "description": "kubectl-replace: Replace a resource by file or `stdin`. (Force replace, delete, and then re-create the resource)",
     "tags": [
       "common",
       "kubectl-replace",
@@ -90077,10 +90212,10 @@
   {
     "id": "tldr-en-common-terraform-output-0",
     "type": "command",
-    "title": "terraform-output - With no additional arguments, `output` will display all outputs for the root module",
+    "title": "terraform-output - Display all outputs for the root module",
     "content": "terraform output",
     "group": "Common Tools",
-    "description": "terraform-output: Export structured data about your Terraform resources. (With no additional arguments, `output` will display all outputs for the root module)",
+    "description": "terraform-output: Export structured data about your Terraform resources. (Display all outputs for the root module)",
     "tags": [
       "common",
       "terraform-output",
@@ -92522,10 +92657,10 @@
   {
     "id": "tldr-en-common-tofu-output-0",
     "type": "command",
-    "title": "tofu-output - With no additional arguments, `output` will display all outputs for the root module",
+    "title": "tofu-output - Display all outputs for the root module",
     "content": "tofu output",
     "group": "Common Tools",
-    "description": "tofu-output: Export structured data about your OpenTofu resources. (With no additional arguments, `output` will display all outputs for the root module)",
+    "description": "tofu-output: Export structured data about your OpenTofu resources. (Display all outputs for the root module)",
     "tags": [
       "common",
       "tofu-output",
@@ -95163,7 +95298,7 @@
     "id": "tldr-en-common-gst-launch-1.0-identity-0",
     "type": "command",
     "title": "gst-launch-1.0-identity - Print information on the passed through data",
-    "content": "gst-launch-1.0 {{source}} ! identity silent=false ! {{sink}}",
+    "content": "gst-launch-1.0 {{[-v|--verbose]}} {{source}} ! identity silent=false ! {{sink}}",
     "group": "Common Tools",
     "description": "gst-launch-1.0-identity: Diagnose data passed through the element. (Print information on the passed through data)",
     "tags": [
@@ -95492,10 +95627,10 @@
   {
     "id": "tldr-en-common-funzip-1",
     "type": "command",
-    "title": "funzip - Print the content in a gzip archive",
+    "title": "funzip - Print the content in a `gzip` archive",
     "content": "funzip {{path/to/archive.gz}}",
     "group": "Common Tools",
-    "description": "funzip: Print the content of the first (non-directory) member in an archive without extraction. (Print the content in a gzip archive)",
+    "description": "funzip: Print the content of the first (non-directory) member in an archive without extraction. (Print the content in a `gzip` archive)",
     "tags": [
       "common",
       "funzip",
@@ -95507,10 +95642,10 @@
   {
     "id": "tldr-en-common-funzip-2",
     "type": "command",
-    "title": "funzip - Decrypt a Zip or gzip archive and print the content",
+    "title": "funzip - Decrypt a Zip or `gzip` archive and print the content",
     "content": "funzip -password {{password}} {{path/to/archive}}",
     "group": "Common Tools",
-    "description": "funzip: Print the content of the first (non-directory) member in an archive without extraction. (Decrypt a Zip or gzip archive and print the content)",
+    "description": "funzip: Print the content of the first (non-directory) member in an archive without extraction. (Decrypt a Zip or `gzip` archive and print the content)",
     "tags": [
       "common",
       "funzip",
@@ -102570,6 +102705,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-nvm-7",
+    "type": "command",
+    "title": "nvm - Upgrade to the latest working npm version on the current Node.js version",
+    "content": "nvm install-latest-npm",
+    "group": "Common Tools",
+    "description": "nvm: Install, uninstall, or switch between Node.js versions. Supports version numbers like \"12.8\" or \"v16.13.1\", and labels like \"stable\", \"system\", etc. (Upgrade to the latest working npm version on the current Node.js version)",
+    "tags": [
+      "common",
+      "nvm",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-install-nodeversion-0",
     "type": "command",
     "title": "install-nodeversion - Install a specific Node.js version",
@@ -104702,10 +104852,10 @@
   {
     "id": "tldr-en-common-patator-1",
     "type": "command",
-    "title": "patator - Brute force encrypted zip file",
+    "title": "patator - Brute force encrypted ZIP file",
     "content": "patator unzip_pass zipfile={{path/to/file.zip}} password=FILE0 0={{path/to/passwords.txt}} -x ignore:code!=0",
     "group": "Common Tools",
-    "description": "patator: A multi-purpose brute-forcer, with a modular design and a flexible usage. (Brute force encrypted zip file)",
+    "description": "patator: A multi-purpose brute-forcer, with a modular design and a flexible usage. (Brute force encrypted ZIP file)",
     "tags": [
       "common",
       "patator",
@@ -110192,10 +110342,10 @@
   {
     "id": "tldr-en-common-noti-0",
     "type": "command",
-    "title": "noti - Display a notification when tar finishes compressing files",
+    "title": "noti - Display a notification when `tar` finishes compressing files",
     "content": "noti {{tar -cjf example.tar.bz2 example/}}",
     "group": "Common Tools",
-    "description": "noti: Monitor a process and trigger a banner notification. (Display a notification when tar finishes compressing files)",
+    "description": "noti: Monitor a process and trigger a banner notification. (Display a notification when `tar` finishes compressing files)",
     "tags": [
       "common",
       "noti",
@@ -111828,9 +111978,9 @@
     "id": "tldr-en-common-bun-create-0",
     "type": "command",
     "title": "bun-create - Create a new project from an official template interactively",
-    "content": "bun create {{template}}",
+    "content": "bun {{[c|create]}} {{template}}",
     "group": "Common Tools",
-    "description": "bun-create: Create a new project from a template. Note: `c` can be used as an alias for `create`. (Create a new project from an official template interactively)",
+    "description": "bun-create: Create a new project from a template. (Create a new project from an official template interactively)",
     "tags": [
       "common",
       "bun-create",
@@ -111843,9 +111993,9 @@
     "id": "tldr-en-common-bun-create-1",
     "type": "command",
     "title": "bun-create - Create a new project from an official template in a new directory",
-    "content": "bun create {{template}} {{path/to/destination}}",
+    "content": "bun {{[c|create]}} {{template}} {{path/to/destination}}",
     "group": "Common Tools",
-    "description": "bun-create: Create a new project from a template. Note: `c` can be used as an alias for `create`. (Create a new project from an official template in a new directory)",
+    "description": "bun-create: Create a new project from a template. (Create a new project from an official template in a new directory)",
     "tags": [
       "common",
       "bun-create",
@@ -111858,9 +112008,9 @@
     "id": "tldr-en-common-bun-create-2",
     "type": "command",
     "title": "bun-create - Create a new project from a GitHub repository template",
-    "content": "bun create {{https://github.com/username/repo}} {{path/to/destination}}",
+    "content": "bun {{[c|create]}} {{https://github.com/username/repo}} {{path/to/destination}}",
     "group": "Common Tools",
-    "description": "bun-create: Create a new project from a template. Note: `c` can be used as an alias for `create`. (Create a new project from a GitHub repository template)",
+    "description": "bun-create: Create a new project from a template. (Create a new project from a GitHub repository template)",
     "tags": [
       "common",
       "bun-create",
@@ -111873,9 +112023,9 @@
     "id": "tldr-en-common-bun-create-3",
     "type": "command",
     "title": "bun-create - Create a new project from a local template",
-    "content": "bun create {{path/to/template}} {{path/to/destination}}",
+    "content": "bun {{[c|create]}} {{path/to/template}} {{path/to/destination}}",
     "group": "Common Tools",
-    "description": "bun-create: Create a new project from a template. Note: `c` can be used as an alias for `create`. (Create a new project from a local template)",
+    "description": "bun-create: Create a new project from a template. (Create a new project from a local template)",
     "tags": [
       "common",
       "bun-create",
@@ -111888,9 +112038,9 @@
     "id": "tldr-en-common-bun-create-4",
     "type": "command",
     "title": "bun-create - Create a new project, overwriting the destination directory if it exists",
-    "content": "bun create {{template}} {{path/to/destination}} --force",
+    "content": "bun {{[c|create]}} {{template}} {{path/to/destination}} --force",
     "group": "Common Tools",
-    "description": "bun-create: Create a new project from a template. Note: `c` can be used as an alias for `create`. (Create a new project, overwriting the destination directory if it exists)",
+    "description": "bun-create: Create a new project from a template. (Create a new project, overwriting the destination directory if it exists)",
     "tags": [
       "common",
       "bun-create",
@@ -111903,9 +112053,9 @@
     "id": "tldr-en-common-bun-create-5",
     "type": "command",
     "title": "bun-create - Create a new project without initializing a Git repository automatically",
-    "content": "bun create {{template}} {{path/to/destination}} --no-git",
+    "content": "bun {{[c|create]}} {{template}} {{path/to/destination}} --no-git",
     "group": "Common Tools",
-    "description": "bun-create: Create a new project from a template. Note: `c` can be used as an alias for `create`. (Create a new project without initializing a Git repository automatically)",
+    "description": "bun-create: Create a new project from a template. (Create a new project without initializing a Git repository automatically)",
     "tags": [
       "common",
       "bun-create",
@@ -111918,9 +112068,9 @@
     "id": "tldr-en-common-bun-create-6",
     "type": "command",
     "title": "bun-create - Create a new project without installing dependencies automatically",
-    "content": "bun create {{template}} {{path/to/destination}} --no-install",
+    "content": "bun {{[c|create]}} {{template}} {{path/to/destination}} --no-install",
     "group": "Common Tools",
-    "description": "bun-create: Create a new project from a template. Note: `c` can be used as an alias for `create`. (Create a new project without installing dependencies automatically)",
+    "description": "bun-create: Create a new project from a template. (Create a new project without installing dependencies automatically)",
     "tags": [
       "common",
       "bun-create",
@@ -119283,7 +119433,7 @@
     "id": "tldr-en-common-git-shortlog-4",
     "type": "command",
     "title": "git-shortlog - View all users, emails, and the number of commits in the current branch",
-    "content": "git shortlog {{[-s|--summary]}} {{[-n|--numbered]}} {{[-e|--email]}}",
+    "content": "git shortlog {{[-sne|--summary --numbered --email]}}",
     "group": "Common Tools",
     "description": "git-shortlog: Summarizes the `git log` output. (View all users, emails, and the number of commits in the current branch)",
     "tags": [
@@ -119298,7 +119448,7 @@
     "id": "tldr-en-common-git-shortlog-5",
     "type": "command",
     "title": "git-shortlog - View all users, emails, and the number of commits in all branches",
-    "content": "git shortlog {{[-s|--summary]}} {{[-n|--numbered]}} {{[-e|--email]}} --all",
+    "content": "git shortlog {{[-sne|--summary --numbered --email]}} --all",
     "group": "Common Tools",
     "description": "git-shortlog: Summarizes the `git log` output. (View all users, emails, and the number of commits in all branches)",
     "tags": [
@@ -122180,7 +122330,7 @@
     "title": "yadm-transcrypt - Set the symmetric cipher to utilize for encryption",
     "content": "yadm transcrypt {{[-c|--cipher]}} {{cipher}}",
     "group": "Common Tools",
-    "description": "yadm-transcrypt: If `transcrypt` is installed, this command allows you to pass options directly to `transcrypt`. With the environment configured to use the yadm repository. Transcrypt enables transparent encryption and decryption of files in a Git repository. (Set the symmetric cipher to utilize for encryption)",
+    "description": "yadm-transcrypt: If `transcrypt` is installed, allows you to pass options directly to `transcrypt`. With the environment configured to use the yadm repository. Transcrypt enables transparent encryption and decryption of files in a Git repository. (Set the symmetric cipher to utilize for encryption)",
     "tags": [
       "common",
       "yadm-transcrypt",
@@ -122195,7 +122345,7 @@
     "title": "yadm-transcrypt - Pass the password to derive the key from",
     "content": "yadm transcrypt {{[-p|--password]}} {{password}}",
     "group": "Common Tools",
-    "description": "yadm-transcrypt: If `transcrypt` is installed, this command allows you to pass options directly to `transcrypt`. With the environment configured to use the yadm repository. Transcrypt enables transparent encryption and decryption of files in a Git repository. (Pass the password to derive the key from)",
+    "description": "yadm-transcrypt: If `transcrypt` is installed, allows you to pass options directly to `transcrypt`. With the environment configured to use the yadm repository. Transcrypt enables transparent encryption and decryption of files in a Git repository. (Pass the password to derive the key from)",
     "tags": [
       "common",
       "yadm-transcrypt",
@@ -122210,7 +122360,7 @@
     "title": "yadm-transcrypt - Assume yes and accept defaults for non-specified options",
     "content": "yadm transcrypt {{[-y|--yes]}}",
     "group": "Common Tools",
-    "description": "yadm-transcrypt: If `transcrypt` is installed, this command allows you to pass options directly to `transcrypt`. With the environment configured to use the yadm repository. Transcrypt enables transparent encryption and decryption of files in a Git repository. (Assume yes and accept defaults for non-specified options)",
+    "description": "yadm-transcrypt: If `transcrypt` is installed, allows you to pass options directly to `transcrypt`. With the environment configured to use the yadm repository. Transcrypt enables transparent encryption and decryption of files in a Git repository. (Assume yes and accept defaults for non-specified options)",
     "tags": [
       "common",
       "yadm-transcrypt",
@@ -122225,7 +122375,7 @@
     "title": "yadm-transcrypt - Display the current repository's cipher and password",
     "content": "yadm transcrypt {{[-d|--display]}}",
     "group": "Common Tools",
-    "description": "yadm-transcrypt: If `transcrypt` is installed, this command allows you to pass options directly to `transcrypt`. With the environment configured to use the yadm repository. Transcrypt enables transparent encryption and decryption of files in a Git repository. (Display the current repository's cipher and password)",
+    "description": "yadm-transcrypt: If `transcrypt` is installed, allows you to pass options directly to `transcrypt`. With the environment configured to use the yadm repository. Transcrypt enables transparent encryption and decryption of files in a Git repository. (Display the current repository's cipher and password)",
     "tags": [
       "common",
       "yadm-transcrypt",
@@ -122240,7 +122390,7 @@
     "title": "yadm-transcrypt - Re -encrypt all encrypted files using new credentials",
     "content": "yadm transcrypt {{[-r|--rekey]}}",
     "group": "Common Tools",
-    "description": "yadm-transcrypt: If `transcrypt` is installed, this command allows you to pass options directly to `transcrypt`. With the environment configured to use the yadm repository. Transcrypt enables transparent encryption and decryption of files in a Git repository. (Re -encrypt all encrypted files using new credentials)",
+    "description": "yadm-transcrypt: If `transcrypt` is installed, allows you to pass options directly to `transcrypt`. With the environment configured to use the yadm repository. Transcrypt enables transparent encryption and decryption of files in a Git repository. (Re -encrypt all encrypted files using new credentials)",
     "tags": [
       "common",
       "yadm-transcrypt",
@@ -123182,10 +123332,10 @@
   {
     "id": "tldr-en-common-qdbus-2",
     "type": "command",
-    "title": "qdbus - List methods, signals and properties available on a specific object",
+    "title": "qdbus - List methods, signals, and properties available on a specific object",
     "content": "qdbus {{service_name}} /{{path/to/object}}",
     "group": "Common Tools",
-    "description": "qdbus: Inter-Process Communication (IPC) and Remote Procedure Calling (RPC) mechanism originally developed for Linux. (List methods, signals and properties available on a specific object)",
+    "description": "qdbus: Inter-Process Communication (IPC) and Remote Procedure Calling (RPC) mechanism originally developed for Linux. (List methods, signals, and properties available on a specific object)",
     "tags": [
       "common",
       "qdbus",
@@ -139040,7 +139190,7 @@
     "title": "duplicity - Backup a directory via FTPS to a remote machine, encrypting it with a password",
     "content": "FTP_PASSWORD={{ftp_login_password}} PASSPHRASE={{encryption_password}} duplicity {{path/to/source_directory}} {{ftps://user@hostname/path/to/target_directory}}/",
     "group": "Common Tools",
-    "description": "duplicity: Create incremental, compressed, encrypted and versioned backups. Can also upload the backups to a variety of backend services. It is worth mentioning that depending on the version, some options may not be available (e.g. `--gio` in 2.0.0). (Backup a directory via FTPS to a remote machine, encrypting it with a password)",
+    "description": "duplicity: Create incremental, compressed, encrypted, and versioned backups. Can also upload the backups to a variety of backend services. Note: Depending on the version, some options may not be available (e.g. `--gio` in 2.0.0). (Backup a directory via FTPS to a remote machine, encrypting it with a password)",
     "tags": [
       "common",
       "duplicity",
@@ -139055,7 +139205,7 @@
     "title": "duplicity - Backup a directory to Amazon S3, doing a full backup every month",
     "content": "duplicity --full-if-older-than {{1M}} s3://{{bucket_name[/prefix]}}",
     "group": "Common Tools",
-    "description": "duplicity: Create incremental, compressed, encrypted and versioned backups. Can also upload the backups to a variety of backend services. It is worth mentioning that depending on the version, some options may not be available (e.g. `--gio` in 2.0.0). (Backup a directory to Amazon S3, doing a full backup every month)",
+    "description": "duplicity: Create incremental, compressed, encrypted, and versioned backups. Can also upload the backups to a variety of backend services. Note: Depending on the version, some options may not be available (e.g. `--gio` in 2.0.0). (Backup a directory to Amazon S3, doing a full backup every month)",
     "tags": [
       "common",
       "duplicity",
@@ -139070,7 +139220,7 @@
     "title": "duplicity - Delete versions older than 1 year from a backup stored on a WebDAV share",
     "content": "FTP_PASSWORD={{webdav_login_password}} duplicity remove-older-than {{1Y}} --force {{webdav[s]://user@hostname[:port]/some_directory}}",
     "group": "Common Tools",
-    "description": "duplicity: Create incremental, compressed, encrypted and versioned backups. Can also upload the backups to a variety of backend services. It is worth mentioning that depending on the version, some options may not be available (e.g. `--gio` in 2.0.0). (Delete versions older than 1 year from a backup stored on a WebDAV share)",
+    "description": "duplicity: Create incremental, compressed, encrypted, and versioned backups. Can also upload the backups to a variety of backend services. Note: Depending on the version, some options may not be available (e.g. `--gio` in 2.0.0). (Delete versions older than 1 year from a backup stored on a WebDAV share)",
     "tags": [
       "common",
       "duplicity",
@@ -139085,7 +139235,7 @@
     "title": "duplicity - List the available backups",
     "content": "duplicity collection-status \"file://{{absolute/path/to/backup_directory}}\"",
     "group": "Common Tools",
-    "description": "duplicity: Create incremental, compressed, encrypted and versioned backups. Can also upload the backups to a variety of backend services. It is worth mentioning that depending on the version, some options may not be available (e.g. `--gio` in 2.0.0). (List the available backups)",
+    "description": "duplicity: Create incremental, compressed, encrypted, and versioned backups. Can also upload the backups to a variety of backend services. Note: Depending on the version, some options may not be available (e.g. `--gio` in 2.0.0). (List the available backups)",
     "tags": [
       "common",
       "duplicity",
@@ -139100,7 +139250,7 @@
     "title": "duplicity - List the files in a backup stored on a remote machine, via SSH",
     "content": "duplicity list-current-files {{[-t|--time]}} {{YYYY-MM-DD}} scp://{{user@hostname}}/{{path/to/backup_directory}}",
     "group": "Common Tools",
-    "description": "duplicity: Create incremental, compressed, encrypted and versioned backups. Can also upload the backups to a variety of backend services. It is worth mentioning that depending on the version, some options may not be available (e.g. `--gio` in 2.0.0). (List the files in a backup stored on a remote machine, via SSH)",
+    "description": "duplicity: Create incremental, compressed, encrypted, and versioned backups. Can also upload the backups to a variety of backend services. Note: Depending on the version, some options may not be available (e.g. `--gio` in 2.0.0). (List the files in a backup stored on a remote machine, via SSH)",
     "tags": [
       "common",
       "duplicity",
@@ -139115,7 +139265,7 @@
     "title": "duplicity - Restore a subdirectory from a GnuPG-encrypted local backup to a given location",
     "content": "PASSPHRASE={{gpg_key_password}} duplicity restore --encrypt-key {{gpg_key_id}} --path-to-restore {{path/to/restore_directory}} file://{{absolute/path/to/backup_directory}} {{path/to/directory_to_restore_to}}",
     "group": "Common Tools",
-    "description": "duplicity: Create incremental, compressed, encrypted and versioned backups. Can also upload the backups to a variety of backend services. It is worth mentioning that depending on the version, some options may not be available (e.g. `--gio` in 2.0.0). (Restore a subdirectory from a GnuPG-encrypted local backup to a given location)",
+    "description": "duplicity: Create incremental, compressed, encrypted, and versioned backups. Can also upload the backups to a variety of backend services. Note: Depending on the version, some options may not be available (e.g. `--gio` in 2.0.0). (Restore a subdirectory from a GnuPG-encrypted local backup to a given location)",
     "tags": [
       "common",
       "duplicity",
@@ -140837,10 +140987,10 @@
   {
     "id": "tldr-en-common-phpunit-0",
     "type": "command",
-    "title": "phpunit - Run tests in the current directory. Note: Expects you to have a 'phpunit.xml'",
+    "title": "phpunit - Run tests in the current directory. Note: Expects you to have a `phpunit.xml'`",
     "content": "phpunit",
     "group": "Common Tools",
-    "description": "phpunit: PHPUnit test runner. (Run tests in the current directory. Note: Expects you to have a 'phpunit.xml')",
+    "description": "phpunit: PHPUnit test runner. (Run tests in the current directory. Note: Expects you to have a `phpunit.xml'`)",
     "tags": [
       "common",
       "phpunit",
@@ -151157,10 +151307,10 @@
   {
     "id": "tldr-en-common-print-1",
     "type": "command",
-    "title": "print - View documentation for the `print` alias of `run-mailcap`",
-    "content": "tldr {{[-p|--platform]}} linux print.runmailcap",
+    "title": "print - View documentation for the `print` alias of `run-mailcap --action=print`",
+    "content": "tldr {{[-p|--platform]}} linux run-mailcap",
     "group": "Common Tools",
-    "description": "print: `print` can refer to multiple commands with the same name. (View documentation for the `print` alias of `run-mailcap`)",
+    "description": "print: `print` can refer to multiple commands with the same name. (View documentation for the `print` alias of `run-mailcap --action=print`)",
     "tags": [
       "common",
       "print",
@@ -151202,10 +151352,10 @@
   {
     "id": "tldr-en-common-git-commit-0",
     "type": "command",
-    "title": "git-commit - Commit staged files to the repository with a message",
-    "content": "git commit {{[-m|--message]}} \"{{message}}\"",
+    "title": "git-commit - Open an editor to write a message and commit staged files to the repository",
+    "content": "git commit",
     "group": "Common Tools",
-    "description": "git-commit: Commit files to the repository. (Commit staged files to the repository with a message)",
+    "description": "git-commit: Commit files to the repository. (Open an editor to write a message and commit staged files to the repository)",
     "tags": [
       "common",
       "git-commit",
@@ -151216,6 +151366,21 @@
   },
   {
     "id": "tldr-en-common-git-commit-1",
+    "type": "command",
+    "title": "git-commit - Commit staged files to the repository with the specified message",
+    "content": "git commit {{[-m|--message]}} \"{{message}}\"",
+    "group": "Common Tools",
+    "description": "git-commit: Commit files to the repository. (Commit staged files to the repository with the specified message)",
+    "tags": [
+      "common",
+      "git-commit",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-git-commit-2",
     "type": "command",
     "title": "git-commit - Commit staged files with a message read from a file",
     "content": "git commit {{[-F|--file]}} {{path/to/commit_message_file}}",
@@ -151230,27 +151395,12 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-git-commit-2",
-    "type": "command",
-    "title": "git-commit - Auto stage all modified and deleted files and commit with a message",
-    "content": "git commit {{[-a|--all]}} {{[-m|--message]}} \"{{message}}\"",
-    "group": "Common Tools",
-    "description": "git-commit: Commit files to the repository. (Auto stage all modified and deleted files and commit with a message)",
-    "tags": [
-      "common",
-      "git-commit",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-en-common-git-commit-3",
     "type": "command",
-    "title": "git-commit - Commit staged files and sign them with the specified GPG key (or the one defined in the configuration file if no argument is specified)",
-    "content": "git commit {{[-S|--gpg-sign]}} {{key_id}} {{[-m|--message]}} \"{{message}}\"",
+    "title": "git-commit - Auto stage all modified and deleted files and commit",
+    "content": "git commit {{[-a|--all]}} {{[-m|--message]}} \"{{message}}\"",
     "group": "Common Tools",
-    "description": "git-commit: Commit files to the repository. (Commit staged files and sign them with the specified GPG key (or the one defined in the configuration file if no argument is specified))",
+    "description": "git-commit: Commit files to the repository. (Auto stage all modified and deleted files and commit)",
     "tags": [
       "common",
       "git-commit",
@@ -151262,10 +151412,10 @@
   {
     "id": "tldr-en-common-git-commit-4",
     "type": "command",
-    "title": "git-commit - Update the last commit by adding the currently staged changes, changing the commit's hash",
-    "content": "git commit --amend",
+    "title": "git-commit - Commit staged files and sign them with the specified GPG key (or the one defined in the configuration file if no `key_id` is specified)",
+    "content": "git commit {{[-S|--gpg-sign]}} {{key_id}} {{[-m|--message]}} \"{{message}}\"",
     "group": "Common Tools",
-    "description": "git-commit: Commit files to the repository. (Update the last commit by adding the currently staged changes, changing the commit's hash)",
+    "description": "git-commit: Commit files to the repository. (Commit staged files and sign them with the specified GPG key (or the one defined in the configuration file if no `key_id` is specified))",
     "tags": [
       "common",
       "git-commit",
@@ -151276,6 +151426,21 @@
   },
   {
     "id": "tldr-en-common-git-commit-5",
+    "type": "command",
+    "title": "git-commit - Update the last commit by adding the currently staged changes, changing the commit's hash and open an editor to change the message",
+    "content": "git commit --amend",
+    "group": "Common Tools",
+    "description": "git-commit: Commit files to the repository. (Update the last commit by adding the currently staged changes, changing the commit's hash and open an editor to change the message)",
+    "tags": [
+      "common",
+      "git-commit",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-git-commit-6",
     "type": "command",
     "title": "git-commit - Commit only specific (already staged) files",
     "content": "git commit {{path/to/file1 path/to/file2 ...}}",
@@ -151290,27 +151455,12 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-git-commit-6",
-    "type": "command",
-    "title": "git-commit - Create a commit, even if there are no staged files",
-    "content": "git commit {{[-m|--message]}} \"{{message}}\" --allow-empty",
-    "group": "Common Tools",
-    "description": "git-commit: Commit files to the repository. (Create a commit, even if there are no staged files)",
-    "tags": [
-      "common",
-      "git-commit",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-en-common-git-commit-7",
     "type": "command",
-    "title": "git-commit - Create a commit with a message and a description",
+    "title": "git-commit - Create a commit with the specified message and description",
     "content": "git commit {{[-m|--message]}} \"{{message}}\" {{[-m|--message]}} \"{{description}}\"",
     "group": "Common Tools",
-    "description": "git-commit: Commit files to the repository. (Create a commit with a message and a description)",
+    "description": "git-commit: Commit files to the repository. (Create a commit with the specified message and description)",
     "tags": [
       "common",
       "git-commit",
@@ -164342,10 +164492,10 @@
   {
     "id": "tldr-en-common-bd-6",
     "type": "command",
-    "title": "bd - Manually sync changes and import latest from git",
+    "title": "bd - Manually sync changes and import latest from Git",
     "content": "bd sync",
     "group": "Common Tools",
-    "description": "bd: A lightweight memory system and git-backed issue tracker for AI coding agents. (Manually sync changes and import latest from git)",
+    "description": "bd: A lightweight memory system and git-backed issue tracker for AI coding agents. (Manually sync changes and import latest from Git)",
     "tags": [
       "common",
       "bd",
@@ -169772,10 +169922,10 @@
   {
     "id": "tldr-en-common-git-status-0",
     "type": "command",
-    "title": "git-status - Show changed files which are not yet added for commit",
+    "title": "git-status - Show untracked and changed files which are not yet added for commit",
     "content": "git status",
     "group": "Common Tools",
-    "description": "git-status: Show the changes to files in a Git repository. List changed, added, and deleted files compared to the currently checked-out commit. (Show changed files which are not yet added for commit)",
+    "description": "git-status: Show the changes to files in a Git repository. List changed, added, and deleted files compared to the currently checked-out commit. (Show untracked and changed files which are not yet added for commit)",
     "tags": [
       "common",
       "git-status",
@@ -169802,10 +169952,10 @@
   {
     "id": "tldr-en-common-git-status-2",
     "type": "command",
-    "title": "git-status - Show verbose information on changes in both the staging area and working directory",
-    "content": "git status {{[-vv|--verbose --verbose]}}",
+    "title": "git-status - Show output in short format along with branch info",
+    "content": "git status {{[-sb|--short --branch]}}",
     "group": "Common Tools",
-    "description": "git-status: Show the changes to files in a Git repository. List changed, added, and deleted files compared to the currently checked-out commit. (Show verbose information on changes in both the staging area and working directory)",
+    "description": "git-status: Show the changes to files in a Git repository. List changed, added, and deleted files compared to the currently checked-out commit. (Show output in short format along with branch info)",
     "tags": [
       "common",
       "git-status",
@@ -169817,10 +169967,10 @@
   {
     "id": "tldr-en-common-git-status-3",
     "type": "command",
-    "title": "git-status - Show the branch and tracking info",
-    "content": "git status {{[-b|--branch]}}",
+    "title": "git-status - Show the changes in staged files (like `git diff --cached`)",
+    "content": "git status {{[-v|--verbose]}}",
     "group": "Common Tools",
-    "description": "git-status: Show the changes to files in a Git repository. List changed, added, and deleted files compared to the currently checked-out commit. (Show the branch and tracking info)",
+    "description": "git-status: Show the changes to files in a Git repository. List changed, added, and deleted files compared to the currently checked-out commit. (Show the changes in staged files (like `git diff --cached`))",
     "tags": [
       "common",
       "git-status",
@@ -169832,10 +169982,10 @@
   {
     "id": "tldr-en-common-git-status-4",
     "type": "command",
-    "title": "git-status - Show output in short format along with branch info",
-    "content": "git status {{[-sb|--short --branch]}}",
+    "title": "git-status - Show the changes in all tracked files (like `git diff`)",
+    "content": "git status {{[-vv|--verbose --verbose]}}",
     "group": "Common Tools",
-    "description": "git-status: Show the changes to files in a Git repository. List changed, added, and deleted files compared to the currently checked-out commit. (Show output in short format along with branch info)",
+    "description": "git-status: Show the changes to files in a Git repository. List changed, added, and deleted files compared to the currently checked-out commit. (Show the changes in all tracked files (like `git diff`))",
     "tags": [
       "common",
       "git-status",
@@ -176192,10 +176342,10 @@
   {
     "id": "tldr-en-common-podman-save-0",
     "type": "command",
-    "title": "podman-save - Save an image to a tar file",
+    "title": "podman-save - Save an image to a `.tar` file",
     "content": "podman save {{[-o|--output]}} {{path/to/file.tar}} {{image:tag}}",
     "group": "Common Tools",
-    "description": "podman-save: Save an image to a local file or directory. (Save an image to a tar file)",
+    "description": "podman-save: Save an image to a local file or directory. (Save an image to a `.tar` file)",
     "tags": [
       "common",
       "podman-save",
@@ -180738,9 +180888,24 @@
     "id": "tldr-en-common-git-check-mailmap-0",
     "type": "command",
     "title": "git-check-mailmap - Look up the canonical name associated with an email address",
-    "content": "git check-mailmap \"<{{email@example.com}}>\"",
+    "content": "git check-mailmap {{email@example.com}}",
     "group": "Common Tools",
     "description": "git-check-mailmap: Show canonical names and email addresses of contacts. (Look up the canonical name associated with an email address)",
+    "tags": [
+      "common",
+      "git-check-mailmap",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-git-check-mailmap-1",
+    "type": "command",
+    "title": "git-check-mailmap - Use the specified mailmap file in addition to the defaults",
+    "content": "git check-mailmap --mailmap-file {{path/to/file}} {{email@example.com}}",
+    "group": "Common Tools",
+    "description": "git-check-mailmap: Show canonical names and email addresses of contacts. (Use the specified mailmap file in addition to the defaults)",
     "tags": [
       "common",
       "git-check-mailmap",
@@ -190518,7 +190683,7 @@
     "id": "tldr-en-common-go-mod-0",
     "type": "command",
     "title": "go-mod - Initialize new module in current directory",
-    "content": "go mod init {{moduleName}}",
+    "content": "go mod init {{module_name}}",
     "group": "Common Tools",
     "description": "go-mod: Module maintenance. (Initialize new module in current directory)",
     "tags": [
@@ -193937,10 +194102,10 @@
   {
     "id": "tldr-en-common-xz-0",
     "type": "command",
-    "title": "xz - Compress a file using xz",
+    "title": "xz - Compress a file into XZ format",
     "content": "xz {{path/to/file}}",
     "group": "Common Tools",
-    "description": "xz: Compress or decompress XZ and LZMA files. (Compress a file using xz)",
+    "description": "xz: Compress or decompress XZ and LZMA files. (Compress a file into XZ format)",
     "tags": [
       "common",
       "xz",
@@ -194942,10 +195107,10 @@
   {
     "id": "tldr-en-common-bower-0",
     "type": "command",
-    "title": "bower - Install a project's dependencies, listed in its bower.json",
+    "title": "bower - Install a project's dependencies, listed in its `bower.json`",
     "content": "bower install",
     "group": "Common Tools",
-    "description": "bower: A package manager optimized for front-end web development. A package can be a GitHub user/repo shorthand, a Git endpoint, a URL or a registered package. (Install a project's dependencies, listed in its bower.json)",
+    "description": "bower: A package manager optimized for front-end web development. A package can be a GitHub user/repo shorthand, a Git endpoint, a URL or a registered package. (Install a project's dependencies, listed in its `bower.json`)",
     "tags": [
       "common",
       "bower",
@@ -209702,6 +209867,21 @@
   {
     "id": "tldr-en-common-until-1",
     "type": "command",
+    "title": "until - Try to connect to an SSH host until gracefully disconnected",
+    "content": "until ssh {{username}}@{{host}}; do sleep {{2}}; done",
+    "group": "Common Tools",
+    "description": "until: Simple shell loop that repeats until it receives zero as return value. (Try to connect to an SSH host until gracefully disconnected)",
+    "tags": [
+      "common",
+      "until",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-until-2",
+    "type": "command",
     "title": "until - Wait for a systemd service to be active",
     "content": "until systemctl is-active {{[-q|--quiet]}} {{nginx}}; do {{echo \"Waiting...\"}}; sleep 1; done; {{echo \"Launched!\"}}",
     "group": "Common Tools",
@@ -216950,7 +217130,7 @@
     "title": "gmssl - Generate an SM3 hash for a file",
     "content": "gmssl sm3 {{path/to/file}}",
     "group": "Common Tools",
-    "description": "gmssl: GmSSL is a crypto toolkit supporting SM1, SM2, SM3, SM4, SM9, and ZUC/ZUC256. (Generate an SM3 hash for a file)",
+    "description": "gmssl: Crypto toolkit supporting SM1, SM2, SM3, SM4, SM9, and ZUC/ZUC256. (Generate an SM3 hash for a file)",
     "tags": [
       "common",
       "gmssl",
@@ -216965,7 +217145,7 @@
     "title": "gmssl - Encrypt a file using the SM4 cipher",
     "content": "gmssl sms4 -e -in {{path/to/file}} -out {{path/to/file.sms4}}",
     "group": "Common Tools",
-    "description": "gmssl: GmSSL is a crypto toolkit supporting SM1, SM2, SM3, SM4, SM9, and ZUC/ZUC256. (Encrypt a file using the SM4 cipher)",
+    "description": "gmssl: Crypto toolkit supporting SM1, SM2, SM3, SM4, SM9, and ZUC/ZUC256. (Encrypt a file using the SM4 cipher)",
     "tags": [
       "common",
       "gmssl",
@@ -216980,7 +217160,7 @@
     "title": "gmssl - Decrypt a file using the SM4 cipher",
     "content": "gmssl sms4 -d -in {{path/to/file.sms4}}",
     "group": "Common Tools",
-    "description": "gmssl: GmSSL is a crypto toolkit supporting SM1, SM2, SM3, SM4, SM9, and ZUC/ZUC256. (Decrypt a file using the SM4 cipher)",
+    "description": "gmssl: Crypto toolkit supporting SM1, SM2, SM3, SM4, SM9, and ZUC/ZUC256. (Decrypt a file using the SM4 cipher)",
     "tags": [
       "common",
       "gmssl",
@@ -216995,7 +217175,7 @@
     "title": "gmssl - Generate an SM2 private key",
     "content": "gmssl sm2 -genkey -out {{path/to/file.pem}}",
     "group": "Common Tools",
-    "description": "gmssl: GmSSL is a crypto toolkit supporting SM1, SM2, SM3, SM4, SM9, and ZUC/ZUC256. (Generate an SM2 private key)",
+    "description": "gmssl: Crypto toolkit supporting SM1, SM2, SM3, SM4, SM9, and ZUC/ZUC256. (Generate an SM2 private key)",
     "tags": [
       "common",
       "gmssl",
@@ -217010,7 +217190,7 @@
     "title": "gmssl - Generate an SM2 public key from an existing private key",
     "content": "gmssl sm2 -pubout -in {{path/to/file.pem}} -out {{path/to/file.pem.pub}}",
     "group": "Common Tools",
-    "description": "gmssl: GmSSL is a crypto toolkit supporting SM1, SM2, SM3, SM4, SM9, and ZUC/ZUC256. (Generate an SM2 public key from an existing private key)",
+    "description": "gmssl: Crypto toolkit supporting SM1, SM2, SM3, SM4, SM9, and ZUC/ZUC256. (Generate an SM2 public key from an existing private key)",
     "tags": [
       "common",
       "gmssl",
@@ -217025,7 +217205,7 @@
     "title": "gmssl - Encrypt a file using the ZUC cipher",
     "content": "gmssl zuc -e -in {{path/to/file}} -out {{path/to/file.zuc}}",
     "group": "Common Tools",
-    "description": "gmssl: GmSSL is a crypto toolkit supporting SM1, SM2, SM3, SM4, SM9, and ZUC/ZUC256. (Encrypt a file using the ZUC cipher)",
+    "description": "gmssl: Crypto toolkit supporting SM1, SM2, SM3, SM4, SM9, and ZUC/ZUC256. (Encrypt a file using the ZUC cipher)",
     "tags": [
       "common",
       "gmssl",
@@ -217040,7 +217220,7 @@
     "title": "gmssl - Decrypt a file using the ZUC cipher",
     "content": "gmssl zuc -d -in {{path/to/file.zuc}}",
     "group": "Common Tools",
-    "description": "gmssl: GmSSL is a crypto toolkit supporting SM1, SM2, SM3, SM4, SM9, and ZUC/ZUC256. (Decrypt a file using the ZUC cipher)",
+    "description": "gmssl: Crypto toolkit supporting SM1, SM2, SM3, SM4, SM9, and ZUC/ZUC256. (Decrypt a file using the ZUC cipher)",
     "tags": [
       "common",
       "gmssl",
@@ -217055,7 +217235,7 @@
     "title": "gmssl - Display version",
     "content": "gmssl version",
     "group": "Common Tools",
-    "description": "gmssl: GmSSL is a crypto toolkit supporting SM1, SM2, SM3, SM4, SM9, and ZUC/ZUC256. (Display version)",
+    "description": "gmssl: Crypto toolkit supporting SM1, SM2, SM3, SM4, SM9, and ZUC/ZUC256. (Display version)",
     "tags": [
       "common",
       "gmssl",
@@ -224162,10 +224342,10 @@
   {
     "id": "tldr-en-common-ioping-1",
     "type": "command",
-    "title": "ioping - Measure latency on /tmp using 10 requests of 1 megabyte each",
+    "title": "ioping - Measure latency on `/tmp` using 10 requests of 1 megabyte each",
     "content": "ioping {{[-c|-count]}} 10 {{[-s|-size]}} 1M /tmp",
     "group": "Common Tools",
-    "description": "ioping: Monitor I/O latency in real time. (Measure latency on /tmp using 10 requests of 1 megabyte each)",
+    "description": "ioping: Monitor I/O latency in real time. (Measure latency on `/tmp` using 10 requests of 1 megabyte each)",
     "tags": [
       "common",
       "ioping",
@@ -225636,6 +225816,21 @@
     "content": "gst-launch-1.0 {{pipeline}} ! fakesink",
     "group": "Common Tools",
     "description": "gst-launch-1.0-fakesink: Dummy sink that swallows everything. Useful for testing what part of a pipeline is breaking. (Consume data from a pipeline without outputting it)",
+    "tags": [
+      "common",
+      "gst-launch-1.0-fakesink",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gst-launch-1.0-fakesink-1",
+    "type": "command",
+    "title": "gst-launch-1.0-fakesink - Print information on the received data",
+    "content": "gst-launch-1.0 {{[-v|--verbose]}} {{pipeline}} ! fakesink silent=false",
+    "group": "Common Tools",
+    "description": "gst-launch-1.0-fakesink: Dummy sink that swallows everything. Useful for testing what part of a pipeline is breaking. (Print information on the received data)",
     "tags": [
       "common",
       "gst-launch-1.0-fakesink",
@@ -229385,7 +229580,7 @@
     "title": "f3write - Write test files to a given directory, filling the drive",
     "content": "f3write {{path/to/mount_point}}",
     "group": "Common Tools",
-    "description": "f3write: Fill a drive out with .h2w files to test its real capacity. (Write test files to a given directory, filling the drive)",
+    "description": "f3write: Fill a drive out with `.h2w` files to test its real capacity. (Write test files to a given directory, filling the drive)",
     "tags": [
       "common",
       "f3write",
@@ -229400,7 +229595,7 @@
     "title": "f3write - Limit the write speed",
     "content": "f3write --max-write-rate={{kb_per_second}} {{path/to/mount_point}}",
     "group": "Common Tools",
-    "description": "f3write: Fill a drive out with .h2w files to test its real capacity. (Limit the write speed)",
+    "description": "f3write: Fill a drive out with `.h2w` files to test its real capacity. (Limit the write speed)",
     "tags": [
       "common",
       "f3write",
@@ -230838,9 +231033,9 @@
     "id": "tldr-en-common-bun-add-0",
     "type": "command",
     "title": "bun-add - Install a single package",
-    "content": "bun add {{package}}",
+    "content": "bun {{[a|add]}} {{package}}",
     "group": "Common Tools",
-    "description": "bun-add: Add and install new dependencies to the current project. Note: `a` can be used as an alias for `add`. (Install a single package)",
+    "description": "bun-add: Add and install new dependencies to the current project. (Install a single package)",
     "tags": [
       "common",
       "bun-add",
@@ -230853,9 +231048,9 @@
     "id": "tldr-en-common-bun-add-1",
     "type": "command",
     "title": "bun-add - Install multiple packages",
-    "content": "bun add {{package1 package2 ...}}",
+    "content": "bun {{[a|add]}} {{package1 package2 ...}}",
     "group": "Common Tools",
-    "description": "bun-add: Add and install new dependencies to the current project. Note: `a` can be used as an alias for `add`. (Install multiple packages)",
+    "description": "bun-add: Add and install new dependencies to the current project. (Install multiple packages)",
     "tags": [
       "common",
       "bun-add",
@@ -230868,9 +231063,9 @@
     "id": "tldr-en-common-bun-add-2",
     "type": "command",
     "title": "bun-add - Install from a Git repository",
-    "content": "bun add {{git_url}}",
+    "content": "bun {{[a|add]}} {{git_url}}",
     "group": "Common Tools",
-    "description": "bun-add: Add and install new dependencies to the current project. Note: `a` can be used as an alias for `add`. (Install from a Git repository)",
+    "description": "bun-add: Add and install new dependencies to the current project. (Install from a Git repository)",
     "tags": [
       "common",
       "bun-add",
@@ -230883,9 +231078,9 @@
     "id": "tldr-en-common-bun-add-3",
     "type": "command",
     "title": "bun-add - Install a specific version",
-    "content": "bun add {{package}}@{{version}}",
+    "content": "bun {{[a|add]}} {{package}}@{{version}}",
     "group": "Common Tools",
-    "description": "bun-add: Add and install new dependencies to the current project. Note: `a` can be used as an alias for `add`. (Install a specific version)",
+    "description": "bun-add: Add and install new dependencies to the current project. (Install a specific version)",
     "tags": [
       "common",
       "bun-add",
@@ -230898,9 +231093,9 @@
     "id": "tldr-en-common-bun-add-4",
     "type": "command",
     "title": "bun-add - Install from local file or directory",
-    "content": "bun add file:{{path/to/file_or_directory}}",
+    "content": "bun {{[a|add]}} file:{{path/to/file_or_directory}}",
     "group": "Common Tools",
-    "description": "bun-add: Add and install new dependencies to the current project. Note: `a` can be used as an alias for `add`. (Install from local file or directory)",
+    "description": "bun-add: Add and install new dependencies to the current project. (Install from local file or directory)",
     "tags": [
       "common",
       "bun-add",
@@ -230913,9 +231108,9 @@
     "id": "tldr-en-common-bun-add-5",
     "type": "command",
     "title": "bun-add - Add a dev dependency",
-    "content": "bun add {{[-d|--dev]}} {{package}}",
+    "content": "bun {{[a|add]}} {{[-d|--dev]}} {{package}}",
     "group": "Common Tools",
-    "description": "bun-add: Add and install new dependencies to the current project. Note: `a` can be used as an alias for `add`. (Add a dev dependency)",
+    "description": "bun-add: Add and install new dependencies to the current project. (Add a dev dependency)",
     "tags": [
       "common",
       "bun-add",
@@ -230928,9 +231123,9 @@
     "id": "tldr-en-common-bun-add-6",
     "type": "command",
     "title": "bun-add - Add a package globally",
-    "content": "bun add {{[-g|--global]}} {{package}}",
+    "content": "bun {{[a|add]}} {{[-g|--global]}} {{package}}",
     "group": "Common Tools",
-    "description": "bun-add: Add and install new dependencies to the current project. Note: `a` can be used as an alias for `add`. (Add a package globally)",
+    "description": "bun-add: Add and install new dependencies to the current project. (Add a package globally)",
     "tags": [
       "common",
       "bun-add",
@@ -231512,10 +231707,10 @@
   {
     "id": "tldr-en-common-podman-export-0",
     "type": "command",
-    "title": "podman-export - Export a container's filesystem to a tar file",
+    "title": "podman-export - Export a container's filesystem to a `.tar` file",
     "content": "podman export {{[-o|--output]}} {{path/to/file.tar}} {{container_name_or_id}}",
     "group": "Common Tools",
-    "description": "podman-export: Export the filesystem of a container and save it as a tarball on the local machine. (Export a container's filesystem to a tar file)",
+    "description": "podman-export: Export the filesystem of a container and save it as a tarball on the local machine. (Export a container's filesystem to a `.tar` file)",
     "tags": [
       "common",
       "podman-export",
@@ -235569,6 +235764,51 @@
     "tags": [
       "common",
       "gst-launch-1.0-playbin",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-aws-mq-0",
+    "type": "command",
+    "title": "aws-mq - Create a broker",
+    "content": "aws mq create-broker --host-instance-type {{instance_type}} --broker-name {{broker_name}} --engine-type {{ACTIVEMQ|RABBITMQ}} {{--publicly-accessible|--no-publicly-accessible}}",
+    "group": "Common Tools",
+    "description": "aws-mq: Define and operate message brokers in AWS. (Create a broker)",
+    "tags": [
+      "common",
+      "aws-mq",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-aws-mq-1",
+    "type": "command",
+    "title": "aws-mq - List all brokers",
+    "content": "aws mq list-brokers",
+    "group": "Common Tools",
+    "description": "aws-mq: Define and operate message brokers in AWS. (List all brokers)",
+    "tags": [
+      "common",
+      "aws-mq",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-aws-mq-2",
+    "type": "command",
+    "title": "aws-mq - Describe a specific broker",
+    "content": "aws mq describe-broker --broker-id {{broker_id}}",
+    "group": "Common Tools",
+    "description": "aws-mq: Define and operate message brokers in AWS. (Describe a specific broker)",
+    "tags": [
+      "common",
+      "aws-mq",
       "tldr",
       "en"
     ],
@@ -245345,7 +245585,7 @@
     "title": "checkov - Scan a directory containing IaC (Terraform, Cloudformation, ARM, Ansible, Bicep, Dockerfile, etc)",
     "content": "checkov --directory {{path/to/directory}}",
     "group": "Common Tools",
-    "description": "checkov: Checkov is a static code analysis tool for Infrastructure as Code (IaC). It is also a software composition analysis (SCA) tool for images and open source packages. (Scan a directory containing IaC (Terraform, Cloudformation, ARM, Ansible, Bicep, Dockerfile, etc))",
+    "description": "checkov: Static code analysis tool for Infrastructure as Code (IaC). It is also a software composition analysis (SCA) tool for images and open source packages. (Scan a directory containing IaC (Terraform, Cloudformation, ARM, Ansible, Bicep, Dockerfile, etc))",
     "tags": [
       "common",
       "checkov",
@@ -245360,7 +245600,7 @@
     "title": "checkov - Scan an IaC file, omitting code blocks in the output",
     "content": "checkov --compact --file {{path/to/file}}",
     "group": "Common Tools",
-    "description": "checkov: Checkov is a static code analysis tool for Infrastructure as Code (IaC). It is also a software composition analysis (SCA) tool for images and open source packages. (Scan an IaC file, omitting code blocks in the output)",
+    "description": "checkov: Static code analysis tool for Infrastructure as Code (IaC). It is also a software composition analysis (SCA) tool for images and open source packages. (Scan an IaC file, omitting code blocks in the output)",
     "tags": [
       "common",
       "checkov",
@@ -245375,7 +245615,7 @@
     "title": "checkov - List all checks for all IaC types",
     "content": "checkov --list",
     "group": "Common Tools",
-    "description": "checkov: Checkov is a static code analysis tool for Infrastructure as Code (IaC). It is also a software composition analysis (SCA) tool for images and open source packages. (List all checks for all IaC types)",
+    "description": "checkov: Static code analysis tool for Infrastructure as Code (IaC). It is also a software composition analysis (SCA) tool for images and open source packages. (List all checks for all IaC types)",
     "tags": [
       "common",
       "checkov",
@@ -247470,6 +247710,126 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-yamllint-0",
+    "type": "command",
+    "title": "yamllint - Lint a file",
+    "content": "yamllint {{path/to/file.yaml}}",
+    "group": "Common Tools",
+    "description": "yamllint: A linter for YAML files. (Lint a file)",
+    "tags": [
+      "common",
+      "yamllint",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-yamllint-1",
+    "type": "command",
+    "title": "yamllint - Lint all YAML files in a directory recursively",
+    "content": "yamllint {{path/to/directory}}",
+    "group": "Common Tools",
+    "description": "yamllint: A linter for YAML files. (Lint all YAML files in a directory recursively)",
+    "tags": [
+      "common",
+      "yamllint",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-yamllint-2",
+    "type": "command",
+    "title": "yamllint - Lint a file with a specific config file",
+    "content": "yamllint {{[-c|--config-file]}} {{path/to/config.yaml}} {{path/to/file.yaml}}",
+    "group": "Common Tools",
+    "description": "yamllint: A linter for YAML files. (Lint a file with a specific config file)",
+    "tags": [
+      "common",
+      "yamllint",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-yamllint-3",
+    "type": "command",
+    "title": "yamllint - Lint a file using a preset config (`default` or `relaxed`)",
+    "content": "yamllint {{[-d|--config-data]}} \"{{extends: relaxed}}\" {{path/to/file.yaml}}",
+    "group": "Common Tools",
+    "description": "yamllint: A linter for YAML files. (Lint a file using a preset config (`default` or `relaxed`))",
+    "tags": [
+      "common",
+      "yamllint",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-yamllint-4",
+    "type": "command",
+    "title": "yamllint - Output in a parsable format (for CI integration)",
+    "content": "yamllint {{[-f|--format]}} parsable {{path/to/file.yaml}}",
+    "group": "Common Tools",
+    "description": "yamllint: A linter for YAML files. (Output in a parsable format (for CI integration))",
+    "tags": [
+      "common",
+      "yamllint",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-yamllint-5",
+    "type": "command",
+    "title": "yamllint - Lint a file with strict mode (return 2 for warnings)",
+    "content": "yamllint {{[-s|--strict]}} {{path/to/file.yaml}}",
+    "group": "Common Tools",
+    "description": "yamllint: A linter for YAML files. (Lint a file with strict mode (return 2 for warnings))",
+    "tags": [
+      "common",
+      "yamllint",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-yamllint-6",
+    "type": "command",
+    "title": "yamllint - Read from `stdin`",
+    "content": "cat {{path/to/file.yaml}} | yamllint -",
+    "group": "Common Tools",
+    "description": "yamllint: A linter for YAML files. (Read from `stdin`)",
+    "tags": [
+      "common",
+      "yamllint",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-yamllint-7",
+    "type": "command",
+    "title": "yamllint - Display help",
+    "content": "yamllint {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "yamllint: A linter for YAML files. (Display help)",
+    "tags": [
+      "common",
+      "yamllint",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-poetry-cache-0",
     "type": "command",
     "title": "poetry-cache - Display Poetry's available caches",
@@ -247790,7 +248150,7 @@
     "title": "kak - Open a file and enter normal mode, to execute commands",
     "content": "kak {{path/to/file}}",
     "group": "Common Tools",
-    "description": "kak: Kakoune is a mode-based code editor implementing the \"multiple selections\" paradigm. Data can be selected and simultaneously edited in different locations, using multiple selections; users can also connect to the same session for collaborative editing. (Open a file and enter normal mode, to execute commands)",
+    "description": "kak: Kakoune, a mode-based code editor implementing the \"multiple selections\" paradigm. Data can be selected and simultaneously edited in different locations, using multiple selections; users can also connect to the same session for collaborative editing. (Open a file and enter normal mode, to execute commands)",
     "tags": [
       "common",
       "kak",
@@ -247805,7 +248165,7 @@
     "title": "kak - Enter insert mode from normal mode, to write text into the file",
     "content": "<i>",
     "group": "Common Tools",
-    "description": "kak: Kakoune is a mode-based code editor implementing the \"multiple selections\" paradigm. Data can be selected and simultaneously edited in different locations, using multiple selections; users can also connect to the same session for collaborative editing. (Enter insert mode from normal mode, to write text into the file)",
+    "description": "kak: Kakoune, a mode-based code editor implementing the \"multiple selections\" paradigm. Data can be selected and simultaneously edited in different locations, using multiple selections; users can also connect to the same session for collaborative editing. (Enter insert mode from normal mode, to write text into the file)",
     "tags": [
       "common",
       "kak",
@@ -247820,7 +248180,7 @@
     "title": "kak - Escape insert mode, to go back to normal mode",
     "content": "<Esc>",
     "group": "Common Tools",
-    "description": "kak: Kakoune is a mode-based code editor implementing the \"multiple selections\" paradigm. Data can be selected and simultaneously edited in different locations, using multiple selections; users can also connect to the same session for collaborative editing. (Escape insert mode, to go back to normal mode)",
+    "description": "kak: Kakoune, a mode-based code editor implementing the \"multiple selections\" paradigm. Data can be selected and simultaneously edited in different locations, using multiple selections; users can also connect to the same session for collaborative editing. (Escape insert mode, to go back to normal mode)",
     "tags": [
       "common",
       "kak",
@@ -247835,7 +248195,7 @@
     "title": "kak - Replace all instances of \"foo\" in the current file with \"bar\"",
     "content": "%s{{foo}}<Enter>c{{bar}}<Esc>",
     "group": "Common Tools",
-    "description": "kak: Kakoune is a mode-based code editor implementing the \"multiple selections\" paradigm. Data can be selected and simultaneously edited in different locations, using multiple selections; users can also connect to the same session for collaborative editing. (Replace all instances of \"foo\" in the current file with \"bar\")",
+    "description": "kak: Kakoune, a mode-based code editor implementing the \"multiple selections\" paradigm. Data can be selected and simultaneously edited in different locations, using multiple selections; users can also connect to the same session for collaborative editing. (Replace all instances of \"foo\" in the current file with \"bar\")",
     "tags": [
       "common",
       "kak",
@@ -247850,7 +248210,7 @@
     "title": "kak - Unselect all secondary selections, and keep only the main one",
     "content": "<Space>",
     "group": "Common Tools",
-    "description": "kak: Kakoune is a mode-based code editor implementing the \"multiple selections\" paradigm. Data can be selected and simultaneously edited in different locations, using multiple selections; users can also connect to the same session for collaborative editing. (Unselect all secondary selections, and keep only the main one)",
+    "description": "kak: Kakoune, a mode-based code editor implementing the \"multiple selections\" paradigm. Data can be selected and simultaneously edited in different locations, using multiple selections; users can also connect to the same session for collaborative editing. (Unselect all secondary selections, and keep only the main one)",
     "tags": [
       "common",
       "kak",
@@ -247865,7 +248225,7 @@
     "title": "kak - Search for numbers and select the first two",
     "content": "/\\d+<Enter>N",
     "group": "Common Tools",
-    "description": "kak: Kakoune is a mode-based code editor implementing the \"multiple selections\" paradigm. Data can be selected and simultaneously edited in different locations, using multiple selections; users can also connect to the same session for collaborative editing. (Search for numbers and select the first two)",
+    "description": "kak: Kakoune, a mode-based code editor implementing the \"multiple selections\" paradigm. Data can be selected and simultaneously edited in different locations, using multiple selections; users can also connect to the same session for collaborative editing. (Search for numbers and select the first two)",
     "tags": [
       "common",
       "kak",
@@ -247880,7 +248240,7 @@
     "title": "kak - Insert the contents of a file",
     "content": "<!>cat {{path/to/file}}<Enter>",
     "group": "Common Tools",
-    "description": "kak: Kakoune is a mode-based code editor implementing the \"multiple selections\" paradigm. Data can be selected and simultaneously edited in different locations, using multiple selections; users can also connect to the same session for collaborative editing. (Insert the contents of a file)",
+    "description": "kak: Kakoune, a mode-based code editor implementing the \"multiple selections\" paradigm. Data can be selected and simultaneously edited in different locations, using multiple selections; users can also connect to the same session for collaborative editing. (Insert the contents of a file)",
     "tags": [
       "common",
       "kak",
@@ -247895,7 +248255,7 @@
     "title": "kak - Save the current file",
     "content": "<:>w<Enter>",
     "group": "Common Tools",
-    "description": "kak: Kakoune is a mode-based code editor implementing the \"multiple selections\" paradigm. Data can be selected and simultaneously edited in different locations, using multiple selections; users can also connect to the same session for collaborative editing. (Save the current file)",
+    "description": "kak: Kakoune, a mode-based code editor implementing the \"multiple selections\" paradigm. Data can be selected and simultaneously edited in different locations, using multiple selections; users can also connect to the same session for collaborative editing. (Save the current file)",
     "tags": [
       "common",
       "kak",
@@ -249047,10 +249407,10 @@
   {
     "id": "tldr-en-common-git-guilt-5",
     "type": "command",
-    "title": "git-guilt - Find blame delta over the last three weeks (git 1.8.5+)",
+    "title": "git-guilt - Find blame delta over the last three weeks (Git 1.8.5+)",
     "content": "git guilt @{3.weeks.ago}",
     "group": "Common Tools",
-    "description": "git-guilt: Show total blame count for files with unstaged changes or calculate the change in blame between two revisions. Part of `git-extras`. (Find blame delta over the last three weeks (git 1.8.5+))",
+    "description": "git-guilt: Show total blame count for files with unstaged changes or calculate the change in blame between two revisions. Part of `git-extras`. (Find blame delta over the last three weeks (Git 1.8.5+))",
     "tags": [
       "common",
       "git-guilt",
@@ -249857,40 +250217,10 @@
   {
     "id": "tldr-en-common-git-whatchanged-0",
     "type": "command",
-    "title": "git-whatchanged - Display logs and changes for recent commits",
-    "content": "git whatchanged",
+    "title": "git-whatchanged - View documentation for the original command",
+    "content": "tldr git log",
     "group": "Common Tools",
-    "description": "git-whatchanged: Show what has changed with recent commits or files. (Display logs and changes for recent commits)",
-    "tags": [
-      "common",
-      "git-whatchanged",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-common-git-whatchanged-1",
-    "type": "command",
-    "title": "git-whatchanged - Display logs and changes for recent commits within the specified time frame",
-    "content": "git whatchanged --since \"{{2 hours ago}}\"",
-    "group": "Common Tools",
-    "description": "git-whatchanged: Show what has changed with recent commits or files. (Display logs and changes for recent commits within the specified time frame)",
-    "tags": [
-      "common",
-      "git-whatchanged",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-common-git-whatchanged-2",
-    "type": "command",
-    "title": "git-whatchanged - Display logs and changes for recent commits for specific files or directories",
-    "content": "git whatchanged {{path/to/file_or_directory}}",
-    "group": "Common Tools",
-    "description": "git-whatchanged: Show what has changed with recent commits or files. (Display logs and changes for recent commits for specific files or directories)",
+    "description": "git-whatchanged: This command is an alias of `git log --raw --no-merges` (log with raw diffs for each commit). Note: This command is deprecated and will be removed in the future. (View documentation for the original command)",
     "tags": [
       "common",
       "git-whatchanged",
@@ -254597,10 +254927,10 @@
   {
     "id": "tldr-en-common-date-5",
     "type": "command",
-    "title": "date - Display the current date using the RFC-3339 format (`YYYY-MM-DD hh:mm:ss TZ`)",
-    "content": "date --rfc-3339 s",
+    "title": "date - Display the current date using the RFC-3339 format (`YYYY-MM-DD hh:mm:ss TZ`) and specify its precision",
+    "content": "date --rfc-3339 {{date|seconds|ns}}",
     "group": "Common Tools",
-    "description": "date: Set or display the system date. (Display the current date using the RFC-3339 format (`YYYY-MM-DD hh:mm:ss TZ`))",
+    "description": "date: Set or display the system date. (Display the current date using the RFC-3339 format (`YYYY-MM-DD hh:mm:ss TZ`) and specify its precision)",
     "tags": [
       "common",
       "date",
@@ -254613,7 +254943,7 @@
     "id": "tldr-en-common-date-6",
     "type": "command",
     "title": "date - Set the current date using the format `MMDDhhmmYYYY.ss` (`YYYY` and `.ss` are optional)",
-    "content": "date {{093023592021.59}}",
+    "content": "sudo date {{093023592021.59}}",
     "group": "Common Tools",
     "description": "date: Set or display the system date. (Set the current date using the format `MMDDhhmmYYYY.ss` (`YYYY` and `.ss` are optional))",
     "tags": [
@@ -257477,10 +257807,10 @@
   {
     "id": "tldr-en-common-tlsx-3",
     "type": "command",
-    "title": "tlsx - Adjust per host concurrency, timeout, retry and delay parameters when scanning a list of hosts for wildcard SSL certificates",
+    "title": "tlsx - Adjust per host concurrency, timeout, retry, and delay parameters when scanning a list of hosts for wildcard SSL certificates",
     "content": "tlsx {{[-l|-list]}} {{path/to/hosts.txt}} {{[-c|-concurrency]}} {{300}} -timeout {{5}} -retry {{3}} -delay {{200ms}} {{[-wc|-wildcard-cert]}}",
     "group": "Common Tools",
-    "description": "tlsx: Fast and configurable TLS grabber focused on TLS based data collection and analysis. (Adjust per host concurrency, timeout, retry and delay parameters when scanning a list of hosts for wildcard SSL certificates)",
+    "description": "tlsx: Fast and configurable TLS grabber focused on TLS based data collection and analysis. (Adjust per host concurrency, timeout, retry, and delay parameters when scanning a list of hosts for wildcard SSL certificates)",
     "tags": [
       "common",
       "tlsx",
@@ -262968,7 +263298,7 @@
     "id": "tldr-en-common-railway-1",
     "type": "command",
     "title": "railway - Link to an existing Project under a Railway account or team",
-    "content": "railway link {{projectId}}",
+    "content": "railway link {{project_id}}",
     "group": "Common Tools",
     "description": "railway: Connect code to a Railway project. (Link to an existing Project under a Railway account or team)",
     "tags": [
@@ -266777,10 +267107,10 @@
   {
     "id": "tldr-en-common-ollama-1",
     "type": "command",
-    "title": "ollama - Run a model and chat with it",
+    "title": "ollama - Run a model and chat with it (will automatically download the model if it's not downloaded)",
     "content": "ollama run {{model}}",
     "group": "Common Tools",
-    "description": "ollama: A large language model runner. For a list of available models, see . (Run a model and chat with it)",
+    "description": "ollama: A large language model runner. For a list of available models, see . (Run a model and chat with it (will automatically download the model if it's not downloaded))",
     "tags": [
       "common",
       "ollama",
@@ -268893,9 +269223,9 @@
     "id": "tldr-en-common-checksec-0",
     "type": "command",
     "title": "checksec - List security properties of an executable binary file",
-    "content": "checksec --file={{path/to/binary}}",
+    "content": "checksec file {{path/to/binary}}",
     "group": "Common Tools",
-    "description": "checksec: Check security properties of executables. (List security properties of an executable binary file)",
+    "description": "checksec: Check security properties of executables. Note: For older versions, use flags (e.g., `--file` instead of `file`). (List security properties of an executable binary file)",
     "tags": [
       "common",
       "checksec",
@@ -268908,9 +269238,9 @@
     "id": "tldr-en-common-checksec-1",
     "type": "command",
     "title": "checksec - List security properties recursively of all executable files in a directory",
-    "content": "checksec --dir={{path/to/directory}}",
+    "content": "checksec dir {{path/to/directory}}",
     "group": "Common Tools",
-    "description": "checksec: Check security properties of executables. (List security properties recursively of all executable files in a directory)",
+    "description": "checksec: Check security properties of executables. Note: For older versions, use flags (e.g., `--file` instead of `file`). (List security properties recursively of all executable files in a directory)",
     "tags": [
       "common",
       "checksec",
@@ -268923,9 +269253,9 @@
     "id": "tldr-en-common-checksec-2",
     "type": "command",
     "title": "checksec - List security properties of a process",
-    "content": "checksec --proc={{pid}}",
+    "content": "checksec proc {{pid}}",
     "group": "Common Tools",
-    "description": "checksec: Check security properties of executables. (List security properties of a process)",
+    "description": "checksec: Check security properties of executables. Note: For older versions, use flags (e.g., `--file` instead of `file`). (List security properties of a process)",
     "tags": [
       "common",
       "checksec",
@@ -268938,9 +269268,9 @@
     "id": "tldr-en-common-checksec-3",
     "type": "command",
     "title": "checksec - List security properties of the running kernel",
-    "content": "checksec --kernel",
+    "content": "checksec kernel",
     "group": "Common Tools",
-    "description": "checksec: Check security properties of executables. (List security properties of the running kernel)",
+    "description": "checksec: Check security properties of executables. Note: For older versions, use flags (e.g., `--file` instead of `file`). (List security properties of the running kernel)",
     "tags": [
       "common",
       "checksec",
@@ -285962,10 +286292,10 @@
   {
     "id": "tldr-en-common-pg_receivewal-6",
     "type": "command",
-    "title": "pg_receivewal - Compress WAL output (gzip, level 0-9)",
+    "title": "pg_receivewal - Compress WAL output (`gzip`, level 0-9)",
     "content": "pg_receivewal {{[-Z|--compress]}} {{level|method}} {{[-D|--directory]}} {{directory}} {{[-h|--host]}} {{host}} {{[-p|--port]}} {{port}} {{[-U|--username]}} {{username}}",
     "group": "Common Tools",
-    "description": "pg_receivewal: Stream the write-ahead log from a running PostgreSQL cluster. (Compress WAL output (gzip, level 0-9))",
+    "description": "pg_receivewal: Stream the write-ahead log from a running PostgreSQL cluster. (Compress WAL output (`gzip`, level 0-9))",
     "tags": [
       "common",
       "pg_receivewal",
@@ -286998,9 +287328,9 @@
     "id": "tldr-en-common-bun-remove-0",
     "type": "command",
     "title": "bun-remove - Remove a dependency",
-    "content": "bun remove {{package_name}}",
+    "content": "bun {{[rm|remove]}} {{package_name}}",
     "group": "Common Tools",
-    "description": "bun-remove: Remove a dependency from `package.json`. Note: `rm` can be used as an alias for `remove`. (Remove a dependency)",
+    "description": "bun-remove: Remove a dependency from `package.json`. (Remove a dependency)",
     "tags": [
       "common",
       "bun-remove",
@@ -287013,9 +287343,9 @@
     "id": "tldr-en-common-bun-remove-1",
     "type": "command",
     "title": "bun-remove - Remove multiple dependencies",
-    "content": "bun remove {{package_name1 package_name2 ...}}",
+    "content": "bun {{[rm|remove]}} {{package_name1 package_name2 ...}}",
     "group": "Common Tools",
-    "description": "bun-remove: Remove a dependency from `package.json`. Note: `rm` can be used as an alias for `remove`. (Remove multiple dependencies)",
+    "description": "bun-remove: Remove a dependency from `package.json`. (Remove multiple dependencies)",
     "tags": [
       "common",
       "bun-remove",
@@ -287028,9 +287358,9 @@
     "id": "tldr-en-common-bun-remove-2",
     "type": "command",
     "title": "bun-remove - Remove a globally installed package",
-    "content": "bun remove {{[-g|--global]}} {{package_name}}",
+    "content": "bun {{[rm|remove]}} {{[-g|--global]}} {{package_name}}",
     "group": "Common Tools",
-    "description": "bun-remove: Remove a dependency from `package.json`. Note: `rm` can be used as an alias for `remove`. (Remove a globally installed package)",
+    "description": "bun-remove: Remove a dependency from `package.json`. (Remove a globally installed package)",
     "tags": [
       "common",
       "bun-remove",
@@ -287043,9 +287373,9 @@
     "id": "tldr-en-common-bun-remove-3",
     "type": "command",
     "title": "bun-remove - Remove a dependency without updating the `package.json` file",
-    "content": "bun remove --no-save {{package_name}}",
+    "content": "bun {{[rm|remove]}} --no-save {{package_name}}",
     "group": "Common Tools",
-    "description": "bun-remove: Remove a dependency from `package.json`. Note: `rm` can be used as an alias for `remove`. (Remove a dependency without updating the `package.json` file)",
+    "description": "bun-remove: Remove a dependency from `package.json`. (Remove a dependency without updating the `package.json` file)",
     "tags": [
       "common",
       "bun-remove",
@@ -287058,9 +287388,9 @@
     "id": "tldr-en-common-bun-remove-4",
     "type": "command",
     "title": "bun-remove - Run the command without actually removing packages (simulate the removal)",
-    "content": "bun remove --dry-run {{package_name}}",
+    "content": "bun {{[rm|remove]}} --dry-run {{package_name}}",
     "group": "Common Tools",
-    "description": "bun-remove: Remove a dependency from `package.json`. Note: `rm` can be used as an alias for `remove`. (Run the command without actually removing packages (simulate the removal))",
+    "description": "bun-remove: Remove a dependency from `package.json`. (Run the command without actually removing packages (simulate the removal))",
     "tags": [
       "common",
       "bun-remove",
@@ -289757,10 +290087,10 @@
   {
     "id": "tldr-en-common-bun-pm-pack-5",
     "type": "command",
-    "title": "bun-pm-pack - Set the gzip compression level (0-9, default: 9)",
+    "title": "bun-pm-pack - Set the `gzip` compression level (0-9, default: 9)",
     "content": "bun pm pack --gzip-level 5",
     "group": "Common Tools",
-    "description": "bun-pm-pack: Create a `.tgz` archive containing the files that would be published to npm (same behavior as `npm pack`). (Set the gzip compression level (0-9, default: 9))",
+    "description": "bun-pm-pack: Create a `.tgz` archive containing the files that would be published to npm (same behavior as `npm pack`). (Set the `gzip` compression level (0-9, default: 9))",
     "tags": [
       "common",
       "bun-pm-pack",
@@ -290795,7 +291125,7 @@
     "title": "supervisord - Start `supervisord` with specified configuration file",
     "content": "supervisord {{[-c|--configuration]}} {{path/to/file}}",
     "group": "Common Tools",
-    "description": "supervisord: Supervisor is a client/server system for controlling some processes on UNIX-like operating systems. Supervisord is the server part of supervisor; it is primarily managed via a configuration file. (Start `supervisord` with specified configuration file)",
+    "description": "supervisord: Client/server system for controlling some processes on UNIX-like operating systems. Supervisord is the server part of supervisor; it is primarily managed via a configuration file. (Start `supervisord` with specified configuration file)",
     "tags": [
       "common",
       "supervisord",
@@ -290810,7 +291140,7 @@
     "title": "supervisord - Run supervisord in the foreground",
     "content": "supervisord {{[-n|--nodaemon]}}",
     "group": "Common Tools",
-    "description": "supervisord: Supervisor is a client/server system for controlling some processes on UNIX-like operating systems. Supervisord is the server part of supervisor; it is primarily managed via a configuration file. (Run supervisord in the foreground)",
+    "description": "supervisord: Client/server system for controlling some processes on UNIX-like operating systems. Supervisord is the server part of supervisor; it is primarily managed via a configuration file. (Run supervisord in the foreground)",
     "tags": [
       "common",
       "supervisord",
@@ -293597,10 +293927,10 @@
   {
     "id": "tldr-en-common-podman-load-0",
     "type": "command",
-    "title": "podman-load - Load an image from a tar file",
+    "title": "podman-load - Load an image from a `.tar` file",
     "content": "podman load {{[-i|--input]}} {{path/to/file.tar}}",
     "group": "Common Tools",
-    "description": "podman-load: Load an image from an oci-archive or a docker-archive created using `podman save`. (Load an image from a tar file)",
+    "description": "podman-load: Load an image from an oci-archive or a docker-archive created using `podman save`. (Load an image from a `.tar` file)",
     "tags": [
       "common",
       "podman-load",
@@ -293612,10 +293942,10 @@
   {
     "id": "tldr-en-common-podman-load-1",
     "type": "command",
-    "title": "podman-load - Load an image from a compressed tar file",
+    "title": "podman-load - Load an image from a compressed `.tar` file",
     "content": "podman load {{[-i|--input]}} {{path/to/file.tar[.gz|.bz2|.xz|.zst]}}",
     "group": "Common Tools",
-    "description": "podman-load: Load an image from an oci-archive or a docker-archive created using `podman save`. (Load an image from a compressed tar file)",
+    "description": "podman-load: Load an image from an oci-archive or a docker-archive created using `podman save`. (Load an image from a compressed `.tar` file)",
     "tags": [
       "common",
       "podman-load",
@@ -296777,10 +297107,10 @@
   {
     "id": "tldr-en-common-xidel-5",
     "type": "command",
-    "title": "xidel - Read the pattern from example.xml (which will also check if the element containing \"ood\" is there, and fail otherwise)",
+    "title": "xidel - Read the pattern from `example.xml` (which will also check if the element containing \"ood\" is there, and fail otherwise)",
     "content": "xidel {{path/to/example.xml}} {{[-e|--extract]}} \"{{<x><foo>ood</foo><bar>{.}</bar></x>}}\"",
     "group": "Common Tools",
-    "description": "xidel: Download and extract data from HTML/XML pages as well as JSON APIs. (Read the pattern from example.xml (which will also check if the element containing \"ood\" is there, and fail otherwise))",
+    "description": "xidel: Download and extract data from HTML/XML pages as well as JSON APIs. (Read the pattern from `example.xml` (which will also check if the element containing \"ood\" is there, and fail otherwise))",
     "tags": [
       "common",
       "xidel",

@@ -467,10 +467,10 @@
   {
     "id": "tldr-en-dos-config-5",
     "type": "command",
-    "title": "config - Get property value (stored in %CONFIG%)",
+    "title": "config - Get property value (stored in `%CONFIG%`)",
     "content": "CONFIG -get \"cpu core\"",
     "group": "Dos",
-    "description": "config: Change or query DOSBox settings at runtime; save configs/languages. (Get property value (stored in %CONFIG%))",
+    "description": "config: Change or query DOSBox settings at runtime; save configs/languages. (Get property value (stored in `%CONFIG%`))",
     "tags": [
       "dos",
       "config",

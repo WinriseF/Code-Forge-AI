@@ -1622,10 +1622,10 @@
   {
     "id": "tldr-en-osx-route-1",
     "type": "command",
-    "title": "route - Add a route to a /24 subnet through a gateway",
+    "title": "route - Add a route to a `/24` subnet through a gateway",
     "content": "sudo route add \"{{subnet_ip_address}}/24\" \"{{gateway_address}}\"",
     "group": "macOS",
-    "description": "route: Manually manipulate the routing tables. (Add a route to a /24 subnet through a gateway)",
+    "description": "route: Manually manipulate the routing tables. (Add a route to a `/24` subnet through a gateway)",
     "tags": [
       "osx",
       "route",
@@ -9710,7 +9710,7 @@
     "title": "dot_clean - Merge all `._*` files recursively",
     "content": "dot_clean {{path/to/directory}}",
     "group": "macOS",
-    "description": "dot_clean: Merge ._* files with corresponding native files. (Merge all `._*` files recursively)",
+    "description": "dot_clean: Merge `._*` files with corresponding native files. (Merge all `._*` files recursively)",
     "tags": [
       "osx",
       "dot_clean",
@@ -9725,7 +9725,7 @@
     "title": "dot_clean - Don't recursively merge all `._*` in a directory (flat merge)",
     "content": "dot_clean -f {{path/to/directory}}",
     "group": "macOS",
-    "description": "dot_clean: Merge ._* files with corresponding native files. (Don't recursively merge all `._*` in a directory (flat merge))",
+    "description": "dot_clean: Merge `._*` files with corresponding native files. (Don't recursively merge all `._*` in a directory (flat merge))",
     "tags": [
       "osx",
       "dot_clean",
@@ -9740,7 +9740,7 @@
     "title": "dot_clean - Merge and delete all `._*` files",
     "content": "dot_clean -m {{path/to/directory}}",
     "group": "macOS",
-    "description": "dot_clean: Merge ._* files with corresponding native files. (Merge and delete all `._*` files)",
+    "description": "dot_clean: Merge `._*` files with corresponding native files. (Merge and delete all `._*` files)",
     "tags": [
       "osx",
       "dot_clean",
@@ -9755,7 +9755,7 @@
     "title": "dot_clean - Only delete `._*` files if there's a matching native file",
     "content": "dot_clean -n {{path/to/directory}}",
     "group": "macOS",
-    "description": "dot_clean: Merge ._* files with corresponding native files. (Only delete `._*` files if there's a matching native file)",
+    "description": "dot_clean: Merge `._*` files with corresponding native files. (Only delete `._*` files if there's a matching native file)",
     "tags": [
       "osx",
       "dot_clean",
@@ -9770,7 +9770,7 @@
     "title": "dot_clean - Follow symlinks",
     "content": "dot_clean -s {{path/to/directory}}",
     "group": "macOS",
-    "description": "dot_clean: Merge ._* files with corresponding native files. (Follow symlinks)",
+    "description": "dot_clean: Merge `._*` files with corresponding native files. (Follow symlinks)",
     "tags": [
       "osx",
       "dot_clean",
@@ -9785,7 +9785,7 @@
     "title": "dot_clean - Print verbose output",
     "content": "dot_clean -v {{path/to/directory}}",
     "group": "macOS",
-    "description": "dot_clean: Merge ._* files with corresponding native files. (Print verbose output)",
+    "description": "dot_clean: Merge `._*` files with corresponding native files. (Print verbose output)",
     "tags": [
       "osx",
       "dot_clean",
@@ -12249,6 +12249,21 @@
     "tags": [
       "osx",
       "usernoted",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-osx-dirs_cleaner-0",
+    "type": "command",
+    "title": "dirs_cleaner - Recursively delete contents of folder structure without removing directories",
+    "content": "sudo dirs_cleaner {{path/to/directory1 path/to/directory2 ...}}",
+    "group": "macOS",
+    "description": "dirs_cleaner: Recursively empty directories while the directories themselves are not deleted. Note: On macOS 13 (Ventura) and later, `dirs_cleaner` is subject to AMFI launch constraints introduced in Ventura. The binary remains present at `/usr/libexec/dirs_cleaner` but cannot be invoked directly from a user session, including as root. (Recursively delete contents of folder structure without removing directories)",
+    "tags": [
+      "osx",
+      "dirs_cleaner",
       "tldr",
       "en"
     ],

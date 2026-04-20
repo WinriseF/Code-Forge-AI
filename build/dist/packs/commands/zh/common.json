@@ -933,7 +933,7 @@
     "id": "tldr-zh-common-zipnote-2",
     "type": "command",
     "title": "zipnote - 从一个文件中添加/更新 Zip 压缩包中的注释",
-    "content": "zipnote -w {{路径/到/文件.zip}} < {{路径/到/文件.txt}}",
+    "content": "zipnote < {{路径/到/文件.txt}} -w {{路径/到/文件.zip}}",
     "group": "通用工具 (Common)",
     "description": "zipnote: 查看、添加或编辑 Zip 压缩包的注释。 文件在 Zip 压缩包中也可以被重命名。 (从一个文件中添加/更新 Zip 压缩包中的注释)",
     "tags": [
@@ -1338,7 +1338,7 @@
     "id": "tldr-zh-common-zeek-1",
     "type": "command",
     "title": "zeek - 分析来自网络接口的实时流量并加载自定义脚本",
-    "content": "sudo zeek --iface {{接口}} {{脚本1}} {{脚本2}}",
+    "content": "sudo zeek --iface {{接口}} {{脚本1 脚本2 ...}}",
     "group": "通用工具 (Common)",
     "description": "zeek: 被动网络流量分析器。 所有输出和日志文件将保存到当前工作目录。 (分析来自网络接口的实时流量并加载自定义脚本)",
     "tags": [
@@ -5552,10 +5552,10 @@
   {
     "id": "tldr-zh-common-cargo-clean-1",
     "type": "command",
-    "title": "cargo-clean - 删除文档构建产物 (`target/doc` 目录)",
+    "title": "cargo-clean - 删除文档构建产物（`target/doc` 目录）",
     "content": "cargo clean --doc",
     "group": "通用工具 (Common)",
-    "description": "cargo-clean: 删除 `target` 目录中生成的构建产物。 (删除文档构建产物 (`target/doc` 目录))",
+    "description": "cargo-clean: 删除 `target` 目录中生成的构建产物。 (删除文档构建产物（`target/doc` 目录）)",
     "tags": [
       "common",
       "cargo-clean",
@@ -5567,10 +5567,10 @@
   {
     "id": "tldr-zh-common-cargo-clean-2",
     "type": "command",
-    "title": "cargo-clean - 删除 release 模式的构建产物 (`target/release` 目录)",
+    "title": "cargo-clean - 删除 release 模式的构建产物（`target/release` 目录）",
     "content": "cargo clean {{[-r|--release]}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-clean: 删除 `target` 目录中生成的构建产物。 (删除 release 模式的构建产物 (`target/release` 目录))",
+    "description": "cargo-clean: 删除 `target` 目录中生成的构建产物。 (删除 release 模式的构建产物（`target/release` 目录）)",
     "tags": [
       "common",
       "cargo-clean",
@@ -5582,10 +5582,10 @@
   {
     "id": "tldr-zh-common-cargo-clean-3",
     "type": "command",
-    "title": "cargo-clean - 删除给定配置文件的目录中的构建产物（在本例中为 `target/debug`)",
+    "title": "cargo-clean - 删除给定配置文件的目录中的构建产物（在本例中为 `target/debug`）",
     "content": "cargo clean --profile {{dev}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-clean: 删除 `target` 目录中生成的构建产物。 (删除给定配置文件的目录中的构建产物（在本例中为 `target/debug`))",
+    "description": "cargo-clean: 删除 `target` 目录中生成的构建产物。 (删除给定配置文件的目录中的构建产物（在本例中为 `target/debug`）)",
     "tags": [
       "common",
       "cargo-clean",
@@ -7952,10 +7952,10 @@
   {
     "id": "tldr-zh-common-cargo-install-0",
     "type": "command",
-    "title": "cargo-install - 从 <https://crates.io> 安装一个包 (版本是可选的，默认为最新版本)",
-    "content": "cargo install {{包名}}@{{版本号}}",
+    "title": "cargo-install - 从 <https://crates.io> 安装一个软件包 (版本是可选的，默认为最新版本)",
+    "content": "cargo install {{软件包}}@{{版本号}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-install: 构建并安装一个 Rust 二进制文件。 (从 <https://crates.io> 安装一个包 (版本是可选的，默认为最新版本))",
+    "description": "cargo-install: 构建并安装一个 Rust 二进制文件。 (从 <https://crates.io> 安装一个软件包 (版本是可选的，默认为最新版本))",
     "tags": [
       "common",
       "cargo-install",
@@ -7967,10 +7967,10 @@
   {
     "id": "tldr-zh-common-cargo-install-1",
     "type": "command",
-    "title": "cargo-install - 从指定的 Git 仓库安装一个包",
-    "content": "cargo install --git {{仓库URL}}",
+    "title": "cargo-install - 从指定的 Git 仓库安装一个软件包",
+    "content": "cargo install --git {{仓库 URL}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-install: 构建并安装一个 Rust 二进制文件。 (从指定的 Git 仓库安装一个包)",
+    "description": "cargo-install: 构建并安装一个 Rust 二进制文件。 (从指定的 Git 仓库安装一个软件包)",
     "tags": [
       "common",
       "cargo-install",
@@ -7983,7 +7983,7 @@
     "id": "tldr-zh-common-cargo-install-2",
     "type": "command",
     "title": "cargo-install - 从 Git 仓库安装时，根据指定的 branch/tag/commit 构建",
-    "content": "cargo install --git {{仓库URL}} --{{branch|tag|rev}} {{branch_name|tag|commit_hash}}",
+    "content": "cargo install --git {{仓库 URL}} --{{branch|tag|rev}} {{branch_name|tag|commit_hash}}",
     "group": "通用工具 (Common)",
     "description": "cargo-install: 构建并安装一个 Rust 二进制文件。 (从 Git 仓库安装时，根据指定的 branch/tag/commit 构建)",
     "tags": [
@@ -7997,10 +7997,25 @@
   {
     "id": "tldr-zh-common-cargo-install-3",
     "type": "command",
-    "title": "cargo-install - 列出所有已安装的包及其版本",
+    "title": "cargo-install - 从本地目录安装一个软件包",
+    "content": "cargo install --path {{路径/到/软件包}}",
+    "group": "通用工具 (Common)",
+    "description": "cargo-install: 构建并安装一个 Rust 二进制文件。 (从本地目录安装一个软件包)",
+    "tags": [
+      "common",
+      "cargo-install",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-cargo-install-4",
+    "type": "command",
+    "title": "cargo-install - 列出所有已安装的软件包及其版本",
     "content": "cargo install --list",
     "group": "通用工具 (Common)",
-    "description": "cargo-install: 构建并安装一个 Rust 二进制文件。 (列出所有已安装的包及其版本)",
+    "description": "cargo-install: 构建并安装一个 Rust 二进制文件。 (列出所有已安装的软件包及其版本)",
     "tags": [
       "common",
       "cargo-install",
@@ -9947,10 +9962,10 @@
   {
     "id": "tldr-zh-common-cargo-build-0",
     "type": "command",
-    "title": "cargo-build - 在本地路径中构建由 `Cargo.toml` 清单文件定义的一个或多个包",
+    "title": "cargo-build - 在本地路径中构建由 `Cargo.toml` 清单文件定义的一个或多个软件包",
     "content": "cargo {{[b|build]}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-build: 编译本地包及其所有依赖项。 (在本地路径中构建由 `Cargo.toml` 清单文件定义的一个或多个包)",
+    "description": "cargo-build: 编译本地软件包及其所有依赖项。 (在本地路径中构建由 `Cargo.toml` 清单文件定义的一个或多个软件包)",
     "tags": [
       "common",
       "cargo-build",
@@ -9965,7 +9980,7 @@
     "title": "cargo-build - 以 release 模式构建，并进行优化",
     "content": "cargo {{[b|build]}} {{[-r|--release]}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-build: 编译本地包及其所有依赖项。 (以 release 模式构建，并进行优化)",
+    "description": "cargo-build: 编译本地软件包及其所有依赖项。 (以 release 模式构建，并进行优化)",
     "tags": [
       "common",
       "cargo-build",
@@ -9980,7 +9995,7 @@
     "title": "cargo-build - 要求 `Cargo.lock` 文件为最新版本",
     "content": "cargo {{[b|build]}} --locked",
     "group": "通用工具 (Common)",
-    "description": "cargo-build: 编译本地包及其所有依赖项。 (要求 `Cargo.lock` 文件为最新版本)",
+    "description": "cargo-build: 编译本地软件包及其所有依赖项。 (要求 `Cargo.lock` 文件为最新版本)",
     "tags": [
       "common",
       "cargo-build",
@@ -9992,10 +10007,10 @@
   {
     "id": "tldr-zh-common-cargo-build-3",
     "type": "command",
-    "title": "cargo-build - 构建工作区中的所有包",
+    "title": "cargo-build - 构建工作区中的所有软件包",
     "content": "cargo {{[b|build]}} --workspace",
     "group": "通用工具 (Common)",
-    "description": "cargo-build: 编译本地包及其所有依赖项。 (构建工作区中的所有包)",
+    "description": "cargo-build: 编译本地软件包及其所有依赖项。 (构建工作区中的所有软件包)",
     "tags": [
       "common",
       "cargo-build",
@@ -10007,10 +10022,10 @@
   {
     "id": "tldr-zh-common-cargo-build-4",
     "type": "command",
-    "title": "cargo-build - 构建特定的包",
-    "content": "cargo {{[b|build]}} {{[-p|--package]}} {{包名}}",
+    "title": "cargo-build - 构建特定的软件包",
+    "content": "cargo {{[b|build]}} {{[-p|--package]}} {{软件包}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-build: 编译本地包及其所有依赖项。 (构建特定的包)",
+    "description": "cargo-build: 编译本地软件包及其所有依赖项。 (构建特定的软件包)",
     "tags": [
       "common",
       "cargo-build",
@@ -10025,7 +10040,7 @@
     "title": "cargo-build - 仅构建指定的二进制文件",
     "content": "cargo {{[b|build]}} --bin {{名称}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-build: 编译本地包及其所有依赖项。 (仅构建指定的二进制文件)",
+    "description": "cargo-build: 编译本地软件包及其所有依赖项。 (仅构建指定的二进制文件)",
     "tags": [
       "common",
       "cargo-build",
@@ -10040,7 +10055,7 @@
     "title": "cargo-build - 仅构建指定的测试目标",
     "content": "cargo {{[b|build]}} --test {{测试名称}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-build: 编译本地包及其所有依赖项。 (仅构建指定的测试目标)",
+    "description": "cargo-build: 编译本地软件包及其所有依赖项。 (仅构建指定的测试目标)",
     "tags": [
       "common",
       "cargo-build",
@@ -12437,10 +12452,10 @@
   {
     "id": "tldr-zh-common-nix-why-depends-1",
     "type": "command",
-    "title": "nix-why-depends - 显示 nixpkgs 中的某个包为何将另一个包作为**构建时**依赖",
+    "title": "nix-why-depends - 显示 nixpkgs 中的某个包为何将另一个包作为构建时依赖",
     "content": "nix why-depends --derivation {{nixpkgs#dependent}} {{nixpkgs#dependency}}",
     "group": "通用工具 (Common)",
-    "description": "nix-why-depends: 用于查询某个包为何依赖于另一个包。 (显示 nixpkgs 中的某个包为何将另一个包作为**构建时**依赖)",
+    "description": "nix-why-depends: 用于查询某个包为何依赖于另一个包。 (显示 nixpkgs 中的某个包为何将另一个包作为构建时依赖)",
     "tags": [
       "common",
       "nix-why-depends",
@@ -13367,10 +13382,10 @@
   {
     "id": "tldr-zh-common-cargo-bench-0",
     "type": "command",
-    "title": "cargo-bench - 执行包的所有基准测试",
+    "title": "cargo-bench - 执行软件包的所有基准测试",
     "content": "cargo bench",
     "group": "通用工具 (Common)",
-    "description": "cargo-bench: 编译并执行基准测试。 (执行包的所有基准测试)",
+    "description": "cargo-bench: 编译并执行基准测试。 (执行软件包的所有基准测试)",
     "tags": [
       "common",
       "cargo-bench",
@@ -13427,10 +13442,10 @@
   {
     "id": "tldr-zh-common-cargo-bench-4",
     "type": "command",
-    "title": "cargo-bench - 使用给定的配置文件进行基准测试 (默认为 `bench`)",
+    "title": "cargo-bench - 使用给定的配置文件进行基准测试（默认为 `bench`）",
     "content": "cargo bench --profile {{配置文件}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-bench: 编译并执行基准测试。 (使用给定的配置文件进行基准测试 (默认为 `bench`))",
+    "description": "cargo-bench: 编译并执行基准测试。 (使用给定的配置文件进行基准测试（默认为 `bench`）)",
     "tags": [
       "common",
       "cargo-bench",
@@ -13472,10 +13487,10 @@
   {
     "id": "tldr-zh-common-cargo-bench-7",
     "type": "command",
-    "title": "cargo-bench - 对包的库(lib)进行基准测试",
+    "title": "cargo-bench - 对软件包的库（lib）进行基准测试",
     "content": "cargo bench --lib",
     "group": "通用工具 (Common)",
-    "description": "cargo-bench: 编译并执行基准测试。 (对包的库(lib)进行基准测试)",
+    "description": "cargo-bench: 编译并执行基准测试。 (对软件包的库（lib）进行基准测试)",
     "tags": [
       "common",
       "cargo-bench",
@@ -15033,7 +15048,7 @@
     "id": "tldr-zh-common-protoc-3",
     "type": "command",
     "title": "protoc - 从 `.proto` 文件将文本格式消息编码为协议消息",
-    "content": "protoc --encode={{类型名称}} {{输入文件.proto}} < {{消息.txt}}",
+    "content": "protoc < {{消息.txt}} --encode={{类型名称}} {{输入文件.proto}}",
     "group": "通用工具 (Common)",
     "description": "protoc: 解析 Google Protobuf `.proto` 文件并生成指定语言的输出。 (从 `.proto` 文件将文本格式消息编码为协议消息)",
     "tags": [
@@ -15048,7 +15063,7 @@
     "id": "tldr-zh-common-protoc-4",
     "type": "command",
     "title": "protoc - 从 `.proto` 文件将协议消息解码为文本格式",
-    "content": "protoc --decode={{类型名称}} {{输入文件.proto}} < {{消息.bin}}",
+    "content": "protoc < {{消息.bin}} --decode={{类型名称}} {{输入文件.proto}}",
     "group": "通用工具 (Common)",
     "description": "protoc: 解析 Google Protobuf `.proto` 文件并生成指定语言的输出。 (从 `.proto` 文件将协议消息解码为文本格式)",
     "tags": [
@@ -15063,7 +15078,7 @@
     "id": "tldr-zh-common-protoc-5",
     "type": "command",
     "title": "protoc - 将协议消息解码为原始标签/值对",
-    "content": "protoc --decode_raw < {{消息.bin}}",
+    "content": "protoc < {{消息.bin}} --decode_raw",
     "group": "通用工具 (Common)",
     "description": "protoc: 解析 Google Protobuf `.proto` 文件并生成指定语言的输出。 (将协议消息解码为原始标签/值对)",
     "tags": [
@@ -16683,7 +16698,7 @@
     "id": "tldr-zh-common-qalc-0",
     "type": "command",
     "title": "qalc - 以交互模式启动",
-    "content": "qalc {{--interactive}}",
+    "content": "qalc {{[-i|--interactive]}}",
     "group": "通用工具 (Common)",
     "description": "qalc: 强大且易用的命令行计算器。 另请参阅：`bc`。 (以交互模式启动)",
     "tags": [
@@ -16698,7 +16713,7 @@
     "id": "tldr-zh-common-qalc-1",
     "type": "command",
     "title": "qalc - 以简洁模式启动（仅输出结果）",
-    "content": "qalc --terse",
+    "content": "qalc {{[-t|--terse]}}",
     "group": "通用工具 (Common)",
     "description": "qalc: 强大且易用的命令行计算器。 另请参阅：`bc`。 (以简洁模式启动（仅输出结果）)",
     "tags": [
@@ -16713,7 +16728,7 @@
     "id": "tldr-zh-common-qalc-2",
     "type": "command",
     "title": "qalc - 更新货币兑换率",
-    "content": "qalc --exrates",
+    "content": "qalc {{[-e|--exrates]}}",
     "group": "通用工具 (Common)",
     "description": "qalc: 强大且易用的命令行计算器。 另请参阅：`bc`。 (更新货币兑换率)",
     "tags": [
@@ -16758,7 +16773,7 @@
     "id": "tldr-zh-common-qalc-5",
     "type": "command",
     "title": "qalc - 从文件中执行命令",
-    "content": "qalc --file {{路径/到/文件}}",
+    "content": "qalc {{[-f|--file]}} {{路径/到/文件}}",
     "group": "通用工具 (Common)",
     "description": "qalc: 强大且易用的命令行计算器。 另请参阅：`bc`。 (从文件中执行命令)",
     "tags": [
@@ -24303,7 +24318,7 @@
     "id": "tldr-zh-common-nload-1",
     "type": "command",
     "title": "nload - 查看指定网络接口的流量（使用`<ArrowKeys>`切换网口）",
-    "content": "nload devices {{网口1}} {{网口2}}",
+    "content": "nload devices {{网口1 网口2 ...}}",
     "group": "通用工具 (Common)",
     "description": "nload: 在终端中可视化查看网络流量。 (查看指定网络接口的流量（使用`<ArrowKeys>`切换网口）)",
     "tags": [
@@ -24935,7 +24950,7 @@
     "title": "cargo-doc - 为当前项目及所有依赖项构建文档",
     "content": "cargo {{[d|doc]}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-doc: 构建 Rust 包的文档。 (为当前项目及所有依赖项构建文档)",
+    "description": "cargo-doc: 构建 Rust 软件包的文档。 (为当前项目及所有依赖项构建文档)",
     "tags": [
       "common",
       "cargo-doc",
@@ -24950,7 +24965,7 @@
     "title": "cargo-doc - 不为依赖项构建文档",
     "content": "cargo {{[d|doc]}} --no-deps",
     "group": "通用工具 (Common)",
-    "description": "cargo-doc: 构建 Rust 包的文档。 (不为依赖项构建文档)",
+    "description": "cargo-doc: 构建 Rust 软件包的文档。 (不为依赖项构建文档)",
     "tags": [
       "common",
       "cargo-doc",
@@ -24965,7 +24980,7 @@
     "title": "cargo-doc - 构建并在浏览器中打开文档",
     "content": "cargo {{[d|doc]}} --open",
     "group": "通用工具 (Common)",
-    "description": "cargo-doc: 构建 Rust 包的文档。 (构建并在浏览器中打开文档)",
+    "description": "cargo-doc: 构建 Rust 软件包的文档。 (构建并在浏览器中打开文档)",
     "tags": [
       "common",
       "cargo-doc",
@@ -24977,10 +24992,10 @@
   {
     "id": "tldr-zh-common-cargo-doc-3",
     "type": "command",
-    "title": "cargo-doc - 构建并查看特定包的文档",
-    "content": "cargo {{[d|doc]}} --open {{[-p|--package]}} {{包名}}",
+    "title": "cargo-doc - 构建并查看特定软件包的文档",
+    "content": "cargo {{[d|doc]}} --open {{[-p|--package]}} {{软件包}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-doc: 构建 Rust 包的文档。 (构建并查看特定包的文档)",
+    "description": "cargo-doc: 构建 Rust 软件包的文档。 (构建并查看特定软件包的文档)",
     "tags": [
       "common",
       "cargo-doc",
@@ -26612,10 +26627,10 @@
   {
     "id": "tldr-zh-common-fd-0",
     "type": "command",
-    "title": "fd - 递归查找当前目录中匹配特定模式的文件",
+    "title": "fd - 在当前目录中递归查找匹配特定模式的文件",
     "content": "fd \"{{字符串|正则表达式}}\"",
     "group": "通用工具 (Common)",
-    "description": "fd: `find` 的替代工具。 旨在比 `find` 更快且更易于使用。 另请参阅：`find`。 (递归查找当前目录中匹配特定模式的文件)",
+    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`。 (在当前目录中递归查找匹配特定模式的文件)",
     "tags": [
       "common",
       "fd",
@@ -26630,7 +26645,7 @@
     "title": "fd - 查找以特定字符串开头的文件",
     "content": "fd \"{{^字符串}}\"",
     "group": "通用工具 (Common)",
-    "description": "fd: `find` 的替代工具。 旨在比 `find` 更快且更易于使用。 另请参阅：`find`。 (查找以特定字符串开头的文件)",
+    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`。 (查找以特定字符串开头的文件)",
     "tags": [
       "common",
       "fd",
@@ -26643,9 +26658,9 @@
     "id": "tldr-zh-common-fd-2",
     "type": "command",
     "title": "fd - 查找具有特定扩展名的文件",
-    "content": "fd --extension {{txt}}",
+    "content": "fd {{[-e|--extension]}} {{扩展名}}",
     "group": "通用工具 (Common)",
-    "description": "fd: `find` 的替代工具。 旨在比 `find` 更快且更易于使用。 另请参阅：`find`。 (查找具有特定扩展名的文件)",
+    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`。 (查找具有特定扩展名的文件)",
     "tags": [
       "common",
       "fd",
@@ -26660,7 +26675,7 @@
     "title": "fd - 在特定目录中查找文件",
     "content": "fd \"{{字符串|正则表达式}}\" {{路径/到/目录}}",
     "group": "通用工具 (Common)",
-    "description": "fd: `find` 的替代工具。 旨在比 `find` 更快且更易于使用。 另请参阅：`find`。 (在特定目录中查找文件)",
+    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`。 (在特定目录中查找文件)",
     "tags": [
       "common",
       "fd",
@@ -26673,9 +26688,9 @@
     "id": "tldr-zh-common-fd-4",
     "type": "command",
     "title": "fd - 在搜索中包含被忽略和隐藏的文件",
-    "content": "fd --hidden --no-ignore \"{{字符串|正则表达式}}\"",
+    "content": "fd {{[-H|--hidden]}} {{[-I|--no-ignore]}} \"{{字符串|正则表达式}}\"",
     "group": "通用工具 (Common)",
-    "description": "fd: `find` 的替代工具。 旨在比 `find` 更快且更易于使用。 另请参阅：`find`。 (在搜索中包含被忽略和隐藏的文件)",
+    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`。 (在搜索中包含被忽略和隐藏的文件)",
     "tags": [
       "common",
       "fd",
@@ -26687,10 +26702,40 @@
   {
     "id": "tldr-zh-common-fd-5",
     "type": "command",
-    "title": "fd - 对每个返回的搜索结果执行命令",
-    "content": "fd \"{{字符串|正则表达式}}\" --exec {{命令}}",
+    "title": "fd - 排除匹配特定通配符（glob）模式的文件",
+    "content": "fd {{字符串}} {{[-E|--exclude]}} {{通配符}}",
     "group": "通用工具 (Common)",
-    "description": "fd: `find` 的替代工具。 旨在比 `find` 更快且更易于使用。 另请参阅：`find`。 (对每个返回的搜索结果执行命令)",
+    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`。 (排除匹配特定通配符（glob）模式的文件)",
+    "tags": [
+      "common",
+      "fd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-fd-6",
+    "type": "command",
+    "title": "fd - 对每个返回的搜索结果执行命令",
+    "content": "fd \"{{字符串|正则表达式}}\" {{[-x|--exec]}} {{命令}}",
+    "group": "通用工具 (Common)",
+    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`。 (对每个返回的搜索结果执行命令)",
+    "tags": [
+      "common",
+      "fd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-fd-7",
+    "type": "command",
+    "title": "fd - 仅在当前目录中查找文件",
+    "content": "fd {{[-d|--max-depth]}} 1 \"{{字符串|正则表达式}}\"",
+    "group": "通用工具 (Common)",
+    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`。 (仅在当前目录中查找文件)",
     "tags": [
       "common",
       "fd",
@@ -27309,6 +27354,51 @@
     "tags": [
       "common",
       "act",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-cargo-binstall-0",
+    "type": "command",
+    "title": "cargo-binstall - 从 <https://crates.io> 安装一个软件包",
+    "content": "cargo binstall {{软件包}}",
+    "group": "通用工具 (Common)",
+    "description": "cargo-binstall: 从 CI 产物安装 Rust 二进制文件。 如果没有可用的二进制文件，则回退到 `cargo install`（从源代码安装）。 (从 <https://crates.io> 安装一个软件包)",
+    "tags": [
+      "common",
+      "cargo-binstall",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-cargo-binstall-1",
+    "type": "command",
+    "title": "cargo-binstall - 安装指定版本的软件包（默认为最新版本）",
+    "content": "cargo binstall {{软件包}}@{{版本号}}",
+    "group": "通用工具 (Common)",
+    "description": "cargo-binstall: 从 CI 产物安装 Rust 二进制文件。 如果没有可用的二进制文件，则回退到 `cargo install`（从源代码安装）。 (安装指定版本的软件包（默认为最新版本）)",
+    "tags": [
+      "common",
+      "cargo-binstall",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-cargo-binstall-2",
+    "type": "command",
+    "title": "cargo-binstall - 安装软件包并禁用确认提示",
+    "content": "cargo binstall {{[-y|--no-confirm]}} {{软件包}}",
+    "group": "通用工具 (Common)",
+    "description": "cargo-binstall: 从 CI 产物安装 Rust 二进制文件。 如果没有可用的二进制文件，则回退到 `cargo install`（从源代码安装）。 (安装软件包并禁用确认提示)",
+    "tags": [
+      "common",
+      "cargo-binstall",
       "tldr",
       "zh"
     ],
@@ -29567,21 +29657,6 @@
   {
     "id": "tldr-zh-common-git-status-3",
     "type": "command",
-    "title": "git-status - 显示当前分支及其跟踪（上游）分支信息",
-    "content": "git status {{[-b|--branch]}}",
-    "group": "通用工具 (Common)",
-    "description": "git-status: 展示 Git 仓库中文件的变更情况。 列出与当前检出提交相比有修改、新增和删除的文件。 (显示当前分支及其跟踪（上游）分支信息)",
-    "tags": [
-      "common",
-      "git-status",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-common-git-status-4",
-    "type": "command",
     "title": "git-status - 以简短形式输出，同时包含分支信息",
     "content": "git status {{[-sb|--short --branch]}}",
     "group": "通用工具 (Common)",
@@ -29595,7 +29670,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-zh-common-git-status-5",
+    "id": "tldr-zh-common-git-status-4",
     "type": "command",
     "title": "git-status - 显示当前贮藏区（stash）中的条目数量",
     "content": "git status --show-stash",
@@ -29610,7 +29685,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-zh-common-git-status-6",
+    "id": "tldr-zh-common-git-status-5",
     "type": "command",
     "title": "git-status - 不显示未跟踪的文件",
     "content": "git status {{[-uno|--untracked-files=no]}}",
@@ -31293,7 +31368,7 @@
     "id": "tldr-zh-common-git-check-mailmap-0",
     "type": "command",
     "title": "git-check-mailmap - 查找与电子邮件地址关联的规范名称",
-    "content": "git check-mailmap \"<{{邮箱@example.com}}>\"",
+    "content": "git check-mailmap {{邮箱@example.com}}",
     "group": "通用工具 (Common)",
     "description": "git-check-mailmap: 显示联系人的规范名称和电子邮件地址。 (查找与电子邮件地址关联的规范名称)",
     "tags": [
@@ -32432,10 +32507,10 @@
   {
     "id": "tldr-zh-common-cargo-check-0",
     "type": "command",
-    "title": "cargo-check - 检查当前包",
+    "title": "cargo-check - 检查当前软件包",
     "content": "cargo {{[c|check]}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-check: 检查本地软件包及其所有依赖包是否有错误。 (检查当前包)",
+    "description": "cargo-check: 检查本地软件包及其所有依赖项是否有错误。 (检查当前软件包)",
     "tags": [
       "common",
       "cargo-check",
@@ -32450,7 +32525,7 @@
     "title": "cargo-check - 检查所有测试",
     "content": "cargo {{[c|check]}} --tests",
     "group": "通用工具 (Common)",
-    "description": "cargo-check: 检查本地软件包及其所有依赖包是否有错误。 (检查所有测试)",
+    "description": "cargo-check: 检查本地软件包及其所有依赖项是否有错误。 (检查所有测试)",
     "tags": [
       "common",
       "cargo-check",
@@ -32465,7 +32540,7 @@
     "title": "cargo-check - 检查 `tests/integration_test1.rs` 中的集成测试",
     "content": "cargo {{[c|check]}} --test {{integration_test1}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-check: 检查本地软件包及其所有依赖包是否有错误。 (检查 `tests/integration_test1.rs` 中的集成测试)",
+    "description": "cargo-check: 检查本地软件包及其所有依赖项是否有错误。 (检查 `tests/integration_test1.rs` 中的集成测试)",
     "tags": [
       "common",
       "cargo-check",
@@ -32477,10 +32552,10 @@
   {
     "id": "tldr-zh-common-cargo-check-3",
     "type": "command",
-    "title": "cargo-check - 使用 `feature1` 和 `feature2` 功能检查当前包",
+    "title": "cargo-check - 使用 `feature1` 和 `feature2` 功能检查当前软件包",
     "content": "cargo {{[c|check]}} {{[-F|--features]}} {{feature1,feature2}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-check: 检查本地软件包及其所有依赖包是否有错误。 (使用 `feature1` 和 `feature2` 功能检查当前包)",
+    "description": "cargo-check: 检查本地软件包及其所有依赖项是否有错误。 (使用 `feature1` 和 `feature2` 功能检查当前软件包)",
     "tags": [
       "common",
       "cargo-check",
@@ -32492,10 +32567,10 @@
   {
     "id": "tldr-zh-common-cargo-check-4",
     "type": "command",
-    "title": "cargo-check - 禁用默认功能后检测当前包",
+    "title": "cargo-check - 禁用默认功能后检测当前软件包",
     "content": "cargo {{[c|check]}} --no-default-features",
     "group": "通用工具 (Common)",
-    "description": "cargo-check: 检查本地软件包及其所有依赖包是否有错误。 (禁用默认功能后检测当前包)",
+    "description": "cargo-check: 检查本地软件包及其所有依赖项是否有错误。 (禁用默认功能后检测当前软件包)",
     "tags": [
       "common",
       "cargo-check",
@@ -38702,10 +38777,10 @@
   {
     "id": "tldr-zh-common-cargo-0",
     "type": "command",
-    "title": "cargo - 搜索包",
+    "title": "cargo - 搜索包（crate）",
     "content": "cargo search {{搜索关键词}}",
     "group": "通用工具 (Common)",
-    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 一些子命令，如 `build`，具有自己的用法文档。 (搜索包)",
+    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`. (搜索包（crate）)",
     "tags": [
       "common",
       "cargo",
@@ -38717,10 +38792,10 @@
   {
     "id": "tldr-zh-common-cargo-1",
     "type": "command",
-    "title": "cargo - 下载二进制包（crate)",
+    "title": "cargo - 安装二进制包（crate）",
     "content": "cargo install {{包名}}",
     "group": "通用工具 (Common)",
-    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 一些子命令，如 `build`，具有自己的用法文档。 (下载二进制包（crate))",
+    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`. (安装二进制包（crate）)",
     "tags": [
       "common",
       "cargo",
@@ -38732,10 +38807,10 @@
   {
     "id": "tldr-zh-common-cargo-2",
     "type": "command",
-    "title": "cargo - 列出已安装的二进制包（crate)",
+    "title": "cargo - 列出已安装的二进制包（crate）",
     "content": "cargo install --list",
     "group": "通用工具 (Common)",
-    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 一些子命令，如 `build`，具有自己的用法文档。 (列出已安装的二进制包（crate))",
+    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`. (列出已安装的二进制包（crate）)",
     "tags": [
       "common",
       "cargo",
@@ -38747,10 +38822,10 @@
   {
     "id": "tldr-zh-common-cargo-3",
     "type": "command",
-    "title": "cargo - 在指定目录 （或默认情况下在当前工作目录) 中创建一个新的二进制或库 Rust项目",
-    "content": "cargo init --{{bin|lib}} {{path/to/directory}}",
+    "title": "cargo - 在指定目录（或默认情况下在当前工作目录）中创建一个新的二进制或库 Rust 项目",
+    "content": "cargo init --{{bin|lib}} {{路径/到/目录}}",
     "group": "通用工具 (Common)",
-    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 一些子命令，如 `build`，具有自己的用法文档。 (在指定目录 （或默认情况下在当前工作目录) 中创建一个新的二进制或库 Rust项目)",
+    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`. (在指定目录（或默认情况下在当前工作目录）中创建一个新的二进制或库 Rust 项目)",
     "tags": [
       "common",
       "cargo",
@@ -38762,10 +38837,10 @@
   {
     "id": "tldr-zh-common-cargo-4",
     "type": "command",
-    "title": "cargo - 向当前目录的 `Cargo.toml` 添加一个依赖",
-    "content": "cargo add {{依赖项目}}",
+    "title": "cargo - 向当前目录的 `Cargo.toml` 添加一个依赖项",
+    "content": "cargo add {{依赖项}}",
     "group": "通用工具 (Common)",
-    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 一些子命令，如 `build`，具有自己的用法文档。 (向当前目录的 `Cargo.toml` 添加一个依赖)",
+    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`. (向当前目录的 `Cargo.toml` 添加一个依赖项)",
     "tags": [
       "common",
       "cargo",
@@ -38780,7 +38855,7 @@
     "title": "cargo - 使用 release 模式在当前目录中构建 Rust 项目",
     "content": "cargo {{[b|build]}} {{[-r|--release]}}",
     "group": "通用工具 (Common)",
-    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 一些子命令，如 `build`，具有自己的用法文档。 (使用 release 模式在当前目录中构建 Rust 项目)",
+    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`. (使用 release 模式在当前目录中构建 Rust 项目)",
     "tags": [
       "common",
       "cargo",
@@ -38792,10 +38867,10 @@
   {
     "id": "tldr-zh-common-cargo-6",
     "type": "command",
-    "title": "cargo - 使用最新的编译器在当前目录中构建 Rust 项目 （需要 `rustup`)",
+    "title": "cargo - 使用最新的编译器在当前目录中构建 Rust 项目（需要 `rustup`）",
     "content": "cargo +nightly {{[b|build]}}",
     "group": "通用工具 (Common)",
-    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 一些子命令，如 `build`，具有自己的用法文档。 (使用最新的编译器在当前目录中构建 Rust 项目 （需要 `rustup`))",
+    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`. (使用最新的编译器在当前目录中构建 Rust 项目（需要 `rustup`）)",
     "tags": [
       "common",
       "cargo",
@@ -38807,10 +38882,10 @@
   {
     "id": "tldr-zh-common-cargo-7",
     "type": "command",
-    "title": "cargo - 使用特定数量的线程构建 （默认为逻辑 CPU 的数量)",
+    "title": "cargo - 使用特定数量的线程构建（默认为逻辑 CPU 的数量）",
     "content": "cargo {{[b|build]}} {{[-j|--jobs]}} {{线程数}}",
     "group": "通用工具 (Common)",
-    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 一些子命令，如 `build`，具有自己的用法文档。 (使用特定数量的线程构建 （默认为逻辑 CPU 的数量))",
+    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`. (使用特定数量的线程构建（默认为逻辑 CPU 的数量）)",
     "tags": [
       "common",
       "cargo",
@@ -43847,10 +43922,10 @@
   {
     "id": "tldr-zh-common-cargo-add-2",
     "type": "command",
-    "title": "cargo-add - 添加依赖项并启动一个或多个特定功能",
+    "title": "cargo-add - 添加依赖项并启用一个或多个特定功能",
     "content": "cargo add {{依赖项}} {{[-F|--features]}} {{功能1,功能2,...}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-add: 向 Rust 项目的 `Cargo.toml` 文件添加依赖项。 (添加依赖项并启动一个或多个特定功能)",
+    "description": "cargo-add: 向 Rust 项目的 `Cargo.toml` 文件添加依赖项。 (添加依赖项并启用一个或多个特定功能)",
     "tags": [
       "common",
       "cargo-add",
@@ -43862,10 +43937,10 @@
   {
     "id": "tldr-zh-common-cargo-add-3",
     "type": "command",
-    "title": "cargo-add - 添加一个可选的依赖项，然后将其作为包(crate)的一个功能暴露出来",
+    "title": "cargo-add - 添加一个可选的依赖项，然后将其作为包（crate）的一个功能暴露出来",
     "content": "cargo add {{依赖项}} --optional",
     "group": "通用工具 (Common)",
-    "description": "cargo-add: 向 Rust 项目的 `Cargo.toml` 文件添加依赖项。 (添加一个可选的依赖项，然后将其作为包(crate)的一个功能暴露出来)",
+    "description": "cargo-add: 向 Rust 项目的 `Cargo.toml` 文件添加依赖项。 (添加一个可选的依赖项，然后将其作为包（crate）的一个功能暴露出来)",
     "tags": [
       "common",
       "cargo-add",
@@ -43877,10 +43952,10 @@
   {
     "id": "tldr-zh-common-cargo-add-4",
     "type": "command",
-    "title": "cargo-add - 将本地包(crate)添加为依赖项",
-    "content": "cargo add --path {{path/to/directory}}",
+    "title": "cargo-add - 将本地包（crate）添加为依赖项",
+    "content": "cargo add --path {{路径/到/目录}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-add: 向 Rust 项目的 `Cargo.toml` 文件添加依赖项。 (将本地包(crate)添加为依赖项)",
+    "description": "cargo-add: 向 Rust 项目的 `Cargo.toml` 文件添加依赖项。 (将本地包（crate）添加为依赖项)",
     "tags": [
       "common",
       "cargo-add",
@@ -44568,7 +44643,7 @@
     "id": "tldr-zh-common-zlib-flate-0",
     "type": "command",
     "title": "zlib-flate - 压缩一个文件",
-    "content": "zlib-flate -compress < {{路径/到/输入_文件}} > {{路径/到/压缩.zlib}}",
+    "content": "zlib-flate < {{路径/到/输入_文件}} -compress > {{路径/到/压缩.zlib}}",
     "group": "通用工具 (Common)",
     "description": "zlib-flate: 原始 zlib 压缩和解压缩程序。 `qpdf` 的一部分。 (压缩一个文件)",
     "tags": [
@@ -44583,7 +44658,7 @@
     "id": "tldr-zh-common-zlib-flate-1",
     "type": "command",
     "title": "zlib-flate - 解压缩一个文件",
-    "content": "zlib-flate -uncompress < {{路径/到/压缩.zlib}} > {{路径/到/输出_文件}}",
+    "content": "zlib-flate < {{路径/到/压缩.zlib}} -uncompress > {{路径/到/输出_文件}}",
     "group": "通用工具 (Common)",
     "description": "zlib-flate: 原始 zlib 压缩和解压缩程序。 `qpdf` 的一部分。 (解压缩一个文件)",
     "tags": [
@@ -44598,7 +44673,7 @@
     "id": "tldr-zh-common-zlib-flate-2",
     "type": "command",
     "title": "zlib-flate - 使用指定的压缩级别压缩文件。0=最快（最差），9=最慢（最佳）",
-    "content": "zlib-flate -compress={{压缩级别}} < {{路径/到/输入_文件}} > {{路径/到/压缩.zlib}}",
+    "content": "zlib-flate < {{路径/到/输入_文件}} -compress={{压缩级别}} > {{路径/到/压缩.zlib}}",
     "group": "通用工具 (Common)",
     "description": "zlib-flate: 原始 zlib 压缩和解压缩程序。 `qpdf` 的一部分。 (使用指定的压缩级别压缩文件。0=最快（最差），9=最慢（最佳）)",
     "tags": [
@@ -48137,10 +48212,10 @@
   {
     "id": "tldr-zh-common-cargo-clippy-2",
     "type": "command",
-    "title": "cargo-clippy - 对工作区中的所有包进行检查",
+    "title": "cargo-clippy - 对工作区中的所有软件包进行检查",
     "content": "cargo clippy --workspace",
     "group": "通用工具 (Common)",
-    "description": "cargo-clippy: 一系列 lint 工具，用于捕获常见错误并改进 Rust 代码。 (对工作区中的所有包进行检查)",
+    "description": "cargo-clippy: 一系列 lint 工具，用于捕获常见错误并改进 Rust 代码。 (对工作区中的所有软件包进行检查)",
     "tags": [
       "common",
       "cargo-clippy",
@@ -48152,10 +48227,10 @@
   {
     "id": "tldr-zh-common-cargo-clippy-3",
     "type": "command",
-    "title": "cargo-clippy - 对某个包进行检查",
-    "content": "cargo clippy --package {{包名}}",
+    "title": "cargo-clippy - 对某个软件包进行检查",
+    "content": "cargo clippy --package {{软件包}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-clippy: 一系列 lint 工具，用于捕获常见错误并改进 Rust 代码。 (对某个包进行检查)",
+    "description": "cargo-clippy: 一系列 lint 工具，用于捕获常见错误并改进 Rust 代码。 (对某个软件包进行检查)",
     "tags": [
       "common",
       "cargo-clippy",
@@ -48168,7 +48243,7 @@
     "id": "tldr-zh-common-cargo-clippy-4",
     "type": "command",
     "title": "cargo-clippy - 运行特定 lint 组的检查（参见 <https://rust-lang.github.io/rust-clippy/stable/index.html#?groups=cargo,complexity,correctness,deprecated,nursery,pedantic,perf,restriction,style,suspicious>）",
-    "content": "cargo clippy -- {{[-W|--warn]}} clippy::{{lint组}}",
+    "content": "cargo clippy -- {{[-W|--warn]}} clippy::{{lint 组}}",
     "group": "通用工具 (Common)",
     "description": "cargo-clippy: 一系列 lint 工具，用于捕获常见错误并改进 Rust 代码。 (运行特定 lint 组的检查（参见 <https://rust-lang.github.io/rust-clippy/stable/index.html#?groups=cargo,complexity,correctness,deprecated,nursery,pedantic,perf,restriction,style,suspicious>）)",
     "tags": [
