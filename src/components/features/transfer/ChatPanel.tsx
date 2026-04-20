@@ -66,7 +66,8 @@ export function ChatPanel({ isRunning, isBusy, selectedDevice, messages, onSendM
     setDraft('');
   };
 
-  const canInteract = Boolean(selectedDevice && isRunning && !isBusy);
+  const isReconnecting = selectedDevice?.presence === 'reconnecting';
+  const canInteract = Boolean(selectedDevice && isRunning && !isBusy && !isReconnecting);
   canInteractRef.current = canInteract;
 
   // Hide overlay when interaction is disabled mid-drag
@@ -159,9 +160,25 @@ export function ChatPanel({ isRunning, isBusy, selectedDevice, messages, onSendM
       <div className="h-14 px-6 border-b border-border bg-background/50 backdrop-blur flex items-center justify-between shrink-0">
         <div className="flex items-center gap-3">
           <span className="font-semibold text-foreground">{selectedDevice.name}</span>
-          <span className="text-xs text-green-500 bg-green-500/10 px-2 py-0.5 rounded-full">{selectedDevice.ipAddress}</span>
+          <span className="text-xs text-muted-foreground bg-secondary px-2 py-0.5 rounded-full">{selectedDevice.ipAddress}</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span
+            className={cn(
+              "text-xs px-2 py-0.5 rounded-full font-medium",
+              isReconnecting ? "text-amber-700 bg-amber-500/10" : "text-emerald-700 bg-emerald-500/10"
+            )}
+          >
+            {isReconnecting ? t('transfer.statusReconnecting') : t('transfer.statusConnected')}
+          </span>
         </div>
       </div>
+
+      {isReconnecting && (
+        <div className="shrink-0 border-b border-amber-500/15 bg-amber-500/6 px-6 py-3 text-xs text-amber-800">
+          {t('transfer.reconnectingHint')}
+        </div>
+      )}
 
       {/* 消息流区域 */}
       <div ref={scrollRef} className="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-6">

@@ -381,19 +381,9 @@ async fn validate_session<R: Runtime>(
     let session_token = extract_session_token(headers).ok_or(TransferError::InvalidSession)?;
     if !shared
         .device_manager
-        .matches_session(device_id, &session_token)
+        .validate_session(device_id, &session_token, &addr.ip().to_string())
         .await
     {
-        return Err(TransferError::InvalidSession);
-    }
-
-    let device = shared
-        .device_manager
-        .get_device(device_id)
-        .await
-        .ok_or_else(|| TransferError::DeviceNotFound(device_id.to_string()))?;
-
-    if device.ip_address != addr.ip().to_string() {
         return Err(TransferError::InvalidSession);
     }
 

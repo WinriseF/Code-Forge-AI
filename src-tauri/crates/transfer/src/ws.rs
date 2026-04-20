@@ -22,6 +22,10 @@ enum ClientWsMessage {
     Hello {
         #[serde(rename = "userAgent")]
         user_agent: String,
+        #[serde(rename = "deviceId", default)]
+        device_id: Option<String>,
+        #[serde(rename = "sessionToken", default)]
+        session_token: Option<String>,
     },
     Chat {
         content: String,
@@ -91,173 +95,207 @@ pub async fn handle_socket<R: tauri::Runtime>(
 ) {
     eprintln!("[transfer] New WS connection from {ip_address}, waiting for handshake...");
     let (mut sender, mut receiver) = socket.split();
-    let hello = match tokio::time::timeout(Duration::from_secs(20), receiver.next()).await {
-        Ok(Some(Ok(WsMessage::Text(text)))) => match serde_json::from_str::<ClientWsMessage>(&text)
-        {
-            Ok(ClientWsMessage::Hello { user_agent }) => user_agent,
-            Ok(_) => {
+    let (hello, resume_device_id, resume_session_token) =
+        match tokio::time::timeout(Duration::from_secs(20), receiver.next()).await {
+            Ok(Some(Ok(WsMessage::Text(text)))) => {
+                match serde_json::from_str::<ClientWsMessage>(&text) {
+                    Ok(ClientWsMessage::Hello {
+                        user_agent,
+                        device_id,
+                        session_token,
+                    }) => (user_agent, device_id, session_token),
+                    Ok(_) => {
+                        let _ = send_direct(
+                            &mut sender,
+                            &ServerWsMessage::Error {
+                                message: "First message must be a hello handshake.".to_string(),
+                            },
+                        )
+                        .await;
+                        return;
+                    }
+                    Err(error) => {
+                        let _ = send_direct(
+                            &mut sender,
+                            &ServerWsMessage::Error {
+                                message: format!("Failed to parse handshake: {error}"),
+                            },
+                        )
+                        .await;
+                        return;
+                    }
+                }
+            }
+            _ => {
                 let _ = send_direct(
                     &mut sender,
                     &ServerWsMessage::Error {
-                        message: "First message must be a hello handshake.".to_string(),
+                        message: "Handshake timed out.".to_string(),
                     },
                 )
                 .await;
                 return;
             }
-            Err(error) => {
-                let _ = send_direct(
-                    &mut sender,
-                    &ServerWsMessage::Error {
-                        message: format!("Failed to parse handshake: {error}"),
-                    },
-                )
-                .await;
-                return;
+        };
+
+    eprintln!("[transfer] Handshake OK from {ip_address}, user_agent: {hello}");
+    let (outbound_tx, mut outbound_rx) = tokio::sync::mpsc::unbounded_channel::<String>();
+    let resumed = if let (Some(device_id), Some(session_token)) =
+        (resume_device_id.as_deref(), resume_session_token.as_deref())
+    {
+        shared
+            .device_manager
+            .resume_session(device_id, session_token, &ip_address, outbound_tx.clone())
+            .await
+            .map(|(device, connection_id)| (device, connection_id, session_token.to_string()))
+    } else {
+        None
+    };
+
+    let (device, connection_id, session_token, is_resumed) = if let Some((
+        device,
+        connection_id,
+        session_token,
+    )) = resumed
+    {
+        eprintln!(
+            "[transfer] Session resumed: {} ({}) from {ip_address}",
+            device.name, device.id
+        );
+        (device, connection_id, session_token, true)
+    } else {
+        let device_id = uuid::Uuid::new_v4().simple().to_string();
+        let device = TransferDevice {
+            id: device_id.clone(),
+            name: infer_device_name(&hello),
+            device_type: infer_device_type(&hello),
+            ip_address: ip_address.clone(),
+            connected_at_ms: now_ms(),
+        };
+
+        let mut approval_rx = shared.device_manager.add_pending(device.clone()).await;
+        shared.emit(
+            EVENT_CONNECTION_REQUEST,
+            &ConnectionRequestPayload {
+                device_id: device.id.clone(),
+                name: device.name.clone(),
+                device_type: device.device_type.clone(),
+                ip_address: device.ip_address.clone(),
+            },
+        );
+        eprintln!(
+            "[transfer] Connection request from {} ({}) at {ip_address}, waiting for approval...",
+            device.name, device_id
+        );
+
+        let approval_timeout = tokio::time::sleep(Duration::from_secs(60));
+        tokio::pin!(approval_timeout);
+
+        let approved = loop {
+            tokio::select! {
+                _ = shared.shutdown.cancelled() => {
+                    let _ = shared.device_manager.remove_pending(&device_id).await;
+                    break false;
+                }
+                _ = &mut approval_timeout => {
+                    let _ = shared.device_manager.remove_pending(&device_id).await;
+                    shared.emit(
+                        EVENT_CONNECTION_REQUEST_CANCELLED,
+                        &ConnectionRequestCancelledPayload {
+                            device_id: device_id.clone(),
+                            reason: "approval_timeout".to_string(),
+                        },
+                    );
+                    let _ = send_direct(
+                        &mut sender,
+                        &ServerWsMessage::Error {
+                            message: "Connection approval timed out.".to_string(),
+                        },
+                    )
+                    .await;
+                    eprintln!("[transfer] Connection approval timed out: {device_id}");
+                    return;
+                }
+                result = &mut approval_rx => {
+                    break result.unwrap_or(false);
+                }
+                next = receiver.next() => {
+                    match next {
+                        Some(Ok(WsMessage::Close(_))) | None => {
+                            let removed = shared.device_manager.remove_pending(&device_id).await;
+                            if removed.is_some() {
+                                shared.emit(
+                                    EVENT_CONNECTION_REQUEST_CANCELLED,
+                                    &ConnectionRequestCancelledPayload {
+                                        device_id: device_id.clone(),
+                                        reason: "client_disconnected".to_string(),
+                                    },
+                                );
+                            }
+                            eprintln!("[transfer] Pending connection closed before approval: {device_id}");
+                            return;
+                        }
+                        Some(Err(error)) => {
+                            let removed = shared.device_manager.remove_pending(&device_id).await;
+                            if removed.is_some() {
+                                shared.emit(
+                                    EVENT_CONNECTION_REQUEST_CANCELLED,
+                                    &ConnectionRequestCancelledPayload {
+                                        device_id: device_id.clone(),
+                                        reason: "socket_error".to_string(),
+                                    },
+                                );
+                            }
+                            eprintln!("[transfer] Pending connection errored before approval: {device_id}: {error}");
+                            return;
+                        }
+                        Some(Ok(_)) => {}
+                    }
+                }
             }
-        },
-        _ => {
+        };
+
+        if !approved {
             let _ = send_direct(
                 &mut sender,
                 &ServerWsMessage::Error {
-                    message: "Handshake timed out.".to_string(),
+                    message: "Connection rejected.".to_string(),
                 },
             )
             .await;
+            eprintln!("[transfer] Connection rejected: {device_id}");
             return;
         }
+
+        let session_token = format!(
+            "{}{}",
+            uuid::Uuid::new_v4().simple(),
+            uuid::Uuid::new_v4().simple()
+        );
+        let connection_id = shared
+            .device_manager
+            .add_device(device.clone(), session_token.clone(), outbound_tx.clone())
+            .await;
+
+        let system_message =
+            TransferMessage::system(device_id.clone(), format!("{} connected", device.name));
+        shared
+            .device_manager
+            .append_history(&device_id, system_message)
+            .await;
+        eprintln!(
+            "[transfer] Device connected: {} ({}) from {ip_address}",
+            device.name, device_id
+        );
+        (device, connection_id, session_token, false)
     };
+    let device_id = device.id.clone();
 
-    eprintln!("[transfer] Handshake OK from {ip_address}, user_agent: {hello}");
-    let device_id = uuid::Uuid::new_v4().simple().to_string();
-    let device = TransferDevice {
-        id: device_id.clone(),
-        name: infer_device_name(&hello),
-        device_type: infer_device_type(&hello),
-        ip_address: ip_address.clone(),
-        connected_at_ms: now_ms(),
-    };
-
-    let mut approval_rx = shared.device_manager.add_pending(device.clone()).await;
-    shared.emit(
-        EVENT_CONNECTION_REQUEST,
-        &ConnectionRequestPayload {
-            device_id: device.id.clone(),
-            name: device.name.clone(),
-            device_type: device.device_type.clone(),
-            ip_address: device.ip_address.clone(),
-        },
-    );
-    eprintln!(
-        "[transfer] Connection request from {} ({}) at {ip_address}, waiting for approval...",
-        device.name, device_id
-    );
-
-    let approval_timeout = tokio::time::sleep(Duration::from_secs(60));
-    tokio::pin!(approval_timeout);
-
-    let approved = loop {
-        tokio::select! {
-            _ = shared.shutdown.cancelled() => {
-                let _ = shared.device_manager.remove_pending(&device_id).await;
-                break false;
-            }
-            _ = &mut approval_timeout => {
-                let _ = shared.device_manager.remove_pending(&device_id).await;
-                shared.emit(
-                    EVENT_CONNECTION_REQUEST_CANCELLED,
-                    &ConnectionRequestCancelledPayload {
-                        device_id: device_id.clone(),
-                        reason: "approval_timeout".to_string(),
-                    },
-                );
-                let _ = send_direct(
-                    &mut sender,
-                    &ServerWsMessage::Error {
-                        message: "Connection approval timed out.".to_string(),
-                    },
-                )
-                .await;
-                eprintln!("[transfer] Connection approval timed out: {device_id}");
-                return;
-            }
-            result = &mut approval_rx => {
-                break result.unwrap_or(false);
-            }
-            next = receiver.next() => {
-                match next {
-                    Some(Ok(WsMessage::Close(_))) | None => {
-                        let removed = shared.device_manager.remove_pending(&device_id).await;
-                        if removed.is_some() {
-                            shared.emit(
-                                EVENT_CONNECTION_REQUEST_CANCELLED,
-                                &ConnectionRequestCancelledPayload {
-                                    device_id: device_id.clone(),
-                                    reason: "client_disconnected".to_string(),
-                                },
-                            );
-                        }
-                        eprintln!("[transfer] Pending connection closed before approval: {device_id}");
-                        return;
-                    }
-                    Some(Err(error)) => {
-                        let removed = shared.device_manager.remove_pending(&device_id).await;
-                        if removed.is_some() {
-                            shared.emit(
-                                EVENT_CONNECTION_REQUEST_CANCELLED,
-                                &ConnectionRequestCancelledPayload {
-                                    device_id: device_id.clone(),
-                                    reason: "socket_error".to_string(),
-                                },
-                            );
-                        }
-                        eprintln!("[transfer] Pending connection errored before approval: {device_id}: {error}");
-                        return;
-                    }
-                    Some(Ok(_)) => {}
-                }
-            }
-        }
-    };
-
-    if !approved {
-        let _ = send_direct(
-            &mut sender,
-            &ServerWsMessage::Error {
-                message: "Connection rejected.".to_string(),
-            },
-        )
-        .await;
-        eprintln!("[transfer] Connection rejected: {device_id}");
-        return;
-    }
-
-    let session_token = format!(
-        "{}{}",
-        uuid::Uuid::new_v4().simple(),
-        uuid::Uuid::new_v4().simple()
-    );
-    let (outbound_tx, mut outbound_rx) = tokio::sync::mpsc::unbounded_channel::<String>();
-    shared
-        .device_manager
-        .add_device(device.clone(), session_token.clone(), outbound_tx.clone())
-        .await;
-
-    let system_message =
-        TransferMessage::system(device_id.clone(), format!("{} connected", device.name));
-    shared
-        .device_manager
-        .append_history(&device_id, system_message)
-        .await;
     shared.emit(
         EVENT_DEVICE_CONNECTED,
         &DeviceConnectedPayload {
             device: device.clone(),
         },
-    );
-    eprintln!(
-        "[transfer] Device connected: {} ({}) from {ip_address}",
-        device.name, device_id
     );
 
     let _ = outbound_tx.send(
@@ -270,15 +308,18 @@ pub async fn handle_socket<R: tauri::Runtime>(
             "{\"type\":\"error\",\"message\":\"Failed to serialize session.\"}".to_string()
         }),
     );
-    let _ = outbound_tx.send(
-        serde_json::to_string(&ServerWsMessage::System {
-            content: "Connected to CtxRun".to_string(),
-            timestamp_ms: now_ms(),
-        })
-        .unwrap_or_else(|_| {
-            "{\"type\":\"error\",\"message\":\"Failed to serialize system message.\"}".to_string()
-        }),
-    );
+    if !is_resumed {
+        let _ = outbound_tx.send(
+            serde_json::to_string(&ServerWsMessage::System {
+                content: "Connected to CtxRun".to_string(),
+                timestamp_ms: now_ms(),
+            })
+            .unwrap_or_else(|_| {
+                "{\"type\":\"error\",\"message\":\"Failed to serialize system message.\"}"
+                    .to_string()
+            }),
+        );
+    }
 
     let writer_shutdown = shared.shutdown.clone();
     let mut writer = sender;
@@ -372,15 +413,21 @@ pub async fn handle_socket<R: tauri::Runtime>(
     }
 
     writer_task.abort();
-    shared.device_manager.remove_device(&device_id).await;
-    eprintln!("[transfer] Device disconnected: {device_id}");
-    shared.emit(
-        EVENT_DEVICE_DISCONNECTED,
-        &DeviceDisconnectedPayload {
-            device_id,
-            reason: "connection_closed".to_string(),
-        },
-    );
+    if shared
+        .device_manager
+        .remove_device(&device_id, &connection_id)
+        .await
+        .is_some()
+    {
+        eprintln!("[transfer] Device disconnected: {device_id}");
+        shared.emit(
+            EVENT_DEVICE_DISCONNECTED,
+            &DeviceDisconnectedPayload {
+                device_id,
+                reason: "connection_closed".to_string(),
+            },
+        );
+    }
 }
 
 async fn send_direct(

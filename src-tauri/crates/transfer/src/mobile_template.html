@@ -286,9 +286,19 @@
       approvalDesc: document.getElementById('approvalDesc')
     };
 
-    const state = { ws: null, deviceId: null, reconnectTimer: null, reconnectEnabled: true };
+    const DEVICE_ID_STORAGE_KEY = 'ctxrun-transfer-device-id';
+    const state = {
+      ws: null,
+      deviceId: sessionStorage.getItem(DEVICE_ID_STORAGE_KEY),
+      reconnectTimer: null,
+      reconnectEnabled: true,
+      reconnectAttempts: 0
+    };
     const THRESHOLD = 100 * 1024 * 1024;
+    const MAX_RECONNECT_DELAY_MS = 10000;
+    const MAX_UPLOAD_RESUME_ATTEMPTS = 1;
     const pendingFiles = new Map();
+    const queuedUploads = new Map();
     let copyToastTimer = null;
     const language = navigator.language && navigator.language.toLowerCase().startsWith('zh') ? 'zh' : 'en';
     const messages = {
@@ -310,6 +320,7 @@
         rejectedByPc: 'Rejected by PC',
         uploading: 'Uploading...',
         uploadingPercent: 'Uploading {percent}%',
+        reconnecting: 'Reconnecting...',
         sent: 'Sent',
         failed: 'Failed',
         cameraSheetTitle: 'Capture',
@@ -340,6 +351,7 @@
         rejectedByPc: '已被电脑端拒绝',
         uploading: '上传中...',
         uploadingPercent: '上传中 {percent}%',
+        reconnecting: '正在重连...',
         sent: '已发送',
         failed: '失败',
         cameraSheetTitle: '拍摄',
@@ -438,6 +450,102 @@
       els.mediaSheet.classList.add('hidden');
     }
 
+    function readCookie(name) {
+      const target = `${name}=`;
+      const parts = document.cookie ? document.cookie.split(';') : [];
+      for (const part of parts) {
+        const normalized = part.trim();
+        if (normalized.startsWith(target)) {
+          return normalized.slice(target.length);
+        }
+      }
+      return '';
+    }
+
+    function storeDeviceId(deviceId) {
+      state.deviceId = deviceId || null;
+      if (deviceId) {
+        sessionStorage.setItem(DEVICE_ID_STORAGE_KEY, deviceId);
+      } else {
+        sessionStorage.removeItem(DEVICE_ID_STORAGE_KEY);
+      }
+    }
+
+    function getResumePayload() {
+      const sessionToken = readCookie(bootstrap.cookieName);
+      const deviceId = state.deviceId || sessionStorage.getItem(DEVICE_ID_STORAGE_KEY);
+      if (!deviceId || !sessionToken) return null;
+      return { deviceId, sessionToken };
+    }
+
+    function queueUploadRetry(fileId, file, attempt) {
+      if (!file || attempt > MAX_UPLOAD_RESUME_ATTEMPTS) return false;
+      queuedUploads.set(fileId, { file, attempt });
+      updateUploadStatus(fileId, t('reconnecting'), '#fcd34d');
+      return true;
+    }
+
+    function flushQueuedUploads() {
+      queuedUploads.forEach((pending, fileId) => {
+        queuedUploads.delete(fileId);
+        doActualUpload(pending.file, fileId, pending.attempt);
+      });
+    }
+
+    function scheduleReconnect() {
+      clearTimeout(state.reconnectTimer);
+      if (!state.reconnectEnabled) return;
+      // Mobile browsers throttle background tabs aggressively. Back off harder there to
+      // avoid reconnect spin while the file picker or photo app is in the foreground.
+      const baseDelayMs = document.hidden ? 1500 : 800;
+      const delayMs = Math.min(
+        baseDelayMs * Math.pow(2, Math.min(state.reconnectAttempts, 4)),
+        MAX_RECONNECT_DELAY_MS
+      );
+      state.reconnectAttempts += 1;
+      state.reconnectTimer = setTimeout(() => {
+        state.reconnectTimer = null;
+        connect();
+      }, delayMs);
+    }
+
+    function ensureSocketReady() {
+      if (!state.ws || state.ws.readyState === WebSocket.CLOSED || state.ws.readyState === WebSocket.CLOSING) {
+        connect();
+      }
+    }
+
+    function updateUploadStatus(fileId, text, color) {
+      const wrapper = document.getElementById(`msg-${fileId}`);
+      if (!wrapper) return;
+      const stat = wrapper.querySelector('.upload-status');
+      if (!stat) return;
+      stat.textContent = text;
+      stat.style.color = color || '';
+    }
+
+    function requestPendingFile(fileId, pending) {
+      if (!pending || pending.requestSent || !state.deviceId) return false;
+      if (!state.ws || state.ws.readyState !== WebSocket.OPEN) return false;
+      state.ws.send(JSON.stringify({
+        type: 'file_request',
+        fileId,
+        fileName: pending.file.name,
+        fileSize: pending.file.size
+      }));
+      pending.requestSent = true;
+      updateUploadStatus(fileId, t('waitingForAccept'));
+      return true;
+    }
+
+    function flushPendingFileRequests() {
+      pendingFiles.forEach((pending, fileId) => {
+        if (!pending.requestSent) {
+          requestPendingFile(fileId, pending);
+        }
+      });
+    }
+
     function appendSysMsg(text) {
       const el = document.createElement('div');
       el.className = 'system-msg';
@@ -494,25 +602,32 @@
     }
 
     function connect() {
+      if (state.ws && (state.ws.readyState === WebSocket.OPEN || state.ws.readyState === WebSocket.CONNECTING)) {
+        return;
+      }
       const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-      state.ws = new WebSocket(`${protocol}://${location.host}${bootstrap.wsPath}`);
+      const socket = new WebSocket(`${protocol}://${location.host}${bootstrap.wsPath}`);
+      state.ws = socket;
 
-      state.ws.onopen = () => {
+      socket.onopen = () => {
+        state.reconnectAttempts = 0;
         els.approvalGate.classList.remove('hidden');
         els.approvalTitle.textContent = t('waitingApproval');
         els.approvalDesc.textContent = t('waitingApprovalDesc');
         sendHello();
       };
 
-      state.ws.onmessage = (e) => {
+      socket.onmessage = (e) => {
         const msg = JSON.parse(e.data);
         switch (msg.type) {
           case 'session':
-            state.deviceId = msg.deviceId;
+            storeDeviceId(msg.deviceId);
             document.cookie = `${bootstrap.cookieName}=${msg.sessionToken}; path=/; max-age=3600; SameSite=Strict`;
             els.approvalGate.classList.add('hidden');
             els.statusDot.classList.add('ready');
             els.headerText.textContent = t('connected');
+            flushPendingFileRequests();
+            flushQueuedUploads();
             break;
           case 'chat': appendMsg(msg.content, false, msg.timestampMs); break;
           case 'file_offer': appendFile(msg.fileName, msg.fileSize, msg.downloadUrl); break;
@@ -521,7 +636,7 @@
               const pending = pendingFiles.get(msg.fileId);
               pendingFiles.delete(msg.fileId);
               if (pending) {
-                doActualUpload(pending, msg.fileId);
+                doActualUpload(pending.file, msg.fileId);
               }
             }
             break;
@@ -549,23 +664,37 @@
         }
       };
 
-      state.ws.onclose = () => {
+      socket.onclose = () => {
+        const wasCurrentSocket = state.ws === socket;
+        if (wasCurrentSocket) {
+          state.ws = null;
+        }
         els.statusDot.classList.remove('ready');
         els.headerText.textContent = t('disconnected');
         clearTimeout(state.reconnectTimer);
+        if (!wasCurrentSocket) {
+          return;
+        }
         if (state.reconnectEnabled) {
-          state.reconnectTimer = setTimeout(connect, 3000);
+          scheduleReconnect();
         }
       };
     }
 
     function sendHello() {
-      state.ws.send(JSON.stringify({ type: "hello", userAgent: navigator.userAgent }));
+      if (!state.ws || state.ws.readyState !== WebSocket.OPEN) return;
+      const payload = { type: "hello", userAgent: navigator.userAgent };
+      const resume = getResumePayload();
+      if (resume) {
+        payload.deviceId = resume.deviceId;
+        payload.sessionToken = resume.sessionToken;
+      }
+      state.ws.send(JSON.stringify(payload));
     }
 
     function handleSend() {
       const val = els.input.value.trim();
-      if (!val || state.ws.readyState !== WebSocket.OPEN) return;
+      if (!val || !state.ws || state.ws.readyState !== WebSocket.OPEN) return;
       state.ws.send(JSON.stringify({ type: "chat", content: val }));
       appendMsg(val, true);
       els.input.value = '';
@@ -578,7 +707,8 @@
       
       if (file.size > THRESHOLD) {
         const fileId = Date.now().toString() + Math.random().toString().slice(2);
-        pendingFiles.set(fileId, file);
+        const pending = { file, requestSent: false };
+        pendingFiles.set(fileId, pending);
         
         const wrapper = document.createElement('div');
         wrapper.className = 'bubble-wrapper out';
@@ -595,15 +725,18 @@
         els.msgs.appendChild(wrapper);
         scrollToBottom();
 
-        if (state.ws && state.ws.readyState === WebSocket.OPEN) {
-          state.ws.send(JSON.stringify({ type: 'file_request', fileId, fileName: file.name, fileSize: file.size }));
+        if (!requestPendingFile(fileId, pending)) {
+          updateUploadStatus(fileId, t('reconnecting'), '#fcd34d');
+          ensureSocketReady();
         }
       } else {
         doActualUpload(file, null);
       }
     }
 
-    function doActualUpload(file, fileIdOverride) {
+    function doActualUpload(file, fileIdOverride, recoveryAttempt) {
+      if (!file || !state.deviceId) return;
+      const attempt = recoveryAttempt || 0;
       const fileId = fileIdOverride || (Date.now().toString() + Math.random().toString().slice(2));
       let wrapper = document.getElementById(`msg-${fileId}`);
       let prog;
@@ -648,9 +781,7 @@
       const xhr = new XMLHttpRequest();
       xhr.open("POST", `/api/upload/${encodeURIComponent(state.deviceId)}`);
       xhr.setRequestHeader("x-ctxrun-file-size", String(file.size));
-      if (fileIdOverride) {
-        xhr.setRequestHeader("x-ctxrun-file-id", fileIdOverride);
-      }
+      xhr.setRequestHeader("x-ctxrun-file-id", fileId);
       
       xhr.upload.onprogress = e => {
         if (e.lengthComputable && prog) {
@@ -660,14 +791,37 @@
         }
       };
       xhr.onload = () => {
-        if (prog) prog.value = 100;
-        if (stat) stat.textContent = t('sent');
+        if (xhr.status >= 200 && xhr.status < 300) {
+          queuedUploads.delete(fileId);
+          if (prog) prog.value = 100;
+          if (stat) stat.textContent = t('sent');
+        } else {
+          if ((xhr.status === 403 || xhr.status === 404) && queueUploadRetry(fileId, file, attempt + 1)) {
+            ensureSocketReady();
+            return;
+          }
+          queuedUploads.delete(fileId);
+          if (stat) stat.textContent = t('failed');
+        }
       };
       xhr.onerror = () => {
+        queuedUploads.delete(fileId);
         if (stat) stat.textContent = t('failed');
       };
       xhr.send(fd);
     }
+
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) {
+        ensureSocketReady();
+        flushPendingFileRequests();
+      }
+    });
+
+    window.addEventListener('pageshow', () => {
+      ensureSocketReady();
+      flushPendingFileRequests();
+    });
 
     els.send.onclick = handleSend;
     els.attach.onclick = () => els.fileInput.click();

@@ -1,6 +1,7 @@
 export type UrlMode = 'fixed' | 'random';
 export type TransferMessageKind = 'text' | 'file' | 'system';
 export type TransferMessageDirection = 'sent' | 'received' | 'system';
+export type TransferDevicePresence = 'connected' | 'reconnecting';
 export type TransferFileStatus =
   | 'pending'
   | 'pending_approval'
@@ -37,6 +38,7 @@ export interface TransferDevice {
   deviceType: string;
   ipAddress: string;
   connectedAtMs: number;
+  presence?: TransferDevicePresence;
 }
 
 export interface TransferMessage {

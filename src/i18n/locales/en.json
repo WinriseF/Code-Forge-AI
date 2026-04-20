@@ -76,7 +76,10 @@
     "openFolder": "Open folder",
     "accept": "Accept",
     "reject": "Reject",
-    "rejected": "Rejected"
+    "rejected": "Rejected",
+    "statusConnected": "Online",
+    "statusReconnecting": "Reconnecting",
+    "reconnectingHint": "The phone page is restoring the connection. The session will resume automatically."
   },
   "automator": {
     "designerTitle": "Automator Designer",

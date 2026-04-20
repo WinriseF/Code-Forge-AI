@@ -65,21 +65,42 @@ export function DeviceSidebar({ isRunning, devices, pendingDevices, selectedDevi
 
           {devices.map((device) => {
             const selected = selectedDeviceId === device.id;
+            const isReconnecting = device.presence === 'reconnecting';
             return (
               <button
                 key={device.id}
                 onClick={() => onSelect(device.id)}
                 className={cn(
                   "flex items-center gap-3 px-4 py-3 text-left transition-colors cursor-pointer border-l-2",
-                  selected ? "bg-secondary border-primary" : "border-transparent hover:bg-secondary/50"
+                  selected ? "bg-secondary border-primary" : "border-transparent hover:bg-secondary/50",
+                  isReconnecting && "bg-amber-500/5"
                 )}
               >
-                <div className={cn("w-10 h-10 rounded-md flex items-center justify-center shrink-0", selected ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground")}>
+                <div
+                  className={cn(
+                    "w-10 h-10 rounded-md flex items-center justify-center shrink-0",
+                    isReconnecting
+                      ? "bg-amber-500/10 text-amber-600"
+                      : selected
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-secondary text-muted-foreground"
+                  )}
+                >
                   {getDeviceIcon(device.deviceType)}
                 </div>
                 <div className="flex-1 min-w-0 flex flex-col gap-0.5">
                   <div className="flex items-center justify-between">
                     <span className="font-medium text-sm text-foreground truncate">{device.name}</span>
+                    <span
+                      className={cn(
+                        "shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium",
+                        isReconnecting
+                          ? "bg-amber-500/10 text-amber-700"
+                          : "bg-emerald-500/10 text-emerald-700"
+                      )}
+                    >
+                      {isReconnecting ? t('transfer.statusReconnecting') : t('transfer.statusConnected')}
+                    </span>
                   </div>
                   <span className="text-xs text-muted-foreground truncate">{device.ipAddress}</span>
                 </div>

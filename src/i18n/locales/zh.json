@@ -76,7 +76,10 @@
     "openFolder": "打开目录",
     "accept": "接受",
     "reject": "拒绝",
-    "rejected": "已拒收"
+    "rejected": "已拒收",
+    "statusConnected": "在线",
+    "statusReconnecting": "临时断开",
+    "reconnectingHint": "手机页面正在恢复连接，恢复后会自动继续会话。"
   },
   "automator": {
     "manualMode": "手动模式",

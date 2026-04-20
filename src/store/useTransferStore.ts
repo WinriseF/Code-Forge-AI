@@ -18,6 +18,8 @@ import type {
 const PLUGIN_PREFIX = 'plugin:ctxrun-plugin-transfer|';
 let listenersInitInFlight = false;
 const CHAT_HISTORY_LIMIT_PER_DEVICE = 200;
+const DEVICE_RECONNECT_GRACE_MS = 180_000;
+const reconnectGraceTimers = new Map<string, ReturnType<typeof globalThis.setTimeout>>();
 
 interface TransferState {
   isRunning: boolean;
@@ -70,6 +72,26 @@ function upsertDevice(devices: TransferDevice[], nextDevice: TransferDevice) {
   nextDevices.push(nextDevice);
   nextDevices.sort((left, right) => left.connectedAtMs - right.connectedAtMs);
   return nextDevices;
+}
+
+function normalizeDevice(device: TransferDevice): TransferDevice {
+  return {
+    ...device,
+    presence: device.presence ?? 'connected',
+  };
+}
+
+function clearReconnectGraceTimer(deviceId: string) {
+  const timer = reconnectGraceTimers.get(deviceId);
+  if (timer) {
+    globalThis.clearTimeout(timer);
+    reconnectGraceTimers.delete(deviceId);
+  }
+}
+
+function clearAllReconnectGraceTimers() {
+  reconnectGraceTimers.forEach((timer) => globalThis.clearTimeout(timer));
+  reconnectGraceTimers.clear();
 }
 
 function basenameFromPath(filePath: string) {
@@ -140,6 +162,7 @@ export const useTransferStore = create<TransferState>((set, get) => ({
     if (get().isBusy || get().isRunning) return;
 
     await get().initListeners();
+    clearAllReconnectGraceTimers();
     set({ isBusy: true, lastError: null });
 
     try {
@@ -193,6 +216,8 @@ export const useTransferStore = create<TransferState>((set, get) => ({
     const deviceId = get().selectedDeviceId;
     const trimmed = content.trim();
     if (!deviceId || !trimmed) return;
+    const device = get().devices.find((item) => item.id === deviceId);
+    if (device?.presence === 'reconnecting') return;
 
     try {
       await invoke(`${PLUGIN_PREFIX}send_message`, {
@@ -214,6 +239,8 @@ export const useTransferStore = create<TransferState>((set, get) => ({
   sendFile: async (filePath) => {
     const deviceId = get().selectedDeviceId;
     if (!deviceId || !filePath) return;
+    const device = get().devices.find((item) => item.id === deviceId);
+    if (device?.presence === 'reconnecting') return;
 
     try {
       const response = await invoke<SendFileResponse>(`${PLUGIN_PREFIX}send_file`, {
@@ -311,7 +338,8 @@ export const useTransferStore = create<TransferState>((set, get) => ({
       const unlistenDeviceConnected = await listen<DeviceConnectedPayload>(
         'transfer:device-connected',
         (event) => {
-          const device = event.payload.device;
+          const device = normalizeDevice(event.payload.device);
+          clearReconnectGraceTimer(device.id);
           set((state) => ({
             devices: upsertDevice(state.devices, device),
             pendingDevices: state.pendingDevices.filter((d) => d.deviceId !== device.id),
@@ -325,16 +353,34 @@ export const useTransferStore = create<TransferState>((set, get) => ({
         'transfer:device-disconnected',
         (event) => {
           const disconnectedId = event.payload.deviceId;
+          clearReconnectGraceTimer(disconnectedId);
           set((state) => {
-            const nextDevices = state.devices.filter((device) => device.id !== disconnectedId);
+            const nextDevices = state.devices.map((device) =>
+              device.id === disconnectedId ? { ...device, presence: 'reconnecting' as const } : device
+            );
             return {
               devices: nextDevices,
-              selectedDeviceId:
-                state.selectedDeviceId === disconnectedId
-                  ? nextDevices[0]?.id ?? null
-                  : state.selectedDeviceId,
+              selectedDeviceId: state.selectedDeviceId,
             };
           });
+          const timer = globalThis.setTimeout(() => {
+            reconnectGraceTimers.delete(disconnectedId);
+            useTransferStore.setState((state) => {
+              const target = state.devices.find((device) => device.id === disconnectedId);
+              if (!target || target.presence !== 'reconnecting') {
+                return state;
+              }
+              const nextDevices = state.devices.filter((device) => device.id !== disconnectedId);
+              return {
+                devices: nextDevices,
+                selectedDeviceId:
+                  state.selectedDeviceId === disconnectedId
+                    ? nextDevices[0]?.id ?? null
+                    : state.selectedDeviceId,
+              };
+            });
+          }, DEVICE_RECONNECT_GRACE_MS);
+          reconnectGraceTimers.set(disconnectedId, timer);
         }
       );
 
@@ -440,7 +486,8 @@ export const useTransferStore = create<TransferState>((set, get) => ({
     }
   },
 
-  resetRuntime: () =>
+  resetRuntime: () => {
+    clearAllReconnectGraceTimers();
     set({
       isRunning: false,
       isBusy: false,
@@ -449,7 +496,8 @@ export const useTransferStore = create<TransferState>((set, get) => ({
       pendingDevices: [],
       selectedDeviceId: null,
       chatHistories: {},
-    }),
+    });
+  },
 
   unlisten: () => {
     get()._unlistenFns.forEach((fn) => fn());
