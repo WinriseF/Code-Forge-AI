@@ -33,10 +33,11 @@ pub async fn ocr_recognize_file<R: Runtime>(
 ) -> Result<OcrRecognitionResponse> {
     let service = state.service();
     let worker_service = service.clone();
-    let result =
-        tauri::async_runtime::spawn_blocking(move || worker_service.recognize_file(&app, request.path))
-        .await
-        .map_err(|err| OcrServiceError::JoinError(err.to_string()))?;
+    let result = tauri::async_runtime::spawn_blocking(move || {
+        worker_service.recognize_file(&app, request.path)
+    })
+    .await
+    .map_err(|err| OcrServiceError::JoinError(err.to_string()))?;
 
     if service.is_loaded() {
         state.ensure_idle_reaper_started();
@@ -56,8 +57,8 @@ pub async fn ocr_recognize_bytes<R: Runtime>(
     let result = tauri::async_runtime::spawn_blocking(move || {
         worker_service.recognize_bytes(&app, &request.bytes)
     })
-        .await
-        .map_err(|err| OcrServiceError::JoinError(err.to_string()))?;
+    .await
+    .map_err(|err| OcrServiceError::JoinError(err.to_string()))?;
 
     if service.is_loaded() {
         state.ensure_idle_reaper_started();

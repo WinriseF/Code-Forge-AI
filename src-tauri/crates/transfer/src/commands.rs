@@ -275,7 +275,10 @@ pub async fn respond_file_request<R: Runtime>(
     file_id: String,
     accept: bool,
 ) -> Result<()> {
-    let shared = state.current_shared().await.ok_or(TransferError::NotRunning)?;
+    let shared = state
+        .current_shared()
+        .await
+        .ok_or(TransferError::NotRunning)?;
     if accept {
         shared
             .device_manager
@@ -289,10 +292,7 @@ pub async fn respond_file_request<R: Runtime>(
     } else {
         shared
             .device_manager
-            .send_json(
-                &device_id,
-                &ServerWsMessage::FileReject { file_id },
-            )
+            .send_json(&device_id, &ServerWsMessage::FileReject { file_id })
             .await?;
     }
     Ok(())
@@ -305,7 +305,10 @@ pub async fn respond_connection_request<R: Runtime>(
     device_id: String,
     accept: bool,
 ) -> Result<()> {
-    let shared = state.current_shared().await.ok_or(TransferError::NotRunning)?;
+    let shared = state
+        .current_shared()
+        .await
+        .ok_or(TransferError::NotRunning)?;
     if accept {
         shared
             .device_manager
@@ -313,10 +316,7 @@ pub async fn respond_connection_request<R: Runtime>(
             .await
             .ok_or(TransferError::DeviceNotFound(device_id))?;
     } else {
-        shared
-            .device_manager
-            .reject_pending(&device_id)
-            .await;
+        shared.device_manager.reject_pending(&device_id).await;
     }
     Ok(())
 }

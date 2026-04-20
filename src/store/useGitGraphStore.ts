@@ -24,7 +24,9 @@ interface GitDiffResponse {
 
 interface GitGraphState {
   // Data
+  projectPath: string | null;
   commits: GraphCommit[];
+  commitSearchQuery: string;
   selectedCommitHash: string | null;
   diffFiles: PatchFileItem[];
   diffSummary: GitDiffSummary | null;
@@ -48,7 +50,7 @@ interface GitGraphState {
   error: string | null;
 
   // Actions
-  loadCommits: (projectPath: string) => Promise<void>;
+  loadCommits: (projectPath: string, searchQuery?: string) => Promise<void>;
   loadMoreCommits: (projectPath: string) => Promise<void>;
   selectCommit: (hash: string, projectPath: string) => Promise<void>;
   compareWith: (hash: string, projectPath: string) => Promise<void>;
@@ -89,7 +91,9 @@ function errorToString(err: unknown): string {
 const EMPTY_TREE_HASH = '4b825dc642cb6eb9a060e54bf899d15363d7aa91';
 
 export const useGitGraphStore = create<GitGraphState>((set, get) => ({
+  projectPath: null,
   commits: [],
+  commitSearchQuery: '',
   selectedCommitHash: null,
   diffFiles: [],
   diffSummary: null,
@@ -104,8 +108,11 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
   isLoadingMore: false,
   error: null,
 
-  loadCommits: async (projectPath: string) => {
+  loadCommits: async (projectPath: string, searchQuery = '') => {
+    const normalizedQuery = searchQuery.trim();
     set({
+      projectPath,
+      commitSearchQuery: normalizedQuery,
       isLoading: true,
       isLoadingMore: false,
       error: null,
@@ -118,19 +125,27 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
       compareTargetHash: null,
       diffOldHash: null,
       diffNewHash: null,
+      selectedExportPaths: new Set(),
     });
     try {
       const commits = await invoke<GraphCommit[]>(`${GIT_PLUGIN_PREFIX}get_git_log_graph`, {
         projectPath,
         limit: COMMITS_PAGE_SIZE,
         skip: 0,
+        query: normalizedQuery || null,
       });
+      if (get().projectPath !== projectPath || get().commitSearchQuery !== normalizedQuery) {
+        return;
+      }
       set({
         commits,
         isLoading: false,
         hasMoreCommits: commits.length === COMMITS_PAGE_SIZE,
       });
     } catch (err: unknown) {
+      if (get().projectPath !== projectPath || get().commitSearchQuery !== normalizedQuery) {
+        return;
+      }
       set({ error: errorToString(err), isLoading: false, isLoadingMore: false, commits: [] });
     }
   },
@@ -141,6 +156,7 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
       return;
     }
 
+    const query = state.commitSearchQuery;
     set({ isLoadingMore: true, error: null });
 
     try {
@@ -148,9 +164,14 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
         projectPath,
         limit: COMMITS_PAGE_SIZE,
         skip: state.commits.length,
+        query: query || null,
       });
 
       set((current) => {
+        if (current.projectPath !== projectPath || current.commitSearchQuery !== query) {
+          return { isLoadingMore: false };
+        }
+
         const existing = new Set(current.commits.map((commit) => commit.hash));
         const appended = nextPage.filter((commit) => !existing.has(commit.hash));
 
@@ -161,6 +182,9 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
         };
       });
     } catch (err: unknown) {
+      if (get().projectPath !== projectPath || get().commitSearchQuery !== query) {
+        return;
+      }
       set({
         error: errorToString(err),
         isLoadingMore: false,

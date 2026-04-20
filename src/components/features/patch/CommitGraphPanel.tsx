@@ -1,9 +1,9 @@
-import { memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useGitGraphStore, ROW_HEIGHT, WORKING_TREE_HASH } from '@/store/useGitGraphStore';
 import { computeGitGraphLayout, type CommitRowViewModel } from './gitGraphLayout';
 import { CommitHoverCard } from './CommitHoverCard';
 import { GitRefBadges } from './GitRefBadges';
-import { FolderOpen } from 'lucide-react';
+import { FolderOpen, Search, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { GraphCommit } from './patch_types';
 
@@ -33,6 +33,17 @@ function rowSvgWidth(row?: CommitRowViewModel) {
   }
 
   return SW * (Math.max(row.inputSwimlanes.length, row.outputSwimlanes.length, 1) + 1);
+}
+
+function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setDebouncedValue(value), delay);
+    return () => window.clearTimeout(timer);
+  }, [delay, value]);
+
+  return debouncedValue;
 }
 
 interface CommitGraphPanelProps {
@@ -298,7 +309,7 @@ const CommitRowGraph = memo(function CommitRowGraph({
 
 export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
   const commits = useGitGraphStore((s) => s.commits);
-  const deferredCommits = useDeferredValue(commits);
+  const commitSearchQuery = useGitGraphStore((s) => s.commitSearchQuery);
   const selectedCommitHash = useGitGraphStore((s) => s.selectedCommitHash);
   const loadCommits = useGitGraphStore((s) => s.loadCommits);
   const loadMoreCommits = useGitGraphStore((s) => s.loadMoreCommits);
@@ -320,9 +331,11 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
   const [viewHeight, setViewHeight] = useState(800);
   const [hoveredCommit, setHoveredCommit] = useState<GraphCommit | null>(null);
   const [hoverAnchorRect, setHoverAnchorRect] = useState<DOMRect | null>(null);
+  const [searchInput, setSearchInput] = useState(commitSearchQuery);
+  const debouncedSearchInput = useDebounce(searchInput, 250);
 
-  const layout = useMemo(() => computeGitGraphLayout(deferredCommits), [deferredCommits]);
-  const totalRows = deferredCommits.length + 1;
+  const layout = useMemo(() => computeGitGraphLayout(commits), [commits]);
+  const totalRows = commits.length + 1;
   const totalHeight = totalRows * ROW_HEIGHT;
   const workingTreeWidth = layout.rows[0] ? rowSvgWidth(layout.rows[0]) : SW * 2;
 
@@ -338,10 +351,11 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
   const workingTreeTitle = t('patch.workingTree', 'Working Tree');
   const unstagedChangesLabel = t('patch.unstagedChanges', 'Unstaged changes');
   const loadingCommitsLabel = t('patch.loadingCommits', 'Loading commits...');
+  const commitSearchPlaceholder = t('patch.commitSearchPlaceholder', 'Search by message or hash...');
 
   const maybeLoadMore = useCallback(() => {
     const el = scrollRef.current;
-    if (!el || !projectRoot || isLoading || isLoadingMore || !hasMoreCommits) {
+    if (!el || !projectRoot || isLoading || isLoadingMore || !hasMoreCommits || commits.length === 0) {
       return;
     }
 
@@ -349,7 +363,7 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
     if (el.scrollTop + el.clientHeight >= el.scrollHeight - threshold) {
       void loadMoreCommits(projectRoot);
     }
-  }, [hasMoreCommits, isLoading, isLoadingMore, loadMoreCommits, projectRoot]);
+  }, [commits.length, hasMoreCommits, isLoading, isLoadingMore, loadMoreCommits, projectRoot]);
 
   const flushScrollState = useCallback(() => {
     scrollFrameRef.current = null;
@@ -446,10 +460,25 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
   );
 
   useEffect(() => {
+    setSearchInput(commitSearchQuery);
+  }, [commitSearchQuery]);
+
+  useEffect(() => {
     if (projectRoot) {
-      void loadCommits(projectRoot);
+      void loadCommits(projectRoot, debouncedSearchInput);
     }
-  }, [projectRoot, loadCommits]);
+  }, [debouncedSearchInput, projectRoot, loadCommits]);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) {
+      return;
+    }
+
+    el.scrollTop = 0;
+    latestScrollTopRef.current = 0;
+    setScrollTop(0);
+  }, [commitSearchQuery, projectRoot]);
 
   const openHoverCard = useCallback((commit: GraphCommit, target: HTMLElement) => {
     if (hoverCloseTimerRef.current !== null) {
@@ -480,84 +509,100 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
     }
   }, []);
 
-  if (isLoading && deferredCommits.length === 0) {
-    return (
-      <div className="w-full h-full bg-background flex items-center justify-center">
-        <div className="flex flex-col items-center gap-2 text-muted-foreground">
-          <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-          <span className="text-xs">{loadingCommitsLabel}</span>
-        </div>
-      </div>
-    );
-  }
-
-  if (error && deferredCommits.length === 0) {
-    return (
-      <div className="w-full h-full bg-background flex items-center justify-center p-4">
-        <p className="text-xs text-destructive text-center">{error}</p>
-      </div>
-    );
-  }
-
-  if (deferredCommits.length === 0) {
-    return (
-      <div className="w-full h-full bg-background flex items-center justify-center">
-        <span className="text-xs text-muted-foreground">{t('patch.noCommits', 'No commits yet')}</span>
-      </div>
-    );
-  }
-
   return (
     <div className="w-full h-full bg-background flex flex-col">
-      {error && deferredCommits.length > 0 && (
+      {error && commits.length > 0 && (
         <div className="px-3 py-1.5 bg-destructive/10 border-b border-destructive/20 text-xs text-destructive">
           {error}
         </div>
       )}
 
-      <div className="h-10 flex items-center px-3 border-b border-border">
-        <span className="text-xs font-semibold text-muted-foreground">{t('patch.gitHistory', 'Git History')}</span>
+      <div className="px-3 py-2 border-b border-border space-y-2">
+        <div className="h-6 flex items-center">
+          <span className="text-xs font-semibold text-muted-foreground">{t('patch.gitHistory', 'Git History')}</span>
+        </div>
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={14} />
+          <input
+            type="text"
+            value={searchInput}
+            onChange={(event) => setSearchInput(event.target.value)}
+            placeholder={commitSearchPlaceholder}
+            className="h-8 w-full rounded-md border border-border bg-secondary/30 pl-9 pr-9 text-xs text-foreground placeholder:text-muted-foreground/70 focus:outline-none focus:ring-2 focus:ring-primary/20"
+          />
+          {searchInput && (
+            <button
+              type="button"
+              onClick={() => setSearchInput('')}
+              className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              aria-label={t('patch.clearCommitSearch', 'Clear search')}
+            >
+              <X size={12} />
+            </button>
+          )}
+        </div>
       </div>
 
       <div ref={scrollRef} className="flex-1 overflow-y-auto overflow-x-hidden relative">
-        <div style={{ height: totalHeight, position: 'relative' }}>
-          <div style={{ transform: `translateY(${visibleStart * ROW_HEIGHT}px)` }}>
-            {visibleStart === 0 && (
-              <WorkingTreeRow
-                isSelected={selectedCommitHash === WORKING_TREE_HASH}
-                isCompareTarget={compareTargetHash === WORKING_TREE_HASH}
-                onClick={() => handleClick(WORKING_TREE_HASH)}
-                onContextMenu={(event) => handleContextMenu(event, WORKING_TREE_HASH)}
-                svgWidth={workingTreeWidth}
-                title={workingTreeTitle}
-                subtitle={unstagedChangesLabel}
-              />
-            )}
-
-            {visibleCommitRows.map((row) => (
-              <CommitGraphRow
-                key={row.commit.hash}
-                row={row}
-                isSelected={selectedCommitHash === row.commit.hash}
-                isCompareTarget={compareTargetHash === row.commit.hash}
-                onClick={handleClick}
-                onContextMenu={handleContextMenu}
-                onOpenHover={openHoverCard}
-                onCloseHover={scheduleHoverClose}
-              />
-            ))}
-
-            {isLoadingMore && (
-              <div
-                key="git-graph-loading-more"
-                className="flex items-center justify-center text-[10px] text-muted-foreground"
-                style={{ height: ROW_HEIGHT }}
-              >
-                {loadingCommitsLabel}
-              </div>
-            )}
+        {isLoading && commits.length === 0 ? (
+          <div className="flex h-full items-center justify-center">
+            <div className="flex flex-col items-center gap-2 text-muted-foreground">
+              <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+              <span className="text-xs">{loadingCommitsLabel}</span>
+            </div>
           </div>
-        </div>
+        ) : error && commits.length === 0 ? (
+          <div className="flex h-full items-center justify-center p-4">
+            <p className="text-xs text-destructive text-center">{error}</p>
+          </div>
+        ) : commits.length === 0 ? (
+          <div className="flex h-full items-center justify-center px-4 text-center">
+            <span className="text-xs text-muted-foreground">
+              {commitSearchQuery
+                ? t('patch.noMatchingCommits', 'No matching commits')
+                : t('patch.noCommits', 'No commits yet')}
+            </span>
+          </div>
+        ) : (
+          <div style={{ height: totalHeight, position: 'relative' }}>
+            <div style={{ transform: `translateY(${visibleStart * ROW_HEIGHT}px)` }}>
+              {visibleStart === 0 && (
+                <WorkingTreeRow
+                  isSelected={selectedCommitHash === WORKING_TREE_HASH}
+                  isCompareTarget={compareTargetHash === WORKING_TREE_HASH}
+                  onClick={() => handleClick(WORKING_TREE_HASH)}
+                  onContextMenu={(event) => handleContextMenu(event, WORKING_TREE_HASH)}
+                  svgWidth={workingTreeWidth}
+                  title={workingTreeTitle}
+                  subtitle={unstagedChangesLabel}
+                />
+              )}
+
+              {visibleCommitRows.map((row) => (
+                <CommitGraphRow
+                  key={row.commit.hash}
+                  row={row}
+                  isSelected={selectedCommitHash === row.commit.hash}
+                  isCompareTarget={compareTargetHash === row.commit.hash}
+                  onClick={handleClick}
+                  onContextMenu={handleContextMenu}
+                  onOpenHover={openHoverCard}
+                  onCloseHover={scheduleHoverClose}
+                />
+              ))}
+
+              {isLoadingMore && (
+                <div
+                  key="git-graph-loading-more"
+                  className="flex items-center justify-center text-[10px] text-muted-foreground"
+                  style={{ height: ROW_HEIGHT }}
+                >
+                  {loadingCommitsLabel}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
 
       <CommitHoverCard

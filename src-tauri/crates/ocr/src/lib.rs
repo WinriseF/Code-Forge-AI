@@ -99,10 +99,7 @@ impl OcrState {
         }
 
         let mut idle_reaper = lock_recover(&self.idle_reaper);
-        if idle_reaper
-            .as_ref()
-            .is_some_and(IdleReaperTask::is_running)
-        {
+        if idle_reaper.as_ref().is_some_and(IdleReaperTask::is_running) {
             return;
         }
 

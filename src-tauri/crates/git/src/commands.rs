@@ -142,7 +142,10 @@ fn collect_diff_line_stats(diff: &git2::Diff<'_>) -> Result<HashMap<String, File
                 return true;
             }
 
-            if let Some(stats) = line_stats_by_path.borrow_mut().get_mut(current_path_ref.as_str()) {
+            if let Some(stats) = line_stats_by_path
+                .borrow_mut()
+                .get_mut(current_path_ref.as_str())
+            {
                 match line.origin() {
                     '+' => stats.additions += 1,
                     '-' => stats.deletions += 1,
@@ -163,6 +166,48 @@ fn reference_target_commit_oid(reference: &Reference<'_>) -> Option<Oid> {
         .ok()
         .map(|commit| commit.id())
         .or_else(|| reference.target())
+}
+
+fn normalize_commit_query(query: Option<String>) -> Vec<String> {
+    query
+        .unwrap_or_default()
+        .split_whitespace()
+        .map(str::trim)
+        .filter(|term| !term.is_empty())
+        .map(|term| term.to_lowercase())
+        .collect()
+}
+
+fn commit_matches_query(
+    query_terms: &[String],
+    hash: &str,
+    short_hash: &str,
+    author: &str,
+    summary: &str,
+    full_message: &str,
+    refs: &[GitRef],
+) -> bool {
+    if query_terms.is_empty() {
+        return true;
+    }
+
+    let mut searchable_fields = Vec::with_capacity(5 + refs.len());
+    searchable_fields.push(hash.to_ascii_lowercase());
+    searchable_fields.push(short_hash.to_ascii_lowercase());
+    searchable_fields.push(author.to_lowercase());
+    searchable_fields.push(summary.to_lowercase());
+
+    if !full_message.is_empty() && full_message != summary {
+        searchable_fields.push(full_message.to_lowercase());
+    }
+
+    searchable_fields.extend(refs.iter().map(|git_ref| git_ref.name.to_lowercase()));
+
+    query_terms.iter().all(|term| {
+        searchable_fields
+            .iter()
+            .any(|field| field.contains(term.as_str()))
+    })
 }
 
 fn build_diff_file(
@@ -309,11 +354,12 @@ pub fn get_git_diff(
 ) -> Result<GitDiffResponse> {
     let repo = Repository::open(&project_path)?;
     let old_tree = if old_hash == "4b825dc642cb6eb9a060e54bf899d15363d7aa91" {
-        repo.find_tree(Oid::from_str(&old_hash)?).unwrap_or_else(|_| {
-            let tb = repo.treebuilder(None).unwrap();
-            let oid = tb.write().unwrap();
-            repo.find_tree(oid).unwrap()
-        })
+        repo.find_tree(Oid::from_str(&old_hash)?)
+            .unwrap_or_else(|_| {
+                let tb = repo.treebuilder(None).unwrap();
+                let oid = tb.write().unwrap();
+                repo.find_tree(oid).unwrap()
+            })
     } else {
         let old_oid = Oid::from_str(&old_hash)?;
         repo.find_commit(old_oid)?.tree()?
@@ -397,8 +443,18 @@ pub fn get_git_diff(
         diff_items
             .into_iter()
             .map(|item| {
-                let stats = line_stats.get(item.path.as_str()).copied().unwrap_or_default();
-                build_diff_file(item, Some(&repo), &project_path, is_workdir_mode, MAX_SIZE, stats)
+                let stats = line_stats
+                    .get(item.path.as_str())
+                    .copied()
+                    .unwrap_or_default();
+                build_diff_file(
+                    item,
+                    Some(&repo),
+                    &project_path,
+                    is_workdir_mode,
+                    MAX_SIZE,
+                    stats,
+                )
             })
             .collect()
     } else {
@@ -407,7 +463,10 @@ pub fn get_git_diff(
             .map_init(
                 || Repository::open(&project_path).ok(),
                 |local_repo, item| {
-                    let stats = line_stats.get(item.path.as_str()).copied().unwrap_or_default();
+                    let stats = line_stats
+                        .get(item.path.as_str())
+                        .copied()
+                        .unwrap_or_default();
                     build_diff_file(
                         item,
                         local_repo.as_ref(),
@@ -434,13 +493,15 @@ pub fn get_git_diff_text(
     let new_oid = Oid::from_str(&new_hash)?;
 
     let old_tree = if old_hash == "4b825dc642cb6eb9a060e54bf899d15363d7aa91" {
-        repo.find_tree(Oid::from_str(&old_hash)?).unwrap_or_else(|_| {
-            let tb = repo.treebuilder(None).unwrap();
-            let oid = tb.write().unwrap();
-            repo.find_tree(oid).unwrap()
-        })
+        repo.find_tree(Oid::from_str(&old_hash)?)
+            .unwrap_or_else(|_| {
+                let tb = repo.treebuilder(None).unwrap();
+                let oid = tb.write().unwrap();
+                repo.find_tree(oid).unwrap()
+            })
     } else {
-        repo.find_commit(Oid::from_str(&old_hash)?).and_then(|c| c.tree())?
+        repo.find_commit(Oid::from_str(&old_hash)?)
+            .and_then(|c| c.tree())?
     };
     let new_tree = repo.find_commit(new_oid).and_then(|c| c.tree())?;
 
@@ -503,9 +564,11 @@ pub fn get_git_log_graph(
     project_path: String,
     limit: Option<usize>,
     skip: Option<usize>,
+    query: Option<String>,
 ) -> Result<Vec<GraphCommit>> {
     let limit = limit.unwrap_or(300);
     let skip = skip.unwrap_or(0);
+    let query_terms = normalize_commit_query(query);
     let mut repo = Repository::open(&project_path)?;
 
     // Build ref map: target OID -> list of (name, kind)
@@ -553,7 +616,10 @@ pub fn get_git_log_graph(
                 if matches!(kind, GitRefKind::Branch) {
                     let already_head = ref_map
                         .get(&target_oid)
-                        .map(|refs| refs.iter().any(|r| matches!(r.kind, GitRefKind::Head) && r.name == name))
+                        .map(|refs| {
+                            refs.iter()
+                                .any(|r| matches!(r.kind, GitRefKind::Head) && r.name == name)
+                        })
                         .unwrap_or(false);
                     if already_head {
                         continue;
@@ -629,11 +695,8 @@ pub fn get_git_log_graph(
 
     let mut commits = Vec::new();
 
-    for (index, id) in revwalk.enumerate() {
-        if index < skip {
-            continue;
-        }
-
+    let mut matched_commits = 0usize;
+    for id in revwalk {
         let oid = id?;
         let commit = repo.find_commit(oid)?;
 
@@ -650,14 +713,40 @@ pub fn get_git_log_graph(
         sort_git_refs(&mut refs);
 
         let hash = oid.to_string();
-        let short_hash = if hash.len() >= 7 { hash[..7].to_string() } else { hash.clone() };
+        let short_hash = if hash.len() >= 7 {
+            hash[..7].to_string()
+        } else {
+            hash.clone()
+        };
+        let author = commit.author().name().unwrap_or("Unknown").to_string();
+        let summary = commit.summary().unwrap_or("").to_string();
+        let full_message = commit.message().unwrap_or("").to_string();
+
+        if !commit_matches_query(
+            &query_terms,
+            &hash,
+            &short_hash,
+            &author,
+            &summary,
+            &full_message,
+            &refs,
+        ) {
+            continue;
+        }
+
+        if matched_commits < skip {
+            matched_commits += 1;
+            continue;
+        }
+
+        matched_commits += 1;
 
         commits.push(GraphCommit {
             hash,
             short_hash,
-            author: commit.author().name().unwrap_or("Unknown").to_string(),
+            author,
             date: date_str,
-            message: commit.summary().unwrap_or("").to_string(),
+            message: summary,
             parent_hashes,
             refs,
         });

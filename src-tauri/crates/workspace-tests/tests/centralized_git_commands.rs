@@ -6,10 +6,12 @@ use std::{
 };
 
 use ctxrun_plugin_git::{
-    commands::{export_git_diff, get_git_commits, get_git_diff, get_git_diff_text, get_git_log_graph},
+    commands::{
+        export_git_diff, get_git_commits, get_git_diff, get_git_diff_text, get_git_log_graph,
+    },
     models::{ExportFormat, ExportLayout, GitRefKind},
 };
-use git2::{build::CheckoutBuilder, BranchType, IndexAddOption, Repository, Signature};
+use git2::{BranchType, IndexAddOption, Repository, Signature, build::CheckoutBuilder};
 
 fn temp_root(prefix: &str) -> PathBuf {
     let nanos = SystemTime::now()
@@ -68,7 +70,8 @@ fn checkout_branch(repo: &Repository, refname: &str) {
     repo.set_head(refname).expect("set HEAD");
     let mut checkout = CheckoutBuilder::new();
     checkout.force();
-    repo.checkout_head(Some(&mut checkout)).expect("checkout branch");
+    repo.checkout_head(Some(&mut checkout))
+        .expect("checkout branch");
 }
 
 #[test]
@@ -98,18 +101,21 @@ fn centralized_git_log_graph_peels_annotated_tags_to_the_commit() {
     repo.tag("v1.0.0", &commit_object, &sig, "release", false)
         .expect("create annotated tag");
 
-    let commits = get_git_log_graph(root.to_string_lossy().to_string(), Some(20), Some(0))
+    let commits = get_git_log_graph(root.to_string_lossy().to_string(), Some(20), Some(0), None)
         .expect("get git log graph");
     let head_commit = commits.first().expect("head commit");
 
-    assert!(head_commit
-        .refs
-        .iter()
-        .any(|reference| matches!(reference.kind, GitRefKind::Head)));
-    assert!(head_commit
-        .refs
-        .iter()
-        .any(|reference| matches!(reference.kind, GitRefKind::Tag) && reference.name == "v1.0.0"));
+    assert!(
+        head_commit
+            .refs
+            .iter()
+            .any(|reference| matches!(reference.kind, GitRefKind::Head))
+    );
+    assert!(
+        head_commit.refs.iter().any(
+            |reference| matches!(reference.kind, GitRefKind::Tag) && reference.name == "v1.0.0"
+        )
+    );
 
     let _ = fs::remove_dir_all(root);
 }
@@ -142,6 +148,89 @@ fn centralized_git_commands_get_diff_between_commits_contains_modified_content()
     assert!(!file.is_large);
     assert_eq!(file.additions, 1);
     assert_eq!(file.deletions, 0);
+
+    let _ = fs::remove_dir_all(root);
+}
+
+#[test]
+fn centralized_git_log_graph_filters_by_message_hash_and_refs() {
+    let root = temp_root("git-log-search");
+    let repo = Repository::init(&root).expect("init git repo");
+
+    fs::write(root.join("file.txt"), "line-1\n").expect("write initial file");
+    commit_all(&repo, "bootstrap");
+
+    fs::write(root.join("file.txt"), "line-1\nsearchable change\n").expect("write feature file");
+    let target_hash = commit_all(&repo, "Fix Search Filter");
+    let target_commit = repo
+        .find_commit(git2::Oid::from_str(&target_hash).expect("parse target oid"))
+        .expect("find target commit");
+    repo.branch("feature/search-filter", &target_commit, false)
+        .expect("create branch");
+
+    let message_matches = get_git_log_graph(
+        root.to_string_lossy().to_string(),
+        Some(20),
+        Some(0),
+        Some("search filter".to_string()),
+    )
+    .expect("search commits by message");
+    assert_eq!(message_matches.len(), 1);
+    assert_eq!(message_matches[0].hash, target_hash);
+
+    let hash_matches = get_git_log_graph(
+        root.to_string_lossy().to_string(),
+        Some(20),
+        Some(0),
+        Some(target_hash[..10].to_string()),
+    )
+    .expect("search commits by hash");
+    assert_eq!(hash_matches.len(), 1);
+    assert_eq!(hash_matches[0].hash, target_hash);
+
+    let ref_matches = get_git_log_graph(
+        root.to_string_lossy().to_string(),
+        Some(20),
+        Some(0),
+        Some("feature/search-filter".to_string()),
+    )
+    .expect("search commits by ref");
+    assert_eq!(ref_matches.len(), 1);
+    assert_eq!(ref_matches[0].hash, target_hash);
+    assert!(
+        ref_matches[0]
+            .refs
+            .iter()
+            .any(|reference| reference.name == "feature/search-filter")
+    );
+
+    let _ = fs::remove_dir_all(root);
+}
+
+#[test]
+fn centralized_git_log_graph_applies_pagination_after_search_filtering() {
+    let root = temp_root("git-log-search-pagination");
+    let repo = Repository::init(&root).expect("init git repo");
+
+    fs::write(root.join("file.txt"), "line-1\n").expect("write initial file");
+    commit_all(&repo, "searchable 1");
+
+    fs::write(root.join("file.txt"), "line-1\nline-2\n").expect("write second revision");
+    let second_hash = commit_all(&repo, "searchable 2");
+
+    fs::write(root.join("file.txt"), "line-1\nline-2\nline-3\n").expect("write third revision");
+    commit_all(&repo, "searchable 3");
+
+    let commits = get_git_log_graph(
+        root.to_string_lossy().to_string(),
+        Some(1),
+        Some(1),
+        Some("searchable".to_string()),
+    )
+    .expect("paginate filtered commits");
+
+    assert_eq!(commits.len(), 1);
+    assert_eq!(commits[0].hash, second_hash);
 
     let _ = fs::remove_dir_all(root);
 }
@@ -189,9 +278,10 @@ fn centralized_git_log_graph_includes_stash_entries() {
 
     fs::write(root.join("file.txt"), "line-1\nstash-change\n").expect("write stashed change");
     let sig = Signature::now("Tester", "tester@example.com").expect("signature");
-    repo.stash_save(&sig, "save stash", None).expect("create stash");
+    repo.stash_save(&sig, "save stash", None)
+        .expect("create stash");
 
-    let commits = get_git_log_graph(root.to_string_lossy().to_string(), Some(50), Some(0))
+    let commits = get_git_log_graph(root.to_string_lossy().to_string(), Some(50), Some(0), None)
         .expect("get git log graph");
     assert!(commits.iter().any(|commit| {
         commit
@@ -223,7 +313,8 @@ fn centralized_git_log_graph_restores_deleted_branch_hints_from_head_reflog() {
         .peel_to_commit()
         .expect("peel head to commit");
 
-    repo.branch("RE1", &head_commit, false).expect("create branch");
+    repo.branch("RE1", &head_commit, false)
+        .expect("create branch");
     checkout_branch(&repo, "refs/heads/RE1");
     fs::write(root.join("file.txt"), "line-1\nre1-only\n").expect("write branch-only change");
     let re1_hash = commit_all(&repo, "re1 work");
@@ -234,7 +325,7 @@ fn centralized_git_log_graph_restores_deleted_branch_hints_from_head_reflog() {
         .expect("find deleted branch");
     deleted_branch.delete().expect("delete branch");
 
-    let commits = get_git_log_graph(root.to_string_lossy().to_string(), Some(50), Some(0))
+    let commits = get_git_log_graph(root.to_string_lossy().to_string(), Some(50), Some(0), None)
         .expect("get git log graph");
     let deleted_branch_commit = commits
         .iter()

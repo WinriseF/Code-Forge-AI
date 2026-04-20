@@ -387,7 +387,11 @@ fn download_file_once<R: Runtime>(
                 total_files,
                 downloaded_bytes: completed_downloaded_bytes + file_bytes,
                 total_bytes,
-                message: Some(format!("Downloading {} via {}", file.name, source_label(url))),
+                message: Some(format!(
+                    "Downloading {} via {}",
+                    file.name,
+                    source_label(url)
+                )),
             },
         );
     }
@@ -400,7 +404,10 @@ fn download_file_once<R: Runtime>(
     if file_bytes != file.size {
         cleanup_partial_file(&temp_path);
         return Err(download_source_error(
-            format!("expected {} bytes, got {} from {url}", file.size, file_bytes),
+            format!(
+                "expected {} bytes, got {} from {url}",
+                file.size, file_bytes
+            ),
             true,
         ));
     }
@@ -431,7 +438,11 @@ fn download_file_once<R: Runtime>(
             total_files,
             downloaded_bytes: completed_downloaded_bytes + file_bytes,
             total_bytes,
-            message: Some(format!("Downloaded {} via {}", file.name, source_label(url))),
+            message: Some(format!(
+                "Downloaded {} via {}",
+                file.name,
+                source_label(url)
+            )),
         },
     );
     Ok(file_bytes)
@@ -534,7 +545,10 @@ fn retryable_status(status: reqwest::StatusCode) -> bool {
 }
 
 fn is_retryable_request_error(err: &reqwest::Error) -> bool {
-    err.is_timeout() || err.is_connect() || err.is_body() || err.status().is_some_and(retryable_status)
+    err.is_timeout()
+        || err.is_connect()
+        || err.is_body()
+        || err.status().is_some_and(retryable_status)
 }
 
 fn download_source_error(reason: String, retry_same_source: bool) -> DownloadAttemptFailure {
@@ -642,11 +656,7 @@ mod tests {
             mirrors: vec![],
         };
 
-        let urls = candidate_download_urls(
-            &file,
-            "WinriseF/CtxRun",
-            "ocr-models-20260410-b7141e7",
-        );
+        let urls = candidate_download_urls(&file, "WinriseF/CtxRun", "ocr-models-20260410-b7141e7");
 
         assert_eq!(
             urls[0],
@@ -679,12 +689,13 @@ mod tests {
             ],
         };
 
-        let urls = candidate_download_urls(
-            &file,
-            "WinriseF/CtxRun",
-            "ocr-models-20260410-b7141e7",
-        );
+        let urls = candidate_download_urls(&file, "WinriseF/CtxRun", "ocr-models-20260410-b7141e7");
 
-        assert_eq!(urls.iter().filter(|url| url.contains("cdn.jsdelivr.net")).count(), 1);
+        assert_eq!(
+            urls.iter()
+                .filter(|url| url.contains("cdn.jsdelivr.net"))
+                .count(),
+            1
+        );
     }
 }

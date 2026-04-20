@@ -11,8 +11,8 @@ use serde::Deserialize;
 use sysinfo::System;
 use tauri::window::Color;
 use tauri::{
-    AppHandle, Listener, Manager, WebviewUrl, WebviewWindow, WebviewWindowBuilder,
-    WindowEvent, Wry,
+    AppHandle, Listener, Manager, WebviewUrl, WebviewWindow, WebviewWindowBuilder, WindowEvent,
+    Wry,
     menu::{Menu, MenuItem},
     tray::{MouseButton, TrayIconBuilder, TrayIconEvent},
 };

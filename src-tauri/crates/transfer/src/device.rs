@@ -161,10 +161,7 @@ impl DeviceManager {
         }
     }
 
-    pub async fn add_pending(
-        &self,
-        device: TransferDevice,
-    ) -> oneshot::Receiver<bool> {
+    pub async fn add_pending(&self, device: TransferDevice) -> oneshot::Receiver<bool> {
         let (tx, rx) = oneshot::channel();
         self.pending.write().await.insert(
             device.id.clone(),
@@ -177,14 +174,10 @@ impl DeviceManager {
     }
 
     pub async fn approve_pending(&self, device_id: &str) -> Option<TransferDevice> {
-        self.pending
-            .write()
-            .await
-            .remove(device_id)
-            .map(|pending| {
-                let _ = pending.approval_tx.send(true);
-                pending.device
-            })
+        self.pending.write().await.remove(device_id).map(|pending| {
+            let _ = pending.approval_tx.send(true);
+            pending.device
+        })
     }
 
     pub async fn reject_pending(&self, device_id: &str) -> bool {

@@ -108,7 +108,11 @@ fn centralized_runtime_command_wrapper_lists_registered_tools() {
     let tools =
         commands::list_tools(state_of(&runtime)).expect("list tools through command wrapper");
     assert!(tools.iter().any(|tool| tool.name == "read_file"));
-    assert!(!tools.iter().any(|tool| tool.name == "patch.preview_search_replace"));
+    assert!(
+        !tools
+            .iter()
+            .any(|tool| tool.name == "patch.preview_search_replace")
+    );
 }
 
 #[tokio::test]
