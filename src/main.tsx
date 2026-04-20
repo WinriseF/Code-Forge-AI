@@ -9,6 +9,7 @@ const MainApp = lazy(() => import('./windows/main/MainWindowApp'));
 const SpotlightApp = lazy(() => import('./windows/spotlight/SpotlightWindowApp'));
 const PeekApp = lazy(() => import('./windows/peek/PeekWindowApp'));
 const GuardApp = lazy(() => import('./windows/guard/GuardWindowApp'));
+const TransferApp = lazy(() => import('./windows/transfer/TransferWindowApp'));
 
 const appWindow = getCurrentWebviewWindow()
 
@@ -59,6 +60,14 @@ function Bootstrap() {
     return (
       <Suspense fallback={null}>
         <GuardApp />
+      </Suspense>
+    );
+  }
+
+  if (label === 'transfer') {
+    return (
+      <Suspense fallback={null}>
+        <TransferApp />
       </Suspense>
     );
   }

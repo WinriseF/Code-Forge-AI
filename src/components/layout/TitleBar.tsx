@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
+import { listen } from '@tauri-apps/api/event';
 import { invoke } from '@tauri-apps/api/core';
-import { Minus, X, Maximize2, Copy, Clock, Settings } from 'lucide-react';
+import { Minus, X, Maximize2, Copy, Clock, Settings, Upload } from 'lucide-react';
 import { useShallow } from 'zustand/react/shallow';
 import { cn } from '@/lib/utils';
 import { useAppStore } from '@/store/useAppStore';
@@ -17,6 +18,7 @@ export function TitleBar() {
   const { t } = useTranslation();
   const [isMaximized, setIsMaximized] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [transferRunning, setTransferRunning] = useState(false);
   const [isClockPopoverOpen, setIsClockPopoverOpen] = useState(false);
   const clockTriggerRef = useRef<HTMLDivElement>(null);
   const { language, windowDestroyDelay, currentView, setView } = useAppStore(
@@ -32,15 +34,22 @@ export function TitleBar() {
   useEffect(() => {
     const checkMaximized = async () => { setIsMaximized(await appWindow.isMaximized()); };
     const unlisten = appWindow.onResized(checkMaximized);
-    
+
     const timer = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
 
-    return () => { 
+    return () => {
       unlisten.then(f => f());
       clearInterval(timer);
     }
+  }, []);
+
+  useEffect(() => {
+    const unlisten = listen<{ running: boolean }>('transfer:status-changed', (event) => {
+      setTransferRunning(event.payload.running);
+    });
+    return () => { unlisten.then((fn) => fn()); };
   }, []);
 
   const toggleMaximize = async () => {
@@ -78,6 +87,12 @@ export function TitleBar() {
     }
 
     setView('settings');
+  };
+
+  const handleTransferClick = () => {
+    void invoke('open_transfer_window').catch((error) => {
+      console.error('[TitleBar] Failed to open transfer window:', error);
+    });
   };
 
   return (
@@ -122,6 +137,13 @@ export function TitleBar() {
       </div>
 
       <div className="flex h-full items-center px-1 gap-1 relative z-10">
+        <button
+          onClick={handleTransferClick}
+          className={cn(btnClass, transferRunning && 'text-cyan-400')}
+          title={t('topbar.openTransfer')}
+        >
+          <Upload size={14} />
+        </button>
         <button
           onClick={handleSettingsClick}
           className={cn(btnClass, currentView === 'settings' && "text-primary bg-primary/10")}

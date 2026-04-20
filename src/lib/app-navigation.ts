@@ -1,6 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
 import {
-  ArrowLeftRight,
   BookOpen,
   Factory,
   FileJson,
@@ -16,7 +15,6 @@ export const PRIMARY_APP_VIEWS = [
   'refinery',
   'automator',
   'miner',
-  'transfer',
 ] as const;
 
 export type PrimaryAppView = (typeof PRIMARY_APP_VIEWS)[number];
@@ -35,7 +33,6 @@ export const APP_NAVIGATION_ITEMS: AppNavigationItem[] = [
   { id: 'refinery', icon: Factory, accentClass: 'text-emerald-400', accentColor: '#34d399' },
   { id: 'automator', icon: MousePointerClick, accentClass: 'text-orange-400', accentColor: '#fb923c' },
   { id: 'miner', icon: Globe, accentClass: 'text-yellow-400', accentColor: '#facc15' },
-  { id: 'transfer', icon: ArrowLeftRight, accentClass: 'text-cyan-400', accentColor: '#22d3ee' },
 ];
 
 export function isPrimaryAppView(view: string): view is PrimaryAppView {

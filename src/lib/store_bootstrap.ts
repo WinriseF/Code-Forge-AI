@@ -8,6 +8,8 @@ let fullHydrationPromise: Promise<void> | null = null;
 let peekHydrationPromise: Promise<void> | null = null;
 let guardHydrationPromise: Promise<void> | null = null;
 
+let transferHydrationPromise: Promise<void> | null = null;
+
 function hydrateAllStores(): Promise<void> {
   if (!fullHydrationPromise) {
     fullHydrationPromise = Promise.all([
@@ -38,6 +40,14 @@ function hydrateGuardStores(): Promise<void> {
   return guardHydrationPromise;
 }
 
+function hydrateTransferStores(): Promise<void> {
+  if (!transferHydrationPromise) {
+    transferHydrationPromise = Promise.resolve(useAppStore.persist.rehydrate()).then(() => undefined);
+  }
+
+  return transferHydrationPromise;
+}
+
 export function hydratePersistedStores(windowLabel?: string): Promise<void> {
   if (windowLabel === 'peek') {
     return hydratePeekStores();
@@ -45,6 +55,10 @@ export function hydratePersistedStores(windowLabel?: string): Promise<void> {
 
   if (windowLabel === 'guard') {
     return hydrateGuardStores();
+  }
+
+  if (windowLabel === 'transfer') {
+    return hydrateTransferStores();
   }
 
   return hydrateAllStores();

@@ -619,6 +619,7 @@
     "moveHint": "将鼠标滑向目标模块",
     "clickHint": "点击即可切换",
     "releaseHint": "松开 Alt 完成切换",
+    "openTransfer": "打开局域网传输",
     "openSettings": "打开设置",
     "backToModule": "返回 {{module}}"
   },

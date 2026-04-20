@@ -619,6 +619,7 @@
     "moveHint": "Move toward a module",
     "clickHint": "Click to switch",
     "releaseHint": "Release Alt to switch",
+    "openTransfer": "Open LAN Transfer",
     "openSettings": "Open settings",
     "backToModule": "Back to {{module}}"
   },

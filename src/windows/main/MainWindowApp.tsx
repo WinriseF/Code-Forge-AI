@@ -16,7 +16,6 @@ const PatchView = lazy(() => import('@/components/features/patch/PatchView').the
 const RefineryView = lazy(() => import('@/components/features/refinery/RefineryView').then(module => ({ default: module.RefineryView })));
 const AutomatorView = lazy(() => import('@/components/features/automator/AutomatorView').then(module => ({ default: module.AutomatorView })));
 const MinerView = lazy(() => import('@/components/features/miner/MinerView').then(module => ({ default: module.MinerView })));
-const TransferView = lazy(() => import('@/components/features/transfer/TransferView').then(module => ({ default: module.TransferView })));
 const SettingsView = lazy(() => import('@/components/settings/SettingsView').then(module => ({ default: module.SettingsView })));
 const SystemMonitorModal = lazy(() => import('@/components/features/monitor/SystemMonitorModal').then(module => ({ default: module.SystemMonitorModal })));
 
@@ -25,13 +24,14 @@ const appWindow = getCurrentWebviewWindow()
 function App() {
   useCrossWindowAppStoreSync();
 
-  const [currentView, theme, setTheme, syncModels, lastUpdated] = useAppStore(
+  const [currentView, theme, setTheme, syncModels, lastUpdated, setView] = useAppStore(
     useShallow((state) => [
       state.currentView,
       state.theme,
       state.setTheme,
       state.syncModels,
       state.lastUpdated,
+      state.setView,
     ])
   );
   const { t } = useTranslation();
@@ -104,6 +104,12 @@ function App() {
     }
   }, [lastUpdated, syncModels]);
 
+  useEffect(() => {
+    if (currentView === 'transfer') {
+      setView('prompts');
+    }
+  }, [currentView, setView]);
+
   return (
     <>
       <style>{`
@@ -127,7 +133,6 @@ function App() {
             {currentView === 'refinery' && <RefineryView />}
             {currentView === 'automator' && <AutomatorView />}
             {currentView === 'miner' && <MinerView />}
-            {currentView === 'transfer' && <TransferView />}
             {currentView === 'settings' && <SettingsView />}
           </Suspense>
         </main>

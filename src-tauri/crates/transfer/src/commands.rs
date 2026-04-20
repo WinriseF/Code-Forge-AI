@@ -49,6 +49,17 @@ impl<R: Runtime> TransferState<R> {
             .as_ref()
             .map(|running| running.shared.clone())
     }
+
+    pub async fn is_running(&self) -> bool {
+        self.coordinator.lock().await.running.is_some()
+    }
+
+    pub fn is_running_now(&self) -> bool {
+        self.coordinator
+            .try_lock()
+            .map(|coordinator| coordinator.running.is_some())
+            .unwrap_or(false)
+    }
 }
 
 #[tauri::command]

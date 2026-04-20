@@ -30,6 +30,7 @@ mod tray_support;
 mod window_styling;
 
 const MAIN_WINDOW_LABEL: &str = "main";
+const TRANSFER_WINDOW_LABEL: &str = "transfer";
 const TRAY_ID: &str = "main";
 const TRAY_QUIT_MENU_ID: &str = "tray_quit";
 const LANGUAGE_SYNC_EVENT: &str = "app-store:language-changed";
@@ -81,6 +82,10 @@ fn ensure_main_window(app: &AppHandle) {
             .center()
             .decorations(false)
             .resizable(true)
+            .shadow(false)
+            .transparent(true)
+            .use_https_scheme(true)
+            .disable_drag_drop_handler()
             .visible(true);
 
             if let Ok(w) = window_builder.build() {
@@ -88,6 +93,45 @@ fn ensure_main_window(app: &AppHandle) {
             }
         }
     }
+}
+
+fn ensure_transfer_window(app: &AppHandle) -> crate::error::Result<WebviewWindow> {
+    if let Some(window) = app.get_webview_window(TRANSFER_WINDOW_LABEL) {
+        return Ok(window);
+    }
+
+    let builder = WebviewWindowBuilder::new(
+        app,
+        TRANSFER_WINDOW_LABEL,
+        WebviewUrl::App("index.html".into()),
+    )
+    .title("CtxRun Transfer")
+    .inner_size(980.0, 720.0)
+    .min_inner_size(840.0, 600.0)
+    .center()
+    .decorations(false)
+    .resizable(true)
+    .shadow(false)
+    .transparent(true)
+    .focused(true)
+    .use_https_scheme(true)
+    // Native drag-drop intentionally enabled: ChatPanel needs onDragDropEvent for file uploads
+    .visible(false);
+
+    match builder.build() {
+        Ok(window) => Ok(window),
+        Err(err) => {
+            eprintln!("[Transfer] Failed to create window: {err}");
+            Ok(app.get_webview_window(TRANSFER_WINDOW_LABEL)
+                .ok_or_else(|| err.to_string())?)
+        }
+    }
+}
+
+fn is_transfer_service_running(app: &AppHandle) -> bool {
+    app.try_state::<ctxrun_plugin_transfer::commands::TransferState<Wry>>()
+        .map(|state| state.is_running_now())
+        .unwrap_or(false)
 }
 
 #[tauri::command]
@@ -130,6 +174,20 @@ fn refresh_shortcuts(app: tauri::AppHandle) {
     });
 }
 
+#[tauri::command]
+async fn open_transfer_window(app: tauri::AppHandle) -> crate::error::Result<()> {
+    let window = ensure_transfer_window(&app)?;
+    let _ = window.unminimize();
+    let _ = window.show();
+    let _ = window.set_focus();
+    Ok(())
+}
+
+#[tauri::command]
+fn is_transfer_running(app: tauri::AppHandle) -> bool {
+    is_transfer_service_running(&app)
+}
+
 fn main() {
     tauri::Builder::default()
         .plugin(tauri_plugin_clipboard_manager::init())
@@ -161,6 +219,8 @@ fn main() {
             ctxrun_env_probe::commands::system_info::get_system_info,
             ctxrun_env_probe::commands::system_info::check_python_env,
             refresh_shortcuts,
+            open_transfer_window,
+            is_transfer_running,
             fs_commands::open_folder_in_file_manager,
             guard::refresh_guard_service,
             guard::guard_request_release,
@@ -285,6 +345,11 @@ fn main() {
 
                 if label == "main" {
                     if window.is_visible().unwrap_or(true) {
+                        api.prevent_close();
+                        let _ = window.hide();
+                    }
+                } else if label == TRANSFER_WINDOW_LABEL {
+                    if is_transfer_service_running(window.app_handle()) {
                         api.prevent_close();
                         let _ = window.hide();
                     }

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { invoke } from '@tauri-apps/api/core';
-import { listen, type UnlistenFn } from '@tauri-apps/api/event';
+import { emit, listen, type UnlistenFn } from '@tauri-apps/api/event';
 import type {
   ConnectionRequestCancelledPayload,
   ConnectionRequestPayload,
@@ -16,6 +16,7 @@ import type {
 } from '@/types/transfer';
 
 const PLUGIN_PREFIX = 'plugin:ctxrun-plugin-transfer|';
+const TRANSFER_STATUS_EVENT = 'transfer:status-changed';
 let listenersInitInFlight = false;
 const CHAT_HISTORY_LIMIT_PER_DEVICE = 200;
 const DEVICE_RECONNECT_GRACE_MS = 180_000;
@@ -184,6 +185,7 @@ export const useTransferStore = create<TransferState>((set, get) => ({
         chatHistories: {},
         lastError: null,
       });
+      void emit(TRANSFER_STATUS_EVENT, { running: true });
     } catch (error) {
       set({
         isBusy: false,
@@ -497,6 +499,7 @@ export const useTransferStore = create<TransferState>((set, get) => ({
       selectedDeviceId: null,
       chatHistories: {},
     });
+    void emit(TRANSFER_STATUS_EVENT, { running: false });
   },
 
   unlisten: () => {

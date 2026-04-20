@@ -4,7 +4,8 @@
   "local": true,
   "windows": [
     "main",
-    "spotlight"
+    "spotlight",
+    "transfer"
   ],
   "permissions": [
     "core:default",
