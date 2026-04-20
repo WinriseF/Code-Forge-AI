@@ -305,7 +305,7 @@
     "title": "bugreport - Display a complete bug report of an Android device",
     "content": "bugreport",
     "group": "Android Dev",
-    "description": "bugreport: Show an Android bug report. This command can only be used through `adb shell`. (Display a complete bug report of an Android device)",
+    "description": "bugreport: Show an Android bug report. Note: Can only be used through `adb shell`. (Display a complete bug report of an Android device)",
     "tags": [
       "android",
       "bugreport",

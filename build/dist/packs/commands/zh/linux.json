@@ -753,7 +753,7 @@
     "id": "tldr-zh-linux-wg-2",
     "type": "command",
     "title": "wg - 从私钥生成公钥",
-    "content": "wg pubkey < {{路径/到/私钥}} > {{路径/到/公钥}}",
+    "content": "wg < {{路径/到/私钥}} pubkey > {{路径/到/公钥}}",
     "group": "Linux 运维",
     "description": "wg: 管理 WireGuard 接口配置。 (从私钥生成公钥)",
     "tags": [
@@ -2958,7 +2958,7 @@
     "id": "tldr-zh-linux-dd-4",
     "type": "command",
     "title": "dd - 创建系统备份，保存为 IMG 文件（稍后可通过交换 `if` 和 `of` 参数恢复），并显示进度",
-    "content": "dd if={{/dev/驱动器设备}} of={{路径/到/文件.img}} status=progress",
+    "content": "sudo dd if={{/dev/驱动器设备}} of={{路径/到/文件.img}} status=progress",
     "group": "Linux 运维",
     "description": "dd: 转换和复制文件。 另请参阅：`caligula`。 (创建系统备份，保存为 IMG 文件（稍后可通过交换 `if` 和 `of` 参数恢复），并显示进度)",
     "tags": [
@@ -10353,7 +10353,7 @@
     "id": "tldr-zh-linux-mkfs.minix-0",
     "type": "command",
     "title": "mkfs.minix - 在设备 b 的分区 1 内创建一个 Minix 文件系统（`sdb1`）",
-    "content": "mkfs.minix {{/dev/sdb1}}",
+    "content": "sudo mkfs.minix {{/dev/sdb1}}",
     "group": "Linux 运维",
     "description": "mkfs.minix: 在分区内创建一个 Minix 文件系统。 (在设备 b 的分区 1 内创建一个 Minix 文件系统（`sdb1`）)",
     "tags": [

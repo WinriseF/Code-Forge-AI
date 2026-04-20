@@ -7502,10 +7502,10 @@
   {
     "id": "tldr-en-windows-vswhere-0",
     "type": "command",
-    "title": "vswhere - Find the path of vcvarsall.bat to set environment variables",
+    "title": "vswhere - Find the path of `vcvarsall.bat` to set environment variables",
     "content": "vswhere -products * -latest -prerelease -find **\\VC\\Auxiliary\\Build\\vcvarsall.bat",
     "group": "Windows",
-    "description": "vswhere: Locate Visual Studio 2017 and newer installations. (Find the path of vcvarsall.bat to set environment variables)",
+    "description": "vswhere: Locate Visual Studio 2017 and newer installations. (Find the path of `vcvarsall.bat` to set environment variables)",
     "tags": [
       "windows",
       "vswhere",
@@ -7788,7 +7788,7 @@
     "id": "tldr-en-windows-cl-5",
     "type": "command",
     "title": "cl - Specify the output directory for compiled files",
-    "content": "cl /Fo {{path\\to\\output_directory}}/ {{path\\to\\source.c}}",
+    "content": "cl /Fo {{path\\to\\output_directory}}\\ {{path\\to\\source.c}}",
     "group": "Windows",
     "description": "cl: The Microsoft C/C++ compiler for compiling and linking source code files. (Specify the output directory for compiled files)",
     "tags": [
