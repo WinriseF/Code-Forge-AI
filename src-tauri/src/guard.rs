@@ -517,8 +517,10 @@ mod windows_impl {
             .focused(true)
             .visible(false)
             .background_color(Color(0, 0, 0, 0))
-            .transparent(true)
             .use_https_scheme(true);
+
+            #[cfg(not(target_os = "macos"))]
+            let builder = builder.transparent(true);
 
             let window = builder.build().map_err(|e| e.to_string())?;
             crate::window_styling::configure_guard_window(&window);

@@ -83,10 +83,12 @@ fn ensure_main_window(app: &AppHandle) {
             .decorations(false)
             .resizable(true)
             .shadow(false)
-            .transparent(true)
             .use_https_scheme(true)
             .disable_drag_drop_handler()
             .visible(true);
+
+            #[cfg(not(target_os = "macos"))]
+            let window_builder = window_builder.transparent(true);
 
             if let Ok(w) = window_builder.build() {
                 let _ = w.set_focus();
@@ -112,11 +114,13 @@ fn ensure_transfer_window(app: &AppHandle) -> crate::error::Result<WebviewWindow
     .decorations(false)
     .resizable(true)
     .shadow(false)
-    .transparent(true)
     .focused(true)
     .use_https_scheme(true)
     // Native drag-drop intentionally enabled: ChatPanel needs onDragDropEvent for file uploads
     .visible(false);
+
+    #[cfg(not(target_os = "macos"))]
+    let builder = builder.transparent(true);
 
     match builder.build() {
         Ok(window) => Ok(window),

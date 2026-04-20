@@ -17,7 +17,7 @@ members = ["crates/*"]
 
 [workspace.dependencies]
 # Tauri
-tauri = { version = "2", features = ["tray-icon", "transparent"] }
+tauri = { version = "2", features = ["tray-icon"] }
 tauri-build = { version = "2" }
 tauri-plugin-shell = "2"
 tauri-plugin-fs = "2"
