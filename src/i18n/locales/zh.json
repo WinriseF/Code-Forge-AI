@@ -273,7 +273,8 @@
     "filesChanged": "{{count}} 个文件已变更",
     "renamedFrom": "从 {{path}} 重命名",
     "workingTree": "工作区",
-    "unstagedChanges": "未暂存的更改"
+    "unstagedChanges": "未暂存的更改",
+    "stashExportUnsupported": "折叠后的 stash 差异暂不支持导出"
   },
   "editor": {
     "titleNew": "新建指令",

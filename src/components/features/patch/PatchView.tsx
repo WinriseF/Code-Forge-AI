@@ -28,6 +28,7 @@ export function PatchView() {
   const diffOldHash = useGitGraphStore((s) => s.diffOldHash);
   const diffNewHash = useGitGraphStore((s) => s.diffNewHash);
   const selectedExportPaths = useGitGraphStore((s) => s.selectedExportPaths);
+  const canExportCurrentDiff = useGitGraphStore((s) => s.canExportCurrentDiff);
 
   const [isExportDialogOpen, setIsExportDialogOpen] = useState(false);
   const [toastState, setToastState] = useState<{ show: boolean; msg: string; type: ToastType }>({
@@ -80,6 +81,10 @@ export function PatchView() {
   ), [diffFiles, selectedFilePath]);
 
   const handleExportTrigger = () => {
+    if (!canExportCurrentDiff) {
+      showNotification(t('patch.stashExportUnsupported', 'Collapsed stash diffs cannot be exported yet'), 'warning');
+      return;
+    }
     if (selectedExportPaths.size === 0) {
       showNotification(t('patch.selectOne'), 'warning');
       return;

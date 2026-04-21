@@ -273,7 +273,8 @@
     "filesChanged": "{{count}} file(s) changed",
     "renamedFrom": "Renamed from {{path}}",
     "workingTree": "Working Tree",
-    "unstagedChanges": "Unstaged changes"
+    "unstagedChanges": "Unstaged changes",
+    "stashExportUnsupported": "Collapsed stash diffs cannot be exported yet"
   },
   "editor": {
     "titleNew": "New Prompt",

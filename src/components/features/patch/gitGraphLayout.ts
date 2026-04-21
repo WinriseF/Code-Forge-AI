@@ -56,20 +56,18 @@ export function computeGitGraphLayout(commits: GraphCommit[]): GitGraphLayout {
     const outputSwimlanes: SwimlaneNode[] = [];
     let firstParentAdded = false;
 
-    if (parents.length > 0) {
-      for (const node of inputSwimlanes) {
-        if (node.id === commit.hash) {
-          if (!firstParentAdded) {
-            outputSwimlanes.push({
-              id: parents[0],
-              color: node.color,
-            });
-            firstParentAdded = true;
-          }
-          continue;
+    for (const node of inputSwimlanes) {
+      if (node.id === commit.hash) {
+        if (parents.length > 0 && !firstParentAdded) {
+          outputSwimlanes.push({
+            id: parents[0],
+            color: node.color,
+          });
+          firstParentAdded = true;
         }
-        outputSwimlanes.push({ ...node });
+        continue;
       }
+      outputSwimlanes.push({ ...node });
     }
 
     for (let i = firstParentAdded ? 1 : 0; i < parents.length; i++) {

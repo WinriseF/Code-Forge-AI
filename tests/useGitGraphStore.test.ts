@@ -26,6 +26,32 @@ function makeCommit(hash: string, parentHashes: string[] = []): GraphCommit {
   };
 }
 
+function makeDiffResponse(files = [
+  {
+    path: 'src/example.ts',
+    status: 'Modified' as const,
+    original_content: 'before',
+    modified_content: 'after',
+    is_binary: false,
+    is_large: false,
+    additions: 1,
+    deletions: 1,
+  },
+]) {
+  return {
+    files,
+    summary: {
+      files_changed: files.length,
+      files_added: files.filter((file) => file.status === 'Added').length,
+      files_modified: files.filter((file) => file.status === 'Modified').length,
+      files_deleted: files.filter((file) => file.status === 'Deleted').length,
+      files_renamed: files.filter((file) => file.status === 'Renamed').length,
+      insertions: files.reduce((sum, file) => sum + file.additions, 0),
+      deletions: files.reduce((sum, file) => sum + file.deletions, 0),
+    },
+  };
+}
+
 function deferred<T>() {
   let resolve!: (value: T) => void;
   let reject!: (reason?: unknown) => void;
@@ -43,15 +69,7 @@ describe('useGitGraphStore compareWith', () => {
 
   it('compares the clicked commit against the working tree when the working tree is selected', async () => {
     const { useGitGraphStore, WORKING_TREE_HASH } = await importFreshGitGraphStore();
-    const pending = deferred<Array<{
-      path: string;
-      status: 'Added' | 'Modified' | 'Deleted' | 'Renamed';
-      original_content: string;
-      modified_content: string;
-      is_binary: boolean;
-      is_large: boolean;
-      old_path?: string;
-    }>>();
+    const pending = deferred<ReturnType<typeof makeDiffResponse>>();
 
     invokeMock.mockReturnValueOnce(pending.promise);
 
@@ -76,16 +94,7 @@ describe('useGitGraphStore compareWith', () => {
     });
     expect(Array.from(useGitGraphStore.getState().selectedExportPaths)).toEqual([]);
 
-    pending.resolve([
-      {
-        path: 'src/example.ts',
-        status: 'Modified',
-        original_content: 'before',
-        modified_content: 'after',
-        is_binary: false,
-        is_large: false,
-      },
-    ]);
+    pending.resolve(makeDiffResponse());
     await comparePromise;
 
     expect(invokeMock).toHaveBeenCalledWith('plugin:ctxrun-plugin-git|get_git_diff', {
@@ -107,7 +116,7 @@ describe('useGitGraphStore compareWith', () => {
   it('keeps working tree as the new hash when comparing a selected commit to current changes', async () => {
     const { useGitGraphStore, WORKING_TREE_HASH } = await importFreshGitGraphStore();
 
-    invokeMock.mockResolvedValueOnce([]);
+    invokeMock.mockResolvedValueOnce(makeDiffResponse([]));
 
     useGitGraphStore.setState({
       commits: [makeCommit('base123')],
@@ -129,12 +138,88 @@ describe('useGitGraphStore compareWith', () => {
   });
 });
 
+describe('useGitGraphStore selectCommit', () => {
+  beforeEach(() => {
+    invokeMock.mockReset();
+  });
+
+  it('merges untracked stash content into a collapsed stash diff', async () => {
+    const { useGitGraphStore } = await importFreshGitGraphStore();
+    const stashCommit: GraphCommit = {
+      ...makeCommit('stash123', ['base123', 'index123', 'untracked123']),
+      message: 'On main: demo',
+      refs: [{ name: 'stash@{0}', kind: 'Stash' }],
+    };
+
+    invokeMock
+      .mockResolvedValueOnce(makeDiffResponse([
+        {
+          path: 'src/tracked.ts',
+          status: 'Modified',
+          original_content: 'before',
+          modified_content: 'after',
+          is_binary: false,
+          is_large: false,
+          additions: 4,
+          deletions: 1,
+        },
+      ]))
+      .mockResolvedValueOnce(makeDiffResponse([
+        {
+          path: 'src/untracked.ts',
+          status: 'Added',
+          original_content: '',
+          modified_content: 'new file',
+          is_binary: false,
+          is_large: false,
+          additions: 8,
+          deletions: 0,
+        },
+      ]));
+
+    useGitGraphStore.setState({
+      commits: [stashCommit, makeCommit('base123')],
+    });
+
+    await useGitGraphStore.getState().selectCommit('stash123', '/repo');
+
+    expect(invokeMock).toHaveBeenNthCalledWith(1, 'plugin:ctxrun-plugin-git|get_git_diff', {
+      projectPath: '/repo',
+      oldHash: 'base123',
+      newHash: 'stash123',
+    });
+    expect(invokeMock).toHaveBeenNthCalledWith(2, 'plugin:ctxrun-plugin-git|get_git_diff', {
+      projectPath: '/repo',
+      oldHash: '4b825dc642cb6eb9a060e54bf899d15363d7aa91',
+      newHash: 'untracked123',
+    });
+    expect(useGitGraphStore.getState()).toMatchObject({
+      selectedCommitHash: 'stash123',
+      diffOldHash: 'base123',
+      diffNewHash: 'stash123',
+      canExportCurrentDiff: false,
+      isLoading: false,
+    });
+    expect(useGitGraphStore.getState().diffFiles.map((file) => file.path)).toEqual([
+      'src/tracked.ts',
+      'src/untracked.ts',
+    ]);
+    expect(useGitGraphStore.getState().diffSummary).toMatchObject({
+      files_changed: 2,
+      files_added: 1,
+      files_modified: 1,
+      insertions: 12,
+      deletions: 1,
+    });
+  });
+});
+
 describe('useGitGraphStore closeDiff', () => {
   beforeEach(() => {
     invokeMock.mockReset();
   });
 
-  it('hides the diff panel without clearing the selected file', async () => {
+  it('hides the diff panel and clears the selected file', async () => {
     const { useGitGraphStore } = await importFreshGitGraphStore();
 
     useGitGraphStore.setState({
@@ -145,7 +230,7 @@ describe('useGitGraphStore closeDiff', () => {
     useGitGraphStore.getState().closeDiff();
 
     expect(useGitGraphStore.getState()).toMatchObject({
-      selectedFilePath: 'src/example.ts',
+      selectedFilePath: null,
       showDiffPanel: false,
     });
   });

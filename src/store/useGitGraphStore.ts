@@ -45,6 +45,7 @@ interface GitGraphState {
 
   // UI
   showDiffPanel: boolean;
+  canExportCurrentDiff: boolean;
   isLoading: boolean;
   isLoadingMore: boolean;
   error: string | null;
@@ -90,6 +91,47 @@ function errorToString(err: unknown): string {
 
 const EMPTY_TREE_HASH = '4b825dc642cb6eb9a060e54bf899d15363d7aa91';
 
+function emptyDiffSummary(): GitDiffSummary {
+  return {
+    files_changed: 0,
+    files_added: 0,
+    files_modified: 0,
+    files_deleted: 0,
+    files_renamed: 0,
+    insertions: 0,
+    deletions: 0,
+  };
+}
+
+function isStashCommit(commit: GraphCommit | undefined): boolean {
+  return commit?.refs.some((ref) => ref.kind === 'Stash') ?? false;
+}
+
+function mergeDiffResponses(...responses: GitDiffResponse[]): GitDiffResponse {
+  const filesByPath = new Map<string, GitDiffFile>();
+  const summary = emptyDiffSummary();
+
+  for (const response of responses) {
+    for (const file of response.files) {
+      filesByPath.set(file.path, file);
+    }
+
+    summary.files_added += response.summary.files_added;
+    summary.files_modified += response.summary.files_modified;
+    summary.files_deleted += response.summary.files_deleted;
+    summary.files_renamed += response.summary.files_renamed;
+    summary.insertions += response.summary.insertions;
+    summary.deletions += response.summary.deletions;
+  }
+
+  summary.files_changed = filesByPath.size;
+
+  return {
+    files: Array.from(filesByPath.values()),
+    summary,
+  };
+}
+
 export const useGitGraphStore = create<GitGraphState>((set, get) => ({
   projectPath: null,
   commits: [],
@@ -104,6 +146,7 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
   selectedExportPaths: new Set(),
   compareTargetHash: null,
   showDiffPanel: false,
+  canExportCurrentDiff: true,
   isLoading: false,
   isLoadingMore: false,
   error: null,
@@ -125,6 +168,7 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
       compareTargetHash: null,
       diffOldHash: null,
       diffNewHash: null,
+      canExportCurrentDiff: true,
       selectedExportPaths: new Set(),
     });
     try {
@@ -202,6 +246,7 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
       compareTargetHash: null,
       selectedExportPaths: new Set(),
       diffSummary: null,
+      canExportCurrentDiff: true,
     });
 
     // Working tree: diff HEAD vs working directory
@@ -221,6 +266,7 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
           isLoading: false,
           diffOldHash: headHash,
           diffNewHash: WORKING_TREE_HASH,
+          canExportCurrentDiff: true,
           selectedExportPaths: exportablePaths(files),
         });
       } catch (err: unknown) {
@@ -236,6 +282,37 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
     }
 
     try {
+      if (isStashCommit(commit)) {
+        const baseHash = commit.parent_hashes[0] ?? EMPTY_TREE_HASH;
+        const trackedResult = await invoke<GitDiffResponse>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
+          projectPath,
+          oldHash: baseHash,
+          newHash: hash,
+        });
+        const untrackedHash = commit.parent_hashes[2];
+        const result = untrackedHash
+          ? mergeDiffResponses(
+              trackedResult,
+              await invoke<GitDiffResponse>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
+                projectPath,
+                oldHash: EMPTY_TREE_HASH,
+                newHash: untrackedHash,
+              }),
+            )
+          : trackedResult;
+        const files = mapDiffFiles(result.files);
+        set({
+          diffFiles: files,
+          diffSummary: result.summary,
+          isLoading: false,
+          diffOldHash: baseHash,
+          diffNewHash: hash,
+          canExportCurrentDiff: !untrackedHash,
+          selectedExportPaths: exportablePaths(files),
+        });
+        return;
+      }
+
       const oldHash = commit.parent_hashes.length > 0 ? commit.parent_hashes[0] : EMPTY_TREE_HASH;
       const result = await invoke<GitDiffResponse>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
         projectPath,
@@ -249,6 +326,7 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
         isLoading: false,
         diffOldHash: oldHash,
         diffNewHash: hash,
+        canExportCurrentDiff: true,
         selectedExportPaths: exportablePaths(files),
       });
     } catch (err: unknown) {
@@ -260,6 +338,12 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
     const state = get();
     // No base selected or clicking the same commit — ignore
     if (!state.selectedCommitHash || state.selectedCommitHash === hash) return;
+
+    const selectedCommit = state.commits.find((commit) => commit.hash === state.selectedCommitHash);
+    const targetCommit = state.commits.find((commit) => commit.hash === hash);
+    if (isStashCommit(selectedCommit) || isStashCommit(targetCommit)) {
+      return;
+    }
 
     const selectedHash = state.selectedCommitHash;
     const oldHash = selectedHash === WORKING_TREE_HASH ? hash : selectedHash;
@@ -276,6 +360,7 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
       diffOldHash: null,
       diffNewHash: null,
       diffSummary: null,
+      canExportCurrentDiff: true,
     });
 
     try {
@@ -292,6 +377,7 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
         diffOldHash: oldHash,
         diffNewHash: newHash,
         compareTargetHash: hash,
+        canExportCurrentDiff: true,
         selectedExportPaths: exportablePaths(files),
       });
     } catch (err: unknown) {

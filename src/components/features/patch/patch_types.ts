@@ -1,5 +1,6 @@
 export type ExportFormat = 'Markdown' | 'Json' | 'Xml' | 'Txt';
 export type ExportLayout = 'Split' | 'Unified' | 'GitPatch';
+export type GraphDisplayKind = 'commit' | 'stash';
 
 export interface PatchFileItem {
   id: string;
@@ -38,6 +39,10 @@ export interface GraphCommit {
   message: string;
   parent_hashes: string[];
   refs: GitRef[];
+  display_kind?: GraphDisplayKind;
+  stash_base_hash?: string | null;
+  stash_untracked_hash?: string | null;
+  collapsed_hashes?: string[];
 }
 
 export interface GitRef {

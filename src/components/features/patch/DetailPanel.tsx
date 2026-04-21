@@ -23,6 +23,7 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
   const isLoading = useGitGraphStore((s) => s.isLoading);
   const selectedExportPaths = useGitGraphStore((s) => s.selectedExportPaths);
   const toggleExportPath = useGitGraphStore((s) => s.toggleExportPath);
+  const canExportCurrentDiff = useGitGraphStore((s) => s.canExportCurrentDiff);
 
   const { t } = useTranslation();
 
@@ -185,9 +186,9 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
 
         <button
           onClick={onExport}
-          disabled={diffFiles.length === 0}
+          disabled={diffFiles.length === 0 || !canExportCurrentDiff}
           className="flex items-center gap-1 px-2 py-1 rounded text-[10px] hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-          title="Export diff"
+          title={canExportCurrentDiff ? 'Export diff' : t('patch.stashExportUnsupported', 'Collapsed stash diffs cannot be exported yet')}
         >
           <FileDown size={12} />
           {t('patch.export', 'Export')}

@@ -3,6 +3,7 @@ import { useGitGraphStore, ROW_HEIGHT, WORKING_TREE_HASH } from '@/store/useGitG
 import { computeGitGraphLayout, type CommitRowViewModel } from './gitGraphLayout';
 import { CommitHoverCard } from './CommitHoverCard';
 import { GitRefBadges } from './GitRefBadges';
+import { buildGitGraphDisplayCommits, isCollapsedStashCommit } from './gitGraphDisplay';
 import { FolderOpen, Search, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { GraphCommit } from './patch_types';
@@ -161,12 +162,14 @@ const CommitRowGraph = memo(function CommitRowGraph({
   const midY = ROW_HEIGHT / 2;
   const elements: React.ReactNode[] = [];
   let key = 0;
+  const isCollapsedStash = isCollapsedStashCommit(commit);
 
   const lp = (color: string) => ({
     stroke: color,
     strokeWidth: 1,
     fill: 'none' as const,
     strokeLinecap: 'round' as const,
+    strokeDasharray: isCollapsedStash ? '4 3' : undefined,
   });
 
   let outputIdx = 0;
@@ -276,7 +279,36 @@ const CommitRowGraph = memo(function CommitRowGraph({
   const fill = isCompareTarget ? '#eab308' : circleColor;
   const isStash = commit.refs.some((r) => r.kind === 'Stash');
 
-  if (isStash) {
+  if (isCollapsedStash) {
+    const cx = laneX(circleIndex);
+    const sz = isSelected || isCompareTarget ? 8 : 7;
+    const stroke = isCompareTarget ? '#eab308' : circleColor;
+    const accentStroke = isSelected ? 'hsl(var(--foreground))' : stroke;
+    elements.push(
+      <rect
+        key={key++}
+        x={cx - sz}
+        y={midY - sz}
+        width={sz * 2}
+        height={sz * 2}
+        rx={2}
+        fill="hsl(var(--background))"
+        stroke={accentStroke}
+        strokeWidth={isSelected ? 2 : 1.5}
+        strokeDasharray="3 2"
+      />,
+      <rect
+        key={key++}
+        x={cx - 3}
+        y={midY - 3}
+        width={6}
+        height={6}
+        rx={1}
+        fill={fill}
+        strokeWidth={0}
+      />,
+    );
+  } else if (isStash) {
     const sz = isSelected || isCompareTarget ? 7 : 6;
     const cx = laneX(circleIndex);
     const stroke = isSelected ? 'hsl(var(--foreground))' : isCompareTarget ? '#ca8a04' : 'none';
@@ -333,9 +365,11 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
   const [hoverAnchorRect, setHoverAnchorRect] = useState<DOMRect | null>(null);
   const [searchInput, setSearchInput] = useState(commitSearchQuery);
   const debouncedSearchInput = useDebounce(searchInput, 250);
+  const rawCommitByHash = useMemo(() => new Map(commits.map((commit) => [commit.hash, commit])), [commits]);
+  const displayCommits = useMemo(() => buildGitGraphDisplayCommits(commits), [commits]);
 
-  const layout = useMemo(() => computeGitGraphLayout(commits), [commits]);
-  const totalRows = commits.length + 1;
+  const layout = useMemo(() => computeGitGraphLayout(displayCommits), [displayCommits]);
+  const totalRows = displayCommits.length + 1;
   const totalHeight = totalRows * ROW_HEIGHT;
   const workingTreeWidth = layout.rows[0] ? rowSvgWidth(layout.rows[0]) : SW * 2;
 
@@ -452,11 +486,15 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
   const handleContextMenu = useCallback(
     (event: React.MouseEvent, hash: string) => {
       event.preventDefault();
+      const commit = rawCommitByHash.get(hash);
+      if (commit?.refs.some((ref) => ref.kind === 'Stash')) {
+        return;
+      }
       if (projectRoot) {
         void compareWith(hash, projectRoot);
       }
     },
-    [projectRoot, compareWith],
+    [compareWith, projectRoot, rawCommitByHash],
   );
 
   useEffect(() => {
@@ -486,9 +524,9 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
       hoverCloseTimerRef.current = null;
     }
 
-    setHoveredCommit(commit);
+    setHoveredCommit(rawCommitByHash.get(commit.hash) ?? commit);
     setHoverAnchorRect(target.getBoundingClientRect());
-  }, []);
+  }, [rawCommitByHash]);
 
   const scheduleHoverClose = useCallback(() => {
     if (hoverCloseTimerRef.current !== null) {

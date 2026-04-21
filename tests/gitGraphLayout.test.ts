@@ -90,4 +90,26 @@ describe('computeGitGraphLayout', () => {
     expect(layout.laneCount).toBe(1);
     expect(layout.edges.map((edge) => [edge.fromHash, edge.toHash])).toEqual([['c2', 'c1']]);
   });
+
+  it('preserves active lanes when a side commit has no parents', () => {
+    const layout = computeGitGraphLayout([
+      commit('top', ['base']),
+      commit('stash', ['base', 'index', 'untracked'], [{ name: 'stash@{0}', kind: 'Stash' }]),
+      commit('index', ['base']),
+      commit('untracked', []),
+      commit('base', ['root']),
+      commit('root', []),
+    ]);
+
+    expect(layout.rows[3]?.outputSwimlanes.map((lane) => lane.id)).toEqual(['base', 'base', 'base']);
+    expect(layout.nodes.get('base')?.lane).toBe(0);
+    expect(layout.edges.map((edge) => [edge.fromHash, edge.toHash])).toEqual([
+      ['top', 'base'],
+      ['stash', 'base'],
+      ['stash', 'index'],
+      ['stash', 'untracked'],
+      ['index', 'base'],
+      ['base', 'root'],
+    ]);
+  });
 });
