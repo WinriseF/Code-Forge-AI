@@ -274,7 +274,8 @@
     "renamedFrom": "从 {{path}} 重命名",
     "workingTree": "工作区",
     "unstagedChanges": "未暂存的更改",
-    "stashExportUnsupported": "折叠后的 stash 差异暂不支持导出"
+    "stashExportUnsupported": "折叠后的 stash 差异暂不支持导出",
+    "stashCompareUnsupported": "折叠后的 stash 差异暂不支持比较"
   },
   "editor": {
     "titleNew": "新建指令",

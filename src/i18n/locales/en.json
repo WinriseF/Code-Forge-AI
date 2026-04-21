@@ -274,7 +274,8 @@
     "renamedFrom": "Renamed from {{path}}",
     "workingTree": "Working Tree",
     "unstagedChanges": "Unstaged changes",
-    "stashExportUnsupported": "Collapsed stash diffs cannot be exported yet"
+    "stashExportUnsupported": "Collapsed stash diffs cannot be exported yet",
+    "stashCompareUnsupported": "Collapsed stash diffs cannot be compared yet"
   },
   "editor": {
     "titleNew": "New Prompt",

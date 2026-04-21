@@ -3,6 +3,7 @@ import { listen } from '@tauri-apps/api/event';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { Copy, Maximize2, Minus, Upload, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useShallow } from 'zustand/react/shallow';
 
 import { PreviewModal } from '@/components/features/hyperview';
 import { TransferView } from '@/components/features/transfer/TransferView';
@@ -72,8 +73,9 @@ function TransferWindowChrome() {
 export default function TransferWindowApp() {
   useCrossWindowAppStoreSync();
 
-  const initialTheme = useAppStore((state) => state.theme);
-  const [theme, setTheme] = useState<AppTheme>(initialTheme);
+  const [theme, setTheme] = useAppStore(
+    useShallow((state) => [state.theme, state.setTheme]),
+  );
 
   useEffect(() => {
     applyThemeToDocument(theme);
@@ -81,13 +83,13 @@ export default function TransferWindowApp() {
 
   useEffect(() => {
     const themeUnlisten = listen<AppTheme>('theme-changed', (event) => {
-      setTheme(event.payload);
+      setTheme(event.payload, true);
     });
 
     return () => {
       themeUnlisten.then((unlisten) => unlisten());
     };
-  }, []);
+  }, [setTheme]);
 
   return (
     <div className="h-screen w-full bg-background text-foreground overflow-hidden flex flex-col transition-colors duration-300 relative">

@@ -4,8 +4,7 @@
   "local": true,
   "windows": [
     "main",
-    "spotlight",
-    "transfer"
+    "spotlight"
   ],
   "permissions": [
     "core:default",
@@ -107,15 +106,6 @@
     "ctxrun-plugin-miner:allow-stop-mining",
     "ctxrun-plugin-miner:allow-extract-single-page",
     "ctxrun-plugin-miner:allow-search-web",
-    "ctxrun-plugin-transfer:allow-start-service",
-    "ctxrun-plugin-transfer:allow-stop-service",
-    "ctxrun-plugin-transfer:allow-send-message",
-    "ctxrun-plugin-transfer:allow-send-file",
-    "ctxrun-plugin-transfer:allow-get-devices",
-    "ctxrun-plugin-transfer:allow-get-chat-history",
-    "ctxrun-plugin-transfer:allow-get-network-interfaces",
-    "ctxrun-plugin-transfer:allow-respond-file-request",
-    "ctxrun-plugin-transfer:allow-respond-connection-request",
     "ctxrun-plugin-exec-runtime:allow-request-exec",
     "ctxrun-plugin-exec-runtime:allow-approve-exec",
     "ctxrun-plugin-exec-runtime:allow-write-exec",

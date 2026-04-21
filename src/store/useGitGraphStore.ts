@@ -1,9 +1,19 @@
 import { create } from 'zustand';
 import { invoke } from '@tauri-apps/api/core';
 import { GitDiffSummary, GraphCommit, PatchFileItem } from '@/components/features/patch/patch_types';
+import {
+  getStashBaseHash,
+  getStashUntrackedHash,
+  isRawStashCommit,
+} from '@/components/features/patch/gitGraphDisplay';
+import i18n from '@/i18n/config';
 
 export const GIT_PLUGIN_PREFIX = 'plugin:ctxrun-plugin-git|';
 export const WORKING_TREE_HASH = '__WORK_DIR__';
+
+function stashCompareUnsupportedMessage(): string {
+  return i18n.t('patch.stashCompareUnsupported', 'Collapsed stash diffs cannot be compared yet');
+}
 
 interface GitDiffFile {
   path: string;
@@ -103,31 +113,39 @@ function emptyDiffSummary(): GitDiffSummary {
   };
 }
 
-function isStashCommit(commit: GraphCommit | undefined): boolean {
-  return commit?.refs.some((ref) => ref.kind === 'Stash') ?? false;
-}
-
 function mergeDiffResponses(...responses: GitDiffResponse[]): GitDiffResponse {
   const filesByPath = new Map<string, GitDiffFile>();
-  const summary = emptyDiffSummary();
 
   for (const response of responses) {
     for (const file of response.files) {
       filesByPath.set(file.path, file);
     }
-
-    summary.files_added += response.summary.files_added;
-    summary.files_modified += response.summary.files_modified;
-    summary.files_deleted += response.summary.files_deleted;
-    summary.files_renamed += response.summary.files_renamed;
-    summary.insertions += response.summary.insertions;
-    summary.deletions += response.summary.deletions;
   }
 
-  summary.files_changed = filesByPath.size;
+  const files = Array.from(filesByPath.values());
+  const summary = emptyDiffSummary();
+  for (const file of files) {
+    summary.insertions += file.additions;
+    summary.deletions += file.deletions;
+    switch (file.status) {
+      case 'Added':
+        summary.files_added += 1;
+        break;
+      case 'Modified':
+        summary.files_modified += 1;
+        break;
+      case 'Deleted':
+        summary.files_deleted += 1;
+        break;
+      case 'Renamed':
+        summary.files_renamed += 1;
+        break;
+    }
+  }
+  summary.files_changed = files.length;
 
   return {
-    files: Array.from(filesByPath.values()),
+    files,
     summary,
   };
 }
@@ -282,14 +300,14 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
     }
 
     try {
-      if (isStashCommit(commit)) {
-        const baseHash = commit.parent_hashes[0] ?? EMPTY_TREE_HASH;
+      if (isRawStashCommit(commit)) {
+        const baseHash = getStashBaseHash(commit) ?? EMPTY_TREE_HASH;
         const trackedResult = await invoke<GitDiffResponse>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
           projectPath,
           oldHash: baseHash,
           newHash: hash,
         });
-        const untrackedHash = commit.parent_hashes[2];
+        const untrackedHash = getStashUntrackedHash(commit);
         const result = untrackedHash
           ? mergeDiffResponses(
               trackedResult,
@@ -341,7 +359,8 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
 
     const selectedCommit = state.commits.find((commit) => commit.hash === state.selectedCommitHash);
     const targetCommit = state.commits.find((commit) => commit.hash === hash);
-    if (isStashCommit(selectedCommit) || isStashCommit(targetCommit)) {
+    if (isRawStashCommit(selectedCommit) || isRawStashCommit(targetCommit)) {
+      set({ error: stashCompareUnsupportedMessage() });
       return;
     }
 
@@ -390,7 +409,7 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
   },
 
   closeDiff: () => {
-    set({ showDiffPanel: false, selectedFilePath: null });
+    set({ showDiffPanel: false });
   },
 
   cancelCompare: (projectPath: string) => {

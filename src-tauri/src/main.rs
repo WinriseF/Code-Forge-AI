@@ -3,7 +3,7 @@
     windows_subsystem = "windows"
 )]
 
-use std::sync::{Arc, Mutex};
+use std::sync::{Arc, Mutex, OnceLock};
 use std::time::Duration;
 
 use crate::app_config::load_app_language;
@@ -34,6 +34,7 @@ const TRANSFER_WINDOW_LABEL: &str = "transfer";
 const TRAY_ID: &str = "main";
 const TRAY_QUIT_MENU_ID: &str = "tray_quit";
 const LANGUAGE_SYNC_EVENT: &str = "app-store:language-changed";
+static TRANSFER_WINDOW_BUILD_LOCK: OnceLock<Mutex<()>> = OnceLock::new();
 
 #[derive(Debug, Deserialize)]
 struct LanguageSyncPayload {
@@ -102,6 +103,15 @@ fn ensure_transfer_window(app: &AppHandle) -> crate::error::Result<WebviewWindow
         return Ok(window);
     }
 
+    let _guard = TRANSFER_WINDOW_BUILD_LOCK
+        .get_or_init(|| Mutex::new(()))
+        .lock()
+        .map_err(|err| format!("Failed to lock transfer window creation: {err}"))?;
+
+    if let Some(window) = app.get_webview_window(TRANSFER_WINDOW_LABEL) {
+        return Ok(window);
+    }
+
     let builder = WebviewWindowBuilder::new(
         app,
         TRANSFER_WINDOW_LABEL,
@@ -122,14 +132,7 @@ fn ensure_transfer_window(app: &AppHandle) -> crate::error::Result<WebviewWindow
     #[cfg(not(target_os = "macos"))]
     let builder = builder.transparent(true);
 
-    match builder.build() {
-        Ok(window) => Ok(window),
-        Err(err) => {
-            eprintln!("[Transfer] Failed to create window: {err}");
-            Ok(app.get_webview_window(TRANSFER_WINDOW_LABEL)
-                .ok_or_else(|| err.to_string())?)
-        }
-    }
+    Ok(builder.build().map_err(|err| err.to_string())?)
 }
 
 fn is_transfer_service_running(app: &AppHandle) -> bool {

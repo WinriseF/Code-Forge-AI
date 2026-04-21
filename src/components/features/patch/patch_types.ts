@@ -39,11 +39,21 @@ export interface GraphCommit {
   message: string;
   parent_hashes: string[];
   refs: GitRef[];
-  display_kind?: GraphDisplayKind;
-  stash_base_hash?: string | null;
-  stash_untracked_hash?: string | null;
-  collapsed_hashes?: string[];
 }
+
+export interface CommitDisplayNode extends GraphCommit {
+  display_kind: 'commit';
+}
+
+export interface StashDisplayNode extends GraphCommit {
+  display_kind: 'stash';
+  parent_hashes: [string];
+  stash_base_hash: string;
+  stash_untracked_hash: string | null;
+  collapsed_hashes: string[];
+}
+
+export type DisplayGraphCommit = CommitDisplayNode | StashDisplayNode;
 
 export interface GitRef {
   name: string;

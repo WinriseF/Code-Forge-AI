@@ -1,4 +1,4 @@
-import type { GraphCommit } from './patch_types';
+import type { GitRef } from './patch_types';
 
 interface GitGraphNodeLayout {
   hash: string;
@@ -24,19 +24,29 @@ export interface SwimlaneNode {
   color: string;
 }
 
-export interface CommitRowViewModel {
-  commit: GraphCommit;
+export interface CommitRowViewModel<T extends LayoutCommit = LayoutCommit> {
+  commit: T;
   inputSwimlanes: SwimlaneNode[];
   outputSwimlanes: SwimlaneNode[];
   circleIndex: number;
   circleColor: string;
 }
 
-interface GitGraphLayout {
-  rows: CommitRowViewModel[];
+interface GitGraphLayout<T extends LayoutCommit = LayoutCommit> {
+  rows: CommitRowViewModel<T>[];
   nodes: Map<string, GitGraphNodeLayout>;
   edges: GitGraphEdgeLayout[];
   laneCount: number;
+}
+
+interface LayoutCommit {
+  hash: string;
+  short_hash: string;
+  author: string;
+  date: string;
+  message: string;
+  parent_hashes: string[];
+  refs: GitRef[];
 }
 
 const GRAPH_COLORS = [
@@ -44,9 +54,9 @@ const GRAPH_COLORS = [
   '#cba6f7', '#fab387', '#94e2d5', '#f5c2e7',
 ];
 
-export function computeGitGraphLayout(commits: GraphCommit[]): GitGraphLayout {
+export function computeGitGraphLayout<T extends LayoutCommit>(commits: T[]): GitGraphLayout<T> {
   const commitHashes = new Set(commits.map((commit) => commit.hash));
-  const rows: CommitRowViewModel[] = [];
+  const rows: CommitRowViewModel<T>[] = [];
   let colorIdx = 0;
 
   for (const commit of commits) {
@@ -88,7 +98,7 @@ export function computeGitGraphLayout(commits: GraphCommit[]): GitGraphLayout {
           : GRAPH_COLORS[0];
 
     rows.push({
-      commit: { ...commit, parent_hashes: parents },
+      commit: { ...commit, parent_hashes: parents } as T,
       inputSwimlanes,
       outputSwimlanes,
       circleIndex,

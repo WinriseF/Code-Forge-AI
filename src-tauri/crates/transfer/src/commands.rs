@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 use std::path::PathBuf;
 use std::sync::Arc;
+use std::sync::atomic::{AtomicBool, Ordering};
 use std::time::Duration;
 
 use serde_json::json;
@@ -22,6 +23,7 @@ use crate::ws::ServerWsMessage;
 
 pub struct TransferState<R: Runtime> {
     coordinator: Arc<Mutex<ServiceCoordinator<R>>>,
+    running_flag: AtomicBool,
 }
 
 struct ServiceCoordinator<R: Runtime> {
@@ -38,6 +40,7 @@ impl<R: Runtime> TransferState<R> {
     pub fn new() -> Self {
         Self {
             coordinator: Arc::new(Mutex::new(ServiceCoordinator { running: None })),
+            running_flag: AtomicBool::new(false),
         }
     }
 
@@ -51,14 +54,11 @@ impl<R: Runtime> TransferState<R> {
     }
 
     pub async fn is_running(&self) -> bool {
-        self.coordinator.lock().await.running.is_some()
+        self.running_flag.load(Ordering::SeqCst)
     }
 
     pub fn is_running_now(&self) -> bool {
-        self.coordinator
-            .try_lock()
-            .map(|coordinator| coordinator.running.is_some())
-            .unwrap_or(false)
+        self.running_flag.load(Ordering::SeqCst)
     }
 }
 
@@ -117,6 +117,7 @@ pub async fn start_service<R: Runtime>(
     };
 
     coordinator.running = Some(server::spawn_server(listener, shared));
+    state.running_flag.store(true, Ordering::SeqCst);
     Ok(info)
 }
 
@@ -127,7 +128,11 @@ pub async fn stop_service<R: Runtime>(
 ) -> Result<()> {
     let running = {
         let mut coordinator = state.coordinator.lock().await;
-        coordinator.running.take()
+        let running = coordinator.running.take();
+        if running.is_some() {
+            state.running_flag.store(false, Ordering::SeqCst);
+        }
+        running
     }
     .ok_or(TransferError::NotRunning)?;
 

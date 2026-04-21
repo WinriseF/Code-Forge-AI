@@ -3,10 +3,14 @@ import { useGitGraphStore, ROW_HEIGHT, WORKING_TREE_HASH } from '@/store/useGitG
 import { computeGitGraphLayout, type CommitRowViewModel } from './gitGraphLayout';
 import { CommitHoverCard } from './CommitHoverCard';
 import { GitRefBadges } from './GitRefBadges';
-import { buildGitGraphDisplayCommits, isCollapsedStashCommit } from './gitGraphDisplay';
+import {
+  buildGitGraphDisplayCommits,
+  isCollapsedStashCommit,
+  isRawStashCommit,
+} from './gitGraphDisplay';
 import { FolderOpen, Search, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import type { GraphCommit } from './patch_types';
+import type { DisplayGraphCommit, GraphCommit } from './patch_types';
 
 const SW = 11;
 const CR = 5;
@@ -28,7 +32,7 @@ function rowBorderClass(isSelected: boolean, isCompareTarget: boolean) {
   return 'border-l-transparent';
 }
 
-function rowSvgWidth(row?: CommitRowViewModel) {
+function rowSvgWidth(row?: CommitRowViewModel<DisplayGraphCommit>) {
   if (!row) {
     return SW * 2;
   }
@@ -96,12 +100,12 @@ const WorkingTreeRow = memo(function WorkingTreeRow({
 });
 
 interface CommitGraphRowProps {
-  row: CommitRowViewModel;
+  row: CommitRowViewModel<DisplayGraphCommit>;
   isSelected: boolean;
   isCompareTarget: boolean;
   onClick: (hash: string) => void;
   onContextMenu: (event: React.MouseEvent, hash: string) => void;
-  onOpenHover: (commit: GraphCommit, target: HTMLElement) => void;
+  onOpenHover: (commit: DisplayGraphCommit, target: HTMLElement) => void;
   onCloseHover: () => void;
 }
 
@@ -148,7 +152,7 @@ const CommitGraphRow = memo(function CommitGraphRow({
 });
 
 interface CommitRowGraphProps {
-  row: CommitRowViewModel;
+  row: CommitRowViewModel<DisplayGraphCommit>;
   isSelected: boolean;
   isCompareTarget: boolean;
 }
@@ -164,12 +168,12 @@ const CommitRowGraph = memo(function CommitRowGraph({
   let key = 0;
   const isCollapsedStash = isCollapsedStashCommit(commit);
 
-  const lp = (color: string) => ({
+  const lp = (color: string, dashed = false) => ({
     stroke: color,
     strokeWidth: 1,
     fill: 'none' as const,
     strokeLinecap: 'round' as const,
-    strokeDasharray: isCollapsedStash ? '4 3' : undefined,
+    strokeDasharray: dashed ? '4 3' : undefined,
   });
 
   let outputIdx = 0;
@@ -251,7 +255,7 @@ const CommitRowGraph = memo(function CommitRowGraph({
       `H ${circleX}`,
     ].join(' ');
     elements.push(
-      <path key={key++} d={d} {...lp(outputSwimlanes[parentOutIdx].color)} />,
+      <path key={key++} d={d} {...lp(outputSwimlanes[parentOutIdx].color, isCollapsedStash)} />,
     );
   }
 
@@ -271,7 +275,7 @@ const CommitRowGraph = memo(function CommitRowGraph({
       <path
         key={key++}
         d={`M ${laneX(circleIndex)} ${midY} V ${ROW_HEIGHT}`}
-        {...lp(circleColor)}
+        {...lp(circleColor, isCollapsedStash)}
       />,
     );
   }
@@ -487,14 +491,17 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
     (event: React.MouseEvent, hash: string) => {
       event.preventDefault();
       const commit = rawCommitByHash.get(hash);
-      if (commit?.refs.some((ref) => ref.kind === 'Stash')) {
+      if (isRawStashCommit(commit)) {
+        useGitGraphStore.setState({
+          error: t('patch.stashCompareUnsupported', 'Collapsed stash diffs cannot be compared yet'),
+        });
         return;
       }
       if (projectRoot) {
         void compareWith(hash, projectRoot);
       }
     },
-    [compareWith, projectRoot, rawCommitByHash],
+    [compareWith, projectRoot, rawCommitByHash, t],
   );
 
   useEffect(() => {

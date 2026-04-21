@@ -1,28 +1,55 @@
-import type { GraphCommit } from './patch_types';
+import type { DisplayGraphCommit, GraphCommit, StashDisplayNode } from './patch_types';
 
-export function isCollapsedStashCommit(commit: GraphCommit | null | undefined): boolean {
+export const STASH_BASE_PARENT_INDEX = 0;
+export const STASH_UNTRACKED_PARENT_INDEX = 2;
+
+export function isRawStashCommit(commit: GraphCommit | null | undefined): boolean {
+  return commit?.refs.some((ref) => ref.kind === 'Stash') ?? false;
+}
+
+export function isCollapsedStashCommit(
+  commit: DisplayGraphCommit | null | undefined,
+): commit is StashDisplayNode {
   return commit?.display_kind === 'stash';
 }
 
-export function buildGitGraphDisplayCommits(commits: GraphCommit[]): GraphCommit[] {
+export function getStashBaseHash(commit: Pick<GraphCommit, 'parent_hashes'>): string | null {
+  return commit.parent_hashes[STASH_BASE_PARENT_INDEX] ?? null;
+}
+
+export function getStashUntrackedHash(commit: Pick<GraphCommit, 'parent_hashes'>): string | null {
+  return commit.parent_hashes[STASH_UNTRACKED_PARENT_INDEX] ?? null;
+}
+
+export function buildGitGraphDisplayCommits(commits: GraphCommit[]): DisplayGraphCommit[] {
   const hiddenCommitHashes = new Set<string>();
   const availableCommitHashes = new Set(commits.map((commit) => commit.hash));
-  const displayCommits: GraphCommit[] = [];
+  const displayCommits: DisplayGraphCommit[] = [];
 
   for (const commit of commits) {
     if (hiddenCommitHashes.has(commit.hash)) {
       continue;
     }
 
-    const stashRef = commit.refs.find((ref) => ref.kind === 'Stash');
-    if (!stashRef || commit.parent_hashes.length === 0) {
-      displayCommits.push(commit);
+    if (!isRawStashCommit(commit) || commit.parent_hashes.length === 0) {
+      displayCommits.push({
+        ...commit,
+        display_kind: 'commit',
+      });
       continue;
     }
 
-    const baseHash = commit.parent_hashes[0];
-    const collapsedHashes = commit.parent_hashes.slice(1);
-    const untrackedHash = commit.parent_hashes[2] ?? null;
+    const baseHash = getStashBaseHash(commit);
+    if (!baseHash) {
+      displayCommits.push({
+        ...commit,
+        display_kind: 'commit',
+      });
+      continue;
+    }
+
+    const collapsedHashes = commit.parent_hashes.slice(STASH_BASE_PARENT_INDEX + 1);
+    const untrackedHash = getStashUntrackedHash(commit);
 
     for (const hash of collapsedHashes) {
       if (availableCommitHashes.has(hash)) {

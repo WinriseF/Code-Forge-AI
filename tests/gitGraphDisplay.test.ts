@@ -46,6 +46,15 @@ describe('buildGitGraphDisplayCommits', () => {
       commit('base'),
     ];
 
-    expect(buildGitGraphDisplayCommits(commits)).toEqual(commits);
+    expect(buildGitGraphDisplayCommits(commits)).toEqual([
+      {
+        ...commits[0],
+        display_kind: 'commit',
+      },
+      {
+        ...commits[1],
+        display_kind: 'commit',
+      },
+    ]);
   });
 });

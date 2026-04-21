@@ -212,6 +212,95 @@ describe('useGitGraphStore selectCommit', () => {
       deletions: 1,
     });
   });
+
+  it('recomputes summary counts from deduped files when stash diffs overlap on path', async () => {
+    const { useGitGraphStore } = await importFreshGitGraphStore();
+    const stashCommit: GraphCommit = {
+      ...makeCommit('stash123', ['base123', 'index123', 'untracked123']),
+      message: 'On main: demo',
+      refs: [{ name: 'stash@{0}', kind: 'Stash' }],
+    };
+
+    invokeMock
+      .mockResolvedValueOnce(makeDiffResponse([
+        {
+          path: 'src/overlap.ts',
+          status: 'Modified',
+          original_content: 'before',
+          modified_content: 'after',
+          is_binary: false,
+          is_large: false,
+          additions: 3,
+          deletions: 1,
+        },
+      ]))
+      .mockResolvedValueOnce(makeDiffResponse([
+        {
+          path: 'src/overlap.ts',
+          status: 'Added',
+          original_content: '',
+          modified_content: 'new file',
+          is_binary: false,
+          is_large: false,
+          additions: 5,
+          deletions: 0,
+        },
+      ]));
+
+    useGitGraphStore.setState({
+      commits: [stashCommit, makeCommit('base123')],
+    });
+
+    await useGitGraphStore.getState().selectCommit('stash123', '/repo');
+
+    expect(useGitGraphStore.getState().diffFiles.map((file) => file.path)).toEqual(['src/overlap.ts']);
+    expect(useGitGraphStore.getState().diffSummary).toMatchObject({
+      files_changed: 1,
+      files_added: 1,
+      files_modified: 0,
+      files_deleted: 0,
+      files_renamed: 0,
+      insertions: 5,
+      deletions: 0,
+    });
+  });
+
+  it('keeps export enabled for stash commits without an untracked helper commit', async () => {
+    const { useGitGraphStore } = await importFreshGitGraphStore();
+    const stashCommit: GraphCommit = {
+      ...makeCommit('stash123', ['base123', 'index123']),
+      message: 'On main: tracked only',
+      refs: [{ name: 'stash@{1}', kind: 'Stash' }],
+    };
+
+    invokeMock.mockResolvedValueOnce(makeDiffResponse([
+      {
+        path: 'src/tracked.ts',
+        status: 'Modified',
+        original_content: 'before',
+        modified_content: 'after',
+        is_binary: false,
+        is_large: false,
+        additions: 2,
+        deletions: 1,
+      },
+    ]));
+
+    useGitGraphStore.setState({
+      commits: [stashCommit, makeCommit('base123')],
+    });
+
+    await useGitGraphStore.getState().selectCommit('stash123', '/repo');
+
+    expect(invokeMock).toHaveBeenCalledTimes(1);
+    expect(useGitGraphStore.getState()).toMatchObject({
+      diffOldHash: 'base123',
+      diffNewHash: 'stash123',
+      canExportCurrentDiff: true,
+      isLoading: false,
+    });
+    expect(useGitGraphStore.getState().diffFiles.map((file) => file.path)).toEqual(['src/tracked.ts']);
+  });
 });
 
 describe('useGitGraphStore closeDiff', () => {
@@ -219,7 +308,7 @@ describe('useGitGraphStore closeDiff', () => {
     invokeMock.mockReset();
   });
 
-  it('hides the diff panel and clears the selected file', async () => {
+  it('hides the diff panel and preserves the selected file', async () => {
     const { useGitGraphStore } = await importFreshGitGraphStore();
 
     useGitGraphStore.setState({
@@ -230,8 +319,33 @@ describe('useGitGraphStore closeDiff', () => {
     useGitGraphStore.getState().closeDiff();
 
     expect(useGitGraphStore.getState()).toMatchObject({
-      selectedFilePath: null,
+      selectedFilePath: 'src/example.ts',
       showDiffPanel: false,
     });
+  });
+});
+
+describe('useGitGraphStore compareWith stash handling', () => {
+  beforeEach(() => {
+    invokeMock.mockReset();
+  });
+
+  it('reports an error instead of silently comparing stash commits', async () => {
+    const { useGitGraphStore } = await importFreshGitGraphStore();
+    const stashCommit: GraphCommit = {
+      ...makeCommit('stash123', ['base123', 'index123']),
+      refs: [{ name: 'stash@{0}', kind: 'Stash' }],
+    };
+
+    useGitGraphStore.setState({
+      commits: [makeCommit('base123'), stashCommit],
+      selectedCommitHash: 'base123',
+      error: null,
+    });
+
+    await useGitGraphStore.getState().compareWith('stash123', '/repo');
+
+    expect(invokeMock).not.toHaveBeenCalled();
+    expect(useGitGraphStore.getState().error).toBe('Collapsed stash diffs cannot be compared yet');
   });
 });
