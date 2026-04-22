@@ -106,8 +106,7 @@ pub(crate) fn branch_ahead_behind(
 pub(crate) fn checkout_branch(repo: &Repository, reference_name: &str) -> Result<()> {
     repo.set_head(reference_name)?;
     let mut checkout = CheckoutBuilder::new();
-    checkout.safe();
-    checkout.recreate_missing(true);
+    checkout.force();
     repo.checkout_head(Some(&mut checkout))?;
     Ok(())
 }
@@ -337,8 +336,7 @@ pub fn switch_branch(
     }
 
     let is_dirty = worktree.has_staged_changes
-        || worktree.has_unstaged_changes
-        || worktree.has_untracked_files;
+        || worktree.has_unstaged_changes;
     if is_dirty && !options.stash_if_dirty {
         return Err(GitError::DirtyWorktree);
     }
