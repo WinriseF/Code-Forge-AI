@@ -45,6 +45,26 @@ pub enum GitError {
     /// Creating a stash failed
     #[error("Stash failed: {0}")]
     StashFailed(String),
+
+    /// Current HEAD is detached and cannot be synchronized
+    #[error("Detached HEAD is not supported for this operation")]
+    DetachedHead,
+
+    /// Current branch has no upstream configured
+    #[error("Current branch has no upstream configured")]
+    UpstreamNotConfigured,
+
+    /// The local and upstream branches have diverged
+    #[error("Branch has diverged from its upstream; complete the merge or rebase manually")]
+    DivergedBranch,
+
+    /// The local branch is behind its upstream and cannot be pushed as-is
+    #[error("Branch is behind its upstream; pull or rebase before pushing")]
+    BehindUpstream,
+
+    /// The remote server rejected an update
+    #[error("Remote rejected the update: {0}")]
+    RemoteRejected(String),
 }
 
 impl Serialize for GitError {

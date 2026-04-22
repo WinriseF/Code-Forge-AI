@@ -8,6 +8,8 @@ fn main() {
         "get_git_repo_overview",
         "list_git_branches",
         "switch_branch",
+        "push_current_branch",
+        "pull_current_branch",
     ])
     .build();
 }

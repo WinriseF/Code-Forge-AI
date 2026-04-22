@@ -192,6 +192,58 @@ Denies the list_git_branches command without any pre-configured scope.
 <tr>
 <td>
 
+`ctxrun-plugin-git:allow-pull-current-branch`
+
+</td>
+<td>
+
+Enables the pull_current_branch command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`ctxrun-plugin-git:deny-pull-current-branch`
+
+</td>
+<td>
+
+Denies the pull_current_branch command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`ctxrun-plugin-git:allow-push-current-branch`
+
+</td>
+<td>
+
+Enables the push_current_branch command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`ctxrun-plugin-git:deny-push-current-branch`
+
+</td>
+<td>
+
+Denies the push_current_branch command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 `ctxrun-plugin-git:allow-switch-branch`
 
 </td>

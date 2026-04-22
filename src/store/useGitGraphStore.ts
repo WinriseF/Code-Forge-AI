@@ -33,6 +33,16 @@ interface GitDiffResponse {
   summary: GitDiffSummary;
 }
 
+interface LoadedDiffState {
+  diffFiles: PatchFileItem[];
+  diffSummary: GitDiffSummary | null;
+  selectedFilePath: string | null;
+  diffOldHash: string | null;
+  diffNewHash: string | null;
+  selectedExportPaths: Set<string>;
+  canExportCurrentDiff: boolean;
+}
+
 interface GitGraphState {
   // Data
   projectPath: string | null;
@@ -59,6 +69,8 @@ interface GitGraphState {
   canExportCurrentDiff: boolean;
   isLoading: boolean;
   isLoadingMore: boolean;
+  isRefreshingView: boolean;
+  refreshRequestId: number;
   error: string | null;
 
   // Actions
@@ -70,6 +82,7 @@ interface GitGraphState {
   closeDiff: () => void;
   cancelCompare: (projectPath: string) => void;
   toggleExportPath: (path: string, checked: boolean) => void;
+  refreshGitView: (projectPath: string, searchQuery?: string) => Promise<void>;
 }
 
 const ROW_HEIGHT = 44;
@@ -93,6 +106,26 @@ function mapDiffFiles(result: GitDiffFile[]): PatchFileItem[] {
 
 function exportablePaths(files: PatchFileItem[]): Set<string> {
   return new Set(files.filter((f) => !f.isBinary && !f.isLarge).map((f) => f.path));
+}
+
+function normalizeExportSelection(files: PatchFileItem[], selectedPaths?: Set<string> | null): Set<string> {
+  const exportable = exportablePaths(files);
+  if (selectedPaths === undefined) {
+    return exportable;
+  }
+  if (selectedPaths === null || selectedPaths.size === 0) {
+    return new Set();
+  }
+
+  return new Set(Array.from(selectedPaths).filter((path) => exportable.has(path)));
+}
+
+function normalizeSelectedFilePath(files: PatchFileItem[], selectedFilePath?: string | null): string | null {
+  if (!selectedFilePath) {
+    return null;
+  }
+
+  return files.some((file) => file.path === selectedFilePath) ? selectedFilePath : null;
 }
 
 const EMPTY_TREE_HASH = '4b825dc642cb6eb9a060e54bf899d15363d7aa91';
@@ -146,6 +179,150 @@ function mergeDiffResponses(...responses: GitDiffResponse[]): GitDiffResponse {
   };
 }
 
+function normalizeCommitQuery(searchQuery = ''): string {
+  return searchQuery.trim();
+}
+
+async function fetchCommitsPage(projectPath: string, searchQuery: string, limit: number): Promise<GraphCommit[]> {
+  return invoke<GraphCommit[]>(`${GIT_PLUGIN_PREFIX}get_git_log_graph`, {
+    projectPath,
+    limit,
+    skip: 0,
+    query: searchQuery || null,
+  });
+}
+
+async function loadSelectedDiffState(
+  projectPath: string,
+  hash: string,
+  commits: GraphCommit[],
+  options?: {
+    selectedFilePath?: string | null;
+    selectedExportPaths?: Set<string> | null;
+  },
+): Promise<LoadedDiffState> {
+  const selectedFilePath = options?.selectedFilePath;
+  const selectedExportPaths = options?.selectedExportPaths;
+
+  if (hash === WORKING_TREE_HASH) {
+    const headCommit = commits.find((commit) => commit.refs.some((reference) => reference.kind === 'Head'));
+    const headHash = headCommit?.hash ?? '';
+    const result = await invoke<GitDiffResponse>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
+      projectPath,
+      oldHash: headHash,
+      newHash: WORKING_TREE_HASH,
+    });
+    const files = mapDiffFiles(result.files);
+    return {
+      diffFiles: files,
+      diffSummary: result.summary,
+      selectedFilePath: normalizeSelectedFilePath(files, selectedFilePath),
+      diffOldHash: headHash,
+      diffNewHash: WORKING_TREE_HASH,
+      canExportCurrentDiff: true,
+      selectedExportPaths: normalizeExportSelection(files, selectedExportPaths),
+    };
+  }
+
+  const commit = commits.find((candidate) => candidate.hash === hash);
+  if (!commit) {
+    return {
+      diffFiles: [],
+      diffSummary: null,
+      selectedFilePath: null,
+      diffOldHash: null,
+      diffNewHash: null,
+      selectedExportPaths: new Set(),
+      canExportCurrentDiff: true,
+    };
+  }
+
+  if (isRawStashCommit(commit)) {
+    const baseHash = getStashBaseHash(commit) ?? EMPTY_TREE_HASH;
+    const trackedResult = await invoke<GitDiffResponse>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
+      projectPath,
+      oldHash: baseHash,
+      newHash: hash,
+    });
+    const untrackedHash = getStashUntrackedHash(commit);
+    const result = untrackedHash
+      ? mergeDiffResponses(
+        trackedResult,
+        await invoke<GitDiffResponse>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
+          projectPath,
+          oldHash: EMPTY_TREE_HASH,
+          newHash: untrackedHash,
+        }),
+      )
+      : trackedResult;
+    const files = mapDiffFiles(result.files);
+    return {
+      diffFiles: files,
+      diffSummary: result.summary,
+      selectedFilePath: normalizeSelectedFilePath(files, selectedFilePath),
+      diffOldHash: baseHash,
+      diffNewHash: hash,
+      canExportCurrentDiff: !untrackedHash,
+      selectedExportPaths: normalizeExportSelection(files, selectedExportPaths),
+    };
+  }
+
+  const oldHash = commit.parent_hashes.length > 0 ? commit.parent_hashes[0] : EMPTY_TREE_HASH;
+  const result = await invoke<GitDiffResponse>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
+    projectPath,
+    oldHash,
+    newHash: hash,
+  });
+  const files = mapDiffFiles(result.files);
+  return {
+    diffFiles: files,
+    diffSummary: result.summary,
+    selectedFilePath: normalizeSelectedFilePath(files, selectedFilePath),
+    diffOldHash: oldHash,
+    diffNewHash: hash,
+    canExportCurrentDiff: true,
+    selectedExportPaths: normalizeExportSelection(files, selectedExportPaths),
+  };
+}
+
+async function loadComparedDiffState(
+  projectPath: string,
+  selectedCommitHash: string,
+  targetHash: string,
+  commits: GraphCommit[],
+  options?: {
+    selectedFilePath?: string | null;
+    selectedExportPaths?: Set<string> | null;
+  },
+): Promise<LoadedDiffState> {
+  const selectedCommit = commits.find((commit) => commit.hash === selectedCommitHash);
+  const targetCommit = commits.find((commit) => commit.hash === targetHash);
+  if (isRawStashCommit(selectedCommit) || isRawStashCommit(targetCommit)) {
+    throw new Error(stashCompareUnsupportedMessage());
+  }
+
+  const oldHash = selectedCommitHash === WORKING_TREE_HASH ? targetHash : selectedCommitHash;
+  const newHash = targetHash === WORKING_TREE_HASH || selectedCommitHash !== WORKING_TREE_HASH
+    ? targetHash
+    : WORKING_TREE_HASH;
+
+  const result = await invoke<GitDiffResponse>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
+    projectPath,
+    oldHash,
+    newHash,
+  });
+  const files = mapDiffFiles(result.files);
+  return {
+    diffFiles: files,
+    diffSummary: result.summary,
+    selectedFilePath: normalizeSelectedFilePath(files, options?.selectedFilePath),
+    diffOldHash: oldHash,
+    diffNewHash: newHash,
+    canExportCurrentDiff: true,
+    selectedExportPaths: normalizeExportSelection(files, options?.selectedExportPaths),
+  };
+}
+
 export const useGitGraphStore = create<GitGraphState>((set, get) => ({
   projectPath: null,
   commits: [],
@@ -163,15 +340,19 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
   canExportCurrentDiff: true,
   isLoading: false,
   isLoadingMore: false,
+  isRefreshingView: false,
+  refreshRequestId: 0,
   error: null,
 
   loadCommits: async (projectPath: string, searchQuery = '') => {
-    const normalizedQuery = searchQuery.trim();
+    const normalizedQuery = normalizeCommitQuery(searchQuery);
     set({
       projectPath,
       commitSearchQuery: normalizedQuery,
       isLoading: true,
       isLoadingMore: false,
+      isRefreshingView: false,
+      refreshRequestId: get().refreshRequestId + 1,
       error: null,
       selectedCommitHash: null,
       diffFiles: [],
@@ -186,12 +367,7 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
       selectedExportPaths: new Set(),
     });
     try {
-      const commits = await invoke<GraphCommit[]>(`${GIT_PLUGIN_PREFIX}get_git_log_graph`, {
-        projectPath,
-        limit: COMMITS_PAGE_SIZE,
-        skip: 0,
-        query: normalizedQuery || null,
-      });
+      const commits = await fetchCommitsPage(projectPath, normalizedQuery, COMMITS_PAGE_SIZE);
       if (get().projectPath !== projectPath || get().commitSearchQuery !== normalizedQuery) {
         return;
       }
@@ -296,52 +472,10 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
     }
 
     try {
-      if (isRawStashCommit(commit)) {
-        const baseHash = getStashBaseHash(commit) ?? EMPTY_TREE_HASH;
-        const trackedResult = await invoke<GitDiffResponse>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
-          projectPath,
-          oldHash: baseHash,
-          newHash: hash,
-        });
-        const untrackedHash = getStashUntrackedHash(commit);
-        const result = untrackedHash
-          ? mergeDiffResponses(
-              trackedResult,
-              await invoke<GitDiffResponse>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
-                projectPath,
-                oldHash: EMPTY_TREE_HASH,
-                newHash: untrackedHash,
-              }),
-            )
-          : trackedResult;
-        const files = mapDiffFiles(result.files);
-        set({
-          diffFiles: files,
-          diffSummary: result.summary,
-          isLoading: false,
-          diffOldHash: baseHash,
-          diffNewHash: hash,
-          canExportCurrentDiff: !untrackedHash,
-          selectedExportPaths: exportablePaths(files),
-        });
-        return;
-      }
-
-      const oldHash = commit.parent_hashes.length > 0 ? commit.parent_hashes[0] : EMPTY_TREE_HASH;
-      const result = await invoke<GitDiffResponse>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
-        projectPath,
-        oldHash,
-        newHash: hash,
-      });
-      const files = mapDiffFiles(result.files);
+      const diffState = await loadSelectedDiffState(projectPath, hash, get().commits);
       set({
-        diffFiles: files,
-        diffSummary: result.summary,
         isLoading: false,
-        diffOldHash: oldHash,
-        diffNewHash: hash,
-        canExportCurrentDiff: true,
-        selectedExportPaths: exportablePaths(files),
+        ...diffState,
       });
     } catch (err: unknown) {
       set({ error: errorToString(err), isLoading: false });
@@ -361,10 +495,6 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
     }
 
     const selectedHash = state.selectedCommitHash;
-    const oldHash = selectedHash === WORKING_TREE_HASH ? hash : selectedHash;
-    const newHash = hash === WORKING_TREE_HASH || selectedHash !== WORKING_TREE_HASH
-      ? hash
-      : WORKING_TREE_HASH;
 
     set({
       isLoading: true,
@@ -379,21 +509,11 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
     });
 
     try {
-      const result = await invoke<GitDiffResponse>(`${GIT_PLUGIN_PREFIX}get_git_diff`, {
-        projectPath,
-        oldHash,
-        newHash,
-      });
-      const files = mapDiffFiles(result.files);
+      const diffState = await loadComparedDiffState(projectPath, selectedHash, hash, get().commits);
       set({
-        diffFiles: files,
-        diffSummary: result.summary,
         isLoading: false,
-        diffOldHash: oldHash,
-        diffNewHash: newHash,
         compareTargetHash: hash,
-        canExportCurrentDiff: true,
-        selectedExportPaths: exportablePaths(files),
+        ...diffState,
       });
     } catch (err: unknown) {
       set({ error: errorToString(err), isLoading: false });
@@ -424,6 +544,108 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
       else next.delete(path);
       return { selectedExportPaths: next };
     });
+  },
+
+  refreshGitView: async (projectPath: string, searchQuery) => {
+    const state = get();
+    const normalizedQuery = normalizeCommitQuery(searchQuery ?? state.commitSearchQuery);
+    const selectedCommitHash = state.selectedCommitHash;
+    const compareTargetHash = state.compareTargetHash;
+    const selectedFilePath = state.selectedFilePath;
+    const selectedExportPaths = state.selectedExportPaths;
+    const showDiffPanel = state.showDiffPanel;
+    const commitLimit = Math.max(state.commits.length, COMMITS_PAGE_SIZE);
+    const requestId = state.refreshRequestId + 1;
+
+    set({
+      projectPath,
+      commitSearchQuery: normalizedQuery,
+      isRefreshingView: true,
+      refreshRequestId: requestId,
+      error: null,
+    });
+
+    try {
+      const commits = await fetchCommitsPage(projectPath, normalizedQuery, commitLimit);
+      const currentState = get();
+      if (
+        currentState.projectPath !== projectPath
+        || currentState.commitSearchQuery !== normalizedQuery
+        || currentState.refreshRequestId !== requestId
+      ) {
+        return;
+      }
+
+      const selectedCommitExists = selectedCommitHash === WORKING_TREE_HASH
+        || (selectedCommitHash !== null && commits.some((commit) => commit.hash === selectedCommitHash));
+      const compareTargetExists = compareTargetHash === WORKING_TREE_HASH
+        || (compareTargetHash !== null && commits.some((commit) => commit.hash === compareTargetHash));
+
+      let nextSelectedCommitHash = selectedCommitExists ? selectedCommitHash : null;
+      let nextCompareTargetHash = compareTargetExists ? compareTargetHash : null;
+      let nextShowDiffPanel = showDiffPanel && nextSelectedCommitHash !== null;
+      let diffState: LoadedDiffState = {
+        diffFiles: [],
+        diffSummary: null,
+        selectedFilePath: null,
+        diffOldHash: null,
+        diffNewHash: null,
+        selectedExportPaths: new Set(),
+        canExportCurrentDiff: true,
+      };
+
+      if (nextSelectedCommitHash) {
+        if (nextCompareTargetHash) {
+          diffState = await loadComparedDiffState(
+            projectPath,
+            nextSelectedCommitHash,
+            nextCompareTargetHash,
+            commits,
+            { selectedFilePath, selectedExportPaths },
+          );
+        } else {
+          diffState = await loadSelectedDiffState(projectPath, nextSelectedCommitHash, commits, {
+            selectedFilePath,
+            selectedExportPaths,
+          });
+        }
+      } else {
+        nextCompareTargetHash = null;
+        nextShowDiffPanel = false;
+      }
+
+      const finalSelectedFilePath = nextShowDiffPanel ? diffState.selectedFilePath : diffState.selectedFilePath;
+      set({
+        commits,
+        hasMoreCommits: commits.length === commitLimit,
+        selectedCommitHash: nextSelectedCommitHash,
+        compareTargetHash: nextCompareTargetHash,
+        showDiffPanel: nextShowDiffPanel,
+        diffFiles: diffState.diffFiles,
+        diffSummary: diffState.diffSummary,
+        selectedFilePath: finalSelectedFilePath,
+        diffOldHash: diffState.diffOldHash,
+        diffNewHash: diffState.diffNewHash,
+        selectedExportPaths: diffState.selectedExportPaths,
+        canExportCurrentDiff: diffState.canExportCurrentDiff,
+        isRefreshingView: false,
+        error: null,
+      });
+    } catch (err) {
+      const currentState = get();
+      if (
+        currentState.projectPath !== projectPath
+        || currentState.commitSearchQuery !== normalizedQuery
+        || currentState.refreshRequestId !== requestId
+      ) {
+        return;
+      }
+
+      set({
+        isRefreshingView: false,
+        error: errorToString(err),
+      });
+    }
   },
 }));
 

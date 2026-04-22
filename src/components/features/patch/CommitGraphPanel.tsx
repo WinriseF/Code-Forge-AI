@@ -10,7 +10,7 @@ import {
   isCollapsedStashCommit,
   isRawStashCommit,
 } from './gitGraphDisplay';
-import { ArrowDown, ArrowUp, FolderOpen, GitBranch, Loader2, Search, X } from 'lucide-react';
+import { ArrowDown, ArrowUp, FolderOpen, GitBranch, Loader2, RefreshCw, Search, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { DisplayGraphCommit, GraphCommit } from './patch_types';
 
@@ -353,15 +353,17 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
   const loadMoreCommits = useGitGraphStore((s) => s.loadMoreCommits);
   const selectCommit = useGitGraphStore((s) => s.selectCommit);
   const compareWith = useGitGraphStore((s) => s.compareWith);
+  const refreshGitView = useGitGraphStore((s) => s.refreshGitView);
   const hasMoreCommits = useGitGraphStore((s) => s.hasMoreCommits);
   const isLoading = useGitGraphStore((s) => s.isLoading);
   const isLoadingMore = useGitGraphStore((s) => s.isLoadingMore);
+  const isRefreshingView = useGitGraphStore((s) => s.isRefreshingView);
   const error = useGitGraphStore((s) => s.error);
   const compareTargetHash = useGitGraphStore((s) => s.compareTargetHash);
   const repoOverview = useGitOpsStore((s) => s.repoOverview);
   const isPanelOpen = useGitOpsStore((s) => s.isPanelOpen);
-  const isOverviewLoading = useGitOpsStore((s) => s.isOverviewLoading);
   const fetchOverview = useGitOpsStore((s) => s.fetchOverview);
+  const refreshRepositoryState = useGitOpsStore((s) => s.refreshRepositoryState);
   const openPanel = useGitOpsStore((s) => s.openPanel);
 
   const { t } = useTranslation();
@@ -569,6 +571,18 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
 
   const branchButtonLabel = repoOverview?.current_branch
     ?? (repoOverview?.is_detached_head ? t('patch.gitOpsDetachedHead', 'Detached HEAD') : t('patch.gitOpsBranchUnknown', 'Branch'));
+  const isRefreshDisabled = !projectRoot || isRefreshingView || isLoading || isLoadingMore;
+
+  const handleRefreshGitView = useCallback(() => {
+    if (!projectRoot || isRefreshingView) {
+      return;
+    }
+
+    void Promise.all([
+      refreshGitView(projectRoot),
+      refreshRepositoryState(projectRoot),
+    ]);
+  }, [isRefreshingView, projectRoot, refreshGitView, refreshRepositoryState]);
 
   return (
     <div className="w-full h-full bg-background flex flex-col">
@@ -581,28 +595,45 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
       <div className="px-3 py-2 border-b border-border space-y-2">
         <div className="min-h-6 flex items-center justify-between gap-3">
           <span className="text-xs font-semibold text-muted-foreground">{t('patch.gitHistory', 'Git History')}</span>
-          <button
-            type="button"
-            onClick={() => projectRoot && void openPanel(projectRoot)}
-            disabled={!projectRoot}
-            className="inline-flex min-w-0 max-w-[62%] items-center gap-2 rounded-lg border border-border/60 bg-secondary/20 px-2.5 py-1 text-[11px] text-foreground transition-colors hover:bg-secondary/40 disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            <GitBranch size={12} className="shrink-0 text-muted-foreground" />
-            <span className="truncate text-sm font-semibold">{branchButtonLabel}</span>
-            {repoOverview?.upstream_branch && (
-              <span className="shrink-0 flex items-center gap-1.5">
-                <span className="inline-flex items-center gap-0.5 rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[10px] font-medium text-emerald-400">
-                  <ArrowUp size={10} strokeWidth={2.2} />
-                  {repoOverview.ahead}
+          <div className="flex min-w-0 max-w-[72%] items-center gap-2">
+            <button
+              type="button"
+              onClick={() => projectRoot && void openPanel(projectRoot)}
+              disabled={!projectRoot}
+              className="inline-flex min-w-0 flex-1 items-center gap-2 rounded-lg border border-border/60 bg-secondary/20 px-2.5 py-1 text-[11px] text-foreground transition-colors hover:bg-secondary/40 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              <GitBranch size={12} className="shrink-0 text-muted-foreground" />
+              <span className="truncate text-sm font-semibold">{branchButtonLabel}</span>
+              {repoOverview?.upstream_branch && (
+                <span className="shrink-0 flex items-center gap-1.5">
+                  <span className="inline-flex items-center gap-0.5 rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[10px] font-medium text-emerald-400">
+                    <ArrowUp size={10} strokeWidth={2.2} />
+                    {repoOverview.ahead}
+                  </span>
+                  <span className="inline-flex items-center gap-0.5 rounded-md bg-rose-500/10 px-1.5 py-0.5 text-[10px] font-medium text-rose-400">
+                    <ArrowDown size={10} strokeWidth={2.2} />
+                    {repoOverview.behind}
+                  </span>
                 </span>
-                <span className="inline-flex items-center gap-0.5 rounded-md bg-rose-500/10 px-1.5 py-0.5 text-[10px] font-medium text-rose-400">
-                  <ArrowDown size={10} strokeWidth={2.2} />
-                  {repoOverview.behind}
-                </span>
-              </span>
-            )}
-            {isOverviewLoading && <Loader2 size={12} className="shrink-0 animate-spin text-muted-foreground" />}
-          </button>
+              )}
+
+            </button>
+
+            <button
+              type="button"
+              onClick={handleRefreshGitView}
+              disabled={isRefreshDisabled}
+              className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-border/60 bg-secondary/20 text-muted-foreground transition-colors hover:bg-secondary/40 hover:text-foreground disabled:cursor-not-allowed disabled:opacity-50"
+              aria-label={t('patch.refreshGitView', 'Refresh git view')}
+              title={t('patch.refreshGitView', 'Refresh git view')}
+            >
+              {isRefreshingView ? (
+                <Loader2 size={13} className="animate-spin" />
+              ) : (
+                <RefreshCw size={13} />
+              )}
+            </button>
+          </div>
         </div>
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={14} />

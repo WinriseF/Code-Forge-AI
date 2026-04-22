@@ -8,6 +8,7 @@ pub mod commands;
 pub mod error;
 pub mod export;
 pub mod models;
+pub mod sync;
 
 pub use error::{GitError, Result};
 
@@ -22,6 +23,8 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             branch::get_git_repo_overview,
             branch::list_git_branches,
             branch::switch_branch,
+            sync::push_current_branch,
+            sync::pull_current_branch,
         ])
         .build()
 }

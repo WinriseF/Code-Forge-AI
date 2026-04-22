@@ -131,3 +131,14 @@ pub struct SwitchBranchResult {
     pub stash_name: Option<String>,
     pub warning: Option<String>,
 }
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct GitSyncResult {
+    pub success: bool,
+    pub current_branch: String,
+    pub upstream_branch: Option<String>,
+    pub ahead: usize,
+    pub behind: usize,
+    pub summary: String,
+    pub warning: Option<String>,
+}

@@ -4677,6 +4677,18 @@
           "markdownDescription": "Enables the list_git_branches command without any pre-configured scope."
         },
         {
+          "description": "Enables the pull_current_branch command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-git:allow-pull-current-branch",
+          "markdownDescription": "Enables the pull_current_branch command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the push_current_branch command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-git:allow-push-current-branch",
+          "markdownDescription": "Enables the push_current_branch command without any pre-configured scope."
+        },
+        {
           "description": "Enables the switch_branch command without any pre-configured scope.",
           "type": "string",
           "const": "ctxrun-plugin-git:allow-switch-branch",
@@ -4723,6 +4735,18 @@
           "type": "string",
           "const": "ctxrun-plugin-git:deny-list-git-branches",
           "markdownDescription": "Denies the list_git_branches command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the pull_current_branch command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-git:deny-pull-current-branch",
+          "markdownDescription": "Denies the pull_current_branch command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the push_current_branch command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-git:deny-push-current-branch",
+          "markdownDescription": "Denies the push_current_branch command without any pre-configured scope."
         },
         {
           "description": "Denies the switch_branch command without any pre-configured scope.",

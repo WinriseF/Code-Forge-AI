@@ -379,6 +379,30 @@
           "markdownDescription": "Denies the list_git_branches command without any pre-configured scope."
         },
         {
+          "description": "Enables the pull_current_branch command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-pull-current-branch",
+          "markdownDescription": "Enables the pull_current_branch command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the pull_current_branch command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-pull-current-branch",
+          "markdownDescription": "Denies the pull_current_branch command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the push_current_branch command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-push-current-branch",
+          "markdownDescription": "Enables the push_current_branch command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the push_current_branch command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-push-current-branch",
+          "markdownDescription": "Denies the push_current_branch command without any pre-configured scope."
+        },
+        {
           "description": "Enables the switch_branch command without any pre-configured scope.",
           "type": "string",
           "const": "allow-switch-branch",

@@ -1,14 +1,16 @@
 use crate::error::{GitError, Result};
 use crate::models::{GitBranchSummary, GitRepoOverview, SwitchBranchOptions, SwitchBranchResult};
 use chrono::{DateTime, Local};
-use git2::{Branch, BranchType, Repository, Signature, Status, build::CheckoutBuilder};
+use git2::{
+    Branch, BranchType, Repository, Signature, Status, StatusOptions, build::CheckoutBuilder,
+};
 
 #[derive(Default)]
-struct WorktreeStatusSummary {
-    has_staged_changes: bool,
-    has_unstaged_changes: bool,
-    has_untracked_files: bool,
-    conflicted_count: usize,
+pub(crate) struct WorktreeStatusSummary {
+    pub(crate) has_staged_changes: bool,
+    pub(crate) has_unstaged_changes: bool,
+    pub(crate) has_untracked_files: bool,
+    pub(crate) conflicted_count: usize,
 }
 
 pub(crate) fn format_commit_time(time: git2::Time) -> String {
@@ -18,7 +20,7 @@ pub(crate) fn format_commit_time(time: git2::Time) -> String {
         .to_string()
 }
 
-fn current_branch_name(repo: &Repository) -> Option<String> {
+pub(crate) fn current_branch_name(repo: &Repository) -> Option<String> {
     let head = repo.head().ok()?;
     if !head.is_branch() {
         return None;
@@ -30,8 +32,10 @@ fn shorten_hash(hash: &str) -> String {
     hash.chars().take(7).collect()
 }
 
-fn collect_worktree_status(repo: &Repository) -> Result<WorktreeStatusSummary> {
-    let statuses = repo.statuses(None)?;
+pub(crate) fn collect_worktree_status(repo: &Repository) -> Result<WorktreeStatusSummary> {
+    let mut options = StatusOptions::new();
+    options.include_untracked(true).recurse_untracked_dirs(true);
+    let statuses = repo.statuses(Some(&mut options))?;
     let mut summary = WorktreeStatusSummary::default();
 
     for entry in statuses.iter() {
@@ -75,7 +79,10 @@ fn count_stashes(repo: &mut Repository) -> usize {
     count
 }
 
-fn branch_ahead_behind(repo: &Repository, branch: &Branch<'_>) -> (usize, usize, Option<String>) {
+pub(crate) fn branch_ahead_behind(
+    repo: &Repository,
+    branch: &Branch<'_>,
+) -> (usize, usize, Option<String>) {
     let upstream = match branch.upstream() {
         Ok(upstream) => upstream,
         Err(_) => return (0, 0, None),
@@ -96,7 +103,7 @@ fn branch_ahead_behind(repo: &Repository, branch: &Branch<'_>) -> (usize, usize,
     }
 }
 
-fn checkout_branch(repo: &Repository, reference_name: &str) -> Result<()> {
+pub(crate) fn checkout_branch(repo: &Repository, reference_name: &str) -> Result<()> {
     repo.set_head(reference_name)?;
     let mut checkout = CheckoutBuilder::new();
     checkout.safe();

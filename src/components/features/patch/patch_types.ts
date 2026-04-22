@@ -103,3 +103,13 @@ export interface SwitchBranchResult {
   stash_name: string | null;
   warning: string | null;
 }
+
+export interface GitSyncResult {
+  success: boolean;
+  current_branch: string;
+  upstream_branch: string | null;
+  ahead: number;
+  behind: number;
+  summary: string;
+  warning: string | null;
+}

@@ -1,7 +1,8 @@
 import { startTransition, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
-import { AlertTriangle, Check, GitBranch, Loader2, Search, X } from 'lucide-react';
+import { AlertTriangle, ArrowDown, ArrowUp, Check, GitBranch, Loader2, Search, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useGitOpsStore } from '@/store/useGitOpsStore';
+import { cn } from '@/lib/utils';
 import { useTranslation } from 'react-i18next';
 import type { GitBranchSummary } from './patch_types';
 
@@ -28,15 +29,16 @@ export function GitOpsPanel({ projectRoot }: GitOpsPanelProps) {
   const repoOverview = useGitOpsStore((s) => s.repoOverview);
   const branches = useGitOpsStore((s) => s.branches);
   const searchQuery = useGitOpsStore((s) => s.searchQuery);
-  const isOverviewLoading = useGitOpsStore((s) => s.isOverviewLoading);
   const isBranchesLoading = useGitOpsStore((s) => s.isBranchesLoading);
-  const isSwitching = useGitOpsStore((s) => s.isSwitching);
-  const switchError = useGitOpsStore((s) => s.switchError);
+  const activeOperation = useGitOpsStore((s) => s.activeOperation);
+  const operationError = useGitOpsStore((s) => s.operationError);
   const closePanel = useGitOpsStore((s) => s.closePanel);
   const setSearchQuery = useGitOpsStore((s) => s.setSearchQuery);
   const searchBranches = useGitOpsStore((s) => s.searchBranches);
   const switchBranch = useGitOpsStore((s) => s.switchBranch);
-  const clearSwitchError = useGitOpsStore((s) => s.clearSwitchError);
+  const pushCurrentBranch = useGitOpsStore((s) => s.pushCurrentBranch);
+  const pullCurrentBranch = useGitOpsStore((s) => s.pullCurrentBranch);
+  const clearOperationError = useGitOpsStore((s) => s.clearOperationError);
 
   const deferredSearchQuery = useDeferredValue(searchQuery);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -54,6 +56,10 @@ export function GitOpsPanel({ projectRoot }: GitOpsPanelProps) {
   );
   const hasConflicts = Boolean(repoOverview?.conflicted_count);
   const isConfirming = pendingBranch !== null;
+  const isSwitching = activeOperation === 'switch';
+  const isPushing = activeOperation === 'push';
+  const isPulling = activeOperation === 'pull';
+  const isBusy = activeOperation !== null;
 
   useEffect(() => {
     if (!isPanelOpen || !projectRoot) {
@@ -129,12 +135,17 @@ export function GitOpsPanel({ projectRoot }: GitOpsPanelProps) {
     selected?.scrollIntoView({ block: 'nearest' });
   }, [activeIndex]);
 
+  const focusBranchPrimaryButton = (index: number) => {
+    const row = listContainerRef.current?.querySelector<HTMLElement>(`[data-branch-index="${index}"]`);
+    row?.querySelector<HTMLButtonElement>('button')?.focus();
+  };
+
   const handleRequestSwitch = async (branch: GitBranchSummary) => {
-    if (!projectRoot || isSwitching) {
+    if (!projectRoot || isBusy) {
       return;
     }
 
-    clearSwitchError();
+    clearOperationError();
     if (branch.is_current) {
       closePanel();
       return;
@@ -171,24 +182,67 @@ export function GitOpsPanel({ projectRoot }: GitOpsPanelProps) {
     }
   };
 
+  const handlePushCurrentBranch = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    if (
+      !projectRoot
+      || !repoOverview?.upstream_branch
+      || isBusy
+      || hasConflicts
+      || repoOverview.ahead === 0
+      || repoOverview.behind > 0
+    ) {
+      return;
+    }
+
+    clearOperationError();
+    await pushCurrentBranch(projectRoot);
+  };
+
+  const handlePullCurrentBranch = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    if (
+      !projectRoot
+      || !repoOverview?.upstream_branch
+      || isBusy
+      || hasConflicts
+      || isDirty
+      || repoOverview.behind === 0
+      || repoOverview.ahead > 0
+    ) {
+      return;
+    }
+
+    clearOperationError();
+    await pullCurrentBranch(projectRoot);
+  };
+
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (isConfirming) {
+    if (isConfirming || isBusy || branches.length === 0) {
       return;
     }
 
     if (event.key === 'ArrowDown') {
       event.preventDefault();
-      setActiveIndex((current) => Math.min(current + 1, Math.max(branches.length - 1, 0)));
+      const nextIndex = Math.min(activeIndex + 1, Math.max(branches.length - 1, 0));
+      setActiveIndex(nextIndex);
+      window.requestAnimationFrame(() => focusBranchPrimaryButton(nextIndex));
       return;
     }
 
     if (event.key === 'ArrowUp') {
       event.preventDefault();
-      setActiveIndex((current) => Math.max(current - 1, 0));
+      const nextIndex = Math.max(activeIndex - 1, 0);
+      setActiveIndex(nextIndex);
+      window.requestAnimationFrame(() => focusBranchPrimaryButton(nextIndex));
       return;
     }
 
-    if (event.key === 'Enter' && branches[activeIndex]) {
+    if (
+      event.key === 'Enter'
+      && event.target === listContainerRef.current
+      && branches[activeIndex]
+    ) {
       event.preventDefault();
       void handleRequestSwitch(branches[activeIndex]);
     }
@@ -275,7 +329,6 @@ export function GitOpsPanel({ projectRoot }: GitOpsPanelProps) {
                 <span className="text-sm font-semibold text-foreground">
                   {t('patch.gitOpsTitle', 'Switch branch')}
                 </span>
-                {isOverviewLoading && <Loader2 size={14} className="animate-spin text-muted-foreground" />}
               </div>
               <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
                 <span>
@@ -327,10 +380,10 @@ export function GitOpsPanel({ projectRoot }: GitOpsPanelProps) {
           </div>
         </div>
 
-        {switchError && (
+        {operationError && (
           <div className="flex items-center gap-2 border-b border-destructive/20 bg-destructive/10 px-4 py-2 text-xs text-destructive">
             <AlertTriangle size={14} />
-            <span>{switchError}</span>
+            <span>{operationError}</span>
           </div>
         )}
 
@@ -369,10 +422,10 @@ export function GitOpsPanel({ projectRoot }: GitOpsPanelProps) {
             </label>
 
             <div className="flex justify-end gap-2">
-              <Button type="button" variant="ghost" onClick={() => setPendingBranch(null)} disabled={isSwitching}>
+              <Button type="button" variant="ghost" onClick={() => setPendingBranch(null)} disabled={isBusy}>
                 {t('actions.cancel', 'Cancel')}
               </Button>
-              <Button type="button" onClick={() => void handleConfirmSwitch()} disabled={isSwitching}>
+              <Button type="button" onClick={() => void handleConfirmSwitch()} disabled={isBusy}>
                 {isSwitching && <Loader2 size={14} className="mr-2 animate-spin" />}
                 {t('patch.gitOpsConfirmAction', 'Stash and switch')}
               </Button>
@@ -397,46 +450,109 @@ export function GitOpsPanel({ projectRoot }: GitOpsPanelProps) {
             ) : (
               branches.map((branch, index) => {
                 const isActive = index === activeIndex;
+                const isCurrentBranch = branch.is_current;
+                const ahead = isCurrentBranch ? (repoOverview?.ahead ?? branch.ahead) : branch.ahead;
+                const behind = isCurrentBranch ? (repoOverview?.behind ?? branch.behind) : branch.behind;
+                const hasUpstream = isCurrentBranch ? Boolean(repoOverview?.upstream_branch) : Boolean(branch.upstream_name);
+                const canPush = isCurrentBranch && hasUpstream && ahead > 0 && behind === 0 && !hasConflicts && !isBusy;
+                const canPull = isCurrentBranch && hasUpstream && behind > 0 && ahead === 0 && !hasConflicts && !isDirty && !isBusy;
                 return (
-                  <button
+                  <div
                     key={branch.full_refname}
-                    type="button"
                     data-branch-index={index}
                     onMouseEnter={() => setActiveIndex(index)}
-                    onClick={() => void handleRequestSwitch(branch)}
-                    disabled={isSwitching}
-                    className={[
-                      'flex w-full items-start gap-3 rounded-xl px-3 py-3 text-left transition-colors',
+                    className={cn(
+                      'flex items-stretch gap-3 rounded-xl px-3 py-3 transition-colors',
                       isActive ? 'bg-secondary/80' : 'hover:bg-secondary/50',
-                    ].join(' ')}
+                    )}
                   >
-                    <div className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full border border-border/60 bg-background/70">
-                      {branch.is_current ? <Check size={13} className="text-green-500" /> : <GitBranch size={13} className="text-muted-foreground" />}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className="text-sm font-medium text-foreground">{branch.name}</span>
-                        {branch.is_current && (
-                          <span className="rounded-full border border-green-500/30 bg-green-500/10 px-2 py-0.5 text-[11px] text-green-600 dark:text-green-300">
-                            {t('patch.gitOpsCurrentBranch', 'Current')}
-                          </span>
+                    <button
+                      type="button"
+                      onClick={() => void handleRequestSwitch(branch)}
+                      disabled={isBusy}
+                      className="flex min-w-0 flex-1 items-start gap-3 text-left disabled:cursor-default disabled:opacity-75"
+                    >
+                      <div className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full border border-border/60 bg-background/70">
+                        {branch.is_current ? <Check size={13} className="text-green-500" /> : <GitBranch size={13} className="text-muted-foreground" />}
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="text-sm font-medium text-foreground">{branch.name}</span>
+                          {branch.is_current && (
+                            <span className="rounded-full border border-green-500/30 bg-green-500/10 px-2 py-0.5 text-[11px] text-green-600 dark:text-green-300">
+                              {t('patch.gitOpsCurrentBranch', 'Current')}
+                            </span>
+                          )}
+                          {branch.is_remote && (
+                            <span className="rounded-full border border-border/60 bg-background/80 px-2 py-0.5 text-[11px] text-muted-foreground">
+                              {t('patch.gitOpsRemoteBranch', 'Remote')}
+                            </span>
+                          )}
+                        </div>
+                        <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+                          {branch.upstream_name && <span>{branch.upstream_name} · ↑{ahead} ↓{behind}</span>}
+                          {branch.head_short_hash && <span className="font-mono">{branch.head_short_hash}</span>}
+                          {branch.last_commit_date && <span>{branch.last_commit_date}</span>}
+                        </div>
+                        {branch.last_commit_message && (
+                          <p className="mt-1 truncate text-xs text-muted-foreground/90">{branch.last_commit_message}</p>
                         )}
-                        {branch.is_remote && (
-                          <span className="rounded-full border border-border/60 bg-background/80 px-2 py-0.5 text-[11px] text-muted-foreground">
-                            {t('patch.gitOpsRemoteBranch', 'Remote')}
+                      </div>
+                    </button>
+
+                    {branch.is_current && (
+                      <div className="flex shrink-0 items-center gap-2 self-center">
+                        {hasUpstream ? (
+                          <>
+                            <Button
+                              type="button"
+                              variant="ghost"
+                              size="sm"
+                              onClick={(event) => void handlePushCurrentBranch(event)}
+                              disabled={!canPush}
+                              className="h-8 rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-2.5 text-[11px] font-medium text-emerald-700 hover:bg-emerald-500/15 hover:text-emerald-800 disabled:border-border/60 disabled:bg-background/70 disabled:text-muted-foreground dark:text-emerald-300 dark:hover:text-emerald-200"
+                            >
+                              {isPushing ? (
+                                <Loader2 size={12} className="mr-1.5 animate-spin" />
+                              ) : (
+                                <ArrowUp size={12} className="mr-1.5" />
+                              )}
+                              <span>{t('patch.gitOpsPushCurrent', 'Push')}</span>
+                              {ahead > 0 && (
+                                <span className="ml-1 rounded-full bg-black/10 px-1.5 py-0.5 text-[10px] leading-none text-current dark:bg-white/10">
+                                  {ahead}
+                                </span>
+                              )}
+                            </Button>
+                            <Button
+                              type="button"
+                              variant="ghost"
+                              size="sm"
+                              onClick={(event) => void handlePullCurrentBranch(event)}
+                              disabled={!canPull}
+                              className="h-8 rounded-lg border border-sky-500/20 bg-sky-500/10 px-2.5 text-[11px] font-medium text-sky-700 hover:bg-sky-500/15 hover:text-sky-800 disabled:border-border/60 disabled:bg-background/70 disabled:text-muted-foreground dark:text-sky-300 dark:hover:text-sky-200"
+                            >
+                              {isPulling ? (
+                                <Loader2 size={12} className="mr-1.5 animate-spin" />
+                              ) : (
+                                <ArrowDown size={12} className="mr-1.5" />
+                              )}
+                              <span>{t('patch.gitOpsPullCurrent', 'Pull')}</span>
+                              {behind > 0 && (
+                                <span className="ml-1 rounded-full bg-black/10 px-1.5 py-0.5 text-[10px] leading-none text-current dark:bg-white/10">
+                                  {behind}
+                                </span>
+                              )}
+                            </Button>
+                          </>
+                        ) : (
+                          <span className="rounded-full border border-border/60 bg-background/70 px-2.5 py-1 text-[11px] text-muted-foreground">
+                            {t('patch.gitOpsNoUpstream', 'No upstream')}
                           </span>
                         )}
                       </div>
-                      <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-                        {branch.upstream_name && <span>{branch.upstream_name} · ↑{branch.ahead} ↓{branch.behind}</span>}
-                        {branch.head_short_hash && <span className="font-mono">{branch.head_short_hash}</span>}
-                        {branch.last_commit_date && <span>{branch.last_commit_date}</span>}
-                      </div>
-                      {branch.last_commit_message && (
-                        <p className="mt-1 truncate text-xs text-muted-foreground/90">{branch.last_commit_message}</p>
-                      )}
-                    </div>
-                  </button>
+                    )}
+                  </div>
                 );
               })
             )}

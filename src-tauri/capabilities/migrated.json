@@ -92,6 +92,8 @@
     "ctxrun-plugin-git:allow-get-git-repo-overview",
     "ctxrun-plugin-git:allow-list-git-branches",
     "ctxrun-plugin-git:allow-switch-branch",
+    "ctxrun-plugin-git:allow-push-current-branch",
+    "ctxrun-plugin-git:allow-pull-current-branch",
     "ctxrun-plugin-refinery:allow-get-refinery-history",
     "ctxrun-plugin-refinery:allow-get-refinery-item-detail",
     "ctxrun-plugin-refinery:allow-get-refinery-statistics",

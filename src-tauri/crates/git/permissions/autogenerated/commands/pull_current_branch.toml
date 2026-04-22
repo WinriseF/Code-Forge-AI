@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-pull-current-branch"
+description = "Enables the pull_current_branch command without any pre-configured scope."
+commands.allow = ["pull_current_branch"]
+
+[[permission]]
+identifier = "deny-pull-current-branch"
+description = "Denies the pull_current_branch command without any pre-configured scope."
+commands.deny = ["pull_current_branch"]

@@ -11,6 +11,7 @@ use ctxrun_plugin_git::{
         export_git_diff, get_git_commits, get_git_diff, get_git_diff_text, get_git_log_graph,
     },
     models::{ExportFormat, ExportLayout, GitRefKind, SwitchBranchOptions},
+    sync::{pull_current_branch, push_current_branch},
 };
 use git2::{BranchType, IndexAddOption, Repository, Signature, build::CheckoutBuilder};
 
@@ -131,6 +132,40 @@ fn setup_repo_with_remote_branch(prefix: &str) -> (PathBuf, PathBuf) {
 
     drop(remote_repo);
     (local_root, remote_root)
+}
+
+fn setup_repo_with_tracking_clone(prefix: &str) -> (PathBuf, PathBuf) {
+    let remote_root = temp_root(&format!("{prefix}-remote"));
+    let seed_root = temp_root(&format!("{prefix}-seed"));
+
+    {
+        let _remote_repo = Repository::init_bare(&remote_root).expect("init bare remote");
+        let seed_repo = Repository::init(&seed_root).expect("init seed repo");
+
+        fs::write(seed_root.join("file.txt"), "line-1\n").expect("write initial file");
+        commit_all(&seed_repo, "initial");
+        seed_repo
+            .remote("origin", remote_root.to_string_lossy().as_ref())
+            .expect("add origin remote");
+        seed_repo
+            .find_remote("origin")
+            .expect("find origin")
+            .push(&["refs/heads/master:refs/heads/master"], None)
+            .expect("push master");
+    }
+
+    let local_root = temp_root(&format!("{prefix}-local"));
+    Repository::clone(remote_root.to_string_lossy().as_ref(), &local_root)
+        .expect("clone local repo");
+    let _ = fs::remove_dir_all(seed_root);
+
+    (local_root, remote_root)
+}
+
+fn clone_repo(remote_root: &PathBuf, prefix: &str) -> PathBuf {
+    let clone_root = temp_root(prefix);
+    Repository::clone(remote_root.to_string_lossy().as_ref(), &clone_root).expect("clone repo");
+    clone_root
 }
 
 #[test]
@@ -543,4 +578,108 @@ fn centralized_git_switch_branch_blocks_dirty_worktree_without_stash() {
     );
 
     let _ = fs::remove_dir_all(root);
+}
+
+#[test]
+fn centralized_git_push_current_branch_updates_existing_upstream() {
+    let (local_root, remote_root) = setup_repo_with_tracking_clone("git-push-current");
+    let local_repo = Repository::open(&local_root).expect("open local repo");
+
+    fs::write(local_root.join("file.txt"), "line-1\nlocal push\n").expect("write local change");
+    let local_hash = commit_all(&local_repo, "local push");
+
+    let result =
+        push_current_branch(local_root.to_string_lossy().to_string()).expect("push current branch");
+    assert!(result.success);
+    assert_eq!(result.current_branch, "master");
+    assert_eq!(result.ahead, 0);
+    assert_eq!(result.behind, 0);
+
+    let remote_repo = Repository::open(&remote_root).expect("open bare remote");
+    let remote_hash = remote_repo
+        .find_reference("refs/heads/master")
+        .expect("find remote master")
+        .target()
+        .expect("remote master target")
+        .to_string();
+    assert_eq!(remote_hash, local_hash);
+
+    let overview =
+        get_git_repo_overview(local_root.to_string_lossy().to_string()).expect("repo overview");
+    assert_eq!(overview.ahead, 0);
+    assert_eq!(overview.behind, 0);
+
+    let _ = fs::remove_dir_all(local_root);
+    let _ = fs::remove_dir_all(remote_root);
+}
+
+#[test]
+fn centralized_git_push_current_branch_rejects_behind_only_branch() {
+    let (local_root, remote_root) = setup_repo_with_tracking_clone("git-push-current-behind");
+    let peer_root = clone_repo(&remote_root, "git-push-current-behind-peer");
+    let peer_repo = Repository::open(&peer_root).expect("open peer repo");
+
+    fs::write(peer_root.join("file.txt"), "line-1\nremote update\n").expect("write peer change");
+    commit_all(&peer_repo, "remote update");
+    peer_repo
+        .find_remote("origin")
+        .expect("find origin")
+        .push(&["refs/heads/master:refs/heads/master"], None)
+        .expect("push remote update");
+
+    let err = push_current_branch(local_root.to_string_lossy().to_string())
+        .expect_err("behind-only push should fail");
+    assert_eq!(
+        err.to_string(),
+        "Branch is behind its upstream; pull or rebase before pushing"
+    );
+
+    let overview =
+        get_git_repo_overview(local_root.to_string_lossy().to_string()).expect("repo overview");
+    assert_eq!(overview.ahead, 0);
+    assert_eq!(overview.behind, 1);
+
+    let _ = fs::remove_dir_all(peer_root);
+    let _ = fs::remove_dir_all(local_root);
+    let _ = fs::remove_dir_all(remote_root);
+}
+
+#[test]
+fn centralized_git_pull_current_branch_fast_forwards_from_upstream() {
+    let (local_root, remote_root) = setup_repo_with_tracking_clone("git-pull-current");
+    let peer_root = clone_repo(&remote_root, "git-pull-peer");
+    let peer_repo = Repository::open(&peer_root).expect("open peer repo");
+
+    fs::write(peer_root.join("file.txt"), "line-1\nremote update\n").expect("write peer change");
+    let remote_hash = commit_all(&peer_repo, "remote update");
+    peer_repo
+        .find_remote("origin")
+        .expect("find origin")
+        .push(&["refs/heads/master:refs/heads/master"], None)
+        .expect("push remote update");
+
+    let result =
+        pull_current_branch(local_root.to_string_lossy().to_string()).expect("pull current branch");
+    assert!(result.success);
+    assert_eq!(result.current_branch, "master");
+    assert_eq!(result.ahead, 0);
+    assert_eq!(result.behind, 0);
+
+    let local_repo = Repository::open(&local_root).expect("reopen local repo");
+    let local_head = local_repo
+        .head()
+        .expect("local head")
+        .target()
+        .expect("local head target")
+        .to_string();
+    assert_eq!(local_head, remote_hash);
+    assert!(
+        fs::read_to_string(local_root.join("file.txt"))
+            .expect("read pulled file")
+            .contains("remote update")
+    );
+
+    let _ = fs::remove_dir_all(peer_root);
+    let _ = fs::remove_dir_all(local_root);
+    let _ = fs::remove_dir_all(remote_root);
 }
