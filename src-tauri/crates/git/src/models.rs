@@ -83,3 +83,51 @@ pub enum ExportLayout {
     Unified,
     GitPatch,
 }
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct GitRepoOverview {
+    pub current_branch: Option<String>,
+    pub is_detached_head: bool,
+    pub head_hash: Option<String>,
+    pub head_short_hash: Option<String>,
+    pub upstream_branch: Option<String>,
+    pub ahead: usize,
+    pub behind: usize,
+    pub has_staged_changes: bool,
+    pub has_unstaged_changes: bool,
+    pub has_untracked_files: bool,
+    pub conflicted_count: usize,
+    pub stash_count: usize,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct GitBranchSummary {
+    pub name: String,
+    pub full_refname: String,
+    pub is_current: bool,
+    pub is_remote: bool,
+    pub upstream_name: Option<String>,
+    pub ahead: usize,
+    pub behind: usize,
+    pub head_hash: Option<String>,
+    pub head_short_hash: Option<String>,
+    pub last_commit_message: Option<String>,
+    pub last_commit_date: Option<String>,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct SwitchBranchOptions {
+    pub stash_if_dirty: bool,
+    pub stash_message: Option<String>,
+    pub create_tracking: bool,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct SwitchBranchResult {
+    pub success: bool,
+    pub current_branch: String,
+    pub previous_branch: Option<String>,
+    pub stash_created: bool,
+    pub stash_name: Option<String>,
+    pub warning: Option<String>,
+}

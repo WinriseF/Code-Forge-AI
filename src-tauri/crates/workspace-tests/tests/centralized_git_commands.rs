@@ -6,10 +6,11 @@ use std::{
 };
 
 use ctxrun_plugin_git::{
+    branch::{get_git_repo_overview, list_git_branches, switch_branch},
     commands::{
         export_git_diff, get_git_commits, get_git_diff, get_git_diff_text, get_git_log_graph,
     },
-    models::{ExportFormat, ExportLayout, GitRefKind},
+    models::{ExportFormat, ExportLayout, GitRefKind, SwitchBranchOptions},
 };
 use git2::{BranchType, IndexAddOption, Repository, Signature, build::CheckoutBuilder};
 
@@ -72,6 +73,64 @@ fn checkout_branch(repo: &Repository, refname: &str) {
     checkout.force();
     repo.checkout_head(Some(&mut checkout))
         .expect("checkout branch");
+}
+
+fn setup_repo_with_remote_branch(prefix: &str) -> (PathBuf, PathBuf) {
+    let remote_root = temp_root(&format!("{prefix}-remote"));
+    let local_root = temp_root(&format!("{prefix}-local"));
+
+    let remote_repo = Repository::init_bare(&remote_root).expect("init bare remote");
+    let local_repo = Repository::init(&local_root).expect("init local repo");
+
+    fs::write(local_root.join("file.txt"), "line-1\n").expect("write initial file");
+    commit_all(&local_repo, "initial");
+
+    local_repo
+        .remote("origin", remote_root.to_string_lossy().as_ref())
+        .expect("add origin remote");
+    local_repo
+        .remote_set_url("origin", remote_root.to_string_lossy().as_ref())
+        .expect("ensure remote url");
+
+    let head_commit = local_repo
+        .head()
+        .expect("head")
+        .peel_to_commit()
+        .expect("head commit");
+    local_repo
+        .branch("feature/remote-only", &head_commit, false)
+        .expect("create feature branch");
+    checkout_branch(&local_repo, "refs/heads/feature/remote-only");
+    fs::write(local_root.join("file.txt"), "line-1\nremote-only\n").expect("write feature file");
+    commit_all(&local_repo, "remote branch change");
+
+    {
+        let mut remote = local_repo.find_remote("origin").expect("find origin");
+        remote
+            .push(
+                &[
+                    "refs/heads/master:refs/heads/master",
+                    "refs/heads/feature/remote-only:refs/heads/feature/remote-only",
+                ],
+                None,
+            )
+            .expect("push branches");
+    }
+
+    checkout_branch(&local_repo, "refs/heads/master");
+    local_repo
+        .find_branch("feature/remote-only", BranchType::Local)
+        .expect("find local feature branch")
+        .delete()
+        .expect("delete local feature branch");
+    local_repo
+        .find_remote("origin")
+        .expect("find origin")
+        .fetch(&["feature/remote-only"], None, None)
+        .expect("fetch remote branch");
+
+    drop(remote_repo);
+    (local_root, remote_root)
 }
 
 #[test]
@@ -383,6 +442,104 @@ async fn centralized_git_commands_export_diff_handles_success_and_no_selection_e
     assert!(
         err.to_string().contains("No files selected"),
         "expected no-selection error, got: {err}"
+    );
+
+    let _ = fs::remove_dir_all(root);
+}
+
+#[test]
+fn centralized_git_repo_overview_reports_branch_status() {
+    let root = temp_root("git-overview");
+    let repo = Repository::init(&root).expect("init git repo");
+
+    fs::write(root.join("file.txt"), "line-1\n").expect("write initial file");
+    commit_all(&repo, "initial");
+    fs::write(root.join("file.txt"), "line-1\nline-2\n").expect("modify tracked file");
+    fs::write(root.join("new.txt"), "new\n").expect("write untracked file");
+
+    let overview =
+        get_git_repo_overview(root.to_string_lossy().to_string()).expect("repo overview");
+    assert_eq!(overview.current_branch.as_deref(), Some("master"));
+    assert!(overview.has_unstaged_changes);
+    assert!(overview.has_untracked_files);
+    assert_eq!(overview.conflicted_count, 0);
+
+    let _ = fs::remove_dir_all(root);
+}
+
+#[test]
+fn centralized_git_branch_listing_and_remote_switch_create_tracking_branch() {
+    let (local_root, remote_root) = setup_repo_with_remote_branch("git-switch-remote");
+
+    let branches = list_git_branches(local_root.to_string_lossy().to_string(), Some(true), None)
+        .expect("list git branches");
+    let remote_feature = branches
+        .iter()
+        .find(|branch| branch.full_refname == "refs/remotes/origin/feature/remote-only")
+        .expect("remote feature branch");
+    assert!(remote_feature.is_remote);
+
+    let result = switch_branch(
+        local_root.to_string_lossy().to_string(),
+        remote_feature.full_refname.clone(),
+        SwitchBranchOptions {
+            stash_if_dirty: false,
+            stash_message: None,
+            create_tracking: true,
+        },
+    )
+    .expect("switch to remote tracking branch");
+
+    assert!(result.success);
+    assert_eq!(result.current_branch, "feature/remote-only");
+
+    let repo = Repository::open(&local_root).expect("reopen local repo");
+    let local_tracking = repo
+        .find_branch("feature/remote-only", BranchType::Local)
+        .expect("find created local branch");
+    let upstream_branch = local_tracking.upstream().expect("tracking upstream");
+    let upstream = upstream_branch
+        .name()
+        .expect("upstream name")
+        .expect("upstream value");
+    assert_eq!(upstream, "origin/feature/remote-only");
+
+    let _ = fs::remove_dir_all(local_root);
+    let _ = fs::remove_dir_all(remote_root);
+}
+
+#[test]
+fn centralized_git_switch_branch_blocks_dirty_worktree_without_stash() {
+    let root = temp_root("git-switch-dirty");
+    let repo = Repository::init(&root).expect("init git repo");
+
+    fs::write(root.join("file.txt"), "line-1\n").expect("write initial file");
+    commit_all(&repo, "initial");
+
+    let head_commit = repo
+        .head()
+        .expect("head")
+        .peel_to_commit()
+        .expect("head commit");
+    repo.branch("feature/test", &head_commit, false)
+        .expect("create feature branch");
+
+    fs::write(root.join("file.txt"), "line-1\ndirty\n").expect("write dirty file");
+
+    let err = switch_branch(
+        root.to_string_lossy().to_string(),
+        "refs/heads/feature/test".to_string(),
+        SwitchBranchOptions {
+            stash_if_dirty: false,
+            stash_message: None,
+            create_tracking: false,
+        },
+    )
+    .expect_err("dirty worktree should be rejected");
+
+    assert!(
+        err.to_string()
+            .contains("Working tree has uncommitted changes")
     );
 
     let _ = fs::remove_dir_all(root);

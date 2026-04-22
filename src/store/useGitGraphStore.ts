@@ -7,6 +7,7 @@ import {
   isRawStashCommit,
 } from '@/components/features/patch/gitGraphDisplay';
 import i18n from '@/i18n/config';
+import { errorToString } from '@/lib/utils';
 
 export const GIT_PLUGIN_PREFIX = 'plugin:ctxrun-plugin-git|';
 export const WORKING_TREE_HASH = '__WORK_DIR__';
@@ -92,11 +93,6 @@ function mapDiffFiles(result: GitDiffFile[]): PatchFileItem[] {
 
 function exportablePaths(files: PatchFileItem[]): Set<string> {
   return new Set(files.filter((f) => !f.isBinary && !f.isLarge).map((f) => f.path));
-}
-
-function errorToString(err: unknown): string {
-  if (err instanceof Error) return err.message;
-  return String(err);
 }
 
 const EMPTY_TREE_HASH = '4b825dc642cb6eb9a060e54bf899d15363d7aa91';

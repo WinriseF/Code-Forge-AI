@@ -136,4 +136,82 @@ Denies the get_git_log_graph command without any pre-configured scope.
 
 </td>
 </tr>
+
+<tr>
+<td>
+
+`ctxrun-plugin-git:allow-get-git-repo-overview`
+
+</td>
+<td>
+
+Enables the get_git_repo_overview command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`ctxrun-plugin-git:deny-get-git-repo-overview`
+
+</td>
+<td>
+
+Denies the get_git_repo_overview command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`ctxrun-plugin-git:allow-list-git-branches`
+
+</td>
+<td>
+
+Enables the list_git_branches command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`ctxrun-plugin-git:deny-list-git-branches`
+
+</td>
+<td>
+
+Denies the list_git_branches command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`ctxrun-plugin-git:allow-switch-branch`
+
+</td>
+<td>
+
+Enables the switch_branch command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`ctxrun-plugin-git:deny-switch-branch`
+
+</td>
+<td>
+
+Denies the switch_branch command without any pre-configured scope.
+
+</td>
+</tr>
 </table>

@@ -1,14 +1,16 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useGitGraphStore, ROW_HEIGHT, WORKING_TREE_HASH } from '@/store/useGitGraphStore';
+import { useGitOpsStore } from '@/store/useGitOpsStore';
 import { computeGitGraphLayout, type CommitRowViewModel } from './gitGraphLayout';
 import { CommitHoverCard } from './CommitHoverCard';
 import { GitRefBadges } from './GitRefBadges';
+import { GitOpsPanel } from './GitOpsPanel';
 import {
   buildGitGraphDisplayCommits,
   isCollapsedStashCommit,
   isRawStashCommit,
 } from './gitGraphDisplay';
-import { FolderOpen, Search, X } from 'lucide-react';
+import { ArrowDown, ArrowUp, FolderOpen, GitBranch, Loader2, Search, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { DisplayGraphCommit, GraphCommit } from './patch_types';
 
@@ -356,6 +358,11 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
   const isLoadingMore = useGitGraphStore((s) => s.isLoadingMore);
   const error = useGitGraphStore((s) => s.error);
   const compareTargetHash = useGitGraphStore((s) => s.compareTargetHash);
+  const repoOverview = useGitOpsStore((s) => s.repoOverview);
+  const isPanelOpen = useGitOpsStore((s) => s.isPanelOpen);
+  const isOverviewLoading = useGitOpsStore((s) => s.isOverviewLoading);
+  const fetchOverview = useGitOpsStore((s) => s.fetchOverview);
+  const openPanel = useGitOpsStore((s) => s.openPanel);
 
   const { t } = useTranslation();
 
@@ -515,6 +522,12 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
   }, [debouncedSearchInput, projectRoot, loadCommits]);
 
   useEffect(() => {
+    if (projectRoot) {
+      void fetchOverview(projectRoot);
+    }
+  }, [fetchOverview, projectRoot]);
+
+  useEffect(() => {
     const el = scrollRef.current;
     if (!el) {
       return;
@@ -554,6 +567,9 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
     }
   }, []);
 
+  const branchButtonLabel = repoOverview?.current_branch
+    ?? (repoOverview?.is_detached_head ? t('patch.gitOpsDetachedHead', 'Detached HEAD') : t('patch.gitOpsBranchUnknown', 'Branch'));
+
   return (
     <div className="w-full h-full bg-background flex flex-col">
       {error && commits.length > 0 && (
@@ -563,8 +579,30 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
       )}
 
       <div className="px-3 py-2 border-b border-border space-y-2">
-        <div className="h-6 flex items-center">
+        <div className="min-h-6 flex items-center justify-between gap-3">
           <span className="text-xs font-semibold text-muted-foreground">{t('patch.gitHistory', 'Git History')}</span>
+          <button
+            type="button"
+            onClick={() => projectRoot && void openPanel(projectRoot)}
+            disabled={!projectRoot}
+            className="inline-flex min-w-0 max-w-[62%] items-center gap-2 rounded-lg border border-border/60 bg-secondary/20 px-2.5 py-1 text-[11px] text-foreground transition-colors hover:bg-secondary/40 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <GitBranch size={12} className="shrink-0 text-muted-foreground" />
+            <span className="truncate text-sm font-semibold">{branchButtonLabel}</span>
+            {repoOverview?.upstream_branch && (
+              <span className="shrink-0 flex items-center gap-1.5">
+                <span className="inline-flex items-center gap-0.5 rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[10px] font-medium text-emerald-400">
+                  <ArrowUp size={10} strokeWidth={2.2} />
+                  {repoOverview.ahead}
+                </span>
+                <span className="inline-flex items-center gap-0.5 rounded-md bg-rose-500/10 px-1.5 py-0.5 text-[10px] font-medium text-rose-400">
+                  <ArrowDown size={10} strokeWidth={2.2} />
+                  {repoOverview.behind}
+                </span>
+              </span>
+            )}
+            {isOverviewLoading && <Loader2 size={12} className="shrink-0 animate-spin text-muted-foreground" />}
+          </button>
         </div>
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={14} />
@@ -587,6 +625,8 @@ export function CommitGraphPanel({ projectRoot }: CommitGraphPanelProps) {
           )}
         </div>
       </div>
+
+      {isPanelOpen && <GitOpsPanel projectRoot={projectRoot} />}
 
       <div ref={scrollRef} className="flex-1 overflow-y-auto overflow-x-hidden relative">
         {isLoading && commits.length === 0 ? (

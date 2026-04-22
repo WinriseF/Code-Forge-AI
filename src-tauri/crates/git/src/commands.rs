@@ -1,10 +1,10 @@
+use crate::branch::format_commit_time;
 use crate::error::{GitError, Result};
 use crate::export::generate_export_content;
 use crate::models::{
     ExportFormat, ExportLayout, GitCommit, GitDiffFile, GitDiffResponse, GitDiffSummary, GitRef,
     GitRefKind, GraphCommit,
 };
-use chrono::{DateTime, Local};
 use git2::{Delta, DiffFormat, DiffOptions, Oid, Reference, Repository};
 use rayon::prelude::*;
 use std::cell::RefCell;
@@ -269,12 +269,7 @@ pub fn get_git_commits(project_path: String) -> Result<Vec<GitCommit>> {
         let oid = id?;
         let commit = repo.find_commit(oid)?;
 
-        let time = commit.time();
-        let dt = DateTime::from_timestamp(time.seconds(), 0).unwrap_or_default();
-        let date_str = dt
-            .with_timezone(&Local)
-            .format("%Y-%m-%d %H:%M")
-            .to_string();
+        let date_str = format_commit_time(commit.time());
 
         commits.push(GitCommit {
             hash: oid.to_string(),
@@ -700,12 +695,7 @@ pub fn get_git_log_graph(
         let oid = id?;
         let commit = repo.find_commit(oid)?;
 
-        let time = commit.time();
-        let dt = DateTime::from_timestamp(time.seconds(), 0).unwrap_or_default();
-        let date_str = dt
-            .with_timezone(&Local)
-            .format("%Y-%m-%d %H:%M")
-            .to_string();
+        let date_str = format_commit_time(commit.time());
 
         let parent_hashes: Vec<String> = commit.parent_ids().map(|p| p.to_string()).collect();
 

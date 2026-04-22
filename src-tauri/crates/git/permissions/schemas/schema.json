@@ -353,6 +353,42 @@
           "type": "string",
           "const": "deny-get-git-log-graph",
           "markdownDescription": "Denies the get_git_log_graph command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the get_git_repo_overview command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-get-git-repo-overview",
+          "markdownDescription": "Enables the get_git_repo_overview command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the get_git_repo_overview command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-get-git-repo-overview",
+          "markdownDescription": "Denies the get_git_repo_overview command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the list_git_branches command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-list-git-branches",
+          "markdownDescription": "Enables the list_git_branches command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the list_git_branches command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-list-git-branches",
+          "markdownDescription": "Denies the list_git_branches command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the switch_branch command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-switch-branch",
+          "markdownDescription": "Enables the switch_branch command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the switch_branch command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-switch-branch",
+          "markdownDescription": "Denies the switch_branch command without any pre-configured scope."
         }
       ]
     }

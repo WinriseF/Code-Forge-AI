@@ -29,6 +29,22 @@ pub enum GitError {
     /// Join error from async operations
     #[error("Async operation failed: {0}")]
     JoinError(String),
+
+    /// Working tree contains changes that must be handled before switching
+    #[error("Working tree has uncommitted changes")]
+    DirtyWorktree,
+
+    /// The requested branch was not found
+    #[error("Branch not found: {0}")]
+    BranchNotFound(String),
+
+    /// The working tree contains unresolved conflicts
+    #[error("Unresolved conflicts prevent this operation")]
+    UnresolvedConflicts,
+
+    /// Creating a stash failed
+    #[error("Stash failed: {0}")]
+    StashFailed(String),
 }
 
 impl Serialize for GitError {

@@ -59,3 +59,47 @@ export interface GitRef {
   name: string;
   kind: 'Head' | 'Branch' | 'RemoteBranch' | 'Tag' | 'Stash' | 'DeletedBranch';
 }
+
+export interface GitRepoOverview {
+  current_branch: string | null;
+  is_detached_head: boolean;
+  head_hash: string | null;
+  head_short_hash: string | null;
+  upstream_branch: string | null;
+  ahead: number;
+  behind: number;
+  has_staged_changes: boolean;
+  has_unstaged_changes: boolean;
+  has_untracked_files: boolean;
+  conflicted_count: number;
+  stash_count: number;
+}
+
+export interface GitBranchSummary {
+  name: string;
+  full_refname: string;
+  is_current: boolean;
+  is_remote: boolean;
+  upstream_name: string | null;
+  ahead: number;
+  behind: number;
+  head_hash: string | null;
+  head_short_hash: string | null;
+  last_commit_message: string | null;
+  last_commit_date: string | null;
+}
+
+export interface SwitchBranchOptions {
+  stash_if_dirty: boolean;
+  stash_message: string | null;
+  create_tracking: boolean;
+}
+
+export interface SwitchBranchResult {
+  success: boolean;
+  current_branch: string;
+  previous_branch: string | null;
+  stash_created: boolean;
+  stash_name: string | null;
+  warning: string | null;
+}

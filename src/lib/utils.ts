@@ -33,3 +33,8 @@ export function formatBytesPerSecond(bytesPerSecond: number): string {
   if (!Number.isFinite(bytesPerSecond) || bytesPerSecond <= 0) return '0 B/s';
   return `${formatBytes(bytesPerSecond)}/s`;
 }
+
+export function errorToString(err: unknown): string {
+  if (err instanceof Error) return err.message;
+  return String(err);
+}
