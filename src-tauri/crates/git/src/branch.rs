@@ -337,8 +337,7 @@ pub fn switch_branch(
     }
 
     let is_dirty = worktree.has_staged_changes
-        || worktree.has_unstaged_changes
-        || worktree.has_untracked_files;
+        || worktree.has_unstaged_changes;
     if is_dirty && !options.stash_if_dirty {
         return Err(GitError::DirtyWorktree);
     }
