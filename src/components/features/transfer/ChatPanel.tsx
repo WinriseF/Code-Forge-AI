@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { FolderOpen, Paperclip, Send, FileText, MonitorSmartphone, Eye } from 'lucide-react';
+import { FolderOpen, Paperclip, Send, FileText, Eye } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { getCurrentWebview } from '@tauri-apps/api/webview';
 import type { TransferDevice, TransferMessage } from '@/types/transfer';
@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { buildPreviewUrl } from '@/lib/previewUrl';
 import uploadAnimationUrl from '@/assets/upload-files.lottie';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { AnimatedEmptyState } from '@/components/ui/AnimatedEmptyState';
 
 interface ChatPanelProps {
   isRunning: boolean;
@@ -124,12 +125,11 @@ export function ChatPanel({ isRunning, isBusy, selectedDevice, messages, onSendM
 
   if (!selectedDevice) {
     return (
-      <div className="flex-1 flex items-center justify-center bg-secondary/5">
-        <div className="text-center text-muted-foreground/50 flex flex-col items-center gap-3">
-          <MonitorSmartphone size={48} className="opacity-20" />
-          <p className="text-sm">{t('transfer.selectDevice')}</p>
-        </div>
-      </div>
+      <AnimatedEmptyState
+        title={t('transfer.selectDevice')}
+        className="h-full bg-secondary/5"
+        animationClassName="h-64 w-64"
+      />
     );
   }
 
@@ -183,7 +183,13 @@ export function ChatPanel({ isRunning, isBusy, selectedDevice, messages, onSendM
       {/* 消息流区域 */}
       <div ref={scrollRef} className="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-6">
         {messages.length === 0 ? (
-          <div className="text-center text-xs text-muted-foreground mt-10">{t('transfer.emptyChat')}</div>
+          <div className="flex min-h-full items-center justify-center">
+            <AnimatedEmptyState
+              title={t('transfer.emptyChat')}
+              className="min-h-0 py-4"
+              animationClassName="h-56 w-56"
+            />
+          </div>
         ) : (
           messages.map((msg) => {
             if (msg.kind === 'system') {

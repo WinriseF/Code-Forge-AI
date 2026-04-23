@@ -1,8 +1,9 @@
-import { Copy, FileText } from 'lucide-react';
+import { Copy } from 'lucide-react';
 import { writeText } from '@tauri-apps/plugin-clipboard-manager';
 import { DiffViewer } from './DiffViewer';
 import { PatchFileItem } from './patch_types';
 import { useTranslation } from 'react-i18next';
+import { AnimatedEmptyState } from '@/components/ui/AnimatedEmptyState';
 
 interface DiffWorkspaceProps {
   selectedFile: PatchFileItem | null;
@@ -63,12 +64,12 @@ export function DiffWorkspace({ selectedFile, onCopy }: DiffWorkspaceProps) {
 
       {/* 2. Content Area  */}
       {!selectedFile ? (
-          <div className="flex-1 flex flex-col items-center justify-center bg-background/50 h-full text-muted-foreground/40 gap-2">
-             <div className="p-4 bg-secondary/30 rounded-full">
-                <FileText size={32} className="opacity-50" />
-             </div>
-             <p className="text-xs">{t('patch.selectFile')}</p>
-          </div>
+          <AnimatedEmptyState
+            title={t('patch.selectFile')}
+            className="h-full bg-background/50"
+            animationClassName="h-60 w-60"
+            titleClassName="text-xs text-muted-foreground"
+          />
       ) : (
         <div className="flex-1 relative overflow-hidden bg-background">
             <DiffViewer

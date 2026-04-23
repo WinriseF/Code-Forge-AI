@@ -1,7 +1,7 @@
 import { useRefineryStore } from '@/store/useRefineryStore';
 import { formatTimeAgo } from '@/lib/refinery_utils';
 import { useAppStore } from '@/store/useAppStore';
-import { MoreHorizontal, Pin, Image as ImageIcon, FileText, Loader2, Filter, Search, X, PenTool, Edit3, Copy, Check, Globe, Layers } from 'lucide-react';
+import { MoreHorizontal, Pin, Image as ImageIcon, FileText, Loader2, Filter, X, PenTool, Edit3, Copy, Check, Globe, Layers } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useImageLoader } from '@/hooks/useImageLoader';
 import { useTranslation } from 'react-i18next';
@@ -15,6 +15,7 @@ import { motion } from 'framer-motion';
 import { useShallow } from 'zustand/react/shallow';
 import { bundleItems, FeedItemType } from '@/lib/bundler';
 import { BundleCard } from './BundleCard';
+import { AnimatedEmptyState } from '@/components/ui/AnimatedEmptyState';
 
 const REFINERY_PLUGIN_PREFIX = 'plugin:ctxrun-plugin-refinery|';
 
@@ -146,17 +147,20 @@ export function RefineryFeed() {
 
         {/* Virtual list */}
         {items.length === 0 ? (
-          <div className="flex-1 flex flex-col items-center justify-center text-muted-foreground/30 gap-6">
-            <div className="w-20 h-20 rounded-2xl bg-secondary/20 flex items-center justify-center border border-dashed border-border">
-              {hasActiveFilter ? <Search size={32} /> : <FileText size={32} />}
+          hasActiveFilter ? (
+            <AnimatedEmptyState
+              title={t('refinery.noResults')}
+              className="flex-1"
+              animationClassName="h-64 w-64"
+            />
+          ) : (
+            <div className="flex-1 flex flex-col items-center justify-center text-muted-foreground/30 gap-6">
+              <div className="w-20 h-20 rounded-2xl bg-secondary/20 flex items-center justify-center border border-dashed border-border">
+                <FileText size={32} />
+              </div>
+              <p className="text-sm italic">{t('refinery.waitingForFirstCopy')}</p>
             </div>
-            <p className="text-sm italic">
-              {hasActiveFilter
-                ? t('refinery.noResults')
-                : t('refinery.waitingForFirstCopy')
-              }
-            </p>
-          </div>
+          )
         ) : (
           <div className="flex-1 min-h-0">
             <GroupedVirtuoso

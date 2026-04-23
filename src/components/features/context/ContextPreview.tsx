@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Editor, OnMount } from '@monaco-editor/react';
-import { Copy, FileText, Loader2, AlertCircle, Search } from 'lucide-react';
+import { Copy, FileText, Loader2, Search } from 'lucide-react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import liquidLoaderUrl from '@/assets/liquid-loader.lottie';
 import { FileNode } from '@/types/context';
@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
 import { invoke } from '@tauri-apps/api/core';
 import { ensureMonacoThemes, getMonacoTheme } from '@/lib/monaco';
+import { AnimatedEmptyState } from '@/components/ui/AnimatedEmptyState';
 
 const CONTEXT_PLUGIN_PREFIX = 'plugin:ctxrun-plugin-context|';
 
@@ -124,10 +125,11 @@ export function ContextPreview({ fileTree }: ContextPreviewProps) {
 
   if (!content.trim()) {
     return (
-      <div className="flex flex-col items-center justify-center h-full text-muted-foreground gap-3 opacity-60">
-        <AlertCircle size={32} />
-        <p>{t('context.noFiles')}</p>
-      </div>
+      <AnimatedEmptyState
+        title={t('context.noFiles')}
+        className="h-full"
+        animationClassName="h-64 w-64"
+      />
     );
   }
 

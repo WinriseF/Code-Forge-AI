@@ -10,6 +10,7 @@ import { writeText } from '@tauri-apps/plugin-clipboard-manager';
 import { parseVariables } from '@/lib/template';
 import { useTranslation } from 'react-i18next'; 
 import { Toast, ToastType } from '@/components/ui/Toast';
+import { AnimatedEmptyState } from '@/components/ui/AnimatedEmptyState';
 
 import { PromptCard } from './PromptCard';
 import { PromptEditorDialog } from './dialogs/PromptEditorDialog';
@@ -300,11 +301,12 @@ export function PromptView() {
         {/* 核心容器 */}
         <div className="flex-1 overflow-hidden p-0 relative" style={{ width: '100%', height: '100%' }}> 
           {prompts.length === 0 && !isLoading ? (
-             <div className="flex flex-col items-center justify-center h-full text-muted-foreground opacity-60">
-                <div className="w-16 h-16 bg-secondary/50 rounded-2xl flex items-center justify-center mb-4"><Search size={32} /></div>
-                <p>{t('prompts.noResults', language)}</p>
-             </div>
-          ) : (
+             <AnimatedEmptyState
+               title={t('prompts.noResults', language)}
+               className="h-full"
+               animationClassName="h-64 w-64"
+             />
+           ) : (
              <AutoSizer>
               {({ height, width }: { height: number; width: number }) => {
                 const safeWidth = width - 20; 

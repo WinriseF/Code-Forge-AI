@@ -5,6 +5,7 @@ import { GitRefBadges } from './GitRefBadges';
 import { PatchFileTreeNode } from './PatchFileTreeNode';
 import { FileDown, FolderOpen, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { AnimatedEmptyState } from '@/components/ui/AnimatedEmptyState';
 
 interface DetailPanelProps {
   onExport: () => void;
@@ -70,9 +71,11 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
   // Empty state: nothing selected
   if (!selectedCommit && selectedCommitHash !== WORKING_TREE_HASH) {
     return (
-      <div className="flex-1 flex items-center justify-center bg-background">
-        <span className="text-sm text-muted-foreground">{t('patch.clickToViewChanges', 'Click a commit to view changes')}</span>
-      </div>
+      <AnimatedEmptyState
+        title={t('patch.clickToViewChanges', 'Click a commit to view changes')}
+        className="h-full bg-background"
+        animationClassName="h-64 w-64"
+      />
     );
   }
 
@@ -201,6 +204,12 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
           <div className="flex items-center justify-center py-8">
             <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
           </div>
+        ) : displayedNodes.length === 0 ? (
+          <AnimatedEmptyState
+            title={t('common.noFilesSelected')}
+            className="h-full py-10"
+            animationClassName="h-48 w-48"
+          />
         ) : (
           displayedNodes.map(({ node, depth }) => {
             const isDisabled = node.kind === 'file' && !!(node.fileData?.isBinary || node.fileData?.isLarge);
