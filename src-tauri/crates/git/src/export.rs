@@ -3,7 +3,6 @@ use serde_json;
 use similar::{ChangeTag, TextDiff};
 use std::fmt::Write;
 
-/// Export files in various formats
 pub fn generate_export_content(
     files: Vec<GitDiffFile>,
     format: ExportFormat,
