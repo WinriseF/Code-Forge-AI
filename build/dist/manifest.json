@@ -1,5 +1,5 @@
 {
-  "updated_at": 1776652204250,
+  "updated_at": 1777032067565,
   "version": "2.1.0",
   "packages": [
     {
@@ -183,9 +183,9 @@
       "language": "en",
       "platform": "linux",
       "name": "Linux Ops (EN)",
-      "description": "Contains 7999 en commands for linux.",
-      "count": 7999,
-      "size_kb": 3779,
+      "description": "Contains 8000 en commands for linux.",
+      "count": 8000,
+      "size_kb": 3780,
       "url": "packs/commands/en/linux.json",
       "category": "command"
     },
@@ -216,9 +216,9 @@
       "language": "en",
       "platform": "common",
       "name": "Common Tools (EN)",
-      "description": "Contains 20424 en commands for common.",
-      "count": 20424,
-      "size_kb": 9891,
+      "description": "Contains 20476 en commands for common.",
+      "count": 20476,
+      "size_kb": 9918,
       "url": "packs/commands/en/common.json",
       "category": "command"
     },
@@ -238,9 +238,9 @@
       "language": "en",
       "platform": "llm",
       "name": "ChatGPT Prompts (English)",
-      "description": "Collection of 1662 role-play prompts.",
-      "count": 1662,
-      "size_kb": 5017.79,
+      "description": "Collection of 1692 role-play prompts.",
+      "count": 1692,
+      "size_kb": 5068.2,
       "url": "packs/prompts/en/roles.json",
       "category": "prompt"
     },
@@ -259,8 +259,8 @@
       "id": "custom-prompt-zh-code",
       "language": "zh",
       "platform": "custom",
-      "name": "code",
-      "description": "code",
+      "name": "编程精选",
+      "description": "编程相关的高质量 Prompt",
       "count": 27,
       "size_kb": 56.97,
       "url": "packs/prompts/zh/code.json",

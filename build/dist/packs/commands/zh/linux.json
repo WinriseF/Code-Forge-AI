@@ -918,7 +918,7 @@
     "id": "tldr-zh-linux-mkfs.ntfs-0",
     "type": "command",
     "title": "mkfs.ntfs - 在设备 b 的分区 1 内创建一个 NTFS 文件系统（`sdb1`）",
-    "content": "mkfs.ntfs {{/dev/sdb1}}",
+    "content": "sudo mkfs.ntfs {{/dev/sdb1}}",
     "group": "Linux 运维",
     "description": "mkfs.ntfs: 在分区内创建一个 NTFS 文件系统。 (在设备 b 的分区 1 内创建一个 NTFS 文件系统（`sdb1`）)",
     "tags": [
@@ -933,7 +933,7 @@
     "id": "tldr-zh-linux-mkfs.ntfs-1",
     "type": "command",
     "title": "mkfs.ntfs - 创建一个带有卷标签的文件系统",
-    "content": "mkfs.ntfs -L {{volume_label}} {{/dev/sdb1}}",
+    "content": "sudo mkfs.ntfs {{[-L|--label]}} {{volume_label}} {{/dev/sdb1}}",
     "group": "Linux 运维",
     "description": "mkfs.ntfs: 在分区内创建一个 NTFS 文件系统。 (创建一个带有卷标签的文件系统)",
     "tags": [
@@ -948,7 +948,7 @@
     "id": "tldr-zh-linux-mkfs.ntfs-2",
     "type": "command",
     "title": "mkfs.ntfs - 创建一个带有特定 UUID 的文件系统",
-    "content": "mkfs.ntfs -U {{UUID}} {{/dev/sdb1}}",
+    "content": "sudo mkfs.ntfs {{[-U|--with-uuid]}} {{UUID}} {{/dev/sdb1}}",
     "group": "Linux 运维",
     "description": "mkfs.ntfs: 在分区内创建一个 NTFS 文件系统。 (创建一个带有特定 UUID 的文件系统)",
     "tags": [

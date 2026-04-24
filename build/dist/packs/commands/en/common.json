@@ -28740,6 +28740,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-tpm2-pcrreset-0",
+    "type": "command",
+    "title": "tpm2-pcrreset - Reset the PCR 23 banks",
+    "content": "tpm2 pcrreset 23",
+    "group": "Common Tools",
+    "description": "tpm2-pcrreset: Reset one or more PCR banks. Note: On operating system's locality, only PCR 16 and 23 can be reset. (Reset the PCR 23 banks)",
+    "tags": [
+      "common",
+      "tpm2-pcrreset",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tpm2-pcrreset-1",
+    "type": "command",
+    "title": "tpm2-pcrreset - Reset the PCR 16 and 23 banks",
+    "content": "tpm2 pcrreset 16 23",
+    "group": "Common Tools",
+    "description": "tpm2-pcrreset: Reset one or more PCR banks. Note: On operating system's locality, only PCR 16 and 23 can be reset. (Reset the PCR 16 and 23 banks)",
+    "tags": [
+      "common",
+      "tpm2-pcrreset",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-dhcpig-0",
     "type": "command",
     "title": "dhcpig - Exhaust all of the available DHCP addresses using the specified interface",
@@ -54885,6 +54915,51 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-tpm2-pcrread-0",
+    "type": "command",
+    "title": "tpm2-pcrread - Read all PCR values",
+    "content": "tpm2 pcrread",
+    "group": "Common Tools",
+    "description": "tpm2-pcrread: Read the PCR values from a TPM. (Read all PCR values)",
+    "tags": [
+      "common",
+      "tpm2-pcrread",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tpm2-pcrread-1",
+    "type": "command",
+    "title": "tpm2-pcrread - Read all PCR values of the sha256 bank",
+    "content": "tpm2 pcrread sha256:all",
+    "group": "Common Tools",
+    "description": "tpm2-pcrread: Read the PCR values from a TPM. (Read all PCR values of the sha256 bank)",
+    "tags": [
+      "common",
+      "tpm2-pcrread",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tpm2-pcrread-2",
+    "type": "command",
+    "title": "tpm2-pcrread - Read specific PCR values from multiple banks and write them to a file",
+    "content": "tpm2 pcrread {{[-o|--output]}} {{path/to/file}} {{sha1:16,17,18+sha256:16,17,18}}",
+    "group": "Common Tools",
+    "description": "tpm2-pcrread: Read the PCR values from a TPM. (Read specific PCR values from multiple banks and write them to a file)",
+    "tags": [
+      "common",
+      "tpm2-pcrread",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-git-standup-0",
     "type": "command",
     "title": "git-standup - Show a given author's commits from the last 10 days",
@@ -67247,6 +67322,21 @@
   {
     "id": "tldr-en-common-arp-scan-1",
     "type": "command",
+    "title": "arp-scan - Scan a specific host",
+    "content": "arp-scan {{10.0.0.1}}",
+    "group": "Common Tools",
+    "description": "arp-scan: Send ARP packets to hosts (specified as IP addresses or hostnames) to scan the local network. (Scan a specific host)",
+    "tags": [
+      "common",
+      "arp-scan",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-arp-scan-2",
+    "type": "command",
     "title": "arp-scan - Scan an IP network with a custom bitmask",
     "content": "arp-scan {{192.168.1.1}}/{{24}}",
     "group": "Common Tools",
@@ -67260,7 +67350,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-arp-scan-2",
+    "id": "tldr-en-common-arp-scan-3",
     "type": "command",
     "title": "arp-scan - Scan an IP network within a custom range",
     "content": "arp-scan {{127.0.0.0}}-{{127.0.0.31}}",
@@ -67275,12 +67365,27 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-arp-scan-3",
+    "id": "tldr-en-common-arp-scan-4",
     "type": "command",
     "title": "arp-scan - Scan an IP network with a custom net mask",
     "content": "arp-scan {{10.0.0.0}}:{{255.255.255.0}}",
     "group": "Common Tools",
     "description": "arp-scan: Send ARP packets to hosts (specified as IP addresses or hostnames) to scan the local network. (Scan an IP network with a custom net mask)",
+    "tags": [
+      "common",
+      "arp-scan",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-arp-scan-5",
+    "type": "command",
+    "title": "arp-scan - Specify an interface to use for scanning",
+    "content": "arp-scan {{10.0.0.1}} {{[-I|--interface]}} {{interface_name}}",
+    "group": "Common Tools",
+    "description": "arp-scan: Send ARP packets to hosts (specified as IP addresses or hostnames) to scan the local network. (Specify an interface to use for scanning)",
     "tags": [
       "common",
       "arp-scan",
@@ -71889,6 +71994,126 @@
     "tags": [
       "common",
       "uv-publish",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-ni-0",
+    "type": "command",
+    "title": "ni - Install all dependencies (equivalent to `npm install`, `yarn install`, etc.)",
+    "content": "ni",
+    "group": "Common Tools",
+    "description": "ni: Use the right package manager (npm, yarn, pnpm, bun, or deno) automatically. Detect the current project's lockfile to run the corresponding commands. Note: In PowerShell, `ni` is a built-in alias for `New-Item`. To use this tool, the alias must be removed. (Install all dependencies (equivalent to `npm install`, `yarn install`, etc.))",
+    "tags": [
+      "common",
+      "ni",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-ni-1",
+    "type": "command",
+    "title": "ni - Install a specific package (-D for dev dependencies)",
+    "content": "ni {{package}}",
+    "group": "Common Tools",
+    "description": "ni: Use the right package manager (npm, yarn, pnpm, bun, or deno) automatically. Detect the current project's lockfile to run the corresponding commands. Note: In PowerShell, `ni` is a built-in alias for `New-Item`. To use this tool, the alias must be removed. (Install a specific package (-D for dev dependencies))",
+    "tags": [
+      "common",
+      "ni",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-ni-2",
+    "type": "command",
+    "title": "ni - Run a `package.json` script (interactively select if no script is provided)",
+    "content": "nr {{script}}",
+    "group": "Common Tools",
+    "description": "ni: Use the right package manager (npm, yarn, pnpm, bun, or deno) automatically. Detect the current project's lockfile to run the corresponding commands. Note: In PowerShell, `ni` is a built-in alias for `New-Item`. To use this tool, the alias must be removed. (Run a `package.json` script (interactively select if no script is provided))",
+    "tags": [
+      "common",
+      "ni",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-ni-3",
+    "type": "command",
+    "title": "ni - Download and execute a command from a package (equivalent to `npx`, `pnpm dlx`, etc.)",
+    "content": "nlx {{package}}",
+    "group": "Common Tools",
+    "description": "ni: Use the right package manager (npm, yarn, pnpm, bun, or deno) automatically. Detect the current project's lockfile to run the corresponding commands. Note: In PowerShell, `ni` is a built-in alias for `New-Item`. To use this tool, the alias must be removed. (Download and execute a command from a package (equivalent to `npx`, `pnpm dlx`, etc.))",
+    "tags": [
+      "common",
+      "ni",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-ni-4",
+    "type": "command",
+    "title": "ni - Upgrade dependencies",
+    "content": "nup",
+    "group": "Common Tools",
+    "description": "ni: Use the right package manager (npm, yarn, pnpm, bun, or deno) automatically. Detect the current project's lockfile to run the corresponding commands. Note: In PowerShell, `ni` is a built-in alias for `New-Item`. To use this tool, the alias must be removed. (Upgrade dependencies)",
+    "tags": [
+      "common",
+      "ni",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-ni-5",
+    "type": "command",
+    "title": "ni - Uninstall a package",
+    "content": "nun {{package}}",
+    "group": "Common Tools",
+    "description": "ni: Use the right package manager (npm, yarn, pnpm, bun, or deno) automatically. Detect the current project's lockfile to run the corresponding commands. Note: In PowerShell, `ni` is a built-in alias for `New-Item`. To use this tool, the alias must be removed. (Uninstall a package)",
+    "tags": [
+      "common",
+      "ni",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-ni-6",
+    "type": "command",
+    "title": "ni - Clean install dependencies (equivalent to `npm ci`, etc.)",
+    "content": "nci",
+    "group": "Common Tools",
+    "description": "ni: Use the right package manager (npm, yarn, pnpm, bun, or deno) automatically. Detect the current project's lockfile to run the corresponding commands. Note: In PowerShell, `ni` is a built-in alias for `New-Item`. To use this tool, the alias must be removed. (Clean install dependencies (equivalent to `npm ci`, etc.))",
+    "tags": [
+      "common",
+      "ni",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-ni-7",
+    "type": "command",
+    "title": "ni - Use the current package manager agent directly for arbitrary commands",
+    "content": "na {{command}}",
+    "group": "Common Tools",
+    "description": "ni: Use the right package manager (npm, yarn, pnpm, bun, or deno) automatically. Detect the current project's lockfile to run the corresponding commands. Note: In PowerShell, `ni` is a built-in alias for `New-Item`. To use this tool, the alias must be removed. (Use the current package manager agent directly for arbitrary commands)",
+    "tags": [
+      "common",
+      "ni",
       "tldr",
       "en"
     ],
@@ -80874,6 +81099,126 @@
     "tags": [
       "common",
       "nagios2",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-swaynag-0",
+    "type": "command",
+    "title": "swaynag - Display an error",
+    "content": "swaynag {{[-m|--message]}} \"{{error message}}\"",
+    "group": "Common Tools",
+    "description": "swaynag: Display a message in a bar on top of a screen. (Display an error)",
+    "tags": [
+      "common",
+      "swaynag",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-swaynag-1",
+    "type": "command",
+    "title": "swaynag - Display a warning",
+    "content": "swaynag {{[-t|--type]}} warning {{[-m|--message]}} \"{{warning message}}\"",
+    "group": "Common Tools",
+    "description": "swaynag: Display a message in a bar on top of a screen. (Display a warning)",
+    "tags": [
+      "common",
+      "swaynag",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-swaynag-2",
+    "type": "command",
+    "title": "swaynag - Display a message with custom settings defined in the config",
+    "content": "swaynag {{[-t|--type]}} {{custom_type}} {{[-m|--message]}} \"{{message}}\"",
+    "group": "Common Tools",
+    "description": "swaynag: Display a message in a bar on top of a screen. (Display a message with custom settings defined in the config)",
+    "tags": [
+      "common",
+      "swaynag",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-swaynag-3",
+    "type": "command",
+    "title": "swaynag - Use the specified font",
+    "content": "swaynag {{[-f|--font]}} \"{{monospace bold 9}}\" {{[-m|--message]}} \"{{error message}}\"",
+    "group": "Common Tools",
+    "description": "swaynag: Display a message in a bar on top of a screen. (Use the specified font)",
+    "tags": [
+      "common",
+      "swaynag",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-swaynag-4",
+    "type": "command",
+    "title": "swaynag - Create a button and run a command in the specified terminal on click",
+    "content": "TERMINAL={{terminal_executable}} swaynag {{[-b|--button]}} \"{{button text}}\" {{command}} {{[-m|--message]}} \"{{error message}}\"",
+    "group": "Common Tools",
+    "description": "swaynag: Display a message in a bar on top of a screen. (Create a button and run a command in the specified terminal on click)",
+    "tags": [
+      "common",
+      "swaynag",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-swaynag-5",
+    "type": "command",
+    "title": "swaynag - Create a button and run a command on click",
+    "content": "swaynag {{[-B|--button-no-terminal]}} \"{{button text}}\" {{command}} {{[-m|--message]}} \"{{error message}}\"",
+    "group": "Common Tools",
+    "description": "swaynag: Display a message in a bar on top of a screen. (Create a button and run a command on click)",
+    "tags": [
+      "common",
+      "swaynag",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-swaynag-6",
+    "type": "command",
+    "title": "swaynag - Display the bar on the bottom of the screen",
+    "content": "swaynag {{[-e|--edge]}} bottom {{[-m|--message]}} \"{{error message}}\"",
+    "group": "Common Tools",
+    "description": "swaynag: Display a message in a bar on top of a screen. (Display the bar on the bottom of the screen)",
+    "tags": [
+      "common",
+      "swaynag",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-swaynag-7",
+    "type": "command",
+    "title": "swaynag - Open `swaynag` on the specified monitor",
+    "content": "swaynag {{[-o|--output]}} {{DP-1}} {{[-m|--message]}} \"{{error message}}\"",
+    "group": "Common Tools",
+    "description": "swaynag: Display a message in a bar on top of a screen. (Open `swaynag` on the specified monitor)",
+    "tags": [
+      "common",
+      "swaynag",
       "tldr",
       "en"
     ],
@@ -114279,6 +114624,111 @@
     "tags": [
       "common",
       "tea",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mcopy-0",
+    "type": "command",
+    "title": "mcopy - Copy a file from Linux to an MS-DOS disk or image",
+    "content": "mcopy {{path/to/source_file}} {{A}}:/{{path/to/target_file}}",
+    "group": "Common Tools",
+    "description": "mcopy: Copy MSDOS files to/from Unix. Part of the `mtools` package. Note: Use forward slash (`/`) instead of backlash (`\\`) to refer to DOS subdirectories. (Copy a file from Linux to an MS-DOS disk or image)",
+    "tags": [
+      "common",
+      "mcopy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mcopy-1",
+    "type": "command",
+    "title": "mcopy - Copy a file from an MS-DOS disk to the current Linux directory",
+    "content": "mcopy {{A}}:{{/path/to/source_file}} .",
+    "group": "Common Tools",
+    "description": "mcopy: Copy MSDOS files to/from Unix. Part of the `mtools` package. Note: Use forward slash (`/`) instead of backlash (`\\`) to refer to DOS subdirectories. (Copy a file from an MS-DOS disk to the current Linux directory)",
+    "tags": [
+      "common",
+      "mcopy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mcopy-2",
+    "type": "command",
+    "title": "mcopy - Copy all files from an MS-DOS drive to a Linux directory",
+    "content": "mcopy {{A}}: {{path/to/target_directory}}",
+    "group": "Common Tools",
+    "description": "mcopy: Copy MSDOS files to/from Unix. Part of the `mtools` package. Note: Use forward slash (`/`) instead of backlash (`\\`) to refer to DOS subdirectories. (Copy all files from an MS-DOS drive to a Linux directory)",
+    "tags": [
+      "common",
+      "mcopy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mcopy-3",
+    "type": "command",
+    "title": "mcopy - Copy a file into a DOS disk [i]mage file instead of a drive letter (`::` represents the root directory of the DOS disk)",
+    "content": "mcopy -i {{path/to/image.img}} {{path/to/source_file}} ::/{{path/to/target_file}}",
+    "group": "Common Tools",
+    "description": "mcopy: Copy MSDOS files to/from Unix. Part of the `mtools` package. Note: Use forward slash (`/`) instead of backlash (`\\`) to refer to DOS subdirectories. (Copy a file into a DOS disk [i]mage file instead of a drive letter (`::` represents the root directory of the DOS disk))",
+    "tags": [
+      "common",
+      "mcopy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mcopy-4",
+    "type": "command",
+    "title": "mcopy - Copy a file from a disk image to the current directory",
+    "content": "mcopy -i {{path/to/image.img}} ::/{{path/to/source_file}} .",
+    "group": "Common Tools",
+    "description": "mcopy: Copy MSDOS files to/from Unix. Part of the `mtools` package. Note: Use forward slash (`/`) instead of backlash (`\\`) to refer to DOS subdirectories. (Copy a file from a disk image to the current directory)",
+    "tags": [
+      "common",
+      "mcopy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mcopy-5",
+    "type": "command",
+    "title": "mcopy - Copy a directory recur[s]ively to an MS-DOS disk",
+    "content": "mcopy -s {{path/to/source_directory}} {{A}}:/{{path/to/target_directory}}",
+    "group": "Common Tools",
+    "description": "mcopy: Copy MSDOS files to/from Unix. Part of the `mtools` package. Note: Use forward slash (`/`) instead of backlash (`\\`) to refer to DOS subdirectories. (Copy a directory recur[s]ively to an MS-DOS disk)",
+    "tags": [
+      "common",
+      "mcopy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mcopy-6",
+    "type": "command",
+    "title": "mcopy - Copy a file and [p]reserve attributes",
+    "content": "mcopy -p {{path/to/source_file}} {{A}}:/{{path/to/target_file}}",
+    "group": "Common Tools",
+    "description": "mcopy: Copy MSDOS files to/from Unix. Part of the `mtools` package. Note: Use forward slash (`/`) instead of backlash (`\\`) to refer to DOS subdirectories. (Copy a file and [p]reserve attributes)",
+    "tags": [
+      "common",
+      "mcopy",
       "tldr",
       "en"
     ],
@@ -150585,6 +151035,96 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-moon-buggy-0",
+    "type": "command",
+    "title": "moon-buggy - Start `moon-buggy`",
+    "content": "moon-buggy",
+    "group": "Common Tools",
+    "description": "moon-buggy: Chrome dino-like game on the terminal. (Start `moon-buggy`)",
+    "tags": [
+      "common",
+      "moon-buggy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-moon-buggy-1",
+    "type": "command",
+    "title": "moon-buggy - Skip the title screen and immediately start a game",
+    "content": "moon-buggy {{[-n|--no-title]}}",
+    "group": "Common Tools",
+    "description": "moon-buggy: Chrome dino-like game on the terminal. (Skip the title screen and immediately start a game)",
+    "tags": [
+      "common",
+      "moon-buggy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-moon-buggy-2",
+    "type": "command",
+    "title": "moon-buggy - Display the leaderboard",
+    "content": "moon-buggy {{[-s|--show-scores]}}",
+    "group": "Common Tools",
+    "description": "moon-buggy: Chrome dino-like game on the terminal. (Display the leaderboard)",
+    "tags": [
+      "common",
+      "moon-buggy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-moon-buggy-3",
+    "type": "command",
+    "title": "moon-buggy - Jump",
+    "content": "{{<Space>|<j>}}",
+    "group": "Common Tools",
+    "description": "moon-buggy: Chrome dino-like game on the terminal. (Jump)",
+    "tags": [
+      "common",
+      "moon-buggy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-moon-buggy-4",
+    "type": "command",
+    "title": "moon-buggy - Use the mining laser",
+    "content": "{{<l>|<a>}}",
+    "group": "Common Tools",
+    "description": "moon-buggy: Chrome dino-like game on the terminal. (Use the mining laser)",
+    "tags": [
+      "common",
+      "moon-buggy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-moon-buggy-5",
+    "type": "command",
+    "title": "moon-buggy - Quit the game",
+    "content": "{{<q>|<n>}}",
+    "group": "Common Tools",
+    "description": "moon-buggy: Chrome dino-like game on the terminal. (Quit the game)",
+    "tags": [
+      "common",
+      "moon-buggy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-testparm-0",
     "type": "command",
     "title": "testparm - Check `/etc/samba/smb.conf` for correctness",
@@ -169982,10 +170522,10 @@
   {
     "id": "tldr-en-common-git-status-4",
     "type": "command",
-    "title": "git-status - Show the changes in all tracked files (like `git diff`)",
+    "title": "git-status - Show the changes in all tracked files (like `git diff HEAD`)",
     "content": "git status {{[-vv|--verbose --verbose]}}",
     "group": "Common Tools",
-    "description": "git-status: Show the changes to files in a Git repository. List changed, added, and deleted files compared to the currently checked-out commit. (Show the changes in all tracked files (like `git diff`))",
+    "description": "git-status: Show the changes to files in a Git repository. List changed, added, and deleted files compared to the currently checked-out commit. (Show the changes in all tracked files (like `git diff HEAD`))",
     "tags": [
       "common",
       "git-status",
@@ -195287,6 +195827,21 @@
   {
     "id": "tldr-en-common-warp-cli-1",
     "type": "command",
+    "title": "warp-cli - Display the current registration information",
+    "content": "warp-cli registration show",
+    "group": "Common Tools",
+    "description": "warp-cli: Connect, disconnect, and switch modes of a connection to Cloudflare's WARP service. WARP is a VPN that encrypts traffic for privacy, security, and speed. (Display the current registration information)",
+    "tags": [
+      "common",
+      "warp-cli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-warp-cli-2",
+    "type": "command",
     "title": "warp-cli - Connect to WARP",
     "content": "warp-cli connect",
     "group": "Common Tools",
@@ -195300,7 +195855,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-warp-cli-2",
+    "id": "tldr-en-common-warp-cli-3",
     "type": "command",
     "title": "warp-cli - Disconnect from WARP",
     "content": "warp-cli disconnect",
@@ -195315,7 +195870,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-warp-cli-3",
+    "id": "tldr-en-common-warp-cli-4",
     "type": "command",
     "title": "warp-cli - Display the WARP connection status",
     "content": "warp-cli status",
@@ -195330,27 +195885,12 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-warp-cli-4",
-    "type": "command",
-    "title": "warp-cli - Switch to a specific mode",
-    "content": "warp-cli set-mode {{mode}}",
-    "group": "Common Tools",
-    "description": "warp-cli: Connect, disconnect, and switch modes of a connection to Cloudflare's WARP service. WARP is a VPN that encrypts traffic for privacy, security, and speed. (Switch to a specific mode)",
-    "tags": [
-      "common",
-      "warp-cli",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-en-common-warp-cli-5",
     "type": "command",
-    "title": "warp-cli - Display help",
-    "content": "warp-cli help",
+    "title": "warp-cli - Display current application settings",
+    "content": "warp-cli settings list",
     "group": "Common Tools",
-    "description": "warp-cli: Connect, disconnect, and switch modes of a connection to Cloudflare's WARP service. WARP is a VPN that encrypts traffic for privacy, security, and speed. (Display help)",
+    "description": "warp-cli: Connect, disconnect, and switch modes of a connection to Cloudflare's WARP service. WARP is a VPN that encrypts traffic for privacy, security, and speed. (Display current application settings)",
     "tags": [
       "common",
       "warp-cli",
@@ -195362,10 +195902,10 @@
   {
     "id": "tldr-en-common-warp-cli-6",
     "type": "command",
-    "title": "warp-cli - Display help for a subcommand",
-    "content": "warp-cli help {{subcommand}}",
+    "title": "warp-cli - Switch to a specific mode",
+    "content": "warp-cli mode {{warp|doh|warp+doh|dot|warp+dot|proxy|tunnel_only}}",
     "group": "Common Tools",
-    "description": "warp-cli: Connect, disconnect, and switch modes of a connection to Cloudflare's WARP service. WARP is a VPN that encrypts traffic for privacy, security, and speed. (Display help for a subcommand)",
+    "description": "warp-cli: Connect, disconnect, and switch modes of a connection to Cloudflare's WARP service. WARP is a VPN that encrypts traffic for privacy, security, and speed. (Switch to a specific mode)",
     "tags": [
       "common",
       "warp-cli",
@@ -217293,7 +217833,7 @@
     "id": "tldr-en-common-clang-format-3",
     "type": "command",
     "title": "clang-format - Format a file using the `.clang-format` file in one of the parent directories of the source file",
-    "content": "clang-format --style=file {{path/to/file}}",
+    "content": "clang-format --style file {{path/to/file}}",
     "group": "Common Tools",
     "description": "clang-format: Auto-format C/C++/Java/JavaScript/Objective-C/Protobuf/C# code. (Format a file using the `.clang-format` file in one of the parent directories of the source file)",
     "tags": [
@@ -283755,6 +284295,96 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-tpm2-0",
+    "type": "command",
+    "title": "tpm2 - Reset the PCR 16 banks",
+    "content": "tpm2 pcrreset 16",
+    "group": "Common Tools",
+    "description": "tpm2: Run various tpm2-tools via a single unified executable. Some subcommands such as `pcrread`, `pcrreset`, etc. have their own usage documentation. (Reset the PCR 16 banks)",
+    "tags": [
+      "common",
+      "tpm2",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tpm2-1",
+    "type": "command",
+    "title": "tpm2 - Extend the PCR 16 sha1 bank with `f1d2d2f924e986ac86fdf7b36c94bcdf32beec15`",
+    "content": "tpm2 pcrextend 16:sha1=f1d2d2f924e986ac86fdf7b36c94bcdf32beec15",
+    "group": "Common Tools",
+    "description": "tpm2: Run various tpm2-tools via a single unified executable. Some subcommands such as `pcrread`, `pcrreset`, etc. have their own usage documentation. (Extend the PCR 16 sha1 bank with `f1d2d2f924e986ac86fdf7b36c94bcdf32beec15`)",
+    "tags": [
+      "common",
+      "tpm2",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tpm2-2",
+    "type": "command",
+    "title": "tpm2 - Read the PCR 16 sha1 bank",
+    "content": "tpm2 pcrread sha1:16",
+    "group": "Common Tools",
+    "description": "tpm2: Run various tpm2-tools via a single unified executable. Some subcommands such as `pcrread`, `pcrreset`, etc. have their own usage documentation. (Read the PCR 16 sha1 bank)",
+    "tags": [
+      "common",
+      "tpm2",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tpm2-3",
+    "type": "command",
+    "title": "tpm2 - Run a subcommand in verbose mode",
+    "content": "tpm2 {{[-V|--verbose]}} {{subcommand}}",
+    "group": "Common Tools",
+    "description": "tpm2: Run various tpm2-tools via a single unified executable. Some subcommands such as `pcrread`, `pcrreset`, etc. have their own usage documentation. (Run a subcommand in verbose mode)",
+    "tags": [
+      "common",
+      "tpm2",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tpm2-4",
+    "type": "command",
+    "title": "tpm2 - Run a subcommand without writing to `stdout`",
+    "content": "tpm2 {{[-Q|--quiet]}} {{subcommand}}",
+    "group": "Common Tools",
+    "description": "tpm2: Run various tpm2-tools via a single unified executable. Some subcommands such as `pcrread`, `pcrreset`, etc. have their own usage documentation. (Run a subcommand without writing to `stdout`)",
+    "tags": [
+      "common",
+      "tpm2",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tpm2-5",
+    "type": "command",
+    "title": "tpm2 - Display help",
+    "content": "tpm2 {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "tpm2: Run various tpm2-tools via a single unified executable. Some subcommands such as `pcrread`, `pcrreset`, etc. have their own usage documentation. (Display help)",
+    "tags": [
+      "common",
+      "tpm2",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-ppmpat-0",
     "type": "command",
     "title": "ppmpat - Produce a PPM file of the specified pattern with the specified dimensions",
@@ -284445,6 +285075,51 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-tpm2-pcrextend-0",
+    "type": "command",
+    "title": "tpm2-pcrextend - Extend the PCR 16 value of the sha1 bank",
+    "content": "tpm2 pcrextend 16:sha1={{f1d2d2f924e986ac86fdf7b36c94bcdf32beec15}}",
+    "group": "Common Tools",
+    "description": "tpm2-pcrextend: Extends a PCR. (Extend the PCR 16 value of the sha1 bank)",
+    "tags": [
+      "common",
+      "tpm2-pcrextend",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tpm2-pcrextend-1",
+    "type": "command",
+    "title": "tpm2-pcrextend - Extend the PCR 16 value of the sha1 and sha256 banks value",
+    "content": "tpm2 pcrextend 16:sha1={{f1d2d2f924e986ac86fdf7b36c94bcdf32beec15}},sha256={{b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c}}",
+    "group": "Common Tools",
+    "description": "tpm2-pcrextend: Extends a PCR. (Extend the PCR 16 value of the sha1 and sha256 banks value)",
+    "tags": [
+      "common",
+      "tpm2-pcrextend",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tpm2-pcrextend-2",
+    "type": "command",
+    "title": "tpm2-pcrextend - Extend the PCR 16 value of the sha1 bank and PCR 23 of the sha256 bank",
+    "content": "tpm2 pcrextend 16:sha1={{f1d2d2f924e986ac86fdf7b36c94bcdf32beec15}} 23:sha256={{b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c}}",
+    "group": "Common Tools",
+    "description": "tpm2-pcrextend: Extends a PCR. (Extend the PCR 16 value of the sha1 bank and PCR 23 of the sha256 bank)",
+    "tags": [
+      "common",
+      "tpm2-pcrextend",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-phpcbf-0",
     "type": "command",
     "title": "phpcbf - Fix issues in the specified directory (defaults to the PEAR standard)",
@@ -284904,6 +285579,111 @@
     "tags": [
       "common",
       "linode-cli-tickets",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-lavat-0",
+    "type": "command",
+    "title": "lavat - Start the default lava animation",
+    "content": "lavat",
+    "group": "Common Tools",
+    "description": "lavat: Display an animated lava lamp effect in the terminal. Customize colors, speed, size, movement, and display style. (Start the default lava animation)",
+    "tags": [
+      "common",
+      "lavat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-lavat-1",
+    "type": "command",
+    "title": "lavat - Start with named lava and rim colors",
+    "content": "lavat -c {{green}} -k {{red}}",
+    "group": "Common Tools",
+    "description": "lavat: Display an animated lava lamp effect in the terminal. Customize colors, speed, size, movement, and display style. (Start with named lava and rim colors)",
+    "tags": [
+      "common",
+      "lavat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-lavat-2",
+    "type": "command",
+    "title": "lavat - Start in gradient mode with two hex colors",
+    "content": "lavat -g -c {{00FF00}} -k {{FF0000}}",
+    "group": "Common Tools",
+    "description": "lavat: Display an animated lava lamp effect in the terminal. Customize colors, speed, size, movement, and display style. (Start in gradient mode with two hex colors)",
+    "tags": [
+      "common",
+      "lavat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-lavat-3",
+    "type": "command",
+    "title": "lavat - Start with gravity and buoyancy movement enabled",
+    "content": "lavat -G",
+    "group": "Common Tools",
+    "description": "lavat: Display an animated lava lamp effect in the terminal. Customize colors, speed, size, movement, and display style. (Start with gravity and buoyancy movement enabled)",
+    "tags": [
+      "common",
+      "lavat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-lavat-4",
+    "type": "command",
+    "title": "lavat - Start with a custom speed, radius, rim size, and number of metaballs",
+    "content": "lavat -s {{1..10}} -r {{1..10}} -R {{1..5}} -b {{5..20}}",
+    "group": "Common Tools",
+    "description": "lavat: Display an animated lava lamp effect in the terminal. Customize colors, speed, size, movement, and display style. (Start with a custom speed, radius, rim size, and number of metaballs)",
+    "tags": [
+      "common",
+      "lavat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-lavat-5",
+    "type": "command",
+    "title": "lavat - Start with a custom ASCII character set",
+    "content": "lavat -F \"{{.oO@}}\"",
+    "group": "Common Tools",
+    "description": "lavat: Display an animated lava lamp effect in the terminal. Customize colors, speed, size, movement, and display style. (Start with a custom ASCII character set)",
+    "tags": [
+      "common",
+      "lavat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-lavat-6",
+    "type": "command",
+    "title": "lavat - Display help",
+    "content": "lavat -h",
+    "group": "Common Tools",
+    "description": "lavat: Display an animated lava lamp effect in the terminal. Customize colors, speed, size, movement, and display style. (Display help)",
+    "tags": [
+      "common",
+      "lavat",
       "tldr",
       "en"
     ],
