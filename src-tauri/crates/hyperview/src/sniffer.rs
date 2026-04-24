@@ -88,20 +88,16 @@ pub fn detect_file_type(path_str: &str) -> crate::error::Result<FileMeta> {
         _ => PreviewType::Binary,
     };
 
-    if p_type == PreviewType::Binary
+    if mime == "image/svg+xml" {
+        p_type = PreviewType::Image;
+    } else if p_type == PreviewType::Binary
         || mime.starts_with("image/")
         || mime.starts_with("video/")
         || mime.starts_with("audio/")
     {
         if let Some(kind) = get_magic_type(path) {
             let mime_type = kind.mime_type();
-            if mime.starts_with("image/") {
-                p_type = PreviewType::Image;
-            } else if mime.starts_with("video/") {
-                p_type = PreviewType::Video;
-            } else if mime.starts_with("audio/") {
-                p_type = PreviewType::Audio;
-            } else if mime_type.starts_with("image/") {
+            if mime_type.starts_with("image/") {
                 p_type = PreviewType::Image;
             } else if mime_type.starts_with("video/") {
                 p_type = PreviewType::Video;

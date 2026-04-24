@@ -561,7 +561,7 @@
     "archiveUnknownSize": "Unknown",
     "archiveTruncated": "Truncated",
     "archiveEmptySelection": "Select an archive entry",
-    "archiveOpenHint": "Double-click a text or image entry under the limit to preview it.",
+    "archiveOpenHint": "Click a text or image entry under the limit to preview it.",
     "archivePreviewUnsupported": "This archive format is not supported yet",
     "archivePreviewFailed": "Entry preview failed",
     "archiveUnsupportedEntry": "This entry is not a supported text or image preview.",

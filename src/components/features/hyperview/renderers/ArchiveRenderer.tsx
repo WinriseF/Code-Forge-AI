@@ -449,12 +449,7 @@ export function ArchiveRenderer({
                     onClick={() => {
                       if (row.isDir) {
                         selectDir(row);
-                      } else {
-                        setSelectedKey(row.key);
-                      }
-                    }}
-                    onDoubleClick={() => {
-                      if (!row.isDir && row.entry) {
+                      } else if (row.entry) {
                         void openEntryPreview(row.entry);
                       }
                     }}

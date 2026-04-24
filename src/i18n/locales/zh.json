@@ -561,7 +561,7 @@
     "archiveUnknownSize": "未知",
     "archiveTruncated": "已截断",
     "archiveEmptySelection": "选择压缩包条目",
-    "archiveOpenHint": "双击小于限制的文本或图片条目进行预览。",
+    "archiveOpenHint": "单击小于限制的文本或图片条目进行预览。",
     "archivePreviewUnsupported": "暂不支持该压缩格式",
     "archivePreviewFailed": "条目预览失败",
     "archiveUnsupportedEntry": "该条目不是可预览的文本或图片。",
