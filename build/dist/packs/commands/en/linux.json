@@ -30180,6 +30180,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-spa-monitor-0",
+    "type": "command",
+    "title": "spa-monitor - Load a specific SPA plugin",
+    "content": "spa-monitor {{path/to/plugin.so}}",
+    "group": "Linux Ops",
+    "description": "spa-monitor: Load a SPA plugin and instantiate a device from it. Note: This utility is primarily intended for debugging device plugins. (Load a specific SPA plugin)",
+    "tags": [
+      "linux",
+      "spa-monitor",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-rolldice-0",
     "type": "command",
     "title": "rolldice - Roll a single 20 sided dice",

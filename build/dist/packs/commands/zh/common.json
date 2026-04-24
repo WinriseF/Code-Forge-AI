@@ -18287,10 +18287,10 @@
   {
     "id": "tldr-zh-common-cargo-fetch-0",
     "type": "command",
-    "title": "cargo-fetch - 获取 `Cargo.lock` 中指定的依赖项 (对所有目标)",
+    "title": "cargo-fetch - 获取 `Cargo.lock` 中指定的依赖项（对所有目标）",
     "content": "cargo fetch",
     "group": "通用工具 (Common)",
-    "description": "cargo-fetch: 从网络获取包的依赖项。 (获取 `Cargo.lock` 中指定的依赖项 (对所有目标))",
+    "description": "cargo-fetch: 从网络获取软件包的依赖项。 (获取 `Cargo.lock` 中指定的依赖项（对所有目标）)",
     "tags": [
       "common",
       "cargo-fetch",
@@ -18305,7 +18305,7 @@
     "title": "cargo-fetch - 为指定目标获取依赖项",
     "content": "cargo fetch --target {{目标三元组}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-fetch: 从网络获取包的依赖项。 (为指定目标获取依赖项)",
+    "description": "cargo-fetch: 从网络获取软件包的依赖项。 (为指定目标获取依赖项)",
     "tags": [
       "common",
       "cargo-fetch",
@@ -29387,10 +29387,10 @@
   {
     "id": "tldr-zh-common-cargo-fix-2",
     "type": "command",
-    "title": "cargo-fix - 将一个包迁移到下一个 Rust 版本",
+    "title": "cargo-fix - 将一个软件包迁移到下一个 Rust 版本",
     "content": "cargo fix --edition",
     "group": "通用工具 (Common)",
-    "description": "cargo-fix: 自动修复 `rustc` 报告的 lint 警告。 (将一个包迁移到下一个 Rust 版本)",
+    "description": "cargo-fix: 自动修复 `rustc` 报告的 lint 警告。 (将一个软件包迁移到下一个 Rust 版本)",
     "tags": [
       "common",
       "cargo-fix",
@@ -29402,10 +29402,10 @@
   {
     "id": "tldr-zh-common-cargo-fix-3",
     "type": "command",
-    "title": "cargo-fix - 修复包的库",
+    "title": "cargo-fix - 修复软件包的库",
     "content": "cargo fix --lib",
     "group": "通用工具 (Common)",
-    "description": "cargo-fix: 自动修复 `rustc` 报告的 lint 警告。 (修复包的库)",
+    "description": "cargo-fix: 自动修复 `rustc` 报告的 lint 警告。 (修复软件包的库)",
     "tags": [
       "common",
       "cargo-fix",
@@ -52593,7 +52593,7 @@
     "id": "tldr-zh-common-jdupes-1",
     "type": "command",
     "title": "jdupes - 搜索多个目录",
-    "content": "jdupes {{目录1}} {{目录2}}",
+    "content": "jdupes {{目录1 目录2 ...}}",
     "group": "通用工具 (Common)",
     "description": "jdupes: 一个强大的重复文件查找器，并且是 fdupes 的一个增强分支。 (搜索多个目录)",
     "tags": [
@@ -52608,7 +52608,7 @@
     "id": "tldr-zh-common-jdupes-2",
     "type": "command",
     "title": "jdupes - 递归地搜索所有目录",
-    "content": "jdupes --recurse {{路径/到/目录}}",
+    "content": "jdupes {{[-r|--recurse]}} {{路径/到/目录}}",
     "group": "通用工具 (Common)",
     "description": "jdupes: 一个强大的重复文件查找器，并且是 fdupes 的一个增强分支。 (递归地搜索所有目录)",
     "tags": [
@@ -52623,7 +52623,7 @@
     "id": "tldr-zh-common-jdupes-3",
     "type": "command",
     "title": "jdupes - 递归地搜索目录，并让用户选择要保留的文件",
-    "content": "jdupes --delete --recurse {{路径/到/目录}}",
+    "content": "jdupes {{[-d|--delete]}} {{[-r|--recurse]}} {{路径/到/目录}}",
     "group": "通用工具 (Common)",
     "description": "jdupes: 一个强大的重复文件查找器，并且是 fdupes 的一个增强分支。 (递归地搜索目录，并让用户选择要保留的文件)",
     "tags": [
@@ -52638,7 +52638,7 @@
     "id": "tldr-zh-common-jdupes-4",
     "type": "command",
     "title": "jdupes - 搜索多个目录并跟随目录2下的子目录，而不是目录1",
-    "content": "jdupes {{目录1}} --recurse: {{目录2}}",
+    "content": "jdupes {{目录1}} {{[-R|--recurse:]}} {{目录2}}",
     "group": "通用工具 (Common)",
     "description": "jdupes: 一个强大的重复文件查找器，并且是 fdupes 的一个增强分支。 (搜索多个目录并跟随目录2下的子目录，而不是目录1)",
     "tags": [
@@ -52653,7 +52653,7 @@
     "id": "tldr-zh-common-jdupes-5",
     "type": "command",
     "title": "jdupes - 搜索多个目录并在结果中保持目录顺序",
-    "content": "jdupes -O {{目录1}} {{目录2}} {{目录3}}",
+    "content": "jdupes {{[-O|--param-order]}} {{目录1 目录2 目录3 ...}}",
     "group": "通用工具 (Common)",
     "description": "jdupes: 一个强大的重复文件查找器，并且是 fdupes 的一个增强分支。 (搜索多个目录并在结果中保持目录顺序)",
     "tags": [
