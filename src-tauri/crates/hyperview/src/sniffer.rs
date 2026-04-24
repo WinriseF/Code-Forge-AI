@@ -95,7 +95,13 @@ pub fn detect_file_type(path_str: &str) -> crate::error::Result<FileMeta> {
     {
         if let Some(kind) = get_magic_type(path) {
             let mime_type = kind.mime_type();
-            if mime_type.starts_with("image/") {
+            if mime.starts_with("image/") {
+                p_type = PreviewType::Image;
+            } else if mime.starts_with("video/") {
+                p_type = PreviewType::Video;
+            } else if mime.starts_with("audio/") {
+                p_type = PreviewType::Audio;
+            } else if mime_type.starts_with("image/") {
                 p_type = PreviewType::Image;
             } else if mime_type.starts_with("video/") {
                 p_type = PreviewType::Video;
@@ -106,6 +112,12 @@ pub fn detect_file_type(path_str: &str) -> crate::error::Result<FileMeta> {
             } else if mime_type.starts_with("text/") {
                 p_type = PreviewType::Code;
             }
+        } else if mime.starts_with("image/") {
+            p_type = PreviewType::Image;
+        } else if mime.starts_with("video/") {
+            p_type = PreviewType::Video;
+        } else if mime.starts_with("audio/") {
+            p_type = PreviewType::Audio;
         } else if mime == "text/html" {
             p_type = PreviewType::Html;
         } else if mime.starts_with("text/") {
