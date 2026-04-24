@@ -502,14 +502,19 @@ mod windows_impl {
             return Ok(None);
         };
 
-        if unsafe { item.IsFileSystem()?.as_bool() } && !unsafe { item.IsFolder()?.as_bool() } {
+        if unsafe { item.IsFileSystem()?.as_bool() } {
             let path = unsafe { item.Path()? }.to_string();
-            if !path.is_empty() {
+            if !path.is_empty() && (!unsafe { item.IsFolder()?.as_bool() } || is_archive_extension(&path)) {
                 return Ok(Some(path));
             }
         }
 
         Ok(None)
+    }
+
+    fn is_archive_extension(path: &str) -> bool {
+        let lower = path.to_ascii_lowercase();
+        [".zip", ".tar", ".gz", ".tgz", ".rar", ".7z"].iter().any(|ext| lower.ends_with(ext))
     }
 
     fn variant_i32(value: i32) -> VARIANT {

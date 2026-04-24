@@ -1,4 +1,5 @@
 use base64::{Engine as _, engine::general_purpose};
+use encoding_rs::GBK;
 use flate2::read::GzDecoder;
 use serde::Serialize;
 use std::fs::File;
@@ -115,7 +116,7 @@ fn list_zip_entries(path: &Path) -> crate::error::Result<ArchiveListing> {
 
         entries.push(build_entry(
             index,
-            file.name(),
+            &decode_zip_name(file.name_raw()),
             Some(size),
             Some(compressed_size),
             file.is_dir(),
@@ -192,7 +193,7 @@ fn read_zip_entry(path: &Path, entry_index: usize) -> crate::error::Result<(Arch
     let mut file = archive.by_index(entry_index).map_err(|e| e.to_string())?;
     let entry = build_entry(
         entry_index,
-        file.name(),
+        &decode_zip_name(file.name_raw()),
         Some(file.size()),
         Some(file.compressed_size()),
         file.is_dir(),
@@ -451,4 +452,15 @@ fn entry_language(path: &str) -> Option<String> {
     };
 
     Some(language.to_string())
+}
+
+fn decode_zip_name(raw: &[u8]) -> String {
+    if raw.is_empty() {
+        return String::new();
+    }
+    if let Ok(s) = std::str::from_utf8(raw) {
+        return s.to_string();
+    }
+    let (decoded, _, _) = GBK.decode(raw);
+    decoded.into_owned()
 }

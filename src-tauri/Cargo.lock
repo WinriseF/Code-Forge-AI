@@ -1315,6 +1315,7 @@ name = "ctxrun-hyperview"
 version = "2.0.0"
 dependencies = [
  "base64 0.22.1",
+ "encoding_rs",
  "flate2",
  "infer",
  "mime_guess",
