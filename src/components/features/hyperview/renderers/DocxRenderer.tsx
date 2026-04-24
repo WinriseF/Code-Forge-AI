@@ -4,6 +4,7 @@ import { renderAsync } from 'docx-preview';
 
 import { buildPreviewUrl } from '@/lib/previewUrl';
 import type { FileMeta } from '@/types/hyperview';
+import type { PreviewTextSource } from '../usePreviewAi';
 
 const DOCX_RENDER_OPTIONS = {
   className: 'ctxrun-docx',
@@ -39,7 +40,23 @@ function DocxRendererStyles() {
   );
 }
 
-export function DocxRenderer({ meta }: { meta: FileMeta }) {
+function extractDocxText(container: HTMLElement) {
+  return container.innerText
+    .replace(/\u00a0/g, ' ')
+    .split('\n')
+    .map((line) => line.trimEnd())
+    .join('\n')
+    .replace(/\n{4,}/g, '\n\n\n')
+    .trim();
+}
+
+export function DocxRenderer({
+  meta,
+  onPreviewTextSourceChange,
+}: {
+  meta: FileMeta;
+  onPreviewTextSourceChange?: (source: PreviewTextSource | null) => void;
+}) {
   const bodyContainerRef = useRef<HTMLDivElement | null>(null);
   const styleContainerRef = useRef<HTMLDivElement | null>(null);
   const [loading, setLoading] = useState(true);
@@ -60,6 +77,7 @@ export function DocxRenderer({ meta }: { meta: FileMeta }) {
     setLoadError(null);
     bodyContainer.innerHTML = '';
     styleContainer.innerHTML = '';
+    onPreviewTextSourceChange?.(null);
 
     const load = async () => {
       try {
@@ -81,6 +99,16 @@ export function DocxRenderer({ meta }: { meta: FileMeta }) {
           return;
         }
 
+        const text = extractDocxText(bodyContainer);
+        onPreviewTextSourceChange?.(
+          text
+            ? {
+                key: `${meta.path}:docx:${meta.size}`,
+                content: text,
+                previewType: 'docx',
+              }
+            : null
+        );
         setLoading(false);
       } catch (error) {
         if (
@@ -91,6 +119,7 @@ export function DocxRenderer({ meta }: { meta: FileMeta }) {
         }
 
         setLoading(false);
+        onPreviewTextSourceChange?.(null);
         setLoadError(error instanceof Error ? error.message : String(error));
       }
     };
@@ -100,10 +129,11 @@ export function DocxRenderer({ meta }: { meta: FileMeta }) {
     return () => {
       disposed = true;
       abortController.abort();
+      onPreviewTextSourceChange?.(null);
       bodyContainer.innerHTML = '';
       styleContainer.innerHTML = '';
     };
-  }, [meta.path]);
+  }, [meta.path, meta.size, onPreviewTextSourceChange]);
 
   return (
     <div className="relative h-full w-full overflow-auto bg-card">

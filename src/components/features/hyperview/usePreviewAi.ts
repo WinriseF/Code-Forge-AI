@@ -245,6 +245,15 @@ export function usePreviewAi({ activeFile, previewTextSource, onAutoPin }: UsePr
           return;
         }
 
+        if (activeFile.previewType === 'docx') {
+          setState((prev) => ({
+            ...prev,
+            isOpen: true,
+            error: 'Document text is still loading or unavailable.',
+          }));
+          return;
+        }
+
         const content = await readTextFile(activeFile.path);
         if (content) {
           runTranslate(content, activeFile.previewType, state.targetLang);

@@ -113,7 +113,11 @@ export function PreviewContent({
     case 'docx':
       content = (
         <Suspense fallback={<PreviewFallback />}>
-          <DocxRenderer key={meta.path} meta={meta} />
+          <DocxRenderer
+            key={meta.path}
+            meta={meta}
+            onPreviewTextSourceChange={onPreviewTextSourceChange}
+          />
         </Suspense>
       );
       break;
