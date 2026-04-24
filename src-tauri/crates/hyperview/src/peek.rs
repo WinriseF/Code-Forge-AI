@@ -514,7 +514,7 @@ mod windows_impl {
 
     fn is_archive_extension(path: &str) -> bool {
         let lower = path.to_ascii_lowercase();
-        [".zip", ".tar", ".gz", ".tgz", ".rar", ".7z"].iter().any(|ext| lower.ends_with(ext))
+        [".zip", ".tar", ".gz", ".tgz"].iter().any(|ext| lower.ends_with(ext))
     }
 
     fn variant_i32(value: i32) -> VARIANT {

@@ -83,7 +83,7 @@ pub fn detect_file_type(path_str: &str) -> crate::error::Result<FileMeta> {
         | "log" | "ini" | "conf" | "csv" | "tsv" => PreviewType::Code,
         "pdf" => PreviewType::Pdf,
         "docx" => PreviewType::Docx,
-        "zip" | "rar" | "7z" | "tar" | "gz" | "tgz" => PreviewType::Archive,
+        "zip" | "tar" | "gz" | "tgz" => PreviewType::Archive,
         "doc" | "xlsx" | "xls" | "pptx" | "ppt" => PreviewType::Office,
         _ => PreviewType::Binary,
     };

@@ -408,8 +408,11 @@ export function ArchiveRenderer({
     return null;
   }
 
-  const archiveDisplaySize =
-    listing.totalSize > 0 ? listing.totalSize : listing.totalCompressedSize;
+  const archiveDisplaySize = listing.truncated
+    ? null
+    : listing.totalSize > 0
+      ? listing.totalSize
+      : listing.totalCompressedSize;
 
   return (
     <div className="grid h-full min-h-0 grid-cols-[minmax(280px,42%)_1fr] overflow-hidden border-t border-border bg-background">

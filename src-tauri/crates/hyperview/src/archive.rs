@@ -1,5 +1,5 @@
 use base64::{Engine as _, engine::general_purpose};
-use encoding_rs::GBK;
+use encoding_rs::{Encoding, GBK};
 use flate2::read::GzDecoder;
 use serde::Serialize;
 use std::fs::File;
@@ -48,6 +48,7 @@ pub struct ArchiveEntryPreview {
     pub kind: String,
     pub mime: String,
     pub language: Option<String>,
+    pub encoding: Option<String>,
     pub text: Option<String>,
     pub data_url: Option<String>,
     pub message: Option<String>,
@@ -380,35 +381,161 @@ fn build_entry_preview(
             kind: "image".to_string(),
             mime,
             language: None,
+            encoding: None,
             text: None,
             data_url: Some(data_url),
             message: None,
         });
     }
 
-    match String::from_utf8(bytes) {
-        Ok(text) => {
+    match decode_entry_text(&entry.path, &mime, &bytes) {
+        Some((text, encoding)) => {
             let language = entry_language(&entry.path);
             Ok(ArchiveEntryPreview {
                 entry,
                 kind: "text".to_string(),
                 mime,
                 language,
+                encoding: Some(encoding),
                 text: Some(text),
                 data_url: None,
                 message: None,
             })
         }
-        Err(_) => Ok(ArchiveEntryPreview {
+        None => Ok(ArchiveEntryPreview {
             entry,
             kind: "unsupported".to_string(),
             mime,
             language: None,
+            encoding: None,
             text: None,
             data_url: None,
             message: Some("This archive entry is not a supported text or image preview.".to_string()),
         }),
     }
+}
+
+fn decode_entry_text(path: &str, mime: &str, bytes: &[u8]) -> Option<(String, String)> {
+    if bytes.is_empty() {
+        return Some((String::new(), "utf-8".to_string()));
+    }
+
+    if let Ok(text) = std::str::from_utf8(bytes) {
+        if is_probably_text(text) {
+            return Some((text.to_string(), "utf-8".to_string()));
+        }
+    }
+
+    if !is_text_like_entry(path, mime) {
+        return None;
+    }
+
+    let candidates = [
+        "gb18030",
+        "gbk",
+        "big5",
+        "shift_jis",
+        "euc-jp",
+        "euc-kr",
+        "windows-1252",
+    ];
+
+    let mut best: Option<(String, String, usize)> = None;
+
+    for label in candidates {
+        let Some(encoding) = Encoding::for_label(label.as_bytes()) else {
+            continue;
+        };
+        let (decoded, _, _) = encoding.decode(bytes);
+        let text = decoded.into_owned();
+        if !is_probably_text(&text) {
+            continue;
+        }
+
+        let replacement_count = text.matches('\u{FFFD}').count();
+        let is_better = best
+            .as_ref()
+            .is_none_or(|(_, _, best_count)| replacement_count < *best_count);
+        if is_better {
+            best = Some((text, label.to_string(), replacement_count));
+        }
+    }
+
+    let (text, encoding, replacement_count) = best?;
+    let char_count = text.chars().count().max(1);
+    if replacement_count * 100 > char_count {
+        return None;
+    }
+
+    Some((text, encoding))
+}
+
+fn is_text_like_entry(path: &str, mime: &str) -> bool {
+    if mime.starts_with("text/") {
+        return true;
+    }
+
+    let ext = Path::new(path)
+        .extension()
+        .map(|value| value.to_string_lossy().to_lowercase())
+        .unwrap_or_default();
+
+    matches!(
+        ext.as_str(),
+        "bat"
+            | "c"
+            | "cc"
+            | "cmd"
+            | "conf"
+            | "cpp"
+            | "css"
+            | "csv"
+            | "cxx"
+            | "h"
+            | "hpp"
+            | "htm"
+            | "html"
+            | "ini"
+            | "java"
+            | "js"
+            | "json"
+            | "jsx"
+            | "log"
+            | "markdown"
+            | "md"
+            | "ps1"
+            | "py"
+            | "rs"
+            | "sh"
+            | "sql"
+            | "toml"
+            | "ts"
+            | "tsx"
+            | "tsv"
+            | "txt"
+            | "xml"
+            | "yaml"
+            | "yml"
+    ) || matches!(
+        mime,
+        "application/json" | "application/xml" | "application/javascript"
+    )
+}
+
+fn is_probably_text(text: &str) -> bool {
+    let mut chars = 0_usize;
+    let mut suspicious = 0_usize;
+
+    for ch in text.chars() {
+        chars += 1;
+        if ch == '\u{FFFD}'
+            || (ch.is_control() && !matches!(ch, '\n' | '\r' | '\t' | '\u{000C}'))
+        {
+            suspicious += 1;
+        }
+    }
+
+    chars == 0 || suspicious * 100 <= chars
 }
 
 fn detect_entry_mime(path: &str, bytes: &[u8]) -> String {

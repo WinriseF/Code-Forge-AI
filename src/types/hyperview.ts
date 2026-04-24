@@ -50,6 +50,7 @@ export interface ArchiveEntryPreview {
   kind: ArchiveEntryPreviewKind;
   mime: string;
   language: string | null;
+  encoding: string | null;
   text: string | null;
   dataUrl: string | null;
   message: string | null;
