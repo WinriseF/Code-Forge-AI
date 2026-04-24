@@ -7,6 +7,7 @@ import { PreviewAiPanel } from './PreviewAiPanel';
 import { PreviewOcrPanel } from './PreviewOcrPanel';
 import { PreviewOcrSplitLayout } from './PreviewOcrSplitLayout';
 import type { PreviewAiState } from './usePreviewAi';
+import type { PreviewTextSource } from './usePreviewAi';
 import type { PreviewOcrState } from './usePreviewOcr';
 import type { SupportedLangCode } from '@/lib/aiTranslate';
 import type { FileMeta, PreviewMode } from '@/types/hyperview';
@@ -20,6 +21,7 @@ interface PreviewViewportProps {
   showAiPanel: boolean;
   previewOcr: PreviewOcrState;
   previewAi: PreviewAiState;
+  onPreviewTextSourceChange?: (source: PreviewTextSource | null) => void;
   onHighlightOcrLine: (index: number) => void;
   onSelectOcrLine: (index: number) => void;
   onAiStartTranslate: () => void;
@@ -44,6 +46,7 @@ export function PreviewViewport({
   showAiPanel,
   previewOcr,
   previewAi,
+  onPreviewTextSourceChange,
   onHighlightOcrLine,
   onSelectOcrLine,
   onAiStartTranslate,
@@ -93,6 +96,7 @@ export function PreviewViewport({
           ocrResult={previewOcr.result}
           selectedOcrLineIndex={previewOcr.selectedLineIndex}
           onSelectOcrLine={onSelectOcrLine}
+          onPreviewTextSourceChange={onPreviewTextSourceChange}
         />
       }
       panel={

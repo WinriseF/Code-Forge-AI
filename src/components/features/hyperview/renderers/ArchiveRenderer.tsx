@@ -3,6 +3,8 @@ import { invoke } from '@tauri-apps/api/core';
 import {
   AlertTriangle,
   Archive,
+  ChevronDown,
+  ChevronRight,
   File,
   FileImage,
   FileText,
@@ -13,6 +15,7 @@ import {
 import { useTranslation } from 'react-i18next';
 
 import { formatBytes } from '@/lib/utils';
+import type { PreviewTextSource } from '../usePreviewAi';
 import type {
   ArchiveEntry,
   ArchiveEntryPreview,
@@ -53,6 +56,110 @@ function entryIcon(entry: ArchiveEntry) {
   }
 
   return <File size={15} className="text-muted-foreground" />;
+}
+
+interface ArchiveTreeNode {
+  path: string;
+  name: string;
+  isDir: boolean;
+  entry?: ArchiveEntry;
+  children: Map<string, ArchiveTreeNode>;
+}
+
+interface ArchiveTreeRow {
+  key: string;
+  path: string;
+  name: string;
+  depth: number;
+  isDir: boolean;
+  entry?: ArchiveEntry;
+}
+
+function splitArchivePath(path: string) {
+  return path.split('/').filter(Boolean);
+}
+
+function joinArchivePath(parent: string, name: string) {
+  return parent ? `${parent}/${name}` : name;
+}
+
+function buildArchiveTree(entries: ArchiveEntry[]) {
+  const root: ArchiveTreeNode = {
+    path: '',
+    name: '',
+    isDir: true,
+    children: new Map(),
+  };
+
+  for (const entry of entries) {
+    const parts = splitArchivePath(entry.path);
+    if (parts.length === 0) {
+      continue;
+    }
+
+    let parent = root;
+    let currentPath = '';
+
+    parts.forEach((part, index) => {
+      currentPath = joinArchivePath(currentPath, part);
+      const isLast = index === parts.length - 1;
+      let node = parent.children.get(part);
+
+      if (!node) {
+        node = {
+          path: currentPath,
+          name: part,
+          isDir: !isLast || entry.isDir,
+          children: new Map(),
+        };
+        parent.children.set(part, node);
+      }
+
+      if (isLast) {
+        node.entry = entry;
+        node.isDir = entry.isDir || node.children.size > 0;
+      } else {
+        node.isDir = true;
+      }
+
+      parent = node;
+    });
+  }
+
+  return root;
+}
+
+function flattenArchiveTree(
+  nodes: Iterable<ArchiveTreeNode>,
+  expandedDirs: Set<string>,
+  depth = 0
+): ArchiveTreeRow[] {
+  const rows: ArchiveTreeRow[] = [];
+
+  for (const node of nodes) {
+    rows.push({
+      key: node.entry ? `entry:${node.entry.index}` : `dir:${node.path}`,
+      path: node.path,
+      name: node.name,
+      depth,
+      isDir: node.isDir,
+      entry: node.entry,
+    });
+
+    if (node.isDir && expandedDirs.has(node.path)) {
+      rows.push(...flattenArchiveTree(node.children.values(), expandedDirs, depth + 1));
+    }
+  }
+
+  return rows;
+}
+
+function rowIcon(row: ArchiveTreeRow) {
+  if (row.isDir) {
+    return <Folder size={15} className="text-amber-500" />;
+  }
+
+  return row.entry ? entryIcon(row.entry) : <File size={15} className="text-muted-foreground" />;
 }
 
 function ArchiveEntryPreviewPanel({
@@ -134,10 +241,17 @@ function ArchiveEntryPreviewPanel({
   );
 }
 
-export function ArchiveRenderer({ meta }: { meta: FileMeta }) {
+export function ArchiveRenderer({
+  meta,
+  onPreviewTextSourceChange,
+}: {
+  meta: FileMeta;
+  onPreviewTextSourceChange?: (source: PreviewTextSource | null) => void;
+}) {
   const { t } = useTranslation();
   const [listing, setListing] = useState<ArchiveListing | null>(null);
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [selectedKey, setSelectedKey] = useState<string | null>(null);
+  const [expandedDirs, setExpandedDirs] = useState<Set<string>>(() => new Set());
   const [preview, setPreview] = useState<ArchiveEntryPreview | null>(null);
   const [loading, setLoading] = useState(true);
   const [previewLoading, setPreviewLoading] = useState(false);
@@ -151,9 +265,11 @@ export function ArchiveRenderer({ meta }: { meta: FileMeta }) {
     setLoading(true);
     setError(null);
     setListing(null);
-    setSelectedIndex(null);
+    setSelectedKey(null);
+    setExpandedDirs(new Set());
     setPreview(null);
     setPreviewError(null);
+    onPreviewTextSourceChange?.(null);
     previewRequestIdRef.current += 1;
 
     const load = async () => {
@@ -179,21 +295,59 @@ export function ArchiveRenderer({ meta }: { meta: FileMeta }) {
       cancelled = true;
       previewRequestIdRef.current += 1;
     };
-  }, [meta.path]);
+  }, [meta.path, onPreviewTextSourceChange]);
 
-  const selectedEntry = useMemo(() => {
-    if (!listing || selectedIndex === null) {
-      return null;
+  useEffect(() => {
+    if (preview?.kind === 'text' && preview.text !== null) {
+      onPreviewTextSourceChange?.({
+        key: `${meta.path}::${preview.entry.index}:${preview.entry.path}`,
+        content: preview.text,
+        previewType: preview.language === 'markdown' ? 'markdown' : 'code',
+      });
+      return;
     }
 
-    return listing.entries.find((entry) => entry.index === selectedIndex) ?? null;
-  }, [listing, selectedIndex]);
+    onPreviewTextSourceChange?.(null);
+  }, [meta.path, onPreviewTextSourceChange, preview]);
+
+  const visibleRows = useMemo(() => {
+    if (!listing) {
+      return [];
+    }
+
+    const tree = buildArchiveTree(listing.entries);
+    return flattenArchiveTree(tree.children.values(), expandedDirs);
+  }, [expandedDirs, listing]);
+
+  const toggleDir = (path: string) => {
+    setExpandedDirs((previous) => {
+      const next = new Set(previous);
+      if (next.has(path)) {
+        next.delete(path);
+      } else {
+        next.add(path);
+      }
+      return next;
+    });
+  };
+
+  const selectDir = (row: ArchiveTreeRow) => {
+    previewRequestIdRef.current += 1;
+    setSelectedKey(row.key);
+    setPreview(null);
+    setPreviewError(null);
+    setPreviewLoading(false);
+    onPreviewTextSourceChange?.(null);
+    toggleDir(row.path);
+  };
 
   const openEntryPreview = async (entry: ArchiveEntry) => {
     const previewRequestId = ++previewRequestIdRef.current;
-    setSelectedIndex(entry.index);
+    setSelectedKey(`entry:${entry.index}`);
     setPreview(null);
     setPreviewError(null);
+    setPreviewLoading(false);
+    onPreviewTextSourceChange?.(null);
 
     if (entry.isDir) {
       setPreviewError(t('peek.archiveDirectoryNotPreviewable'));
@@ -259,7 +413,7 @@ export function ArchiveRenderer({ meta }: { meta: FileMeta }) {
 
   return (
     <div className="grid h-full min-h-0 grid-cols-[minmax(280px,42%)_1fr] overflow-hidden border-t border-border bg-background">
-      <div className="flex min-w-0 flex-col border-r border-border">
+      <div className="flex min-h-0 min-w-0 flex-col border-r border-border">
         <div className="flex shrink-0 items-center justify-between gap-3 border-b border-border px-4 py-3">
           <div className="min-w-0">
             <div className="truncate text-sm font-semibold text-foreground">
@@ -271,7 +425,6 @@ export function ArchiveRenderer({ meta }: { meta: FileMeta }) {
               {listing.truncated ? ` · ${t('peek.archiveTruncated')}` : ''}
             </div>
           </div>
-          <Archive size={18} className="shrink-0 text-muted-foreground" />
         </div>
 
         <div className="min-h-0 flex-1 overflow-auto">
@@ -283,38 +436,62 @@ export function ArchiveRenderer({ meta }: { meta: FileMeta }) {
               </tr>
             </thead>
             <tbody>
-              {listing.entries.map((entry) => {
-                const selected = selectedEntry?.index === entry.index;
+              {visibleRows.map((row) => {
+                const selected = selectedKey === row.key;
+                const expanded = row.isDir && expandedDirs.has(row.path);
                 return (
                   <tr
-                    key={`${entry.index}:${entry.path}`}
+                    key={row.key}
                     tabIndex={0}
                     className={`cursor-default border-b border-border/50 outline-none transition-colors hover:bg-secondary/60 focus:bg-secondary/70 ${
                       selected ? 'bg-secondary/70' : ''
                     }`}
                     onClick={() => {
-                      setSelectedIndex(entry.index);
+                      if (row.isDir) {
+                        selectDir(row);
+                      } else {
+                        setSelectedKey(row.key);
+                      }
                     }}
                     onDoubleClick={() => {
-                      void openEntryPreview(entry);
+                      if (!row.isDir && row.entry) {
+                        void openEntryPreview(row.entry);
+                      }
                     }}
                     onKeyDown={(event) => {
                       if (event.key === 'Enter') {
                         event.preventDefault();
-                        void openEntryPreview(entry);
+                        if (row.isDir) {
+                          selectDir(row);
+                        } else if (row.entry) {
+                          void openEntryPreview(row.entry);
+                        }
                       }
                     }}
                   >
                     <td className="px-3 py-2">
                       <div className="flex min-w-0 items-center gap-2">
-                        <span className="shrink-0">{entryIcon(entry)}</span>
-                        <span className="truncate" title={entry.path}>
-                          {entry.path}
+                        <span
+                          className="flex shrink-0 items-center justify-center"
+                          style={{ width: row.depth * 16 }}
+                        />
+                        <span className="flex h-4 w-4 shrink-0 items-center justify-center text-muted-foreground">
+                          {row.isDir ? (
+                            expanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />
+                          ) : null}
+                        </span>
+                        <span className="shrink-0">{rowIcon(row)}</span>
+                        <span className="truncate" title={row.path}>
+                          {row.name}
                         </span>
                       </div>
                     </td>
                     <td className="px-3 py-2 text-right text-xs text-muted-foreground">
-                      {entry.isDir ? '-' : entry.size === null ? t('peek.archiveUnknownSize') : formatBytes(entry.size)}
+                      {row.isDir
+                        ? '-'
+                        : row.entry?.size === null || row.entry?.size === undefined
+                          ? t('peek.archiveUnknownSize')
+                          : formatBytes(row.entry.size)}
                     </td>
                   </tr>
                 );

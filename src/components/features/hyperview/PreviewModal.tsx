@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useShallow } from 'zustand/react/shallow';
 
@@ -11,7 +11,7 @@ import { PreviewQuickActions } from './PreviewQuickActions';
 import { PreviewModeSwitch } from './PreviewModeSwitch';
 import { PreviewViewport } from './PreviewViewport';
 import { usePreviewOcr } from './usePreviewOcr';
-import { usePreviewAi } from './usePreviewAi';
+import { usePreviewAi, type PreviewTextSource } from './usePreviewAi';
 
 export function PreviewModal() {
   const { t } = useTranslation();
@@ -40,12 +40,19 @@ export function PreviewModal() {
       togglePinned: state.togglePinned,
     })),
   );
+  const [previewTextSource, setPreviewTextSource] = useState<PreviewTextSource | null>(null);
+
+  useEffect(() => {
+    setPreviewTextSource(null);
+  }, [activeFile?.path]);
+
   const previewOcr = usePreviewOcr({
     activeFile,
     onAutoPin: () => setPinned(true),
   });
   const previewAi = usePreviewAi({
     activeFile,
+    previewTextSource,
     onAutoPin: () => setPinned(true),
   });
 
@@ -158,6 +165,7 @@ export function PreviewModal() {
                 showAiPanel={showAiPanel}
                 previewOcr={previewOcr}
                 previewAi={previewAi}
+                onPreviewTextSourceChange={setPreviewTextSource}
                 onHighlightOcrLine={previewOcr.highlightLine}
                 onSelectOcrLine={previewOcr.selectLine}
                 onAiStartTranslate={previewAi.startTranslate}

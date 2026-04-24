@@ -19,6 +19,12 @@ export interface PreviewAiState {
   chunkProgress: { current: number; total: number } | null;
 }
 
+export interface PreviewTextSource {
+  key: string;
+  content: string;
+  previewType: PreviewType;
+}
+
 const INITIAL_STATE: PreviewAiState = {
   isOpen: false,
   isTranslating: false,
@@ -32,10 +38,11 @@ const INITIAL_STATE: PreviewAiState = {
 
 interface UsePreviewAiOptions {
   activeFile: FileMeta | null;
+  previewTextSource?: PreviewTextSource | null;
   onAutoPin: () => void;
 }
 
-export function usePreviewAi({ activeFile, onAutoPin }: UsePreviewAiOptions) {
+export function usePreviewAi({ activeFile, previewTextSource, onAutoPin }: UsePreviewAiOptions) {
   const [state, setState] = useState<PreviewAiState>(INITIAL_STATE);
   const activeRequestIdRef = useRef(0);
   const abortRef = useRef<AbortController | null>(null);
@@ -70,6 +77,23 @@ export function usePreviewAi({ activeFile, onAutoPin }: UsePreviewAiOptions) {
     clear();
     setState(INITIAL_STATE);
   }, [activeFile?.path, clear]);
+
+  // Reset stale AI output when an embedded preview source changes, but keep the panel open.
+  useEffect(() => {
+    activeRequestIdRef.current += 1;
+    abortRef.current?.abort();
+    abortRef.current = null;
+    clear();
+    setState((prev) => ({
+      ...prev,
+      isTranslating: false,
+      isOcrRunning: false,
+      translatedContent: '',
+      error: null,
+      truncated: false,
+      chunkProgress: null,
+    }));
+  }, [previewTextSource?.key, clear]);
 
   // Cleanup on unmount
   useEffect(() => {
@@ -207,6 +231,20 @@ export function usePreviewAi({ activeFile, onAutoPin }: UsePreviewAiOptions) {
     // Text-based files
     void (async () => {
       try {
+        if (previewTextSource?.content) {
+          runTranslate(previewTextSource.content, previewTextSource.previewType, state.targetLang);
+          return;
+        }
+
+        if (activeFile.previewType === 'archive') {
+          setState((prev) => ({
+            ...prev,
+            isOpen: true,
+            error: 'Select and preview a text entry inside the archive before translating.',
+          }));
+          return;
+        }
+
         const content = await readTextFile(activeFile.path);
         if (content) {
           runTranslate(content, activeFile.previewType, state.targetLang);
@@ -218,7 +256,7 @@ export function usePreviewAi({ activeFile, onAutoPin }: UsePreviewAiOptions) {
         }));
       }
     })();
-  }, [activeFile, onAutoPin, runTranslate, state.targetLang]);
+  }, [activeFile, onAutoPin, previewTextSource, runTranslate, state.targetLang]);
 
   const setTargetLang = useCallback((lang: SupportedLangCode) => {
     setState((prev) => ({ ...prev, targetLang: lang }));

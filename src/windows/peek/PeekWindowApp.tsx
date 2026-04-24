@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { listen } from '@tauri-apps/api/event';
 import { invoke } from '@tauri-apps/api/core';
@@ -11,7 +11,7 @@ import { PreviewQuickActions } from '@/components/features/hyperview/PreviewQuic
 import { PreviewModeSwitch } from '@/components/features/hyperview/PreviewModeSwitch';
 import { PreviewViewport } from '@/components/features/hyperview/PreviewViewport';
 import { usePreviewOcr } from '@/components/features/hyperview/usePreviewOcr';
-import { usePreviewAi } from '@/components/features/hyperview/usePreviewAi';
+import { usePreviewAi, type PreviewTextSource } from '@/components/features/hyperview/usePreviewAi';
 import { MAX_INLINE_PREVIEW_BYTES, OVERSIZED_PREVIEW_ERROR } from '@/lib/previewLimits';
 import { applyThemeToDocument } from '@/lib/theme';
 import { formatBytes } from '@/lib/utils';
@@ -82,12 +82,19 @@ export default function PeekApp() {
       clear: state.clear,
     }))
   );
+  const [previewTextSource, setPreviewTextSource] = useState<PreviewTextSource | null>(null);
+
+  useEffect(() => {
+    setPreviewTextSource(null);
+  }, [activeFile?.path]);
+
   const previewOcr = usePreviewOcr({
     activeFile,
     onAutoPin: () => setPinned(true),
   });
   const previewAi = usePreviewAi({
     activeFile,
+    previewTextSource,
     onAutoPin: () => setPinned(true),
   });
 
@@ -325,6 +332,7 @@ export default function PeekApp() {
           showAiPanel={showAiPanel}
           previewOcr={previewOcr}
           previewAi={previewAi}
+          onPreviewTextSourceChange={setPreviewTextSource}
           onHighlightOcrLine={previewOcr.highlightLine}
           onSelectOcrLine={previewOcr.selectLine}
           onAiStartTranslate={previewAi.startTranslate}

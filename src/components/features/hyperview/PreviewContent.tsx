@@ -4,6 +4,7 @@ import { Loader2 } from 'lucide-react';
 
 import { FileMeta, PreviewMode } from '@/types/hyperview';
 import type { OcrRecognitionResponse } from '@/types/ocr';
+import type { PreviewTextSource } from './usePreviewAi';
 
 import { BinaryRenderer } from './renderers/BinaryRenderer';
 import { MediaRenderer } from './renderers/MediaRenderer';
@@ -44,12 +45,14 @@ export function PreviewContent({
   ocrResult,
   selectedOcrLineIndex,
   onSelectOcrLine,
+  onPreviewTextSourceChange,
 }: {
   meta: FileMeta;
   mode?: PreviewMode;
   ocrResult?: OcrRecognitionResponse | null;
   selectedOcrLineIndex?: number | null;
   onSelectOcrLine?: (index: number) => void;
+  onPreviewTextSourceChange?: (source: PreviewTextSource | null) => void;
 }) {
   const reduceMotion = useReducedMotion();
   const transition = reduceMotion
@@ -117,7 +120,11 @@ export function PreviewContent({
     case 'archive':
       content = (
         <Suspense fallback={<PreviewFallback />}>
-          <ArchiveRenderer key={meta.path} meta={meta} />
+          <ArchiveRenderer
+            key={meta.path}
+            meta={meta}
+            onPreviewTextSourceChange={onPreviewTextSourceChange}
+          />
         </Suspense>
       );
       break;
