@@ -2,8 +2,6 @@ name: Sync OCR Models
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 3 * * 1'
 
 permissions:
   contents: write

@@ -4,11 +4,6 @@ on:
   schedule:
     - cron: '0 0 * * 1' # 每周一国际标准时间 0点 运行
   workflow_dispatch:    # 允许手动触发
-  push:
-    branches:
-      - main
-    paths:
-      - 'build/**'      # 当 build 目录有脚本修改时触发
 
 permissions:
   contents: write
@@ -66,6 +61,14 @@ jobs:
           packs_dir = os.path.join(dist_dir, 'packs')
           all_packages = []
           recorded_urls = set()
+
+          # 加载自定义包元数据覆盖
+          meta_path = os.path.join('build', 'packs_meta.json')
+          packs_meta = {}
+          if os.path.exists(meta_path):
+              with open(meta_path, 'r', encoding='utf-8') as f:
+                  packs_meta = json.load(f)
+              print(f'  📋 Loaded {len(packs_meta)} pack metadata overrides.')
 
           print('🔄 Merging manifests and scanning directory structure...')
 
@@ -144,12 +147,14 @@ jobs:
                           # 比如 'custom-prompt-zh-中文角色扮演精选'
                           safe_id = f'custom-{category}-{lang}-{file_pure_name}'
 
+                          meta_override = packs_meta.get(rel_path, {})
+
                           new_pack = {
                               'id': safe_id,
                               'language': lang,
                               'platform': 'custom',
-                              'name': file_pure_name,  # 直接使用文件名作为显示名称
-                              'description': f'{file_pure_name}',  # 描述也默认用文件名
+                              'name': meta_override.get('name', file_pure_name),
+                              'description': meta_override.get('description', file_pure_name),
                               'count': len(content),
                               'size_kb': round(os.path.getsize(full_path) / 1024, 2),
                               'url': rel_path,
@@ -157,7 +162,11 @@ jobs:
                           }
 
                           all_packages.append(new_pack)
-                          print(f'  🕵️ Auto-detected: {filename} -> Name: \"{file_pure_name}\"')
+                          display_name = new_pack['name']
+                          if meta_override:
+                              print(f'  🏷️ Override: {filename} -> Name: \"{display_name}\"')
+                          else:
+                              print(f'  🕵️ Auto-detected: {filename} -> Name: \"{display_name}\"')
 
                       except Exception as e:
                           print(f'  ❌ Error processing {filename}: {e}')
