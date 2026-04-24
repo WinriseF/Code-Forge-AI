@@ -270,6 +270,8 @@ fn main() {
             ctxrun_env_probe::env_probe::network::probe_network_target,
             ctxrun_env_probe::commands::environment::get_ai_context,
             ctxrun_hyperview::get_file_meta,
+            ctxrun_hyperview::list_archive_entries,
+            ctxrun_hyperview::preview_archive_entry,
             ctxrun_hyperview::peek::peek_get_request,
             ctxrun_hyperview::peek::peek_clear_request,
         ])

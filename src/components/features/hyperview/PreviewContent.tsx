@@ -26,6 +26,9 @@ const PdfRenderer = lazy(() =>
 const DocxRenderer = lazy(() =>
   import('./renderers/DocxRenderer').then((module) => ({ default: module.DocxRenderer }))
 );
+const ArchiveRenderer = lazy(() =>
+  import('./renderers/ArchiveRenderer').then((module) => ({ default: module.ArchiveRenderer }))
+);
 
 function PreviewFallback() {
   return (
@@ -108,6 +111,13 @@ export function PreviewContent({
       content = (
         <Suspense fallback={<PreviewFallback />}>
           <DocxRenderer key={meta.path} meta={meta} />
+        </Suspense>
+      );
+      break;
+    case 'archive':
+      content = (
+        <Suspense fallback={<PreviewFallback />}>
+          <ArchiveRenderer key={meta.path} meta={meta} />
         </Suspense>
       );
       break;
