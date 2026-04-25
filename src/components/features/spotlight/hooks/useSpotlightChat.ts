@@ -83,6 +83,12 @@ function formatToolPreviewFromParsed(name: string, parsed: Record<string, unknow
       if (query && path) return `${query} in ${path}`;
       return query || path;
     }
+    case 'fs.grep': {
+      const pattern = pickStringField(parsed, 'pattern');
+      const path = pickStringField(parsed, 'path');
+      if (pattern && path) return `${pattern} in ${path}`;
+      return pattern || path;
+    }
     case 'web.search':
       return pickStringField(parsed, 'query');
     case 'web.extract_page':
@@ -332,7 +338,7 @@ export function useSpotlightChat() {
         config: freshConfig,
         toolPolicy: {
           mode: 'allowList',
-          toolNames: ['fs.list_directory', 'fs.search_files', 'fs.read_file', 'web.search', 'web.extract_page', 'shell_command'],
+          toolNames: ['fs.list_directory', 'fs.search_files', 'fs.read_file', 'fs.grep', 'web.search', 'web.extract_page', 'shell_command'],
         },
         callbacks: {
           onAssistantDelta: (contentDelta) => {

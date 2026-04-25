@@ -2,7 +2,7 @@ import { AgentToolPolicy } from './types';
 
 export const DEFAULT_AGENT_TOOL_POLICY: AgentToolPolicy = {
   mode: 'allowList',
-  toolNames: ['fs.list_directory', 'fs.search_files', 'fs.read_file', 'web.search', 'web.extract_page', 'shell_command'],
+  toolNames: ['fs.list_directory', 'fs.search_files', 'fs.read_file', 'fs.grep', 'web.search', 'web.extract_page', 'shell_command'],
 };
 
 export function isToolAllowed(name: string, policy: AgentToolPolicy = DEFAULT_AGENT_TOOL_POLICY): boolean {

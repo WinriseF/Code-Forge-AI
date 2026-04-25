@@ -329,6 +329,50 @@ describe('useContextStore', () => {
     expect(state.fileTree[1].children?.[0].isSelected).toBe(false);
   });
 
+  it('applySelectionByPaths replaces selection and keeps locked files unselected', async () => {
+    const useContextStore = await importFreshContextStore();
+    useContextStore.setState({
+      fileTree: [
+        makeNode({
+          id: 'src',
+          name: 'src',
+          path: '/project/src',
+          kind: 'dir',
+          isSelected: false,
+          children: [
+            makeNode({
+              id: 'a',
+              name: 'a.ts',
+              path: '/project/src/a.ts',
+              isSelected: false,
+            }),
+            makeNode({
+              id: 'b',
+              name: 'b.ts',
+              path: '/project/src/b.ts',
+              isSelected: true,
+            }),
+            makeNode({
+              id: 'locked',
+              name: 'locked.ts',
+              path: '/project/src/locked.ts',
+              isSelected: true,
+              isLocked: true,
+            }),
+          ],
+        }),
+      ],
+    });
+
+    useContextStore.getState().applySelectionByPaths(['/project/src/a.ts', '/project/src/locked.ts']);
+
+    const src = useContextStore.getState().fileTree[0];
+    expect(src.isSelected).toBe(true);
+    expect(src.children?.[0].isSelected).toBe(true);
+    expect(src.children?.[1].isSelected).toBe(false);
+    expect(src.children?.[2].isSelected).toBe(false);
+  });
+
   it('refreshTreeStatus applies directory and extension ignores recursively', async () => {
     const useContextStore = await importFreshContextStore();
     useContextStore.setState({

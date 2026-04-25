@@ -61,6 +61,59 @@ const invertTreeSelection = (nodes: FileNode[], parentLocked = false): FileNode[
   });
 };
 
+const normalizeSelectionPath = (path: string): string => (
+  path
+    .trim()
+    .replace(/\\/g, '/')
+    .replace(/\/+/g, '/')
+    .replace(/\/+$/, '')
+    .toLowerCase()
+);
+
+const applySelectionPaths = (
+  nodes: FileNode[],
+  selectedPaths: Set<string>,
+  parentLocked = false
+): { nodes: FileNode[]; anySelected: boolean } => {
+  let anySelected = false;
+
+  const nextNodes = nodes.map(node => {
+    const locked = parentLocked || !!node.isLocked;
+
+    if (locked) {
+      const children = node.children
+        ? applySelectionPaths(node.children, selectedPaths, true).nodes
+        : undefined;
+      return {
+        ...node,
+        isSelected: false,
+        children
+      };
+    }
+
+    if (node.kind === 'file') {
+      const selected = selectedPaths.has(normalizeSelectionPath(node.path));
+      anySelected = anySelected || selected;
+      return {
+        ...node,
+        isSelected: selected,
+      };
+    }
+
+    const childResult = node.children
+      ? applySelectionPaths(node.children, selectedPaths, false)
+      : { nodes: undefined as FileNode[] | undefined, anySelected: false };
+    anySelected = anySelected || childResult.anySelected;
+    return {
+      ...node,
+      isSelected: childResult.anySelected,
+      children: childResult.nodes,
+    };
+  });
+
+  return { nodes: nextNodes, anySelected };
+};
+
 const collectDirIds = (nodes: FileNode[]): string[] => {
   let ids: string[] = [];
   for (const node of nodes) {
@@ -95,6 +148,7 @@ interface ContextState {
   resetProjectIgnore: () => void;
   refreshTreeStatus: (globalConfig: IgnoreConfig) => Promise<void>;
   toggleSelect: (nodeId: string, checked: boolean) => void;
+  applySelectionByPaths: (paths: string[]) => void;
   invertSelection: () => void;
   setRemoveComments: (enable: boolean) => void;
   setDetectSecrets: (enable: boolean) => void;
@@ -288,6 +342,13 @@ export const useContextStore = create<ContextState>()(
       toggleSelect: (nodeId, checked) => set((state) => ({
         fileTree: updateNodeState(state.fileTree, nodeId, checked)
       })),
+
+      applySelectionByPaths: (paths) => set((state) => {
+        const selectedPaths = new Set(paths.map(normalizeSelectionPath).filter(Boolean));
+        return {
+          fileTree: applySelectionPaths(state.fileTree, selectedPaths).nodes,
+        };
+      }),
 
       invertSelection: () => set((state) => ({
         fileTree: invertTreeSelection(state.fileTree)

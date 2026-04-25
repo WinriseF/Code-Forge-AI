@@ -23,6 +23,8 @@ function getToolLabel(name: string, t: (key: string) => string): string {
       return t('spotlight.toolInlineFsSearch');
     case 'fs.read_file':
       return t('spotlight.toolInlineFsRead');
+    case 'fs.grep':
+      return t('spotlight.toolInlineFsGrep');
     case 'web.search':
       return t('spotlight.toolInlineWebSearch');
     case 'web.extract_page':

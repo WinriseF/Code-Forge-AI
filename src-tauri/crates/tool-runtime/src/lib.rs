@@ -23,6 +23,7 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             agent_fs::agent_read_local_file,
             agent_fs::agent_list_local_files,
             agent_fs::agent_search_local_files,
+            agent_fs::agent_grep_content,
         ])
         .setup(|app, _api| {
             app.manage(runtime::ToolRuntime::new());

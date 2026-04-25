@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-agent-grep-content"
+description = "Enables the agent_grep_content command without any pre-configured scope."
+commands.allow = ["agent_grep_content"]
+
+[[permission]]
+identifier = "deny-agent-grep-content"
+description = "Denies the agent_grep_content command without any pre-configured scope."
+commands.deny = ["agent_grep_content"]

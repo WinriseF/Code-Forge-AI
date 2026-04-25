@@ -5019,6 +5019,30 @@
           "markdownDescription": "Denies the update_note command without any pre-configured scope."
         },
         {
+          "description": "Enables the agent_grep_content command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-tool-runtime:allow-agent-grep-content",
+          "markdownDescription": "Enables the agent_grep_content command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the agent_list_local_files command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-tool-runtime:allow-agent-list-local-files",
+          "markdownDescription": "Enables the agent_list_local_files command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the agent_read_local_file command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-tool-runtime:allow-agent-read-local-file",
+          "markdownDescription": "Enables the agent_read_local_file command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the agent_search_local_files command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-tool-runtime:allow-agent-search-local-files",
+          "markdownDescription": "Enables the agent_search_local_files command without any pre-configured scope."
+        },
+        {
           "description": "Enables the call_tool command without any pre-configured scope.",
           "type": "string",
           "const": "ctxrun-plugin-tool-runtime:allow-call-tool",
@@ -5029,6 +5053,30 @@
           "type": "string",
           "const": "ctxrun-plugin-tool-runtime:allow-list-tools",
           "markdownDescription": "Enables the list_tools command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the agent_grep_content command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-tool-runtime:deny-agent-grep-content",
+          "markdownDescription": "Denies the agent_grep_content command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the agent_list_local_files command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-tool-runtime:deny-agent-list-local-files",
+          "markdownDescription": "Denies the agent_list_local_files command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the agent_read_local_file command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-tool-runtime:deny-agent-read-local-file",
+          "markdownDescription": "Denies the agent_read_local_file command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the agent_search_local_files command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-tool-runtime:deny-agent-search-local-files",
+          "markdownDescription": "Denies the agent_search_local_files command without any pre-configured scope."
         },
         {
           "description": "Denies the call_tool command without any pre-configured scope.",

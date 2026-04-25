@@ -31,6 +31,17 @@ interface SearchFilesArgs {
   filesOnly?: boolean;
 }
 
+interface GrepArgs {
+  pattern: string;
+  path?: string;
+  glob?: string;
+  outputMode?: 'content' | 'files_with_matches' | 'count';
+  context?: number;
+  caseInsensitive?: boolean;
+  headLimit?: number;
+  maxBytes?: number;
+}
+
 interface AgentListLocalFilesRequest {
   rootDir: string;
   relativeDir?: string;
@@ -90,6 +101,41 @@ interface AgentSearchLocalFilesResponse {
   maxDepth: number;
   truncated: boolean;
   entries: AgentListEntry[];
+}
+
+interface AgentGrepContentRequest {
+  rootDir: string;
+  pattern: string;
+  path?: string;
+  glob?: string;
+  outputMode?: string;
+  context?: number;
+  caseInsensitive?: boolean;
+  headLimit?: number;
+  maxBytes?: number;
+}
+
+interface GrepLineMatch {
+  filePath: string;
+  lineNumber: number;
+  line: string;
+  before: string[];
+  after: string[];
+}
+
+interface FileMatchCount {
+  filePath: string;
+  count: number;
+}
+
+interface AgentGrepContentResponse {
+  mode: string;
+  pattern: string;
+  numFiles: number;
+  truncated: boolean;
+  matches?: GrepLineMatch[];
+  filePaths?: string[];
+  fileCounts?: FileMatchCount[];
 }
 
 function normalizeListArgs(input: unknown): ListDirectoryArgs {
@@ -212,6 +258,65 @@ function buildSearchSummary(result: AgentSearchLocalFilesResponse): string {
   const count = result.entries.length;
   const suffix = result.truncated ? ' (truncated)' : '';
   return `Found ${count} matches for "${result.query}" under ${result.dir} by ${result.searchMode}${suffix}.`;
+}
+
+function normalizeGrepArgs(input: unknown): GrepArgs {
+  if (!input || typeof input !== 'object') {
+    throw new Error('Invalid arguments, object expected.');
+  }
+
+  const raw = input as Record<string, unknown>;
+  const pattern = typeof raw.pattern === 'string' ? raw.pattern.trim() : '';
+  if (!pattern) {
+    throw new Error('pattern is required.');
+  }
+
+  const path = typeof raw.path === 'string' ? raw.path.trim() : undefined;
+  const glob = typeof raw.glob === 'string' ? raw.glob.trim() : undefined;
+
+  const outputMode =
+    typeof raw.outputMode === 'string' ? raw.outputMode.trim() : undefined;
+  if (outputMode && !['content', 'files_with_matches', 'count'].includes(outputMode)) {
+    throw new Error('outputMode must be one of content|files_with_matches|count.');
+  }
+  const context =
+    typeof raw.context === 'number' && Number.isFinite(raw.context)
+      ? Math.max(0, Math.floor(raw.context))
+      : undefined;
+  const caseInsensitive =
+    typeof raw.caseInsensitive === 'boolean' ? raw.caseInsensitive : undefined;
+  const headLimit =
+    typeof raw.headLimit === 'number' && Number.isFinite(raw.headLimit)
+      ? Math.max(0, Math.floor(raw.headLimit))
+      : undefined;
+  const maxBytes =
+    typeof raw.maxBytes === 'number' && Number.isFinite(raw.maxBytes)
+      ? Math.max(1024, Math.floor(raw.maxBytes))
+      : undefined;
+
+  return {
+    pattern,
+    path: path && path.length > 0 ? path : undefined,
+    glob: glob && glob.length > 0 ? glob : undefined,
+    outputMode: outputMode as GrepArgs['outputMode'],
+    context,
+    caseInsensitive,
+    headLimit,
+    maxBytes,
+  };
+}
+
+function buildGrepSummary(result: AgentGrepContentResponse): string {
+  const suffix = result.truncated ? ' (truncated)' : '';
+  if (result.mode === 'files_with_matches') {
+    return `Found ${result.numFiles} file(s) matching "${result.pattern}"${suffix}.`;
+  }
+  if (result.mode === 'count') {
+    const total = (result.fileCounts ?? []).reduce((s, c) => s + c.count, 0);
+    return `Found ${total} match(es) in ${result.numFiles} file(s) for "${result.pattern}"${suffix}.`;
+  }
+  const matchCount = result.matches?.length ?? 0;
+  return `Found ${matchCount} match(es) in ${result.numFiles} file(s) for "${result.pattern}"${suffix}.`;
 }
 
 function buildReadSummary(result: AgentReadLocalFileResponse): string {
@@ -381,6 +486,92 @@ export function registerFsTools(registry: AgentToolRegistry): void {
           structured: result as unknown as Record<string, unknown>,
           warnings: result.truncated
             ? ['file content truncated by maxBytes guard']
+            : undefined,
+        };
+      } catch (error) {
+        return toToolError(error);
+      }
+    },
+  });
+
+  registry.register({
+    definition: {
+      name: 'fs.grep',
+      description:
+        'Search file contents under workspace root by regex pattern. Returns matching lines with optional context, matching file paths, or per-file match counts.',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          pattern: {
+            type: 'string',
+            description: 'Regular expression pattern to search for in file contents.',
+          },
+          path: {
+            type: 'string',
+            description: 'Directory path relative to workspace root. Default "."',
+          },
+          glob: {
+            type: 'string',
+            description: 'Glob pattern to filter files (e.g., "*.{ts,tsx}", "*.py").',
+          },
+          outputMode: {
+            type: 'string',
+            enum: ['content', 'files_with_matches', 'count'],
+            description:
+              'Output mode. "content" returns matching lines with context. "files_with_matches" returns file paths only. "count" returns per-file match counts.',
+          },
+          context: {
+            type: 'integer',
+            minimum: 0,
+            maximum: 10,
+            description: 'Number of context lines before and after each match. Requires outputMode "content".',
+          },
+          caseInsensitive: {
+            type: 'boolean',
+            description: 'Case insensitive search. Default false.',
+          },
+          headLimit: {
+            type: 'integer',
+            minimum: 0,
+            maximum: 500,
+            description: 'Limit output to first N results. Default 100. Pass 0 for no limit.',
+          },
+          maxBytes: {
+            type: 'integer',
+            minimum: 1024,
+            maximum: 262144,
+            description: 'Per-file byte limit for reading. Default 65536.',
+          },
+        },
+        required: ['pattern'],
+      },
+      riskLevel: 'low',
+      timeoutMs: 30_000,
+    },
+    handler: async (input) => {
+      try {
+        const rootDir = getWorkspaceRoot();
+        const args = normalizeGrepArgs(input);
+        const request: AgentGrepContentRequest = {
+          rootDir,
+          pattern: args.pattern,
+          path: args.path,
+          glob: args.glob,
+          outputMode: args.outputMode,
+          context: args.context,
+          caseInsensitive: args.caseInsensitive,
+          headLimit: args.headLimit,
+          maxBytes: args.maxBytes,
+        };
+        const result = await invoke<AgentGrepContentResponse>(`${TOOL_RUNTIME_PLUGIN_PREFIX}agent_grep_content`, {
+          request,
+        });
+        return {
+          ok: true,
+          text: buildGrepSummary(result),
+          structured: result as unknown as Record<string, unknown>,
+          warnings: result.truncated
+            ? ['grep results truncated by headLimit']
             : undefined,
         };
       } catch (error) {

@@ -1,3 +1,7 @@
+use grep_regex::RegexMatcherBuilder;
+use grep_searcher::sinks::UTF8;
+use grep_searcher::Searcher;
+use ignore::WalkBuilder;
 use regex::Regex;
 use serde::{Deserialize, Serialize};
 use std::fs::File;
@@ -534,5 +538,367 @@ pub fn agent_search_local_files(
         max_depth,
         truncated,
         entries,
+    })
+}
+
+// ---------------------------------------------------------------------------
+// agent_grep_content — file content search (ripgrep-backed)
+// ---------------------------------------------------------------------------
+
+const DEFAULT_GREP_HEAD_LIMIT: usize = 100;
+const MAX_GREP_HEAD_LIMIT: usize = 500;
+const DEFAULT_GREP_MAX_BYTES: usize = 64 * 1024;
+const MAX_GREP_MAX_BYTES: usize = 256 * 1024;
+const MAX_GREP_PATTERN_CHARS: usize = 512;
+const GREP_MAX_COLUMNS: usize = 500;
+const GREP_MAX_TOTAL_MATCHES: usize = 10_000;
+
+#[derive(Debug, Clone, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct AgentGrepContentRequest {
+    pub root_dir: String,
+    pub pattern: String,
+    pub path: Option<String>,
+    pub glob: Option<String>,
+    pub output_mode: Option<String>,
+    pub context: Option<usize>,
+    pub case_insensitive: Option<bool>,
+    pub head_limit: Option<usize>,
+    pub max_bytes: Option<usize>,
+}
+
+#[derive(Debug, Clone, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct GrepLineMatch {
+    pub file_path: String,
+    pub line_number: u64,
+    pub line: String,
+    pub before: Vec<String>,
+    pub after: Vec<String>,
+}
+
+#[derive(Debug, Clone, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct FileMatchCount {
+    pub file_path: String,
+    pub count: usize,
+}
+
+#[derive(Debug, Clone, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct AgentGrepContentResponse {
+    pub mode: String,
+    pub pattern: String,
+    pub num_files: usize,
+    pub truncated: bool,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub matches: Vec<GrepLineMatch>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub file_paths: Vec<String>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub file_counts: Vec<FileMatchCount>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+enum GrepOutputMode {
+    Content,
+    Files,
+    Count,
+}
+
+fn parse_grep_output_mode(value: Option<&str>) -> GrepOutputMode {
+    match value.map(|v| v.trim().to_ascii_lowercase()).as_deref() {
+        Some("files_with_matches") | Some("files") => GrepOutputMode::Files,
+        Some("count") => GrepOutputMode::Count,
+        _ => GrepOutputMode::Content,
+    }
+}
+
+fn validate_grep_pattern(pattern: &str) -> std::result::Result<String, String> {
+    let trimmed = pattern.trim();
+    if trimmed.is_empty() {
+        return Err("pattern cannot be empty.".to_string());
+    }
+    if trimmed.chars().count() > MAX_GREP_PATTERN_CHARS {
+        return Err(format!(
+            "pattern is too long (max {} characters).",
+            MAX_GREP_PATTERN_CHARS
+        ));
+    }
+    Ok(trimmed.to_string())
+}
+
+struct GrepAccumulator {
+    output_mode: GrepOutputMode,
+    head_limit: usize,
+    matches: Vec<GrepLineMatch>,
+    file_paths: Vec<String>,
+    file_counts: Vec<FileMatchCount>,
+    truncated: bool,
+}
+
+impl GrepAccumulator {
+    fn file_count(&self) -> usize {
+        match self.output_mode {
+            GrepOutputMode::Content => self.matches.len(),
+            GrepOutputMode::Files => self.file_paths.len(),
+            GrepOutputMode::Count => self.file_counts.len(),
+        }
+    }
+
+    fn is_full(&self) -> bool {
+        self.file_count() >= self.head_limit
+    }
+}
+
+fn truncate_line(line: &str, max_columns: usize) -> String {
+    if line.chars().count() <= max_columns {
+        line.to_string()
+    } else {
+        let truncated: String = line.chars().take(max_columns).collect();
+        format!("{}...", truncated)
+    }
+}
+
+const GREP_MAX_LINES: usize = 50_000;
+
+fn grep_single_file(
+    file_path: &Path,
+    root_canonical: &Path,
+    pattern: &str,
+    case_insensitive: bool,
+    context_lines: usize,
+    max_bytes: usize,
+    output_mode: GrepOutputMode,
+    acc: &mut GrepAccumulator,
+) -> std::result::Result<(), String> {
+    if is_probably_binary(file_path)? {
+        return Ok(());
+    }
+
+    let metadata = std::fs::metadata(file_path)
+        .map_err(|e| format!("Failed to stat '{}': {}", file_path.display(), e))?;
+    if metadata.len() as usize > max_bytes * 4 {
+        return Ok(());
+    }
+
+    let relative = to_root_relative_string(root_canonical, file_path);
+
+    let matcher = RegexMatcherBuilder::new()
+        .case_insensitive(case_insensitive)
+        .build(pattern)
+        .map_err(|e| format!("Invalid regex pattern '{}': {}", pattern, e))?;
+
+    match output_mode {
+        GrepOutputMode::Files => {
+            let mut found = false;
+            let mut searcher = Searcher::new();
+            searcher
+                .search_path(
+                    &matcher,
+                    file_path,
+                    UTF8(|_, _| {
+                        found = true;
+                        Ok(false)
+                    }),
+                )
+                .map_err(|e| format!("Search error in '{}': {}", relative, e))?;
+
+            if found && !acc.is_full() {
+                acc.file_paths.push(relative);
+            }
+            Ok(())
+        }
+        GrepOutputMode::Count => {
+            let mut count: usize = 0;
+            let mut searcher = Searcher::new();
+            searcher
+                .search_path(
+                    &matcher,
+                    file_path,
+                    UTF8(|_, _| {
+                        count += 1;
+                        Ok(count < GREP_MAX_TOTAL_MATCHES)
+                    }),
+                )
+                .map_err(|e| format!("Search error in '{}': {}", relative, e))?;
+
+            if count > 0 && !acc.is_full() {
+                acc.file_counts.push(FileMatchCount {
+                    file_path: relative,
+                    count,
+                });
+            }
+            Ok(())
+        }
+        GrepOutputMode::Content => {
+            // Single-pass: read file lines into memory (bounded), then search in-memory
+            let file = File::open(file_path)
+                .map_err(|e| format!("Failed to open '{}': {}", file_path.display(), e))?;
+            let all_lines: Vec<String> = BufReader::new(file)
+                .lines()
+                .take(GREP_MAX_LINES)
+                .map(|l| l.unwrap_or_default())
+                .collect();
+            let haystack = all_lines.join("\n");
+
+            let mut line_matches: Vec<usize> = Vec::new();
+            let mut searcher = Searcher::new();
+            searcher
+                .search_slice(
+                    &matcher,
+                    haystack.as_bytes(),
+                    UTF8(|line_num, _| {
+                        let idx = line_num.saturating_sub(1) as usize;
+                        if idx < all_lines.len() {
+                            line_matches.push(idx);
+                        }
+                        Ok(line_matches.len() < GREP_MAX_TOTAL_MATCHES)
+                    }),
+                )
+                .map_err(|e| format!("Search error in '{}': {}", relative, e))?;
+
+            let total_lines = all_lines.len();
+            for &idx in &line_matches {
+                if acc.is_full() {
+                    acc.truncated = true;
+                    break;
+                }
+
+                let before_start = idx.saturating_sub(context_lines);
+                let before: Vec<String> = all_lines[before_start..idx]
+                    .iter()
+                    .map(|l| truncate_line(l, GREP_MAX_COLUMNS))
+                    .collect();
+
+                let after_end = (idx + 1 + context_lines).min(total_lines);
+                let after: Vec<String> = all_lines[idx + 1..after_end]
+                    .iter()
+                    .map(|l| truncate_line(l, GREP_MAX_COLUMNS))
+                    .collect();
+
+                acc.matches.push(GrepLineMatch {
+                    file_path: relative.clone(),
+                    line_number: (idx + 1) as u64,
+                    line: truncate_line(&all_lines[idx], GREP_MAX_COLUMNS),
+                    before,
+                    after,
+                });
+            }
+            Ok(())
+        }
+    }
+}
+
+#[tauri::command]
+pub fn agent_grep_content(
+    request: AgentGrepContentRequest,
+) -> Result<AgentGrepContentResponse> {
+    let root_canonical = canonicalize_dir(&request.root_dir, "rootDir")?;
+    let pattern = validate_grep_pattern(&request.pattern)?;
+    let relative_dir_input = request.path.unwrap_or_else(|| ".".to_string());
+    let relative_dir = normalize_relative_path(&relative_dir_input)?;
+    let dir_canonical = resolve_scoped_path(&root_canonical, &relative_dir, false)?;
+
+    let output_mode = parse_grep_output_mode(request.output_mode.as_deref());
+    let context_lines = request.context.unwrap_or(0);
+    let case_insensitive = request.case_insensitive.unwrap_or(false);
+    let head_limit = clamp_usize(
+        request.head_limit,
+        DEFAULT_GREP_HEAD_LIMIT,
+        0,
+        MAX_GREP_HEAD_LIMIT,
+    );
+    let head_limit = if head_limit == 0 {
+        MAX_GREP_HEAD_LIMIT
+    } else {
+        head_limit
+    };
+    let max_bytes = clamp_usize(
+        request.max_bytes,
+        DEFAULT_GREP_MAX_BYTES,
+        MIN_READ_MAX_BYTES,
+        MAX_GREP_MAX_BYTES,
+    );
+
+    let mut acc = GrepAccumulator {
+        output_mode,
+        head_limit,
+        matches: Vec::new(),
+        file_paths: Vec::new(),
+        file_counts: Vec::new(),
+        truncated: false,
+    };
+
+    let mut builder = WalkBuilder::new(&dir_canonical);
+    builder
+        .hidden(true)
+        .git_ignore(true)
+        .git_global(true)
+        .git_exclude(true)
+        .follow_links(false)
+        .max_depth(Some(8));
+
+    if let Some(glob_str) = &request.glob {
+        let mut overrides = ignore::overrides::OverrideBuilder::new(&dir_canonical);
+        for pattern in glob_str.split(',').map(|s| s.trim()).filter(|s| !s.is_empty()) {
+            overrides
+                .add(pattern)
+                .map_err(|e| format!("Invalid glob pattern '{}': {}", pattern, e))?;
+        }
+        let built = overrides
+            .build()
+            .map_err(|e| format!("Failed to build glob filter: {}", e))?;
+        builder.overrides(built);
+    }
+
+    for entry_result in builder.build() {
+        if acc.is_full() {
+            acc.truncated = true;
+            break;
+        }
+
+        let entry = match entry_result {
+            Ok(e) => e,
+            Err(_) => continue,
+        };
+
+        if !entry.file_type().map(|ft| ft.is_file()).unwrap_or(false) {
+            continue;
+        }
+
+        let path = entry.path();
+        if let Err(_e) = grep_single_file(
+            path,
+            &root_canonical,
+            &pattern,
+            case_insensitive,
+            context_lines,
+            max_bytes,
+            output_mode,
+            &mut acc,
+        ) {
+            // Skip files with read/permission errors during content search.
+        }
+    }
+
+    let num_files = match output_mode {
+        GrepOutputMode::Content => acc.matches.iter().map(|m| m.file_path.clone()).collect::<std::collections::HashSet<_>>().len(),
+        GrepOutputMode::Files => acc.file_paths.len(),
+        GrepOutputMode::Count => acc.file_counts.len(),
+    };
+
+    Ok(AgentGrepContentResponse {
+        mode: match output_mode {
+            GrepOutputMode::Content => "content".to_string(),
+            GrepOutputMode::Files => "files_with_matches".to_string(),
+            GrepOutputMode::Count => "count".to_string(),
+        },
+        pattern,
+        num_files,
+        truncated: acc.truncated,
+        matches: acc.matches,
+        file_paths: acc.file_paths,
+        file_counts: acc.file_counts,
     })
 }

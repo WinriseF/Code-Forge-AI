@@ -10,7 +10,7 @@ const CONTEXT_PLUGIN_PREFIX = 'plugin:ctxrun-plugin-context|';
 import {
   RefreshCw, Loader2, FileJson,
   PanelLeft, SlidersHorizontal, ChevronUp,
-  LayoutDashboard, FileText, ArrowRightLeft, GitBranch
+  LayoutDashboard, FileText, ArrowRightLeft, GitBranch, Sparkles
 } from 'lucide-react';
 import { useContextStore } from '@/store/useContextStore';
 import { useAppStore, DEFAULT_MODELS } from '@/store/useAppStore';
@@ -23,6 +23,7 @@ import { TokenDashboard } from './TokenDashboard';
 import { FilterManager } from './FilterManager';
 import { ContextPreview } from './ContextPreview';
 import { ScanResultDialog, SecretMatch } from './ScanResultDialog';
+import { AiSelectionPanel } from './AiSelectionPanel';
 import { cn } from '@/lib/utils';
 import { useTranslation } from 'react-i18next';
 import { Toast, ToastType } from '@/components/ui/Toast';
@@ -126,6 +127,7 @@ export function ContextView() {
     setFileTree,
     setIsScanning,
     toggleSelect,
+    applySelectionByPaths,
     removeComments,
     detectSecrets,
     invertSelection,
@@ -146,6 +148,7 @@ export function ContextView() {
       state.setFileTree,
       state.setIsScanning,
       state.toggleSelect,
+      state.applySelectionByPaths,
       state.removeComments,
       state.detectSecrets,
       state.invertSelection,
@@ -181,6 +184,7 @@ export function ContextView() {
   const openPreview = usePreviewStore((state) => state.openPreview);
 
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isAiSelectionOpen, setIsAiSelectionOpen] = useState(false);
   const [showFilters, setShowFilters] = useState(false); 
   const [rightViewMode, setRightViewMode] = useState<'dashboard' | 'preview'>('dashboard');
   const ignoreSyncInitializedRef = useRef(false);
@@ -612,6 +616,14 @@ export function ContextView() {
             {t('context.selectedCount', { count: selectedFileCount })}
           </span>
           <button
+            onClick={() => setIsAiSelectionOpen(true)}
+            disabled={!globalProjectRoot || isScanning || fileTree.length === 0}
+            title={t('context.aiSelectionTitle')}
+            className="p-2 text-muted-foreground hover:text-primary hover:bg-primary/10 rounded-md transition-colors disabled:opacity-50 disabled:hover:text-muted-foreground disabled:hover:bg-transparent"
+          >
+            <Sparkles size={16} />
+          </button>
+          <button
             onClick={() => performScan(globalProjectRoot || '')}
             disabled={!globalProjectRoot}
             title={t('workspace.rescan')}
@@ -741,6 +753,13 @@ export function ContextView() {
         results={scanState.results}
         onConfirm={handleScanConfirm}
         onCancel={() => setScanState(prev => ({ ...prev, isOpen: false }))}
+      />
+      <AiSelectionPanel
+        isOpen={isAiSelectionOpen}
+        fileTree={fileTree}
+        projectRoot={globalProjectRoot}
+        onApply={applySelectionByPaths}
+        onClose={() => setIsAiSelectionOpen(false)}
       />
     </div>
   );

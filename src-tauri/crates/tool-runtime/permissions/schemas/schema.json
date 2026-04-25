@@ -295,6 +295,54 @@
       "type": "string",
       "oneOf": [
         {
+          "description": "Enables the agent_grep_content command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-agent-grep-content",
+          "markdownDescription": "Enables the agent_grep_content command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the agent_grep_content command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-agent-grep-content",
+          "markdownDescription": "Denies the agent_grep_content command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the agent_list_local_files command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-agent-list-local-files",
+          "markdownDescription": "Enables the agent_list_local_files command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the agent_list_local_files command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-agent-list-local-files",
+          "markdownDescription": "Denies the agent_list_local_files command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the agent_read_local_file command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-agent-read-local-file",
+          "markdownDescription": "Enables the agent_read_local_file command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the agent_read_local_file command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-agent-read-local-file",
+          "markdownDescription": "Denies the agent_read_local_file command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the agent_search_local_files command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-agent-search-local-files",
+          "markdownDescription": "Enables the agent_search_local_files command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the agent_search_local_files command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-agent-search-local-files",
+          "markdownDescription": "Denies the agent_search_local_files command without any pre-configured scope."
+        },
+        {
           "description": "Enables the call_tool command without any pre-configured scope.",
           "type": "string",
           "const": "allow-call-tool",

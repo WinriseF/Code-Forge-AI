@@ -1,19 +1,12 @@
 import { useTranslation } from 'react-i18next';
-import { useShallow } from 'zustand/react/shallow';
 import { AlertTriangle, Check, RefreshCw } from 'lucide-react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import liquidLoaderUrl from '@/assets/liquid-loader.lottie';
 import { MarkdownContent } from '@/components/ui/MarkdownContent';
 import { Select } from '@/components/ui/select';
+import { AiProviderSelect } from '@/components/ui/AiProviderSelect';
 import { SUPPORTED_LANGUAGES, type SupportedLangCode } from '@/lib/aiTranslate';
-import { useAppStore } from '@/store/useAppStore';
 import type { PreviewAiState } from './usePreviewAi';
-
-const PROVIDER_LABELS: Record<string, string> = {
-  openai: 'OpenAI',
-  deepseek: 'DeepSeek',
-  anthropic: 'Anthropic',
-};
 
 interface PreviewAiPanelProps {
   state: PreviewAiState;
@@ -30,31 +23,10 @@ export function PreviewAiPanel({
 }: PreviewAiPanelProps) {
   const { t } = useTranslation();
 
-  const aiConfig = useAppStore(useShallow((s) => s.aiConfig));
-  const setAIConfig = useAppStore((s) => s.setAIConfig);
-  const savedProviders = useAppStore(useShallow((s) => s.savedProviderSettings));
-
-  const providerOptions = Object.keys(savedProviders)
-    .filter((id) => savedProviders[id]?.apiKey)
-    .map((id) => ({ value: id, label: PROVIDER_LABELS[id] ?? id }));
-
   const langOptions = SUPPORTED_LANGUAGES.map((lang) => ({
     value: lang.code,
     label: lang.label,
   }));
-
-  const handleProviderChange = (id: string) => {
-    const saved = savedProviders[id];
-    if (saved) {
-      setAIConfig({
-        providerId: id,
-        modelId: saved.modelId,
-        baseUrl: saved.baseUrl,
-        apiKey: saved.apiKey,
-        temperature: saved.temperature,
-      });
-    }
-  };
 
   const isBusy = state.isOcrRunning || state.isTranslating;
   const hasResult = Boolean(state.translatedContent);
@@ -75,12 +47,7 @@ export function PreviewAiPanel({
       {/* Compact settings row */}
       <div className="flex items-center gap-1 border-b border-border px-2 py-1.5">
         <div className="min-w-0 flex-1">
-          <Select
-            value={aiConfig.providerId}
-            onChange={handleProviderChange}
-            options={providerOptions}
-            size="sm"
-          />
+          <AiProviderSelect size="sm" />
         </div>
         <div className="min-w-0 flex-1">
           <Select

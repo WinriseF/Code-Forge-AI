@@ -21,6 +21,10 @@ uuid = { workspace = true }
 ctxrun-plugin-miner = { path = "../miner" }
 ctxrun-process-utils = { workspace = true, features = ["tokio"] }
 walkdir = "2"
+grep-matcher = "0.1"
+grep-regex = "0.1"
+grep-searcher = "0.1"
+ignore = "0.4"
 
 [build-dependencies]
 tauri-plugin = { workspace = true, features = ["build"] }
