@@ -7,9 +7,10 @@ use std::{
 };
 
 use ctxrun_db::{
+    ai_models,
     apps,
     init::DbState,
-    models::{AppEntry, IgnoredSecret, ProjectConfig, Prompt},
+    models::{AppEntry, CreateAiModelInput, IgnoredSecret, ProjectConfig, Prompt, UpdateAiModelInput},
     project_config, prompts, secrets, shell_history, url_history,
 };
 use rusqlite::{Connection, params};
@@ -88,6 +89,25 @@ fn sample_prompt(
         is_executable: Some(false),
         shell_type: None,
         use_as_chat_template: Some(use_as_chat_template),
+    }
+}
+
+fn sample_ai_model_input(name: &str, category: &str, is_default: bool) -> CreateAiModelInput {
+    CreateAiModelInput {
+        name: name.to_string(),
+        category: category.to_string(),
+        provider_name: "OpenAI".to_string(),
+        base_url: "https://api.example.com/v1".to_string(),
+        model_id: format!("{name}-model"),
+        api_key: format!("key-{name}"),
+        temperature: Some(0.7),
+        max_tokens: Some(4096),
+        capabilities_json: Some(r#"{"stream":true}"#.to_string()),
+        params_json: Some(r#"{"reasoning_effort":"medium"}"#.to_string()),
+        enabled: Some(true),
+        is_default: Some(is_default),
+        sort_order: Some(0),
+        remark: Some(format!("remark-{name}")),
     }
 }
 
@@ -206,6 +226,72 @@ fn centralized_db_shell_history_commands_cover_recent_and_search_paths() {
         .expect("search shell history");
     assert!(!search.is_empty());
     assert!(search[0].command.contains("cargo test"));
+}
+
+#[test]
+fn centralized_db_ai_model_commands_cover_crud_and_default_switching() {
+    let db_state = make_db_state();
+
+    let first = ai_models::create_ai_model(
+        state_of(&db_state),
+        sample_ai_model_input("Chat Primary", "chat", true),
+    )
+    .expect("create first ai model");
+    let second = ai_models::create_ai_model(
+        state_of(&db_state),
+        sample_ai_model_input("Chat Backup", "chat", false),
+    )
+    .expect("create second ai model");
+
+    let listed = ai_models::list_ai_models(state_of(&db_state), None, None).expect("list ai models");
+    assert_eq!(listed.len(), 2);
+
+    let default_chat = ai_models::get_default_ai_model(state_of(&db_state), "chat".into())
+        .expect("get default chat model")
+        .expect("default chat model should exist");
+    assert_eq!(default_chat.id, first.id);
+
+    let switched = ai_models::set_default_ai_model(state_of(&db_state), second.id.clone())
+        .expect("switch default ai model");
+    assert_eq!(switched.id, second.id);
+    assert!(switched.is_default);
+
+    let updated = ai_models::update_ai_model(
+        state_of(&db_state),
+        UpdateAiModelInput {
+            id: second.id.clone(),
+            name: "Chat Backup Updated".into(),
+            category: "chat".into(),
+            provider_name: "OpenAI".into(),
+            base_url: "https://api.example.com/v1/".into(),
+            model_id: "chat-backup-updated".into(),
+            api_key: "key-chat-backup-updated".into(),
+            temperature: Some(0.4),
+            max_tokens: Some(2048),
+            capabilities_json: Some("{\"stream\":true,\"tools\":true}".into()),
+            params_json: Some("{\"reasoning_effort\":\"high\"}".into()),
+            enabled: true,
+            is_default: true,
+            sort_order: Some(2),
+            remark: Some("updated".into()),
+        },
+    )
+    .expect("update ai model");
+    assert_eq!(updated.name, "Chat Backup Updated");
+    assert_eq!(updated.base_url, "https://api.example.com/v1");
+
+    let fetched = ai_models::get_ai_model(state_of(&db_state), updated.id.clone())
+        .expect("get ai model")
+        .expect("ai model should exist");
+    assert_eq!(fetched.params_json, "{\"reasoning_effort\":\"high\"}");
+
+    ai_models::delete_ai_model(state_of(&db_state), first.id.clone()).expect("delete ai model");
+    assert!(
+        ai_models::get_ai_model(state_of(&db_state), first.id)
+            .expect("query deleted ai model")
+            .is_none(),
+        "deleted ai model should not be returned"
+    );
 }
 
 #[test]

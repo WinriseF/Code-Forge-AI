@@ -250,6 +250,14 @@ fn main() {
             db::project_config::save_project_config,
             db::project_config::export_project_configs,
             db::project_config::import_project_configs,
+            db::ai_models::list_ai_models,
+            db::ai_models::get_ai_model,
+            db::ai_models::create_ai_model,
+            db::ai_models::update_ai_model,
+            db::ai_models::delete_ai_model,
+            db::ai_models::get_default_ai_model,
+            db::ai_models::set_default_ai_model,
+            db::ai_models::import_legacy_ai_models_if_needed,
             db::secrets::add_ignored_secrets,
             db::secrets::get_ignored_secrets,
             db::secrets::delete_ignored_secret,
@@ -285,7 +293,20 @@ fn main() {
                 load_app_language(app.handle()).unwrap_or_else(|| "zh".to_string());
 
             match db::init_db(app.handle()) {
-                Ok(conn) => {
+                Ok(mut conn) => {
+                    match db::ai_models::import_legacy_ai_models_from_app_handle(
+                        &mut conn,
+                        app.handle(),
+                    ) {
+                        Ok(imported) if imported > 0 => {
+                            println!("[Database] Imported {imported} legacy AI model configs.");
+                        }
+                        Ok(_) => {}
+                        Err(err) => {
+                            eprintln!("[Database] Failed to import legacy AI model configs: {err}");
+                        }
+                    }
+
                     app.manage(db::DbState {
                         conn: Mutex::new(conn),
                     });

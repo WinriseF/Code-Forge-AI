@@ -30,7 +30,7 @@ const SETTINGS_SECTION_WIDTH: Record<SettingsSection, SettingsContentWidth> = {
   general: 'form',
   searchWorkspace: 'wide',
   library: 'wide',
-  ai: 'form',
+  ai: 'wide',
   data: 'form',
   security: 'wide',
   about: 'full',
@@ -46,10 +46,6 @@ export function SettingsView() {
     setLanguage,
     globalIgnore,
     updateGlobalIgnore,
-    aiConfig,
-    setAIConfig,
-    savedProviderSettings,
-    renameAIProvider,
     spotlightShortcut,
     setSpotlightShortcut,
     automatorShortcut,
@@ -72,10 +68,6 @@ export function SettingsView() {
       state.setLanguage,
       state.globalIgnore,
       state.updateGlobalIgnore,
-      state.aiConfig,
-      state.setAIConfig,
-      state.savedProviderSettings,
-      state.renameAIProvider,
       state.spotlightShortcut,
       state.setSpotlightShortcut,
       state.automatorShortcut,
@@ -158,14 +150,7 @@ export function SettingsView() {
       case 'library':
         return <PromptLibraryManager />;
       case 'ai':
-        return (
-          <AISection
-            aiConfig={aiConfig}
-            setAIConfig={setAIConfig}
-            savedProviderSettings={savedProviderSettings}
-            renameAIProvider={renameAIProvider}
-          />
-        );
+        return <AISection />;
       case 'data':
         return (
           <DataMaintenanceSection

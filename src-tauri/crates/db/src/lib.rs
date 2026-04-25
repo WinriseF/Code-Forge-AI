@@ -1,3 +1,4 @@
+pub mod ai_models;
 pub mod apps;
 pub mod error;
 pub mod init;

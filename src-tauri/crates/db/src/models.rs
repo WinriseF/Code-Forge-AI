@@ -72,6 +72,67 @@ pub struct PromptCounts {
     pub command: i64,
 }
 
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+#[serde(rename_all = "camelCase")]
+pub struct AiModelRecord {
+    pub id: String,
+    pub name: String,
+    pub category: String,
+    pub provider_name: String,
+    pub base_url: String,
+    pub model_id: String,
+    pub api_key: String,
+    pub temperature: Option<f64>,
+    pub max_tokens: Option<i64>,
+    pub capabilities_json: String,
+    pub params_json: String,
+    pub enabled: bool,
+    pub is_default: bool,
+    pub sort_order: i64,
+    pub remark: String,
+    pub created_at: i64,
+    pub updated_at: i64,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct CreateAiModelInput {
+    pub name: String,
+    pub category: String,
+    pub provider_name: String,
+    pub base_url: String,
+    pub model_id: String,
+    pub api_key: String,
+    pub temperature: Option<f64>,
+    pub max_tokens: Option<i64>,
+    pub capabilities_json: Option<String>,
+    pub params_json: Option<String>,
+    pub enabled: Option<bool>,
+    pub is_default: Option<bool>,
+    pub sort_order: Option<i64>,
+    pub remark: Option<String>,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "camelCase")]
+pub struct UpdateAiModelInput {
+    pub id: String,
+    pub name: String,
+    pub category: String,
+    pub provider_name: String,
+    pub base_url: String,
+    pub model_id: String,
+    pub api_key: String,
+    pub temperature: Option<f64>,
+    pub max_tokens: Option<i64>,
+    pub capabilities_json: Option<String>,
+    pub params_json: Option<String>,
+    pub enabled: bool,
+    pub is_default: bool,
+    pub sort_order: Option<i64>,
+    pub remark: Option<String>,
+}
+
 // ============================================================================
 // CSV Export/Import Models
 // ============================================================================
