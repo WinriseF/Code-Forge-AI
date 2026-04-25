@@ -6,14 +6,20 @@ import { formatBytes } from '@/lib/utils';
 import { getOcrStatus, listenToOcrPrepareProgress, prepareOcr, releaseOcr } from '@/lib/ocr';
 import type { OcrPrepareProgress, OcrStatus } from '@/types/ocr';
 
-function buildStatusTone(status: OcrStatus | null) {
-  if (!status) {
-    return 'border-border bg-secondary/30 text-muted-foreground';
-  }
-  if (status.preparing) {
+function buildStatusTone(
+  status: OcrStatus | null,
+  options: { isLoadingStatus: boolean; isPreparingAction: boolean; hasStatusLoadError: boolean },
+) {
+  if (options.isPreparingAction || status?.preparing) {
     return 'border-blue-500/30 bg-blue-500/10 text-blue-400';
   }
-  if (status.installed) {
+  if (options.isLoadingStatus && !status) {
+    return 'border-border bg-secondary/30 text-muted-foreground';
+  }
+  if (options.hasStatusLoadError) {
+    return 'border-red-500/30 bg-red-500/10 text-red-300';
+  }
+  if (status?.installed) {
     return 'border-green-500/30 bg-green-500/10 text-green-400';
   }
   return 'border-amber-500/30 bg-amber-500/10 text-amber-400';
@@ -21,7 +27,10 @@ function buildStatusTone(status: OcrStatus | null) {
 
 export function OcrServiceCard() {
   const { t } = useTranslation();
-  const isMountedRef = useRef(true);
+  const isMountedRef = useRef(false);
+  const statusRequestIdRef = useRef(0);
+  const prepareRequestIdRef = useRef(0);
+  const prepareUnlistenRef = useRef<(() => void) | null>(null);
   const [status, setStatus] = useState<OcrStatus | null>(null);
   const [progress, setProgress] = useState<OcrPrepareProgress | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -30,33 +39,42 @@ export function OcrServiceCard() {
   const [isReleasing, setIsReleasing] = useState(false);
 
   useEffect(() => {
+    isMountedRef.current = true;
+
     return () => {
       isMountedRef.current = false;
+      statusRequestIdRef.current += 1;
+      prepareRequestIdRef.current += 1;
+      prepareUnlistenRef.current?.();
+      prepareUnlistenRef.current = null;
     };
   }, []);
 
   const loadStatus = useCallback(async () => {
-    if (!isMountedRef.current) {
-      return;
-    }
-
+    const requestId = statusRequestIdRef.current + 1;
+    statusRequestIdRef.current = requestId;
     setIsLoadingStatus(true);
+    setError(null);
+
     try {
       const nextStatus = await getOcrStatus();
-      if (!isMountedRef.current) {
+      if (!isMountedRef.current || statusRequestIdRef.current !== requestId) {
         return;
       }
 
       setStatus(nextStatus);
-      setError(null);
     } catch (err) {
-      if (isMountedRef.current) {
-        setError(err instanceof Error ? err.message : String(err));
+      if (!isMountedRef.current || statusRequestIdRef.current !== requestId) {
+        return;
       }
+
+      setError(err instanceof Error ? err.message : String(err));
     } finally {
-      if (isMountedRef.current) {
-        setIsLoadingStatus(false);
+      if (!isMountedRef.current || statusRequestIdRef.current !== requestId) {
+        return;
       }
+
+      setIsLoadingStatus(false);
     }
   }, []);
 
@@ -65,34 +83,52 @@ export function OcrServiceCard() {
   }, [loadStatus]);
 
   const handlePrepare = useCallback(async () => {
+    const requestId = prepareRequestIdRef.current + 1;
+    prepareRequestIdRef.current = requestId;
+    prepareUnlistenRef.current?.();
+    prepareUnlistenRef.current = null;
     setIsPreparingAction(true);
     setError(null);
     setProgress(null);
 
-    let unlisten: (() => void) | null = null;
-
     try {
-      unlisten = await listenToOcrPrepareProgress((event) => {
-        if (isMountedRef.current) {
-          setProgress(event);
+      const unlisten = await listenToOcrPrepareProgress((event) => {
+        if (!isMountedRef.current || prepareRequestIdRef.current !== requestId) {
+          return;
         }
+
+        setProgress(event);
       });
+      if (!isMountedRef.current || prepareRequestIdRef.current !== requestId) {
+        unlisten();
+        return;
+      }
+
+      prepareUnlistenRef.current = unlisten;
 
       const nextStatus = await prepareOcr();
-      if (isMountedRef.current) {
-        setStatus(nextStatus);
+      if (!isMountedRef.current || prepareRequestIdRef.current !== requestId) {
+        return;
       }
+
+      setStatus(nextStatus);
     } catch (err) {
-      if (isMountedRef.current) {
-        setError(err instanceof Error ? err.message : String(err));
+      if (!isMountedRef.current || prepareRequestIdRef.current !== requestId) {
+        return;
       }
+
+      setError(err instanceof Error ? err.message : String(err));
     } finally {
-      if (unlisten) {
-        unlisten();
+      if (prepareRequestIdRef.current === requestId) {
+        prepareUnlistenRef.current?.();
+        prepareUnlistenRef.current = null;
       }
-      if (isMountedRef.current) {
-        setIsPreparingAction(false);
+      if (!isMountedRef.current || prepareRequestIdRef.current !== requestId) {
+        return;
       }
+
+      setIsPreparingAction(false);
+      setProgress(null);
     }
   }, []);
 
@@ -112,8 +148,9 @@ export function OcrServiceCard() {
       }
 
       setIsReleasing(false);
-      await loadStatus();
     }
+
+    await loadStatus();
   }, [loadStatus]);
 
   const progressPercent = useMemo(() => {
@@ -121,12 +158,14 @@ export function OcrServiceCard() {
     return Math.max(0, Math.min(100, (progress.downloadedBytes / progress.totalBytes) * 100));
   }, [progress]);
 
+  const hasStatusLoadError = Boolean(error && !status && !isLoadingStatus);
   const statusLabel = useMemo(() => {
-    if (!status) return t('settings.ocrStatusLoading');
-    if (status.preparing) return t('settings.ocrPreparing');
-    if (status.installed) return t('settings.ocrReady');
+    if (isPreparingAction || status?.preparing) return t('settings.ocrPreparing');
+    if (isLoadingStatus && !status) return t('settings.ocrStatusLoading');
+    if (hasStatusLoadError) return t('settings.ocrStatusLoadFailed');
+    if (status?.installed) return t('settings.ocrReady');
     return t('settings.ocrNotInitialized');
-  }, [status, t]);
+  }, [hasStatusLoadError, isLoadingStatus, isPreparingAction, status, t]);
 
   return (
     <SettingsSurface className="space-y-5 lg:col-span-12">
@@ -135,8 +174,14 @@ export function OcrServiceCard() {
           <h4 className="text-sm font-semibold text-foreground">{t('settings.ocrTitle')}</h4>
         </div>
 
-        <div className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium ${buildStatusTone(status)}`}>
-          {(status?.preparing || isPreparingAction || isLoadingStatus) ? (
+        <div
+          className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium ${buildStatusTone(status, {
+            isLoadingStatus,
+            isPreparingAction,
+            hasStatusLoadError,
+          })}`}
+        >
+          {(isPreparingAction || status?.preparing || (isLoadingStatus && !status)) ? (
             <Loader2 size={14} className="animate-spin" />
           ) : status?.installed ? (
             <CheckCircle2 size={14} />

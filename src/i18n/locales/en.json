@@ -427,6 +427,7 @@
     },
     "ocrTitle": "OCR Service",
     "ocrStatusLoading": "Loading OCR status",
+    "ocrStatusLoadFailed": "Failed to load OCR status",
     "ocrNotInitialized": "Not initialized",
     "ocrPreparing": "Preparing",
     "ocrReady": "Ready",

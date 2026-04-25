@@ -427,6 +427,7 @@
     },
     "ocrTitle": "OCR 基础服务",
     "ocrStatusLoading": "正在读取 OCR 状态",
+    "ocrStatusLoadFailed": "OCR 状态读取失败",
     "ocrNotInitialized": "未初始化",
     "ocrPreparing": "初始化中",
     "ocrReady": "已初始化",
