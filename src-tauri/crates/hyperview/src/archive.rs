@@ -188,7 +188,10 @@ fn list_tar_entries(path: &Path, gzip: bool) -> crate::error::Result<ArchiveList
     })
 }
 
-fn read_zip_entry(path: &Path, entry_index: usize) -> crate::error::Result<(ArchiveEntry, Vec<u8>)> {
+fn read_zip_entry(
+    path: &Path,
+    entry_index: usize,
+) -> crate::error::Result<(ArchiveEntry, Vec<u8>)> {
     let file = File::open(path).map_err(|e| e.to_string())?;
     let mut archive = zip::ZipArchive::new(file).map_err(|e| e.to_string())?;
     let mut file = archive.by_index(entry_index).map_err(|e| e.to_string())?;
@@ -273,13 +276,13 @@ fn read_entry_bytes<R: Read>(
         return Err("Archive entry path is unsafe".to_string());
     }
 
-    if let Some(size) = entry.size {
-        if size > MAX_ENTRY_PREVIEW_BYTES {
-            return Err(format!(
-                "Archive entry is larger than {} bytes",
-                MAX_ENTRY_PREVIEW_BYTES
-            ));
-        }
+    if let Some(size) = entry.size
+        && size > MAX_ENTRY_PREVIEW_BYTES
+    {
+        return Err(format!(
+            "Archive entry is larger than {} bytes",
+            MAX_ENTRY_PREVIEW_BYTES
+        ));
     }
 
     let mut limited = reader.take(MAX_ENTRY_PREVIEW_BYTES + 1);
@@ -305,7 +308,8 @@ fn build_entry(
 ) -> ArchiveEntry {
     let path = normalize_archive_path(raw_path);
     let is_safe_path = is_safe_archive_path(&path);
-    let previewable = !is_dir && is_safe_path && size.is_none_or(|size| size <= MAX_ENTRY_PREVIEW_BYTES);
+    let previewable =
+        !is_dir && is_safe_path && size.is_none_or(|size| size <= MAX_ENTRY_PREVIEW_BYTES);
     let name = entry_name(&path);
 
     ArchiveEntry {
@@ -410,7 +414,9 @@ fn build_entry_preview(
             encoding: None,
             text: None,
             data_url: None,
-            message: Some("This archive entry is not a supported text or image preview.".to_string()),
+            message: Some(
+                "This archive entry is not a supported text or image preview.".to_string(),
+            ),
         }),
     }
 }
@@ -420,10 +426,10 @@ fn decode_entry_text(path: &str, mime: &str, bytes: &[u8]) -> Option<(String, St
         return Some((String::new(), "utf-8".to_string()));
     }
 
-    if let Ok(text) = std::str::from_utf8(bytes) {
-        if is_probably_text(text) {
-            return Some((text.to_string(), "utf-8".to_string()));
-        }
+    if let Ok(text) = std::str::from_utf8(bytes)
+        && is_probably_text(text)
+    {
+        return Some((text.to_string(), "utf-8".to_string()));
     }
 
     if !is_text_like_entry(path, mime) {
@@ -528,9 +534,7 @@ fn is_probably_text(text: &str) -> bool {
 
     for ch in text.chars() {
         chars += 1;
-        if ch == '\u{FFFD}'
-            || (ch.is_control() && !matches!(ch, '\n' | '\r' | '\t' | '\u{000C}'))
-        {
+        if ch == '\u{FFFD}' || (ch.is_control() && !matches!(ch, '\n' | '\r' | '\t' | '\u{000C}')) {
             suspicious += 1;
         }
     }

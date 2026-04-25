@@ -504,7 +504,9 @@ mod windows_impl {
 
         if unsafe { item.IsFileSystem()?.as_bool() } {
             let path = unsafe { item.Path()? }.to_string();
-            if !path.is_empty() && (!unsafe { item.IsFolder()?.as_bool() } || is_archive_extension(&path)) {
+            if !path.is_empty()
+                && (!unsafe { item.IsFolder()?.as_bool() } || is_archive_extension(&path))
+            {
                 return Ok(Some(path));
             }
         }
@@ -514,7 +516,9 @@ mod windows_impl {
 
     fn is_archive_extension(path: &str) -> bool {
         let lower = path.to_ascii_lowercase();
-        [".zip", ".tar", ".gz", ".tgz"].iter().any(|ext| lower.ends_with(ext))
+        [".zip", ".tar", ".gz", ".tgz"]
+            .iter()
+            .any(|ext| lower.ends_with(ext))
     }
 
     fn variant_i32(value: i32) -> VARIANT {

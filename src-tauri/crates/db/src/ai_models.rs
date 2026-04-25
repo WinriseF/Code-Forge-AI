@@ -690,12 +690,9 @@ fn import_legacy_ai_models_from_state(
         let is_default = if candidate.is_active {
             assigned_default_categories.insert(candidate.category.clone());
             true
-        } else if !active_default_categories.contains(&candidate.category)
-            && assigned_default_categories.insert(candidate.category.clone())
-        {
-            true
         } else {
-            false
+            !active_default_categories.contains(&candidate.category)
+                && assigned_default_categories.insert(candidate.category.clone())
         };
 
         let model = sanitize_create_input(CreateAiModelInput {

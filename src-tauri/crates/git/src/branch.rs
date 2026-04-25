@@ -335,8 +335,7 @@ pub fn switch_branch(
         return Err(GitError::UnresolvedConflicts);
     }
 
-    let is_dirty = worktree.has_staged_changes
-        || worktree.has_unstaged_changes;
+    let is_dirty = worktree.has_staged_changes || worktree.has_unstaged_changes;
     if is_dirty && !options.stash_if_dirty {
         return Err(GitError::DirtyWorktree);
     }

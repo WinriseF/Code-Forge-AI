@@ -61,7 +61,8 @@ pub fn preview_protocol_handler<R: tauri::Runtime>(
         }
     };
 
-    let mime_type = mime_guess::from_path(path).first_or_octet_stream();
+    let inspection = crate::sniffer::inspect_path(path);
+    let mime_type = inspection.mime;
 
     let range_header = request
         .headers()
@@ -85,7 +86,7 @@ pub fn preview_protocol_handler<R: tauri::Runtime>(
 
                 return Response::builder()
                     .status(StatusCode::PARTIAL_CONTENT)
-                    .header(header::CONTENT_TYPE, mime_type.as_ref())
+                    .header(header::CONTENT_TYPE, mime_type.as_str())
                     .header(header::CONTENT_LENGTH, content_length.to_string())
                     .header(
                         header::CONTENT_RANGE,
@@ -116,7 +117,7 @@ pub fn preview_protocol_handler<R: tauri::Runtime>(
     }
 
     Response::builder()
-        .header(header::CONTENT_TYPE, mime_type.as_ref())
+        .header(header::CONTENT_TYPE, mime_type.as_str())
         .header(header::CONTENT_LENGTH, file_size.to_string())
         .header(header::ACCEPT_RANGES, "bytes")
         .header(header::ACCESS_CONTROL_ALLOW_ORIGIN, "*")

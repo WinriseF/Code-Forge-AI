@@ -1,6 +1,6 @@
 use std::{
     fs,
-    path::PathBuf,
+    path::{Path, PathBuf},
     process,
     time::{SystemTime, UNIX_EPOCH},
 };
@@ -162,7 +162,7 @@ fn setup_repo_with_tracking_clone(prefix: &str) -> (PathBuf, PathBuf) {
     (local_root, remote_root)
 }
 
-fn clone_repo(remote_root: &PathBuf, prefix: &str) -> PathBuf {
+fn clone_repo(remote_root: &Path, prefix: &str) -> PathBuf {
     let clone_root = temp_root(prefix);
     Repository::clone(remote_root.to_string_lossy().as_ref(), &clone_root).expect("clone repo");
     clone_root

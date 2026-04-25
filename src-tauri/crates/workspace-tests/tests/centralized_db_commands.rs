@@ -7,10 +7,11 @@ use std::{
 };
 
 use ctxrun_db::{
-    ai_models,
-    apps,
+    ai_models, apps,
     init::DbState,
-    models::{AppEntry, CreateAiModelInput, IgnoredSecret, ProjectConfig, Prompt, UpdateAiModelInput},
+    models::{
+        AppEntry, CreateAiModelInput, IgnoredSecret, ProjectConfig, Prompt, UpdateAiModelInput,
+    },
     project_config, prompts, secrets, shell_history, url_history,
 };
 use rusqlite::{Connection, params};
@@ -243,7 +244,8 @@ fn centralized_db_ai_model_commands_cover_crud_and_default_switching() {
     )
     .expect("create second ai model");
 
-    let listed = ai_models::list_ai_models(state_of(&db_state), None, None).expect("list ai models");
+    let listed =
+        ai_models::list_ai_models(state_of(&db_state), None, None).expect("list ai models");
     assert_eq!(listed.len(), 2);
 
     let default_chat = ai_models::get_default_ai_model(state_of(&db_state), "chat".into())

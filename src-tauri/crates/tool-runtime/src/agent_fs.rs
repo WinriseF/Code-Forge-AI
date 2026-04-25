@@ -708,6 +708,15 @@ impl GrepAccumulator {
     }
 }
 
+struct GrepSearchConfig<'a> {
+    root_canonical: &'a Path,
+    pattern: &'a str,
+    case_insensitive: bool,
+    context_lines: usize,
+    max_bytes: usize,
+    output_mode: GrepOutputMode,
+}
+
 fn truncate_line(line: &str, max_columns: usize) -> String {
     if line.chars().count() <= max_columns {
         line.to_string()
@@ -721,12 +730,7 @@ const GREP_MAX_LINES: usize = 50_000;
 
 fn grep_single_file(
     file_path: &Path,
-    root_canonical: &Path,
-    pattern: &str,
-    case_insensitive: bool,
-    context_lines: usize,
-    max_bytes: usize,
-    output_mode: GrepOutputMode,
+    config: &GrepSearchConfig<'_>,
     acc: &mut GrepAccumulator,
 ) -> std::result::Result<(), String> {
     if is_probably_binary(file_path)? {
@@ -735,18 +739,18 @@ fn grep_single_file(
 
     let metadata = std::fs::metadata(file_path)
         .map_err(|e| format!("Failed to stat '{}': {}", file_path.display(), e))?;
-    if metadata.len() as usize > max_bytes * 4 {
+    if metadata.len() as usize > config.max_bytes * 4 {
         return Ok(());
     }
 
-    let relative = to_root_relative_string(root_canonical, file_path);
+    let relative = to_root_relative_string(config.root_canonical, file_path);
 
     let matcher = RegexMatcherBuilder::new()
-        .case_insensitive(case_insensitive)
-        .build(pattern)
-        .map_err(|e| format!("Invalid regex pattern '{}': {}", pattern, e))?;
+        .case_insensitive(config.case_insensitive)
+        .build(config.pattern)
+        .map_err(|e| format!("Invalid regex pattern '{}': {}", config.pattern, e))?;
 
-    match output_mode {
+    match config.output_mode {
         GrepOutputMode::Files => {
             let mut found = false;
             let mut searcher = Searcher::new();
@@ -822,13 +826,13 @@ fn grep_single_file(
                     break;
                 }
 
-                let before_start = idx.saturating_sub(context_lines);
+                let before_start = idx.saturating_sub(config.context_lines);
                 let before: Vec<String> = all_lines[before_start..idx]
                     .iter()
                     .map(|l| truncate_line(l, GREP_MAX_COLUMNS))
                     .collect();
 
-                let after_end = (idx + 1 + context_lines).min(total_lines);
+                let after_end = (idx + 1 + config.context_lines).min(total_lines);
                 let after: Vec<String> = all_lines[idx + 1..after_end]
                     .iter()
                     .map(|l| truncate_line(l, GREP_MAX_COLUMNS))
@@ -887,6 +891,14 @@ pub fn agent_grep_content(
         file_counts: Vec::new(),
         truncated: false,
     };
+    let grep_config = GrepSearchConfig {
+        root_canonical: &root_canonical,
+        pattern: &pattern,
+        case_insensitive,
+        context_lines,
+        max_bytes,
+        output_mode,
+    };
 
     let mut builder = WalkBuilder::new(&dir_canonical);
     builder
@@ -930,16 +942,7 @@ pub fn agent_grep_content(
         }
 
         let path = entry.path();
-        if let Err(_e) = grep_single_file(
-            path,
-            &root_canonical,
-            &pattern,
-            case_insensitive,
-            context_lines,
-            max_bytes,
-            output_mode,
-            &mut acc,
-        ) {
+        if let Err(_e) = grep_single_file(path, &grep_config, &mut acc) {
             // Skip files with read/permission errors during content search.
         }
     }
