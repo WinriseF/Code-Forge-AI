@@ -343,6 +343,18 @@
           "markdownDescription": "Denies the agent_search_local_files command without any pre-configured scope."
         },
         {
+          "description": "Enables the agent_set_workspace_root command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-agent-set-workspace-root",
+          "markdownDescription": "Enables the agent_set_workspace_root command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the agent_set_workspace_root command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-agent-set-workspace-root",
+          "markdownDescription": "Denies the agent_set_workspace_root command without any pre-configured scope."
+        },
+        {
           "description": "Enables the call_tool command without any pre-configured scope.",
           "type": "string",
           "const": "allow-call-tool",

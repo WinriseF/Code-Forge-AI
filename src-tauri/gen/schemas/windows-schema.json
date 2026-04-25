@@ -5043,6 +5043,12 @@
           "markdownDescription": "Enables the agent_search_local_files command without any pre-configured scope."
         },
         {
+          "description": "Enables the agent_set_workspace_root command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-tool-runtime:allow-agent-set-workspace-root",
+          "markdownDescription": "Enables the agent_set_workspace_root command without any pre-configured scope."
+        },
+        {
           "description": "Enables the call_tool command without any pre-configured scope.",
           "type": "string",
           "const": "ctxrun-plugin-tool-runtime:allow-call-tool",
@@ -5077,6 +5083,12 @@
           "type": "string",
           "const": "ctxrun-plugin-tool-runtime:deny-agent-search-local-files",
           "markdownDescription": "Denies the agent_search_local_files command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the agent_set_workspace_root command without any pre-configured scope.",
+          "type": "string",
+          "const": "ctxrun-plugin-tool-runtime:deny-agent-set-workspace-root",
+          "markdownDescription": "Denies the agent_set_workspace_root command without any pre-configured scope."
         },
         {
           "description": "Denies the call_tool command without any pre-configured scope.",

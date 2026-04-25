@@ -20,6 +20,7 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
         .invoke_handler(tauri::generate_handler![
             commands::list_tools,
             commands::call_tool,
+            agent_fs::agent_set_workspace_root,
             agent_fs::agent_read_local_file,
             agent_fs::agent_list_local_files,
             agent_fs::agent_search_local_files,
@@ -27,6 +28,7 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
         ])
         .setup(|app, _api| {
             app.manage(runtime::ToolRuntime::new());
+            app.manage(agent_fs::AgentFsScope::default());
             Ok(())
         })
         .build()

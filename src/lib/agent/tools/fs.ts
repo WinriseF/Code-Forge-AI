@@ -1,7 +1,7 @@
 import { invoke } from '@tauri-apps/api/core';
 import { AgentToolRegistry } from '../registry';
 import { AgentToolExecutionResult } from '../types';
-import { getWorkspaceRoot } from './workspaceRoot';
+import { ensureWorkspaceRootAuthorized } from './workspaceRoot';
 
 const TOOL_RUNTIME_PLUGIN_PREFIX = 'plugin:ctxrun-plugin-tool-runtime|';
 
@@ -360,7 +360,7 @@ export function registerFsTools(registry: AgentToolRegistry): void {
     },
     handler: async (input) => {
       try {
-        const rootDir = getWorkspaceRoot();
+        const rootDir = await ensureWorkspaceRootAuthorized();
         const args = normalizeListArgs(input);
         const request: AgentListLocalFilesRequest = {
           rootDir,
@@ -419,7 +419,7 @@ export function registerFsTools(registry: AgentToolRegistry): void {
     },
     handler: async (input) => {
       try {
-        const rootDir = getWorkspaceRoot();
+        const rootDir = await ensureWorkspaceRootAuthorized();
         const args = normalizeSearchArgs(input);
         const request: AgentSearchLocalFilesRequest = {
           rootDir,
@@ -468,7 +468,7 @@ export function registerFsTools(registry: AgentToolRegistry): void {
     },
     handler: async (input) => {
       try {
-        const rootDir = getWorkspaceRoot();
+        const rootDir = await ensureWorkspaceRootAuthorized();
         const args = normalizeReadArgs(input);
         const request: AgentReadLocalFileRequest = {
           rootDir,
@@ -550,7 +550,7 @@ export function registerFsTools(registry: AgentToolRegistry): void {
     },
     handler: async (input) => {
       try {
-        const rootDir = getWorkspaceRoot();
+        const rootDir = await ensureWorkspaceRootAuthorized();
         const args = normalizeGrepArgs(input);
         const request: AgentGrepContentRequest = {
           rootDir,

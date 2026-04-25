@@ -1,12 +1,14 @@
 use grep_regex::RegexMatcherBuilder;
-use grep_searcher::sinks::UTF8;
 use grep_searcher::Searcher;
+use grep_searcher::sinks::UTF8;
 use ignore::WalkBuilder;
 use regex::Regex;
 use serde::{Deserialize, Serialize};
 use std::fs::File;
 use std::io::{BufRead, BufReader, Read};
 use std::path::{Component, Path, PathBuf};
+use std::sync::RwLock;
+use tauri::State;
 use walkdir::WalkDir;
 
 type Result<T> = crate::Result<T>;
@@ -23,6 +25,58 @@ const DEFAULT_LIST_MAX_DEPTH: usize = 3;
 const MAX_LIST_MAX_DEPTH: usize = 8;
 const MIN_LIST_MAX_DEPTH: usize = 1;
 const MAX_SEARCH_QUERY_CHARS: usize = 256;
+
+#[derive(Debug, Default)]
+pub struct AgentFsScope {
+    active_root: RwLock<Option<PathBuf>>,
+}
+
+impl AgentFsScope {
+    fn set_workspace_root(&self, root_dir: Option<String>) -> Result<Option<String>> {
+        let next_root = match root_dir {
+            Some(value) if !value.trim().is_empty() => Some(canonicalize_dir(&value, "rootDir")?),
+            _ => None,
+        };
+
+        let mut guard = self
+            .active_root
+            .write()
+            .map_err(|_| "Failed to update agent filesystem scope.".to_string())?;
+        *guard = next_root.clone();
+
+        Ok(next_root.map(|path| path.to_string_lossy().to_string()))
+    }
+
+    fn authorize_root_dir(&self, root_dir: &str) -> Result<PathBuf> {
+        let requested = canonicalize_dir(root_dir, "rootDir")?;
+        let active_root = self
+            .active_root
+            .read()
+            .map_err(|_| "Failed to read agent filesystem scope.".to_string())?
+            .clone();
+
+        let Some(active_root) = active_root else {
+            return Err(
+                "Agent filesystem root is not configured. Select a workspace folder first."
+                    .to_string(),
+            );
+        };
+
+        if requested != active_root {
+            return Err("rootDir is not the active authorized workspace root.".to_string());
+        }
+
+        Ok(requested)
+    }
+}
+
+#[tauri::command]
+pub fn agent_set_workspace_root(
+    scope: State<'_, AgentFsScope>,
+    root_dir: Option<String>,
+) -> Result<Option<String>> {
+    scope.set_workspace_root(root_dir)
+}
 
 #[derive(Debug, Clone, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -286,9 +340,10 @@ fn is_probably_binary(path: &Path) -> std::result::Result<bool, String> {
 
 #[tauri::command]
 pub fn agent_read_local_file(
+    scope: State<'_, AgentFsScope>,
     request: AgentReadLocalFileRequest,
 ) -> Result<AgentReadLocalFileResponse> {
-    let root_canonical = canonicalize_dir(&request.root_dir, "rootDir")?;
+    let root_canonical = scope.authorize_root_dir(&request.root_dir)?;
     let relative_path = normalize_relative_path(&request.relative_path)?;
     let target_canonical = resolve_scoped_path(&root_canonical, &relative_path, true)?;
 
@@ -372,9 +427,10 @@ pub fn agent_read_local_file(
 
 #[tauri::command]
 pub fn agent_list_local_files(
+    scope: State<'_, AgentFsScope>,
     request: AgentListLocalFilesRequest,
 ) -> Result<AgentListLocalFilesResponse> {
-    let root_canonical = canonicalize_dir(&request.root_dir, "rootDir")?;
+    let root_canonical = scope.authorize_root_dir(&request.root_dir)?;
     let relative_dir_input = request.relative_dir.unwrap_or_else(|| ".".to_string());
     let relative_dir = normalize_relative_path(&relative_dir_input)?;
     let dir_canonical = resolve_scoped_path(&root_canonical, &relative_dir, false)?;
@@ -450,9 +506,10 @@ pub fn agent_list_local_files(
 
 #[tauri::command]
 pub fn agent_search_local_files(
+    scope: State<'_, AgentFsScope>,
     request: AgentSearchLocalFilesRequest,
 ) -> Result<AgentSearchLocalFilesResponse> {
-    let root_canonical = canonicalize_dir(&request.root_dir, "rootDir")?;
+    let root_canonical = scope.authorize_root_dir(&request.root_dir)?;
     let relative_dir_input = request.relative_dir.unwrap_or_else(|| ".".to_string());
     let relative_dir = normalize_relative_path(&relative_dir_input)?;
     let dir_canonical = resolve_scoped_path(&root_canonical, &relative_dir, false)?;
@@ -792,9 +849,10 @@ fn grep_single_file(
 
 #[tauri::command]
 pub fn agent_grep_content(
+    scope: State<'_, AgentFsScope>,
     request: AgentGrepContentRequest,
 ) -> Result<AgentGrepContentResponse> {
-    let root_canonical = canonicalize_dir(&request.root_dir, "rootDir")?;
+    let root_canonical = scope.authorize_root_dir(&request.root_dir)?;
     let pattern = validate_grep_pattern(&request.pattern)?;
     let relative_dir_input = request.path.unwrap_or_else(|| ".".to_string());
     let relative_dir = normalize_relative_path(&relative_dir_input)?;
@@ -841,7 +899,11 @@ pub fn agent_grep_content(
 
     if let Some(glob_str) = &request.glob {
         let mut overrides = ignore::overrides::OverrideBuilder::new(&dir_canonical);
-        for pattern in glob_str.split(',').map(|s| s.trim()).filter(|s| !s.is_empty()) {
+        for pattern in glob_str
+            .split(',')
+            .map(|s| s.trim())
+            .filter(|s| !s.is_empty())
+        {
             overrides
                 .add(pattern)
                 .map_err(|e| format!("Invalid glob pattern '{}': {}", pattern, e))?;
@@ -883,7 +945,12 @@ pub fn agent_grep_content(
     }
 
     let num_files = match output_mode {
-        GrepOutputMode::Content => acc.matches.iter().map(|m| m.file_path.clone()).collect::<std::collections::HashSet<_>>().len(),
+        GrepOutputMode::Content => acc
+            .matches
+            .iter()
+            .map(|m| m.file_path.clone())
+            .collect::<std::collections::HashSet<_>>()
+            .len(),
         GrepOutputMode::Files => acc.file_paths.len(),
         GrepOutputMode::Count => acc.file_counts.len(),
     };

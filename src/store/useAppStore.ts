@@ -21,6 +21,12 @@ import {
   normalizeSpotlightAppearance,
 } from '@/windows/spotlight/resizeMode';
 
+const TOOL_RUNTIME_PLUGIN_PREFIX = 'plugin:ctxrun-plugin-tool-runtime|';
+
+function syncAgentWorkspaceRoot(rootDir: string | null): void {
+  void invoke(`${TOOL_RUNTIME_PLUGIN_PREFIX}agent_set_workspace_root`, { rootDir }).catch(() => {});
+}
+
 type AppView =
   | 'prompts'
   | 'context'
@@ -221,6 +227,7 @@ export const useAppStore = create<AppState>()(
       setView: (view) => set({ currentView: view }),
       setProjectRoot: (path) => {
         const normalizedPath = path?.trim() || null;
+        syncAgentWorkspaceRoot(normalizedPath);
 
         set((state) => {
           const nextRecentProjectRoots = buildRecentProjectRoots(state.recentProjectRoots, normalizedPath);
@@ -250,6 +257,7 @@ export const useAppStore = create<AppState>()(
         });
       },
       clearProjectRoot: () => {
+        syncAgentWorkspaceRoot(null);
         set((state) => (state.projectRoot === null ? state : { projectRoot: null }));
 
         const contextState = useContextStore.getState();

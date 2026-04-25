@@ -114,6 +114,32 @@ Denies the agent_search_local_files command without any pre-configured scope.
 <tr>
 <td>
 
+`ctxrun-plugin-tool-runtime:allow-agent-set-workspace-root`
+
+</td>
+<td>
+
+Enables the agent_set_workspace_root command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`ctxrun-plugin-tool-runtime:deny-agent-set-workspace-root`
+
+</td>
+<td>
+
+Denies the agent_set_workspace_root command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 `ctxrun-plugin-tool-runtime:allow-call-tool`
 
 </td>

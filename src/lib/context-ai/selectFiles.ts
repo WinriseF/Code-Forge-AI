@@ -77,7 +77,7 @@ function rewriteToolPathArgs(
   const raw = input as Record<string, unknown>;
   const path = typeof raw.path === 'string' ? raw.path.trim() : '';
   if (!path) {
-    return input;
+    throw new Error('path is required and must exist in the selectable file tree.');
   }
 
   const expectedKind = toolName === 'fs.read_file' ? 'file' : 'dir';
@@ -89,6 +89,17 @@ function rewriteToolPathArgs(
   return {
     ...raw,
     path: normalizeContextAiPath(resolved.relativePath),
+  };
+}
+
+function requirePathInSchema(inputSchema: Record<string, unknown>): Record<string, unknown> {
+  const required = Array.isArray(inputSchema.required)
+    ? inputSchema.required.filter((item): item is string => typeof item === 'string')
+    : [];
+
+  return {
+    ...inputSchema,
+    required: Array.from(new Set([...required, 'path'])),
   };
 }
 
@@ -116,6 +127,7 @@ function createContextSelectionRegistry(nodes: FileNode[], projectRoot: string):
       definition: {
         ...definition,
         description: `${definition.description} The path must exist in the selectable file tree for this AI selection run.`,
+        inputSchema: requirePathInSchema(definition.inputSchema),
       },
       handler,
     });
