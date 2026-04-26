@@ -1,11 +1,12 @@
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AlertTriangle, Check, RefreshCw } from 'lucide-react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import liquidLoaderUrl from '@/assets/liquid-loader.lottie';
 import { MarkdownContent } from '@/components/ui/MarkdownContent';
 import { Select } from '@/components/ui/select';
-import { AiProviderSelect } from '@/components/ui/AiProviderSelect';
 import { SUPPORTED_LANGUAGES, type SupportedLangCode } from '@/lib/aiTranslate';
+import { getRuntimeAIConfig } from '@/lib/aiRuntimeConfig';
 import type { PreviewAiState } from './usePreviewAi';
 
 interface PreviewAiPanelProps {
@@ -22,6 +23,13 @@ export function PreviewAiPanel({
   onTargetLangChange,
 }: PreviewAiPanelProps) {
   const { t } = useTranslation();
+  const [providerLabel, setProviderLabel] = useState('Database default');
+
+  useEffect(() => {
+    void getRuntimeAIConfig('translation')
+      .then((config) => setProviderLabel(config.providerId))
+      .catch(() => setProviderLabel('Not configured'));
+  }, []);
 
   const langOptions = SUPPORTED_LANGUAGES.map((lang) => ({
     value: lang.code,
@@ -47,7 +55,9 @@ export function PreviewAiPanel({
       {/* Compact settings row */}
       <div className="flex items-center gap-1 border-b border-border px-2 py-1.5">
         <div className="min-w-0 flex-1">
-          <AiProviderSelect size="sm" />
+          <div className="flex h-8 items-center rounded border border-border bg-secondary/30 px-2 text-xs font-mono text-muted-foreground">
+            <span className="truncate">{providerLabel}</span>
+          </div>
         </div>
         <div className="min-w-0 flex-1">
           <Select

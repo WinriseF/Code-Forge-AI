@@ -1,13 +1,12 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
-import { useShallow } from 'zustand/react/shallow';
 import { ChatAssistantTraceItem, ChatContentPart, ChatMessage, ChatMessageAttachment, ChatRequestMessage, ChatToolCallTrace } from '@/lib/llm';
-import { useAppStore } from '@/store/useAppStore';
 import { useSpotlight } from '../core/SpotlightContext';
 import { assembleChatPrompt } from '@/lib/template';
 import { ChatAttachment } from '@/types/spotlight';
 import { runDefaultAgentTurn } from '@/lib/agent';
 import type { AgentToolCallInfo, AgentToolExecutionResult } from '@/lib/agent/types';
 import { useThrottledStreamUpdate } from '@/lib/hooks/useThrottledStreamUpdate';
+import { getRuntimeAIConfig, getRuntimeAIConfigById } from '@/lib/aiRuntimeConfig';
 
 function buildDisplayAttachments(attachments: ChatAttachment[]): ChatMessageAttachment[] {
   return attachments.map(item => ({
@@ -195,7 +194,7 @@ function appendToolToTrace(
   return current;
 }
 
-export function useSpotlightChat() {
+export function useSpotlightChat(selectedChatModelId: string | null) {
   const {
     chatInput,
     setChatInput,
@@ -205,13 +204,6 @@ export function useSpotlightChat() {
     clearAttachments,
     clearAttachmentError
   } = useSpotlight();
-  const { aiConfig: uiAiConfig, setAIConfig } = useAppStore(
-    useShallow((state) => ({
-      aiConfig: state.aiConfig,
-      setAIConfig: state.setAIConfig,
-    })),
-  );
-
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isStreaming, setIsStreaming] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
@@ -297,12 +289,15 @@ export function useSpotlightChat() {
     if (isStreaming) return;
     if (!finalContent && !hasAttachments) return;
 
-    const freshConfig = useAppStore.getState().aiConfig;
-
-    if (!freshConfig.apiKey) {
+    let freshConfig;
+    try {
+      freshConfig = selectedChatModelId
+        ? await getRuntimeAIConfigById(selectedChatModelId)
+        : await getRuntimeAIConfig('chat');
+    } catch (err) {
        setMessages(prev => [...prev, {
            role: 'assistant',
-           content: `**Configuration Error**: API Key is missing. \n\nPlease go to Settings (in the main window) -> AI Configuration to set it up.`,
+           content: `**Configuration Error**: ${err instanceof Error ? err.message : String(err)} \n\nPlease go to Settings (in the main window) -> AI Configuration to set it up.`,
            reasoning: ''
        }]);
        return;
@@ -411,6 +406,7 @@ export function useSpotlightChat() {
     isStreaming,
     activeTemplate,
     attachments,
+    selectedChatModelId,
     setActiveTemplate,
     setChatInput,
     clearAttachments,
@@ -436,18 +432,6 @@ export function useSpotlightChat() {
     agentSessionIdRef.current = `spotlight-${Math.random().toString(36).slice(2)}`;
   }, [isStreaming, setChatInput, setActiveTemplate, clearAttachments, clearAttachmentError, flushFinal]);
 
-  const cycleProvider = useCallback(() => {
-    const currentSettings = useAppStore.getState().savedProviderSettings;
-    const providers = Object.keys(currentSettings);
-    const currentProvider = useAppStore.getState().aiConfig.providerId;
-
-    if (providers.length > 0) {
-        const currentIndex = providers.indexOf(currentProvider);
-        const nextIndex = (currentIndex + 1) % providers.length;
-        setAIConfig({ providerId: providers[nextIndex] });
-    }
-  }, [setAIConfig]);
-
   // 智能滚动：只在用户位于底部时自动滚动
   useEffect(() => {
     if (!isStreaming || !chatEndRef.current || !containerRef.current) return;
@@ -469,8 +453,6 @@ export function useSpotlightChat() {
     isUserAtBottom,
     setIsUserAtBottom,
     sendMessage,
-    clearChat,
-    cycleProvider,
-    providerId: uiAiConfig.providerId // 用于 UI 显示
+    clearChat
   };
 }

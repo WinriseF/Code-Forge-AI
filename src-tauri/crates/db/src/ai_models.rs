@@ -1,12 +1,6 @@
-use std::{
-    collections::{HashMap, HashSet},
-    fs,
-};
-
 use rusqlite::{Connection, OptionalExtension, Row, Transaction, params};
-use serde::Deserialize;
 use serde_json::Value;
-use tauri::{AppHandle, Manager, Runtime, State};
+use tauri::State;
 use uuid::Uuid;
 
 use super::{
@@ -18,9 +12,7 @@ use super::{
 const AI_MODEL_SELECT_SQL: &str = "
     SELECT
         id,
-        name,
         category,
-        provider_name,
         base_url,
         model_id,
         api_key,
@@ -30,13 +22,10 @@ const AI_MODEL_SELECT_SQL: &str = "
         params_json,
         enabled,
         is_default,
-        sort_order,
-        remark,
         created_at,
         updated_at
     FROM ai_models
 ";
-const LEGACY_APP_CONFIG_FILE: &str = "app-config.json";
 const ALLOWED_CATEGORIES: &[&str] = &[
     "chat",
     "translation",
@@ -49,9 +38,7 @@ const ALLOWED_CATEGORIES: &[&str] = &[
 
 #[derive(Debug, Clone)]
 struct SanitizedAiModelInput {
-    name: String,
     category: String,
-    provider_name: String,
     base_url: String,
     model_id: String,
     api_key: String,
@@ -61,67 +48,12 @@ struct SanitizedAiModelInput {
     params_json: String,
     enabled: bool,
     is_default: bool,
-    sort_order: i64,
-    remark: String,
-}
-
-#[derive(Debug, Deserialize, Default)]
-struct LegacyAppConfigStore {
-    #[serde(default)]
-    state: LegacyAppConfigState,
-}
-
-#[derive(Debug, Deserialize, Default, Clone)]
-#[serde(rename_all = "camelCase")]
-struct LegacyAppConfigState {
-    #[serde(default)]
-    ai_config: Option<LegacyAiConfig>,
-    #[serde(default)]
-    saved_provider_settings: HashMap<String, LegacyAiProviderSetting>,
-}
-
-#[derive(Debug, Deserialize, Default, Clone)]
-#[serde(rename_all = "camelCase")]
-struct LegacyAiConfig {
-    #[serde(default)]
-    provider_id: String,
-    #[serde(default)]
-    api_key: String,
-    base_url: Option<String>,
-    #[serde(default)]
-    model_id: String,
-    temperature: Option<f64>,
-}
-
-#[derive(Debug, Deserialize, Default, Clone)]
-#[serde(rename_all = "camelCase")]
-struct LegacyAiProviderSetting {
-    #[serde(default)]
-    api_key: String,
-    base_url: Option<String>,
-    #[serde(default)]
-    model_id: String,
-    temperature: Option<f64>,
-}
-
-#[derive(Debug, Clone)]
-struct LegacyImportCandidate {
-    name: String,
-    category: String,
-    provider_name: String,
-    base_url: String,
-    model_id: String,
-    api_key: String,
-    temperature: Option<f64>,
-    is_active: bool,
 }
 
 fn map_ai_model_row(row: &Row<'_>) -> rusqlite::Result<AiModelRecord> {
     Ok(AiModelRecord {
         id: row.get("id")?,
-        name: row.get("name")?,
         category: row.get("category")?,
-        provider_name: row.get("provider_name")?,
         base_url: row.get("base_url")?,
         model_id: row.get("model_id")?,
         api_key: row.get("api_key")?,
@@ -131,8 +63,6 @@ fn map_ai_model_row(row: &Row<'_>) -> rusqlite::Result<AiModelRecord> {
         params_json: row.get("params_json")?,
         enabled: row.get("enabled")?,
         is_default: row.get("is_default")?,
-        sort_order: row.get("sort_order")?,
-        remark: row.get("remark")?,
         created_at: row.get("created_at")?,
         updated_at: row.get("updated_at")?,
     })
@@ -211,9 +141,7 @@ fn sanitize_create_input(input: CreateAiModelInput) -> Result<SanitizedAiModelIn
     }
 
     Ok(SanitizedAiModelInput {
-        name: normalize_non_empty("AI model name", &input.name)?,
         category: normalize_category(&input.category)?,
-        provider_name: normalize_non_empty("AI model provider name", &input.provider_name)?,
         base_url: normalize_base_url(&input.base_url)?,
         model_id: normalize_non_empty("AI model ID", &input.model_id)?,
         api_key: normalize_non_empty("AI model API key", &input.api_key)?,
@@ -226,8 +154,6 @@ fn sanitize_create_input(input: CreateAiModelInput) -> Result<SanitizedAiModelIn
         params_json: normalize_json_object("AI model paramsJson", input.params_json)?,
         enabled,
         is_default,
-        sort_order: input.sort_order.unwrap_or(0),
-        remark: input.remark.unwrap_or_default().trim().to_string(),
     })
 }
 
@@ -242,9 +168,7 @@ fn sanitize_update_input(input: UpdateAiModelInput) -> Result<(String, Sanitized
     Ok((
         id,
         SanitizedAiModelInput {
-            name: normalize_non_empty("AI model name", &input.name)?,
             category: normalize_category(&input.category)?,
-            provider_name: normalize_non_empty("AI model provider name", &input.provider_name)?,
             base_url: normalize_base_url(&input.base_url)?,
             model_id: normalize_non_empty("AI model ID", &input.model_id)?,
             api_key: normalize_non_empty("AI model API key", &input.api_key)?,
@@ -257,37 +181,8 @@ fn sanitize_update_input(input: UpdateAiModelInput) -> Result<(String, Sanitized
             params_json: normalize_json_object("AI model paramsJson", input.params_json)?,
             enabled: input.enabled,
             is_default: input.is_default,
-            sort_order: input.sort_order.unwrap_or(0),
-            remark: input.remark.unwrap_or_default().trim().to_string(),
         },
     ))
-}
-
-fn ensure_unique_name(conn: &Connection, name: &str, exclude_id: Option<&str>) -> Result<()> {
-    let existing_id = match exclude_id {
-        Some(id) => conn
-            .query_row(
-                "SELECT id FROM ai_models WHERE name = ?1 COLLATE NOCASE AND id <> ?2 LIMIT 1",
-                params![name, id],
-                |row| row.get::<_, String>(0),
-            )
-            .optional()?,
-        None => conn
-            .query_row(
-                "SELECT id FROM ai_models WHERE name = ?1 COLLATE NOCASE LIMIT 1",
-                params![name],
-                |row| row.get::<_, String>(0),
-            )
-            .optional()?,
-    };
-
-    if existing_id.is_some() {
-        return Err(DbError::from(format!(
-            "AI model name already exists: {name}"
-        )));
-    }
-
-    Ok(())
 }
 
 fn get_ai_model_by_id_internal(conn: &Connection, id: &str) -> Result<Option<AiModelRecord>> {
@@ -326,9 +221,7 @@ fn list_ai_models_internal(
         sql.push_str(" AND enabled = 1");
     }
 
-    sql.push_str(
-        " ORDER BY category ASC, sort_order ASC, updated_at DESC, name COLLATE NOCASE ASC",
-    );
+    sql.push_str(" ORDER BY category ASC, updated_at DESC, model_id COLLATE NOCASE ASC");
 
     let mut stmt = conn.prepare(&sql)?;
     let param_refs: Vec<&dyn rusqlite::ToSql> = params.iter().map(|param| param.as_ref()).collect();
@@ -361,6 +254,47 @@ fn clear_default_for_category(
     Ok(())
 }
 
+fn ensure_enabled_default_for_category(
+    tx: &Transaction<'_>,
+    category: &str,
+    updated_at: i64,
+) -> Result<()> {
+    let existing_default = tx
+        .query_row(
+            "SELECT id FROM ai_models WHERE category = ?1 AND enabled = 1 AND is_default = 1 LIMIT 1",
+            params![category],
+            |row| row.get::<_, String>(0),
+        )
+        .optional()?;
+
+    if existing_default.is_some() {
+        return Ok(());
+    }
+
+    let fallback_id = tx
+        .query_row(
+            "
+            SELECT id
+            FROM ai_models
+            WHERE category = ?1 AND enabled = 1
+            ORDER BY updated_at DESC, model_id COLLATE NOCASE ASC
+            LIMIT 1
+            ",
+            params![category],
+            |row| row.get::<_, String>(0),
+        )
+        .optional()?;
+
+    if let Some(id) = fallback_id {
+        tx.execute(
+            "UPDATE ai_models SET is_default = 1, updated_at = ?1 WHERE id = ?2",
+            params![updated_at, id],
+        )?;
+    }
+
+    Ok(())
+}
+
 fn insert_ai_model(
     tx: &Transaction<'_>,
     id: &str,
@@ -372,9 +306,7 @@ fn insert_ai_model(
         "
         INSERT INTO ai_models (
             id,
-            name,
             category,
-            provider_name,
             base_url,
             model_id,
             api_key,
@@ -384,17 +316,13 @@ fn insert_ai_model(
             params_json,
             enabled,
             is_default,
-            sort_order,
-            remark,
             created_at,
             updated_at
-        ) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17)
+        ) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13)
         ",
         params![
             id,
-            &model.name,
             &model.category,
-            &model.provider_name,
             &model.base_url,
             &model.model_id,
             &model.api_key,
@@ -404,8 +332,6 @@ fn insert_ai_model(
             &model.params_json,
             model.enabled,
             model.is_default,
-            model.sort_order,
-            &model.remark,
             created_at,
             updated_at,
         ],
@@ -418,13 +344,23 @@ fn create_ai_model_internal(
     conn: &mut Connection,
     input: CreateAiModelInput,
 ) -> Result<AiModelRecord> {
-    let model = sanitize_create_input(input)?;
-    ensure_unique_name(conn, &model.name, None)?;
+    let mut model = sanitize_create_input(input)?;
 
     let id = Uuid::new_v4().to_string();
     let now = chrono::Utc::now().timestamp_millis();
 
     let tx = conn.transaction()?;
+    if model.enabled && !model.is_default {
+        let existing_default = tx
+            .query_row(
+                "SELECT id FROM ai_models WHERE category = ?1 AND enabled = 1 AND is_default = 1 LIMIT 1",
+                params![&model.category],
+                |row| row.get::<_, String>(0),
+            )
+            .optional()?;
+        model.is_default = existing_default.is_none();
+    }
+
     if model.is_default {
         clear_default_for_category(&tx, &model.category, None)?;
     }
@@ -443,7 +379,6 @@ fn update_ai_model_internal(
     let (id, model) = sanitize_update_input(input)?;
     let existing = get_ai_model_by_id_internal(conn, &id)?
         .ok_or_else(|| DbError::from(format!("AI model not found: {id}")))?;
-    ensure_unique_name(conn, &model.name, Some(&id))?;
 
     let now = chrono::Utc::now().timestamp_millis();
     let tx = conn.transaction()?;
@@ -455,27 +390,21 @@ fn update_ai_model_internal(
         "
         UPDATE ai_models
         SET
-            name = ?1,
-            category = ?2,
-            provider_name = ?3,
-            base_url = ?4,
-            model_id = ?5,
-            api_key = ?6,
-            temperature = ?7,
-            max_tokens = ?8,
-            capabilities_json = ?9,
-            params_json = ?10,
-            enabled = ?11,
-            is_default = ?12,
-            sort_order = ?13,
-            remark = ?14,
-            updated_at = ?15
-        WHERE id = ?16
+            category = ?1,
+            base_url = ?2,
+            model_id = ?3,
+            api_key = ?4,
+            temperature = ?5,
+            max_tokens = ?6,
+            capabilities_json = ?7,
+            params_json = ?8,
+            enabled = ?9,
+            is_default = ?10,
+            updated_at = ?11
+        WHERE id = ?12
         ",
         params![
-            &model.name,
             &model.category,
-            &model.provider_name,
             &model.base_url,
             &model.model_id,
             &model.api_key,
@@ -485,8 +414,6 @@ fn update_ai_model_internal(
             &model.params_json,
             model.enabled,
             model.is_default,
-            model.sort_order,
-            &model.remark,
             now,
             &id,
         ],
@@ -499,6 +426,11 @@ fn update_ai_model_internal(
         )));
     }
 
+    ensure_enabled_default_for_category(&tx, &existing.category, now)?;
+    if existing.category != model.category {
+        ensure_enabled_default_for_category(&tx, &model.category, now)?;
+    }
+
     tx.commit()?;
 
     get_ai_model_by_id_internal(conn, &existing.id)?.ok_or_else(|| {
@@ -506,12 +438,22 @@ fn update_ai_model_internal(
     })
 }
 
-fn delete_ai_model_internal(conn: &Connection, id: &str) -> Result<()> {
-    let deleted = conn.execute("DELETE FROM ai_models WHERE id = ?1", params![id])?;
+fn delete_ai_model_internal(conn: &mut Connection, id: &str) -> Result<()> {
+    let existing = get_ai_model_by_id_internal(conn, id)?
+        .ok_or_else(|| DbError::from(format!("AI model not found: {id}")))?;
+
+    let now = chrono::Utc::now().timestamp_millis();
+    let tx = conn.transaction()?;
+    let deleted = tx.execute("DELETE FROM ai_models WHERE id = ?1", params![id])?;
     if deleted == 0 {
         return Err(DbError::from(format!("AI model not found: {id}")));
     }
 
+    if existing.is_default {
+        ensure_enabled_default_for_category(&tx, &existing.category, now)?;
+    }
+
+    tx.commit()?;
     Ok(())
 }
 
@@ -545,179 +487,6 @@ fn set_default_ai_model_internal(conn: &mut Connection, id: &str) -> Result<AiMo
             "AI model was marked as default but could not be loaded back from the database",
         )
     })
-}
-
-fn infer_category(name: &str, model_id: &str) -> String {
-    let source = format!(
-        "{} {}",
-        name.to_ascii_lowercase(),
-        model_id.to_ascii_lowercase()
-    );
-
-    if source.contains("translate") || source.contains("translation") || source.contains("mt") {
-        return "translation".to_string();
-    }
-
-    if source.contains("code") || source.contains("coding") {
-        return "coding".to_string();
-    }
-
-    if source.contains("vision") || source.contains("image") || source.contains("vl") {
-        return "vision".to_string();
-    }
-
-    "chat".to_string()
-}
-
-fn build_legacy_import_candidates(state: &LegacyAppConfigState) -> Vec<LegacyImportCandidate> {
-    let active_provider = state
-        .ai_config
-        .as_ref()
-        .map(|config| config.provider_id.trim().to_string())
-        .filter(|provider_id| !provider_id.is_empty());
-
-    let mut entries: Vec<(String, LegacyAiProviderSetting)> = state
-        .saved_provider_settings
-        .iter()
-        .map(|(name, config)| (name.clone(), config.clone()))
-        .collect();
-    entries.sort_by(|left, right| {
-        left.0
-            .to_ascii_lowercase()
-            .cmp(&right.0.to_ascii_lowercase())
-    });
-
-    let mut seen_names = HashSet::new();
-    let mut candidates = Vec::new();
-
-    for (name, config) in entries {
-        let trimmed_name = name.trim().to_string();
-        let normalized_name = trimmed_name.to_ascii_lowercase();
-        if trimmed_name.is_empty() || !seen_names.insert(normalized_name) {
-            continue;
-        }
-
-        if config.api_key.trim().is_empty()
-            || config.model_id.trim().is_empty()
-            || config
-                .base_url
-                .as_deref()
-                .unwrap_or_default()
-                .trim()
-                .is_empty()
-        {
-            continue;
-        }
-
-        candidates.push(LegacyImportCandidate {
-            category: infer_category(&trimmed_name, &config.model_id),
-            provider_name: trimmed_name.clone(),
-            name: trimmed_name.clone(),
-            base_url: config.base_url.unwrap_or_default(),
-            model_id: config.model_id,
-            api_key: config.api_key,
-            temperature: config.temperature,
-            is_active: active_provider.as_deref() == Some(trimmed_name.as_str()),
-        });
-    }
-
-    if let Some(active) = &state.ai_config {
-        let active_name = active.provider_id.trim();
-        let has_active_entry = candidates
-            .iter()
-            .any(|candidate| candidate.name == active_name);
-        if !has_active_entry
-            && !active_name.is_empty()
-            && !active.api_key.trim().is_empty()
-            && !active.model_id.trim().is_empty()
-            && !active
-                .base_url
-                .as_deref()
-                .unwrap_or_default()
-                .trim()
-                .is_empty()
-        {
-            candidates.push(LegacyImportCandidate {
-                category: infer_category(active_name, &active.model_id),
-                provider_name: active_name.to_string(),
-                name: active_name.to_string(),
-                base_url: active.base_url.clone().unwrap_or_default(),
-                model_id: active.model_id.clone(),
-                api_key: active.api_key.clone(),
-                temperature: active.temperature,
-                is_active: true,
-            });
-        }
-    }
-
-    candidates.sort_by(|left, right| {
-        right.is_active.cmp(&left.is_active).then_with(|| {
-            left.name
-                .to_ascii_lowercase()
-                .cmp(&right.name.to_ascii_lowercase())
-        })
-    });
-    candidates
-}
-
-fn import_legacy_ai_models_from_state(
-    conn: &mut Connection,
-    state: LegacyAppConfigState,
-) -> Result<usize> {
-    let existing_count: i64 =
-        conn.query_row("SELECT COUNT(*) FROM ai_models", [], |row| row.get(0))?;
-    if existing_count > 0 {
-        return Ok(0);
-    }
-
-    let candidates = build_legacy_import_candidates(&state);
-    if candidates.is_empty() {
-        return Ok(0);
-    }
-
-    let active_default_categories: HashSet<String> = candidates
-        .iter()
-        .filter(|candidate| candidate.is_active)
-        .map(|candidate| candidate.category.clone())
-        .collect();
-    let mut assigned_default_categories = HashSet::new();
-    let now = chrono::Utc::now().timestamp_millis();
-
-    let tx = conn.transaction()?;
-    let mut inserted = 0;
-
-    for (index, candidate) in candidates.into_iter().enumerate() {
-        let is_default = if candidate.is_active {
-            assigned_default_categories.insert(candidate.category.clone());
-            true
-        } else {
-            !active_default_categories.contains(&candidate.category)
-                && assigned_default_categories.insert(candidate.category.clone())
-        };
-
-        let model = sanitize_create_input(CreateAiModelInput {
-            name: candidate.name,
-            category: candidate.category,
-            provider_name: candidate.provider_name,
-            base_url: candidate.base_url,
-            model_id: candidate.model_id,
-            api_key: candidate.api_key,
-            temperature: candidate.temperature,
-            max_tokens: None,
-            capabilities_json: Some("{}".to_string()),
-            params_json: Some("{}".to_string()),
-            enabled: Some(true),
-            is_default: Some(is_default),
-            sort_order: Some(index as i64),
-            remark: Some("Imported from legacy app-config.json".to_string()),
-        })?;
-
-        insert_ai_model(&tx, &Uuid::new_v4().to_string(), &model, now, now)?;
-        inserted += 1;
-    }
-
-    tx.commit()?;
-    Ok(inserted)
 }
 
 #[tauri::command]
@@ -760,9 +529,9 @@ pub fn update_ai_model(state: State<DbState>, input: UpdateAiModelInput) -> Resu
 
 #[tauri::command]
 pub fn delete_ai_model(state: State<DbState>, id: String) -> Result<()> {
-    let conn = state.conn.lock()?;
+    let mut conn = state.conn.lock()?;
     let id = normalize_non_empty("AI model id", &id)?;
-    delete_ai_model_internal(&conn, &id)
+    delete_ai_model_internal(&mut conn, &id)
 }
 
 #[tauri::command]
@@ -781,29 +550,6 @@ pub fn set_default_ai_model(state: State<DbState>, id: String) -> Result<AiModel
     set_default_ai_model_internal(&mut conn, &id)
 }
 
-pub fn import_legacy_ai_models_from_app_handle<R: Runtime>(
-    conn: &mut Connection,
-    app: &AppHandle<R>,
-) -> Result<usize> {
-    let app_dir = app.path().app_local_data_dir().map_err(|err| {
-        DbError::from(format!("Failed to locate app local data directory: {err}"))
-    })?;
-    let config_path = app_dir.join(LEGACY_APP_CONFIG_FILE);
-    if !config_path.exists() {
-        return Ok(0);
-    }
-
-    let content = fs::read_to_string(&config_path)?;
-    let store: LegacyAppConfigStore = serde_json::from_str(&content)?;
-    import_legacy_ai_models_from_state(conn, store.state)
-}
-
-#[tauri::command]
-pub fn import_legacy_ai_models_if_needed(state: State<DbState>, app: AppHandle) -> Result<usize> {
-    let mut conn = state.conn.lock()?;
-    import_legacy_ai_models_from_app_handle(&mut conn, &app)
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -813,9 +559,7 @@ mod tests {
             "
             CREATE TABLE ai_models (
                 id TEXT PRIMARY KEY,
-                name TEXT NOT NULL,
                 category TEXT NOT NULL,
-                provider_name TEXT NOT NULL,
                 base_url TEXT NOT NULL,
                 model_id TEXT NOT NULL,
                 api_key TEXT NOT NULL,
@@ -825,14 +569,27 @@ mod tests {
                 params_json TEXT NOT NULL DEFAULT '{}',
                 enabled INTEGER NOT NULL DEFAULT 1,
                 is_default INTEGER NOT NULL DEFAULT 0,
-                sort_order INTEGER NOT NULL DEFAULT 0,
-                remark TEXT NOT NULL DEFAULT '',
                 created_at INTEGER NOT NULL,
                 updated_at INTEGER NOT NULL
             );
             ",
         )
         .expect("create ai_models table");
+    }
+
+    fn create_input(model_id: &str) -> CreateAiModelInput {
+        CreateAiModelInput {
+            category: "chat".to_string(),
+            base_url: "https://api.example.com/v1".to_string(),
+            model_id: model_id.to_string(),
+            api_key: "test-key".to_string(),
+            temperature: Some(0.7),
+            max_tokens: None,
+            capabilities_json: None,
+            params_json: None,
+            enabled: Some(true),
+            is_default: Some(false),
+        }
     }
 
     #[test]
@@ -852,63 +609,35 @@ mod tests {
     }
 
     #[test]
-    fn import_legacy_ai_models_assigns_defaults_and_is_idempotent() {
+    fn first_enabled_model_is_auto_default() {
         let mut conn = Connection::open_in_memory().expect("open in-memory db");
         create_ai_models_table(&conn);
 
-        let inserted = import_legacy_ai_models_from_state(
-            &mut conn,
-            LegacyAppConfigState {
-                ai_config: Some(LegacyAiConfig {
-                    provider_id: "Minimax".into(),
-                    api_key: "ms-active".into(),
-                    base_url: Some("https://api.example.com/v1".into()),
-                    model_id: "Qwen/Qwen3.5".into(),
-                    temperature: Some(0.2),
-                }),
-                saved_provider_settings: HashMap::from([
-                    (
-                        "MT".into(),
-                        LegacyAiProviderSetting {
-                            api_key: "sk-mt".into(),
-                            base_url: Some("https://api.translation.local/v1".into()),
-                            model_id: "translate-v1".into(),
-                            temperature: Some(0.1),
-                        },
-                    ),
-                    (
-                        "Minimax".into(),
-                        LegacyAiProviderSetting {
-                            api_key: "ms-active".into(),
-                            base_url: Some("https://api.example.com/v1".into()),
-                            model_id: "Qwen/Qwen3.5".into(),
-                            temperature: Some(0.2),
-                        },
-                    ),
-                ]),
-            },
-        )
-        .expect("import legacy ai models");
+        let created =
+            create_ai_model_internal(&mut conn, create_input("chat-a")).expect("create model");
 
-        assert_eq!(inserted, 2);
-
-        let defaults = list_ai_models_internal(&conn, None, false).expect("list ai models");
-        let translation_default = defaults
-            .iter()
-            .find(|model| model.category == "translation")
-            .expect("translation model should exist");
-        let chat_default = defaults
-            .iter()
-            .find(|model| model.category == "chat")
-            .expect("chat model should exist");
-
-        assert!(translation_default.is_default);
-        assert!(chat_default.is_default);
-        assert_eq!(chat_default.name, "Minimax");
-
-        let repeated =
-            import_legacy_ai_models_from_state(&mut conn, LegacyAppConfigState::default())
-                .expect("repeat import should no-op when records already exist");
-        assert_eq!(repeated, 0);
+        assert!(created.is_default);
     }
+
+    #[test]
+    fn deleting_default_promotes_next_enabled_model() {
+        let mut conn = Connection::open_in_memory().expect("open in-memory db");
+        create_ai_models_table(&conn);
+
+        let first =
+            create_ai_model_internal(&mut conn, create_input("chat-a")).expect("create first");
+        let second =
+            create_ai_model_internal(&mut conn, create_input("chat-b")).expect("create second");
+
+        assert!(first.is_default);
+        assert!(!second.is_default);
+
+        delete_ai_model_internal(&mut conn, &first.id).expect("delete default");
+        let promoted = get_ai_model_by_id_internal(&conn, &second.id)
+            .expect("load promoted")
+            .expect("promoted model exists");
+
+        assert!(promoted.is_default);
+    }
+
 }

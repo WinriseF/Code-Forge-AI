@@ -62,10 +62,6 @@ export function setDefaultAIModel(id: string) {
   return invoke<AIModelRecord>('set_default_ai_model', { id });
 }
 
-export function importLegacyAIModelsIfNeeded() {
-  return invoke<number>('import_legacy_ai_models_if_needed');
-}
-
 export function parseJsonObject(raw: string): Record<string, unknown> {
   const trimmed = raw.trim();
   if (!trimmed) {

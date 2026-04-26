@@ -20,12 +20,12 @@ import {
 import { useTranslation } from 'react-i18next';
 import { OcrServiceCard } from '@/components/settings/sections/OcrServiceCard';
 import { SettingsSurface } from '@/components/settings/SettingsUi';
+import { Select } from '@/components/ui/select';
 import {
   AI_MODEL_CATEGORIES,
   AI_MODEL_CATEGORY_LABELS,
   createAIModel,
   deleteAIModel,
-  importLegacyAIModelsIfNeeded,
   listAIModels,
   normalizeJsonObject,
   setDefaultAIModel,
@@ -44,9 +44,7 @@ type EditorMode = 'empty' | 'create' | 'edit';
 
 interface AIModelDraft {
   id?: string;
-  name: string;
   category: AIModelCategory;
-  providerName: string;
   baseUrl: string;
   modelId: string;
   apiKey: string;
@@ -56,8 +54,6 @@ interface AIModelDraft {
   paramsJson: string;
   enabled: boolean;
   isDefault: boolean;
-  sortOrder: string;
-  remark: string;
 }
 
 interface JsonErrors {
@@ -99,11 +95,9 @@ function categoryIcon(category: AIModelCategory) {
   }
 }
 
-function createBlankDraft(sortOrder: number): AIModelDraft {
+function createBlankDraft(): AIModelDraft {
   return {
-    name: '',
     category: 'chat',
-    providerName: '',
     baseUrl: '',
     modelId: '',
     apiKey: '',
@@ -113,17 +107,13 @@ function createBlankDraft(sortOrder: number): AIModelDraft {
     paramsJson: DEFAULT_PARAMS_JSON,
     enabled: true,
     isDefault: false,
-    sortOrder: String(sortOrder),
-    remark: '',
   };
 }
 
 function draftFromRecord(model: AIModelRecord): AIModelDraft {
   return {
     id: model.id,
-    name: model.name,
     category: model.category,
-    providerName: model.providerName,
     baseUrl: model.baseUrl,
     modelId: model.modelId,
     apiKey: model.apiKey,
@@ -133,8 +123,6 @@ function draftFromRecord(model: AIModelRecord): AIModelDraft {
     paramsJson: prettyJson(model.paramsJson),
     enabled: model.enabled,
     isDefault: model.isDefault,
-    sortOrder: String(model.sortOrder),
-    remark: model.remark,
   };
 }
 
@@ -166,12 +154,9 @@ function parseOptionalInteger(value: string): number | null {
 function buildInputFromDraft(draft: AIModelDraft): CreateAIModelInput {
   const temperature = parseOptionalNumber(draft.temperature);
   const maxTokens = parseOptionalInteger(draft.maxTokens);
-  const sortOrder = parseOptionalInteger(draft.sortOrder);
 
   return {
-    name: draft.name.trim(),
     category: draft.category,
-    providerName: draft.providerName.trim(),
     baseUrl: draft.baseUrl.trim(),
     modelId: draft.modelId.trim(),
     apiKey: draft.apiKey.trim(),
@@ -181,8 +166,6 @@ function buildInputFromDraft(draft: AIModelDraft): CreateAIModelInput {
     paramsJson: normalizeJsonObject(draft.paramsJson),
     enabled: draft.enabled,
     isDefault: draft.isDefault,
-    sortOrder: Number.isNaN(sortOrder) || sortOrder === null ? 0 : sortOrder,
-    remark: draft.remark.trim(),
   };
 }
 
@@ -200,7 +183,7 @@ export function AISection() {
   const { t } = useTranslation();
   const [models, setModels] = useState<AIModelRecord[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [draft, setDraft] = useState<AIModelDraft>(() => createBlankDraft(0));
+  const [draft, setDraft] = useState<AIModelDraft>(() => createBlankDraft());
   const [mode, setMode] = useState<EditorMode>('empty');
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>('all');
   const [query, setQuery] = useState('');
@@ -218,7 +201,6 @@ export function AISection() {
     setLoading(true);
     setError(null);
     try {
-      await importLegacyAIModelsIfNeeded().catch(() => 0);
       const nextModels = await listAIModels();
       setModels(nextModels);
 
@@ -233,7 +215,7 @@ export function AISection() {
       } else {
         setMode('empty');
         setSelectedId(null);
-        setDraft(createBlankDraft(0));
+        setDraft(createBlankDraft());
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
@@ -252,10 +234,9 @@ export function AISection() {
   }
 
   function startCreate(category: AIModelCategory = categoryFilter === 'all' ? 'chat' : categoryFilter) {
-    const maxOrder = models.reduce((max, model) => Math.max(max, model.sortOrder), 0);
     setMode('create');
     setSelectedId(null);
-    setDraft({ ...createBlankDraft(maxOrder + 1), category });
+    setDraft({ ...createBlankDraft(), category });
     setJsonErrors({});
     setMessage(null);
     setError(null);
@@ -265,12 +246,6 @@ export function AISection() {
     const nextErrors: JsonErrors = {};
     setJsonErrors({});
 
-    if (!draft.name.trim()) {
-      return t('settings.aiModelNameRequired');
-    }
-    if (!draft.providerName.trim()) {
-      return t('settings.aiModelProviderRequired');
-    }
     if (!draft.baseUrl.trim()) {
       return t('settings.aiModelBaseUrlRequired');
     }
@@ -288,9 +263,6 @@ export function AISection() {
     }
     if (Number.isNaN(parseOptionalInteger(draft.maxTokens))) {
       return t('settings.aiModelMaxTokensInvalid');
-    }
-    if (Number.isNaN(parseOptionalInteger(draft.sortOrder))) {
-      return t('settings.aiModelSortOrderInvalid');
     }
 
     try {
@@ -369,7 +341,7 @@ export function AISection() {
     if (!draft.id) {
       return;
     }
-    const confirmed = window.confirm(t('settings.aiModelDeleteConfirm', { name: draft.name }));
+    const confirmed = window.confirm(t('settings.aiModelDeleteConfirm', { name: draft.modelId || draft.baseUrl }));
     if (!confirmed) {
       return;
     }
@@ -394,7 +366,7 @@ export function AISection() {
     const normalizedQuery = query.trim().toLowerCase();
     const matchesQuery =
       !normalizedQuery ||
-      [model.name, model.providerName, model.modelId, model.baseUrl]
+      [model.modelId, model.baseUrl]
         .join(' ')
         .toLowerCase()
         .includes(normalizedQuery);
@@ -540,7 +512,7 @@ export function AISection() {
                       <h4 className="mt-3 truncate text-base font-semibold text-foreground">
                         {mode === 'create'
                           ? t('settings.aiModelCreateTitle')
-                          : draft.name || t('settings.aiModelEditTitle')}
+                          : draft.modelId || t('settings.aiModelEditTitle')}
                       </h4>
                       <p className="mt-1 text-xs text-muted-foreground">
                         {mode === 'create'
@@ -593,36 +565,20 @@ export function AISection() {
                 <div className="min-h-0 flex-1 space-y-6 overflow-y-auto p-5 custom-scrollbar">
                   <FormSection title={t('settings.aiModelSectionBasics')}>
                     <FormGrid>
-                      <Field label={t('settings.aiModelName')} className="sm:col-span-2">
-                        <TextInput
-                          value={draft.name}
-                          onChange={(value) => setDraft((current) => ({ ...current, name: value }))}
-                          placeholder={t('settings.aiModelNamePlaceholder')}
-                        />
-                      </Field>
                       <Field label={t('settings.aiModelCategoryLabel')}>
-                        <select
+                        <Select
                           value={draft.category}
-                          onChange={(event) =>
+                          onChange={(value) =>
                             setDraft((current) => ({
                               ...current,
-                              category: event.target.value as AIModelCategory,
+                              category: value as AIModelCategory,
                             }))
                           }
-                          className={inputClassName}
-                        >
-                          {AI_MODEL_CATEGORIES.map((category) => (
-                            <option key={category} value={category}>
-                              {t(`settings.aiModelCategory.${category}`, AI_MODEL_CATEGORY_LABELS[category])}
-                            </option>
-                          ))}
-                        </select>
-                      </Field>
-                      <Field label={t('settings.provider')}>
-                        <TextInput
-                          value={draft.providerName}
-                          onChange={(value) => setDraft((current) => ({ ...current, providerName: value }))}
-                          placeholder="OpenAI / DeepSeek"
+                          options={AI_MODEL_CATEGORIES.map((category) => ({
+                            value: category,
+                            label: t(`settings.aiModelCategory.${category}`, AI_MODEL_CATEGORY_LABELS[category]),
+                          }))}
+                          size="sm"
                         />
                       </Field>
                       <Field label={t('settings.aiModelBaseUrlLabel')} className="sm:col-span-2">
@@ -664,13 +620,6 @@ export function AISection() {
                           value={draft.maxTokens}
                           onChange={(value) => setDraft((current) => ({ ...current, maxTokens: value }))}
                           placeholder="4096"
-                        />
-                      </Field>
-                      <Field label={t('settings.aiModelSortOrder')}>
-                        <TextInput
-                          value={draft.sortOrder}
-                          onChange={(value) => setDraft((current) => ({ ...current, sortOrder: value }))}
-                          placeholder="0"
                         />
                       </Field>
                       <div className="grid gap-2 sm:col-span-2 sm:grid-cols-2">
@@ -715,16 +664,6 @@ export function AISection() {
                       />
                     </div>
                   </FormSection>
-
-                  <Field label={t('settings.aiModelRemark')}>
-                    <textarea
-                      value={draft.remark}
-                      onChange={(event) => setDraft((current) => ({ ...current, remark: event.target.value }))}
-                      placeholder={t('settings.aiModelRemarkPlaceholder')}
-                      rows={3}
-                      className="w-full resize-none rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none transition-colors placeholder:text-muted-foreground/45 focus:border-primary/50 focus:ring-2 focus:ring-primary/15"
-                    />
-                  </Field>
                 </div>
               </div>
             )}
@@ -797,14 +736,12 @@ function ModelRow({
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="flex min-w-0 items-center gap-2">
-            <span className="truncate text-sm font-medium text-foreground">{model.name}</span>
+            <span className="truncate text-sm font-medium text-foreground">{model.modelId}</span>
             {model.isDefault && (
               <Star className="h-3.5 w-3.5 shrink-0 fill-amber-400 text-amber-400" aria-label={defaultLabel} />
             )}
           </div>
-          <div className="mt-1 truncate text-xs text-muted-foreground">
-            {model.providerName} / {model.modelId}
-          </div>
+          <div className="mt-1 truncate text-xs text-muted-foreground">{model.baseUrl}</div>
         </div>
         <span
           className={cn(

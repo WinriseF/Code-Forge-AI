@@ -1,13 +1,12 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AlertCircle, Check, FileCode, Folder, Loader2, Search, Sparkles, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useShallow } from 'zustand/react/shallow';
 import { FileNode } from '@/types/context';
 import { cn } from '@/lib/utils';
-import { AiProviderSelect } from '@/components/ui/AiProviderSelect';
-import { useAppStore } from '@/store/useAppStore';
+import { getRuntimeAIConfig } from '@/lib/aiRuntimeConfig';
 import { selectContextFilesWithAi, SelectContextFilesResult } from '@/lib/context-ai/selectFiles';
 import { AiFileSelectionToolTrace } from '@/lib/context-ai/types';
+import type { AIProviderConfig } from '@/types/model';
 
 interface AiSelectionPanelProps {
   isOpen: boolean;
@@ -32,7 +31,7 @@ export function AiSelectionPanel({
   onClose,
 }: AiSelectionPanelProps) {
   const { t } = useTranslation();
-  const aiConfig = useAppStore(useShallow((state) => state.aiConfig));
+  const [runtimeConfig, setRuntimeConfig] = useState<AIProviderConfig | null>(null);
   const [instruction, setInstruction] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [result, setResult] = useState<SelectContextFilesResult | null>(null);
@@ -45,15 +44,26 @@ export function AiSelectionPanel({
       setResult(null);
       setError('');
       setTraces([]);
+      return;
     }
+
+    void getRuntimeAIConfig('coding')
+      .then((config) => {
+        setRuntimeConfig(config);
+        setError('');
+      })
+      .catch((err) => {
+        setRuntimeConfig(null);
+        setError(err instanceof Error ? err.message : String(err));
+      });
   }, [isOpen]);
 
   const canAnalyze = useMemo(() => (
     !!projectRoot &&
-    !!aiConfig.apiKey &&
+    !!runtimeConfig?.apiKey &&
     instruction.trim().length > 0 &&
     !isAnalyzing
-  ), [aiConfig.apiKey, instruction, isAnalyzing, projectRoot]);
+  ), [instruction, isAnalyzing, projectRoot, runtimeConfig?.apiKey]);
 
   const upsertTrace = useCallback((trace: AiFileSelectionToolTrace) => {
     setTraces((current) => {
@@ -68,7 +78,7 @@ export function AiSelectionPanel({
   }, []);
 
   const handleAnalyze = useCallback(async () => {
-    if (!projectRoot || !aiConfig.apiKey || !instruction.trim()) {
+    if (!projectRoot || !instruction.trim()) {
       return;
     }
 
@@ -78,6 +88,8 @@ export function AiSelectionPanel({
     setTraces([]);
 
     try {
+      const aiConfig = await getRuntimeAIConfig('coding');
+      setRuntimeConfig(aiConfig);
       const nextResult = await selectContextFilesWithAi({
         instruction,
         fileTree,
@@ -94,7 +106,7 @@ export function AiSelectionPanel({
     } finally {
       setIsAnalyzing(false);
     }
-  }, [aiConfig, fileTree, instruction, projectRoot, t, upsertTrace]);
+  }, [fileTree, instruction, projectRoot, t, upsertTrace]);
 
   const handleApply = useCallback(() => {
     if (!result || result.selectedPaths.length === 0) return;
@@ -134,14 +146,16 @@ export function AiSelectionPanel({
               <label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
                 {t('context.aiSelectionProvider')}
               </label>
-              <AiProviderSelect disabled={isAnalyzing} size="sm" />
+              <div className="h-8 rounded-md border border-input bg-secondary/30 px-2 flex items-center text-xs font-mono text-muted-foreground truncate">
+                {runtimeConfig?.providerId || '-'}
+              </div>
             </div>
             <div className="space-y-1.5 min-w-0">
               <label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
                 {t('context.aiSelectionModel')}
               </label>
               <div className="h-8 rounded-md border border-input bg-secondary/30 px-2 flex items-center text-xs font-mono text-muted-foreground truncate">
-                {aiConfig.modelId || '-'}
+                {runtimeConfig?.modelId || '-'}
               </div>
             </div>
           </div>
@@ -154,7 +168,7 @@ export function AiSelectionPanel({
           />
           <div className="flex items-center justify-between gap-3">
             <div className="min-w-0 text-xs text-muted-foreground">
-              {!aiConfig.apiKey
+              {!runtimeConfig?.apiKey
                 ? t('context.aiSelectionNoApiKey')
                 : result
                   ? t('context.aiSelectionResultCount', { count: result.suggestions.length })

@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { LogicalSize } from '@tauri-apps/api/dpi';
 import { listen } from '@tauri-apps/api/event';
@@ -29,6 +29,8 @@ import { ChatMode } from '@/components/features/spotlight/modes/chat/ChatMode';
 import { SpotlightItem } from '@/types/spotlight';
 import { ShellType } from '@/types/prompt';
 import { applyThemeToDocument } from '@/lib/theme';
+import { listAIModels } from '@/lib/aiModels';
+import type { AIModelRecord } from '@/types/model';
 import {
   DEFAULT_SPOTLIGHT_APPEARANCE,
   SPOTLIGHT_RESIZE_FAST_STEP,
@@ -42,6 +44,7 @@ import {
 
 const appWindow = getCurrentWebviewWindow();
 const REFINERY_PLUGIN_PREFIX = 'plugin:ctxrun-plugin-refinery|';
+const SPOTLIGHT_CHAT_MODEL_CATEGORIES = ['chat', 'coding', 'vision'] as const;
 
 function SpotlightContent() {
   const {
@@ -58,8 +61,33 @@ function SpotlightContent() {
   const projectRoot = useContextStore((state) => state.projectRoot);
   const { t } = useTranslation();
 
+  const [chatModels, setChatModels] = useState<AIModelRecord[]>([]);
+  const [selectedChatModelId, setSelectedChatModelId] = useState<string | null>(null);
+
+  const refreshChatModels = useCallback(async () => {
+    try {
+      const modelGroups = await Promise.all(
+        SPOTLIGHT_CHAT_MODEL_CATEGORIES.map((category) =>
+          listAIModels({ category, enabledOnly: true })
+        )
+      );
+      const nextModels = modelGroups.flat();
+      setChatModels(nextModels);
+      setSelectedChatModelId((currentId) => {
+        if (currentId && nextModels.some((model) => model.id === currentId)) {
+          return currentId;
+        }
+        return nextModels.find((model) => model.isDefault)?.id ?? nextModels[0]?.id ?? null;
+      });
+    } catch (err) {
+      console.error('Failed to refresh spotlight chat models:', err);
+      setChatModels([]);
+      setSelectedChatModelId(null);
+    }
+  }, []);
+
   const search = useSpotlightSearch(t);
-  const chat = useSpotlightChat();
+  const chat = useSpotlightChat(selectedChatModelId);
   const initExecListeners = useExecStore((state) => state.initListeners);
 
   const [copiedId, setCopiedId] = useState<string | null>(null);
@@ -79,13 +107,18 @@ function SpotlightContent() {
   }, [initExecListeners]);
 
   useEffect(() => {
+    void refreshChatModels();
+  }, [refreshChatModels]);
+
+  useEffect(() => {
     const unlisten = appWindow.onFocusChanged(({ payload: isFocused }) => {
       if (isFocused) {
         focusInput();
+        void refreshChatModels();
       }
     });
     return () => { unlisten.then(f => f()); };
-  }, [focusInput]);
+  }, [focusInput, refreshChatModels]);
 
   useLayoutEffect(() => {
     appWindow.setSize(new LogicalSize(effectiveAppearance.width, effectiveHeight));
@@ -429,7 +462,14 @@ function SpotlightContent() {
 
   return (
     <SpotlightLayout
-      header={<SearchBar isResizeMode={isResizeMode} />}
+      header={
+        <SearchBar
+          isResizeMode={isResizeMode}
+          chatModels={chatModels}
+          selectedChatModelId={selectedChatModelId}
+          onSelectChatModel={setSelectedChatModelId}
+        />
+      }
       resultCount={search.results.length}
       isStreaming={chat.isStreaming}
       footerStatusAddon={resizeFooterStatus}

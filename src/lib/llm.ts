@@ -220,8 +220,9 @@ function buildChatRequestBody(
     temperature: options.temperature ?? config.temperature,
   };
 
-  if (options.maxTokens !== undefined) {
-    body.max_tokens = options.maxTokens;
+  const maxTokens = options.maxTokens ?? config.maxTokens;
+  if (maxTokens !== undefined) {
+    body.max_tokens = maxTokens;
   }
 
   if (options.tools && options.tools.length > 0) {

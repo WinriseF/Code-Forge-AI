@@ -4,9 +4,8 @@ import { fileStorage } from '@/lib/storage';
 import { IgnoreConfig, DEFAULT_GLOBAL_IGNORE } from '@/types/context';
 import { emit } from '@tauri-apps/api/event';
 import { invoke } from '@tauri-apps/api/core';
-import { AIModelConfig, AIProviderConfig, AIProviderSetting, DEFAULT_AI_CONFIG, DEFAULT_PROVIDER_SETTINGS } from '@/types/model';
+import { AIModelConfig } from '@/types/model';
 import {
-  broadcastAISettingsSync,
   broadcastLanguageSync,
   broadcastProjectRootSync,
   broadcastSearchSettingsSync,
@@ -152,9 +151,6 @@ interface AppState {
   models: AIModelConfig[];
   lastUpdated: number;
 
-  aiConfig: AIProviderConfig;
-  savedProviderSettings: Record<string, AIProviderSetting>;
-
   searchSettings: {
     defaultEngine: SearchEngineType;
     customUrl: string;
@@ -173,7 +169,6 @@ interface AppState {
   setTheme: (theme: AppTheme, skipEmit?: boolean) => void;
   setLanguage: (lang: AppLang) => void;
   updateGlobalIgnore: (type: keyof IgnoreConfig, action: 'add' | 'remove', value: string) => void;
-  setAIConfig: (config: Partial<AIProviderConfig>) => void;
   setSpotlightShortcut: (shortcut: string) => void;
   setAutomatorShortcut: (shortcut: string) => void;
   setWindowDestroyDelay: (seconds: number) => void;
@@ -183,7 +178,6 @@ interface AppState {
   syncModels: () => Promise<void>;
   resetModels: () => void;
   setSpotlightAppearance: (config: Partial<SpotlightAppearance>) => void;
-  renameAIProvider: (oldName: string, newName: string) => void;
 }
 
 export const useAppStore = create<AppState>()(
@@ -194,12 +188,10 @@ export const useAppStore = create<AppState>()(
       isPromptSidebarOpen: true,
       isContextSidebarOpen: true,
       contextSidebarWidth: 300,
-      theme: 'dark',
+      theme: 'black',
       language: 'zh',
       spotlightShortcut: 'Alt+S',
       automatorShortcut: 'Alt+F1',
-      aiConfig: DEFAULT_AI_CONFIG,
-      savedProviderSettings: DEFAULT_PROVIDER_SETTINGS,
       globalIgnore: DEFAULT_GLOBAL_IGNORE,
       windowDestroyDelay: 0,
       projectRoot: null,
@@ -296,50 +288,6 @@ export const useAppStore = create<AppState>()(
         });
       },
       setWindowDestroyDelay: (seconds) => set({ windowDestroyDelay: seconds }),
-      setAIConfig: (config) => {
-        set((state) => {
-          const newConfig = { ...state.aiConfig, ...config };
-          const currentProviderId = newConfig.providerId;
-
-          if (config.providerId && config.providerId !== state.aiConfig.providerId) {
-              const saved = state.savedProviderSettings[config.providerId] || DEFAULT_PROVIDER_SETTINGS[config.providerId] || {
-                  apiKey: '',
-                  baseUrl: '',
-                  modelId: '',
-                  temperature: 0.7
-              };
-
-              return {
-                  aiConfig: {
-                      ...newConfig,
-                      apiKey: saved.apiKey,
-                      baseUrl: saved.baseUrl,
-                      modelId: saved.modelId,
-                      temperature: saved.temperature
-                  }
-              };
-          }
-
-          const newSavedSettings = { ...state.savedProviderSettings };
-          newSavedSettings[currentProviderId] = {
-              apiKey: newConfig.apiKey,
-              baseUrl: newConfig.baseUrl,
-              modelId: newConfig.modelId,
-              temperature: newConfig.temperature
-          };
-
-          return {
-            aiConfig: newConfig,
-            savedProviderSettings: newSavedSettings
-          };
-        });
-
-        const nextState = useAppStore.getState();
-        broadcastAISettingsSync({
-          aiConfig: nextState.aiConfig,
-          savedProviderSettings: nextState.savedProviderSettings,
-        });
-      },
       setSearchSettings: (config) => {
         set((state) => ({
           searchSettings: { ...state.searchSettings, ...config }
@@ -409,40 +357,6 @@ export const useAppStore = create<AppState>()(
 
       resetModels: () => set({ models: DEFAULT_MODELS }),
 
-      renameAIProvider: (oldName, newName) => {
-        set((state) => {
-          if (!newName.trim() || newName === oldName || state.savedProviderSettings[newName]) {
-              return state;
-          }
-
-          const currentSettings = { ...state.savedProviderSettings };
-          const settingData = currentSettings[oldName];
-
-          if (!settingData) return state;
-
-          delete currentSettings[oldName];
-          currentSettings[newName] = settingData;
-
-          let newActiveId = state.aiConfig.providerId;
-          if (newActiveId === oldName) {
-              newActiveId = newName;
-          }
-
-          return {
-              savedProviderSettings: currentSettings,
-              aiConfig: {
-                  ...state.aiConfig,
-                  providerId: newActiveId
-              }
-          };
-        });
-
-        const nextState = useAppStore.getState();
-        broadcastAISettingsSync({
-          aiConfig: nextState.aiConfig,
-          savedProviderSettings: nextState.savedProviderSettings,
-        });
-      },
     }),
     {
       name: 'app-config',
@@ -472,8 +386,6 @@ export const useAppStore = create<AppState>()(
         globalIgnore: state.globalIgnore,
         models: state.models,
         lastUpdated: state.lastUpdated,
-        aiConfig: state.aiConfig,
-        savedProviderSettings: state.savedProviderSettings,
         spotlightAppearance: state.spotlightAppearance,
         windowDestroyDelay: state.windowDestroyDelay,
         searchSettings: state.searchSettings,

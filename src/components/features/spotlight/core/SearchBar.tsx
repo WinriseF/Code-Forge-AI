@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Search as SearchIcon, Bot, Zap, AppWindow, Terminal, Sparkles, X, MessageSquare, CornerDownRight, Calculator, ClipboardList, Paperclip, FileText, FolderOpen, Image as ImageIcon, MoreVertical } from 'lucide-react';
-import { useShallow } from 'zustand/react/shallow';
 import { cn } from '@/lib/utils';
 import { useAppStore } from '@/store/useAppStore';
 import { useSpotlight } from './SpotlightContext';
@@ -11,12 +10,16 @@ import { Prompt } from '@/types/prompt';
 import { usePromptStore } from '@/store/usePromptStore';
 import { SearchScope } from '@/types/spotlight';
 import { SearchEngineIcon } from '@/components/ui/SearchEngineIcon';
+import type { AIModelRecord } from '@/types/model';
 import type { ChatAttachmentError } from '@/lib/chat_attachment';
 import { CHAT_ATTACHMENT_ACCEPT, CHAT_ATTACHMENT_COLLAPSE_THRESHOLD } from '@/lib/chat_attachment';
 
 interface SearchBarProps {
   onKeyDown?: (e: React.KeyboardEvent) => void;
   isResizeMode?: boolean;
+  chatModels: AIModelRecord[];
+  selectedChatModelId: string | null;
+  onSelectChatModel: (modelId: string) => void;
 }
 
 const FOLDER_IMPORT_EXCLUDE_DIRS = new Set([
@@ -79,7 +82,13 @@ function getFolderImportSkipReason(file: File): FolderImportSkipReason | null {
   return null;
 }
 
-export function SearchBar({ onKeyDown, isResizeMode = false }: SearchBarProps) {
+export function SearchBar({
+  onKeyDown,
+  isResizeMode = false,
+  chatModels,
+  selectedChatModelId,
+  onSelectChatModel,
+}: SearchBarProps) {
   const { t } = useTranslation();
   const {
     mode, query, chatInput, searchScope, activeTemplate,
@@ -87,14 +96,7 @@ export function SearchBar({ onKeyDown, isResizeMode = false }: SearchBarProps) {
     attachments, attachmentErrors, addAttachments, removeAttachment, clearAttachmentError
   } = useSpotlight();
 
-  const { aiConfig, setAIConfig, savedProviderSettings, searchSettings } = useAppStore(
-    useShallow((state) => ({
-      aiConfig: state.aiConfig,
-      setAIConfig: state.setAIConfig,
-      savedProviderSettings: state.savedProviderSettings,
-      searchSettings: state.searchSettings,
-    })),
-  );
+  const searchSettings = useAppStore((state) => state.searchSettings);
   const chatTemplates = usePromptStore((state) => state.chatTemplates);
 
   const [menuSelectedIndex, setMenuSelectedIndex] = useState(0);
@@ -227,17 +229,16 @@ export function SearchBar({ onKeyDown, isResizeMode = false }: SearchBarProps) {
   };
 
   const { onContextMenu } = useSmartContextMenu({ onPaste: handlePaste });
+  const selectedChatModel = chatModels.find((model) => model.id === selectedChatModelId) ?? null;
+  const selectedChatModelLabel = selectedChatModel?.modelId ?? 'Not configured';
 
-  const cycleProvider = () => {
-    const providers = Object.keys(savedProviderSettings).filter(
-      (id) => savedProviderSettings[id]?.apiKey,
-    );
-    const currentIndex = providers.indexOf(aiConfig.providerId);
-
-    if (providers.length > 0) {
-        const nextIndex = (currentIndex + 1) % providers.length;
-        setAIConfig({ providerId: providers[nextIndex] });
-    }
+  const cycleChatModel = () => {
+    if (chatModels.length === 0) return;
+    const currentIndex = selectedChatModelId
+      ? chatModels.findIndex((model) => model.id === selectedChatModelId)
+      : -1;
+    const nextModel = chatModels[(currentIndex + 1) % chatModels.length] ?? chatModels[0];
+    onSelectChatModel(nextModel.id);
   };
 
   const handleTemplateSelect = (prompt: Prompt) => {
@@ -562,15 +563,20 @@ export function SearchBar({ onKeyDown, isResizeMode = false }: SearchBarProps) {
                     <FolderOpen strokeWidth={2} size={14} />
                 </button>
 
-                <button onClick={cycleProvider} className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-secondary/50 hover:bg-secondary text-[10px] font-mono font-medium transition-colors border border-border/50 group" title={t('spotlight.currentProvider', { provider: aiConfig.providerId })}>
+                <button
+                  onClick={cycleChatModel}
+                  disabled={chatModels.length === 0}
+                  className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-secondary/50 hover:bg-secondary text-[10px] font-mono font-medium transition-colors border border-border/50 group disabled:cursor-not-allowed disabled:opacity-50"
+                  title={t('spotlight.currentProvider', { provider: selectedChatModelLabel })}
+                >
                     <Zap strokeWidth={2} size={10} className={cn(
-                        aiConfig.providerId.toLowerCase().includes('deepseek') ? "text-blue-500" :
-                        aiConfig.providerId.toLowerCase().includes('openai') ? "text-green-500" :
-                        aiConfig.providerId.toLowerCase().includes('anthropic') ? "text-purple-500" :
+                        selectedChatModelLabel.toLowerCase().includes('deepseek') ? "text-blue-500" :
+                        selectedChatModelLabel.toLowerCase().includes('openai') ? "text-green-500" :
+                        selectedChatModelLabel.toLowerCase().includes('anthropic') ? "text-purple-500" :
                         "text-orange-500"
                     )} />
                     <span className="opacity-70 group-hover:opacity-100 uppercase truncate max-w-[80px]">
-                        {aiConfig.providerId}
+                        {selectedChatModelLabel}
                     </span>
                 </button>
               </div>

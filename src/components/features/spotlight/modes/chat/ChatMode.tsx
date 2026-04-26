@@ -4,7 +4,6 @@ import { Sparkles, ChevronDown, Brain, Check, Copy, FileText } from 'lucide-reac
 import { cn } from '@/lib/utils';
 import { useCollapsedItems } from '@/lib/hooks';
 import { CHAT_ATTACHMENT_COLLAPSE_THRESHOLD } from '@/lib/chat_attachment';
-import { useAppStore } from '@/store/useAppStore';
 import { ExecSessionCard } from '@/components/features/spotlight/exec/ExecSessionCard';
 import { AssistantTraceTimeline } from '@/components/features/spotlight/trace/AssistantTraceTimeline';
 import { ToolCallInlineBlock } from '@/components/features/spotlight/trace/ToolCallInlineBlock';
@@ -251,7 +250,6 @@ interface ChatModeProps {
 
 export function ChatMode({ messages, isStreaming, chatEndRef, containerRef, onScrollPositionChange }: ChatModeProps) {
   const { t } = useTranslation();
-  const aiConfig = useAppStore((state) => state.aiConfig);
   const [isUserAtBottom, setIsUserAtBottom] = useState(true);
 
   // 监听滚动事件，判断用户是否在底部
@@ -273,7 +271,7 @@ export function ChatMode({ messages, isStreaming, chatEndRef, containerRef, onSc
         </div>
         <h3 className="text-foreground font-medium mb-1">{t('spotlight.aiReady')}</h3>
         <p className="text-xs text-center max-w-[200px] opacity-70 leading-relaxed">
-          {t('spotlight.aiDesc')} <span className="text-purple-500 font-medium">{aiConfig.providerId}</span>.
+          {t('spotlight.aiDesc')} <span className="text-purple-500 font-medium">database default</span>.
         </p>
         <div className="mt-8 text-[10px] opacity-40 font-mono bg-background/50 border border-border/50 px-2 py-1 rounded">
           {t('spotlight.ephemeral')}

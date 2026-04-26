@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { readTextFile } from '@tauri-apps/plugin-fs';
-import { useShallow } from 'zustand/react/shallow';
 
 import { translate, type SupportedLangCode, type TranslateCallbacks } from '@/lib/aiTranslate';
+import { getRuntimeAIConfig } from '@/lib/aiRuntimeConfig';
 import { useThrottledStreamUpdate } from '@/lib/hooks/useThrottledStreamUpdate';
 import { recognizeOcrFile, normalizeOcrError } from '@/lib/ocr';
-import { useAppStore } from '@/store/useAppStore';
 import type { FileMeta, PreviewType } from '@/types/hyperview';
 
 export interface PreviewAiState {
@@ -46,10 +45,6 @@ export function usePreviewAi({ activeFile, previewTextSource, onAutoPin }: UsePr
   const [state, setState] = useState<PreviewAiState>(INITIAL_STATE);
   const activeRequestIdRef = useRef(0);
   const abortRef = useRef<AbortController | null>(null);
-
-  const aiConfig = useAppStore(
-    useShallow((s) => s.aiConfig),
-  );
 
   const throttledUpdate = useCallback((contentDelta: string) => {
     setState((prev) => ({
@@ -174,13 +169,21 @@ export function usePreviewAi({ activeFile, previewTextSource, onAutoPin }: UsePr
         },
       };
 
-      void translate(
-        { content, previewType, targetLang, signal: abort.signal },
-        aiConfig,
-        callbacks,
-      );
+      void (async () => {
+        try {
+          const aiConfig = await getRuntimeAIConfig('translation');
+          if (requestId !== activeRequestIdRef.current) return;
+          await translate(
+            { content, previewType, targetLang, signal: abort.signal },
+            aiConfig,
+            callbacks,
+          );
+        } catch (err) {
+          callbacks.onError(err instanceof Error ? err.message : String(err));
+        }
+      })();
     },
-    [aiConfig, append, clear, flushFinal],
+    [append, clear, flushFinal],
   );
 
   const startTranslate = useCallback(() => {
