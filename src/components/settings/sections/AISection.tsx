@@ -102,7 +102,7 @@ function createBlankDraft(): AIModelDraft {
     modelId: '',
     apiKey: '',
     temperature: '0.7',
-    maxTokens: '',
+    maxTokens: '65536',
     capabilitiesJson: DEFAULT_CAPABILITIES_JSON,
     paramsJson: DEFAULT_PARAMS_JSON,
     enabled: true,
@@ -619,7 +619,7 @@ export function AISection() {
                         <TextInput
                           value={draft.maxTokens}
                           onChange={(value) => setDraft((current) => ({ ...current, maxTokens: value }))}
-                          placeholder="4096"
+                          placeholder="65536"
                         />
                       </Field>
                       <div className="grid gap-2 sm:col-span-2 sm:grid-cols-2">
