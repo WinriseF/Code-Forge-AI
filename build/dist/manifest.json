@@ -1,5 +1,5 @@
 {
-  "updated_at": 1777301786875,
+  "updated_at": 1777301917871,
   "version": "2.1.0",
   "packages": [
     {
@@ -240,7 +240,7 @@
       "name": "ChatGPT Prompts (English)",
       "description": "Collection of 1712 role-play prompts.",
       "count": 1712,
-      "size_kb": 5120.14,
+      "size_kb": 5106.77,
       "url": "packs/prompts/en/roles.json",
       "category": "prompt"
     },
@@ -251,8 +251,30 @@
       "name": "中文角色扮演精选",
       "description": "Collection of 124 role-play prompts.",
       "count": 124,
-      "size_kb": 97.47,
+      "size_kb": 96.5,
       "url": "packs/prompts/zh/roles.json",
+      "category": "prompt"
+    },
+    {
+      "id": "en-image2",
+      "language": "en",
+      "platform": "llm",
+      "name": "Awesome GPT Image 2 Prompts",
+      "description": "Collection of 126 GPT Image 2 prompts.",
+      "count": 126,
+      "size_kb": 266.03,
+      "url": "packs/prompts/en/image2.json",
+      "category": "prompt"
+    },
+    {
+      "id": "zh-image2",
+      "language": "zh",
+      "platform": "llm",
+      "name": "GPT Image 2 提示词精选",
+      "description": "Collection of 126 GPT Image 2 prompts.",
+      "count": 126,
+      "size_kb": 250.74,
+      "url": "packs/prompts/zh/image2.json",
       "category": "prompt"
     },
     {
