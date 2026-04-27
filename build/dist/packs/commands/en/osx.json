@@ -6633,7 +6633,7 @@
     "id": "tldr-en-osx-safeejectgpu-2",
     "type": "command",
     "title": "safeejectgpu - List apps using a GPU",
-    "content": "SafeEjectGPU gpuid {{GPU_ID}} apps",
+    "content": "SafeEjectGPU gpuid {{gpu_id}} apps",
     "group": "macOS",
     "description": "safeejectgpu: Eject a GPU safely. (List apps using a GPU)",
     "tags": [
@@ -6648,7 +6648,7 @@
     "id": "tldr-en-osx-safeejectgpu-3",
     "type": "command",
     "title": "safeejectgpu - Get the status of a GPU",
-    "content": "SafeEjectGPU gpuid {{GPU_ID}} status",
+    "content": "SafeEjectGPU gpuid {{gpu_id}} status",
     "group": "macOS",
     "description": "safeejectgpu: Eject a GPU safely. (Get the status of a GPU)",
     "tags": [
@@ -6663,7 +6663,7 @@
     "id": "tldr-en-osx-safeejectgpu-4",
     "type": "command",
     "title": "safeejectgpu - Eject a GPU",
-    "content": "SafeEjectGPU gpuid {{GPU_ID}} Eject",
+    "content": "SafeEjectGPU gpuid {{gpu_id}} Eject",
     "group": "macOS",
     "description": "safeejectgpu: Eject a GPU safely. (Eject a GPU)",
     "tags": [
@@ -6678,7 +6678,7 @@
     "id": "tldr-en-osx-safeejectgpu-5",
     "type": "command",
     "title": "safeejectgpu - Launch an app on a GPU",
-    "content": "SafeEjectGPU gpuid {{GPU_ID}} LaunchOnGPU {{path/to/App.app}}",
+    "content": "SafeEjectGPU gpuid {{gpu_id}} LaunchOnGPU {{path/to/App.app}}",
     "group": "macOS",
     "description": "safeejectgpu: Eject a GPU safely. (Launch an app on a GPU)",
     "tags": [

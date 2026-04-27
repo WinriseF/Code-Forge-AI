@@ -28293,7 +28293,7 @@
     "id": "tldr-en-common-arping-0",
     "type": "command",
     "title": "arping - Ping a host by ARP request packets",
-    "content": "arping {{host_ip}}",
+    "content": "sudo arping {{host_ip}}",
     "group": "Common Tools",
     "description": "arping: Discover and probe hosts in a network using the ARP protocol. Useful for MAC address discovery. (Ping a host by ARP request packets)",
     "tags": [
@@ -28308,7 +28308,7 @@
     "id": "tldr-en-common-arping-1",
     "type": "command",
     "title": "arping - Ping a host on a specific [I]nterface",
-    "content": "arping -I {{interface}} {{host_ip}}",
+    "content": "sudo arping -I {{interface}} {{host_ip}}",
     "group": "Common Tools",
     "description": "arping: Discover and probe hosts in a network using the ARP protocol. Useful for MAC address discovery. (Ping a host on a specific [I]nterface)",
     "tags": [
@@ -28323,7 +28323,7 @@
     "id": "tldr-en-common-arping-2",
     "type": "command",
     "title": "arping - Ping a host and [f]inish after the first reply",
-    "content": "arping -f {{host_ip}}",
+    "content": "sudo arping -f {{host_ip}}",
     "group": "Common Tools",
     "description": "arping: Discover and probe hosts in a network using the ARP protocol. Useful for MAC address discovery. (Ping a host and [f]inish after the first reply)",
     "tags": [
@@ -28338,7 +28338,7 @@
     "id": "tldr-en-common-arping-3",
     "type": "command",
     "title": "arping - Ping a host a specific number ([c]ount) of times",
-    "content": "arping -c {{count}} {{host_ip}}",
+    "content": "sudo arping -c {{count}} {{host_ip}}",
     "group": "Common Tools",
     "description": "arping: Discover and probe hosts in a network using the ARP protocol. Useful for MAC address discovery. (Ping a host a specific number ([c]ount) of times)",
     "tags": [
@@ -28353,7 +28353,7 @@
     "id": "tldr-en-common-arping-4",
     "type": "command",
     "title": "arping - Broadcast ARP request packets to update neighbours' ARP caches ([U]nsolicited ARP mode)",
-    "content": "arping -U {{ip_to_broadcast}}",
+    "content": "sudo arping -U {{ip_to_broadcast}}",
     "group": "Common Tools",
     "description": "arping: Discover and probe hosts in a network using the ARP protocol. Useful for MAC address discovery. (Broadcast ARP request packets to update neighbours' ARP caches ([U]nsolicited ARP mode))",
     "tags": [
@@ -28368,7 +28368,7 @@
     "id": "tldr-en-common-arping-5",
     "type": "command",
     "title": "arping - [D]etect duplicated IP addresses in the network by sending ARP requests with a 3 second timeout",
-    "content": "arping -D -w {{3}} {{ip_to_check}}",
+    "content": "sudo arping -D -w {{3}} {{ip_to_check}}",
     "group": "Common Tools",
     "description": "arping: Discover and probe hosts in a network using the ARP protocol. Useful for MAC address discovery. ([D]etect duplicated IP addresses in the network by sending ARP requests with a 3 second timeout)",
     "tags": [
@@ -104945,7 +104945,7 @@
     "title": "fastmod - Replace a `regex` in all files of the current directory, ignoring files on `.ignore` and `.gitignore`",
     "content": "fastmod {{regex}} {{replacement}}",
     "group": "Common Tools",
-    "description": "fastmod: A fast partial replacement for the codemod tool, replace and replace all in the whole codebase. Regexes are matched by Rust `regex` crate. (Replace a `regex` in all files of the current directory, ignoring files on `.ignore` and `.gitignore`)",
+    "description": "fastmod: A fast partial replacement for the `codemod` tool, replace and replace all in the whole codebase. Regexes are matched by Rust `regex` crate. (Replace a `regex` in all files of the current directory, ignoring files on `.ignore` and `.gitignore`)",
     "tags": [
       "common",
       "fastmod",
@@ -104960,7 +104960,7 @@
     "title": "fastmod - Replace a `regex` in case-insensitive mode in specific files or directories",
     "content": "fastmod --ignore-case {{regex}} {{replacement}} -- {{path/to/file_or_directory1 path/to/file_or_directory2 ...}}",
     "group": "Common Tools",
-    "description": "fastmod: A fast partial replacement for the codemod tool, replace and replace all in the whole codebase. Regexes are matched by Rust `regex` crate. (Replace a `regex` in case-insensitive mode in specific files or directories)",
+    "description": "fastmod: A fast partial replacement for the `codemod` tool, replace and replace all in the whole codebase. Regexes are matched by Rust `regex` crate. (Replace a `regex` in case-insensitive mode in specific files or directories)",
     "tags": [
       "common",
       "fastmod",
@@ -104975,7 +104975,7 @@
     "title": "fastmod - Replace a `regex` in a specific directory in files filtered with a case-insensitive glob pattern",
     "content": "fastmod {{regex}} {{replacement}} --dir {{path/to/directory}} --iglob '{{**/*.{js,json}}}'",
     "group": "Common Tools",
-    "description": "fastmod: A fast partial replacement for the codemod tool, replace and replace all in the whole codebase. Regexes are matched by Rust `regex` crate. (Replace a `regex` in a specific directory in files filtered with a case-insensitive glob pattern)",
+    "description": "fastmod: A fast partial replacement for the `codemod` tool, replace and replace all in the whole codebase. Regexes are matched by Rust `regex` crate. (Replace a `regex` in a specific directory in files filtered with a case-insensitive glob pattern)",
     "tags": [
       "common",
       "fastmod",
@@ -104990,7 +104990,7 @@
     "title": "fastmod - Replace for an exact string in `.js` or JSON files",
     "content": "fastmod --fixed-strings {{exact_string}} {{replacement}} --extensions {{json,js}}",
     "group": "Common Tools",
-    "description": "fastmod: A fast partial replacement for the codemod tool, replace and replace all in the whole codebase. Regexes are matched by Rust `regex` crate. (Replace for an exact string in `.js` or JSON files)",
+    "description": "fastmod: A fast partial replacement for the `codemod` tool, replace and replace all in the whole codebase. Regexes are matched by Rust `regex` crate. (Replace for an exact string in `.js` or JSON files)",
     "tags": [
       "common",
       "fastmod",
@@ -105005,7 +105005,7 @@
     "title": "fastmod - Replace for an exact string without prompt for a confirmation (disables `regex`)",
     "content": "fastmod --accept-all --fixed-strings {{exact_string}} {{replacement}}",
     "group": "Common Tools",
-    "description": "fastmod: A fast partial replacement for the codemod tool, replace and replace all in the whole codebase. Regexes are matched by Rust `regex` crate. (Replace for an exact string without prompt for a confirmation (disables `regex`))",
+    "description": "fastmod: A fast partial replacement for the `codemod` tool, replace and replace all in the whole codebase. Regexes are matched by Rust `regex` crate. (Replace for an exact string without prompt for a confirmation (disables `regex`))",
     "tags": [
       "common",
       "fastmod",
@@ -105020,7 +105020,7 @@
     "title": "fastmod - Replace for an exact string without prompt for a confirmation, printing changed files",
     "content": "fastmod --accept-all --print-changed-files --fixed-strings {{exact_string}} {{replacement}}",
     "group": "Common Tools",
-    "description": "fastmod: A fast partial replacement for the codemod tool, replace and replace all in the whole codebase. Regexes are matched by Rust `regex` crate. (Replace for an exact string without prompt for a confirmation, printing changed files)",
+    "description": "fastmod: A fast partial replacement for the `codemod` tool, replace and replace all in the whole codebase. Regexes are matched by Rust `regex` crate. (Replace for an exact string without prompt for a confirmation, printing changed files)",
     "tags": [
       "common",
       "fastmod",
@@ -109224,6 +109224,81 @@
     "tags": [
       "common",
       "doctl-databases-user",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gnugo-0",
+    "type": "command",
+    "title": "gnugo - Start an interactive Go game",
+    "content": "gnugo",
+    "group": "Common Tools",
+    "description": "gnugo: Play Go on the command-line. (Start an interactive Go game)",
+    "tags": [
+      "common",
+      "gnugo",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gnugo-1",
+    "type": "command",
+    "title": "gnugo - [Interactive] Place a stone at row 5 and column J once in game",
+    "content": "J5",
+    "group": "Common Tools",
+    "description": "gnugo: Play Go on the command-line. ([Interactive] Place a stone at row 5 and column J once in game)",
+    "tags": [
+      "common",
+      "gnugo",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gnugo-2",
+    "type": "command",
+    "title": "gnugo - Start a game with 5 handicap stones with opponent of level 5",
+    "content": "gnugo --handicap 5 --level 5",
+    "group": "Common Tools",
+    "description": "gnugo: Play Go on the command-line. (Start a game with 5 handicap stones with opponent of level 5)",
+    "tags": [
+      "common",
+      "gnugo",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gnugo-3",
+    "type": "command",
+    "title": "gnugo - Resume a game from a specific file at move 123",
+    "content": "gnugo {{[-l|--infile]}} {{path/to/game.sgf}} {{[-L|--until]}} 123",
+    "group": "Common Tools",
+    "description": "gnugo: Play Go on the command-line. (Resume a game from a specific file at move 123)",
+    "tags": [
+      "common",
+      "gnugo",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gnugo-4",
+    "type": "command",
+    "title": "gnugo - Give a rough score estimate of a position",
+    "content": "gnugo --score estimate {{[-l|--infile]}} {{path/to/game.sgf}}",
+    "group": "Common Tools",
+    "description": "gnugo: Play Go on the command-line. (Give a rough score estimate of a position)",
+    "tags": [
+      "common",
+      "gnugo",
       "tldr",
       "en"
     ],
@@ -119702,10 +119777,10 @@
   {
     "id": "tldr-en-common-ansible-vault-1",
     "type": "command",
-    "title": "ansible-vault - Edit, view or re-key (re-encrypt) an existing encrypted vault file with a prompt for the password",
+    "title": "ansible-vault - Edit, view, or re-key (re-encrypt) an existing encrypted vault file with a prompt for the password",
     "content": "ansible-vault {{edit|view|rekey}} {{path/to/vault_file}}",
     "group": "Common Tools",
-    "description": "ansible-vault: Encrypt and decrypt values, data structures, and files within Ansible projects. (Edit, view or re-key (re-encrypt) an existing encrypted vault file with a prompt for the password)",
+    "description": "ansible-vault: Encrypt and decrypt values, data structures, and files within Ansible projects. (Edit, view, or re-key (re-encrypt) an existing encrypted vault file with a prompt for the password)",
     "tags": [
       "common",
       "ansible-vault",
@@ -154563,7 +154638,7 @@
     "id": "tldr-en-common-fd-0",
     "type": "command",
     "title": "fd - Recursively find files matching a specific pattern in the current directory",
-    "content": "fd \"{{string|regex}}\"",
+    "content": "fd \"{{regex}}\"",
     "group": "Common Tools",
     "description": "fd: Find entries in the filesystem. (Recursively find files matching a specific pattern in the current directory)",
     "tags": [
@@ -154577,10 +154652,10 @@
   {
     "id": "tldr-en-common-fd-1",
     "type": "command",
-    "title": "fd - Find files that begin with a specific string",
-    "content": "fd \"{{^string}}\"",
+    "title": "fd - Find files in a specific directory",
+    "content": "fd \"{{regex}}\" {{path/to/directory}}",
     "group": "Common Tools",
-    "description": "fd: Find entries in the filesystem. (Find files that begin with a specific string)",
+    "description": "fd: Find entries in the filesystem. (Find files in a specific directory)",
     "tags": [
       "common",
       "fd",
@@ -154607,10 +154682,10 @@
   {
     "id": "tldr-en-common-fd-3",
     "type": "command",
-    "title": "fd - Find files in a specific directory",
-    "content": "fd \"{{string|regex}}\" {{path/to/directory}}",
+    "title": "fd - Find only directories matching a specific pattern",
+    "content": "fd \"{{regex}}\" {{[-t|--type]}} {{[d|directory]}}",
     "group": "Common Tools",
-    "description": "fd: Find entries in the filesystem. (Find files in a specific directory)",
+    "description": "fd: Find entries in the filesystem. (Find only directories matching a specific pattern)",
     "tags": [
       "common",
       "fd",
@@ -154623,7 +154698,7 @@
     "id": "tldr-en-common-fd-4",
     "type": "command",
     "title": "fd - Include ignored and hidden files in the search",
-    "content": "fd {{[-H|--hidden]}} {{[-I|--no-ignore]}} \"{{string|regex}}\"",
+    "content": "fd \"{{regex}}\" {{[-H|--hidden]}} {{[-I|--no-ignore]}}",
     "group": "Common Tools",
     "description": "fd: Find entries in the filesystem. (Include ignored and hidden files in the search)",
     "tags": [
@@ -154638,7 +154713,7 @@
     "id": "tldr-en-common-fd-5",
     "type": "command",
     "title": "fd - Exclude files that match a specific glob pattern",
-    "content": "fd {{string}} {{[-E|--exclude]}} {{glob}}",
+    "content": "fd \"{{regex}}\" {{[-E|--exclude]}} {{glob}}",
     "group": "Common Tools",
     "description": "fd: Find entries in the filesystem. (Exclude files that match a specific glob pattern)",
     "tags": [
@@ -154653,7 +154728,7 @@
     "id": "tldr-en-common-fd-6",
     "type": "command",
     "title": "fd - Execute a command on each search result returned",
-    "content": "fd \"{{string|regex}}\" {{[-x|--exec]}} {{command}}",
+    "content": "fd \"{{regex}}\" {{[-x|--exec]}} {{command}}",
     "group": "Common Tools",
     "description": "fd: Find entries in the filesystem. (Execute a command on each search result returned)",
     "tags": [
@@ -154668,7 +154743,7 @@
     "id": "tldr-en-common-fd-7",
     "type": "command",
     "title": "fd - Find files only in the current directory",
-    "content": "fd {{[-d|--max-depth]}} 1 \"{{string|regex}}\"",
+    "content": "fd \"{{regex}}\" {{[-d|--max-depth]}} 1",
     "group": "Common Tools",
     "description": "fd: Find entries in the filesystem. (Find files only in the current directory)",
     "tags": [
@@ -162872,10 +162947,10 @@
   {
     "id": "tldr-en-common-bdfr-4",
     "type": "command",
-    "title": "bdfr - Download the maximum possible number of both submission data and videos/images from subreddit r/Python skipping over submissions with mp4 or gif file extensions and creating hard links for duplicate files",
+    "title": "bdfr - Download the maximum possible number of both submission data and videos/images from subreddit r/Python skipping over submissions with `.mp4` or `.gif` file extensions and creating hard links for duplicate files",
     "content": "bdfr clone {{path/to/output_directory}} {{[-s|--subreddit]}} Python --skip mp4 --skip gif --make-hard-links",
     "group": "Common Tools",
-    "description": "bdfr: Bulk downloader for Reddit. (Download the maximum possible number of both submission data and videos/images from subreddit r/Python skipping over submissions with mp4 or gif file extensions and creating hard links for duplicate files)",
+    "description": "bdfr: Bulk downloader for Reddit. (Download the maximum possible number of both submission data and videos/images from subreddit r/Python skipping over submissions with `.mp4` or `.gif` file extensions and creating hard links for duplicate files)",
     "tags": [
       "common",
       "bdfr",
@@ -163353,7 +163428,7 @@
     "id": "tldr-en-common-gist-6",
     "type": "command",
     "title": "gist - Update a gist using the ID from URL",
-    "content": "gist {{[-u|--update]}} {{GIST_ID}} {{file.txt}}",
+    "content": "gist {{[-u|--update]}} {{gist_id}} {{file.txt}}",
     "group": "Common Tools",
     "description": "gist: Upload code to . (Update a gist using the ID from URL)",
     "tags": [
@@ -172143,7 +172218,7 @@
     "id": "tldr-en-common-pngquant-1",
     "type": "command",
     "title": "pngquant - Compress a specific PNG and override original",
-    "content": "pngquant --ext .png --force {{path/to/file.png}}",
+    "content": "pngquant --ext .png {{[-f|--force]}} {{path/to/file.png}}",
     "group": "Common Tools",
     "description": "pngquant: PNG converter and lossy image compressor. (Compress a specific PNG and override original)",
     "tags": [
@@ -172158,7 +172233,7 @@
     "id": "tldr-en-common-pngquant-2",
     "type": "command",
     "title": "pngquant - Try to compress a specific PNG with custom quality (skip if below the min value)",
-    "content": "pngquant --quality {{0-100}} {{path/to/file.png}}",
+    "content": "pngquant {{[-Q|--quality]}} {{0-100}} {{path/to/file.png}}",
     "group": "Common Tools",
     "description": "pngquant: PNG converter and lossy image compressor. (Try to compress a specific PNG with custom quality (skip if below the min value))",
     "tags": [
@@ -172218,7 +172293,7 @@
     "id": "tldr-en-common-pngquant-6",
     "type": "command",
     "title": "pngquant - Compress a specific PNG and save it to the given path",
-    "content": "pngquant {{path/to/file.png}} --output {{path/to/file.png}}",
+    "content": "pngquant {{path/to/file.png}} {{[-o|--output]}} {{path/to/file.png}}",
     "group": "Common Tools",
     "description": "pngquant: PNG converter and lossy image compressor. (Compress a specific PNG and save it to the given path)",
     "tags": [
@@ -172233,7 +172308,7 @@
     "id": "tldr-en-common-pngquant-7",
     "type": "command",
     "title": "pngquant - Compress a specific PNG and show progress",
-    "content": "pngquant --verbose {{path/to/file.png}}",
+    "content": "pngquant {{[-v|--verbose]}} {{path/to/file.png}}",
     "group": "Common Tools",
     "description": "pngquant: PNG converter and lossy image compressor. (Compress a specific PNG and show progress)",
     "tags": [
@@ -208884,6 +208959,81 @@
     "tags": [
       "common",
       "distcc",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gnuchess-0",
+    "type": "command",
+    "title": "gnuchess - Start an interactive chess game",
+    "content": "gnuchess",
+    "group": "Common Tools",
+    "description": "gnuchess: Play chess against an engine. (Start an interactive chess game)",
+    "tags": [
+      "common",
+      "gnuchess",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gnuchess-1",
+    "type": "command",
+    "title": "gnuchess - [Interactive] Play a move using algebraic notation",
+    "content": "{{e4}}",
+    "group": "Common Tools",
+    "description": "gnuchess: Play chess against an engine. ([Interactive] Play a move using algebraic notation)",
+    "tags": [
+      "common",
+      "gnuchess",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gnuchess-2",
+    "type": "command",
+    "title": "gnuchess - Enable graphic mode, showing chess pieces instead of letters",
+    "content": "gnuchess {{[-g|--graphic]}}",
+    "group": "Common Tools",
+    "description": "gnuchess: Play chess against an engine. (Enable graphic mode, showing chess pieces instead of letters)",
+    "tags": [
+      "common",
+      "gnuchess",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gnuchess-3",
+    "type": "command",
+    "title": "gnuchess - Display engine output",
+    "content": "gnuchess {{[-p|--post]}}",
+    "group": "Common Tools",
+    "description": "gnuchess: Play chess against an engine. (Display engine output)",
+    "tags": [
+      "common",
+      "gnuchess",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gnuchess-4",
+    "type": "command",
+    "title": "gnuchess - [Interactive] Exit `gnuchess`",
+    "content": "quit",
+    "group": "Common Tools",
+    "description": "gnuchess: Play chess against an engine. ([Interactive] Exit `gnuchess`)",
+    "tags": [
+      "common",
+      "gnuchess",
       "tldr",
       "en"
     ],
@@ -250578,7 +250728,7 @@
     "id": "tldr-en-common-adb-forward-1",
     "type": "command",
     "title": "adb-forward - Forward a TCP port to a specific emulator or device (by device ID / [s]erial number)",
-    "content": "adb -s {{device_ID}} forward tcp:{{local_port}} tcp:{{remote_port}}",
+    "content": "adb -s {{device_id}} forward tcp:{{local_port}} tcp:{{remote_port}}",
     "group": "Common Tools",
     "description": "adb-forward: Forward socket connections to a connected Android device or emulator. (Forward a TCP port to a specific emulator or device (by device ID / [s]erial number))",
     "tags": [
@@ -253833,7 +253983,7 @@
     "id": "tldr-en-common-salt-key-1",
     "type": "command",
     "title": "salt-key - Accept a minion key by name",
-    "content": "salt-key {{[-a|--accept-all]}} {{MINION_ID}}",
+    "content": "salt-key {{[-a|--accept-all]}} {{minion_id}}",
     "group": "Common Tools",
     "description": "salt-key: Manage salt minion keys on the salt master. Needs to be run on the salt master, likely as root or with sudo. (Accept a minion key by name)",
     "tags": [
@@ -253848,7 +253998,7 @@
     "id": "tldr-en-common-salt-key-2",
     "type": "command",
     "title": "salt-key - Reject a minion key by name",
-    "content": "salt-key {{[-r|--reject]}} {{MINION_ID}}",
+    "content": "salt-key {{[-r|--reject]}} {{minion_id}}",
     "group": "Common Tools",
     "description": "salt-key: Manage salt minion keys on the salt master. Needs to be run on the salt master, likely as root or with sudo. (Reject a minion key by name)",
     "tags": [
@@ -257703,7 +257853,7 @@
     "id": "tldr-en-common-docker-service-2",
     "type": "command",
     "title": "docker-service - Display detailed information about one or more services",
-    "content": "docker service inspect {{service_name_or_ID1 service_name_or_ID2}}",
+    "content": "docker service inspect {{service_name_or_id1 service_name_or_id2}}",
     "group": "Common Tools",
     "description": "docker-service: Manage the services on a Docker daemon. (Display detailed information about one or more services)",
     "tags": [
@@ -257718,7 +257868,7 @@
     "id": "tldr-en-common-docker-service-3",
     "type": "command",
     "title": "docker-service - List the tasks of one or more services",
-    "content": "docker service ps {{service_name_or_ID1 service_name_or_ID2 ...}}",
+    "content": "docker service ps {{service_name_or_id1 service_name_or_id2 ...}}",
     "group": "Common Tools",
     "description": "docker-service: Manage the services on a Docker daemon. (List the tasks of one or more services)",
     "tags": [
@@ -257748,7 +257898,7 @@
     "id": "tldr-en-common-docker-service-5",
     "type": "command",
     "title": "docker-service - Remove one or more services",
-    "content": "docker service rm {{service_name_or_ID1 service_name_or_ID2}}",
+    "content": "docker service rm {{service_name_or_id1 service_name_or_id2}}",
     "group": "Common Tools",
     "description": "docker-service: Manage the services on a Docker daemon. (Remove one or more services)",
     "tags": [
@@ -290373,7 +290523,7 @@
     "id": "tldr-en-common-adb-reverse-2",
     "type": "command",
     "title": "adb-reverse - Reverse a TCP port from a specific emulator or device (by device ID / [s]erial number) to localhost",
-    "content": "adb -s {{device_ID}} reverse tcp:{{remote_port}} tcp:{{local_port}}",
+    "content": "adb -s {{device_id}} reverse tcp:{{remote_port}} tcp:{{local_port}}",
     "group": "Common Tools",
     "description": "adb-reverse: Reverse socket connections from a connected Android device or emulator. (Reverse a TCP port from a specific emulator or device (by device ID / [s]erial number) to localhost)",
     "tags": [
@@ -298307,10 +298457,10 @@
   {
     "id": "tldr-en-common-ctest-0",
     "type": "command",
-    "title": "ctest - Run all tests defined in the CMake project, executing 4 [j]obs at a time in parallel",
-    "content": "ctest {{[-j|--parallel]}} {{4}} --output-on-failure",
+    "title": "ctest - Run all tests in the current CMake build directory",
+    "content": "ctest",
     "group": "Common Tools",
-    "description": "ctest: CMake test driver program. (Run all tests defined in the CMake project, executing 4 [j]obs at a time in parallel)",
+    "description": "ctest: CMake test driver program. (Run all tests in the current CMake build directory)",
     "tags": [
       "common",
       "ctest",
@@ -298321,6 +298471,36 @@
   },
   {
     "id": "tldr-en-common-ctest-1",
+    "type": "command",
+    "title": "ctest - Run all tests defined in the CMake build directory, executing 4 [j]obs at a time in parallel",
+    "content": "ctest {{[-j|--parallel]}} 4",
+    "group": "Common Tools",
+    "description": "ctest: CMake test driver program. (Run all tests defined in the CMake build directory, executing 4 [j]obs at a time in parallel)",
+    "tags": [
+      "common",
+      "ctest",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-ctest-2",
+    "type": "command",
+    "title": "ctest - Run all tests defined in the CMake build directory and print detailed logs on failed tests",
+    "content": "ctest --output-on-failure",
+    "group": "Common Tools",
+    "description": "ctest: CMake test driver program. (Run all tests defined in the CMake build directory and print detailed logs on failed tests)",
+    "tags": [
+      "common",
+      "ctest",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-ctest-3",
     "type": "command",
     "title": "ctest - List available tests",
     "content": "ctest {{[-N|--show-only]}}",
@@ -298335,7 +298515,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-ctest-2",
+    "id": "tldr-en-common-ctest-4",
     "type": "command",
     "title": "ctest - Run a single test based on its name, or filter on a `regex`",
     "content": "ctest --output-on-failure {{[-R|--tests-regex]}} '^{{test_name}}$'",
@@ -299105,7 +299285,7 @@
     "title": "cheatshh - Add a new command to the cheatshheet",
     "content": "cheatshh {{[-a|--add]}}",
     "group": "Common Tools",
-    "description": "cheatshh: CLI cheatsheet with customized descriptions, tldr and groups, to look into for your reference. Press `` to a command to copy it to your clipboard and exit. (Add a new command to the cheatshheet)",
+    "description": "cheatshh: CLI cheatsheet with customized descriptions, tldr, and groups, to look into for your reference. Press `` to a command to copy it to your clipboard and exit. (Add a new command to the cheatshheet)",
     "tags": [
       "common",
       "cheatshh",
@@ -299120,7 +299300,7 @@
     "title": "cheatshh - Edit an existing command's description or group in the cheatshheet",
     "content": "cheatshh {{[-ec|--edit-command]}}",
     "group": "Common Tools",
-    "description": "cheatshh: CLI cheatsheet with customized descriptions, tldr and groups, to look into for your reference. Press `` to a command to copy it to your clipboard and exit. (Edit an existing command's description or group in the cheatshheet)",
+    "description": "cheatshh: CLI cheatsheet with customized descriptions, tldr, and groups, to look into for your reference. Press `` to a command to copy it to your clipboard and exit. (Edit an existing command's description or group in the cheatshheet)",
     "tags": [
       "common",
       "cheatshh",
@@ -299135,7 +299315,7 @@
     "title": "cheatshh - Delete an existing command from the cheatshheet",
     "content": "cheatshh {{[-dc|--delete-command]}}",
     "group": "Common Tools",
-    "description": "cheatshh: CLI cheatsheet with customized descriptions, tldr and groups, to look into for your reference. Press `` to a command to copy it to your clipboard and exit. (Delete an existing command from the cheatshheet)",
+    "description": "cheatshh: CLI cheatsheet with customized descriptions, tldr, and groups, to look into for your reference. Press `` to a command to copy it to your clipboard and exit. (Delete an existing command from the cheatshheet)",
     "tags": [
       "common",
       "cheatshh",
@@ -299150,7 +299330,7 @@
     "title": "cheatshh - Create a new group",
     "content": "cheatshh {{[-g|--group]}}",
     "group": "Common Tools",
-    "description": "cheatshh: CLI cheatsheet with customized descriptions, tldr and groups, to look into for your reference. Press `` to a command to copy it to your clipboard and exit. (Create a new group)",
+    "description": "cheatshh: CLI cheatsheet with customized descriptions, tldr, and groups, to look into for your reference. Press `` to a command to copy it to your clipboard and exit. (Create a new group)",
     "tags": [
       "common",
       "cheatshh",
@@ -299165,7 +299345,7 @@
     "title": "cheatshh - Edit an existing group's name or description in the cheatsheet",
     "content": "cheatshh {{[-eg|--edit-group]}}",
     "group": "Common Tools",
-    "description": "cheatshh: CLI cheatsheet with customized descriptions, tldr and groups, to look into for your reference. Press `` to a command to copy it to your clipboard and exit. (Edit an existing group's name or description in the cheatsheet)",
+    "description": "cheatshh: CLI cheatsheet with customized descriptions, tldr, and groups, to look into for your reference. Press `` to a command to copy it to your clipboard and exit. (Edit an existing group's name or description in the cheatsheet)",
     "tags": [
       "common",
       "cheatshh",
@@ -299180,7 +299360,7 @@
     "title": "cheatshh - Delete an existing group and it's sub commands from `commands.json` file",
     "content": "cheatshh {{[-dg|--delete-group]}}",
     "group": "Common Tools",
-    "description": "cheatshh: CLI cheatsheet with customized descriptions, tldr and groups, to look into for your reference. Press `` to a command to copy it to your clipboard and exit. (Delete an existing group and it's sub commands from `commands.json` file)",
+    "description": "cheatshh: CLI cheatsheet with customized descriptions, tldr, and groups, to look into for your reference. Press `` to a command to copy it to your clipboard and exit. (Delete an existing group and it's sub commands from `commands.json` file)",
     "tags": [
       "common",
       "cheatshh",
@@ -299195,7 +299375,7 @@
     "title": "cheatshh - Display man pages after tldr in the preview",
     "content": "cheatshh {{[-m|--man]}}",
     "group": "Common Tools",
-    "description": "cheatshh: CLI cheatsheet with customized descriptions, tldr and groups, to look into for your reference. Press `` to a command to copy it to your clipboard and exit. (Display man pages after tldr in the preview)",
+    "description": "cheatshh: CLI cheatsheet with customized descriptions, tldr, and groups, to look into for your reference. Press `` to a command to copy it to your clipboard and exit. (Display man pages after tldr in the preview)",
     "tags": [
       "common",
       "cheatshh",
@@ -300753,7 +300933,7 @@
     "id": "tldr-en-common-adb-7",
     "type": "command",
     "title": "adb - Specify which device to send commands to if there are multiple devices",
-    "content": "adb -s {{device_ID}} {{shell}}",
+    "content": "adb -s {{device_id}} {{shell}}",
     "group": "Common Tools",
     "description": "adb: Android Debug Bridge: communicate with an Android emulator instance or connected Android devices. Some subcommands such as `shell` have their own usage documentation. (Specify which device to send commands to if there are multiple devices)",
     "tags": [
