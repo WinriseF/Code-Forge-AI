@@ -5313,7 +5313,7 @@
     "id": "tldr-en-linux-asterisk-5",
     "type": "command",
     "title": "asterisk - Terminate a channel",
-    "content": "asterisk -r -x \"hangup request {{channel_ID}}\"",
+    "content": "asterisk -r -x \"hangup request {{channel_id}}\"",
     "group": "Linux Ops",
     "description": "asterisk: Run and manage telephone and exchange (phone) server instances. (Terminate a channel)",
     "tags": [
@@ -14493,7 +14493,7 @@
     "id": "tldr-en-linux-qm-wait-0",
     "type": "command",
     "title": "qm-wait - Wait until the virtual machine is stopped",
-    "content": "qm {{[w|wait]}} {{vm_id}}",
+    "content": "qm {{[w|wait]}} {{100}}",
     "group": "Linux Ops",
     "description": "qm-wait: Wait until the virtual machine is stopped. (Wait until the virtual machine is stopped)",
     "tags": [
@@ -14508,7 +14508,7 @@
     "id": "tldr-en-linux-qm-wait-1",
     "type": "command",
     "title": "qm-wait - Wait until the virtual machine is stopped with a 10 second timeout",
-    "content": "qm {{[w|wait]}} --timeout {{10}} {{vm_id}}",
+    "content": "qm {{[w|wait]}} {{100}} --timeout {{10}}",
     "group": "Linux Ops",
     "description": "qm-wait: Wait until the virtual machine is stopped. (Wait until the virtual machine is stopped with a 10 second timeout)",
     "tags": [
@@ -14523,7 +14523,7 @@
     "id": "tldr-en-linux-qm-wait-2",
     "type": "command",
     "title": "qm-wait - Send a shutdown request, then wait until the virtual machine is stopped with a 10 second timeout",
-    "content": "qm {{[shu|shutdown]}} {{vm_id}} && qm {{[w|wait]}} --timeout {{10}} {{vm_id}}",
+    "content": "qm {{[shu|shutdown]}} {{100}} && qm {{[w|wait]}} {{100}} --timeout {{10}}",
     "group": "Linux Ops",
     "description": "qm-wait: Wait until the virtual machine is stopped. (Send a shutdown request, then wait until the virtual machine is stopped with a 10 second timeout)",
     "tags": [
@@ -18963,7 +18963,7 @@
     "id": "tldr-en-linux-qm-delsnapshot-0",
     "type": "command",
     "title": "qm-delsnapshot - Delete a snapshot",
-    "content": "qm {{[del|delsnapshot]}} {{vm_id}} {{snapshot_name}}",
+    "content": "qm {{[del|delsnapshot]}} {{100}} {{snapshot_name}}",
     "group": "Linux Ops",
     "description": "qm-delsnapshot: Delete virtual machine snapshots. (Delete a snapshot)",
     "tags": [
@@ -18978,7 +18978,7 @@
     "id": "tldr-en-linux-qm-delsnapshot-1",
     "type": "command",
     "title": "qm-delsnapshot - Delete a snapshot from a configuration file (even if removing the disk snapshot fails)",
-    "content": "qm {{[del|delsnapshot]}} {{vm_id}} {{snapshot_name}} --force 1",
+    "content": "qm {{[del|delsnapshot]}} {{100}} {{snapshot_name}} --force 1",
     "group": "Linux Ops",
     "description": "qm-delsnapshot: Delete virtual machine snapshots. (Delete a snapshot from a configuration file (even if removing the disk snapshot fails))",
     "tags": [
@@ -20448,7 +20448,7 @@
     "id": "tldr-en-linux-qm-reset-0",
     "type": "command",
     "title": "qm-reset - Reset a virtual machine",
-    "content": "qm reset {{vm_id}}",
+    "content": "qm reset {{100}}",
     "group": "Linux Ops",
     "description": "qm-reset: Reset a virtual machine on QEMU/KVM Virtual Machine Manager. (Reset a virtual machine)",
     "tags": [
@@ -20463,7 +20463,7 @@
     "id": "tldr-en-linux-qm-reset-1",
     "type": "command",
     "title": "qm-reset - Reset a virtual machine and skip lock (only root can use this option)",
-    "content": "qm reset --skiplock {{true}} {{vm_id}}",
+    "content": "qm reset {{100}} --skiplock {{true}}",
     "group": "Linux Ops",
     "description": "qm-reset: Reset a virtual machine on QEMU/KVM Virtual Machine Manager. (Reset a virtual machine and skip lock (only root can use this option))",
     "tags": [
@@ -20478,7 +20478,7 @@
     "id": "tldr-en-linux-qm-shutdown-0",
     "type": "command",
     "title": "qm-shutdown - Shutdown a virtual machine",
-    "content": "qm {{[shu|shutdown]}} {{VM_ID}}",
+    "content": "qm {{[shu|shutdown]}} {{100}}",
     "group": "Linux Ops",
     "description": "qm-shutdown: Shutdown a virtual machine on QEMU/KVM Virtual Machine Manager. (Shutdown a virtual machine)",
     "tags": [
@@ -20493,7 +20493,7 @@
     "id": "tldr-en-linux-qm-shutdown-1",
     "type": "command",
     "title": "qm-shutdown - Shutdown a virtual machine after wait for at most 10 seconds",
-    "content": "qm {{[shu|shutdown]}} --timeout {{10}} {{VM_ID}}",
+    "content": "qm {{[shu|shutdown]}} {{100}} --timeout {{10}}",
     "group": "Linux Ops",
     "description": "qm-shutdown: Shutdown a virtual machine on QEMU/KVM Virtual Machine Manager. (Shutdown a virtual machine after wait for at most 10 seconds)",
     "tags": [
@@ -20508,7 +20508,7 @@
     "id": "tldr-en-linux-qm-shutdown-2",
     "type": "command",
     "title": "qm-shutdown - Shutdown a virtual machine and do not deactivate storage volumes",
-    "content": "qm {{[shu|shutdown]}} --keepActive {{true}} {{VM_ID}}",
+    "content": "qm {{[shu|shutdown]}} {{100}} --keepActive {{true}}",
     "group": "Linux Ops",
     "description": "qm-shutdown: Shutdown a virtual machine on QEMU/KVM Virtual Machine Manager. (Shutdown a virtual machine and do not deactivate storage volumes)",
     "tags": [
@@ -20523,7 +20523,7 @@
     "id": "tldr-en-linux-qm-shutdown-3",
     "type": "command",
     "title": "qm-shutdown - Shutdown a virtual machine and skip lock (only root can use this option)",
-    "content": "qm {{[shu|shutdown]}} --skiplock {{true}} {{VM_ID}}",
+    "content": "qm {{[shu|shutdown]}} {{100}} --skiplock {{true}}",
     "group": "Linux Ops",
     "description": "qm-shutdown: Shutdown a virtual machine on QEMU/KVM Virtual Machine Manager. (Shutdown a virtual machine and skip lock (only root can use this option))",
     "tags": [
@@ -20538,7 +20538,7 @@
     "id": "tldr-en-linux-qm-shutdown-4",
     "type": "command",
     "title": "qm-shutdown - Stop and shutdown a virtual machine",
-    "content": "qm {{[shu|shutdown]}} --forceStop {{true}} {{VM_ID}}",
+    "content": "qm {{[shu|shutdown]}} {{100}} --forceStop {{true}}",
     "group": "Linux Ops",
     "description": "qm-shutdown: Shutdown a virtual machine on QEMU/KVM Virtual Machine Manager. (Stop and shutdown a virtual machine)",
     "tags": [
@@ -22938,7 +22938,7 @@
     "id": "tldr-en-linux-lsfd-1",
     "type": "command",
     "title": "lsfd - List all files kept open by a specific program",
-    "content": "lsfd {{[-Q|--filter]}} 'PID == {{process_ID}}'",
+    "content": "lsfd {{[-Q|--filter]}} 'PID == {{process_id}}'",
     "group": "Linux Ops",
     "description": "lsfd: List open files and the corresponding processes in Linux. (List all files kept open by a specific program)",
     "tags": [
@@ -25428,7 +25428,7 @@
     "id": "tldr-en-linux-qm-vncproxy-0",
     "type": "command",
     "title": "qm-vncproxy - Proxy a specific virtual machine",
-    "content": "qm {{[v|vncproxy]}} {{vm_id}}",
+    "content": "qm {{[v|vncproxy]}} {{100}}",
     "group": "Linux Ops",
     "description": "qm-vncproxy: Proxy Virtual Machine VNC (Virtual network computing) traffic to `stdin` or `stdout`. (Proxy a specific virtual machine)",
     "tags": [
@@ -26958,7 +26958,7 @@
     "id": "tldr-en-linux-qm-monitor-0",
     "type": "command",
     "title": "qm-monitor - Enter the QEMU Monitor interface of a specific virtual machine",
-    "content": "qm {{[mo|monitor]}} {{vm_id}}",
+    "content": "qm {{[mo|monitor]}} {{100}}",
     "group": "Linux Ops",
     "description": "qm-monitor: Enter the QEMU Monitor interface. (Enter the QEMU Monitor interface of a specific virtual machine)",
     "tags": [
@@ -28188,7 +28188,7 @@
     "id": "tldr-en-linux-qm-stop-0",
     "type": "command",
     "title": "qm-stop - Stop a virtual machine immediately",
-    "content": "qm stop {{VM_ID}}",
+    "content": "qm stop {{100}}",
     "group": "Linux Ops",
     "description": "qm-stop: Stop a virtual machine. (Stop a virtual machine immediately)",
     "tags": [
@@ -28203,7 +28203,7 @@
     "id": "tldr-en-linux-qm-stop-1",
     "type": "command",
     "title": "qm-stop - Stop a virtual machine and wait for at most 10 seconds",
-    "content": "qm stop --timeout {{10}} {{VM_ID}}",
+    "content": "qm stop {{100}} --timeout {{10}}",
     "group": "Linux Ops",
     "description": "qm-stop: Stop a virtual machine. (Stop a virtual machine and wait for at most 10 seconds)",
     "tags": [
@@ -28218,7 +28218,7 @@
     "id": "tldr-en-linux-qm-stop-2",
     "type": "command",
     "title": "qm-stop - Stop a virtual machine and skip lock (only root can use this option)",
-    "content": "qm stop --skiplock {{true}} {{VM_ID}}",
+    "content": "qm stop {{100}} --skiplock {{true}}",
     "group": "Linux Ops",
     "description": "qm-stop: Stop a virtual machine. (Stop a virtual machine and skip lock (only root can use this option))",
     "tags": [
@@ -28233,7 +28233,7 @@
     "id": "tldr-en-linux-qm-stop-3",
     "type": "command",
     "title": "qm-stop - Stop a virtual machine and don't deactivate storage volumes",
-    "content": "qm stop --keepActive {{true}} {{VM_ID}}",
+    "content": "qm stop {{100}} --keepActive {{true}}",
     "group": "Linux Ops",
     "description": "qm-stop: Stop a virtual machine. (Stop a virtual machine and don't deactivate storage volumes)",
     "tags": [
@@ -30693,7 +30693,7 @@
     "id": "tldr-en-linux-qm-migrate-0",
     "type": "command",
     "title": "qm-migrate - Migrate a specific virtual machine",
-    "content": "qm {{[mi|migrate]}} {{vm_id}} {{target}}",
+    "content": "qm {{[mi|migrate]}} {{100}} {{target}}",
     "group": "Linux Ops",
     "description": "qm-migrate: Migrate a virtual machine. Used to create a new migration task. (Migrate a specific virtual machine)",
     "tags": [
@@ -30708,7 +30708,7 @@
     "id": "tldr-en-linux-qm-migrate-1",
     "type": "command",
     "title": "qm-migrate - Override the current I/O bandwidth limit with 10 KiB/s",
-    "content": "qm {{[mi|migrate]}} {{vm_id}} {{target}} --bwlimit 10",
+    "content": "qm {{[mi|migrate]}} {{100}} {{target}} --bwlimit 10",
     "group": "Linux Ops",
     "description": "qm-migrate: Migrate a virtual machine. Used to create a new migration task. (Override the current I/O bandwidth limit with 10 KiB/s)",
     "tags": [
@@ -30723,7 +30723,7 @@
     "id": "tldr-en-linux-qm-migrate-2",
     "type": "command",
     "title": "qm-migrate - Allow migration of virtual machines using local devices (root only)",
-    "content": "qm {{[mi|migrate]}} {{vm_id}} {{target}} --force true",
+    "content": "qm {{[mi|migrate]}} {{100}} {{target}} --force true",
     "group": "Linux Ops",
     "description": "qm-migrate: Migrate a virtual machine. Used to create a new migration task. (Allow migration of virtual machines using local devices (root only))",
     "tags": [
@@ -30738,7 +30738,7 @@
     "id": "tldr-en-linux-qm-migrate-3",
     "type": "command",
     "title": "qm-migrate - Use online/live migration if a virtual machine is running",
-    "content": "qm {{[mi|migrate]}} {{vm_id}} {{target}} --online true",
+    "content": "qm {{[mi|migrate]}} {{100}} {{target}} --online true",
     "group": "Linux Ops",
     "description": "qm-migrate: Migrate a virtual machine. Used to create a new migration task. (Use online/live migration if a virtual machine is running)",
     "tags": [
@@ -30753,7 +30753,7 @@
     "id": "tldr-en-linux-qm-migrate-4",
     "type": "command",
     "title": "qm-migrate - Enable live storage migration for local disks",
-    "content": "qm {{[mi|migrate]}} {{vm_id}} {{target}} --with-local-disks true",
+    "content": "qm {{[mi|migrate]}} {{100}} {{target}} --with-local-disks true",
     "group": "Linux Ops",
     "description": "qm-migrate: Migrate a virtual machine. Used to create a new migration task. (Enable live storage migration for local disks)",
     "tags": [
@@ -41133,7 +41133,7 @@
     "id": "tldr-en-linux-qm-guest-exec-0",
     "type": "command",
     "title": "qm-guest-exec - Execute a specific command via a guest agent",
-    "content": "qm {{[g|guest]}} exec {{vm_id}} {{command}} {{argument1 argument2 ...}}",
+    "content": "qm {{[g|guest]}} exec {{100}} {{command}} {{argument1 argument2 ...}}",
     "group": "Linux Ops",
     "description": "qm-guest-exec: Execute a specific command via a guest agent. (Execute a specific command via a guest agent)",
     "tags": [
@@ -41148,7 +41148,7 @@
     "id": "tldr-en-linux-qm-guest-exec-1",
     "type": "command",
     "title": "qm-guest-exec - Execute a specific command via a guest agent asynchronously",
-    "content": "qm {{[g|guest]}} exec {{vm_id}} {{argument1 argument2 ...}} --synchronous 0",
+    "content": "qm {{[g|guest]}} exec {{100}} {{argument1 argument2 ...}} --synchronous 0",
     "group": "Linux Ops",
     "description": "qm-guest-exec: Execute a specific command via a guest agent. (Execute a specific command via a guest agent asynchronously)",
     "tags": [
@@ -41163,7 +41163,7 @@
     "id": "tldr-en-linux-qm-guest-exec-2",
     "type": "command",
     "title": "qm-guest-exec - Execute a specific command via a guest agent with a specified timeout of 10 seconds",
-    "content": "qm {{[g|guest]}} exec {{vm_id}} {{argument1 argument2...}} --timeout {{10}}",
+    "content": "qm {{[g|guest]}} exec {{100}} {{argument1 argument2...}} --timeout {{10}}",
     "group": "Linux Ops",
     "description": "qm-guest-exec: Execute a specific command via a guest agent. (Execute a specific command via a guest agent with a specified timeout of 10 seconds)",
     "tags": [
@@ -41178,7 +41178,7 @@
     "id": "tldr-en-linux-qm-guest-exec-3",
     "type": "command",
     "title": "qm-guest-exec - Execute a specific command via a guest agent and forward input from `stdin` until EOF to the guest agent",
-    "content": "qm {{[g|guest]}} exec {{vm_id}} {{argument1 argument2 ...}} --pass-stdin 1",
+    "content": "qm {{[g|guest]}} exec {{100}} {{argument1 argument2 ...}} --pass-stdin 1",
     "group": "Linux Ops",
     "description": "qm-guest-exec: Execute a specific command via a guest agent. (Execute a specific command via a guest agent and forward input from `stdin` until EOF to the guest agent)",
     "tags": [
@@ -42813,7 +42813,7 @@
     "id": "tldr-en-linux-qm-disk-0",
     "type": "command",
     "title": "qm-disk - Add `n` gigabytes to a virtual disk",
-    "content": "qm {{[di|disk]}} {{[resi|resize]}} {{vm_id}} {{disk_name}} +{{n}}G",
+    "content": "qm {{[di|disk]}} {{[resi|resize]}} {{100}} {{disk_name}} +{{n}}G",
     "group": "Linux Ops",
     "description": "qm-disk: Manage disk images. (Add `n` gigabytes to a virtual disk)",
     "tags": [
@@ -42828,7 +42828,7 @@
     "id": "tldr-en-linux-qm-disk-1",
     "type": "command",
     "title": "qm-disk - Move a virtual disk",
-    "content": "qm {{[di|disk]}} {{[m|move]}} {{vm_id}} {{destination}} {{index}}",
+    "content": "qm {{[di|disk]}} {{[m|move]}} {{100}} {{destination}} {{index}}",
     "group": "Linux Ops",
     "description": "qm-disk: Manage disk images. (Move a virtual disk)",
     "tags": [
@@ -42843,7 +42843,7 @@
     "id": "tldr-en-linux-qm-disk-2",
     "type": "command",
     "title": "qm-disk - Delete the previous copy of the virtual disk",
-    "content": "qm {{[di|disk]}} {{[m|move]}} --delete {{vm_id}} {{destination}} {{index}}",
+    "content": "qm {{[di|disk]}} {{[m|move]}} --delete {{100}} {{destination}} {{index}}",
     "group": "Linux Ops",
     "description": "qm-disk: Manage disk images. (Delete the previous copy of the virtual disk)",
     "tags": [
@@ -42858,7 +42858,7 @@
     "id": "tldr-en-linux-qm-disk-3",
     "type": "command",
     "title": "qm-disk - Import a VMDK/`.qcow2`/raw disk image using a specific storage name",
-    "content": "qm {{[di|disk]}} {{[i|import]}} {{vm_id}} {{path/to/disk}} {{storage_name}} --format {{qcow2|raw|vmdk}}",
+    "content": "qm {{[di|disk]}} {{[i|import]}} {{100}} {{path/to/disk}} {{storage_name}} --format {{qcow2|raw|vmdk}}",
     "group": "Linux Ops",
     "description": "qm-disk: Manage disk images. (Import a VMDK/`.qcow2`/raw disk image using a specific storage name)",
     "tags": [
@@ -45993,7 +45993,7 @@
     "id": "tldr-en-linux-qm-reboot-0",
     "type": "command",
     "title": "qm-reboot - Reboot a virtual machine",
-    "content": "qm {{[reb|reboot]}} {{vm_id}}",
+    "content": "qm {{[reb|reboot]}} {{100}}",
     "group": "Linux Ops",
     "description": "qm-reboot: Reboot a virtual machine by shutting it down, and starting it again after applying pending changes. (Reboot a virtual machine)",
     "tags": [
@@ -46008,7 +46008,7 @@
     "id": "tldr-en-linux-qm-reboot-1",
     "type": "command",
     "title": "qm-reboot - Reboot a virtual machine after wait for at most 10 seconds",
-    "content": "qm {{[reb|reboot]}} --timeout {{10}} {{vm_id}}",
+    "content": "qm {{[reb|reboot]}} {{100}} --timeout {{10}}",
     "group": "Linux Ops",
     "description": "qm-reboot: Reboot a virtual machine by shutting it down, and starting it again after applying pending changes. (Reboot a virtual machine after wait for at most 10 seconds)",
     "tags": [
@@ -48633,7 +48633,7 @@
     "id": "tldr-en-linux-qm-listsnapshot-0",
     "type": "command",
     "title": "qm-listsnapshot - List all snapshots of a specific virtual machine",
-    "content": "qm {{[lists|listsnapshot]}} {{vm_id}}",
+    "content": "qm {{[lists|listsnapshot]}} {{100}}",
     "group": "Linux Ops",
     "description": "qm-listsnapshot: List snapshots of virtual machines. (List all snapshots of a specific virtual machine)",
     "tags": [
@@ -48648,7 +48648,7 @@
     "id": "tldr-en-linux-qm-cleanup-0",
     "type": "command",
     "title": "qm-cleanup - Clean up resources",
-    "content": "qm {{[cl|cleanup]}} {{vm_id}} {{clean-shutdown}} {{guest-requested}}",
+    "content": "qm {{[cl|cleanup]}} {{100}} {{clean-shutdown}} {{guest-requested}}",
     "group": "Linux Ops",
     "description": "qm-cleanup: Clean up resources on QEMU/KVM Virtual Machine Manager like tap devices, VGPUs, etc. Called after a VM shuts down, crashes, etc. (Clean up resources)",
     "tags": [
@@ -51363,7 +51363,7 @@
     "id": "tldr-en-linux-qm-status-0",
     "type": "command",
     "title": "qm-status - Display the status of a specific virtual machine",
-    "content": "qm {{[stat|status]}} {{vm_id}}",
+    "content": "qm {{[stat|status]}} {{100}}",
     "group": "Linux Ops",
     "description": "qm-status: Show virtual machine status. (Display the status of a specific virtual machine)",
     "tags": [
@@ -51378,7 +51378,7 @@
     "id": "tldr-en-linux-qm-status-1",
     "type": "command",
     "title": "qm-status - Display detailed status of a specific virtual machine",
-    "content": "qm {{[stat|status]}} --verbose {{true}} {{vm_id}}",
+    "content": "qm {{[stat|status]}} {{100}} --verbose {{true}}",
     "group": "Linux Ops",
     "description": "qm-status: Show virtual machine status. (Display detailed status of a specific virtual machine)",
     "tags": [
@@ -53418,7 +53418,7 @@
     "id": "tldr-en-linux-qm-destroy-0",
     "type": "command",
     "title": "qm-destroy - Destroy a specific virtual machine",
-    "content": "qm {{[des|destroy]}} {{vm_id}}",
+    "content": "qm {{[des|destroy]}} {{100}}",
     "group": "Linux Ops",
     "description": "qm-destroy: Destroy a virtual machine in QEMU/KVM Virtual Machine Manager. (Destroy a specific virtual machine)",
     "tags": [
@@ -53433,7 +53433,7 @@
     "id": "tldr-en-linux-qm-destroy-1",
     "type": "command",
     "title": "qm-destroy - Destroy all disks that are not explicitly referenced in a specific virtual machine's configuration",
-    "content": "qm {{[des|destroy]}} {{vm_id}} --destroy-unreferenced-disks",
+    "content": "qm {{[des|destroy]}} {{100}} --destroy-unreferenced-disks",
     "group": "Linux Ops",
     "description": "qm-destroy: Destroy a virtual machine in QEMU/KVM Virtual Machine Manager. (Destroy all disks that are not explicitly referenced in a specific virtual machine's configuration)",
     "tags": [
@@ -53448,7 +53448,7 @@
     "id": "tldr-en-linux-qm-destroy-2",
     "type": "command",
     "title": "qm-destroy - Destroy a virtual machine and remove from all locations (inventory, backup jobs, high availability managers, etc.)",
-    "content": "qm {{[des|destroy]}} {{vm_id}} --purge",
+    "content": "qm {{[des|destroy]}} {{100}} --purge",
     "group": "Linux Ops",
     "description": "qm-destroy: Destroy a virtual machine in QEMU/KVM Virtual Machine Manager. (Destroy a virtual machine and remove from all locations (inventory, backup jobs, high availability managers, etc.))",
     "tags": [
@@ -53463,7 +53463,7 @@
     "id": "tldr-en-linux-qm-destroy-3",
     "type": "command",
     "title": "qm-destroy - Destroy a specific virtual machine ignoring locks and forcing destroy",
-    "content": "sudo qm {{[des|destroy]}} {{vm_id}} --skiplock",
+    "content": "sudo qm {{[des|destroy]}} {{100}} --skiplock",
     "group": "Linux Ops",
     "description": "qm-destroy: Destroy a virtual machine in QEMU/KVM Virtual Machine Manager. (Destroy a specific virtual machine ignoring locks and forcing destroy)",
     "tags": [
@@ -60198,7 +60198,7 @@
     "id": "tldr-en-linux-qm-nbdstop-0",
     "type": "command",
     "title": "qm-nbdstop - Stop embedded nbd server",
-    "content": "qm {{[n|nbdstop]}} {{VM_ID}}",
+    "content": "qm {{[n|nbdstop]}} {{100}}",
     "group": "Linux Ops",
     "description": "qm-nbdstop: Stop embedded nbd server. (Stop embedded nbd server)",
     "tags": [
@@ -60348,7 +60348,7 @@
     "id": "tldr-en-linux-qm-suspend-0",
     "type": "command",
     "title": "qm-suspend - Suspend a virtual machine by ID",
-    "content": "qm {{[su|suspend]}} {{vm_id}} {{integer}}",
+    "content": "qm {{[su|suspend]}} {{100}} {{integer}}",
     "group": "Linux Ops",
     "description": "qm-suspend: Suspend a virtual machine (VM) in the Proxmox Virtual Environment (PVE). Use `--skiplock` and `--skiplockstorage` flags with caution, as they may lead to data corruption in certain situations. (Suspend a virtual machine by ID)",
     "tags": [
@@ -60363,7 +60363,7 @@
     "id": "tldr-en-linux-qm-suspend-1",
     "type": "command",
     "title": "qm-suspend - Skip the lock check when suspending the VM",
-    "content": "qm {{[su|suspend]}} {{vm_id}} {{integer}} --skiplock",
+    "content": "qm {{[su|suspend]}} {{100}} {{integer}} --skiplock",
     "group": "Linux Ops",
     "description": "qm-suspend: Suspend a virtual machine (VM) in the Proxmox Virtual Environment (PVE). Use `--skiplock` and `--skiplockstorage` flags with caution, as they may lead to data corruption in certain situations. (Skip the lock check when suspending the VM)",
     "tags": [
@@ -60378,7 +60378,7 @@
     "id": "tldr-en-linux-qm-suspend-2",
     "type": "command",
     "title": "qm-suspend - Skip the lock check for storage when suspending the VM",
-    "content": "qm {{[su|suspend]}} {{vm_id}} {{integer}} --skiplockstorage",
+    "content": "qm {{[su|suspend]}} {{100}} {{integer}} --skiplockstorage",
     "group": "Linux Ops",
     "description": "qm-suspend: Suspend a virtual machine (VM) in the Proxmox Virtual Environment (PVE). Use `--skiplock` and `--skiplockstorage` flags with caution, as they may lead to data corruption in certain situations. (Skip the lock check for storage when suspending the VM)",
     "tags": [
@@ -63978,7 +63978,7 @@
     "id": "tldr-en-linux-xdg-user-dir-1",
     "type": "command",
     "title": "xdg-user-dir - Display the location of a user directory",
-    "content": "xdg-user-dir {{DESKTOP|DOWNLOAD|TEMPLATES|PUBLICSHARE|DOCUMENTS|MUSIC|PICTURES|VIDEOS}}",
+    "content": "xdg-user-dir {{DESKTOP|DOWNLOAD|TEMPLATES|PUBLICSHARE|DOCUMENTS|MUSIC|PICTURES|VIDEOS|...}}",
     "group": "Linux Ops",
     "description": "xdg-user-dir: Retrieve XDG user directory locations. (Display the location of a user directory)",
     "tags": [
@@ -77778,7 +77778,7 @@
     "id": "tldr-en-linux-qm-template-0",
     "type": "command",
     "title": "qm-template - Create a template out of a specific virtual machine",
-    "content": "qm {{[tem|template]}} {{vm_id}}",
+    "content": "qm {{[tem|template]}} {{100}}",
     "group": "Linux Ops",
     "description": "qm-template: Create a Proxmox VM template. (Create a template out of a specific virtual machine)",
     "tags": [
@@ -78198,7 +78198,7 @@
     "id": "tldr-en-linux-qm-sendkey-0",
     "type": "command",
     "title": "qm-sendkey - Send the specified key event to a specific virtual machine",
-    "content": "qm {{[sen|sendkey]}} {{vm_id}} {{key}}",
+    "content": "qm {{[sen|sendkey]}} {{100}} {{key}}",
     "group": "Linux Ops",
     "description": "qm-sendkey: Send QEMU monitor encoding key event to a virtual machine. (Send the specified key event to a specific virtual machine)",
     "tags": [
@@ -78213,7 +78213,7 @@
     "id": "tldr-en-linux-qm-sendkey-1",
     "type": "command",
     "title": "qm-sendkey - Allow root user to send key event and ignore locks",
-    "content": "qm {{[sen|sendkey]}} --skiplock {{true}} {{vm_id}} {{key}}",
+    "content": "qm {{[sen|sendkey]}} --skiplock {{true}} {{100}} {{key}}",
     "group": "Linux Ops",
     "description": "qm-sendkey: Send QEMU monitor encoding key event to a virtual machine. (Allow root user to send key event and ignore locks)",
     "tags": [
@@ -83073,7 +83073,7 @@
     "id": "tldr-en-linux-qm-rollback-0",
     "type": "command",
     "title": "qm-rollback - Rollback the state of a specific VM to a specified snapshot",
-    "content": "qm {{[ro|rollback]}} {{vm_id}} {{snap_name}}",
+    "content": "qm {{[ro|rollback]}} {{100}} {{snap_name}}",
     "group": "Linux Ops",
     "description": "qm-rollback: Rollback the VM state to a specified snapshot. (Rollback the state of a specific VM to a specified snapshot)",
     "tags": [
@@ -85623,7 +85623,7 @@
     "id": "tldr-en-linux-qm-guest-0",
     "type": "command",
     "title": "qm-guest - Print the status of a specific PID",
-    "content": "qm {{[g|guest]}} {{[exec-s|exec-status]}} {{vm_id}} {{pid}}",
+    "content": "qm {{[g|guest]}} {{[exec-s|exec-status]}} {{100}} {{pid}}",
     "group": "Linux Ops",
     "description": "qm-guest: Manage a VM guest agent. (Print the status of a specific PID)",
     "tags": [
@@ -85638,7 +85638,7 @@
     "id": "tldr-en-linux-qm-guest-1",
     "type": "command",
     "title": "qm-guest - Set a password for a specific user in a virtual machine interactively",
-    "content": "qm {{[g|guest]}} {{[p|passwd]}} {{vm_id}} {{username}}",
+    "content": "qm {{[g|guest]}} {{[p|passwd]}} {{100}} {{username}}",
     "group": "Linux Ops",
     "description": "qm-guest: Manage a VM guest agent. (Set a password for a specific user in a virtual machine interactively)",
     "tags": [
@@ -85653,7 +85653,7 @@
     "id": "tldr-en-linux-qm-guest-2",
     "type": "command",
     "title": "qm-guest - Set an already hashed password for a specific user in a virtual machine interactively",
-    "content": "qm {{[g|guest]}} {{[p|passwd]}} {{vm_id}} {{username}} --crypted 1",
+    "content": "qm {{[g|guest]}} {{[p|passwd]}} {{100}} {{username}} --crypted 1",
     "group": "Linux Ops",
     "description": "qm-guest: Manage a VM guest agent. (Set an already hashed password for a specific user in a virtual machine interactively)",
     "tags": [
@@ -85668,7 +85668,7 @@
     "id": "tldr-en-linux-qm-guest-3",
     "type": "command",
     "title": "qm-guest - Execute a specific QEMU Guest Agent command",
-    "content": "qm {{[g|guest]}} {{[c|cmd]}} {{virtual_machine_id}} {{fsfreeze-freeze|fsfreeze-status|fsfreeze-thaw|fstrim|get-fsinfo|...}}",
+    "content": "qm {{[g|guest]}} {{[c|cmd]}} {{100}} {{fsfreeze-freeze|fsfreeze-status|fsfreeze-thaw|fstrim|get-fsinfo|...}}",
     "group": "Linux Ops",
     "description": "qm-guest: Manage a VM guest agent. (Execute a specific QEMU Guest Agent command)",
     "tags": [
@@ -85683,7 +85683,7 @@
     "id": "tldr-en-linux-qm-guest-4",
     "type": "command",
     "title": "qm-guest - Execute a specific command via a guest agent",
-    "content": "qm {{[g|guest]}} exec {{vm_id}} {{command}} {{argument1 argument2 ...}}",
+    "content": "qm {{[g|guest]}} exec {{100}} {{command}} {{argument1 argument2 ...}}",
     "group": "Linux Ops",
     "description": "qm-guest: Manage a VM guest agent. (Execute a specific command via a guest agent)",
     "tags": [
@@ -85698,7 +85698,7 @@
     "id": "tldr-en-linux-qm-guest-5",
     "type": "command",
     "title": "qm-guest - Execute a specific command via a guest agent asynchronously",
-    "content": "qm {{[g|guest]}} exec {{vm_id}} {{argument1 argument2 ...}} --synchronous 0",
+    "content": "qm {{[g|guest]}} exec {{100}} {{argument1 argument2 ...}} --synchronous 0",
     "group": "Linux Ops",
     "description": "qm-guest: Manage a VM guest agent. (Execute a specific command via a guest agent asynchronously)",
     "tags": [
@@ -85713,7 +85713,7 @@
     "id": "tldr-en-linux-qm-guest-6",
     "type": "command",
     "title": "qm-guest - Execute a specific command via a guest agent with a specified timeout of 10 seconds",
-    "content": "qm {{[g|guest]}} exec {{vm_id}} {{argument1 argument2...}} --timeout {{10}}",
+    "content": "qm {{[g|guest]}} exec {{100}} {{argument1 argument2...}} --timeout {{10}}",
     "group": "Linux Ops",
     "description": "qm-guest: Manage a VM guest agent. (Execute a specific command via a guest agent with a specified timeout of 10 seconds)",
     "tags": [
@@ -85728,7 +85728,7 @@
     "id": "tldr-en-linux-qm-guest-7",
     "type": "command",
     "title": "qm-guest - Execute a specific command via a guest agent and forward input from `stdin` until EOF to the guest agent",
-    "content": "qm {{[g|guest]}} exec {{vm_id}} {{argument1 argument2 ...}} --pass-stdin 1",
+    "content": "qm {{[g|guest]}} exec {{100}} {{argument1 argument2 ...}} --pass-stdin 1",
     "group": "Linux Ops",
     "description": "qm-guest: Manage a VM guest agent. (Execute a specific command via a guest agent and forward input from `stdin` until EOF to the guest agent)",
     "tags": [
@@ -90033,7 +90033,7 @@
     "id": "tldr-en-linux-qm-unlock-0",
     "type": "command",
     "title": "qm-unlock - Unlock a specific virtual machine",
-    "content": "qm {{[u|unlock]}} {{vm_id}}",
+    "content": "qm {{[u|unlock]}} {{100}}",
     "group": "Linux Ops",
     "description": "qm-unlock: Unlock a virtual machine in QEMU/KVM Virtual Machine Manager. (Unlock a specific virtual machine)",
     "tags": [
@@ -92418,7 +92418,7 @@
     "id": "tldr-en-linux-qm-cloudinit-0",
     "type": "command",
     "title": "qm-cloudinit - Generate a cloudinit file for a specific configuration type",
-    "content": "qm {{[clou|cloudinit]}} {{[d|dump]}} {{virtual_machine_id}} {{meta|network|user}}",
+    "content": "qm {{[clou|cloudinit]}} {{[d|dump]}} {{100}} {{meta|network|user}}",
     "group": "Linux Ops",
     "description": "qm-cloudinit: Manage Cloud-Init settings. (Generate a cloudinit file for a specific configuration type)",
     "tags": [
@@ -95433,7 +95433,7 @@
     "id": "tldr-en-linux-pct-clone-0",
     "type": "command",
     "title": "pct-clone - Clone a container",
-    "content": "pct {{[cl|clone]}} {{template_id}} {{copy_id}}",
+    "content": "pct {{[cl|clone]}} {{100}} {{101}}",
     "group": "Linux Ops",
     "description": "pct-clone: Clone a container. (Clone a container)",
     "tags": [
@@ -95448,7 +95448,7 @@
     "id": "tldr-en-linux-pct-clone-1",
     "type": "command",
     "title": "pct-clone - Clone a container with a custom name",
-    "content": "pct {{[cl|clone]}} {{template_id}} {{copy_id}} --hostname {{host_name}}",
+    "content": "pct {{[cl|clone]}} {{100}} {{101}} --hostname {{host_name}}",
     "group": "Linux Ops",
     "description": "pct-clone: Clone a container. (Clone a container with a custom name)",
     "tags": [
@@ -95463,7 +95463,7 @@
     "id": "tldr-en-linux-pct-clone-2",
     "type": "command",
     "title": "pct-clone - Create a full clone instead of a linked clone",
-    "content": "pct {{[cl|clone]}} {{template_id}} {{copy_id}} --full",
+    "content": "pct {{[cl|clone]}} {{100}} {{101}} --full",
     "group": "Linux Ops",
     "description": "pct-clone: Clone a container. (Create a full clone instead of a linked clone)",
     "tags": [
@@ -99288,7 +99288,7 @@
     "id": "tldr-en-linux-qm-pending-0",
     "type": "command",
     "title": "qm-pending - Get the virtual machine configuration of a specific virtual machine",
-    "content": "qm {{[p|pending]}} {{vm_id}}",
+    "content": "qm {{[p|pending]}} {{100}}",
     "group": "Linux Ops",
     "description": "qm-pending: Get the virtual machine configuration with both current and pending values. (Get the virtual machine configuration of a specific virtual machine)",
     "tags": [
@@ -101238,7 +101238,7 @@
     "id": "tldr-en-linux-qm-snapshot-0",
     "type": "command",
     "title": "qm-snapshot - Create a snapshot of a specific virtual machine (name must start with a letter)",
-    "content": "qm {{[sn|snapshot]}} {{vm_id}} {{snapshot_name}}",
+    "content": "qm {{[sn|snapshot]}} {{100}} {{snapshot_name}}",
     "group": "Linux Ops",
     "description": "qm-snapshot: Create virtual machine snapshots. (Create a snapshot of a specific virtual machine (name must start with a letter))",
     "tags": [
@@ -101253,7 +101253,7 @@
     "id": "tldr-en-linux-qm-snapshot-1",
     "type": "command",
     "title": "qm-snapshot - Create a snapshot with a specific description",
-    "content": "qm {{[sn|snapshot]}} {{vm_id}} {{snapshot_name}} --description {{description}}",
+    "content": "qm {{[sn|snapshot]}} {{100}} {{snapshot_name}} --description {{description}}",
     "group": "Linux Ops",
     "description": "qm-snapshot: Create virtual machine snapshots. (Create a snapshot with a specific description)",
     "tags": [
@@ -101268,7 +101268,7 @@
     "id": "tldr-en-linux-qm-snapshot-2",
     "type": "command",
     "title": "qm-snapshot - Create a snapshot including the vmstate",
-    "content": "qm {{[sn|snapshot]}} {{vm_id}} {{snapshot_name}} --description {{description}} --vmstate 1",
+    "content": "qm {{[sn|snapshot]}} {{100}} {{snapshot_name}} --description {{description}} --vmstate 1",
     "group": "Linux Ops",
     "description": "qm-snapshot: Create virtual machine snapshots. (Create a snapshot including the vmstate)",
     "tags": [
@@ -101298,7 +101298,7 @@
     "id": "tldr-en-linux-qm-snapshot-4",
     "type": "command",
     "title": "qm-snapshot - Rollback the state of a specific VM to a specified snapshot",
-    "content": "qm {{[ro|rollback]}} {{vm_id}} {{snap_name}}",
+    "content": "qm {{[ro|rollback]}} {{100}} {{snap_name}}",
     "group": "Linux Ops",
     "description": "qm-snapshot: Create virtual machine snapshots. (Rollback the state of a specific VM to a specified snapshot)",
     "tags": [
@@ -105378,9 +105378,9 @@
     "id": "tldr-en-linux-resolvectl-0",
     "type": "command",
     "title": "resolvectl - Show DNS settings",
-    "content": "resolvectl status",
+    "content": "resolvectl",
     "group": "Linux Ops",
-    "description": "resolvectl: Resolve domain names, IPv4 and IPv6 addresses, DNS resource records, and services. Introspect and reconfigure the DNS resolver. (Show DNS settings)",
+    "description": "resolvectl: Resolve domain names, IPv4 and IPv6 addresses, DNS resource records, and services. Note: `systemd-resolved.service` must be running. (Show DNS settings)",
     "tags": [
       "linux",
       "resolvectl",
@@ -105395,7 +105395,7 @@
     "title": "resolvectl - Resolve the IPv4 and IPv6 addresses for one or more domains",
     "content": "resolvectl query {{domain1 domain2 ...}}",
     "group": "Linux Ops",
-    "description": "resolvectl: Resolve domain names, IPv4 and IPv6 addresses, DNS resource records, and services. Introspect and reconfigure the DNS resolver. (Resolve the IPv4 and IPv6 addresses for one or more domains)",
+    "description": "resolvectl: Resolve domain names, IPv4 and IPv6 addresses, DNS resource records, and services. Note: `systemd-resolved.service` must be running. (Resolve the IPv4 and IPv6 addresses for one or more domains)",
     "tags": [
       "linux",
       "resolvectl",
@@ -105410,7 +105410,7 @@
     "title": "resolvectl - Retrieve the domain of a specified IP address",
     "content": "resolvectl query {{ip_address}}",
     "group": "Linux Ops",
-    "description": "resolvectl: Resolve domain names, IPv4 and IPv6 addresses, DNS resource records, and services. Introspect and reconfigure the DNS resolver. (Retrieve the domain of a specified IP address)",
+    "description": "resolvectl: Resolve domain names, IPv4 and IPv6 addresses, DNS resource records, and services. Note: `systemd-resolved.service` must be running. (Retrieve the domain of a specified IP address)",
     "tags": [
       "linux",
       "resolvectl",
@@ -105425,7 +105425,7 @@
     "title": "resolvectl - Flush all local DNS caches",
     "content": "resolvectl flush-caches",
     "group": "Linux Ops",
-    "description": "resolvectl: Resolve domain names, IPv4 and IPv6 addresses, DNS resource records, and services. Introspect and reconfigure the DNS resolver. (Flush all local DNS caches)",
+    "description": "resolvectl: Resolve domain names, IPv4 and IPv6 addresses, DNS resource records, and services. Note: `systemd-resolved.service` must be running. (Flush all local DNS caches)",
     "tags": [
       "linux",
       "resolvectl",
@@ -105440,7 +105440,7 @@
     "title": "resolvectl - Display DNS statistics (transactions, cache, and DNSSEC verdicts)",
     "content": "resolvectl statistics",
     "group": "Linux Ops",
-    "description": "resolvectl: Resolve domain names, IPv4 and IPv6 addresses, DNS resource records, and services. Introspect and reconfigure the DNS resolver. (Display DNS statistics (transactions, cache, and DNSSEC verdicts))",
+    "description": "resolvectl: Resolve domain names, IPv4 and IPv6 addresses, DNS resource records, and services. Note: `systemd-resolved.service` must be running. (Display DNS statistics (transactions, cache, and DNSSEC verdicts))",
     "tags": [
       "linux",
       "resolvectl",
@@ -105455,7 +105455,7 @@
     "title": "resolvectl - Retrieve an MX record of a domain",
     "content": "resolvectl --legend {{no}} {{[-t|--type]}} {{MX}} query {{domain}}",
     "group": "Linux Ops",
-    "description": "resolvectl: Resolve domain names, IPv4 and IPv6 addresses, DNS resource records, and services. Introspect and reconfigure the DNS resolver. (Retrieve an MX record of a domain)",
+    "description": "resolvectl: Resolve domain names, IPv4 and IPv6 addresses, DNS resource records, and services. Note: `systemd-resolved.service` must be running. (Retrieve an MX record of a domain)",
     "tags": [
       "linux",
       "resolvectl",
@@ -105470,7 +105470,7 @@
     "title": "resolvectl - Resolve an SRV record, for example `_xmpp-server._tcp gmail.com`",
     "content": "resolvectl service _{{service}}._{{protocol}} {{name}}",
     "group": "Linux Ops",
-    "description": "resolvectl: Resolve domain names, IPv4 and IPv6 addresses, DNS resource records, and services. Introspect and reconfigure the DNS resolver. (Resolve an SRV record, for example `_xmpp-server._tcp gmail.com`)",
+    "description": "resolvectl: Resolve domain names, IPv4 and IPv6 addresses, DNS resource records, and services. Note: `systemd-resolved.service` must be running. (Resolve an SRV record, for example `_xmpp-server._tcp gmail.com`)",
     "tags": [
       "linux",
       "resolvectl",
@@ -105485,7 +105485,7 @@
     "title": "resolvectl - Retrieve a TLS key",
     "content": "resolvectl tlsa tcp {{domain}}:443",
     "group": "Linux Ops",
-    "description": "resolvectl: Resolve domain names, IPv4 and IPv6 addresses, DNS resource records, and services. Introspect and reconfigure the DNS resolver. (Retrieve a TLS key)",
+    "description": "resolvectl: Resolve domain names, IPv4 and IPv6 addresses, DNS resource records, and services. Note: `systemd-resolved.service` must be running. (Retrieve a TLS key)",
     "tags": [
       "linux",
       "resolvectl",
@@ -105693,7 +105693,7 @@
     "id": "tldr-en-linux-qm-showcmd-0",
     "type": "command",
     "title": "qm-showcmd - Show command-line for a specific virtual machine",
-    "content": "qm {{[sho|showcmd]}} {{vm_id}}",
+    "content": "qm {{[sho|showcmd]}} {{100}}",
     "group": "Linux Ops",
     "description": "qm-showcmd: Show command-line which is used to start the VM (debug info). (Show command-line for a specific virtual machine)",
     "tags": [
@@ -105708,7 +105708,7 @@
     "id": "tldr-en-linux-qm-showcmd-1",
     "type": "command",
     "title": "qm-showcmd - Put each option on a new line to enhance human readability",
-    "content": "qm {{[sho|showcmd]}} --pretty {{true}} {{vm_id}}",
+    "content": "qm {{[sho|showcmd]}} {{100}} --pretty {{true}}",
     "group": "Linux Ops",
     "description": "qm-showcmd: Show command-line which is used to start the VM (debug info). (Put each option on a new line to enhance human readability)",
     "tags": [
@@ -105723,7 +105723,7 @@
     "id": "tldr-en-linux-qm-showcmd-2",
     "type": "command",
     "title": "qm-showcmd - Fetch configuration values from a specific snapshot",
-    "content": "qm {{[sho|showcmd]}} --snapshot {{string}} {{vm_id}}",
+    "content": "qm {{[sho|showcmd]}} {{100}} --snapshot {{string}}",
     "group": "Linux Ops",
     "description": "qm-showcmd: Show command-line which is used to start the VM (debug info). (Fetch configuration values from a specific snapshot)",
     "tags": [
@@ -108408,7 +108408,7 @@
     "id": "tldr-en-linux-qm-config-0",
     "type": "command",
     "title": "qm-config - Display the virtual machine configuration",
-    "content": "qm {{[co|config]}} {{vm_id}}",
+    "content": "qm {{[co|config]}} {{100}}",
     "group": "Linux Ops",
     "description": "qm-config: Display the virtual machine configuration with pending configuration changes applied. (Display the virtual machine configuration)",
     "tags": [
@@ -108423,7 +108423,7 @@
     "id": "tldr-en-linux-qm-config-1",
     "type": "command",
     "title": "qm-config - Display the current configuration values instead of pending values for the virtual machine",
-    "content": "qm {{[co|config]}} --current {{true}} {{vm_id}}",
+    "content": "qm {{[co|config]}} --current {{true}} {{100}}",
     "group": "Linux Ops",
     "description": "qm-config: Display the virtual machine configuration with pending configuration changes applied. (Display the current configuration values instead of pending values for the virtual machine)",
     "tags": [
@@ -108438,7 +108438,7 @@
     "id": "tldr-en-linux-qm-config-2",
     "type": "command",
     "title": "qm-config - Fetch the configuration values from the given snapshot",
-    "content": "qm {{[co|config]}} --snapshot {{snapshot_name}} {{vm_id}}",
+    "content": "qm {{[co|config]}} --snapshot {{snapshot_name}} {{100}}",
     "group": "Linux Ops",
     "description": "qm-config: Display the virtual machine configuration with pending configuration changes applied. (Fetch the configuration values from the given snapshot)",
     "tags": [
@@ -110388,7 +110388,7 @@
     "id": "tldr-en-linux-qm-clone-0",
     "type": "command",
     "title": "qm-clone - Copy a virtual machine",
-    "content": "qm clone {{vm_id}} {{new_vm_id}}",
+    "content": "qm clone {{100}} {{101}}",
     "group": "Linux Ops",
     "description": "qm-clone: Create a copy of virtual machine on QEMU/KVM Virtual Machine Manager. (Copy a virtual machine)",
     "tags": [
@@ -110403,7 +110403,7 @@
     "id": "tldr-en-linux-qm-clone-1",
     "type": "command",
     "title": "qm-clone - Copy a virtual machine using a specific name",
-    "content": "qm clone {{vm_id}} {{new_vm_id}} --name {{name}}",
+    "content": "qm clone {{100}} {{101}} --name {{name}}",
     "group": "Linux Ops",
     "description": "qm-clone: Create a copy of virtual machine on QEMU/KVM Virtual Machine Manager. (Copy a virtual machine using a specific name)",
     "tags": [
@@ -110418,7 +110418,7 @@
     "id": "tldr-en-linux-qm-clone-2",
     "type": "command",
     "title": "qm-clone - Copy a virtual machine using a specific descriptionn",
-    "content": "qm clone {{vm_id}} {{new_vm_id}} --description {{description}}",
+    "content": "qm clone {{100}} {{101}} --description {{description}}",
     "group": "Linux Ops",
     "description": "qm-clone: Create a copy of virtual machine on QEMU/KVM Virtual Machine Manager. (Copy a virtual machine using a specific descriptionn)",
     "tags": [
@@ -110433,7 +110433,7 @@
     "id": "tldr-en-linux-qm-clone-3",
     "type": "command",
     "title": "qm-clone - Copy a virtual machine creating a full copy of all disks",
-    "content": "qm clone {{vm_id}} {{new_vm_id}} --full",
+    "content": "qm clone {{100}} {{101}} --full",
     "group": "Linux Ops",
     "description": "qm-clone: Create a copy of virtual machine on QEMU/KVM Virtual Machine Manager. (Copy a virtual machine creating a full copy of all disks)",
     "tags": [
@@ -110448,7 +110448,7 @@
     "id": "tldr-en-linux-qm-clone-4",
     "type": "command",
     "title": "qm-clone - Copy a virtual machine using a specific format for file storage (requires `--full`)",
-    "content": "qm clone {{vm_id}} {{new_vm_id}} --full --format {{qcow2|raw|vmdk}}",
+    "content": "qm clone {{100}} {{101}} --full --format {{qcow2|raw|vmdk}}",
     "group": "Linux Ops",
     "description": "qm-clone: Create a copy of virtual machine on QEMU/KVM Virtual Machine Manager. (Copy a virtual machine using a specific format for file storage (requires `--full`))",
     "tags": [
@@ -110463,7 +110463,7 @@
     "id": "tldr-en-linux-qm-clone-5",
     "type": "command",
     "title": "qm-clone - Copy a virtual machine then add it to a specific pool",
-    "content": "qm clone {{vm_id}} {{new_vm_id}} --pool {{pool_name}}",
+    "content": "qm clone {{100}} {{101}} --pool {{pool_name}}",
     "group": "Linux Ops",
     "description": "qm-clone: Create a copy of virtual machine on QEMU/KVM Virtual Machine Manager. (Copy a virtual machine then add it to a specific pool)",
     "tags": [
@@ -110973,7 +110973,7 @@
     "id": "tldr-en-linux-qm-resume-0",
     "type": "command",
     "title": "qm-resume - Resume a specific virtual machine",
-    "content": "qm {{[resu|resume]}} {{vm_id}}",
+    "content": "qm {{[resu|resume]}} {{100}}",
     "group": "Linux Ops",
     "description": "qm-resume: Resume a virtual machine. (Resume a specific virtual machine)",
     "tags": [
@@ -110988,7 +110988,7 @@
     "id": "tldr-en-linux-qm-resume-1",
     "type": "command",
     "title": "qm-resume - Resume a specific virtual machine ignoring locks (requires root)",
-    "content": "sudo qm {{[resu|resume]}} {{vm_id}} --skiplock true",
+    "content": "sudo qm {{[resu|resume]}} {{100}} --skiplock true",
     "group": "Linux Ops",
     "description": "qm-resume: Resume a virtual machine. (Resume a specific virtual machine ignoring locks (requires root))",
     "tags": [

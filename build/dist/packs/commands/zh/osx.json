@@ -4158,7 +4158,7 @@
     "id": "tldr-zh-osx-wacaw-1",
     "type": "command",
     "title": "wacaw - 录制视频",
-    "content": "wacaw --video {{文件名}} --duration {{录制多少秒}}",
+    "content": "wacaw --video {{文件名}} {{[-D|--duration]}} {{录制多少秒}}",
     "group": "macOS",
     "description": "wacaw: 一个用于 macOS 的小命令行工具，允许您从连接的摄像头捕获静止图片和视频。 (录制视频)",
     "tags": [
@@ -4173,7 +4173,7 @@
     "id": "tldr-zh-osx-wacaw-2",
     "type": "command",
     "title": "wacaw - 用自定义分辨率拍照",
-    "content": "wacaw --width {{宽}} --height {{高}} {{文件名}}",
+    "content": "wacaw {{[-x|--width]}} {{宽}} {{[-y|--height]}} {{高}} {{文件名}}",
     "group": "macOS",
     "description": "wacaw: 一个用于 macOS 的小命令行工具，允许您从连接的摄像头捕获静止图片和视频。 (用自定义分辨率拍照)",
     "tags": [
@@ -4203,7 +4203,7 @@
     "id": "tldr-zh-osx-wacaw-4",
     "type": "command",
     "title": "wacaw - 可用设备列表",
-    "content": "wacaw --list-devices",
+    "content": "wacaw {{[-L|--list-devices]}}",
     "group": "macOS",
     "description": "wacaw: 一个用于 macOS 的小命令行工具，允许您从连接的摄像头捕获静止图片和视频。 (可用设备列表)",
     "tags": [

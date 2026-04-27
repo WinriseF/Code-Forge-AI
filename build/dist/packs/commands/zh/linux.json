@@ -393,7 +393,7 @@
     "id": "tldr-zh-linux-asterisk-5",
     "type": "command",
     "title": "asterisk - 终止一个频道",
-    "content": "asterisk -r -x \"hangup request {{频道 ID}}\"",
+    "content": "asterisk -r -x \"hangup request {{频道_id}}\"",
     "group": "Linux 运维",
     "description": "asterisk: 电话和交换（手机）服务器。 用于管理服务器自身和管理已经在运行的实例。 (终止一个频道)",
     "tags": [

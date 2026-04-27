@@ -1233,7 +1233,7 @@
     "id": "tldr-zh-common-yuy2topam-0",
     "type": "command",
     "title": "yuy2topam - 将 YUY2 字节转换为 PAM",
-    "content": "yuy2topam -width {{值}} -height {{值}} {{路径/到/文件.yuy2}} > {{路径/到/文件.pam}}",
+    "content": "yuy2topam {{[-w|-width]}} {{值}} {{[-h|-height]}} {{值}} {{路径/到/文件.yuy2}} > {{路径/到/文件.pam}}",
     "group": "通用工具 (Common)",
     "description": "yuy2topam: 将 YUY2 字节转换为 PAM。 (将 YUY2 字节转换为 PAM)",
     "tags": [
@@ -18525,6 +18525,126 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-rg-0",
+    "type": "command",
+    "title": "rg - 在当前目录中递归搜索匹配模式的内容（`regex`）",
+    "content": "rg {{模式}}",
+    "group": "通用工具 (Common)",
+    "description": "rg: Ripgrep，一款递归的行导向搜索工具。 旨在成为 `grep` 的更快替代品。 (在当前目录中递归搜索匹配模式的内容（`regex`）)",
+    "tags": [
+      "common",
+      "rg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-rg-1",
+    "type": "command",
+    "title": "rg - 在指定文件或目录中递归搜索匹配模式的内容",
+    "content": "rg {{模式}} {{路径/到/文件或目录}}",
+    "group": "通用工具 (Common)",
+    "description": "rg: Ripgrep，一款递归的行导向搜索工具。 旨在成为 `grep` 的更快替代品。 (在指定文件或目录中递归搜索匹配模式的内容)",
+    "tags": [
+      "common",
+      "rg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-rg-2",
+    "type": "command",
+    "title": "rg - 搜索字面字符串模式",
+    "content": "rg {{[-F|--fixed-strings]}} -- {{字符串}}",
+    "group": "通用工具 (Common)",
+    "description": "rg: Ripgrep，一款递归的行导向搜索工具。 旨在成为 `grep` 的更快替代品。 (搜索字面字符串模式)",
+    "tags": [
+      "common",
+      "rg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-rg-3",
+    "type": "command",
+    "title": "rg - 包含隐藏文件以及 `.gitignore` 中列出的条目",
+    "content": "rg {{[-.|--hidden]}} --no-ignore {{模式}}",
+    "group": "通用工具 (Common)",
+    "description": "rg: Ripgrep，一款递归的行导向搜索工具。 旨在成为 `grep` 的更快替代品。 (包含隐藏文件以及 `.gitignore` 中列出的条目)",
+    "tags": [
+      "common",
+      "rg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-rg-4",
+    "type": "command",
+    "title": "rg - 仅搜索文件名匹配通配符（glob）模式的文件（例如 `README.*`）",
+    "content": "rg {{模式}} {{[-g|--glob]}} {{文件名通配符模式}}",
+    "group": "通用工具 (Common)",
+    "description": "rg: Ripgrep，一款递归的行导向搜索工具。 旨在成为 `grep` 的更快替代品。 (仅搜索文件名匹配通配符（glob）模式的文件（例如 `README.*`）)",
+    "tags": [
+      "common",
+      "rg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-rg-5",
+    "type": "command",
+    "title": "rg - 递归列出当前目录中匹配模式的文件名",
+    "content": "rg --files | rg {{模式}}",
+    "group": "通用工具 (Common)",
+    "description": "rg: Ripgrep，一款递归的行导向搜索工具。 旨在成为 `grep` 的更快替代品。 (递归列出当前目录中匹配模式的文件名)",
+    "tags": [
+      "common",
+      "rg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-rg-6",
+    "type": "command",
+    "title": "rg - 仅列出匹配的文件（适用于管道传递给其他命令）",
+    "content": "rg {{[-l|--files-with-matches]}} {{模式}}",
+    "group": "通用工具 (Common)",
+    "description": "rg: Ripgrep，一款递归的行导向搜索工具。 旨在成为 `grep` 的更快替代品。 (仅列出匹配的文件（适用于管道传递给其他命令）)",
+    "tags": [
+      "common",
+      "rg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-rg-7",
+    "type": "command",
+    "title": "rg - 显示不匹配该模式的行",
+    "content": "rg {{[-v|--invert-match]}} {{模式}}",
+    "group": "通用工具 (Common)",
+    "description": "rg: Ripgrep，一款递归的行导向搜索工具。 旨在成为 `grep` 的更快替代品。 (显示不匹配该模式的行)",
+    "tags": [
+      "common",
+      "rg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-qemu-system-riscv64-0",
     "type": "command",
     "title": "qemu-system-riscv64 - 启动一个模拟 `riscv64` 架构的内核",
@@ -28878,9 +28998,9 @@
     "id": "tldr-zh-common-grep-0",
     "type": "command",
     "title": "grep - 在文件中查找模式",
-    "content": "grep \"{{模式字符串}}\" {{路径/到/文件}}",
+    "content": "grep \"{{模式字符串}}\" {{路径/到/文件1 路径/到/文件2}}",
     "group": "通用工具 (Common)",
-    "description": "grep: 使用`regex`式查找文件中的模式。 另请参阅：`regex`。 (在文件中查找模式)",
+    "description": "grep: 使用 `regex` 式查找文件中的模式。 另请参阅：`regex`。 (在文件中查找模式)",
     "tags": [
       "common",
       "grep",
@@ -28892,10 +29012,10 @@
   {
     "id": "tldr-zh-common-grep-1",
     "type": "command",
-    "title": "grep - 在文件中精确地查找字符串（禁用`regex`式）",
+    "title": "grep - 查找精确的字符串（禁用 `regex` 式）",
     "content": "grep {{[-F|--fixed-strings]}} \"{{字符串}}\" {{路径/到/文件}}",
     "group": "通用工具 (Common)",
-    "description": "grep: 使用`regex`式查找文件中的模式。 另请参阅：`regex`。 (在文件中精确地查找字符串（禁用`regex`式）)",
+    "description": "grep: 使用 `regex` 式查找文件中的模式。 另请参阅：`regex`。 (查找精确的字符串（禁用 `regex` 式）)",
     "tags": [
       "common",
       "grep",
@@ -28907,10 +29027,10 @@
   {
     "id": "tldr-zh-common-grep-2",
     "type": "command",
-    "title": "grep - 在指定目录下的所有文件中递归地查找模式，显示匹配的行号并忽略二进制文件",
-    "content": "grep {{[-rnI|--recursive --line-number --binary-files=without-match]}} \"{{模式字符串}}\" {{路径/到/目录}}",
+    "title": "grep - 在目录中递归查找所有文件中的模式，忽略二进制文件",
+    "content": "grep {{[-rI|--recursive --binary-files=without-match]}} \"{{模式字符串}}\" {{路径/到/目录}}",
     "group": "通用工具 (Common)",
-    "description": "grep: 使用`regex`式查找文件中的模式。 另请参阅：`regex`。 (在指定目录下的所有文件中递归地查找模式，显示匹配的行号并忽略二进制文件)",
+    "description": "grep: 使用 `regex` 式查找文件中的模式。 另请参阅：`regex`。 (在目录中递归查找所有文件中的模式，忽略二进制文件)",
     "tags": [
       "common",
       "grep",
@@ -28922,10 +29042,10 @@
   {
     "id": "tldr-zh-common-grep-3",
     "type": "command",
-    "title": "grep - 使用大小写不敏感的扩展`regex`式（支持 `?`、`+`、`{}`、`()`, 和 `|`）",
-    "content": "grep {{[-Ei|--extended-regexp --ignore-case]}} \"{{模式字符串}}\" {{路径/到/文件}}",
+    "title": "grep - 打印每个匹配项周围、之前或之后的 3 行上下文",
+    "content": "grep {{--context|--before-context|--after-context}} 3 \"{{模式字符串}}\" {{路径/到/文件}}",
     "group": "通用工具 (Common)",
-    "description": "grep: 使用`regex`式查找文件中的模式。 另请参阅：`regex`。 (使用大小写不敏感的扩展`regex`式（支持 `?`、`+`、`{}`、`()`, 和 `|`）)",
+    "description": "grep: 使用 `regex` 式查找文件中的模式。 另请参阅：`regex`。 (打印每个匹配项周围、之前或之后的 3 行上下文)",
     "tags": [
       "common",
       "grep",
@@ -28937,10 +29057,10 @@
   {
     "id": "tldr-zh-common-grep-4",
     "type": "command",
-    "title": "grep - 在每个匹配前后、之前或之后打印 3 行上下文",
-    "content": "grep {{--context|--before-context|--after-context}} 3 \"{{模式字符串}}\" {{路径/到/文件}}",
+    "title": "grep - 打印每个匹配项的文件名和行号，并带彩色输出",
+    "content": "grep {{[-Hn|--with-filename --line-number]}} --color=always \"{{模式字符串}}\" {{路径/到/文件}}",
     "group": "通用工具 (Common)",
-    "description": "grep: 使用`regex`式查找文件中的模式。 另请参阅：`regex`。 (在每个匹配前后、之前或之后打印 3 行上下文)",
+    "description": "grep: 使用 `regex` 式查找文件中的模式。 另请参阅：`regex`。 (打印每个匹配项的文件名和行号，并带彩色输出)",
     "tags": [
       "common",
       "grep",
@@ -28952,10 +29072,10 @@
   {
     "id": "tldr-zh-common-grep-5",
     "type": "command",
-    "title": "grep - 以带有颜色的方式，打印每个匹配的文件名和行号",
-    "content": "grep {{[-Hn|--with-filename --line-number]}} --color=always \"{{模式字符串}}\" {{路径/到/文件}}",
+    "title": "grep - 仅打印匹配的文本",
+    "content": "grep {{[-o|--only-matching]}} \"{{模式字符串}}\" {{路径/到/文件}}",
     "group": "通用工具 (Common)",
-    "description": "grep: 使用`regex`式查找文件中的模式。 另请参阅：`regex`。 (以带有颜色的方式，打印每个匹配的文件名和行号)",
+    "description": "grep: 使用 `regex` 式查找文件中的模式。 另请参阅：`regex`。 (仅打印匹配的文本)",
     "tags": [
       "common",
       "grep",
@@ -28967,10 +29087,10 @@
   {
     "id": "tldr-zh-common-grep-6",
     "type": "command",
-    "title": "grep - 只打印文件中与模式匹配的行",
-    "content": "grep {{[-o|--only-matching]}} \"{{模式字符串}}\" {{路径/到/文件}}",
+    "title": "grep - 从 `stdin` （标准输入）中读取数据，不打印匹配模式的行",
+    "content": "cat {{路径/到/文件}} | grep {{[-v|--invert-match]}} \"{{模式字符串}}\"",
     "group": "通用工具 (Common)",
-    "description": "grep: 使用`regex`式查找文件中的模式。 另请参阅：`regex`。 (只打印文件中与模式匹配的行)",
+    "description": "grep: 使用 `regex` 式查找文件中的模式。 另请参阅：`regex`。 (从 `stdin` （标准输入）中读取数据，不打印匹配模式的行)",
     "tags": [
       "common",
       "grep",
@@ -28982,10 +29102,10 @@
   {
     "id": "tldr-zh-common-grep-7",
     "type": "command",
-    "title": "grep - 从 `stdin`（标准输入）中查找与模式不匹配的行",
-    "content": "cat {{路径/到/文件}} | grep {{[-v|--invert-match]}} \"{{模式字符串}}\"",
+    "title": "grep - 使用扩展 `regex` 式（支持 `?`、`+`、`{}`、`()` 和 `|`），不区分大小写模式",
+    "content": "grep {{[-Ei|--extended-regexp --ignore-case]}} \"{{模式字符串}}\" {{路径/到/文件}}",
     "group": "通用工具 (Common)",
-    "description": "grep: 使用`regex`式查找文件中的模式。 另请参阅：`regex`。 (从 `stdin`（标准输入）中查找与模式不匹配的行)",
+    "description": "grep: 使用 `regex` 式查找文件中的模式。 另请参阅：`regex`。 (使用扩展 `regex` 式（支持 `?`、`+`、`{}`、`()` 和 `|`），不区分大小写模式)",
     "tags": [
       "common",
       "grep",
@@ -52878,7 +52998,7 @@
     "id": "tldr-zh-common-adb-7",
     "type": "command",
     "title": "adb - 当有多个设备连接时，指定目标设备执行命令",
-    "content": "adb -s {{设备_ID}} {{shell}}",
+    "content": "adb -s {{设备_id}} {{shell}}",
     "group": "通用工具 (Common)",
     "description": "adb: 安卓调试桥：与 Android 模拟器或已连接的 Android 设备通信。 此命令也有关于其子命令的文件，例如：`shell`。 (当有多个设备连接时，指定目标设备执行命令)",
     "tags": [
@@ -53988,7 +54108,7 @@
     "id": "tldr-zh-common-jpegtopnm-1",
     "type": "command",
     "title": "jpegtopnm - 显示版本信息",
-    "content": "jpegtopnm -version",
+    "content": "jpegtopnm {{[-v|-version]}}",
     "group": "通用工具 (Common)",
     "description": "jpegtopnm: 将 JPEG/JFIF 文件转换为 PPM 或 PGM 格式。 (显示版本信息)",
     "tags": [
