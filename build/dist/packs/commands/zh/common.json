@@ -15420,6 +15420,51 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-cargo-info-0",
+    "type": "command",
+    "title": "cargo-info - 显示 <https://crates.io> 上一个软件包的信息",
+    "content": "cargo info {{软件包}}",
+    "group": "通用工具 (Common)",
+    "description": "cargo-info: 显示 Rust 软件包的信息。 (显示 <https://crates.io> 上一个软件包的信息)",
+    "tags": [
+      "common",
+      "cargo-info",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-cargo-info-1",
+    "type": "command",
+    "title": "cargo-info - 显示一个软件包的特定版本的信息",
+    "content": "cargo info {{软件包}}@{{版本}}",
+    "group": "通用工具 (Common)",
+    "description": "cargo-info: 显示 Rust 软件包的信息。 (显示一个软件包的特定版本的信息)",
+    "tags": [
+      "common",
+      "cargo-info",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-cargo-info-2",
+    "type": "command",
+    "title": "cargo-info - 显示一个软件包的额外信息",
+    "content": "cargo info {{[-v|--verbose]}} {{软件包}}",
+    "group": "通用工具 (Common)",
+    "description": "cargo-info: 显示 Rust 软件包的信息。 (显示一个软件包的额外信息)",
+    "tags": [
+      "common",
+      "cargo-info",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-((-0",
     "type": "command",
     "title": "(( - 查看原命令的文档",
@@ -21302,10 +21347,10 @@
   {
     "id": "tldr-zh-common-cargo-generate-lockfile-0",
     "type": "command",
-    "title": "cargo-generate-lockfile - 使用每个包的最新版本生成Cargo.lock文件",
+    "title": "cargo-generate-lockfile - 使用每个软件包的最新版本生成 `Cargo.lock` 文件",
     "content": "cargo generate-lockfile",
     "group": "通用工具 (Common)",
-    "description": "cargo-generate-lockfile: 为当前包生成 Cargo.lock 文件。类似于 cargo update，但选项更少。 如果锁定文件已经存在，它将使用每个包的最新版本重新构建。 (使用每个包的最新版本生成Cargo.lock文件)",
+    "description": "cargo-generate-lockfile: 为当前软件包生成 `Cargo.lock` 文件。类似于 `cargo update`，但选项更少。 如果锁定文件已经存在，它将使用每软件包的最新版本重新构建。 (使用每个软件包的最新版本生成 `Cargo.lock` 文件)",
     "tags": [
       "common",
       "cargo-generate-lockfile",
@@ -30200,7 +30245,7 @@
     "title": "cargo-help - 显示一般帮助",
     "content": "cargo help",
     "group": "通用工具 (Common)",
-    "description": "cargo-help: 显示有关 cargo 及其子命令的帮助信息。 (显示一般帮助)",
+    "description": "cargo-help: 显示有关 `cargo` 及其子命令的帮助信息。 (显示一般帮助)",
     "tags": [
       "common",
       "cargo-help",
@@ -30215,7 +30260,7 @@
     "title": "cargo-help - 显示子命令的帮助信息",
     "content": "cargo help {{子命令}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-help: 显示有关 cargo 及其子命令的帮助信息。 (显示子命令的帮助信息)",
+    "description": "cargo-help: 显示有关 `cargo` 及其子命令的帮助信息。 (显示子命令的帮助信息)",
     "tags": [
       "common",
       "cargo-help",

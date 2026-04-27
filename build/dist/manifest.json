@@ -1,5 +1,5 @@
 {
-  "updated_at": 1777257272335,
+  "updated_at": 1777301786875,
   "version": "2.1.0",
   "packages": [
     {
@@ -95,9 +95,9 @@
       "language": "zh",
       "platform": "common",
       "name": "通用工具 (Common) (ZH)",
-      "description": "Contains 3617 zh commands for common.",
-      "count": 3617,
-      "size_kb": 1763,
+      "description": "Contains 3620 zh commands for common.",
+      "count": 3620,
+      "size_kb": 1764,
       "url": "packs/commands/zh/common.json",
       "category": "command"
     },
@@ -216,9 +216,9 @@
       "language": "en",
       "platform": "common",
       "name": "Common Tools (EN)",
-      "description": "Contains 20488 en commands for common.",
-      "count": 20488,
-      "size_kb": 9923,
+      "description": "Contains 20509 en commands for common.",
+      "count": 20509,
+      "size_kb": 9933,
       "url": "packs/commands/en/common.json",
       "category": "command"
     },
@@ -238,9 +238,9 @@
       "language": "en",
       "platform": "llm",
       "name": "ChatGPT Prompts (English)",
-      "description": "Collection of 1707 role-play prompts.",
-      "count": 1707,
-      "size_kb": 5116.88,
+      "description": "Collection of 1712 role-play prompts.",
+      "count": 1712,
+      "size_kb": 5120.14,
       "url": "packs/prompts/en/roles.json",
       "category": "prompt"
     },
