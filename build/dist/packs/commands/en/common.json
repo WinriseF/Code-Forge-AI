@@ -56310,6 +56310,96 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-nano-ffmpeg-0",
+    "type": "command",
+    "title": "nano-ffmpeg - Start `nano-ffmpeg`",
+    "content": "nano-ffmpeg",
+    "group": "Common Tools",
+    "description": "nano-ffmpeg: A wrapper for `ffmpeg` with an interactive file browser and operations. (Start `nano-ffmpeg`)",
+    "tags": [
+      "common",
+      "nano-ffmpeg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-nano-ffmpeg-1",
+    "type": "command",
+    "title": "nano-ffmpeg - Open the file picker at a specific directory",
+    "content": "nano-ffmpeg {{[-d|--dir]}} {{path/to/directory}}",
+    "group": "Common Tools",
+    "description": "nano-ffmpeg: A wrapper for `ffmpeg` with an interactive file browser and operations. (Open the file picker at a specific directory)",
+    "tags": [
+      "common",
+      "nano-ffmpeg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-nano-ffmpeg-2",
+    "type": "command",
+    "title": "nano-ffmpeg - Open a specific file directly",
+    "content": "nano-ffmpeg {{[-d|--dir]}} {{path/to/file.ext}}",
+    "group": "Common Tools",
+    "description": "nano-ffmpeg: A wrapper for `ffmpeg` with an interactive file browser and operations. (Open a specific file directly)",
+    "tags": [
+      "common",
+      "nano-ffmpeg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-nano-ffmpeg-3",
+    "type": "command",
+    "title": "nano-ffmpeg - Override the theme for the current session",
+    "content": "nano-ffmpeg {{[-t|--theme]}} {{dark|light}}",
+    "group": "Common Tools",
+    "description": "nano-ffmpeg: A wrapper for `ffmpeg` with an interactive file browser and operations. (Override the theme for the current session)",
+    "tags": [
+      "common",
+      "nano-ffmpeg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-nano-ffmpeg-4",
+    "type": "command",
+    "title": "nano-ffmpeg - Exit `nano-ffmpeg`",
+    "content": "<q>",
+    "group": "Common Tools",
+    "description": "nano-ffmpeg: A wrapper for `ffmpeg` with an interactive file browser and operations. (Exit `nano-ffmpeg`)",
+    "tags": [
+      "common",
+      "nano-ffmpeg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-nano-ffmpeg-5",
+    "type": "command",
+    "title": "nano-ffmpeg - Display help",
+    "content": "nano-ffmpeg {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "nano-ffmpeg: A wrapper for `ffmpeg` with an interactive file browser and operations. (Display help)",
+    "tags": [
+      "common",
+      "nano-ffmpeg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-haxelib-0",
     "type": "command",
     "title": "haxelib - Search for a Haxe library",
@@ -116274,6 +116364,111 @@
     "tags": [
       "common",
       "ncdu",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-zstyle-0",
+    "type": "command",
+    "title": "zstyle - List all defined styles",
+    "content": "zstyle",
+    "group": "Common Tools",
+    "description": "zstyle: Define and lookup configuration styles in Zsh. This builtin is part of the `zsh/zutil` module. (List all defined styles)",
+    "tags": [
+      "common",
+      "zstyle",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-zstyle-1",
+    "type": "command",
+    "title": "zstyle - List styles as ready-to-paste `zstyle` commands",
+    "content": "zstyle -L",
+    "group": "Common Tools",
+    "description": "zstyle: Define and lookup configuration styles in Zsh. This builtin is part of the `zsh/zutil` module. (List styles as ready-to-paste `zstyle` commands)",
+    "tags": [
+      "common",
+      "zstyle",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-zstyle-2",
+    "type": "command",
+    "title": "zstyle - Define a style for a specific pattern",
+    "content": "zstyle {{pattern}} {{style}} {{value1 value2...}}",
+    "group": "Common Tools",
+    "description": "zstyle: Define and lookup configuration styles in Zsh. This builtin is part of the `zsh/zutil` module. (Define a style for a specific pattern)",
+    "tags": [
+      "common",
+      "zstyle",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-zstyle-3",
+    "type": "command",
+    "title": "zstyle - Delete a style for a specific pattern",
+    "content": "zstyle -d {{pattern}}",
+    "group": "Common Tools",
+    "description": "zstyle: Define and lookup configuration styles in Zsh. This builtin is part of the `zsh/zutil` module. (Delete a style for a specific pattern)",
+    "tags": [
+      "common",
+      "zstyle",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-zstyle-4",
+    "type": "command",
+    "title": "zstyle - Retrieve a style value as a string into a variable",
+    "content": "zstyle -s {{context}} {{style}} {{variable_name}}",
+    "group": "Common Tools",
+    "description": "zstyle: Define and lookup configuration styles in Zsh. This builtin is part of the `zsh/zutil` module. (Retrieve a style value as a string into a variable)",
+    "tags": [
+      "common",
+      "zstyle",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-zstyle-5",
+    "type": "command",
+    "title": "zstyle - Retrieve a style value as a boolean into a variable",
+    "content": "zstyle -b {{context}} {{style}} {{variable_name}}",
+    "group": "Common Tools",
+    "description": "zstyle: Define and lookup configuration styles in Zsh. This builtin is part of the `zsh/zutil` module. (Retrieve a style value as a boolean into a variable)",
+    "tags": [
+      "common",
+      "zstyle",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-zstyle-6",
+    "type": "command",
+    "title": "zstyle - Retrieve a style value as an array",
+    "content": "zstyle -a {{context}} {{style}} {{variable_name}}",
+    "group": "Common Tools",
+    "description": "zstyle: Define and lookup configuration styles in Zsh. This builtin is part of the `zsh/zutil` module. (Retrieve a style value as an array)",
+    "tags": [
+      "common",
+      "zstyle",
       "tldr",
       "en"
     ],
@@ -181524,6 +181719,126 @@
     "tags": [
       "common",
       "git-check-mailmap",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gup-0",
+    "type": "command",
+    "title": "gup - Update all installed binaries",
+    "content": "gup update",
+    "group": "Common Tools",
+    "description": "gup: Update binaries installed by `go install` in parallel. (Update all installed binaries)",
+    "tags": [
+      "common",
+      "gup",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gup-1",
+    "type": "command",
+    "title": "gup - List all installed binaries, their package paths, and versions",
+    "content": "gup list",
+    "group": "Common Tools",
+    "description": "gup: Update binaries installed by `go install` in parallel. (List all installed binaries, their package paths, and versions)",
+    "tags": [
+      "common",
+      "gup",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gup-2",
+    "type": "command",
+    "title": "gup - Check for available updates without installing them",
+    "content": "gup check",
+    "group": "Common Tools",
+    "description": "gup: Update binaries installed by `go install` in parallel. (Check for available updates without installing them)",
+    "tags": [
+      "common",
+      "gup",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gup-3",
+    "type": "command",
+    "title": "gup - Export the list of installed binaries to a file",
+    "content": "gup export {{[-f|--file]}} {{path/to/gup.json}}",
+    "group": "Common Tools",
+    "description": "gup: Update binaries installed by `go install` in parallel. (Export the list of installed binaries to a file)",
+    "tags": [
+      "common",
+      "gup",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gup-4",
+    "type": "command",
+    "title": "gup - Install binaries from a `gup` configuration file",
+    "content": "gup import {{[-f|--file]}} {{path/to/gup.json}}",
+    "group": "Common Tools",
+    "description": "gup: Update binaries installed by `go install` in parallel. (Install binaries from a `gup` configuration file)",
+    "tags": [
+      "common",
+      "gup",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gup-5",
+    "type": "command",
+    "title": "gup - Remove a specific binary",
+    "content": "gup remove {{binary_name}}",
+    "group": "Common Tools",
+    "description": "gup: Update binaries installed by `go install` in parallel. (Remove a specific binary)",
+    "tags": [
+      "common",
+      "gup",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gup-6",
+    "type": "command",
+    "title": "gup - Update all binaries except for specific ones",
+    "content": "gup update {{[-e|--exclude]}} {{binary1,binary2,...}}",
+    "group": "Common Tools",
+    "description": "gup: Update binaries installed by `go install` in parallel. (Update all binaries except for specific ones)",
+    "tags": [
+      "common",
+      "gup",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gup-7",
+    "type": "command",
+    "title": "gup - Update specific binaries to the latest version",
+    "content": "gup update --latest {{binary1,binary2,...}}",
+    "group": "Common Tools",
+    "description": "gup: Update binaries installed by `go install` in parallel. (Update specific binaries to the latest version)",
+    "tags": [
+      "common",
+      "gup",
       "tldr",
       "en"
     ],
