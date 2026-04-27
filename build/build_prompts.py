@@ -7,20 +7,53 @@ import re
 import requests
 import sys
 
-csv.field_size_limit(sys.maxsize)
+try:
+    csv.field_size_limit(sys.maxsize)
+except OverflowError:
+    csv.field_size_limit(2**31 - 1)
 
 SOURCES = {
     "en_roles": {
         "url": "https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/prompts.csv",
         "format": "csv",
         "lang": "en",
-        "name": "ChatGPT Prompts (English)"
+        "name": "ChatGPT Prompts (English)",
+        "filename": "roles.json",
+        "id_suffix": "roles",
+        "pack_description": "Collection of {count} role-play prompts.",
+        "tags": ["roleplay"]
     },
     "zh_roles": {
         "url": "https://raw.githubusercontent.com/PlexPt/awesome-chatgpt-prompts-zh/main/prompts-zh.json",
         "format": "json",
         "lang": "zh",
-        "name": "中文角色扮演精选"
+        "name": "中文角色扮演精选",
+        "filename": "roles.json",
+        "id_suffix": "roles",
+        "pack_description": "Collection of {count} role-play prompts.",
+        "tags": ["roleplay"]
+    },
+    "en_image2": {
+        "url": "https://raw.githubusercontent.com/YouMind-OpenLab/awesome-gpt-image-2/main/README.md",
+        "format": "markdown_image2",
+        "lang": "en",
+        "name": "Awesome GPT Image 2 Prompts",
+        "filename": "image2.json",
+        "id_suffix": "image2",
+        "pack_description": "Collection of {count} GPT Image 2 prompts.",
+        "tags": ["image2", "image-generation"],
+        "default_group": "Creative"
+    },
+    "zh_image2": {
+        "url": "https://raw.githubusercontent.com/YouMind-OpenLab/awesome-gpt-image-2/main/README_zh.md",
+        "format": "markdown_image2",
+        "lang": "zh",
+        "name": "GPT Image 2 提示词精选",
+        "filename": "image2.json",
+        "id_suffix": "image2",
+        "pack_description": "Collection of {count} GPT Image 2 prompts.",
+        "tags": ["image2", "image-generation"],
+        "default_group": "Creative"
     }
 }
 
@@ -121,6 +154,48 @@ def inject_variables_advanced(content, lang):
 
     return content
 
+def parse_markdown_image2(raw_data, lang):
+    prompts = []
+    seen = set()
+    entry_pattern = re.compile(
+        r"^###\s+No\.\s*\d+:\s*(?P<title>.+?)\n(?P<body>[\s\S]*?)(?=^###\s+No\.\s*\d+:|\Z)",
+        re.MULTILINE
+    )
+
+    for match in entry_pattern.finditer(raw_data):
+        title = clean_raw_content(match.group("title")).strip()
+        body = match.group("body")
+
+        description_match = re.search(
+            r"^#### .*?(?:Description|描述)\s*\n(?P<description>[\s\S]*?)(?=^#### )",
+            body,
+            re.MULTILINE
+        )
+        prompt_match = re.search(
+            r"^#### .*?(?:Prompt|提示词)\s*\n```(?:\w+)?\n(?P<prompt>[\s\S]*?)```",
+            body,
+            re.MULTILINE
+        )
+
+        if not prompt_match:
+            continue
+
+        description = ""
+        if description_match:
+            description = clean_raw_content(description_match.group("description")).strip()
+        prompt = prompt_match.group("prompt").strip()
+        dedupe_key = (title, prompt)
+        if not title or not prompt or dedupe_key in seen:
+            continue
+        seen.add(dedupe_key)
+        prompts.append({
+            "act": title,
+            "prompt": prompt,
+            "description": description
+        })
+
+    return prompts
+
 def process_source(key, config):
     print(f"Downloading {config['name']}...")
     try:
@@ -153,11 +228,17 @@ def process_source(key, config):
         except json.JSONDecodeError:
             print(f"JSON Decode Error for {key}")
             return None
+    elif config['format'] == 'markdown_image2':
+        prompts = parse_markdown_image2(raw_data, config['lang'])
+    else:
+        print(f"Unsupported format for {key}: {config['format']}")
+        return None
 
     final_prompts = []
     for item in prompts:
         title = item['act']
         raw_content = item['prompt']
+        item_description = item.get('description', '').strip()
 
         cleaned_content = clean_raw_content(raw_content)
 
@@ -165,20 +246,21 @@ def process_source(key, config):
             print(f"Skipped empty prompt: {title}")
             continue
 
-        group = determine_group(title + " " + cleaned_content)
+        group = config.get('default_group') or determine_group(title + " " + item_description + " " + cleaned_content)
 
         normalized_content = normalize_placeholders(cleaned_content)
 
         final_content = inject_variables_advanced(normalized_content, config['lang'])
 
+        prompt_tags = [config['lang'], *config.get('tags', []), group.lower()]
         prompt_obj = {
             "id": generate_uuid(),
             "type": "prompt",
             "title": title,
             "content": final_content,
             "group": group,
-            "description": f"{title} - AI Assistant Role",
-            "tags": [config['lang'], "roleplay", group.lower()],
+            "description": item_description or f"{title} - AI Prompt",
+            "tags": prompt_tags,
             "isFavorite": False,
             "createdAt": get_current_timestamp(),
             "updatedAt": get_current_timestamp(),
@@ -191,7 +273,7 @@ def process_source(key, config):
     if not os.path.exists(lang_dir):
         os.makedirs(lang_dir)
 
-    filename = "roles.json"
+    filename = config.get("filename", "roles.json")
     output_path = os.path.join(lang_dir, filename)
 
     with open(output_path, 'w', encoding='utf-8') as f:
@@ -200,11 +282,11 @@ def process_source(key, config):
     print(f"Generated {config['lang']}/{filename}: {len(final_prompts)} prompts in prompts/ folder.")
 
     return {
-        "id": f"{config['lang']}-roles",
+        "id": f"{config['lang']}-{config.get('id_suffix', 'roles')}",
         "language": config['lang'],
         "platform": "llm",
         "name": config['name'],
-        "description": f"Collection of {len(final_prompts)} role-play prompts.",
+        "description": config.get("pack_description", "Collection of {count} prompts.").format(count=len(final_prompts)),
         "count": len(final_prompts),
         "size_kb": round(os.path.getsize(output_path) / 1024, 2),
         "url": f"packs/prompts/{config['lang']}/{filename}",
