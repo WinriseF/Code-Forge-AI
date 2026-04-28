@@ -1,20 +1,5 @@
 [
   {
-    "id": "tldr-zh-openbsd-chsh-0",
-    "type": "command",
-    "title": "chsh - 查看原命令的文档",
-    "content": "tldr chpass",
-    "group": "Openbsd",
-    "description": "chsh: 此命令为 `chpass` 的别名。 (查看原命令的文档)",
-    "tags": [
-      "openbsd",
-      "chsh",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-zh-openbsd-chfn-0",
     "type": "command",
     "title": "chfn - 查看原命令的文档",
@@ -24,6 +9,21 @@
     "tags": [
       "openbsd",
       "chfn",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-openbsd-chsh-0",
+    "type": "command",
+    "title": "chsh - 查看原命令的文档",
+    "content": "tldr chpass",
+    "group": "Openbsd",
+    "description": "chsh: 此命令为 `chpass` 的别名。 (查看原命令的文档)",
+    "tags": [
+      "openbsd",
+      "chsh",
       "tldr",
       "zh"
     ],

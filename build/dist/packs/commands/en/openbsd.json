@@ -1,59 +1,134 @@
 [
   {
-    "id": "tldr-en-openbsd-chpass-0",
+    "id": "tldr-en-openbsd-pkg-0",
     "type": "command",
-    "title": "chpass - Set a specific login shell for the current user interactively",
-    "content": "doas chpass",
+    "title": "pkg - View documentation for installing/updating packages",
+    "content": "tldr pkg_add",
     "group": "Openbsd",
-    "description": "chpass: Add or change user database information, including login shell and password. (Set a specific login shell for the current user interactively)",
+    "description": "pkg: OpenBSD package manager utility. (View documentation for installing/updating packages)",
     "tags": [
       "openbsd",
-      "chpass",
+      "pkg",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-openbsd-chpass-1",
+    "id": "tldr-en-openbsd-pkg-1",
     "type": "command",
-    "title": "chpass - Set a specific login [s]hell for the current user",
-    "content": "doas chpass -s {{path/to/shell}}",
+    "title": "pkg - View documentation for removing packages",
+    "content": "tldr pkg_delete",
     "group": "Openbsd",
-    "description": "chpass: Add or change user database information, including login shell and password. (Set a specific login [s]hell for the current user)",
+    "description": "pkg: OpenBSD package manager utility. (View documentation for removing packages)",
     "tags": [
       "openbsd",
-      "chpass",
+      "pkg",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-openbsd-chpass-2",
+    "id": "tldr-en-openbsd-pkg-2",
     "type": "command",
-    "title": "chpass - Set a login [s]hell for a specific user",
-    "content": "doas chpass -s {{path/to/shell}} {{username}}",
+    "title": "pkg - View documentation for viewing information about packages",
+    "content": "tldr pkg_info",
     "group": "Openbsd",
-    "description": "chpass: Add or change user database information, including login shell and password. (Set a login [s]hell for a specific user)",
+    "description": "pkg: OpenBSD package manager utility. (View documentation for viewing information about packages)",
     "tags": [
       "openbsd",
-      "chpass",
+      "pkg",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-openbsd-chpass-3",
+    "id": "tldr-en-openbsd-df-0",
     "type": "command",
-    "title": "chpass - Specify a user database entry in the `passwd` file format",
-    "content": "doas chpass -a {{username:encrypted_password:uid:gid:...}}",
+    "title": "df - Display all filesystems and their disk usage (using 512-byte units)",
+    "content": "df",
     "group": "Openbsd",
-    "description": "chpass: Add or change user database information, including login shell and password. (Specify a user database entry in the `passwd` file format)",
+    "description": "df: Display an overview of the filesystem disk space usage. (Display all filesystems and their disk usage (using 512-byte units))",
     "tags": [
       "openbsd",
-      "chpass",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-df-1",
+    "type": "command",
+    "title": "df - Display all filesystems in [h]uman-readable form (based on powers of 1024)",
+    "content": "df -h",
+    "group": "Openbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Display all filesystems in [h]uman-readable form (based on powers of 1024))",
+    "tags": [
+      "openbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-df-2",
+    "type": "command",
+    "title": "df - Display the filesystem containing the specified file or directory",
+    "content": "df {{path/to/file_or_directory}}",
+    "group": "Openbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Display the filesystem containing the specified file or directory)",
+    "tags": [
+      "openbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-df-3",
+    "type": "command",
+    "title": "df - Include statistics on the number of free and used [i]nodes",
+    "content": "df -i",
+    "group": "Openbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Include statistics on the number of free and used [i]nodes)",
+    "tags": [
+      "openbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-df-4",
+    "type": "command",
+    "title": "df - Use [k]ibibyte (1024 byte) units when showing size figures",
+    "content": "df -k",
+    "group": "Openbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Use [k]ibibyte (1024 byte) units when showing size figures)",
+    "tags": [
+      "openbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-df-5",
+    "type": "command",
+    "title": "df - Display information in a [P]ortable way",
+    "content": "df -P",
+    "group": "Openbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Display information in a [P]ortable way)",
+    "tags": [
+      "openbsd",
+      "df",
       "tldr",
       "en"
     ],
@@ -99,51 +174,6 @@
     "tags": [
       "openbsd",
       "pkg_add",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg_delete-0",
-    "type": "command",
-    "title": "pkg_delete - Delete a package",
-    "content": "pkg_delete {{package}}",
-    "group": "Openbsd",
-    "description": "pkg_delete: Remove packages in OpenBSD. (Delete a package)",
-    "tags": [
-      "openbsd",
-      "pkg_delete",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg_delete-1",
-    "type": "command",
-    "title": "pkg_delete - Delete a package, including its unused dependencies",
-    "content": "pkg_delete -a {{package}}",
-    "group": "Openbsd",
-    "description": "pkg_delete: Remove packages in OpenBSD. (Delete a package, including its unused dependencies)",
-    "tags": [
-      "openbsd",
-      "pkg_delete",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg_delete-2",
-    "type": "command",
-    "title": "pkg_delete - Dry-run deletion of a package",
-    "content": "pkg_delete -n {{package}}",
-    "group": "Openbsd",
-    "description": "pkg_delete: Remove packages in OpenBSD. (Dry-run deletion of a package)",
-    "tags": [
-      "openbsd",
-      "pkg_delete",
       "tldr",
       "en"
     ],
@@ -255,186 +285,6 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-openbsd-df-0",
-    "type": "command",
-    "title": "df - Display all filesystems and their disk usage (using 512-byte units)",
-    "content": "df",
-    "group": "Openbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Display all filesystems and their disk usage (using 512-byte units))",
-    "tags": [
-      "openbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-df-1",
-    "type": "command",
-    "title": "df - Display all filesystems in [h]uman-readable form (based on powers of 1024)",
-    "content": "df -h",
-    "group": "Openbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Display all filesystems in [h]uman-readable form (based on powers of 1024))",
-    "tags": [
-      "openbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-df-2",
-    "type": "command",
-    "title": "df - Display the filesystem containing the specified file or directory",
-    "content": "df {{path/to/file_or_directory}}",
-    "group": "Openbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Display the filesystem containing the specified file or directory)",
-    "tags": [
-      "openbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-df-3",
-    "type": "command",
-    "title": "df - Include statistics on the number of free and used [i]nodes",
-    "content": "df -i",
-    "group": "Openbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Include statistics on the number of free and used [i]nodes)",
-    "tags": [
-      "openbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-df-4",
-    "type": "command",
-    "title": "df - Use [k]ibibyte (1024 byte) units when showing size figures",
-    "content": "df -k",
-    "group": "Openbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Use [k]ibibyte (1024 byte) units when showing size figures)",
-    "tags": [
-      "openbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-df-5",
-    "type": "command",
-    "title": "df - Display information in a [P]ortable way",
-    "content": "df -P",
-    "group": "Openbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Display information in a [P]ortable way)",
-    "tags": [
-      "openbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-chsh-0",
-    "type": "command",
-    "title": "chsh - View documentation for the original command",
-    "content": "tldr chpass",
-    "group": "Openbsd",
-    "description": "chsh: This command is an alias of `chpass`. (View documentation for the original command)",
-    "tags": [
-      "openbsd",
-      "chsh",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg-0",
-    "type": "command",
-    "title": "pkg - View documentation for installing/updating packages",
-    "content": "tldr pkg_add",
-    "group": "Openbsd",
-    "description": "pkg: OpenBSD package manager utility. (View documentation for installing/updating packages)",
-    "tags": [
-      "openbsd",
-      "pkg",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg-1",
-    "type": "command",
-    "title": "pkg - View documentation for removing packages",
-    "content": "tldr pkg_delete",
-    "group": "Openbsd",
-    "description": "pkg: OpenBSD package manager utility. (View documentation for removing packages)",
-    "tags": [
-      "openbsd",
-      "pkg",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg-2",
-    "type": "command",
-    "title": "pkg - View documentation for viewing information about packages",
-    "content": "tldr pkg_info",
-    "group": "Openbsd",
-    "description": "pkg: OpenBSD package manager utility. (View documentation for viewing information about packages)",
-    "tags": [
-      "openbsd",
-      "pkg",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg_info-0",
-    "type": "command",
-    "title": "pkg_info - Search for a package using the package name",
-    "content": "pkg_info -Q {{package}}",
-    "group": "Openbsd",
-    "description": "pkg_info: View information about packages in OpenBSD. (Search for a package using the package name)",
-    "tags": [
-      "openbsd",
-      "pkg_info",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg_info-1",
-    "type": "command",
-    "title": "pkg_info - Output a list of installed packages for use with `pkg_add -l`",
-    "content": "pkg_info -mz",
-    "group": "Openbsd",
-    "description": "pkg_info: View information about packages in OpenBSD. (Output a list of installed packages for use with `pkg_add -l`)",
-    "tags": [
-      "openbsd",
-      "pkg_info",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-en-openbsd-chfn-0",
     "type": "command",
     "title": "chfn - View documentation for the original command",
@@ -444,6 +294,111 @@
     "tags": [
       "openbsd",
       "chfn",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-chpass-0",
+    "type": "command",
+    "title": "chpass - Set a specific login shell for the current user interactively",
+    "content": "doas chpass",
+    "group": "Openbsd",
+    "description": "chpass: Add or change user database information, including login shell and password. (Set a specific login shell for the current user interactively)",
+    "tags": [
+      "openbsd",
+      "chpass",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-chpass-1",
+    "type": "command",
+    "title": "chpass - Set a specific login [s]hell for the current user",
+    "content": "doas chpass -s {{path/to/shell}}",
+    "group": "Openbsd",
+    "description": "chpass: Add or change user database information, including login shell and password. (Set a specific login [s]hell for the current user)",
+    "tags": [
+      "openbsd",
+      "chpass",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-chpass-2",
+    "type": "command",
+    "title": "chpass - Set a login [s]hell for a specific user",
+    "content": "doas chpass -s {{path/to/shell}} {{username}}",
+    "group": "Openbsd",
+    "description": "chpass: Add or change user database information, including login shell and password. (Set a login [s]hell for a specific user)",
+    "tags": [
+      "openbsd",
+      "chpass",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-chpass-3",
+    "type": "command",
+    "title": "chpass - Specify a user database entry in the `passwd` file format",
+    "content": "doas chpass -a {{username:encrypted_password:uid:gid:...}}",
+    "group": "Openbsd",
+    "description": "chpass: Add or change user database information, including login shell and password. (Specify a user database entry in the `passwd` file format)",
+    "tags": [
+      "openbsd",
+      "chpass",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-pkg_delete-0",
+    "type": "command",
+    "title": "pkg_delete - Delete a package",
+    "content": "pkg_delete {{package}}",
+    "group": "Openbsd",
+    "description": "pkg_delete: Remove packages in OpenBSD. (Delete a package)",
+    "tags": [
+      "openbsd",
+      "pkg_delete",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-pkg_delete-1",
+    "type": "command",
+    "title": "pkg_delete - Delete a package, including its unused dependencies",
+    "content": "pkg_delete -a {{package}}",
+    "group": "Openbsd",
+    "description": "pkg_delete: Remove packages in OpenBSD. (Delete a package, including its unused dependencies)",
+    "tags": [
+      "openbsd",
+      "pkg_delete",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-pkg_delete-2",
+    "type": "command",
+    "title": "pkg_delete - Dry-run deletion of a package",
+    "content": "pkg_delete -n {{package}}",
+    "group": "Openbsd",
+    "description": "pkg_delete: Remove packages in OpenBSD. (Dry-run deletion of a package)",
+    "tags": [
+      "openbsd",
+      "pkg_delete",
       "tldr",
       "en"
     ],
@@ -534,6 +489,51 @@
     "tags": [
       "openbsd",
       "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-pkg_info-0",
+    "type": "command",
+    "title": "pkg_info - Search for a package using the package name",
+    "content": "pkg_info -Q {{package}}",
+    "group": "Openbsd",
+    "description": "pkg_info: View information about packages in OpenBSD. (Search for a package using the package name)",
+    "tags": [
+      "openbsd",
+      "pkg_info",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-pkg_info-1",
+    "type": "command",
+    "title": "pkg_info - Output a list of installed packages for use with `pkg_add -l`",
+    "content": "pkg_info -mz",
+    "group": "Openbsd",
+    "description": "pkg_info: View information about packages in OpenBSD. (Output a list of installed packages for use with `pkg_add -l`)",
+    "tags": [
+      "openbsd",
+      "pkg_info",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-chsh-0",
+    "type": "command",
+    "title": "chsh - View documentation for the original command",
+    "content": "tldr chpass",
+    "group": "Openbsd",
+    "description": "chsh: This command is an alias of `chpass`. (View documentation for the original command)",
+    "tags": [
+      "openbsd",
+      "chsh",
       "tldr",
       "en"
     ],
