@@ -18,15 +18,14 @@ CtxRun is distributed under the **GNU General Public License v3.0 (GPL-3.0)**. S
 | **React DOM** | MIT | Meta Platforms, Inc. |
 | **Zustand** | MIT | pmndrs |
 | **Monaco Editor** | MIT | Microsoft Corporation |
-| **Monaco Editor React** | MIT | Suren A. Chilingaryan |
+| **@monaco-editor/react** | MIT | Suren A. Chilingaryan |
 | **Tailwind CSS** | MIT | Tailwind Labs |
 | **Vite** | MIT | Vue.js Team |
 | **Framer Motion** | MIT | Framer Motion, Inc. |
 | **Lucide React** | MIT | Lucide Contributors |
 | **React Markdown** | MIT | Espen Hovlandsdal |
 | **remark-gfm** | MIT | Titus Wormer |
-| **Tailwind Merge** | MIT | dcastil |
-| **UUID** | MIT | Robert Kieffer |
+| **tailwind-merge** | MIT | dcastil |
 | **i18next** | MIT | Jan Mühlemann |
 | **react-i18next** | MIT | Jan Mühlemann |
 | **@xyflow/react** | BUSL-1.1 | xyflow GmbH (formerly React Flow) |
@@ -48,17 +47,29 @@ CtxRun is distributed under the **GNU General Public License v3.0 (GPL-3.0)**. S
 | **@wooorm/starry-night** | MIT | Titus Wormer |
 | **vscode-oniguruma** | MIT | Microsoft Corporation |
 | **xml-formatter** | MIT | Cheton Wu |
+| **@lottiefiles/dotlottie-react** | MIT | LottieFiles |
+| **uuid** | MIT | Robert Kieffer |
 
 ### Backend Dependencies (Rust)
 
 | Crate | License | Description |
 |-------|---------|-------------|
 | **tauri** | MIT OR Apache-2.0 | Core application framework |
+| **tauri-build** | MIT OR Apache-2.0 | Tauri build tools |
+| **tauri-plugin-shell** | MIT OR Apache-2.0 | Shell command execution |
+| **tauri-plugin-fs** | MIT OR Apache-2.0 | File system access |
+| **tauri-plugin-dialog** | MIT OR Apache-2.0 | Native dialogs |
+| **tauri-plugin-http** | MIT OR Apache-2.0 | HTTP client |
+| **tauri-plugin-clipboard-manager** | MIT OR Apache-2.0 | Clipboard access |
+| **tauri-plugin-os** | MIT OR Apache-2.0 | OS information |
+| **tauri-plugin-single-instance** | MIT OR Apache-2.0 | Single instance app |
+| **tauri-plugin-global-shortcut** | MIT OR Apache-2.0 | Global keyboard shortcuts |
 | **rusqlite** | MIT | SQLite bindings |
 | **sysinfo** | MIT | System information |
 | **git2** | MIT OR Apache-2.0 | Git bindings |
 | **reqwest** | MIT OR Apache-2.0 | HTTP client |
 | **tokio** | MIT | Async runtime |
+| **futures** | MIT OR Apache-2.0 | Future utilities |
 | **serde** | MIT OR Apache-2.0 | Serialization |
 | **serde_json** | MIT OR Apache-2.0 | JSON serialization |
 | **refinery** | MIT OR Apache-2.0 | Database migrations |
@@ -77,29 +88,50 @@ CtxRun is distributed under the **GNU General Public License v3.0 (GPL-3.0)**. S
 | **xxhash-rust** | BSD-2-Clause | Fast hashing |
 | **crossbeam-channel** | MIT OR Apache-2.0 | Multi-producer multi-consumer channels |
 | **x-win** | MIT | Windows window manipulation |
-| **csv** | MIT OR Apache-2.0 | CSV parsing |
 | **walkdir** | MIT OR Apache-2.0 | Directory traversal |
-| **infer** | MIT | File type detection |
-| **mime_guess** | MIT | MIME type detection |
-| **url** | MIT OR Apache-2.0 | URL parsing |
-| **percent-encoding** | MIT OR Apache-2.0 | Percent encoding |
-| **base64** | MIT OR Apache-2.0 | Base64 encoding |
-| **genai** | Apache-2.0 | Generative AI |
-| **listeners** | MIT | Event listeners |
-| **wait-timeout** | MIT | Timeout wait |
-| **windows** | MIT OR Apache-2.0 | Windows API bindings |
-| **futures** | MIT OR Apache-2.0 | Future utilities |
+| **once_cell** | MIT OR Apache-2.0 | Lazy static initialization |
+| **ocr-rs** | MIT | OCR functionality |
 | **similar** | MIT | Text diffing |
 | **thiserror** | MIT OR Apache-2.0 | Error handling |
-| **headless_chrome** | MIT OR Apache-2.0 | Headless Chrome control |
-| **sanitize-filename** | MIT | Filename sanitization |
-| **xcap** | MIT OR Apache-2.0 | Screen capture |
-| **uiautomation** | MIT | Windows UI Automation bindings |
 | **axum** | MIT | HTTP framework (Transfer server) |
 | **tokio-util** | MIT | Async utilities (io, rt) |
 | **qrcode** | MIT OR Apache-2.0 | QR code generation |
-| **starship-battery** | ISC | Battery information |
+| **percent-encoding** | MIT OR Apache-2.0 | Percent encoding |
 | **serde_rusqlite** | MIT | Serde integration for rusqlite |
+| **windows** | MIT OR Apache-2.0 | Windows API bindings |
+| **xcap** | MIT OR Apache-2.0 | Screen capture |
+| **uiautomation** | MIT | Windows UI Automation bindings |
+| **csv** | MIT OR Apache-2.0 | CSV parsing |
+| **starship-battery** | ISC | Battery information |
+| **mime_guess** | MIT | MIME type detection |
+| **infer** | MIT | File type detection |
+| **base64** | MIT OR Apache-2.0 | Base64 encoding |
+| **url** | MIT OR Apache-2.0 | URL parsing |
+| **genai** | Apache-2.0 | Generative AI |
+| **headless_chrome** | MIT OR Apache-2.0 | Headless Chrome control |
+| **listeners** | MIT | Event listeners |
+| **wait-timeout** | MIT | Timeout wait |
+| **sanitize-filename** | MIT | Filename sanitization |
+
+### Internal Workspace Crates
+
+| Crate | License | Description |
+|-------|---------|-------------|
+| **ctxrun-db** | MIT | Database layer |
+| **ctxrun-browser-utils** | MIT | Browser automation utilities |
+| **ctxrun-env-probe** | MIT | Environment detection |
+| **ctxrun-hyperview** | MIT | Document preview |
+| **ctxrun-process-utils** | MIT | Process management |
+| **ctxrun-runtime-utils** | MIT | Runtime utilities |
+| **ctxrun-plugin-automator** | MIT | Workflow automation engine |
+| **ctxrun-plugin-context** | MIT | Context assembly |
+| **ctxrun-plugin-git** | MIT | Git diff and patch |
+| **ctxrun-plugin-refinery** | MIT | Clipboard history |
+| **ctxrun-plugin-miner** | MIT | Web content mining |
+| **ctxrun-plugin-ocr** | MIT | OCR processing |
+| **ctxrun-plugin-tool-runtime** | MIT | AI tool invocation |
+| **ctxrun-plugin-exec-runtime** | MIT | Command execution sandbox |
+| **ctxrun-plugin-transfer** | MIT | LAN file transfer |
 
 ---
 
@@ -111,8 +143,11 @@ The following open data projects are partially sourced in this application:
 |---------|---------|-------------|
 | **tldr-pages** | CC BY 4.0 | Simplified command line documentation |
 | **Awesome ChatGPT Prompts** | CC0 1.0 | Curated AI prompts collection |
+| **awesome-gpt-image-2** | CC BY 4.0 | GPT Image 2 prompt library (16 languages) |
 
 > **Note**: The tldr-pages data is licensed under CC BY 4.0. When using or distributing command documentation from this project, please attribute appropriately. See https://github.com/tldr-pages/tldr for details.
+>
+> **Note**: The awesome-gpt-image-2 data is licensed under CC BY 4.0. All prompts are collected from the community for educational purposes. See https://github.com/YouMind-OpenLab/awesome-gpt-image-2 for details.
 
 ---
 
@@ -169,4 +204,4 @@ We thank all the maintainers and contributors of the open source projects that m
 
 ---
 
-*This document was last updated on 2026-04-07.*
+*This document was last updated on 2026-04-28.*
