@@ -40080,6 +40080,111 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-dpkg-buildpackage-0",
+    "type": "command",
+    "title": "dpkg-buildpackage - Generate source and binary packages",
+    "content": "dpkg-buildpackage",
+    "group": "Linux Ops",
+    "description": "dpkg-buildpackage: Compile binary and/or source Debian packages from source code. Normally executed inside a source tree that contains a `debian/` directory. Also handles build dependencies, creates files like `.buildinfo` and `.changes`, and signs the result if applicable. (Generate source and binary packages)",
+    "tags": [
+      "linux",
+      "dpkg-buildpackage",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-dpkg-buildpackage-1",
+    "type": "command",
+    "title": "dpkg-buildpackage - Generate only binary packages (no source package)",
+    "content": "dpkg-buildpackage {{[-b|--build=binary]}}",
+    "group": "Linux Ops",
+    "description": "dpkg-buildpackage: Compile binary and/or source Debian packages from source code. Normally executed inside a source tree that contains a `debian/` directory. Also handles build dependencies, creates files like `.buildinfo` and `.changes`, and signs the result if applicable. (Generate only binary packages (no source package))",
+    "tags": [
+      "linux",
+      "dpkg-buildpackage",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-dpkg-buildpackage-2",
+    "type": "command",
+    "title": "dpkg-buildpackage - Generate only the source package (without compiling binaries)",
+    "content": "dpkg-buildpackage {{[-S|--build=source]}}",
+    "group": "Linux Ops",
+    "description": "dpkg-buildpackage: Compile binary and/or source Debian packages from source code. Normally executed inside a source tree that contains a `debian/` directory. Also handles build dependencies, creates files like `.buildinfo` and `.changes`, and signs the result if applicable. (Generate only the source package (without compiling binaries))",
+    "tags": [
+      "linux",
+      "dpkg-buildpackage",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-dpkg-buildpackage-3",
+    "type": "command",
+    "title": "dpkg-buildpackage - Do not sign the `.dsc` and `.changes` files",
+    "content": "dpkg-buildpackage {{[-us|--unsigned-source]}} {{[-uc|--unsigned-changes]}}",
+    "group": "Linux Ops",
+    "description": "dpkg-buildpackage: Compile binary and/or source Debian packages from source code. Normally executed inside a source tree that contains a `debian/` directory. Also handles build dependencies, creates files like `.buildinfo` and `.changes`, and signs the result if applicable. (Do not sign the `.dsc` and `.changes` files)",
+    "tags": [
+      "linux",
+      "dpkg-buildpackage",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-dpkg-buildpackage-4",
+    "type": "command",
+    "title": "dpkg-buildpackage - Do not run `clean` before compiling",
+    "content": "dpkg-buildpackage {{[-nc|--no-pre-clean]}}",
+    "group": "Linux Ops",
+    "description": "dpkg-buildpackage: Compile binary and/or source Debian packages from source code. Normally executed inside a source tree that contains a `debian/` directory. Also handles build dependencies, creates files like `.buildinfo` and `.changes`, and signs the result if applicable. (Do not run `clean` before compiling)",
+    "tags": [
+      "linux",
+      "dpkg-buildpackage",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-dpkg-buildpackage-5",
+    "type": "command",
+    "title": "dpkg-buildpackage - Use `fakeroot` as the command to gain root privileges during the build",
+    "content": "dpkg-buildpackage {{[-r|--root-command=]}}fakeroot",
+    "group": "Linux Ops",
+    "description": "dpkg-buildpackage: Compile binary and/or source Debian packages from source code. Normally executed inside a source tree that contains a `debian/` directory. Also handles build dependencies, creates files like `.buildinfo` and `.changes`, and signs the result if applicable. (Use `fakeroot` as the command to gain root privileges during the build)",
+    "tags": [
+      "linux",
+      "dpkg-buildpackage",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-dpkg-buildpackage-6",
+    "type": "command",
+    "title": "dpkg-buildpackage - Run a specific `debian/rules` target",
+    "content": "dpkg-buildpackage {{[-T|--rules-target=]}}{{clean}}",
+    "group": "Linux Ops",
+    "description": "dpkg-buildpackage: Compile binary and/or source Debian packages from source code. Normally executed inside a source tree that contains a `debian/` directory. Also handles build dependencies, creates files like `.buildinfo` and `.changes`, and signs the result if applicable. (Run a specific `debian/rules` target)",
+    "tags": [
+      "linux",
+      "dpkg-buildpackage",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-lynis-0",
     "type": "command",
     "title": "lynis - Check that Lynis is up-to-date",

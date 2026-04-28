@@ -1,5 +1,5 @@
 {
-  "updated_at": 1777377179987,
+  "updated_at": 1777377768807,
   "version": "2.1.0",
   "packages": [
     {
@@ -183,9 +183,9 @@
       "language": "en",
       "platform": "linux",
       "name": "Linux Ops (EN)",
-      "description": "Contains 8001 en commands for linux.",
-      "count": 8001,
-      "size_kb": 3780,
+      "description": "Contains 8008 en commands for linux.",
+      "count": 8008,
+      "size_kb": 3785,
       "url": "packs/commands/en/linux.json",
       "category": "command"
     },
@@ -297,6 +297,50 @@
       "count": 106,
       "size_kb": 216.81,
       "url": "packs/prompts/zh/seedance2.json",
+      "category": "prompt"
+    },
+    {
+      "id": "en-gemini3",
+      "language": "en",
+      "platform": "llm",
+      "name": "Awesome Gemini 3 Prompts",
+      "description": "Collection of 49 Gemini 3 prompts.",
+      "count": 49,
+      "size_kb": 64.23,
+      "url": "packs/prompts/en/gemini3.json",
+      "category": "prompt"
+    },
+    {
+      "id": "zh-gemini3",
+      "language": "zh",
+      "platform": "llm",
+      "name": "Gemini 3 提示词精选",
+      "description": "Collection of 49 Gemini 3 prompts.",
+      "count": 49,
+      "size_kb": 79.8,
+      "url": "packs/prompts/zh/gemini3.json",
+      "category": "prompt"
+    },
+    {
+      "id": "en-nano-banana-pro",
+      "language": "en",
+      "platform": "image",
+      "name": "Awesome Nano Banana Pro Prompts",
+      "description": "Collection of 128 Nano Banana Pro image-generation prompts.",
+      "count": 128,
+      "size_kb": 202.62,
+      "url": "packs/prompts/en/nano-banana-pro.json",
+      "category": "prompt"
+    },
+    {
+      "id": "zh-nano-banana-pro",
+      "language": "zh",
+      "platform": "image",
+      "name": "Nano Banana Pro 提示词精选",
+      "description": "Collection of 128 Nano Banana Pro image-generation prompts.",
+      "count": 128,
+      "size_kb": 196.89,
+      "url": "packs/prompts/zh/nano-banana-pro.json",
       "category": "prompt"
     },
     {
