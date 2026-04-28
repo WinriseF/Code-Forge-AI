@@ -768,7 +768,7 @@
     "id": "tldr-zh-common-uuencode-2",
     "type": "command",
     "title": "uuencode - 使用 Base64 而不是默认的 uuencode 编码一个文件，并将结果写入到一个文件",
-    "content": "uuencode -m -o {{路径/到/输出文件}} {{路径/到/输入文件}} {{解码后文件名}}",
+    "content": "uuencode {{[-m|--base64]}} -o {{路径/到/输出文件}} {{路径/到/输入文件}} {{解码后文件名}}",
     "group": "通用工具 (Common)",
     "description": "uuencode: 将二进制文件编码为 ASCII，以便通过仅支持简单 ASCII 编码的媒介传输。 (使用 Base64 而不是默认的 uuencode 编码一个文件，并将结果写入到一个文件)",
     "tags": [
@@ -14523,7 +14523,7 @@
     "id": "tldr-zh-common-install-1",
     "type": "command",
     "title": "install - 复制文件到目标目录，并设置其所有权",
-    "content": "install --owner {{用户}} {{路径/到/源文件1 路径/到/源文件2 ...}} {{路径/到/目标目录}}",
+    "content": "install {{[-o|--owner]}} {{用户}} {{路径/到/源文件1 路径/到/源文件2 ...}} {{路径/到/目标目录}}",
     "group": "通用工具 (Common)",
     "description": "install: 复制文件并设置属性。 将文件（通常是可执行文件）复制到系统位置，如 `/usr/local/bin`，并赋予它们适当的权限或所有权。 (复制文件到目标目录，并设置其所有权)",
     "tags": [
@@ -14538,7 +14538,7 @@
     "id": "tldr-zh-common-install-2",
     "type": "command",
     "title": "install - 复制文件到目标目录，并设置其所属组",
-    "content": "install --group {{用户组}} {{路径/到/源文件1 路径/到/源文件2 ...}} {{路径/到/目标目录}}",
+    "content": "install {{[-g|--group]}} {{用户组}} {{路径/到/源文件1 路径/到/源文件2 ...}} {{路径/到/目标目录}}",
     "group": "通用工具 (Common)",
     "description": "install: 复制文件并设置属性。 将文件（通常是可执行文件）复制到系统位置，如 `/usr/local/bin`，并赋予它们适当的权限或所有权。 (复制文件到目标目录，并设置其所属组)",
     "tags": [
@@ -14553,7 +14553,7 @@
     "id": "tldr-zh-common-install-3",
     "type": "command",
     "title": "install - 复制文件到目标目录，并设置其权限",
-    "content": "install --mode {{+x}} {{路径/到/源文件1 路径/到/源文件2 ...}} {{路径/到/目标目录}}",
+    "content": "install {{[-m|--mode]}} {{+x}} {{路径/到/源文件1 路径/到/源文件2 ...}} {{路径/到/目标目录}}",
     "group": "通用工具 (Common)",
     "description": "install: 复制文件并设置属性。 将文件（通常是可执行文件）复制到系统位置，如 `/usr/local/bin`，并赋予它们适当的权限或所有权。 (复制文件到目标目录，并设置其权限)",
     "tags": [
@@ -14568,7 +14568,7 @@
     "id": "tldr-zh-common-install-4",
     "type": "command",
     "title": "install - 复制文件到目标目录，保留访问时间和修改时间",
-    "content": "install --preserve-timestamps {{路径/到/源文件1 路径/到/源文件2 ...}} {{路径/到/目标目录}}",
+    "content": "install {{[-p|--preserve-timestamps]}} {{路径/到/源文件1 路径/到/源文件2 ...}} {{路径/到/目标目录}}",
     "group": "通用工具 (Common)",
     "description": "install: 复制文件并设置属性。 将文件（通常是可执行文件）复制到系统位置，如 `/usr/local/bin`，并赋予它们适当的权限或所有权。 (复制文件到目标目录，保留访问时间和修改时间)",
     "tags": [
@@ -17889,6 +17889,126 @@
     "tags": [
       "common",
       "ack",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-eza-0",
+    "type": "command",
+    "title": "eza - 每行列出一个文件",
+    "content": "eza {{[-1|--oneline]}}",
+    "group": "通用工具 (Common)",
+    "description": "eza: 基于 `exa` 构建的现代化、持续维护的 `ls` 替代品。 (每行列出一个文件)",
+    "tags": [
+      "common",
+      "eza",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-eza-1",
+    "type": "command",
+    "title": "eza - 列出所有文件，包括隐藏文件",
+    "content": "eza {{[-a|--all]}}",
+    "group": "通用工具 (Common)",
+    "description": "eza: 基于 `exa` 构建的现代化、持续维护的 `ls` 替代品。 (列出所有文件，包括隐藏文件)",
+    "tags": [
+      "common",
+      "eza",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-eza-2",
+    "type": "command",
+    "title": "eza - 以长格式列出所有文件（包含权限、所有者、大小和修改日期）",
+    "content": "eza {{[-al|--all --long]}}",
+    "group": "通用工具 (Common)",
+    "description": "eza: 基于 `exa` 构建的现代化、持续维护的 `ls` 替代品。 (以长格式列出所有文件（包含权限、所有者、大小和修改日期）)",
+    "tags": [
+      "common",
+      "eza",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-eza-3",
+    "type": "command",
+    "title": "eza - 列出文件，最大的排在最上面",
+    "content": "eza {{[-r|--reverse]}} {{[-s|--sort]}} {{size}}",
+    "group": "通用工具 (Common)",
+    "description": "eza: 基于 `exa` 构建的现代化、持续维护的 `ls` 替代品。 (列出文件，最大的排在最上面)",
+    "tags": [
+      "common",
+      "eza",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-eza-4",
+    "type": "command",
+    "title": "eza - 显示文件树，深度为三层",
+    "content": "eza {{[-lT|--long --tree]}} {{[-L|--level]}} {{3}}",
+    "group": "通用工具 (Common)",
+    "description": "eza: 基于 `exa` 构建的现代化、持续维护的 `ls` 替代品。 (显示文件树，深度为三层)",
+    "tags": [
+      "common",
+      "eza",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-eza-5",
+    "type": "command",
+    "title": "eza - 按修改日期排序列出文件（从最旧的开始）",
+    "content": "eza {{[-l|--long]}} {{[-s|--sort]}} {{modified}}",
+    "group": "通用工具 (Common)",
+    "description": "eza: 基于 `exa` 构建的现代化、持续维护的 `ls` 替代品。 (按修改日期排序列出文件（从最旧的开始）)",
+    "tags": [
+      "common",
+      "eza",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-eza-6",
+    "type": "command",
+    "title": "eza - 列出文件及其表头、图标和 Git 状态",
+    "content": "eza {{[-lh|--long --header]}} --icons --git",
+    "group": "通用工具 (Common)",
+    "description": "eza: 基于 `exa` 构建的现代化、持续维护的 `ls` 替代品。 (列出文件及其表头、图标和 Git 状态)",
+    "tags": [
+      "common",
+      "eza",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-eza-7",
+    "type": "command",
+    "title": "eza - 不列出 `.gitignore` 中提到的文件",
+    "content": "eza --git-ignore",
+    "group": "通用工具 (Common)",
+    "description": "eza: 基于 `exa` 构建的现代化、持续维护的 `ls` 替代品。 (不列出 `.gitignore` 中提到的文件)",
+    "tags": [
+      "common",
+      "eza",
       "tldr",
       "zh"
     ],
@@ -26793,9 +26913,9 @@
     "id": "tldr-zh-common-fd-0",
     "type": "command",
     "title": "fd - 在当前目录中递归查找匹配特定模式的文件",
-    "content": "fd \"{{字符串|正则表达式}}\"",
+    "content": "fd \"{{正则表达式}}\"",
     "group": "通用工具 (Common)",
-    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`。 (在当前目录中递归查找匹配特定模式的文件)",
+    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`, `regex`。 (在当前目录中递归查找匹配特定模式的文件)",
     "tags": [
       "common",
       "fd",
@@ -26807,10 +26927,10 @@
   {
     "id": "tldr-zh-common-fd-1",
     "type": "command",
-    "title": "fd - 查找以特定字符串开头的文件",
-    "content": "fd \"{{^字符串}}\"",
+    "title": "fd - 在特定目录中查找文件",
+    "content": "fd \"{{正则表达式}}\" {{路径/到/文件}}",
     "group": "通用工具 (Common)",
-    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`。 (查找以特定字符串开头的文件)",
+    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`, `regex`。 (在特定目录中查找文件)",
     "tags": [
       "common",
       "fd",
@@ -26825,7 +26945,7 @@
     "title": "fd - 查找具有特定扩展名的文件",
     "content": "fd {{[-e|--extension]}} {{扩展名}}",
     "group": "通用工具 (Common)",
-    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`。 (查找具有特定扩展名的文件)",
+    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`, `regex`。 (查找具有特定扩展名的文件)",
     "tags": [
       "common",
       "fd",
@@ -26837,10 +26957,10 @@
   {
     "id": "tldr-zh-common-fd-3",
     "type": "command",
-    "title": "fd - 在特定目录中查找文件",
-    "content": "fd \"{{字符串|正则表达式}}\" {{路径/到/目录}}",
+    "title": "fd - 仅查找匹配特定模式的文件夹",
+    "content": "fd \"{{正则表达式}}\" {{[-t|--type]}} {{[d|directory]}}",
     "group": "通用工具 (Common)",
-    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`。 (在特定目录中查找文件)",
+    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`, `regex`。 (仅查找匹配特定模式的文件夹)",
     "tags": [
       "common",
       "fd",
@@ -26853,9 +26973,9 @@
     "id": "tldr-zh-common-fd-4",
     "type": "command",
     "title": "fd - 在搜索中包含被忽略和隐藏的文件",
-    "content": "fd {{[-H|--hidden]}} {{[-I|--no-ignore]}} \"{{字符串|正则表达式}}\"",
+    "content": "fd \"{{正则表达式}}\" {{[-H|--hidden]}} {{[-I|--no-ignore]}}",
     "group": "通用工具 (Common)",
-    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`。 (在搜索中包含被忽略和隐藏的文件)",
+    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`, `regex`。 (在搜索中包含被忽略和隐藏的文件)",
     "tags": [
       "common",
       "fd",
@@ -26868,9 +26988,9 @@
     "id": "tldr-zh-common-fd-5",
     "type": "command",
     "title": "fd - 排除匹配特定通配符（glob）模式的文件",
-    "content": "fd {{字符串}} {{[-E|--exclude]}} {{通配符}}",
+    "content": "fd \"{{正则表达式}}\" {{[-E|--exclude]}} {{通配符}}",
     "group": "通用工具 (Common)",
-    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`。 (排除匹配特定通配符（glob）模式的文件)",
+    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`, `regex`。 (排除匹配特定通配符（glob）模式的文件)",
     "tags": [
       "common",
       "fd",
@@ -26883,9 +27003,9 @@
     "id": "tldr-zh-common-fd-6",
     "type": "command",
     "title": "fd - 对每个返回的搜索结果执行命令",
-    "content": "fd \"{{字符串|正则表达式}}\" {{[-x|--exec]}} {{命令}}",
+    "content": "fd \"{{正则表达式}}\" {{[-x|--exec]}} {{命令}}",
     "group": "通用工具 (Common)",
-    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`。 (对每个返回的搜索结果执行命令)",
+    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`, `regex`。 (对每个返回的搜索结果执行命令)",
     "tags": [
       "common",
       "fd",
@@ -26898,9 +27018,9 @@
     "id": "tldr-zh-common-fd-7",
     "type": "command",
     "title": "fd - 仅在当前目录中查找文件",
-    "content": "fd {{[-d|--max-depth]}} 1 \"{{字符串|正则表达式}}\"",
+    "content": "fd \"{{正则表达式}}\" {{[-d|--max-depth]}} 1",
     "group": "通用工具 (Common)",
-    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`。 (仅在当前目录中查找文件)",
+    "description": "fd: 在文件系统中查找条目。 另请参阅：`find`, `regex`。 (仅在当前目录中查找文件)",
     "tags": [
       "common",
       "fd",
@@ -43143,7 +43263,7 @@
     "id": "tldr-zh-common-unexpand-2",
     "type": "command",
     "title": "unexpand - 转换所有空格，而不仅仅是开头的空格",
-    "content": "unexpand -a {{路径/到/文件}}",
+    "content": "unexpand {{[-a|--all]}} {{路径/到/文件}}",
     "group": "通用工具 (Common)",
     "description": "unexpand: 将空格转换为制表符。 (转换所有空格，而不仅仅是开头的空格)",
     "tags": [
@@ -43173,7 +43293,7 @@
     "id": "tldr-zh-common-unexpand-4",
     "type": "command",
     "title": "unexpand - 将制表符间隔设置为某个字符数，而不是 8（启用 -a）",
-    "content": "unexpand -t {{数量}} {{路径/到/文件}}",
+    "content": "unexpand {{[-t|--tabs]}} {{数量}} {{路径/到/文件}}",
     "group": "通用工具 (Common)",
     "description": "unexpand: 将空格转换为制表符。 (将制表符间隔设置为某个字符数，而不是 8（启用 -a）)",
     "tags": [
@@ -46743,7 +46863,7 @@
     "id": "tldr-zh-common-killall-1",
     "type": "command",
     "title": "killall - 列出可用的信号名称（使用时无需加 `SIG` 前缀）",
-    "content": "killall -l",
+    "content": "killall {{[-l|--list]}}",
     "group": "通用工具 (Common)",
     "description": "killall: 根据进程名称向所有实例发送终止信号（必须是精确的进程名称）。 除了 SIGKILL 和 SIGSTOP，所有信号都可以被进程拦截，从而实现正常退出。 (列出可用的信号名称（使用时无需加 `SIG` 前缀）)",
     "tags": [
@@ -46758,7 +46878,7 @@
     "id": "tldr-zh-common-killall-2",
     "type": "command",
     "title": "killall - 交互式地询问确认后再终止进程",
-    "content": "killall -i {{进程名称}}",
+    "content": "killall {{[-i|--interactive]}} {{进程名称}}",
     "group": "通用工具 (Common)",
     "description": "killall: 根据进程名称向所有实例发送终止信号（必须是精确的进程名称）。 除了 SIGKILL 和 SIGSTOP，所有信号都可以被进程拦截，从而实现正常退出。 (交互式地询问确认后再终止进程)",
     "tags": [
@@ -50133,7 +50253,7 @@
     "id": "tldr-zh-common-quota-0",
     "type": "command",
     "title": "quota - 以人类可读的单位显示当前用户的磁盘配额",
-    "content": "quota -s",
+    "content": "quota {{[-s|--human-readable]}}",
     "group": "通用工具 (Common)",
     "description": "quota: 显示用户的磁盘空间使用情况和分配限制。 (以人类可读的单位显示当前用户的磁盘配额)",
     "tags": [
@@ -50148,7 +50268,7 @@
     "id": "tldr-zh-common-quota-1",
     "type": "command",
     "title": "quota - 详细输出（同时显示未分配存储的文件系统上的配额）",
-    "content": "quota -v",
+    "content": "quota {{[-v|--verbose]}}",
     "group": "通用工具 (Common)",
     "description": "quota: 显示用户的磁盘空间使用情况和分配限制。 (详细输出（同时显示未分配存储的文件系统上的配额）)",
     "tags": [
@@ -50163,7 +50283,7 @@
     "id": "tldr-zh-common-quota-2",
     "type": "command",
     "title": "quota - 安静输出（仅显示使用超过配额的文件系统上的配额）",
-    "content": "quota -q",
+    "content": "quota {{[-q|--quiet]}}",
     "group": "通用工具 (Common)",
     "description": "quota: 显示用户的磁盘空间使用情况和分配限制。 (安静输出（仅显示使用超过配额的文件系统上的配额）)",
     "tags": [
@@ -50178,7 +50298,7 @@
     "id": "tldr-zh-common-quota-3",
     "type": "command",
     "title": "quota - 打印当前用户所属组的配额",
-    "content": "quota -g",
+    "content": "quota {{[-g|--group]}}",
     "group": "通用工具 (Common)",
     "description": "quota: 显示用户的磁盘空间使用情况和分配限制。 (打印当前用户所属组的配额)",
     "tags": [
@@ -50193,7 +50313,7 @@
     "id": "tldr-zh-common-quota-4",
     "type": "command",
     "title": "quota - 显示其他用户的磁盘配额",
-    "content": "sudo quota -u {{用户名}}",
+    "content": "sudo quota {{[-u|--user]}} {{用户名}}",
     "group": "通用工具 (Common)",
     "description": "quota: 显示用户的磁盘空间使用情况和分配限制。 (显示其他用户的磁盘配额)",
     "tags": [
@@ -51078,7 +51198,7 @@
     "id": "tldr-zh-common-mv-7",
     "type": "command",
     "title": "mv - 指定目标目录，以便使用外部工具来收集可移动的文件",
-    "content": "{{find /var/log -type f -name '*.log' -print0}} | {{xargs -0}} mv --target-directory {{路径/到/目标目录}}",
+    "content": "{{find /var/log -type f -name '*.log' -print0}} | {{xargs -0}} mv {{[-t|--target-directory]}} {{路径/到/目标目录}}",
     "group": "通用工具 (Common)",
     "description": "mv: 移动或重命名文件或目录。 (指定目标目录，以便使用外部工具来收集可移动的文件)",
     "tags": [
@@ -51948,7 +52068,7 @@
     "id": "tldr-zh-common-md5sum-3",
     "type": "command",
     "title": "md5sum - 读取包含 MD5 校验和和文件名的文件，并验证所有文件的校验和是否匹配",
-    "content": "md5sum --check {{路径/到/文件.md5}}",
+    "content": "md5sum {{[-c|--check]}} {{路径/到/文件.md5}}",
     "group": "通用工具 (Common)",
     "description": "md5sum: 计算 MD5 加密校验和。 (读取包含 MD5 校验和和文件名的文件，并验证所有文件的校验和是否匹配)",
     "tags": [
@@ -51963,7 +52083,7 @@
     "id": "tldr-zh-common-md5sum-4",
     "type": "command",
     "title": "md5sum - 仅在文件丢失或验证失败时显示消息",
-    "content": "md5sum --check --quiet {{路径/到/文件.md5}}",
+    "content": "md5sum {{[-c|--check]}} --quiet {{路径/到/文件.md5}}",
     "group": "通用工具 (Common)",
     "description": "md5sum: 计算 MD5 加密校验和。 (仅在文件丢失或验证失败时显示消息)",
     "tags": [
@@ -51978,7 +52098,7 @@
     "id": "tldr-zh-common-md5sum-5",
     "type": "command",
     "title": "md5sum - 仅在验证失败时显示消息，忽略丢失的文件",
-    "content": "md5sum --ignore-missing --check --quiet {{路径/到/文件.md5}}",
+    "content": "md5sum --ignore-missing {{[-c|--check]}} --quiet {{路径/到/文件.md5}}",
     "group": "通用工具 (Common)",
     "description": "md5sum: 计算 MD5 加密校验和。 (仅在验证失败时显示消息，忽略丢失的文件)",
     "tags": [
@@ -51993,7 +52113,7 @@
     "id": "tldr-zh-common-md5sum-6",
     "type": "command",
     "title": "md5sum - 检查已知文件的 MD5 校验和",
-    "content": "echo {{已知的文件的_md5_校验和}} {{路径/到/文件}} | md5sum --check",
+    "content": "echo {{已知的文件的_md5_校验和}} {{路径/到/文件}} | md5sum {{[-c|--check]}}",
     "group": "通用工具 (Common)",
     "description": "md5sum: 计算 MD5 加密校验和。 (检查已知文件的 MD5 校验和)",
     "tags": [
@@ -52383,7 +52503,7 @@
     "id": "tldr-zh-common-paste-0",
     "type": "command",
     "title": "paste - 将所有行合并为一行，使用 tab 作为分隔符",
-    "content": "paste -s {{路径/到/文件}}",
+    "content": "paste {{[-s|--serial]}} {{路径/到/文件}}",
     "group": "通用工具 (Common)",
     "description": "paste: 合并文件行。 (将所有行合并为一行，使用 tab 作为分隔符)",
     "tags": [
@@ -52398,7 +52518,7 @@
     "id": "tldr-zh-common-paste-1",
     "type": "command",
     "title": "paste - 使用指定的分隔符将所有行合并为一行",
-    "content": "paste -s -d {{分隔符}} {{路径/到/文件}}",
+    "content": "paste {{[-s|--serial]}} {{[-d|--delimiters]}} {{分隔符}} {{路径/到/文件}}",
     "group": "通用工具 (Common)",
     "description": "paste: 合并文件行。 (使用指定的分隔符将所有行合并为一行)",
     "tags": [
@@ -52428,7 +52548,7 @@
     "id": "tldr-zh-common-paste-3",
     "type": "command",
     "title": "paste - 并排合并两个文件，每个文件以指定的分隔符分隔为单独的列",
-    "content": "paste -d {{分隔符}} {{路径/到/文件1}} {{路径/到/文件2}}",
+    "content": "paste {{[-d|--delimiters]}} {{分隔符}} {{路径/到/文件1}} {{路径/到/文件2}}",
     "group": "通用工具 (Common)",
     "description": "paste: 合并文件行。 (并排合并两个文件，每个文件以指定的分隔符分隔为单独的列)",
     "tags": [
@@ -52443,7 +52563,7 @@
     "id": "tldr-zh-common-paste-4",
     "type": "command",
     "title": "paste - 将两个文件中的所有行，交替合并",
-    "content": "paste -d '\\n' {{路径/到/文件1}} {{路径/到/文件2}}",
+    "content": "paste {{[-d|--delimiters]}} '\\n' {{路径/到/文件1}} {{路径/到/文件2}}",
     "group": "通用工具 (Common)",
     "description": "paste: 合并文件行。 (将两个文件中的所有行，交替合并)",
     "tags": [
@@ -53055,6 +53175,126 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-exa-0",
+    "type": "command",
+    "title": "exa - 每行列出一个文件",
+    "content": "exa {{[-1|--oneline]}}",
+    "group": "通用工具 (Common)",
+    "description": "exa: `ls` 的现代替代品（列出目录内容）。 注意：`exa` 已不再维护。请改用 `eza`。 另请参阅：`eza`。 (每行列出一个文件)",
+    "tags": [
+      "common",
+      "exa",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-exa-1",
+    "type": "command",
+    "title": "exa - 列出所有文件，包括隐藏文件",
+    "content": "exa {{[-a|--all]}}",
+    "group": "通用工具 (Common)",
+    "description": "exa: `ls` 的现代替代品（列出目录内容）。 注意：`exa` 已不再维护。请改用 `eza`。 另请参阅：`eza`。 (列出所有文件，包括隐藏文件)",
+    "tags": [
+      "common",
+      "exa",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-exa-2",
+    "type": "command",
+    "title": "exa - 以长格式列出所有文件（包含权限、所有者、大小和修改日期）",
+    "content": "exa {{[-l|--long]}} {{[-a|--all]}}",
+    "group": "通用工具 (Common)",
+    "description": "exa: `ls` 的现代替代品（列出目录内容）。 注意：`exa` 已不再维护。请改用 `eza`。 另请参阅：`eza`。 (以长格式列出所有文件（包含权限、所有者、大小和修改日期）)",
+    "tags": [
+      "common",
+      "exa",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-exa-3",
+    "type": "command",
+    "title": "exa - 列出文件，最大的排在最上面",
+    "content": "exa {{[-r|--reverse]}} {{[-s|--sort]}} {{size}}",
+    "group": "通用工具 (Common)",
+    "description": "exa: `ls` 的现代替代品（列出目录内容）。 注意：`exa` 已不再维护。请改用 `eza`。 另请参阅：`eza`。 (列出文件，最大的排在最上面)",
+    "tags": [
+      "common",
+      "exa",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-exa-4",
+    "type": "command",
+    "title": "exa - 显示文件树，深度为三层",
+    "content": "exa {{[-l|--long]}} {{[-T|--tree]}} {{[-L|--level]}} {{3}}",
+    "group": "通用工具 (Common)",
+    "description": "exa: `ls` 的现代替代品（列出目录内容）。 注意：`exa` 已不再维护。请改用 `eza`。 另请参阅：`eza`。 (显示文件树，深度为三层)",
+    "tags": [
+      "common",
+      "exa",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-exa-5",
+    "type": "command",
+    "title": "exa - 按修改日期排序列出文件（从最旧的开始）",
+    "content": "exa {{[-l|--long]}} {{[-s|--sort]}} {{modified}}",
+    "group": "通用工具 (Common)",
+    "description": "exa: `ls` 的现代替代品（列出目录内容）。 注意：`exa` 已不再维护。请改用 `eza`。 另请参阅：`eza`。 (按修改日期排序列出文件（从最旧的开始）)",
+    "tags": [
+      "common",
+      "exa",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-exa-6",
+    "type": "command",
+    "title": "exa - 列出文件及其表头、图标和 Git 状态",
+    "content": "exa {{[-l|--long]}} {{[-h|--header]}} --icons --git",
+    "group": "通用工具 (Common)",
+    "description": "exa: `ls` 的现代替代品（列出目录内容）。 注意：`exa` 已不再维护。请改用 `eza`。 另请参阅：`eza`。 (列出文件及其表头、图标和 Git 状态)",
+    "tags": [
+      "common",
+      "exa",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-exa-7",
+    "type": "command",
+    "title": "exa - 不列出 `.gitignore` 中提到的文件",
+    "content": "exa --git-ignore",
+    "group": "通用工具 (Common)",
+    "description": "exa: `ls` 的现代替代品（列出目录内容）。 注意：`exa` 已不再维护。请改用 `eza`。 另请参阅：`eza`。 (不列出 `.gitignore` 中提到的文件)",
+    "tags": [
+      "common",
+      "exa",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-xml-xmln-0",
     "type": "command",
     "title": "xml-xmln - 查看原命令的文档",
@@ -53223,7 +53463,7 @@
     "id": "tldr-zh-common-oathtool-0",
     "type": "command",
     "title": "oathtool - 生成 TOTP 令牌（行为类似于 Google Authenticator）",
-    "content": "oathtool --totp --base32 \"{{密码}}\"",
+    "content": "oathtool --totp {{[-b|--base32]}} \"{{密码}}\"",
     "group": "通用工具 (Common)",
     "description": "oathtool: OATH 一次性密码工具。 (生成 TOTP 令牌（行为类似于 Google Authenticator）)",
     "tags": [
@@ -53238,7 +53478,7 @@
     "id": "tldr-zh-common-oathtool-1",
     "type": "command",
     "title": "oathtool - 根据给定时间产生特定的 TOTP 令牌",
-    "content": "oathtool --totp --now \"{{2004-02-29 16:21:42}}\" --base32 \"{{密码}}\"",
+    "content": "oathtool --totp {{[-N|--now]}} \"{{2004-02-29 16:21:42}}\" {{[-b|--base32]}} \"{{密码}}\"",
     "group": "通用工具 (Common)",
     "description": "oathtool: OATH 一次性密码工具。 (根据给定时间产生特定的 TOTP 令牌)",
     "tags": [
@@ -53253,7 +53493,7 @@
     "id": "tldr-zh-common-oathtool-2",
     "type": "command",
     "title": "oathtool - 验证 TOTP 令牌",
-    "content": "oathtool --totp --base32 \"{{密码}}\" \"{{令牌}}\"",
+    "content": "oathtool --totp {{[-b|--base32]}} \"{{密码}}\" \"{{令牌}}\"",
     "group": "通用工具 (Common)",
     "description": "oathtool: OATH 一次性密码工具。 (验证 TOTP 令牌)",
     "tags": [

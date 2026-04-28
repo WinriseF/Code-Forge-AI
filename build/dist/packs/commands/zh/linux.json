@@ -6168,7 +6168,7 @@
     "id": "tldr-zh-linux-ul-1",
     "type": "command",
     "title": "ul - 用由破折号组成的下划线显示文件的内容 `-`",
-    "content": "ul -i {{文件路径}}",
+    "content": "ul {{[-i|--indicated]}} {{文件路径}}",
     "group": "Linux 运维",
     "description": "ul: 执行文本的下划线。 给定字符串中的每个字符必须单独加下划线。 (用由破折号组成的下划线显示文件的内容 `-`)",
     "tags": [

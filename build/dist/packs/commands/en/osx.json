@@ -12348,7 +12348,7 @@
     "id": "tldr-en-osx-arch-1",
     "type": "command",
     "title": "arch - Run a command using x86_64",
-    "content": "arch -x86_64 \"{{command}}\"",
+    "content": "arch -x86_64 {{command}} {{argument1 argument2 ...}}",
     "group": "macOS",
     "description": "arch: Display the name of the system architecture, or run a command under a different architecture. (Run a command using x86_64)",
     "tags": [
@@ -12362,10 +12362,10 @@
   {
     "id": "tldr-en-osx-arch-2",
     "type": "command",
-    "title": "arch - Run a command using arm",
-    "content": "arch -arm64 \"{{command}}\"",
+    "title": "arch - Run a command using ARM",
+    "content": "arch -arm64 {{command}} {{argument1 argument2 ...}}",
     "group": "macOS",
-    "description": "arch: Display the name of the system architecture, or run a command under a different architecture. (Run a command using arm)",
+    "description": "arch: Display the name of the system architecture, or run a command under a different architecture. (Run a command using ARM)",
     "tags": [
       "osx",
       "arch",

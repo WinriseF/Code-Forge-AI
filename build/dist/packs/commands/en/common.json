@@ -301325,7 +301325,7 @@
     "title": "exa - List files one per line",
     "content": "exa {{[-1|--oneline]}}",
     "group": "Common Tools",
-    "description": "exa: A modern replacement for `ls` (List directory contents). (List files one per line)",
+    "description": "exa: A modern replacement for `ls` (List directory contents). Note: `exa` is no longer maintained. Use `eza` instead. (List files one per line)",
     "tags": [
       "common",
       "exa",
@@ -301340,7 +301340,7 @@
     "title": "exa - List all files, including hidden files",
     "content": "exa {{[-a|--all]}}",
     "group": "Common Tools",
-    "description": "exa: A modern replacement for `ls` (List directory contents). (List all files, including hidden files)",
+    "description": "exa: A modern replacement for `ls` (List directory contents). Note: `exa` is no longer maintained. Use `eza` instead. (List all files, including hidden files)",
     "tags": [
       "common",
       "exa",
@@ -301355,7 +301355,7 @@
     "title": "exa - Long format list (permissions, ownership, size, and modification date) of all files",
     "content": "exa {{[-l|--long]}} {{[-a|--all]}}",
     "group": "Common Tools",
-    "description": "exa: A modern replacement for `ls` (List directory contents). (Long format list (permissions, ownership, size, and modification date) of all files)",
+    "description": "exa: A modern replacement for `ls` (List directory contents). Note: `exa` is no longer maintained. Use `eza` instead. (Long format list (permissions, ownership, size, and modification date) of all files)",
     "tags": [
       "common",
       "exa",
@@ -301370,7 +301370,7 @@
     "title": "exa - List files with the largest at the top",
     "content": "exa {{[-r|--reverse]}} {{[-s|--sort]}} {{size}}",
     "group": "Common Tools",
-    "description": "exa: A modern replacement for `ls` (List directory contents). (List files with the largest at the top)",
+    "description": "exa: A modern replacement for `ls` (List directory contents). Note: `exa` is no longer maintained. Use `eza` instead. (List files with the largest at the top)",
     "tags": [
       "common",
       "exa",
@@ -301385,7 +301385,7 @@
     "title": "exa - Display a tree of files, three levels deep",
     "content": "exa {{[-l|--long]}} {{[-T|--tree]}} {{[-L|--level]}} {{3}}",
     "group": "Common Tools",
-    "description": "exa: A modern replacement for `ls` (List directory contents). (Display a tree of files, three levels deep)",
+    "description": "exa: A modern replacement for `ls` (List directory contents). Note: `exa` is no longer maintained. Use `eza` instead. (Display a tree of files, three levels deep)",
     "tags": [
       "common",
       "exa",
@@ -301400,7 +301400,7 @@
     "title": "exa - List files sorted by modification date (oldest first)",
     "content": "exa {{[-l|--long]}} {{[-s|--sort]}} {{modified}}",
     "group": "Common Tools",
-    "description": "exa: A modern replacement for `ls` (List directory contents). (List files sorted by modification date (oldest first))",
+    "description": "exa: A modern replacement for `ls` (List directory contents). Note: `exa` is no longer maintained. Use `eza` instead. (List files sorted by modification date (oldest first))",
     "tags": [
       "common",
       "exa",
@@ -301415,7 +301415,7 @@
     "title": "exa - List files with their headers, icons, and Git statuses",
     "content": "exa {{[-l|--long]}} {{[-h|--header]}} --icons --git",
     "group": "Common Tools",
-    "description": "exa: A modern replacement for `ls` (List directory contents). (List files with their headers, icons, and Git statuses)",
+    "description": "exa: A modern replacement for `ls` (List directory contents). Note: `exa` is no longer maintained. Use `eza` instead. (List files with their headers, icons, and Git statuses)",
     "tags": [
       "common",
       "exa",
@@ -301430,7 +301430,7 @@
     "title": "exa - Don't list files mentioned in `.gitignore`",
     "content": "exa --git-ignore",
     "group": "Common Tools",
-    "description": "exa: A modern replacement for `ls` (List directory contents). (Don't list files mentioned in `.gitignore`)",
+    "description": "exa: A modern replacement for `ls` (List directory contents). Note: `exa` is no longer maintained. Use `eza` instead. (Don't list files mentioned in `.gitignore`)",
     "tags": [
       "common",
       "exa",

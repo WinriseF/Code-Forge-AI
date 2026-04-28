@@ -1,5 +1,5 @@
 {
-  "updated_at": 1777301917871,
+  "updated_at": 1777377179987,
   "version": "2.1.0",
   "packages": [
     {
@@ -95,9 +95,9 @@
       "language": "zh",
       "platform": "common",
       "name": "通用工具 (Common) (ZH)",
-      "description": "Contains 3620 zh commands for common.",
-      "count": 3620,
-      "size_kb": 1764,
+      "description": "Contains 3636 zh commands for common.",
+      "count": 3636,
+      "size_kb": 1773,
       "url": "packs/commands/zh/common.json",
       "category": "command"
     },
@@ -183,8 +183,8 @@
       "language": "en",
       "platform": "linux",
       "name": "Linux Ops (EN)",
-      "description": "Contains 8000 en commands for linux.",
-      "count": 8000,
+      "description": "Contains 8001 en commands for linux.",
+      "count": 8001,
       "size_kb": 3780,
       "url": "packs/commands/en/linux.json",
       "category": "command"
@@ -238,9 +238,9 @@
       "language": "en",
       "platform": "llm",
       "name": "ChatGPT Prompts (English)",
-      "description": "Collection of 1712 role-play prompts.",
-      "count": 1712,
-      "size_kb": 5106.77,
+      "description": "Collection of 1717 role-play prompts.",
+      "count": 1717,
+      "size_kb": 5119.94,
       "url": "packs/prompts/en/roles.json",
       "category": "prompt"
     },
@@ -251,30 +251,52 @@
       "name": "中文角色扮演精选",
       "description": "Collection of 124 role-play prompts.",
       "count": 124,
-      "size_kb": 96.5,
+      "size_kb": 95.58,
       "url": "packs/prompts/zh/roles.json",
       "category": "prompt"
     },
     {
       "id": "en-image2",
       "language": "en",
-      "platform": "llm",
+      "platform": "image",
       "name": "Awesome GPT Image 2 Prompts",
       "description": "Collection of 126 GPT Image 2 prompts.",
       "count": 126,
-      "size_kb": 266.03,
+      "size_kb": 273.56,
       "url": "packs/prompts/en/image2.json",
       "category": "prompt"
     },
     {
       "id": "zh-image2",
       "language": "zh",
-      "platform": "llm",
+      "platform": "image",
       "name": "GPT Image 2 提示词精选",
       "description": "Collection of 126 GPT Image 2 prompts.",
       "count": 126,
-      "size_kb": 250.74,
+      "size_kb": 261.83,
       "url": "packs/prompts/zh/image2.json",
+      "category": "prompt"
+    },
+    {
+      "id": "en-seedance2",
+      "language": "en",
+      "platform": "video",
+      "name": "Awesome Seedance 2.0 Video Prompts",
+      "description": "Collection of 106 Seedance 2.0 video-generation prompts.",
+      "count": 106,
+      "size_kb": 223.09,
+      "url": "packs/prompts/en/seedance2.json",
+      "category": "prompt"
+    },
+    {
+      "id": "zh-seedance2",
+      "language": "zh",
+      "platform": "video",
+      "name": "Seedance 2.0 视频提示词精选",
+      "description": "Collection of 106 Seedance 2.0 video-generation prompts.",
+      "count": 106,
+      "size_kb": 216.81,
+      "url": "packs/prompts/zh/seedance2.json",
       "category": "prompt"
     },
     {
