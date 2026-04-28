@@ -715,7 +715,7 @@ def fetch_youmind_prompt_api(config):
         if total_pages and page > int(total_pages):
             break
 
-        time.sleep(0.2)
+        time.sleep(6)
 
     return all_items
 

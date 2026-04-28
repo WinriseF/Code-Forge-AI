@@ -46,7 +46,9 @@ jobs:
 
       # 6. 运行 Prompt 构建脚本 (生成 prompts-*.json 和 manifest_prompts_partial.json)
       - name: Build Prompts (Roles)
-        run: python build/build_prompts.py
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: python -u build/build_prompts.py
 
       # 7. ✨ 核心步骤：合并清单 (Merge Manifests)
       # 这段 Python 脚本会扫描所有 *_partial.json 并合并为最终的 manifest.json
