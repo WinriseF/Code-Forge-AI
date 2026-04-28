@@ -6,6 +6,8 @@ import time
 import re
 import requests
 import sys
+import subprocess
+import platform
 
 try:
     csv.field_size_limit(sys.maxsize)
@@ -38,9 +40,11 @@ SOURCES = {
         "tags": ["roleplay"],
     },
     "en_image2": {
-        "url": "https://raw.githubusercontent.com/YouMind-OpenLab/awesome-gpt-image-2/main/README.md",
-        "format": "markdown_prompt_readme",
+        "url": "https://youmind.com/youhome-api/prompts",
+        "format": "youmind_prompt_api",
         "lang": "en",
+        "locale": "en-US",
+        "model": "gpt-image-2",
         "name": "Awesome GPT Image 2 Prompts",
         "filename": "image2.json",
         "id_suffix": "image2",
@@ -49,11 +53,15 @@ SOURCES = {
         "pack_description": "Collection of {count} GPT Image 2 prompts.",
         "tags": ["image2", "gpt-image-2", "image-generation"],
         "default_group": "Creative",
+        "page_slug": "gpt-image-2-prompts",
+        "limit": 100,
     },
     "zh_image2": {
-        "url": "https://raw.githubusercontent.com/YouMind-OpenLab/awesome-gpt-image-2/main/README_zh.md",
-        "format": "markdown_prompt_readme",
+        "url": "https://youmind.com/youhome-api/prompts",
+        "format": "youmind_prompt_api",
         "lang": "zh",
+        "locale": "zh-CN",
+        "model": "gpt-image-2",
         "name": "GPT Image 2 提示词精选",
         "filename": "image2.json",
         "id_suffix": "image2",
@@ -62,11 +70,16 @@ SOURCES = {
         "pack_description": "Collection of {count} GPT Image 2 prompts.",
         "tags": ["image2", "gpt-image-2", "image-generation", "图像生成"],
         "default_group": "Creative",
+        "page_slug": "gpt-image-2-prompts",
+        "limit": 100,
     },
     "en_seedance2": {
-        "url": "https://raw.githubusercontent.com/YouMind-OpenLab/awesome-seedance-2-prompts/main/README.md",
-        "format": "markdown_prompt_readme",
+        "url": "https://youmind.com/youhome-api/video-prompts",
+        "format": "youmind_prompt_api",
         "lang": "en",
+        "locale": "en-US",
+        "model": "seedance-2.0",
+        "page_slug": "seedance-2-0-prompts",
         "name": "Awesome Seedance 2.0 Video Prompts",
         "filename": "seedance2.json",
         "id_suffix": "seedance2",
@@ -75,11 +88,15 @@ SOURCES = {
         "pack_description": "Collection of {count} Seedance 2.0 video-generation prompts.",
         "tags": ["seedance2", "seedance-2", "video-generation"],
         "default_group": "Creative",
+        "limit": 100,
     },
     "zh_seedance2": {
-        "url": "https://raw.githubusercontent.com/YouMind-OpenLab/awesome-seedance-2-prompts/main/README_zh.md",
-        "format": "markdown_prompt_readme",
+        "url": "https://youmind.com/youhome-api/video-prompts",
+        "format": "youmind_prompt_api",
         "lang": "zh",
+        "locale": "zh-CN",
+        "model": "seedance-2.0",
+        "page_slug": "seedance-2-0-prompts",
         "name": "Seedance 2.0 视频提示词精选",
         "filename": "seedance2.json",
         "id_suffix": "seedance2",
@@ -88,11 +105,15 @@ SOURCES = {
         "pack_description": "Collection of {count} Seedance 2.0 video-generation prompts.",
         "tags": ["seedance2", "seedance-2", "video-generation", "视频生成"],
         "default_group": "Creative",
+        "limit": 100,
     },
     "en_gemini3": {
-        "url": "https://raw.githubusercontent.com/YouMind-OpenLab/awesome-gemini-3-prompts/main/README.md",
-        "format": "markdown_prompt_readme",
+        "url": "https://youmind.com/youhome-api/prompts",
+        "format": "youmind_prompt_api",
         "lang": "en",
+        "locale": "en-US",
+        "model": "gemini-3-pro",
+        "page_slug": "gemini-3-prompts",
         "name": "Awesome Gemini 3 Prompts",
         "filename": "gemini3.json",
         "id_suffix": "gemini3",
@@ -101,11 +122,15 @@ SOURCES = {
         "pack_description": "Collection of {count} Gemini 3 prompts.",
         "tags": ["gemini3", "gemini-3", "llm", "multimodal"],
         "default_group": "Creative",
+        "limit": 100,
     },
     "zh_gemini3": {
-        "url": "https://raw.githubusercontent.com/YouMind-OpenLab/awesome-gemini-3-prompts/main/README_zh.md",
-        "format": "markdown_prompt_readme",
+        "url": "https://youmind.com/youhome-api/prompts",
+        "format": "youmind_prompt_api",
         "lang": "zh",
+        "locale": "zh-CN",
+        "model": "gemini-3-pro",
+        "page_slug": "gemini-3-prompts",
         "name": "Gemini 3 提示词精选",
         "filename": "gemini3.json",
         "id_suffix": "gemini3",
@@ -114,32 +139,43 @@ SOURCES = {
         "pack_description": "Collection of {count} Gemini 3 prompts.",
         "tags": ["gemini3", "gemini-3", "llm", "multimodal", "多模态"],
         "default_group": "Creative",
+        "limit": 100,
     },
     "en_nano_banana_pro": {
-        "url": "https://raw.githubusercontent.com/YouMind-OpenLab/awesome-nano-banana-pro-prompts/main/README.md",
-        "format": "markdown_prompt_readme",
+        "url": "https://youmind.com/youhome-api/prompts",
+        "format": "youmind_prompt_api",
         "lang": "en",
+        "locale": "en-US",
+        "model": "nano-banana-pro",
         "name": "Awesome Nano Banana Pro Prompts",
         "filename": "nano-banana-pro.json",
         "id_suffix": "nano-banana-pro",
         "platform": "image",
         "source": "awesome-nano-banana-pro-prompts",
+        "source_url": "https://github.com/YouMind-OpenLab/awesome-nano-banana-pro-prompts",
         "pack_description": "Collection of {count} Nano Banana Pro image-generation prompts.",
         "tags": ["nano-banana-pro", "image-generation", "google", "creative"],
         "default_group": "Creative",
+        "page_slug": "nano-banana-pro-prompts",
+        "limit": 100,
     },
     "zh_nano_banana_pro": {
-        "url": "https://raw.githubusercontent.com/YouMind-OpenLab/awesome-nano-banana-pro-prompts/main/README_zh.md",
-        "format": "markdown_prompt_readme",
+        "url": "https://youmind.com/youhome-api/prompts",
+        "format": "youmind_prompt_api",
         "lang": "zh",
+        "locale": "zh-CN",
+        "model": "nano-banana-pro",
         "name": "Nano Banana Pro 提示词精选",
         "filename": "nano-banana-pro.json",
         "id_suffix": "nano-banana-pro",
         "platform": "image",
         "source": "awesome-nano-banana-pro-prompts",
+        "source_url": "https://github.com/YouMind-OpenLab/awesome-nano-banana-pro-prompts",
         "pack_description": "Collection of {count} Nano Banana Pro image-generation prompts.",
         "tags": ["nano-banana-pro", "image-generation", "google", "creative", "图像生成"],
         "default_group": "Creative",
+        "page_slug": "nano-banana-pro-prompts",
+        "limit": 100,
     },
 }
 
@@ -407,45 +443,56 @@ def parse_markdown_prompt_readme(raw_data, config):
 
 def process_source(key, config):
     print(f"Downloading {config['name']}...")
-    try:
-        response = requests.get(config['url'], timeout=30)
-        response.raise_for_status()
-    except Exception as e:
-        print(f"Failed to download {key}: {e}")
-        return None
 
     prompts = []
-    raw_data = response.text
 
-    if config['format'] == 'csv':
-        reader = csv.DictReader(raw_data.splitlines())
-        for row in reader:
-            act = row.get('act', '').strip()
-            prompt_content = row.get('prompt', '').strip()
-            if act and prompt_content:
-                prompts.append({"act": act, "prompt": prompt_content})
-
-    elif config['format'] == 'json':
+    if config['format'] == 'youmind_prompt_api':
         try:
-            json_data = json.loads(raw_data)
-            for item in json_data:
-                prompts.append({
-                    "act": item.get('act', '').strip(),
-                    "prompt": item.get('prompt', '').strip(),
-                })
-        except json.JSONDecodeError:
-            print(f"JSON Decode Error for {key}")
+            api_items = fetch_youmind_prompt_api(config)
+            prompts = parse_youmind_prompt_items(api_items, config)
+        except Exception as e:
+            print(f"Failed to fetch YouMind API source {key}: {e}")
             return None
 
-    elif config['format'] == 'markdown_prompt_readme':
-        prompts = parse_markdown_prompt_readme(raw_data, config)
-
     else:
-        print(f"Unsupported format for {key}: {config['format']}")
-        return None
+        try:
+            response = requests.get(config['url'], timeout=30)
+            response.raise_for_status()
+        except Exception as e:
+            print(f"Failed to download {key}: {e}")
+            return None
+
+        raw_data = response.text
+
+        if config['format'] == 'csv':
+            reader = csv.DictReader(raw_data.splitlines())
+            for row in reader:
+                act = row.get('act', '').strip()
+                prompt_content = row.get('prompt', '').strip()
+                if act and prompt_content:
+                    prompts.append({"act": act, "prompt": prompt_content})
+
+        elif config['format'] == 'json':
+            try:
+                json_data = json.loads(raw_data)
+                for item in json_data:
+                    prompts.append({
+                        "act": item.get('act', '').strip(),
+                        "prompt": item.get('prompt', '').strip(),
+                    })
+            except json.JSONDecodeError:
+                print(f"JSON Decode Error for {key}")
+                return None
+
+        elif config['format'] == 'markdown_prompt_readme':
+            prompts = parse_markdown_prompt_readme(raw_data, config)
+
+        else:
+            print(f"Unsupported format for {key}: {config['format']}")
+            return None
 
     final_prompts = []
-    is_markdown_pack = config['format'] == 'markdown_prompt_readme'
+    is_external_pack = config['format'] in ['markdown_prompt_readme', 'youmind_prompt_api']
     now = get_current_timestamp()
 
     for item in prompts:
@@ -463,7 +510,7 @@ def process_source(key, config):
             title + " " + item_description + " " + cleaned_content
         )
 
-        if is_markdown_pack:
+        if is_external_pack:
             normalized_content = normalize_raycast_arguments(cleaned_content)
         else:
             normalized_content = normalize_placeholders(cleaned_content)
@@ -472,7 +519,10 @@ def process_source(key, config):
 
         prompt_tags = unique_list([config['lang'], *config.get('tags', []), group.lower()])
 
-        if is_markdown_pack:
+        if config['format'] == 'youmind_prompt_api':
+            stable_seed = f"{config.get('source')}:{config['lang']}:{item.get('external_id') or title}"
+            prompt_id = generate_stable_uuid(stable_seed)
+        elif config['format'] == 'markdown_prompt_readme':
             stable_seed = (
                 f"{config.get('source')}:{config['lang']}:"
                 f"{item.get('external_id') or title}:{final_content[:240]}"
@@ -494,6 +544,39 @@ def process_source(key, config):
             "updatedAt": now,
             "source": config.get("source", "official"),
         }
+
+        if item.get("sourceLink"):
+            prompt_obj["sourceUrl"] = item.get("sourceLink")
+
+        if item.get("sourcePlatform"):
+            prompt_obj["sourcePlatform"] = item.get("sourcePlatform")
+
+        if item.get("media"):
+            prompt_obj["media"] = item.get("media", [])
+
+        if item.get("mediaThumbnails"):
+            prompt_obj["mediaThumbnails"] = item.get("mediaThumbnails", [])
+
+        if "needReferenceImages" in item:
+            prompt_obj["needReferenceImages"] = item.get("needReferenceImages", False)
+
+        if is_external_pack:
+            prompt_obj["license"] = "CC BY 4.0"
+            prompt_obj["licenseUrl"] = "https://creativecommons.org/licenses/by/4.0/"
+            prompt_obj["attribution"] = "YouMind OpenLab"
+
+        if item.get("videos"):
+            prompt_obj["videos"] = item.get("videos", [])
+
+        if item.get("videoUrls"):
+            prompt_obj["videoUrls"] = item.get("videoUrls", [])
+
+        if item.get("videoThumbnails"):
+            prompt_obj["videoThumbnails"] = item.get("videoThumbnails", [])
+
+        if item.get("referenceImages"):
+            prompt_obj["referenceImages"] = item.get("referenceImages", [])
+
         final_prompts.append(prompt_obj)
 
     lang_dir = os.path.join(PACKS_ROOT, config['lang'])
@@ -523,6 +606,205 @@ def process_source(key, config):
         "category": "prompt",
     }
 
+
+def fetch_youmind_prompt_api_page_with_curl(config, page, limit):
+    payload = json.dumps({
+        "model": config["model"],
+        "locale": config["locale"],
+        "page": page,
+        "limit": limit,
+    }, ensure_ascii=False)
+
+    page_slug = config.get("page_slug", "nano-banana-pro-prompts")
+    curl_bin = "curl.exe" if platform.system() == "Windows" else "curl"
+
+    cmd = [
+        curl_bin,
+        "-sS",
+        "--http1.1",
+        "-X", "POST",
+        config["url"],
+        "-H", "Content-Type: application/json",
+        "-H", "Accept: application/json",
+        "-H", "Origin: https://youmind.com",
+        "-H", f"Referer: https://youmind.com/{config['locale']}/{page_slug}",
+        "--data-raw", payload,
+    ]
+
+    result = subprocess.run(
+        cmd,
+        check=True,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+    )
+
+    if not result.stdout.strip():
+        raise RuntimeError(f"Empty response from YouMind API page {page}")
+
+    return json.loads(result.stdout)
+
+
+def fetch_youmind_prompt_api(config):
+    all_items = []
+    seen_ids = set()
+
+    page = 1
+    limit = config.get("limit", 20)
+    max_retries = config.get("max_retries", 5)
+
+    while True:
+        data = None
+
+        for attempt in range(1, max_retries + 1):
+            try:
+                data = fetch_youmind_prompt_api_page_with_curl(config, page, limit)
+                break
+            except Exception as e:
+                wait_seconds = min(2 ** attempt, 30)
+                print(
+                    f"YouMind {config['lang']} page {page}: curl error "
+                    f"attempt {attempt}/{max_retries}, retry in {wait_seconds}s: {e}"
+                )
+                time.sleep(wait_seconds)
+
+        if data is None:
+            raise RuntimeError(f"Failed to fetch YouMind page {page} after {max_retries} retries")
+
+        items = data.get("prompts") or []
+
+        if not items:
+            print(f"YouMind {config['lang']} page {page}: empty")
+            break
+
+        new_count = 0
+
+        for item in items:
+            item_id = str(item.get("id") or "")
+            if not item_id:
+                continue
+
+            if item_id in seen_ids:
+                continue
+
+            seen_ids.add(item_id)
+            all_items.append(item)
+            new_count += 1
+
+        print(
+            f"YouMind {config['lang']} page {page}: "
+            f"{len(items)} items, {new_count} new, total {len(all_items)}"
+        )
+
+        if new_count == 0:
+            break
+
+        has_next = data.get("hasNextPage")
+        has_more = data.get("hasMore")
+        next_page = data.get("nextPage")
+        total_pages = data.get("totalPages")
+
+        if has_next is False or has_more is False:
+            break
+
+        if next_page:
+            page = int(next_page)
+        else:
+            page += 1
+
+        if total_pages and page > int(total_pages):
+            break
+
+        time.sleep(0.2)
+
+    return all_items
+
+
+def has_cjk(text):
+    return bool(re.search(r'[\u4e00-\u9fff]', text or ""))
+
+
+def choose_prompt_content(item, config):
+    content = (item.get("content") or "").strip()
+    translated = (item.get("translatedContent") or "").strip()
+
+    if config.get("lang") == "zh":
+        if has_cjk(content):
+            return content
+        if has_cjk(translated):
+            return translated
+        return content or translated
+
+    if content and not has_cjk(content):
+        return content
+    if translated and not has_cjk(translated):
+        return translated
+    return content or translated
+
+def parse_youmind_prompt_items(items, config):
+    prompts = []
+
+    for item in items:
+
+        content = choose_prompt_content(item, config)
+
+        if not content:
+            continue
+
+        title = (item.get("title") or "").strip()
+        if not title:
+            continue
+
+        author = item.get("author") or {}
+        author_name = author.get("name", "")
+        author_link = author.get("link", "")
+
+        description_parts = []
+
+        if item.get("description"):
+            description_parts.append(item["description"].strip())
+
+        if author_name:
+            if author_link:
+                description_parts.append(f"Author: {author_name} ({author_link})")
+            else:
+                description_parts.append(f"Author: {author_name}")
+
+        if item.get("sourceLink"):
+            description_parts.append(f"Source: {item['sourceLink']}")
+
+        if item.get("sourcePublishedAt"):
+            description_parts.append(f"Published: {item['sourcePublishedAt']}")
+
+        video_urls = []
+        video_thumbnails = []
+
+        for video in item.get("videos", []) or []:
+            if video.get("sourceUrl"):
+                video_urls.append(video["sourceUrl"])
+            if video.get("thumbnail"):
+                video_thumbnails.append(video["thumbnail"])
+
+        prompts.append({
+            "act": title,
+            "prompt": content,
+            "description": " | ".join(description_parts),
+            "external_id": str(item.get("id") or title),
+            "media": item.get("media", []),
+            "mediaThumbnails": item.get("mediaThumbnails", []),
+            "sourceLink": item.get("sourceLink", ""),
+            "sourcePlatform": item.get("sourcePlatform", ""),
+            "needReferenceImages": item.get("needReferenceImages", False),
+            "featured": item.get("featured", False),
+            "sort": item.get("sort"),
+            "promptCategories": item.get("promptCategories", []),
+            "videos": item.get("videos", []),
+            "videoUrls": video_urls,
+            "videoThumbnails": video_thumbnails,
+            "referenceImages": item.get("referenceImages", []),
+        })
+
+    return prompts
 
 def main():
     print("Starting Prompt ETL Process (Folder Structure Refactored)...")
