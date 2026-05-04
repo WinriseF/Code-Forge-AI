@@ -1,104 +1,89 @@
 [
   {
-    "id": "tldr-en-netbsd-df-0",
+    "id": "tldr-en-netbsd-chpass-0",
     "type": "command",
-    "title": "df - Display all filesystems and their disk usage (using 512-byte units)",
-    "content": "df",
+    "title": "chpass - Set a specific login shell for the current user interactively",
+    "content": "su -c chpass",
     "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Display all filesystems and their disk usage (using 512-byte units))",
+    "description": "chpass: Add or change user database information, including login shell and password. (Set a specific login shell for the current user interactively)",
     "tags": [
       "netbsd",
-      "df",
+      "chpass",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-df-1",
+    "id": "tldr-en-netbsd-chpass-1",
     "type": "command",
-    "title": "df - Use [h]uman-readable units (based on powers of 1024)",
-    "content": "df -h",
+    "title": "chpass - Set a specific login [s]hell for the current user",
+    "content": "chpass -s {{path/to/shell}}",
     "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Use [h]uman-readable units (based on powers of 1024))",
+    "description": "chpass: Add or change user database information, including login shell and password. (Set a specific login [s]hell for the current user)",
     "tags": [
       "netbsd",
-      "df",
+      "chpass",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-df-2",
+    "id": "tldr-en-netbsd-chpass-2",
     "type": "command",
-    "title": "df - Display all the fields of the structure(s) returned by `statvfs`",
-    "content": "df -G",
+    "title": "chpass - Set a login [s]hell for a specific user",
+    "content": "chpass -s {{path/to/shell}} {{username}}",
     "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Display all the fields of the structure(s) returned by `statvfs`)",
+    "description": "chpass: Add or change user database information, including login shell and password. (Set a login [s]hell for a specific user)",
     "tags": [
       "netbsd",
-      "df",
+      "chpass",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-df-3",
+    "id": "tldr-en-netbsd-chpass-3",
     "type": "command",
-    "title": "df - Display the filesystem containing the specified file or directory",
-    "content": "df {{path/to/file_or_directory}}",
+    "title": "chpass - Specify a user database entry in the `passwd` file format",
+    "content": "su -c 'chpass -a {{username:encrypted_password:uid:gid:...}} -s {{path/to/shell}}' {{username}}",
     "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Display the filesystem containing the specified file or directory)",
+    "description": "chpass: Add or change user database information, including login shell and password. (Specify a user database entry in the `passwd` file format)",
     "tags": [
       "netbsd",
-      "df",
+      "chpass",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-df-4",
+    "id": "tldr-en-netbsd-chpass-4",
     "type": "command",
-    "title": "df - Include statistics on the number of free and used [i]nodes",
-    "content": "df -i",
+    "title": "chpass - Only update the [l]ocal password file",
+    "content": "su -c 'chpass -l -s {{path/to/shell}}' {{username}}",
     "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Include statistics on the number of free and used [i]nodes)",
+    "description": "chpass: Add or change user database information, including login shell and password. (Only update the [l]ocal password file)",
     "tags": [
       "netbsd",
-      "df",
+      "chpass",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-df-5",
+    "id": "tldr-en-netbsd-chpass-5",
     "type": "command",
-    "title": "df - Use [k]ibibyte (1024 byte) units when showing size figures",
-    "content": "df -k",
+    "title": "chpass - Forcedly change the database [y]P password database entry",
+    "content": "su -c 'chpass -y -s {{path/to/shell}}' {{username}}",
     "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Use [k]ibibyte (1024 byte) units when showing size figures)",
+    "description": "chpass: Add or change user database information, including login shell and password. (Forcedly change the database [y]P password database entry)",
     "tags": [
       "netbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-df-6",
-    "type": "command",
-    "title": "df - Display information in a [P]ortable way",
-    "content": "df -P",
-    "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Display information in a [P]ortable way)",
-    "tags": [
-      "netbsd",
-      "df",
+      "chpass",
       "tldr",
       "en"
     ],
@@ -189,81 +174,6 @@
     "tags": [
       "netbsd",
       "pkgin",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-sockstat-0",
-    "type": "command",
-    "title": "sockstat - Show information for IPv4, IPv6, and Unix sockets for both listening and connected sockets",
-    "content": "sockstat",
-    "group": "Netbsd",
-    "description": "sockstat: List open Internet or UNIX domain sockets. Note: This program is a rewrite for NetBSD 3.0 from FreeBSD's `sockstat`. (Show information for IPv4, IPv6, and Unix sockets for both listening and connected sockets)",
-    "tags": [
-      "netbsd",
-      "sockstat",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-sockstat-1",
-    "type": "command",
-    "title": "sockstat - Show information for IPv[4]/IPv[6] sockets [l]istening on specific [p]orts using a specific [P]rotocol",
-    "content": "sockstat -{{4|6}} -l -P {{tcp|udp|sctp|divert}} -p {{port1,port2...}}",
-    "group": "Netbsd",
-    "description": "sockstat: List open Internet or UNIX domain sockets. Note: This program is a rewrite for NetBSD 3.0 from FreeBSD's `sockstat`. (Show information for IPv[4]/IPv[6] sockets [l]istening on specific [p]orts using a specific [P]rotocol)",
-    "tags": [
-      "netbsd",
-      "sockstat",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-sockstat-2",
-    "type": "command",
-    "title": "sockstat - Also show [c]onnected sockets, showing [u]nix sockets",
-    "content": "sockstat -cu",
-    "group": "Netbsd",
-    "description": "sockstat: List open Internet or UNIX domain sockets. Note: This program is a rewrite for NetBSD 3.0 from FreeBSD's `sockstat`. (Also show [c]onnected sockets, showing [u]nix sockets)",
-    "tags": [
-      "netbsd",
-      "sockstat",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-sockstat-3",
-    "type": "command",
-    "title": "sockstat - Only show [n]umeric output, without resolving symbolic names for addresses and ports",
-    "content": "sockstat -n",
-    "group": "Netbsd",
-    "description": "sockstat: List open Internet or UNIX domain sockets. Note: This program is a rewrite for NetBSD 3.0 from FreeBSD's `sockstat`. (Only show [n]umeric output, without resolving symbolic names for addresses and ports)",
-    "tags": [
-      "netbsd",
-      "sockstat",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-sockstat-4",
-    "type": "command",
-    "title": "sockstat - Only list sockets of the specified address [f]amily",
-    "content": "sockstat -f {{inet|inet6|local|unix}}",
-    "group": "Netbsd",
-    "description": "sockstat: List open Internet or UNIX domain sockets. Note: This program is a rewrite for NetBSD 3.0 from FreeBSD's `sockstat`. (Only list sockets of the specified address [f]amily)",
-    "tags": [
-      "netbsd",
-      "sockstat",
       "tldr",
       "en"
     ],
@@ -390,6 +300,126 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-netbsd-df-0",
+    "type": "command",
+    "title": "df - Display all filesystems and their disk usage (using 512-byte units)",
+    "content": "df",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Display all filesystems and their disk usage (using 512-byte units))",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-1",
+    "type": "command",
+    "title": "df - Use [h]uman-readable units (based on powers of 1024)",
+    "content": "df -h",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Use [h]uman-readable units (based on powers of 1024))",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-2",
+    "type": "command",
+    "title": "df - Display all the fields of the structure(s) returned by `statvfs`",
+    "content": "df -G",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Display all the fields of the structure(s) returned by `statvfs`)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-3",
+    "type": "command",
+    "title": "df - Display the filesystem containing the specified file or directory",
+    "content": "df {{path/to/file_or_directory}}",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Display the filesystem containing the specified file or directory)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-4",
+    "type": "command",
+    "title": "df - Include statistics on the number of free and used [i]nodes",
+    "content": "df -i",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Include statistics on the number of free and used [i]nodes)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-5",
+    "type": "command",
+    "title": "df - Use [k]ibibyte (1024 byte) units when showing size figures",
+    "content": "df -k",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Use [k]ibibyte (1024 byte) units when showing size figures)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-6",
+    "type": "command",
+    "title": "df - Display information in a [P]ortable way",
+    "content": "df -P",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Display information in a [P]ortable way)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-chsh-0",
+    "type": "command",
+    "title": "chsh - View documentation for the original command",
+    "content": "tldr chpass",
+    "group": "Netbsd",
+    "description": "chsh: This command is an alias of `chpass`. (View documentation for the original command)",
+    "tags": [
+      "netbsd",
+      "chsh",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-netbsd-chfn-0",
     "type": "command",
     "title": "chfn - View documentation for the original command",
@@ -405,90 +435,75 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-chpass-0",
+    "id": "tldr-en-netbsd-sockstat-0",
     "type": "command",
-    "title": "chpass - Set a specific login shell for the current user interactively",
-    "content": "su -c chpass",
+    "title": "sockstat - Show information for IPv4, IPv6, and Unix sockets for both listening and connected sockets",
+    "content": "sockstat",
     "group": "Netbsd",
-    "description": "chpass: Add or change user database information, including login shell and password. (Set a specific login shell for the current user interactively)",
+    "description": "sockstat: List open Internet or UNIX domain sockets. Note: This program is a rewrite for NetBSD 3.0 from FreeBSD's `sockstat`. (Show information for IPv4, IPv6, and Unix sockets for both listening and connected sockets)",
     "tags": [
       "netbsd",
-      "chpass",
+      "sockstat",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-chpass-1",
+    "id": "tldr-en-netbsd-sockstat-1",
     "type": "command",
-    "title": "chpass - Set a specific login [s]hell for the current user",
-    "content": "chpass -s {{path/to/shell}}",
+    "title": "sockstat - Show information for IPv[4]/IPv[6] sockets [l]istening on specific [p]orts using a specific [P]rotocol",
+    "content": "sockstat -{{4|6}} -l -P {{tcp|udp|sctp|divert}} -p {{port1,port2...}}",
     "group": "Netbsd",
-    "description": "chpass: Add or change user database information, including login shell and password. (Set a specific login [s]hell for the current user)",
+    "description": "sockstat: List open Internet or UNIX domain sockets. Note: This program is a rewrite for NetBSD 3.0 from FreeBSD's `sockstat`. (Show information for IPv[4]/IPv[6] sockets [l]istening on specific [p]orts using a specific [P]rotocol)",
     "tags": [
       "netbsd",
-      "chpass",
+      "sockstat",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-chpass-2",
+    "id": "tldr-en-netbsd-sockstat-2",
     "type": "command",
-    "title": "chpass - Set a login [s]hell for a specific user",
-    "content": "chpass -s {{path/to/shell}} {{username}}",
+    "title": "sockstat - Also show [c]onnected sockets, showing [u]nix sockets",
+    "content": "sockstat -cu",
     "group": "Netbsd",
-    "description": "chpass: Add or change user database information, including login shell and password. (Set a login [s]hell for a specific user)",
+    "description": "sockstat: List open Internet or UNIX domain sockets. Note: This program is a rewrite for NetBSD 3.0 from FreeBSD's `sockstat`. (Also show [c]onnected sockets, showing [u]nix sockets)",
     "tags": [
       "netbsd",
-      "chpass",
+      "sockstat",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-chpass-3",
+    "id": "tldr-en-netbsd-sockstat-3",
     "type": "command",
-    "title": "chpass - Specify a user database entry in the `passwd` file format",
-    "content": "su -c 'chpass -a {{username:encrypted_password:uid:gid:...}} -s {{path/to/shell}}' {{username}}",
+    "title": "sockstat - Only show [n]umeric output, without resolving symbolic names for addresses and ports",
+    "content": "sockstat -n",
     "group": "Netbsd",
-    "description": "chpass: Add or change user database information, including login shell and password. (Specify a user database entry in the `passwd` file format)",
+    "description": "sockstat: List open Internet or UNIX domain sockets. Note: This program is a rewrite for NetBSD 3.0 from FreeBSD's `sockstat`. (Only show [n]umeric output, without resolving symbolic names for addresses and ports)",
     "tags": [
       "netbsd",
-      "chpass",
+      "sockstat",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-chpass-4",
+    "id": "tldr-en-netbsd-sockstat-4",
     "type": "command",
-    "title": "chpass - Only update the [l]ocal password file",
-    "content": "su -c 'chpass -l -s {{path/to/shell}}' {{username}}",
+    "title": "sockstat - Only list sockets of the specified address [f]amily",
+    "content": "sockstat -f {{inet|inet6|local|unix}}",
     "group": "Netbsd",
-    "description": "chpass: Add or change user database information, including login shell and password. (Only update the [l]ocal password file)",
+    "description": "sockstat: List open Internet or UNIX domain sockets. Note: This program is a rewrite for NetBSD 3.0 from FreeBSD's `sockstat`. (Only list sockets of the specified address [f]amily)",
     "tags": [
       "netbsd",
-      "chpass",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-chpass-5",
-    "type": "command",
-    "title": "chpass - Forcedly change the database [y]P password database entry",
-    "content": "su -c 'chpass -y -s {{path/to/shell}}' {{username}}",
-    "group": "Netbsd",
-    "description": "chpass: Add or change user database information, including login shell and password. (Forcedly change the database [y]P password database entry)",
-    "tags": [
-      "netbsd",
-      "chpass",
+      "sockstat",
       "tldr",
       "en"
     ],
@@ -594,21 +609,6 @@
     "tags": [
       "netbsd",
       "sed",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-chsh-0",
-    "type": "command",
-    "title": "chsh - View documentation for the original command",
-    "content": "tldr chpass",
-    "group": "Netbsd",
-    "description": "chsh: This command is an alias of `chpass`. (View documentation for the original command)",
-    "tags": [
-      "netbsd",
-      "chsh",
       "tldr",
       "en"
     ],

@@ -1,50 +1,5 @@
 [
   {
-    "id": "tldr-zh-dos-cd-0",
-    "type": "command",
-    "title": "cd - 进入指定目录",
-    "content": "CD {{路径\\到\\目录}}",
-    "group": "Dos",
-    "description": "cd: 更改当前工作目录。 (进入指定目录)",
-    "tags": [
-      "dos",
-      "cd",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-dos-cd-1",
-    "type": "command",
-    "title": "cd - 返回到当前目录的父目录",
-    "content": "CD ..",
-    "group": "Dos",
-    "description": "cd: 更改当前工作目录。 (返回到当前目录的父目录)",
-    "tags": [
-      "dos",
-      "cd",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-dos-cd-2",
-    "type": "command",
-    "title": "cd - 进入当前驱动器的根目录",
-    "content": "CD \\",
-    "group": "Dos",
-    "description": "cd: 更改当前工作目录。 (进入当前驱动器的根目录)",
-    "tags": [
-      "dos",
-      "cd",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-zh-dos-path-0",
     "type": "command",
     "title": "path - 显示当前的搜索路径",
@@ -135,15 +90,45 @@
     "source": "official"
   },
   {
-    "id": "tldr-zh-dos-chdir-0",
+    "id": "tldr-zh-dos-cd-0",
     "type": "command",
-    "title": "chdir - 查看原命令的文档",
-    "content": "tldr {{[-p|--platform]}} dos cd",
+    "title": "cd - 进入指定目录",
+    "content": "CD {{路径\\到\\目录}}",
     "group": "Dos",
-    "description": "chdir: 此命令为 `CD` 的别名。 (查看原命令的文档)",
+    "description": "cd: 更改当前工作目录。 (进入指定目录)",
     "tags": [
       "dos",
-      "chdir",
+      "cd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-dos-cd-1",
+    "type": "command",
+    "title": "cd - 返回到当前目录的父目录",
+    "content": "CD ..",
+    "group": "Dos",
+    "description": "cd: 更改当前工作目录。 (返回到当前目录的父目录)",
+    "tags": [
+      "dos",
+      "cd",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-dos-cd-2",
+    "type": "command",
+    "title": "cd - 进入当前驱动器的根目录",
+    "content": "CD \\",
+    "group": "Dos",
+    "description": "cd: 更改当前工作目录。 (进入当前驱动器的根目录)",
+    "tags": [
+      "dos",
+      "cd",
       "tldr",
       "zh"
     ],
@@ -159,6 +144,21 @@
     "tags": [
       "dos",
       "cls",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-dos-chdir-0",
+    "type": "command",
+    "title": "chdir - 查看原命令的文档",
+    "content": "tldr {{[-p|--platform]}} dos cd",
+    "group": "Dos",
+    "description": "chdir: 此命令为 `CD` 的别名。 (查看原命令的文档)",
+    "tags": [
+      "dos",
+      "chdir",
       "tldr",
       "zh"
     ],

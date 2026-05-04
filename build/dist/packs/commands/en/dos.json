@@ -1,650 +1,5 @@
 [
   {
-    "id": "tldr-en-dos-ver-0",
-    "type": "command",
-    "title": "ver - Set version",
-    "content": "VER set {{major_version}} {{minor_version}}",
-    "group": "Dos",
-    "description": "ver: View/set reported DOS version. (Set version)",
-    "tags": [
-      "dos",
-      "ver",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-rd-0",
-    "type": "command",
-    "title": "rd - Remove directory",
-    "content": "RD {{path\\to\\directory}}",
-    "group": "Dos",
-    "description": "rd: Remove a directory. (Remove directory)",
-    "tags": [
-      "dos",
-      "rd",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-imgmount-0",
-    "type": "command",
-    "title": "imgmount - Mount floppy",
-    "content": "IMGMOUNT a {{floppy.img}}",
-    "group": "Dos",
-    "description": "imgmount: Mount disk or CD-ROM images. (Mount floppy)",
-    "tags": [
-      "dos",
-      "imgmount",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-imgmount-1",
-    "type": "command",
-    "title": "imgmount - Mount CD-ROM",
-    "content": "IMGMOUNT d {{cd.iso}}",
-    "group": "Dos",
-    "description": "imgmount: Mount disk or CD-ROM images. (Mount CD-ROM)",
-    "tags": [
-      "dos",
-      "imgmount",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-copy-0",
-    "type": "command",
-    "title": "copy - Copy a file",
-    "content": "COPY {{path/to/source_file}} {{path/to/destination_file}}",
-    "group": "Dos",
-    "description": "copy: Copy files. (Copy a file)",
-    "tags": [
-      "dos",
-      "copy",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-exit-0",
-    "type": "command",
-    "title": "exit - Exit DOSBox",
-    "content": "EXIT",
-    "group": "Dos",
-    "description": "exit: Exit DOSBox. (Exit DOSBox)",
-    "tags": [
-      "dos",
-      "exit",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-cd-0",
-    "type": "command",
-    "title": "cd - Go to the specified directory",
-    "content": "CD {{PATH\\TO\\DIRECTORY}}",
-    "group": "Dos",
-    "description": "cd: Change the current working directory. (Go to the specified directory)",
-    "tags": [
-      "dos",
-      "cd",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-cd-1",
-    "type": "command",
-    "title": "cd - Go up to the parent of the current directory",
-    "content": "CD ..",
-    "group": "Dos",
-    "description": "cd: Change the current working directory. (Go up to the parent of the current directory)",
-    "tags": [
-      "dos",
-      "cd",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-cd-2",
-    "type": "command",
-    "title": "cd - Go to the root directory of the current drive",
-    "content": "CD \\",
-    "group": "Dos",
-    "description": "cd: Change the current working directory. (Go to the root directory of the current drive)",
-    "tags": [
-      "dos",
-      "cd",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-type-0",
-    "type": "command",
-    "title": "type - Show file",
-    "content": "TYPE {{path/to/file.txt}}",
-    "group": "Dos",
-    "description": "type: Display the contents of a text file. (Show file)",
-    "tags": [
-      "dos",
-      "type",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-path-0",
-    "type": "command",
-    "title": "path - Display the current search path",
-    "content": "PATH",
-    "group": "Dos",
-    "description": "path: Display or set the search path for executable files. This command is available in `FreeDOS` only. (Display the current search path)",
-    "tags": [
-      "dos",
-      "path",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-path-1",
-    "type": "command",
-    "title": "path - Set the semicolon-separated list of directories to search in",
-    "content": "PATH {{path/to/directory1;path/to/directory2;...}}",
-    "group": "Dos",
-    "description": "path: Display or set the search path for executable files. This command is available in `FreeDOS` only. (Set the semicolon-separated list of directories to search in)",
-    "tags": [
-      "dos",
-      "path",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-path-2",
-    "type": "command",
-    "title": "path - Append a directory to the search path",
-    "content": "PATH %PATH%;{{path/to/directory}}",
-    "group": "Dos",
-    "description": "path: Display or set the search path for executable files. This command is available in `FreeDOS` only. (Append a directory to the search path)",
-    "tags": [
-      "dos",
-      "path",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-path-3",
-    "type": "command",
-    "title": "path - Add a directory to the beginning of the search path",
-    "content": "PATH {{path/to/directory}};%PATH%",
-    "group": "Dos",
-    "description": "path: Display or set the search path for executable files. This command is available in `FreeDOS` only. (Add a directory to the beginning of the search path)",
-    "tags": [
-      "dos",
-      "path",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-path-4",
-    "type": "command",
-    "title": "path - Clear the search path",
-    "content": "PATH;",
-    "group": "Dos",
-    "description": "path: Display or set the search path for executable files. This command is available in `FreeDOS` only. (Clear the search path)",
-    "tags": [
-      "dos",
-      "path",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-path-5",
-    "type": "command",
-    "title": "path - Display help",
-    "content": "PATH /?",
-    "group": "Dos",
-    "description": "path: Display or set the search path for executable files. This command is available in `FreeDOS` only. (Display help)",
-    "tags": [
-      "dos",
-      "path",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-boot-0",
-    "type": "command",
-    "title": "boot - Boot from floppy image",
-    "content": "BOOT {{path/to/floppy.img}}",
-    "group": "Dos",
-    "description": "boot: Boot floppy or hard disk images directly, bypassing OS emulation. (Boot from floppy image)",
-    "tags": [
-      "dos",
-      "boot",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-boot-1",
-    "type": "command",
-    "title": "boot - Boot from hard disk image",
-    "content": "BOOT {{path/to/hard_disk.img}}",
-    "group": "Dos",
-    "description": "boot: Boot floppy or hard disk images directly, bypassing OS emulation. (Boot from hard disk image)",
-    "tags": [
-      "dos",
-      "boot",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-boot-2",
-    "type": "command",
-    "title": "boot - Boot multiple floppy images",
-    "content": "BOOT {{path/to/floppy1.img path/to/floppy2.img ...}}",
-    "group": "Dos",
-    "description": "boot: Boot floppy or hard disk images directly, bypassing OS emulation. (Boot multiple floppy images)",
-    "tags": [
-      "dos",
-      "boot",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-mem-0",
-    "type": "command",
-    "title": "mem - Display free memory",
-    "content": "MEM",
-    "group": "Dos",
-    "description": "mem: Display free memory info. (Display free memory)",
-    "tags": [
-      "dos",
-      "mem",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-md-0",
-    "type": "command",
-    "title": "md - Create directory",
-    "content": "MD {{path/to/directory}}",
-    "group": "Dos",
-    "description": "md: Make a directory. (Create directory)",
-    "tags": [
-      "dos",
-      "md",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-rescan-0",
-    "type": "command",
-    "title": "rescan - Refresh mounted drives",
-    "content": "RESCAN",
-    "group": "Dos",
-    "description": "rescan: Refresh mounted drives (like CTRL-F4). (Refresh mounted drives)",
-    "tags": [
-      "dos",
-      "rescan",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-loadhigh-0",
-    "type": "command",
-    "title": "loadhigh - Load program into upper memory",
-    "content": "LOADHIGH {{program}}",
-    "group": "Dos",
-    "description": "loadhigh: Load program into upper memory (requires `xms=true`, `umb=true`). (Load program into upper memory)",
-    "tags": [
-      "dos",
-      "loadhigh",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-chdir-0",
-    "type": "command",
-    "title": "chdir - View documentation for the original command",
-    "content": "tldr {{[-p|--platform]}} dos cd",
-    "group": "Dos",
-    "description": "chdir: This command is an alias of `CD`. (View documentation for the original command)",
-    "tags": [
-      "dos",
-      "chdir",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-mixer-0",
-    "type": "command",
-    "title": "mixer - Display current volumes",
-    "content": "MIXER",
-    "group": "Dos",
-    "description": "mixer: Display/set sound levels. (Display current volumes)",
-    "tags": [
-      "dos",
-      "mixer",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-mixer-1",
-    "type": "command",
-    "title": "mixer - Set master volume (left:right percentages)",
-    "content": "MIXER master {{80}}:{{80}}",
-    "group": "Dos",
-    "description": "mixer: Display/set sound levels. (Set master volume (left:right percentages))",
-    "tags": [
-      "dos",
-      "mixer",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-mixer-2",
-    "type": "command",
-    "title": "mixer - Set Sound Blaster volume in decibels",
-    "content": "MIXER sb d{{10}}:d{{10}}",
-    "group": "Dos",
-    "description": "mixer: Display/set sound levels. (Set Sound Blaster volume in decibels)",
-    "tags": [
-      "dos",
-      "mixer",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-mixer-3",
-    "type": "command",
-    "title": "mixer - Set GUS left channel only",
-    "content": "MIXER gus {{50}}",
-    "group": "Dos",
-    "description": "mixer: Display/set sound levels. (Set GUS left channel only)",
-    "tags": [
-      "dos",
-      "mixer",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-mixer-4",
-    "type": "command",
-    "title": "mixer - Set volumes without displaying result",
-    "content": "MIXER gus {{40}}:{{40}} /NOSHOW",
-    "group": "Dos",
-    "description": "mixer: Display/set sound levels. (Set volumes without displaying result)",
-    "tags": [
-      "dos",
-      "mixer",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-mixer-5",
-    "type": "command",
-    "title": "mixer - List available MIDI devices (Windows only)",
-    "content": "MIXER /LISTMIDI",
-    "group": "Dos",
-    "description": "mixer: Display/set sound levels. (List available MIDI devices (Windows only))",
-    "tags": [
-      "dos",
-      "mixer",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-del-0",
-    "type": "command",
-    "title": "del - Delete a file",
-    "content": "DEL {{path/to/file}}",
-    "group": "Dos",
-    "description": "del: Delete one or more files. (Delete a file)",
-    "tags": [
-      "dos",
-      "del",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-del-1",
-    "type": "command",
-    "title": "del - Delete all files matching a pattern",
-    "content": "DEL {{path/to/*.ext}}",
-    "group": "Dos",
-    "description": "del: Delete one or more files. (Delete all files matching a pattern)",
-    "tags": [
-      "dos",
-      "del",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-choice-0",
-    "type": "command",
-    "title": "choice - Prompt for yes/no",
-    "content": "CHOICE \"{{prompt}}\"",
-    "group": "Dos",
-    "description": "choice: Wait for keypress and set `ERRORLEVEL` in batch scripts. (Prompt for yes/no)",
-    "tags": [
-      "dos",
-      "choice",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-loadfix-0",
-    "type": "command",
-    "title": "loadfix - Start a program with 64KB allocated memory",
-    "content": "LOADFIX {{program}}",
-    "group": "Dos",
-    "description": "loadfix: Reduce available conventional memory for old programs (default: 64KB). (Start a program with 64KB allocated memory)",
-    "tags": [
-      "dos",
-      "loadfix",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-loadfix-1",
-    "type": "command",
-    "title": "loadfix - Load with custom KB reduction (1-1024)",
-    "content": "LOADFIX -{{32}} {{program}}",
-    "group": "Dos",
-    "description": "loadfix: Reduce available conventional memory for old programs (default: 64KB). (Load with custom KB reduction (1-1024))",
-    "tags": [
-      "dos",
-      "loadfix",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-loadfix-2",
-    "type": "command",
-    "title": "loadfix - Free all previously allocated memory",
-    "content": "LOADFIX -f",
-    "group": "Dos",
-    "description": "loadfix: Reduce available conventional memory for old programs (default: 64KB). (Free all previously allocated memory)",
-    "tags": [
-      "dos",
-      "loadfix",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-keyb-0",
-    "type": "command",
-    "title": "keyb - Set layout",
-    "content": "KEYB {{us|uk|gr|...}}",
-    "group": "Dos",
-    "description": "keyb: Change keyboard layout. (Set layout)",
-    "tags": [
-      "dos",
-      "keyb",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-ren-0",
-    "type": "command",
-    "title": "ren - Rename file",
-    "content": "REN {{path/to/file}} {{new_name}}",
-    "group": "Dos",
-    "description": "ren: Rename files (use for moving too). (Rename file)",
-    "tags": [
-      "dos",
-      "ren",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-set-0",
-    "type": "command",
-    "title": "set - Set variable",
-    "content": "SET {{VAR}}={{value}}",
-    "group": "Dos",
-    "description": "set: Set/display environment variables. (Set variable)",
-    "tags": [
-      "dos",
-      "set",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-cls-0",
-    "type": "command",
-    "title": "cls - Clear the screen resetting colors to white on black",
-    "content": "CLS",
-    "group": "Dos",
-    "description": "cls: Clear the screen and reset colors. (Clear the screen resetting colors to white on black)",
-    "tags": [
-      "dos",
-      "cls",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-dir-0",
-    "type": "command",
-    "title": "dir - List current directory",
-    "content": "DIR",
-    "group": "Dos",
-    "description": "dir: List files and directories. (List current directory)",
-    "tags": [
-      "dos",
-      "dir",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-dir-1",
-    "type": "command",
-    "title": "dir - Pause per page",
-    "content": "DIR /p",
-    "group": "Dos",
-    "description": "dir: List files and directories. (Pause per page)",
-    "tags": [
-      "dos",
-      "dir",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-dir-2",
-    "type": "command",
-    "title": "dir - Wide view",
-    "content": "DIR /w",
-    "group": "Dos",
-    "description": "dir: List files and directories. (Wide view)",
-    "tags": [
-      "dos",
-      "dir",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-en-dos-mount-0",
     "type": "command",
     "title": "mount - Mount current directory as C",
@@ -750,6 +105,291 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-dos-path-0",
+    "type": "command",
+    "title": "path - Display the current search path",
+    "content": "PATH",
+    "group": "Dos",
+    "description": "path: Display or set the search path for executable files. This command is available in `FreeDOS` only. (Display the current search path)",
+    "tags": [
+      "dos",
+      "path",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-path-1",
+    "type": "command",
+    "title": "path - Set the semicolon-separated list of directories to search in",
+    "content": "PATH {{path/to/directory1;path/to/directory2;...}}",
+    "group": "Dos",
+    "description": "path: Display or set the search path for executable files. This command is available in `FreeDOS` only. (Set the semicolon-separated list of directories to search in)",
+    "tags": [
+      "dos",
+      "path",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-path-2",
+    "type": "command",
+    "title": "path - Append a directory to the search path",
+    "content": "PATH %PATH%;{{path/to/directory}}",
+    "group": "Dos",
+    "description": "path: Display or set the search path for executable files. This command is available in `FreeDOS` only. (Append a directory to the search path)",
+    "tags": [
+      "dos",
+      "path",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-path-3",
+    "type": "command",
+    "title": "path - Add a directory to the beginning of the search path",
+    "content": "PATH {{path/to/directory}};%PATH%",
+    "group": "Dos",
+    "description": "path: Display or set the search path for executable files. This command is available in `FreeDOS` only. (Add a directory to the beginning of the search path)",
+    "tags": [
+      "dos",
+      "path",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-path-4",
+    "type": "command",
+    "title": "path - Clear the search path",
+    "content": "PATH;",
+    "group": "Dos",
+    "description": "path: Display or set the search path for executable files. This command is available in `FreeDOS` only. (Clear the search path)",
+    "tags": [
+      "dos",
+      "path",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-path-5",
+    "type": "command",
+    "title": "path - Display help",
+    "content": "PATH /?",
+    "group": "Dos",
+    "description": "path: Display or set the search path for executable files. This command is available in `FreeDOS` only. (Display help)",
+    "tags": [
+      "dos",
+      "path",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-imgmount-0",
+    "type": "command",
+    "title": "imgmount - Mount floppy",
+    "content": "IMGMOUNT a {{floppy.img}}",
+    "group": "Dos",
+    "description": "imgmount: Mount disk or CD-ROM images. (Mount floppy)",
+    "tags": [
+      "dos",
+      "imgmount",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-imgmount-1",
+    "type": "command",
+    "title": "imgmount - Mount CD-ROM",
+    "content": "IMGMOUNT d {{cd.iso}}",
+    "group": "Dos",
+    "description": "imgmount: Mount disk or CD-ROM images. (Mount CD-ROM)",
+    "tags": [
+      "dos",
+      "imgmount",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-loadhigh-0",
+    "type": "command",
+    "title": "loadhigh - Load program into upper memory",
+    "content": "LOADHIGH {{program}}",
+    "group": "Dos",
+    "description": "loadhigh: Load program into upper memory (requires `xms=true`, `umb=true`). (Load program into upper memory)",
+    "tags": [
+      "dos",
+      "loadhigh",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-cd-0",
+    "type": "command",
+    "title": "cd - Go to the specified directory",
+    "content": "CD {{PATH\\TO\\DIRECTORY}}",
+    "group": "Dos",
+    "description": "cd: Change the current working directory. (Go to the specified directory)",
+    "tags": [
+      "dos",
+      "cd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-cd-1",
+    "type": "command",
+    "title": "cd - Go up to the parent of the current directory",
+    "content": "CD ..",
+    "group": "Dos",
+    "description": "cd: Change the current working directory. (Go up to the parent of the current directory)",
+    "tags": [
+      "dos",
+      "cd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-cd-2",
+    "type": "command",
+    "title": "cd - Go to the root directory of the current drive",
+    "content": "CD \\",
+    "group": "Dos",
+    "description": "cd: Change the current working directory. (Go to the root directory of the current drive)",
+    "tags": [
+      "dos",
+      "cd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-mixer-0",
+    "type": "command",
+    "title": "mixer - Display current volumes",
+    "content": "MIXER",
+    "group": "Dos",
+    "description": "mixer: Display/set sound levels. (Display current volumes)",
+    "tags": [
+      "dos",
+      "mixer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-mixer-1",
+    "type": "command",
+    "title": "mixer - Set master volume (left:right percentages)",
+    "content": "MIXER master {{80}}:{{80}}",
+    "group": "Dos",
+    "description": "mixer: Display/set sound levels. (Set master volume (left:right percentages))",
+    "tags": [
+      "dos",
+      "mixer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-mixer-2",
+    "type": "command",
+    "title": "mixer - Set Sound Blaster volume in decibels",
+    "content": "MIXER sb d{{10}}:d{{10}}",
+    "group": "Dos",
+    "description": "mixer: Display/set sound levels. (Set Sound Blaster volume in decibels)",
+    "tags": [
+      "dos",
+      "mixer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-mixer-3",
+    "type": "command",
+    "title": "mixer - Set GUS left channel only",
+    "content": "MIXER gus {{50}}",
+    "group": "Dos",
+    "description": "mixer: Display/set sound levels. (Set GUS left channel only)",
+    "tags": [
+      "dos",
+      "mixer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-mixer-4",
+    "type": "command",
+    "title": "mixer - Set volumes without displaying result",
+    "content": "MIXER gus {{40}}:{{40}} /NOSHOW",
+    "group": "Dos",
+    "description": "mixer: Display/set sound levels. (Set volumes without displaying result)",
+    "tags": [
+      "dos",
+      "mixer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-mixer-5",
+    "type": "command",
+    "title": "mixer - List available MIDI devices (Windows only)",
+    "content": "MIXER /LISTMIDI",
+    "group": "Dos",
+    "description": "mixer: Display/set sound levels. (List available MIDI devices (Windows only))",
+    "tags": [
+      "dos",
+      "mixer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-type-0",
+    "type": "command",
+    "title": "type - Show file",
+    "content": "TYPE {{path/to/file.txt}}",
+    "group": "Dos",
+    "description": "type: Display the contents of a text file. (Show file)",
+    "tags": [
+      "dos",
+      "type",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-dos-config-0",
     "type": "command",
     "title": "config - Write current config to file (local drive)",
@@ -834,6 +474,366 @@
     "tags": [
       "dos",
       "config",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-ren-0",
+    "type": "command",
+    "title": "ren - Rename file",
+    "content": "REN {{path/to/file}} {{new_name}}",
+    "group": "Dos",
+    "description": "ren: Rename files (use for moving too). (Rename file)",
+    "tags": [
+      "dos",
+      "ren",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-loadfix-0",
+    "type": "command",
+    "title": "loadfix - Start a program with 64KB allocated memory",
+    "content": "LOADFIX {{program}}",
+    "group": "Dos",
+    "description": "loadfix: Reduce available conventional memory for old programs (default: 64KB). (Start a program with 64KB allocated memory)",
+    "tags": [
+      "dos",
+      "loadfix",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-loadfix-1",
+    "type": "command",
+    "title": "loadfix - Load with custom KB reduction (1-1024)",
+    "content": "LOADFIX -{{32}} {{program}}",
+    "group": "Dos",
+    "description": "loadfix: Reduce available conventional memory for old programs (default: 64KB). (Load with custom KB reduction (1-1024))",
+    "tags": [
+      "dos",
+      "loadfix",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-loadfix-2",
+    "type": "command",
+    "title": "loadfix - Free all previously allocated memory",
+    "content": "LOADFIX -f",
+    "group": "Dos",
+    "description": "loadfix: Reduce available conventional memory for old programs (default: 64KB). (Free all previously allocated memory)",
+    "tags": [
+      "dos",
+      "loadfix",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-set-0",
+    "type": "command",
+    "title": "set - Set variable",
+    "content": "SET {{VAR}}={{value}}",
+    "group": "Dos",
+    "description": "set: Set/display environment variables. (Set variable)",
+    "tags": [
+      "dos",
+      "set",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-dir-0",
+    "type": "command",
+    "title": "dir - List current directory",
+    "content": "DIR",
+    "group": "Dos",
+    "description": "dir: List files and directories. (List current directory)",
+    "tags": [
+      "dos",
+      "dir",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-dir-1",
+    "type": "command",
+    "title": "dir - Pause per page",
+    "content": "DIR /p",
+    "group": "Dos",
+    "description": "dir: List files and directories. (Pause per page)",
+    "tags": [
+      "dos",
+      "dir",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-dir-2",
+    "type": "command",
+    "title": "dir - Wide view",
+    "content": "DIR /w",
+    "group": "Dos",
+    "description": "dir: List files and directories. (Wide view)",
+    "tags": [
+      "dos",
+      "dir",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-rd-0",
+    "type": "command",
+    "title": "rd - Remove directory",
+    "content": "RD {{path\\to\\directory}}",
+    "group": "Dos",
+    "description": "rd: Remove a directory. (Remove directory)",
+    "tags": [
+      "dos",
+      "rd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-del-0",
+    "type": "command",
+    "title": "del - Delete a file",
+    "content": "DEL {{path/to/file}}",
+    "group": "Dos",
+    "description": "del: Delete one or more files. (Delete a file)",
+    "tags": [
+      "dos",
+      "del",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-del-1",
+    "type": "command",
+    "title": "del - Delete all files matching a pattern",
+    "content": "DEL {{path/to/*.ext}}",
+    "group": "Dos",
+    "description": "del: Delete one or more files. (Delete all files matching a pattern)",
+    "tags": [
+      "dos",
+      "del",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-copy-0",
+    "type": "command",
+    "title": "copy - Copy a file",
+    "content": "COPY {{path/to/source_file}} {{path/to/destination_file}}",
+    "group": "Dos",
+    "description": "copy: Copy files. (Copy a file)",
+    "tags": [
+      "dos",
+      "copy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-choice-0",
+    "type": "command",
+    "title": "choice - Prompt for yes/no",
+    "content": "CHOICE \"{{prompt}}\"",
+    "group": "Dos",
+    "description": "choice: Wait for keypress and set `ERRORLEVEL` in batch scripts. (Prompt for yes/no)",
+    "tags": [
+      "dos",
+      "choice",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-cls-0",
+    "type": "command",
+    "title": "cls - Clear the screen resetting colors to white on black",
+    "content": "CLS",
+    "group": "Dos",
+    "description": "cls: Clear the screen and reset colors. (Clear the screen resetting colors to white on black)",
+    "tags": [
+      "dos",
+      "cls",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-ver-0",
+    "type": "command",
+    "title": "ver - Set version",
+    "content": "VER set {{major_version}} {{minor_version}}",
+    "group": "Dos",
+    "description": "ver: View/set reported DOS version. (Set version)",
+    "tags": [
+      "dos",
+      "ver",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-mem-0",
+    "type": "command",
+    "title": "mem - Display free memory",
+    "content": "MEM",
+    "group": "Dos",
+    "description": "mem: Display free memory info. (Display free memory)",
+    "tags": [
+      "dos",
+      "mem",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-exit-0",
+    "type": "command",
+    "title": "exit - Exit DOSBox",
+    "content": "EXIT",
+    "group": "Dos",
+    "description": "exit: Exit DOSBox. (Exit DOSBox)",
+    "tags": [
+      "dos",
+      "exit",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-rescan-0",
+    "type": "command",
+    "title": "rescan - Refresh mounted drives",
+    "content": "RESCAN",
+    "group": "Dos",
+    "description": "rescan: Refresh mounted drives (like CTRL-F4). (Refresh mounted drives)",
+    "tags": [
+      "dos",
+      "rescan",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-chdir-0",
+    "type": "command",
+    "title": "chdir - View documentation for the original command",
+    "content": "tldr {{[-p|--platform]}} dos cd",
+    "group": "Dos",
+    "description": "chdir: This command is an alias of `CD`. (View documentation for the original command)",
+    "tags": [
+      "dos",
+      "chdir",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-md-0",
+    "type": "command",
+    "title": "md - Create directory",
+    "content": "MD {{path/to/directory}}",
+    "group": "Dos",
+    "description": "md: Make a directory. (Create directory)",
+    "tags": [
+      "dos",
+      "md",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-boot-0",
+    "type": "command",
+    "title": "boot - Boot from floppy image",
+    "content": "BOOT {{path/to/floppy.img}}",
+    "group": "Dos",
+    "description": "boot: Boot floppy or hard disk images directly, bypassing OS emulation. (Boot from floppy image)",
+    "tags": [
+      "dos",
+      "boot",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-boot-1",
+    "type": "command",
+    "title": "boot - Boot from hard disk image",
+    "content": "BOOT {{path/to/hard_disk.img}}",
+    "group": "Dos",
+    "description": "boot: Boot floppy or hard disk images directly, bypassing OS emulation. (Boot from hard disk image)",
+    "tags": [
+      "dos",
+      "boot",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-boot-2",
+    "type": "command",
+    "title": "boot - Boot multiple floppy images",
+    "content": "BOOT {{path/to/floppy1.img path/to/floppy2.img ...}}",
+    "group": "Dos",
+    "description": "boot: Boot floppy or hard disk images directly, bypassing OS emulation. (Boot multiple floppy images)",
+    "tags": [
+      "dos",
+      "boot",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-keyb-0",
+    "type": "command",
+    "title": "keyb - Set layout",
+    "content": "KEYB {{us|uk|gr|...}}",
+    "group": "Dos",
+    "description": "keyb: Change keyboard layout. (Set layout)",
+    "tags": [
+      "dos",
+      "keyb",
       "tldr",
       "en"
     ],

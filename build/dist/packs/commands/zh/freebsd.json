@@ -1,5 +1,35 @@
 [
   {
+    "id": "tldr-zh-freebsd-ypchfn-0",
+    "type": "command",
+    "title": "ypchfn - 查看原命令的文档",
+    "content": "tldr chpass",
+    "group": "Freebsd",
+    "description": "ypchfn: 此命令为 `chpass` 的别名。 (查看原命令的文档)",
+    "tags": [
+      "freebsd",
+      "ypchfn",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-freebsd-chsh-0",
+    "type": "command",
+    "title": "chsh - 查看原命令的文档",
+    "content": "tldr chpass",
+    "group": "Freebsd",
+    "description": "chsh: 此命令为 `chpass` 的别名。 (查看原命令的文档)",
+    "tags": [
+      "freebsd",
+      "chsh",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-freebsd-ypchsh-0",
     "type": "command",
     "title": "ypchsh - 查看原命令的文档",
@@ -39,36 +69,6 @@
     "tags": [
       "freebsd",
       "chfn",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-freebsd-ypchfn-0",
-    "type": "command",
-    "title": "ypchfn - 查看原命令的文档",
-    "content": "tldr chpass",
-    "group": "Freebsd",
-    "description": "ypchfn: 此命令为 `chpass` 的别名。 (查看原命令的文档)",
-    "tags": [
-      "freebsd",
-      "ypchfn",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-freebsd-chsh-0",
-    "type": "command",
-    "title": "chsh - 查看原命令的文档",
-    "content": "tldr chpass",
-    "group": "Freebsd",
-    "description": "chsh: 此命令为 `chpass` 的别名。 (查看原命令的文档)",
-    "tags": [
-      "freebsd",
-      "chsh",
       "tldr",
       "zh"
     ],

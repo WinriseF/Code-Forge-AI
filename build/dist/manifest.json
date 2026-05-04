@@ -1,29 +1,7 @@
 {
-  "updated_at": 1777390827149,
+  "updated_at": 1777867140326,
   "version": "2.1.0",
   "packages": [
-    {
-      "id": "zh-sunos",
-      "language": "zh",
-      "platform": "sunos",
-      "name": "SunOS (ZH)",
-      "description": "Contains 3 zh commands for sunos.",
-      "count": 3,
-      "size_kb": 1,
-      "url": "packs/commands/zh/sunos.json",
-      "category": "command"
-    },
-    {
-      "id": "zh-common",
-      "language": "zh",
-      "platform": "common",
-      "name": "通用工具 (Common) (ZH)",
-      "description": "Contains 3636 zh commands for common.",
-      "count": 3636,
-      "size_kb": 1773,
-      "url": "packs/commands/zh/common.json",
-      "category": "command"
-    },
     {
       "id": "zh-openbsd",
       "language": "zh",
@@ -33,17 +11,6 @@
       "count": 2,
       "size_kb": 1,
       "url": "packs/commands/zh/openbsd.json",
-      "category": "command"
-    },
-    {
-      "id": "zh-dos",
-      "language": "zh",
-      "platform": "dos",
-      "name": "Dos (ZH)",
-      "description": "Contains 11 zh commands for dos.",
-      "count": 11,
-      "size_kb": 4,
-      "url": "packs/commands/zh/dos.json",
       "category": "command"
     },
     {
@@ -58,6 +25,17 @@
       "category": "command"
     },
     {
+      "id": "zh-dos",
+      "language": "zh",
+      "platform": "dos",
+      "name": "Dos (ZH)",
+      "description": "Contains 11 zh commands for dos.",
+      "count": 11,
+      "size_kb": 4,
+      "url": "packs/commands/zh/dos.json",
+      "category": "command"
+    },
+    {
       "id": "zh-netbsd",
       "language": "zh",
       "platform": "netbsd",
@@ -69,14 +47,14 @@
       "category": "command"
     },
     {
-      "id": "zh-android",
+      "id": "zh-sunos",
       "language": "zh",
-      "platform": "android",
-      "name": "Android 开发 (ZH)",
-      "description": "Contains 54 zh commands for android.",
-      "count": 54,
-      "size_kb": 23,
-      "url": "packs/commands/zh/android.json",
+      "platform": "sunos",
+      "name": "SunOS (ZH)",
+      "description": "Contains 3 zh commands for sunos.",
+      "count": 3,
+      "size_kb": 1,
+      "url": "packs/commands/zh/sunos.json",
       "category": "command"
     },
     {
@@ -84,21 +62,10 @@
       "language": "zh",
       "platform": "linux",
       "name": "Linux 运维 (ZH)",
-      "description": "Contains 765 zh commands for linux.",
-      "count": 765,
-      "size_kb": 344,
+      "description": "Contains 772 zh commands for linux.",
+      "count": 772,
+      "size_kb": 347,
       "url": "packs/commands/zh/linux.json",
-      "category": "command"
-    },
-    {
-      "id": "zh-windows",
-      "language": "zh",
-      "platform": "windows",
-      "name": "Windows (ZH)",
-      "description": "Contains 425 zh commands for windows.",
-      "count": 425,
-      "size_kb": 183,
-      "url": "packs/commands/zh/windows.json",
       "category": "command"
     },
     {
@@ -113,25 +80,36 @@
       "category": "command"
     },
     {
-      "id": "en-sunos",
-      "language": "en",
-      "platform": "sunos",
-      "name": "SunOS (EN)",
-      "description": "Contains 49 en commands for sunos.",
-      "count": 49,
-      "size_kb": 21,
-      "url": "packs/commands/en/sunos.json",
+      "id": "zh-android",
+      "language": "zh",
+      "platform": "android",
+      "name": "Android 开发 (ZH)",
+      "description": "Contains 54 zh commands for android.",
+      "count": 54,
+      "size_kb": 23,
+      "url": "packs/commands/zh/android.json",
       "category": "command"
     },
     {
-      "id": "en-common",
-      "language": "en",
+      "id": "zh-common",
+      "language": "zh",
       "platform": "common",
-      "name": "Common Tools (EN)",
-      "description": "Contains 20509 en commands for common.",
-      "count": 20509,
-      "size_kb": 9933,
-      "url": "packs/commands/en/common.json",
+      "name": "通用工具 (Common) (ZH)",
+      "description": "Contains 3659 zh commands for common.",
+      "count": 3659,
+      "size_kb": 1784,
+      "url": "packs/commands/zh/common.json",
+      "category": "command"
+    },
+    {
+      "id": "zh-windows",
+      "language": "zh",
+      "platform": "windows",
+      "name": "Windows (ZH)",
+      "description": "Contains 426 zh commands for windows.",
+      "count": 426,
+      "size_kb": 184,
+      "url": "packs/commands/zh/windows.json",
       "category": "command"
     },
     {
@@ -146,17 +124,6 @@
       "category": "command"
     },
     {
-      "id": "en-dos",
-      "language": "en",
-      "platform": "dos",
-      "name": "Dos (EN)",
-      "description": "Contains 64 en commands for dos.",
-      "count": 64,
-      "size_kb": 24,
-      "url": "packs/commands/en/dos.json",
-      "category": "command"
-    },
-    {
       "id": "en-freebsd",
       "language": "en",
       "platform": "freebsd",
@@ -165,6 +132,17 @@
       "count": 63,
       "size_kb": 29,
       "url": "packs/commands/en/freebsd.json",
+      "category": "command"
+    },
+    {
+      "id": "en-dos",
+      "language": "en",
+      "platform": "dos",
+      "name": "Dos (EN)",
+      "description": "Contains 64 en commands for dos.",
+      "count": 64,
+      "size_kb": 24,
+      "url": "packs/commands/en/dos.json",
       "category": "command"
     },
     {
@@ -179,6 +157,50 @@
       "category": "command"
     },
     {
+      "id": "en-cisco-ios",
+      "language": "en",
+      "platform": "cisco-ios",
+      "name": "Cisco-Ios (EN)",
+      "description": "Contains 42 en commands for cisco-ios.",
+      "count": 42,
+      "size_kb": 17,
+      "url": "packs/commands/en/cisco-ios.json",
+      "category": "command"
+    },
+    {
+      "id": "en-sunos",
+      "language": "en",
+      "platform": "sunos",
+      "name": "SunOS (EN)",
+      "description": "Contains 49 en commands for sunos.",
+      "count": 49,
+      "size_kb": 21,
+      "url": "packs/commands/en/sunos.json",
+      "category": "command"
+    },
+    {
+      "id": "en-linux",
+      "language": "en",
+      "platform": "linux",
+      "name": "Linux Ops (EN)",
+      "description": "Contains 8007 en commands for linux.",
+      "count": 8007,
+      "size_kb": 3785,
+      "url": "packs/commands/en/linux.json",
+      "category": "command"
+    },
+    {
+      "id": "en-osx",
+      "language": "en",
+      "platform": "osx",
+      "name": "macOS (EN)",
+      "description": "Contains 955 en commands for osx.",
+      "count": 955,
+      "size_kb": 422,
+      "url": "packs/commands/en/osx.json",
+      "category": "command"
+    },
+    {
       "id": "en-android",
       "language": "en",
       "platform": "android",
@@ -190,14 +212,14 @@
       "category": "command"
     },
     {
-      "id": "en-linux",
+      "id": "en-common",
       "language": "en",
-      "platform": "linux",
-      "name": "Linux Ops (EN)",
-      "description": "Contains 8008 en commands for linux.",
-      "count": 8008,
-      "size_kb": 3785,
-      "url": "packs/commands/en/linux.json",
+      "platform": "common",
+      "name": "Common Tools (EN)",
+      "description": "Contains 20530 en commands for common.",
+      "count": 20530,
+      "size_kb": 9943,
+      "url": "packs/commands/en/common.json",
       "category": "command"
     },
     {
@@ -212,35 +234,13 @@
       "category": "command"
     },
     {
-      "id": "en-cisco-ios",
-      "language": "en",
-      "platform": "cisco-ios",
-      "name": "Cisco-Ios (EN)",
-      "description": "Contains 42 en commands for cisco-ios.",
-      "count": 42,
-      "size_kb": 17,
-      "url": "packs/commands/en/cisco-ios.json",
-      "category": "command"
-    },
-    {
-      "id": "en-osx",
-      "language": "en",
-      "platform": "osx",
-      "name": "macOS (EN)",
-      "description": "Contains 954 en commands for osx.",
-      "count": 954,
-      "size_kb": 422,
-      "url": "packs/commands/en/osx.json",
-      "category": "command"
-    },
-    {
       "id": "en-roles",
       "language": "en",
       "platform": "llm",
       "name": "ChatGPT Prompts (English)",
-      "description": "Collection of 1717 role-play prompts.",
-      "count": 1717,
-      "size_kb": 5119.94,
+      "description": "Collection of 1738 role-play prompts.",
+      "count": 1738,
+      "size_kb": 5150.97,
       "url": "packs/prompts/en/roles.json",
       "category": "prompt"
     },
@@ -260,9 +260,9 @@
       "language": "en",
       "platform": "image",
       "name": "Awesome GPT Image 2 Prompts",
-      "description": "Collection of 2983 GPT Image 2 prompts.",
-      "count": 2983,
-      "size_kb": 9015.2,
+      "description": "Collection of 4029 GPT Image 2 prompts.",
+      "count": 4029,
+      "size_kb": 12169.33,
       "url": "packs/prompts/en/image2.json",
       "category": "prompt"
     },
@@ -271,9 +271,9 @@
       "language": "zh",
       "platform": "image",
       "name": "GPT Image 2 提示词精选",
-      "description": "Collection of 2983 GPT Image 2 prompts.",
-      "count": 2983,
-      "size_kb": 8901.29,
+      "description": "Collection of 4029 GPT Image 2 prompts.",
+      "count": 4029,
+      "size_kb": 11994.2,
       "url": "packs/prompts/zh/image2.json",
       "category": "prompt"
     },
@@ -282,9 +282,9 @@
       "language": "en",
       "platform": "video",
       "name": "Awesome Seedance 2.0 Video Prompts",
-      "description": "Collection of 2193 Seedance 2.0 video-generation prompts.",
-      "count": 2193,
-      "size_kb": 6369.28,
+      "description": "Collection of 2380 Seedance 2.0 video-generation prompts.",
+      "count": 2380,
+      "size_kb": 6940.92,
       "url": "packs/prompts/en/seedance2.json",
       "category": "prompt"
     },
@@ -293,9 +293,9 @@
       "language": "zh",
       "platform": "video",
       "name": "Seedance 2.0 视频提示词精选",
-      "description": "Collection of 2194 Seedance 2.0 video-generation prompts.",
-      "count": 2194,
-      "size_kb": 6169.92,
+      "description": "Collection of 2381 Seedance 2.0 video-generation prompts.",
+      "count": 2381,
+      "size_kb": 6734.81,
       "url": "packs/prompts/zh/seedance2.json",
       "category": "prompt"
     },
@@ -326,9 +326,9 @@
       "language": "en",
       "platform": "image",
       "name": "Awesome Nano Banana Pro Prompts",
-      "description": "Collection of 12761 Nano Banana Pro image-generation prompts.",
-      "count": 12761,
-      "size_kb": 37070.01,
+      "description": "Collection of 12957 Nano Banana Pro image-generation prompts.",
+      "count": 12957,
+      "size_kb": 37526.32,
       "url": "packs/prompts/en/nano-banana-pro.json",
       "category": "prompt"
     },
@@ -337,9 +337,9 @@
       "language": "zh",
       "platform": "image",
       "name": "Nano Banana Pro 提示词精选",
-      "description": "Collection of 12769 Nano Banana Pro image-generation prompts.",
-      "count": 12769,
-      "size_kb": 36470.36,
+      "description": "Collection of 12965 Nano Banana Pro image-generation prompts.",
+      "count": 12965,
+      "size_kb": 36882.09,
       "url": "packs/prompts/zh/nano-banana-pro.json",
       "category": "prompt"
     },
