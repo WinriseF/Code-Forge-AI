@@ -1815,6 +1815,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-hugo-serve-0",
+    "type": "command",
+    "title": "hugo-serve - View documentation for the original command",
+    "content": "tldr hugo server",
+    "group": "Common Tools",
+    "description": "hugo-serve: This command is an alias of `hugo server`. (View documentation for the original command)",
+    "tags": [
+      "common",
+      "hugo-serve",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-npm-ci-0",
     "type": "command",
     "title": "npm-ci - Install project dependencies from `package-lock.json` or `npm-shrinkwrap.json`",
@@ -38420,7 +38435,7 @@
     "title": "cargo-deb - Create a Debian package from a project",
     "content": "cargo deb",
     "group": "Common Tools",
-    "description": "cargo-deb: Create Debian packages from Cargo projects. (Create a Debian package from a project)",
+    "description": "cargo-deb: Create Debian packages from Cargo projects. Note: This is not a built-in Cargo command, you need to install it first. (Create a Debian package from a project)",
     "tags": [
       "common",
       "cargo-deb",
@@ -38435,7 +38450,7 @@
     "title": "cargo-deb - Write the `.deb` file to the specified file or directory",
     "content": "cargo deb {{[-o|--output]}} {{path/to/file_or_directory}}",
     "group": "Common Tools",
-    "description": "cargo-deb: Create Debian packages from Cargo projects. (Write the `.deb` file to the specified file or directory)",
+    "description": "cargo-deb: Create Debian packages from Cargo projects. Note: This is not a built-in Cargo command, you need to install it first. (Write the `.deb` file to the specified file or directory)",
     "tags": [
       "common",
       "cargo-deb",
@@ -38450,7 +38465,7 @@
     "title": "cargo-deb - Compile for the specified Rust target triple",
     "content": "cargo deb --target {{x86_64-unknown-linux-gnu}}",
     "group": "Common Tools",
-    "description": "cargo-deb: Create Debian packages from Cargo projects. (Compile for the specified Rust target triple)",
+    "description": "cargo-deb: Create Debian packages from Cargo projects. Note: This is not a built-in Cargo command, you need to install it first. (Compile for the specified Rust target triple)",
     "tags": [
       "common",
       "cargo-deb",
@@ -38465,7 +38480,7 @@
     "title": "cargo-deb - Select which package to use in a Cargo workspace",
     "content": "cargo deb {{[-p|--package]}} {{package_name}}",
     "group": "Common Tools",
-    "description": "cargo-deb: Create Debian packages from Cargo projects. (Select which package to use in a Cargo workspace)",
+    "description": "cargo-deb: Create Debian packages from Cargo projects. Note: This is not a built-in Cargo command, you need to install it first. (Select which package to use in a Cargo workspace)",
     "tags": [
       "common",
       "cargo-deb",
@@ -38480,7 +38495,7 @@
     "title": "cargo-deb - Immediately install the created package",
     "content": "cargo deb --install",
     "group": "Common Tools",
-    "description": "cargo-deb: Create Debian packages from Cargo projects. (Immediately install the created package)",
+    "description": "cargo-deb: Create Debian packages from Cargo projects. Note: This is not a built-in Cargo command, you need to install it first. (Immediately install the created package)",
     "tags": [
       "common",
       "cargo-deb",
@@ -55487,10 +55502,10 @@
   {
     "id": "tldr-en-common-git-stash-0",
     "type": "command",
-    "title": "git-stash - Stash current changes with a message, except new (untracked) files",
-    "content": "git stash push {{[-m|--message]}} {{stash_message}}",
+    "title": "git-stash - Stash the current uncommitted changes",
+    "content": "git stash",
     "group": "Common Tools",
-    "description": "git-stash: Stash local Git changes in a temporary area. (Stash current changes with a message, except new (untracked) files)",
+    "description": "git-stash: Stash local Git changes in a temporary area. (Stash the current uncommitted changes)",
     "tags": [
       "common",
       "git-stash",
@@ -55532,10 +55547,10 @@
   {
     "id": "tldr-en-common-git-stash-3",
     "type": "command",
-    "title": "git-stash - List all stashes (shows stash name, related branch and message)",
+    "title": "git-stash - List all stashes",
     "content": "git stash list",
     "group": "Common Tools",
-    "description": "git-stash: Stash local Git changes in a temporary area. (List all stashes (shows stash name, related branch and message))",
+    "description": "git-stash: Stash local Git changes in a temporary area. (List all stashes)",
     "tags": [
       "common",
       "git-stash",
@@ -55547,10 +55562,10 @@
   {
     "id": "tldr-en-common-git-stash-4",
     "type": "command",
-    "title": "git-stash - Show the changes as a patch between the stash (default is `stash@{0}`) and the commit back when stash entry was first created",
-    "content": "git stash show {{[-p|--patch]}} {{stash@{0}}}",
+    "title": "git-stash - Show the changes as a patch between the stash and the commit back when stash entry was first created",
+    "content": "git stash show {{[-p|--patch]}}}",
     "group": "Common Tools",
-    "description": "git-stash: Stash local Git changes in a temporary area. (Show the changes as a patch between the stash (default is `stash@{0}`) and the commit back when stash entry was first created)",
+    "description": "git-stash: Stash local Git changes in a temporary area. (Show the changes as a patch between the stash and the commit back when stash entry was first created)",
     "tags": [
       "common",
       "git-stash",
@@ -55562,10 +55577,10 @@
   {
     "id": "tldr-en-common-git-stash-5",
     "type": "command",
-    "title": "git-stash - Apply a stash (default is the latest, named `stash@{0}`)",
-    "content": "git stash apply {{optional_stash_name_or_commit}}",
+    "title": "git-stash - Apply a stash and remove it from the stash list if applying doesn't cause conflicts",
+    "content": "git stash pop",
     "group": "Common Tools",
-    "description": "git-stash: Stash local Git changes in a temporary area. (Apply a stash (default is the latest, named `stash@{0}`))",
+    "description": "git-stash: Stash local Git changes in a temporary area. (Apply a stash and remove it from the stash list if applying doesn't cause conflicts)",
     "tags": [
       "common",
       "git-stash",
@@ -55577,10 +55592,10 @@
   {
     "id": "tldr-en-common-git-stash-6",
     "type": "command",
-    "title": "git-stash - Drop or apply a stash (default is `stash@{0}`) and remove it from the stash list if applying doesn't cause conflicts",
-    "content": "git stash pop {{optional_stash_name}}",
+    "title": "git-stash - Delete the latest stash",
+    "content": "git stash drop",
     "group": "Common Tools",
-    "description": "git-stash: Stash local Git changes in a temporary area. (Drop or apply a stash (default is `stash@{0}`) and remove it from the stash list if applying doesn't cause conflicts)",
+    "description": "git-stash: Stash local Git changes in a temporary area. (Delete the latest stash)",
     "tags": [
       "common",
       "git-stash",
@@ -55592,10 +55607,10 @@
   {
     "id": "tldr-en-common-git-stash-7",
     "type": "command",
-    "title": "git-stash - Drop all stashes",
+    "title": "git-stash - Delete all stashes",
     "content": "git stash clear",
     "group": "Common Tools",
-    "description": "git-stash: Stash local Git changes in a temporary area. (Drop all stashes)",
+    "description": "git-stash: Stash local Git changes in a temporary area. (Delete all stashes)",
     "tags": [
       "common",
       "git-stash",
@@ -103262,10 +103277,10 @@
   {
     "id": "tldr-en-common-nvm-0",
     "type": "command",
-    "title": "nvm - Install a specific version of Node.js",
-    "content": "nvm install {{node_version}}",
+    "title": "nvm - Install/uninstall a specific version of Node.js",
+    "content": "nvm {{install|uninstall}} {{node_version}}",
     "group": "Common Tools",
-    "description": "nvm: Install, uninstall, or switch between Node.js versions. Supports version numbers like \"12.8\" or \"v16.13.1\", and labels like \"stable\", \"system\", etc. (Install a specific version of Node.js)",
+    "description": "nvm: Install, uninstall, or switch between Node.js versions. Supports version numbers like \"12.8\" or \"v16.13.1\", and labels like \"node\", \"system\", etc. (Install/uninstall a specific version of Node.js)",
     "tags": [
       "common",
       "nvm",
@@ -103280,7 +103295,7 @@
     "title": "nvm - Use a specific version of Node.js in the current shell",
     "content": "nvm use {{node_version}}",
     "group": "Common Tools",
-    "description": "nvm: Install, uninstall, or switch between Node.js versions. Supports version numbers like \"12.8\" or \"v16.13.1\", and labels like \"stable\", \"system\", etc. (Use a specific version of Node.js in the current shell)",
+    "description": "nvm: Install, uninstall, or switch between Node.js versions. Supports version numbers like \"12.8\" or \"v16.13.1\", and labels like \"node\", \"system\", etc. (Use a specific version of Node.js in the current shell)",
     "tags": [
       "common",
       "nvm",
@@ -103295,7 +103310,7 @@
     "title": "nvm - Set the default Node.js version",
     "content": "nvm alias default {{node_version}}",
     "group": "Common Tools",
-    "description": "nvm: Install, uninstall, or switch between Node.js versions. Supports version numbers like \"12.8\" or \"v16.13.1\", and labels like \"stable\", \"system\", etc. (Set the default Node.js version)",
+    "description": "nvm: Install, uninstall, or switch between Node.js versions. Supports version numbers like \"12.8\" or \"v16.13.1\", and labels like \"node\", \"system\", etc. (Set the default Node.js version)",
     "tags": [
       "common",
       "nvm",
@@ -103307,10 +103322,10 @@
   {
     "id": "tldr-en-common-nvm-3",
     "type": "command",
-    "title": "nvm - List all available Node.js versions and highlight the default one",
-    "content": "nvm list",
+    "title": "nvm - List remote versions available for install, only show LTS (long-term support) versions",
+    "content": "nvm ls-remote --lts",
     "group": "Common Tools",
-    "description": "nvm: Install, uninstall, or switch between Node.js versions. Supports version numbers like \"12.8\" or \"v16.13.1\", and labels like \"stable\", \"system\", etc. (List all available Node.js versions and highlight the default one)",
+    "description": "nvm: Install, uninstall, or switch between Node.js versions. Supports version numbers like \"12.8\" or \"v16.13.1\", and labels like \"node\", \"system\", etc. (List remote versions available for install, only show LTS (long-term support) versions)",
     "tags": [
       "common",
       "nvm",
@@ -103322,10 +103337,10 @@
   {
     "id": "tldr-en-common-nvm-4",
     "type": "command",
-    "title": "nvm - Uninstall a given Node.js version",
-    "content": "nvm uninstall {{node_version}}",
+    "title": "nvm - List installed versions",
+    "content": "nvm {{[ls|list]}}",
     "group": "Common Tools",
-    "description": "nvm: Install, uninstall, or switch between Node.js versions. Supports version numbers like \"12.8\" or \"v16.13.1\", and labels like \"stable\", \"system\", etc. (Uninstall a given Node.js version)",
+    "description": "nvm: Install, uninstall, or switch between Node.js versions. Supports version numbers like \"12.8\" or \"v16.13.1\", and labels like \"node\", \"system\", etc. (List installed versions)",
     "tags": [
       "common",
       "nvm",
@@ -103338,9 +103353,9 @@
     "id": "tldr-en-common-nvm-5",
     "type": "command",
     "title": "nvm - Launch the REPL of a specific version of Node.js",
-    "content": "nvm run {{node_version}} --version",
+    "content": "nvm run {{node_version}}",
     "group": "Common Tools",
-    "description": "nvm: Install, uninstall, or switch between Node.js versions. Supports version numbers like \"12.8\" or \"v16.13.1\", and labels like \"stable\", \"system\", etc. (Launch the REPL of a specific version of Node.js)",
+    "description": "nvm: Install, uninstall, or switch between Node.js versions. Supports version numbers like \"12.8\" or \"v16.13.1\", and labels like \"node\", \"system\", etc. (Launch the REPL of a specific version of Node.js)",
     "tags": [
       "common",
       "nvm",
@@ -103353,9 +103368,9 @@
     "id": "tldr-en-common-nvm-6",
     "type": "command",
     "title": "nvm - Execute a script in a specific version of Node.js",
-    "content": "nvm exec {{node_version}} node {{app.js}}",
+    "content": "nvm exec {{node_version}} node {{path/to/script.js}}",
     "group": "Common Tools",
-    "description": "nvm: Install, uninstall, or switch between Node.js versions. Supports version numbers like \"12.8\" or \"v16.13.1\", and labels like \"stable\", \"system\", etc. (Execute a script in a specific version of Node.js)",
+    "description": "nvm: Install, uninstall, or switch between Node.js versions. Supports version numbers like \"12.8\" or \"v16.13.1\", and labels like \"node\", \"system\", etc. (Execute a script in a specific version of Node.js)",
     "tags": [
       "common",
       "nvm",
@@ -103370,7 +103385,7 @@
     "title": "nvm - Upgrade to the latest working npm version on the current Node.js version",
     "content": "nvm install-latest-npm",
     "group": "Common Tools",
-    "description": "nvm: Install, uninstall, or switch between Node.js versions. Supports version numbers like \"12.8\" or \"v16.13.1\", and labels like \"stable\", \"system\", etc. (Upgrade to the latest working npm version on the current Node.js version)",
+    "description": "nvm: Install, uninstall, or switch between Node.js versions. Supports version numbers like \"12.8\" or \"v16.13.1\", and labels like \"node\", \"system\", etc. (Upgrade to the latest working npm version on the current Node.js version)",
     "tags": [
       "common",
       "nvm",
@@ -112248,7 +112263,7 @@
     "id": "tldr-en-common-openconnect-0",
     "type": "command",
     "title": "openconnect - Connect to a server",
-    "content": "openconnect {{vpn.example.org}}",
+    "content": "sudo openconnect {{vpn.example.org}}",
     "group": "Common Tools",
     "description": "openconnect: A VPN client, for Cisco AnyConnect VPNs and others. (Connect to a server)",
     "tags": [
@@ -112263,7 +112278,7 @@
     "id": "tldr-en-common-openconnect-1",
     "type": "command",
     "title": "openconnect - Connect to a server, forking into the background",
-    "content": "openconnect --background {{vpn.example.org}}",
+    "content": "sudo openconnect {{[-b|--background]}} {{vpn.example.org}}",
     "group": "Common Tools",
     "description": "openconnect: A VPN client, for Cisco AnyConnect VPNs and others. (Connect to a server, forking into the background)",
     "tags": [
@@ -112278,7 +112293,7 @@
     "id": "tldr-en-common-openconnect-2",
     "type": "command",
     "title": "openconnect - Terminate the connection that is running in the background",
-    "content": "killall -SIGINT openconnect",
+    "content": "sudo killall -SIGINT openconnect",
     "group": "Common Tools",
     "description": "openconnect: A VPN client, for Cisco AnyConnect VPNs and others. (Terminate the connection that is running in the background)",
     "tags": [
@@ -112292,10 +112307,10 @@
   {
     "id": "tldr-en-common-openconnect-3",
     "type": "command",
-    "title": "openconnect - Connect to a server, reading options from a configuration file",
-    "content": "openconnect --config={{path/to/file}} {{vpn.example.org}}",
+    "title": "openconnect - Specify the user to log in as",
+    "content": "sudo openconnect {{[-u|--user]}} {{username}} {{vpn.example.org}}",
     "group": "Common Tools",
-    "description": "openconnect: A VPN client, for Cisco AnyConnect VPNs and others. (Connect to a server, reading options from a configuration file)",
+    "description": "openconnect: A VPN client, for Cisco AnyConnect VPNs and others. (Specify the user to log in as)",
     "tags": [
       "common",
       "openconnect",
@@ -112307,8 +112322,38 @@
   {
     "id": "tldr-en-common-openconnect-4",
     "type": "command",
+    "title": "openconnect - Specify the connection protocol",
+    "content": "sudo openconnect --protocol {{nc|pulse|gp|f5|fortinet|array}} {{vpn.example.org}}",
+    "group": "Common Tools",
+    "description": "openconnect: A VPN client, for Cisco AnyConnect VPNs and others. (Specify the connection protocol)",
+    "tags": [
+      "common",
+      "openconnect",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-openconnect-5",
+    "type": "command",
+    "title": "openconnect - Connect to a server, reading options from a configuration file",
+    "content": "sudo openconnect --config {{path/to/config_file}} {{vpn.example.org}}",
+    "group": "Common Tools",
+    "description": "openconnect: A VPN client, for Cisco AnyConnect VPNs and others. (Connect to a server, reading options from a configuration file)",
+    "tags": [
+      "common",
+      "openconnect",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-openconnect-6",
+    "type": "command",
     "title": "openconnect - Connect to a server and authenticate with a specific SSL client certificate",
-    "content": "openconnect --certificate={{path/to/file}} {{vpn.example.org}}",
+    "content": "sudo openconnect {{[-c|--certificate]}} {{path/to/certificate.pem}} {{vpn.example.org}}",
     "group": "Common Tools",
     "description": "openconnect: A VPN client, for Cisco AnyConnect VPNs and others. (Connect to a server and authenticate with a specific SSL client certificate)",
     "tags": [
@@ -114363,7 +114408,7 @@
     "id": "tldr-en-common-pueue-add-3",
     "type": "command",
     "title": "pueue-add - Add a command to a group and start it immediately, see `pueue group` to manage groups",
-    "content": "pueue add {{[-i|--immediate]}} {{[-g|--group]}} \"{{CPU_intensive}}\" -- {{ffmpeg -i input.mp4 frame_%d.png}}",
+    "content": "pueue add {{[-i|--immediate]}} {{[-g|--group]}} \"{{cpu_intensive}}\" -- {{ffmpeg -i input.mp4 frame_%d.png}}",
     "group": "Common Tools",
     "description": "pueue-add: Enqueue a task for execution. (Add a command to a group and start it immediately, see `pueue group` to manage groups)",
     "tags": [
@@ -147230,7 +147275,7 @@
     "title": "cargo-rustdoc - Pass options to `rustdoc`",
     "content": "cargo rustdoc -- {{rustdoc_options}}",
     "group": "Common Tools",
-    "description": "cargo-rustdoc: Build the documentation of Rust packages. Similar to `cargo doc`, but you can pass options to `rustdoc`. See `rustdoc --help` for all available options. (Pass options to `rustdoc`)",
+    "description": "cargo-rustdoc: Build the documentation of Rust packages. Similar to `cargo doc`, but you can pass options to `rustdoc`. (Pass options to `rustdoc`)",
     "tags": [
       "common",
       "cargo-rustdoc",
@@ -147245,7 +147290,7 @@
     "title": "cargo-rustdoc - Warn about a documentation lint",
     "content": "cargo rustdoc -- --warn rustdoc::{{lint_name}}",
     "group": "Common Tools",
-    "description": "cargo-rustdoc: Build the documentation of Rust packages. Similar to `cargo doc`, but you can pass options to `rustdoc`. See `rustdoc --help` for all available options. (Warn about a documentation lint)",
+    "description": "cargo-rustdoc: Build the documentation of Rust packages. Similar to `cargo doc`, but you can pass options to `rustdoc`. (Warn about a documentation lint)",
     "tags": [
       "common",
       "cargo-rustdoc",
@@ -147260,7 +147305,7 @@
     "title": "cargo-rustdoc - Ignore a documentation lint",
     "content": "cargo rustdoc -- --allow rustdoc::{{lint_name}}",
     "group": "Common Tools",
-    "description": "cargo-rustdoc: Build the documentation of Rust packages. Similar to `cargo doc`, but you can pass options to `rustdoc`. See `rustdoc --help` for all available options. (Ignore a documentation lint)",
+    "description": "cargo-rustdoc: Build the documentation of Rust packages. Similar to `cargo doc`, but you can pass options to `rustdoc`. (Ignore a documentation lint)",
     "tags": [
       "common",
       "cargo-rustdoc",
@@ -147275,7 +147320,7 @@
     "title": "cargo-rustdoc - Document the package's library",
     "content": "cargo rustdoc --lib",
     "group": "Common Tools",
-    "description": "cargo-rustdoc: Build the documentation of Rust packages. Similar to `cargo doc`, but you can pass options to `rustdoc`. See `rustdoc --help` for all available options. (Document the package's library)",
+    "description": "cargo-rustdoc: Build the documentation of Rust packages. Similar to `cargo doc`, but you can pass options to `rustdoc`. (Document the package's library)",
     "tags": [
       "common",
       "cargo-rustdoc",
@@ -147290,7 +147335,7 @@
     "title": "cargo-rustdoc - Document the specified binary",
     "content": "cargo rustdoc --bin {{name}}",
     "group": "Common Tools",
-    "description": "cargo-rustdoc: Build the documentation of Rust packages. Similar to `cargo doc`, but you can pass options to `rustdoc`. See `rustdoc --help` for all available options. (Document the specified binary)",
+    "description": "cargo-rustdoc: Build the documentation of Rust packages. Similar to `cargo doc`, but you can pass options to `rustdoc`. (Document the specified binary)",
     "tags": [
       "common",
       "cargo-rustdoc",
@@ -147305,7 +147350,7 @@
     "title": "cargo-rustdoc - Document the specified example",
     "content": "cargo rustdoc --example {{name}}",
     "group": "Common Tools",
-    "description": "cargo-rustdoc: Build the documentation of Rust packages. Similar to `cargo doc`, but you can pass options to `rustdoc`. See `rustdoc --help` for all available options. (Document the specified example)",
+    "description": "cargo-rustdoc: Build the documentation of Rust packages. Similar to `cargo doc`, but you can pass options to `rustdoc`. (Document the specified example)",
     "tags": [
       "common",
       "cargo-rustdoc",
@@ -147320,7 +147365,7 @@
     "title": "cargo-rustdoc - Document the specified integration test",
     "content": "cargo rustdoc --test {{name}}",
     "group": "Common Tools",
-    "description": "cargo-rustdoc: Build the documentation of Rust packages. Similar to `cargo doc`, but you can pass options to `rustdoc`. See `rustdoc --help` for all available options. (Document the specified integration test)",
+    "description": "cargo-rustdoc: Build the documentation of Rust packages. Similar to `cargo doc`, but you can pass options to `rustdoc`. (Document the specified integration test)",
     "tags": [
       "common",
       "cargo-rustdoc",
@@ -161000,7 +161045,7 @@
     "title": "cargo-binstall - Install a package from <https://crates.io>",
     "content": "cargo binstall {{package}}",
     "group": "Common Tools",
-    "description": "cargo-binstall: Install Rust binaries from CI artifacts. Falls back to `cargo install` (from source code) if there are no binaries available. (Install a package from <https://crates.io>)",
+    "description": "cargo-binstall: Install Rust binaries from CI artifacts. Falls back to `cargo install` (from source code) if there are no binaries available. Note: This is not a built-in Cargo command, you need to install it first. (Install a package from <https://crates.io>)",
     "tags": [
       "common",
       "cargo-binstall",
@@ -161015,7 +161060,7 @@
     "title": "cargo-binstall - Install a specific version of a package (latest by default)",
     "content": "cargo binstall {{package}}@{{version}}",
     "group": "Common Tools",
-    "description": "cargo-binstall: Install Rust binaries from CI artifacts. Falls back to `cargo install` (from source code) if there are no binaries available. (Install a specific version of a package (latest by default))",
+    "description": "cargo-binstall: Install Rust binaries from CI artifacts. Falls back to `cargo install` (from source code) if there are no binaries available. Note: This is not a built-in Cargo command, you need to install it first. (Install a specific version of a package (latest by default))",
     "tags": [
       "common",
       "cargo-binstall",
@@ -161030,7 +161075,7 @@
     "title": "cargo-binstall - Install a package and disable confirmation prompts",
     "content": "cargo binstall {{[-y|--no-confirm]}} {{package}}",
     "group": "Common Tools",
-    "description": "cargo-binstall: Install Rust binaries from CI artifacts. Falls back to `cargo install` (from source code) if there are no binaries available. (Install a package and disable confirmation prompts)",
+    "description": "cargo-binstall: Install Rust binaries from CI artifacts. Falls back to `cargo install` (from source code) if there are no binaries available. Note: This is not a built-in Cargo command, you need to install it first. (Install a package and disable confirmation prompts)",
     "tags": [
       "common",
       "cargo-binstall",
@@ -162215,7 +162260,7 @@
     "title": "r2e - Create a new feed database that sends email to an email address",
     "content": "r2e new {{email_address}}",
     "group": "Common Tools",
-    "description": "r2e: Forwards RSS feeds to an email address. Requires a configured `sendmail` or smtp setup. (Create a new feed database that sends email to an email address)",
+    "description": "r2e: Forward RSS feeds to an email address. Requires a configured `sendmail` or SMTP setup. (Create a new feed database that sends email to an email address)",
     "tags": [
       "common",
       "r2e",
@@ -162230,7 +162275,7 @@
     "title": "r2e - Subscribe to a feed",
     "content": "r2e add {{feed_name}} {{feed_URI}}",
     "group": "Common Tools",
-    "description": "r2e: Forwards RSS feeds to an email address. Requires a configured `sendmail` or smtp setup. (Subscribe to a feed)",
+    "description": "r2e: Forward RSS feeds to an email address. Requires a configured `sendmail` or SMTP setup. (Subscribe to a feed)",
     "tags": [
       "common",
       "r2e",
@@ -162245,7 +162290,7 @@
     "title": "r2e - Send new stories to an email address",
     "content": "r2e run",
     "group": "Common Tools",
-    "description": "r2e: Forwards RSS feeds to an email address. Requires a configured `sendmail` or smtp setup. (Send new stories to an email address)",
+    "description": "r2e: Forward RSS feeds to an email address. Requires a configured `sendmail` or SMTP setup. (Send new stories to an email address)",
     "tags": [
       "common",
       "r2e",
@@ -162260,7 +162305,7 @@
     "title": "r2e - List all feeds",
     "content": "r2e list",
     "group": "Common Tools",
-    "description": "r2e: Forwards RSS feeds to an email address. Requires a configured `sendmail` or smtp setup. (List all feeds)",
+    "description": "r2e: Forward RSS feeds to an email address. Requires a configured `sendmail` or SMTP setup. (List all feeds)",
     "tags": [
       "common",
       "r2e",
@@ -162275,7 +162320,7 @@
     "title": "r2e - Delete a feed at a specified index",
     "content": "r2e delete {{index}}",
     "group": "Common Tools",
-    "description": "r2e: Forwards RSS feeds to an email address. Requires a configured `sendmail` or smtp setup. (Delete a feed at a specified index)",
+    "description": "r2e: Forward RSS feeds to an email address. Requires a configured `sendmail` or SMTP setup. (Delete a feed at a specified index)",
     "tags": [
       "common",
       "r2e",
@@ -162290,7 +162335,7 @@
     "title": "r2e - Display help",
     "content": "r2e {{[-h|--help]}}",
     "group": "Common Tools",
-    "description": "r2e: Forwards RSS feeds to an email address. Requires a configured `sendmail` or smtp setup. (Display help)",
+    "description": "r2e: Forward RSS feeds to an email address. Requires a configured `sendmail` or SMTP setup. (Display help)",
     "tags": [
       "common",
       "r2e",
@@ -165039,6 +165084,36 @@
     "tags": [
       "common",
       "nix-classic",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-age-inspect-0",
+    "type": "command",
+    "title": "age-inspect - Print the recipient type, the file size, and whether it uses post-quantum encryption",
+    "content": "age-inspect {{path/to/file}}",
+    "group": "Common Tools",
+    "description": "age-inspect: Inspect `age` encrypted files. (Print the recipient type, the file size, and whether it uses post-quantum encryption)",
+    "tags": [
+      "common",
+      "age-inspect",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-age-inspect-1",
+    "type": "command",
+    "title": "age-inspect - Print the output to `stdout` as JSON",
+    "content": "age-inspect --json {{path/to/file}}",
+    "group": "Common Tools",
+    "description": "age-inspect: Inspect `age` encrypted files. (Print the output to `stdout` as JSON)",
+    "tags": [
+      "common",
+      "age-inspect",
       "tldr",
       "en"
     ],
@@ -196037,6 +196112,21 @@
   {
     "id": "tldr-en-common-age-keygen-1",
     "type": "command",
+    "title": "age-keygen - Generate a post-quantum key pair, save it to an unencrypted file, and print the public key to `stdout`",
+    "content": "age-keygen -pq {{[-o|--output]}} {{path/to/file}}",
+    "group": "Common Tools",
+    "description": "age-keygen: Generate `age` key pairs. (Generate a post-quantum key pair, save it to an unencrypted file, and print the public key to `stdout`)",
+    "tags": [
+      "common",
+      "age-keygen",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-age-keygen-2",
+    "type": "command",
     "title": "age-keygen - Convert an identit[y] to a recipient and print the public key to `stdout`",
     "content": "age-keygen -y {{path/to/file}}",
     "group": "Common Tools",
@@ -201285,6 +201375,81 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-emulate-0",
+    "type": "command",
+    "title": "emulate - Print current emulation mode",
+    "content": "emulate",
+    "group": "Common Tools",
+    "description": "emulate: Reset shell options to match a certain shell's behavior. Also used to ensure a shell function runs with the default configuration. (Print current emulation mode)",
+    "tags": [
+      "common",
+      "emulate",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-emulate-1",
+    "type": "command",
+    "title": "emulate - Adjust settings of the current shell session to mimic Bash",
+    "content": "emulate bash",
+    "group": "Common Tools",
+    "description": "emulate: Reset shell options to match a certain shell's behavior. Also used to ensure a shell function runs with the default configuration. (Adjust settings of the current shell session to mimic Bash)",
+    "tags": [
+      "common",
+      "emulate",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-emulate-2",
+    "type": "command",
+    "title": "emulate - Evaluate a [c]ommand within temporary emulation",
+    "content": "emulate ksh -c \"{{echo hi}}\"",
+    "group": "Common Tools",
+    "description": "emulate: Reset shell options to match a certain shell's behavior. Also used to ensure a shell function runs with the default configuration. (Evaluate a [c]ommand within temporary emulation)",
+    "tags": [
+      "common",
+      "emulate",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-emulate-3",
+    "type": "command",
+    "title": "emulate - Emulate the default Zsh, [R]esetting options when possible",
+    "content": "emulate zsh -R",
+    "group": "Common Tools",
+    "description": "emulate: Reset shell options to match a certain shell's behavior. Also used to ensure a shell function runs with the default configuration. (Emulate the default Zsh, [R]esetting options when possible)",
+    "tags": [
+      "common",
+      "emulate",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-emulate-4",
+    "type": "command",
+    "title": "emulate - Scope emulation to the current function",
+    "content": "{{my_function}}() { emulate -L {{zsh|sh|ksh|csh}}; {{ls}} }",
+    "group": "Common Tools",
+    "description": "emulate: Reset shell options to match a certain shell's behavior. Also used to ensure a shell function runs with the default configuration. (Scope emulation to the current function)",
+    "tags": [
+      "common",
+      "emulate",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-pio-settings-0",
     "type": "command",
     "title": "pio-settings - Display the names, values, and descriptions of all PlatformIO settings",
@@ -202997,10 +203162,10 @@
   {
     "id": "tldr-en-common-grafana-cli-0",
     "type": "command",
-    "title": "grafana-cli - Install, update, or remove specific plugins",
-    "content": "grafana-cli plugins {{install|update|remove}} {{plugin_id1 plugin_id2 ...}}",
+    "title": "grafana-cli - Install plugins",
+    "content": "grafana cli plugins install {{plugin_id1 plugin_id2 ...}}",
     "group": "Common Tools",
-    "description": "grafana-cli: A small executable that is bundled with Grafana serve. (Install, update, or remove specific plugins)",
+    "description": "grafana-cli: Administer Grafana. (Install plugins)",
     "tags": [
       "common",
       "grafana-cli",
@@ -203012,10 +203177,55 @@
   {
     "id": "tldr-en-common-grafana-cli-1",
     "type": "command",
-    "title": "grafana-cli - List all installed plugins",
-    "content": "grafana-cli plugins ls",
+    "title": "grafana-cli - Specify a homepath when installing a plugin",
+    "content": "grafana cli --homepath {{/usr/share/grafana}} plugins install {{plugin_id}}",
     "group": "Common Tools",
-    "description": "grafana-cli: A small executable that is bundled with Grafana serve. (List all installed plugins)",
+    "description": "grafana-cli: Administer Grafana. (Specify a homepath when installing a plugin)",
+    "tags": [
+      "common",
+      "grafana-cli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-grafana-cli-2",
+    "type": "command",
+    "title": "grafana-cli - Update plugins",
+    "content": "grafana cli plugins update {{plugin_id1 plugin_id2 ...}}",
+    "group": "Common Tools",
+    "description": "grafana-cli: Administer Grafana. (Update plugins)",
+    "tags": [
+      "common",
+      "grafana-cli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-grafana-cli-3",
+    "type": "command",
+    "title": "grafana-cli - Remove plugins",
+    "content": "grafana cli plugins remove {{plugin_id1 plugin_id2 ...}}",
+    "group": "Common Tools",
+    "description": "grafana-cli: Administer Grafana. (Remove plugins)",
+    "tags": [
+      "common",
+      "grafana-cli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-grafana-cli-4",
+    "type": "command",
+    "title": "grafana-cli - List all installed plugins",
+    "content": "grafana cli plugins ls",
+    "group": "Common Tools",
+    "description": "grafana-cli: Administer Grafana. (List all installed plugins)",
     "tags": [
       "common",
       "grafana-cli",
@@ -214070,7 +214280,7 @@
     "title": "cargo-msrv - Display the MSRVs of dependencies (as specified in their `Cargo.toml`)",
     "content": "cargo msrv list",
     "group": "Common Tools",
-    "description": "cargo-msrv: Manage the Minimum Supported Rust Version (MSRV) of a project. (Display the MSRVs of dependencies (as specified in their `Cargo.toml`))",
+    "description": "cargo-msrv: Manage the Minimum Supported Rust Version (MSRV) of a project. Note: This is not a built-in Cargo command, you need to install it first. (Display the MSRVs of dependencies (as specified in their `Cargo.toml`))",
     "tags": [
       "common",
       "cargo-msrv",
@@ -214085,7 +214295,7 @@
     "title": "cargo-msrv - Find the MSRV of the project by trying to compile it with various toolchains",
     "content": "cargo msrv find",
     "group": "Common Tools",
-    "description": "cargo-msrv: Manage the Minimum Supported Rust Version (MSRV) of a project. (Find the MSRV of the project by trying to compile it with various toolchains)",
+    "description": "cargo-msrv: Manage the Minimum Supported Rust Version (MSRV) of a project. Note: This is not a built-in Cargo command, you need to install it first. (Find the MSRV of the project by trying to compile it with various toolchains)",
     "tags": [
       "common",
       "cargo-msrv",
@@ -214100,7 +214310,7 @@
     "title": "cargo-msrv - Show the MSRV of the project as specified in `Cargo.toml`",
     "content": "cargo msrv show",
     "group": "Common Tools",
-    "description": "cargo-msrv: Manage the Minimum Supported Rust Version (MSRV) of a project. (Show the MSRV of the project as specified in `Cargo.toml`)",
+    "description": "cargo-msrv: Manage the Minimum Supported Rust Version (MSRV) of a project. Note: This is not a built-in Cargo command, you need to install it first. (Show the MSRV of the project as specified in `Cargo.toml`)",
     "tags": [
       "common",
       "cargo-msrv",
@@ -214115,7 +214325,7 @@
     "title": "cargo-msrv - Set the MSRV in `Cargo.toml` to a given Rust version",
     "content": "cargo msrv set {{version}}",
     "group": "Common Tools",
-    "description": "cargo-msrv: Manage the Minimum Supported Rust Version (MSRV) of a project. (Set the MSRV in `Cargo.toml` to a given Rust version)",
+    "description": "cargo-msrv: Manage the Minimum Supported Rust Version (MSRV) of a project. Note: This is not a built-in Cargo command, you need to install it first. (Set the MSRV in `Cargo.toml` to a given Rust version)",
     "tags": [
       "common",
       "cargo-msrv",
@@ -214130,7 +214340,7 @@
     "title": "cargo-msrv - Verify whether the MSRV is satisfiable by compiling the project using the specified version of Rust",
     "content": "cargo msrv verify",
     "group": "Common Tools",
-    "description": "cargo-msrv: Manage the Minimum Supported Rust Version (MSRV) of a project. (Verify whether the MSRV is satisfiable by compiling the project using the specified version of Rust)",
+    "description": "cargo-msrv: Manage the Minimum Supported Rust Version (MSRV) of a project. Note: This is not a built-in Cargo command, you need to install it first. (Verify whether the MSRV is satisfiable by compiling the project using the specified version of Rust)",
     "tags": [
       "common",
       "cargo-msrv",
@@ -253278,7 +253488,7 @@
     "id": "tldr-en-common-trivy-5",
     "type": "command",
     "title": "trivy - Scan a local or remote Git repository for vulnerabilities",
-    "content": "trivy repo {{path/to/local_repository_directory|remote_repository_URL}}",
+    "content": "trivy repo {{path/to/local_repository_directory|remote_repository_url}}",
     "group": "Common Tools",
     "description": "trivy: Scanner for vulnerabilities in container images, filesystems, and Git repositories, as well as for configuration issues. (Scan a local or remote Git repository for vulnerabilities)",
     "tags": [
@@ -269400,6 +269610,51 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-xkbcli-0",
+    "type": "command",
+    "title": "xkbcli - Display how to type a key and if it needs modifiers (Note: Does not support compose sequences)",
+    "content": "xkbcli how-to-type {{A|0x0041}}",
+    "group": "Common Tools",
+    "description": "xkbcli: Interact with X Keyboard keymaps. (Display how to type a key and if it needs modifiers (Note: Does not support compose sequences))",
+    "tags": [
+      "common",
+      "xkbcli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-xkbcli-1",
+    "type": "command",
+    "title": "xkbcli - Bring up an interactive window that captures keypresses",
+    "content": "xkbcli interactive",
+    "group": "Common Tools",
+    "description": "xkbcli: Interact with X Keyboard keymaps. (Bring up an interactive window that captures keypresses)",
+    "tags": [
+      "common",
+      "xkbcli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-xkbcli-2",
+    "type": "command",
+    "title": "xkbcli - Compile a list of available compose sequences",
+    "content": "xkbcli compile-compose",
+    "group": "Common Tools",
+    "description": "xkbcli: Interact with X Keyboard keymaps. (Compile a list of available compose sequences)",
+    "tags": [
+      "common",
+      "xkbcli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-binwalk-0",
     "type": "command",
     "title": "binwalk - Scan a binary file",
@@ -272045,7 +272300,7 @@
     "title": "cargo-rustc - Build the package and pass options to `rustc`",
     "content": "cargo rustc -- {{rustc_options}}",
     "group": "Common Tools",
-    "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. See `rustc --help` for all available options. (Build the package and pass options to `rustc`)",
+    "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. (Build the package and pass options to `rustc`)",
     "tags": [
       "common",
       "cargo-rustc",
@@ -272060,7 +272315,7 @@
     "title": "cargo-rustc - Build artifacts in release mode, with optimizations",
     "content": "cargo rustc {{[-r|--release]}}",
     "group": "Common Tools",
-    "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. See `rustc --help` for all available options. (Build artifacts in release mode, with optimizations)",
+    "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. (Build artifacts in release mode, with optimizations)",
     "tags": [
       "common",
       "cargo-rustc",
@@ -272075,7 +272330,7 @@
     "title": "cargo-rustc - Compile with architecture-specific optimizations for the current CPU",
     "content": "cargo rustc {{[-r|--release]}} -- -C target-cpu=native",
     "group": "Common Tools",
-    "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. See `rustc --help` for all available options. (Compile with architecture-specific optimizations for the current CPU)",
+    "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. (Compile with architecture-specific optimizations for the current CPU)",
     "tags": [
       "common",
       "cargo-rustc",
@@ -272090,7 +272345,7 @@
     "title": "cargo-rustc - Compile with speed optimizations",
     "content": "cargo rustc -- -C opt-level {{1|2|3}}",
     "group": "Common Tools",
-    "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. See `rustc --help` for all available options. (Compile with speed optimizations)",
+    "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. (Compile with speed optimizations)",
     "tags": [
       "common",
       "cargo-rustc",
@@ -272105,7 +272360,7 @@
     "title": "cargo-rustc - Compile with [s]ize optimizations (`z` also turns off loop vectorization)",
     "content": "cargo rustc -- -C opt-level {{s|z}}",
     "group": "Common Tools",
-    "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. See `rustc --help` for all available options. (Compile with [s]ize optimizations (`z` also turns off loop vectorization))",
+    "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. (Compile with [s]ize optimizations (`z` also turns off loop vectorization))",
     "tags": [
       "common",
       "cargo-rustc",
@@ -272120,7 +272375,7 @@
     "title": "cargo-rustc - Check if your package uses unsafe code",
     "content": "cargo rustc --lib -- -D unsafe-code",
     "group": "Common Tools",
-    "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. See `rustc --help` for all available options. (Check if your package uses unsafe code)",
+    "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. (Check if your package uses unsafe code)",
     "tags": [
       "common",
       "cargo-rustc",
@@ -272135,7 +272390,7 @@
     "title": "cargo-rustc - Build a specific package",
     "content": "cargo rustc {{[-p|--package]}} {{package}}",
     "group": "Common Tools",
-    "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. See `rustc --help` for all available options. (Build a specific package)",
+    "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. (Build a specific package)",
     "tags": [
       "common",
       "cargo-rustc",
@@ -272150,7 +272405,7 @@
     "title": "cargo-rustc - Build only the specified binary",
     "content": "cargo rustc --bin {{name}}",
     "group": "Common Tools",
-    "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. See `rustc --help` for all available options. (Build only the specified binary)",
+    "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. (Build only the specified binary)",
     "tags": [
       "common",
       "cargo-rustc",
@@ -290405,7 +290660,7 @@
     "title": "pre-commit - Install pre-commit into your Git hooks",
     "content": "pre-commit install",
     "group": "Common Tools",
-    "description": "pre-commit: Create Git hooks that get run before a commit. (Install pre-commit into your Git hooks)",
+    "description": "pre-commit: Create Git hooks that run before commits. (Install pre-commit into your Git hooks)",
     "tags": [
       "common",
       "pre-commit",
@@ -290420,7 +290675,7 @@
     "title": "pre-commit - Run pre-commit hooks on all staged files",
     "content": "pre-commit run",
     "group": "Common Tools",
-    "description": "pre-commit: Create Git hooks that get run before a commit. (Run pre-commit hooks on all staged files)",
+    "description": "pre-commit: Create Git hooks that run before commits. (Run pre-commit hooks on all staged files)",
     "tags": [
       "common",
       "pre-commit",
@@ -290435,7 +290690,7 @@
     "title": "pre-commit - Run pre-commit hooks on all files, staged or unstaged",
     "content": "pre-commit run --all-files",
     "group": "Common Tools",
-    "description": "pre-commit: Create Git hooks that get run before a commit. (Run pre-commit hooks on all files, staged or unstaged)",
+    "description": "pre-commit: Create Git hooks that run before commits. (Run pre-commit hooks on all files, staged or unstaged)",
     "tags": [
       "common",
       "pre-commit",
@@ -290450,7 +290705,7 @@
     "title": "pre-commit - Clean pre-commit cache",
     "content": "pre-commit clean",
     "group": "Common Tools",
-    "description": "pre-commit: Create Git hooks that get run before a commit. (Clean pre-commit cache)",
+    "description": "pre-commit: Create Git hooks that run before commits. (Clean pre-commit cache)",
     "tags": [
       "common",
       "pre-commit",
@@ -290465,7 +290720,7 @@
     "title": "pre-commit - Update pre-commit configuration file to the latest repos' versions",
     "content": "pre-commit autoupdate",
     "group": "Common Tools",
-    "description": "pre-commit: Create Git hooks that get run before a commit. (Update pre-commit configuration file to the latest repos' versions)",
+    "description": "pre-commit: Create Git hooks that run before commits. (Update pre-commit configuration file to the latest repos' versions)",
     "tags": [
       "common",
       "pre-commit",
@@ -305793,7 +306048,7 @@
     "id": "tldr-en-common-az-container-0",
     "type": "command",
     "title": "az-container - Create a container in a container group",
-    "content": "az container create {{[-g|--resource-group]}} {{resource_group}} {{[-n|--name]}} {{name}} --image {{image_name}} {{[-os|--os-type]}} {{windows|linux}} --cpu {{number_of_CPU_cores}} --memory {{memory_in_GB}}",
+    "content": "az container create {{[-g|--resource-group]}} {{resource_group}} {{[-n|--name]}} {{name}} --image {{image_name}} {{[-os|--os-type]}} {{windows|linux}} --cpu {{number_of_cpu_cores}} --memory {{memory_in_GB}}",
     "group": "Common Tools",
     "description": "az-container: Manage Azure Container Instances. Part of `azure-cli` (also known as `az`). (Create a container in a container group)",
     "tags": [

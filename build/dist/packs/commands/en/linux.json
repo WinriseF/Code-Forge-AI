@@ -10082,10 +10082,10 @@
   {
     "id": "tldr-en-linux-unshare-0",
     "type": "command",
-    "title": "unshare - Execute a command without sharing access to connected networks",
-    "content": "unshare {{[-n|--net]}} {{command}} {{command_arguments}}",
+    "title": "unshare - Execute the default shell",
+    "content": "unshare",
     "group": "Linux Ops",
-    "description": "unshare: Execute a command in new user-defined namespaces. (Execute a command without sharing access to connected networks)",
+    "description": "unshare: Execute a command in new user-defined namespaces. (Execute the default shell)",
     "tags": [
       "linux",
       "unshare",
@@ -10097,8 +10097,23 @@
   {
     "id": "tldr-en-linux-unshare-1",
     "type": "command",
+    "title": "unshare - Execute a command without sharing access to connected networks",
+    "content": "sudo unshare {{[-n|--net]}} {{command}} {{argument1 argument2 ...}}",
+    "group": "Linux Ops",
+    "description": "unshare: Execute a command in new user-defined namespaces. (Execute a command without sharing access to connected networks)",
+    "tags": [
+      "linux",
+      "unshare",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-unshare-2",
+    "type": "command",
     "title": "unshare - Execute a command as a child process without sharing mounts, processes, or networks",
-    "content": "unshare {{[-m|--mount]}} {{[-i|--pid]}} {{[-n|--net]}} {{[-f|--fork]}} {{command}} {{command_arguments}}",
+    "content": "sudo unshare {{[-minf|--mount --pid --net --fork]}} {{command}} {{argument1 argument2 ...}}",
     "group": "Linux Ops",
     "description": "unshare: Execute a command in new user-defined namespaces. (Execute a command as a child process without sharing mounts, processes, or networks)",
     "tags": [
@@ -27705,6 +27720,111 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-powertop2tuned-0",
+    "type": "command",
+    "title": "powertop2tuned - Create a new TuneD profile based on current PowerTOP recommendations",
+    "content": "sudo powertop2tuned {{profile_name}}",
+    "group": "Linux Ops",
+    "description": "powertop2tuned: Create TuneD profiles from PowerTOP recommendations. Part of `tuned-utils`. (Create a new TuneD profile based on current PowerTOP recommendations)",
+    "tags": [
+      "linux",
+      "powertop2tuned",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-powertop2tuned-1",
+    "type": "command",
+    "title": "powertop2tuned - Create a new profile and enable most recommendations automatically",
+    "content": "sudo powertop2tuned {{[-e|--enable]}} {{profile_name}}",
+    "group": "Linux Ops",
+    "description": "powertop2tuned: Create TuneD profiles from PowerTOP recommendations. Part of `tuned-utils`. (Create a new profile and enable most recommendations automatically)",
+    "tags": [
+      "linux",
+      "powertop2tuned",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-powertop2tuned-2",
+    "type": "command",
+    "title": "powertop2tuned - Create a profile from an existing PowerTOP HTML report",
+    "content": "sudo powertop2tuned {{[-i|--input]}} {{path/to/report.html}} {{profile_name}}",
+    "group": "Linux Ops",
+    "description": "powertop2tuned: Create TuneD profiles from PowerTOP recommendations. Part of `tuned-utils`. (Create a profile from an existing PowerTOP HTML report)",
+    "tags": [
+      "linux",
+      "powertop2tuned",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-powertop2tuned-3",
+    "type": "command",
+    "title": "powertop2tuned - Create a new profile in a specific directory",
+    "content": "sudo powertop2tuned {{[-o|--output]}} {{path/to/directory}} {{profile_name}}",
+    "group": "Linux Ops",
+    "description": "powertop2tuned: Create TuneD profiles from PowerTOP recommendations. Part of `tuned-utils`. (Create a new profile in a specific directory)",
+    "tags": [
+      "linux",
+      "powertop2tuned",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-powertop2tuned-4",
+    "type": "command",
+    "title": "powertop2tuned - Create a new profile without merging the active profile",
+    "content": "sudo powertop2tuned {{[-n|--new-profile]}} {{profile_name}}",
+    "group": "Linux Ops",
+    "description": "powertop2tuned: Create TuneD profiles from PowerTOP recommendations. Part of `tuned-utils`. (Create a new profile without merging the active profile)",
+    "tags": [
+      "linux",
+      "powertop2tuned",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-powertop2tuned-5",
+    "type": "command",
+    "title": "powertop2tuned - Merge recommendations with a specific existing profile",
+    "content": "sudo powertop2tuned {{[-m|--merge-profile]}} {{existing_profile}} {{profile_name}}",
+    "group": "Linux Ops",
+    "description": "powertop2tuned: Create TuneD profiles from PowerTOP recommendations. Part of `tuned-utils`. (Merge recommendations with a specific existing profile)",
+    "tags": [
+      "linux",
+      "powertop2tuned",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-powertop2tuned-6",
+    "type": "command",
+    "title": "powertop2tuned - Force overwrite an existing profile directory",
+    "content": "sudo powertop2tuned {{[-f|--force]}} {{profile_name}}",
+    "group": "Linux Ops",
+    "description": "powertop2tuned: Create TuneD profiles from PowerTOP recommendations. Part of `tuned-utils`. (Force overwrite an existing profile directory)",
+    "tags": [
+      "linux",
+      "powertop2tuned",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-runcon-0",
     "type": "command",
     "title": "runcon - Print the security context of the current execution context",
@@ -29949,6 +30069,66 @@
     "tags": [
       "linux",
       "cdrdao",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-steamos-bootdebug-0",
+    "type": "command",
+    "title": "steamos-bootdebug - Change what SteamOS shows on boot",
+    "content": "sudo steamos-bootdebug {{kernel-debug|kernel-quiet|menu|verbose|quiet|status}}",
+    "group": "Linux Ops",
+    "description": "steamos-bootdebug: Manage the SteamOS boot process. (Change what SteamOS shows on boot)",
+    "tags": [
+      "linux",
+      "steamos-bootdebug",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-steamos-bootdebug-1",
+    "type": "command",
+    "title": "steamos-bootdebug - Show kernel logging only on the next boot",
+    "content": "sudo steamos-bootdebug {{kernel-debug-once}}",
+    "group": "Linux Ops",
+    "description": "steamos-bootdebug: Manage the SteamOS boot process. (Show kernel logging only on the next boot)",
+    "tags": [
+      "linux",
+      "steamos-bootdebug",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-steamos-bootdebug-2",
+    "type": "command",
+    "title": "steamos-bootdebug - Set if the boot process should log to a file",
+    "content": "sudo steamos-bootdebug log {{enable|disable}}",
+    "group": "Linux Ops",
+    "description": "steamos-bootdebug: Manage the SteamOS boot process. (Set if the boot process should log to a file)",
+    "tags": [
+      "linux",
+      "steamos-bootdebug",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-steamos-bootdebug-3",
+    "type": "command",
+    "title": "steamos-bootdebug - Display the recorded log file",
+    "content": "sudo steamos-bootdebug log show",
+    "group": "Linux Ops",
+    "description": "steamos-bootdebug: Manage the SteamOS boot process. (Display the recorded log file)",
+    "tags": [
+      "linux",
+      "steamos-bootdebug",
       "tldr",
       "en"
     ],
@@ -47070,6 +47250,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-pct-resize-2",
+    "type": "command",
+    "title": "pct-resize - Resize a mounted volume",
+    "content": "pct {{[resi|resize]}} {{100}} mp{{0}} {{+10G}}",
+    "group": "Linux Ops",
+    "description": "pct-resize: Resize container storage. (Resize a mounted volume)",
+    "tags": [
+      "linux",
+      "pct-resize",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-qm-agent-0",
     "type": "command",
     "title": "qm-agent - View documentation for the original command",
@@ -60075,6 +60270,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-pipewire-aes67-0",
+    "type": "command",
+    "title": "pipewire-aes67 - View documentation for the original command",
+    "content": "tldr pipewire",
+    "group": "Linux Ops",
+    "description": "pipewire-aes67: This command is an alias of `pipewire`. Note: It starts the PipeWire daemon using the AES67 network audio profile. (View documentation for the original command)",
+    "tags": [
+      "linux",
+      "pipewire-aes67",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-hardinfo-0",
     "type": "command",
     "title": "hardinfo - Start `hardinfo`",
@@ -69228,7 +69438,7 @@
     "id": "tldr-en-linux-systemd-run-6",
     "type": "command",
     "title": "systemd-run - Set properties (e.g. CPUQuota, MemoryMax) of the process and wait until it exits",
-    "content": "systemd-run {{[-p|--property]}} MemoryMax={{memory_in_bytes}} {{[-p|--property]}} CPUQuota={{percentage_of_CPU_time}}% --wait {{command}}",
+    "content": "systemd-run {{[-p|--property]}} MemoryMax={{memory_in_bytes}} {{[-p|--property]}} CPUQuota={{percentage_of_cpu_time}}% --wait {{command}}",
     "group": "Linux Ops",
     "description": "systemd-run: Run programs in transient scope units, service units, or path-, socket-, or timer-triggered service units. (Set properties (e.g. CPUQuota, MemoryMax) of the process and wait until it exits)",
     "tags": [
@@ -70548,7 +70758,7 @@
     "id": "tldr-en-linux-apt-key-4",
     "type": "command",
     "title": "apt-key - Add a key from keyserver with only key ID",
-    "content": "apt-key adv --keyserver {{pgp.mit.edu}} --recv {{KEYID}}",
+    "content": "apt-key adv --keyserver {{pgp.mit.edu}} --recv {{key_id}}",
     "group": "Linux Ops",
     "description": "apt-key: Key management utility for the APT Package Manager on Debian and Ubuntu. Note: `apt-key` is now deprecated (except for the use of `apt-key del` in maintainer scripts). (Add a key from keyserver with only key ID)",
     "tags": [
@@ -70974,6 +71184,51 @@
     "tags": [
       "linux",
       "bwrap",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-pw-midi2play-0",
+    "type": "command",
+    "title": "pw-midi2play - Play a MIDI 2.0 clip file over the default target",
+    "content": "pw-midi2play {{path/to/file.mid}}",
+    "group": "Linux Ops",
+    "description": "pw-midi2play: Play MIDI 2.0 clips through PipeWire. Note: This command is an alias of `pw-cat --playback --midi-clip`. (Play a MIDI 2.0 clip file over the default target)",
+    "tags": [
+      "linux",
+      "pw-midi2play",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-pw-midi2play-1",
+    "type": "command",
+    "title": "pw-midi2play - Play a MIDI clip, forcing the MIDI format to use (defaults to `ump`)",
+    "content": "pw-midi2play {{[-M|--force-midi]}} {{midi|ump}} {{path/to/file.mid}}",
+    "group": "Linux Ops",
+    "description": "pw-midi2play: Play MIDI 2.0 clips through PipeWire. Note: This command is an alias of `pw-cat --playback --midi-clip`. (Play a MIDI clip, forcing the MIDI format to use (defaults to `ump`))",
+    "tags": [
+      "linux",
+      "pw-midi2play",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-pw-midi2play-2",
+    "type": "command",
+    "title": "pw-midi2play - Display help",
+    "content": "pw-midi2play {{[-h|--help]}}",
+    "group": "Linux Ops",
+    "description": "pw-midi2play: Play MIDI 2.0 clips through PipeWire. Note: This command is an alias of `pw-cat --playback --midi-clip`. (Display help)",
+    "tags": [
+      "linux",
+      "pw-midi2play",
       "tldr",
       "en"
     ],
@@ -86820,6 +87075,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-setup-alpine-0",
+    "type": "command",
+    "title": "setup-alpine - Run the full setup",
+    "content": "setup-alpine",
+    "group": "Linux Ops",
+    "description": "setup-alpine: Install Alpine Linux. (Run the full setup)",
+    "tags": [
+      "linux",
+      "setup-alpine",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-setup-alpine-1",
+    "type": "command",
+    "title": "setup-alpine - Use default configurations",
+    "content": "setup-alpine -q",
+    "group": "Linux Ops",
+    "description": "setup-alpine: Install Alpine Linux. (Use default configurations)",
+    "tags": [
+      "linux",
+      "setup-alpine",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-genisoimage-0",
     "type": "command",
     "title": "genisoimage - View documentation for the original command",
@@ -96708,7 +96993,7 @@
     "id": "tldr-en-linux-turbostat-3",
     "type": "command",
     "title": "turbostat - Display useful information about CPU every 1 second, without header information",
-    "content": "sudo turbostat --quiet {{[-i|--interval]}} 1 --cpu 0-{{CPU_thread_count}} --show \"PkgWatt\",\"Busy%\",\"Core\",\"CoreTmp\",\"Thermal\"",
+    "content": "sudo turbostat --quiet {{[-i|--interval]}} 1 --cpu 0-{{cpu_thread_count}} --show \"PkgWatt\",\"Busy%\",\"Core\",\"CoreTmp\",\"Thermal\"",
     "group": "Linux Ops",
     "description": "turbostat: Report processor topology, frequency, temperature, power, and idle statistics. (Display useful information about CPU every 1 second, without header information)",
     "tags": [
@@ -102915,6 +103200,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-pipewire-avb-0",
+    "type": "command",
+    "title": "pipewire-avb - View documentation for the original command",
+    "content": "tldr pipewire",
+    "group": "Linux Ops",
+    "description": "pipewire-avb: This command is an alias of `pipewire`. Note: It starts the PipeWire daemon using the Audio Video Bridging (AVB) profile. (View documentation for the original command)",
+    "tags": [
+      "linux",
+      "pipewire-avb",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-dhcpcd-0",
     "type": "command",
     "title": "dhcpcd - Release all address leases",
@@ -103569,6 +103869,51 @@
     "tags": [
       "linux",
       "apache2ctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-pw-midi2record-0",
+    "type": "command",
+    "title": "pw-midi2record - Record a MIDI 2.0 clip file from the default source",
+    "content": "pw-midi2record {{path/to/file.mid}}",
+    "group": "Linux Ops",
+    "description": "pw-midi2record: Record MIDI 2.0 clips through PipeWire. Note: This command is an alias of `pw-cat --record --midi-clip`. (Record a MIDI 2.0 clip file from the default source)",
+    "tags": [
+      "linux",
+      "pw-midi2record",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-pw-midi2record-1",
+    "type": "command",
+    "title": "pw-midi2record - Record a MIDI clip, forcing the MIDI format to use (defaults to `ump`)",
+    "content": "pw-midi2record {{[-M|--force-midi]}} {{midi|ump}} {{path/to/file.mid}}",
+    "group": "Linux Ops",
+    "description": "pw-midi2record: Record MIDI 2.0 clips through PipeWire. Note: This command is an alias of `pw-cat --record --midi-clip`. (Record a MIDI clip, forcing the MIDI format to use (defaults to `ump`))",
+    "tags": [
+      "linux",
+      "pw-midi2record",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-pw-midi2record-2",
+    "type": "command",
+    "title": "pw-midi2record - Display help",
+    "content": "pw-midi2record {{[-h|--help]}}",
+    "group": "Linux Ops",
+    "description": "pw-midi2record: Record MIDI 2.0 clips through PipeWire. Note: This command is an alias of `pw-cat --record --midi-clip`. (Display help)",
+    "tags": [
+      "linux",
+      "pw-midi2record",
       "tldr",
       "en"
     ],
@@ -110400,6 +110745,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-hw-probe-0",
+    "type": "command",
+    "title": "hw-probe - Probe for all hardware and upload the data",
+    "content": "sudo -E hw-probe -all -upload",
+    "group": "Linux Ops",
+    "description": "hw-probe: Probe for hardware and upload the information to . (Probe for all hardware and upload the data)",
+    "tags": [
+      "linux",
+      "hw-probe",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-qm-clone-0",
     "type": "command",
     "title": "qm-clone - Copy a virtual machine",
@@ -111092,6 +111452,21 @@
   {
     "id": "tldr-en-linux-wine-5",
     "type": "command",
+    "title": "wine - Open a virtual Wine desktop",
+    "content": "wine explorer /desktop={{shell}},{{1920x1080}}",
+    "group": "Linux Ops",
+    "description": "wine: Run Windows executables on Unix-based systems. (Open a virtual Wine desktop)",
+    "tags": [
+      "linux",
+      "wine",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-6",
+    "type": "command",
     "title": "wine - Run the configuration tool",
     "content": "wine winecfg",
     "group": "Linux Ops",
@@ -111105,7 +111480,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-linux-wine-6",
+    "id": "tldr-en-linux-wine-7",
     "type": "command",
     "title": "wine - Add a registry key",
     "content": "wine reg add '{{path\\to\\registry_key}}' /v {{Value_name}} /t {{REG_SZ|REG_BINARY|REG_DWORD|...}} /d '{{data}}'",

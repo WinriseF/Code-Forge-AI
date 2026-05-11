@@ -2148,7 +2148,7 @@
     "id": "tldr-zh-linux-btrfs-device-0",
     "type": "command",
     "title": "btrfs-device - 将一个或多个设备添加到 btrfs 文件系统中",
-    "content": "sudo btrfs device add {{指向设备1的路径}} [{{指向设备2的路径}}] {{指向 btrfs 文件系统的路径}}",
+    "content": "sudo btrfs {{[d|device]}} {{[a|add]}} {{指向设备1的路径 指向设备2的路径 ...}} {{指向 btrfs 文件系统的路径}}",
     "group": "Linux 运维",
     "description": "btrfs-device: 管理 btrfs 文件系统中的设备。 (将一个或多个设备添加到 btrfs 文件系统中)",
     "tags": [
@@ -2163,7 +2163,7 @@
     "id": "tldr-zh-linux-btrfs-device-1",
     "type": "command",
     "title": "btrfs-device - 从 btrfs 文件系统中删除设备",
-    "content": "sudo btrfs device remove {{指向设备的路径|设备 ID}} [{{...}}]",
+    "content": "sudo btrfs {{[d|device]}} {{[rem|remove]}} {{指向设备1的路径|设备 ID1 指向设备2的路径|设备 ID2 ...}}",
     "group": "Linux 运维",
     "description": "btrfs-device: 管理 btrfs 文件系统中的设备。 (从 btrfs 文件系统中删除设备)",
     "tags": [
@@ -2178,7 +2178,7 @@
     "id": "tldr-zh-linux-btrfs-device-2",
     "type": "command",
     "title": "btrfs-device - 显示错误统计",
-    "content": "sudo btrfs device stats {{指向 btrfs 文件系统的路径}}",
+    "content": "sudo btrfs {{[d|device]}} {{[st|stats]}} {{指向 btrfs 文件系统的路径}}",
     "group": "Linux 运维",
     "description": "btrfs-device: 管理 btrfs 文件系统中的设备。 (显示错误统计)",
     "tags": [
@@ -2193,7 +2193,7 @@
     "id": "tldr-zh-linux-btrfs-device-3",
     "type": "command",
     "title": "btrfs-device - 扫描所有磁盘并将所有检测到的 btrfs 文件系统通知内核",
-    "content": "sudo btrfs device scan --all-devices",
+    "content": "sudo btrfs {{[d|device]}} {{[sc|scan]}} {{[-d|--all-devices]}}",
     "group": "Linux 运维",
     "description": "btrfs-device: 管理 btrfs 文件系统中的设备。 (扫描所有磁盘并将所有检测到的 btrfs 文件系统通知内核)",
     "tags": [
@@ -2208,7 +2208,7 @@
     "id": "tldr-zh-linux-btrfs-device-4",
     "type": "command",
     "title": "btrfs-device - 显示详细的每个磁盘的空间分配统计信息",
-    "content": "sudo btrfs device usage {{指向 btrfs 文件系统的路径}}",
+    "content": "sudo btrfs {{[d|device]}} {{[u|usage]}} {{指向 btrfs 文件系统的路径}}",
     "group": "Linux 运维",
     "description": "btrfs-device: 管理 btrfs 文件系统中的设备。 (显示详细的每个磁盘的空间分配统计信息)",
     "tags": [
@@ -3663,7 +3663,7 @@
     "id": "tldr-zh-linux-openvpn3-0",
     "type": "command",
     "title": "openvpn3 - 打开一个新的 VPN 会话",
-    "content": "openvpn3 session-start --config {{路径/到/config.conf}}",
+    "content": "openvpn3 session-start {{[-c|--config]}} {{路径/到/config.conf}}",
     "group": "Linux 运维",
     "description": "openvpn3: OpenVPN 3 Linux 客户端。 (打开一个新的 VPN 会话)",
     "tags": [
@@ -3693,7 +3693,7 @@
     "id": "tldr-zh-linux-openvpn3-2",
     "type": "command",
     "title": "openvpn3 - 断开当前建立的以给定配置开始的会话",
-    "content": "openvpn3 session-manage --config {{路径/到/config.conf}} --disconnect",
+    "content": "openvpn3 session-manage {{[-c|--config]}} {{路径/到/config.conf}} {{[-D|--disconnect]}}",
     "group": "Linux 运维",
     "description": "openvpn3: OpenVPN 3 Linux 客户端。 (断开当前建立的以给定配置开始的会话)",
     "tags": [
@@ -3708,7 +3708,7 @@
     "id": "tldr-zh-linux-openvpn3-3",
     "type": "command",
     "title": "openvpn3 - 导入 VPN 配置",
-    "content": "openvpn3 config-import --config {{路径/到/config.conf}}",
+    "content": "openvpn3 config-import {{[-c|--config]}} {{路径/到/config.conf}}",
     "group": "Linux 运维",
     "description": "openvpn3: OpenVPN 3 Linux 客户端。 (导入 VPN 配置)",
     "tags": [
@@ -5658,7 +5658,7 @@
     "id": "tldr-zh-linux-tmt-try-4",
     "type": "command",
     "title": "tmt-try - 根据定制的筛选条件选择测试",
-    "content": "tmt try --test {{feature}}",
+    "content": "tmt try {{[-t|--test]}} {{feature}}",
     "group": "Linux 运维",
     "description": "tmt-try: 测试及环境快速上手。 (根据定制的筛选条件选择测试)",
     "tags": [
@@ -5673,7 +5673,7 @@
     "id": "tldr-zh-linux-tmt-try-5",
     "type": "command",
     "title": "tmt-try - 配置客户机并等待用户输入指令",
-    "content": "tmt try --ask",
+    "content": "tmt try {{[-a|--ask]}}",
     "group": "Linux 运维",
     "description": "tmt-try: 测试及环境快速上手。 (配置客户机并等待用户输入指令)",
     "tags": [
@@ -5688,7 +5688,7 @@
     "id": "tldr-zh-linux-tmt-try-6",
     "type": "command",
     "title": "tmt-try - 直接登录到客户机",
-    "content": "tmt try --login",
+    "content": "tmt try {{[-l|--login]}}",
     "group": "Linux 运维",
     "description": "tmt-try: 测试及环境快速上手。 (直接登录到客户机)",
     "tags": [
@@ -6978,7 +6978,7 @@
     "id": "tldr-zh-linux-hexdump-1",
     "type": "command",
     "title": "hexdump - 以十六进制显示输入偏移量，并在最后两列中显示其 ASCII 表示形式",
-    "content": "hexdump -C {{路径/到/文件}}",
+    "content": "hexdump {{[-C|--canonical]}} {{路径/到/文件}}",
     "group": "Linux 运维",
     "description": "hexdump: 一个 ASCII、十进制、十六进制、八进制转换查看工具。 另请参阅：`hexyl`, `od`, `xxd`。 (以十六进制显示输入偏移量，并在最后两列中显示其 ASCII 表示形式)",
     "tags": [
@@ -6993,7 +6993,7 @@
     "id": "tldr-zh-linux-hexdump-2",
     "type": "command",
     "title": "hexdump - 显示文件的十六进制表示，但只解释输入的指定字节数",
-    "content": "hexdump -C -n{{字节数}} {{路径/到/文件}}",
+    "content": "hexdump {{[-C|--canonical]}} {{[-n|--length]}} {{字节数}} {{路径/到/文件}}",
     "group": "Linux 运维",
     "description": "hexdump: 一个 ASCII、十进制、十六进制、八进制转换查看工具。 另请参阅：`hexyl`, `od`, `xxd`。 (显示文件的十六进制表示，但只解释输入的指定字节数)",
     "tags": [
@@ -7008,7 +7008,7 @@
     "id": "tldr-zh-linux-hexdump-3",
     "type": "command",
     "title": "hexdump - 不使用 '*' 替换重复的行",
-    "content": "hexdump --no-squeezing {{路径/到/文件}}",
+    "content": "hexdump {{[-v|--no-squeezing]}} {{路径/到/文件}}",
     "group": "Linux 运维",
     "description": "hexdump: 一个 ASCII、十进制、十六进制、八进制转换查看工具。 另请参阅：`hexyl`, `od`, `xxd`。 (不使用 '*' 替换重复的行)",
     "tags": [
@@ -7428,7 +7428,7 @@
     "id": "tldr-zh-linux-bluetoothd-1",
     "type": "command",
     "title": "bluetoothd - 启动守护进程，日志输出到标准输出",
-    "content": "bluetoothd --nodetach",
+    "content": "bluetoothd {{[-n|--nodetach]}}",
     "group": "Linux 运维",
     "description": "bluetoothd: 管理蓝牙设备的守护进程。 (启动守护进程，日志输出到标准输出)",
     "tags": [
@@ -7443,7 +7443,7 @@
     "id": "tldr-zh-linux-bluetoothd-2",
     "type": "command",
     "title": "bluetoothd - 指定一个配置文件启动守护进程（默认是 `/etc/bluetooth/main.conf`）",
-    "content": "bluetoothd --configfile {{配置文件}}",
+    "content": "bluetoothd {{[-f|--configfile]}} {{配置文件}}",
     "group": "Linux 运维",
     "description": "bluetoothd: 管理蓝牙设备的守护进程。 (指定一个配置文件启动守护进程（默认是 `/etc/bluetooth/main.conf`）)",
     "tags": [
@@ -7458,7 +7458,7 @@
     "id": "tldr-zh-linux-bluetoothd-3",
     "type": "command",
     "title": "bluetoothd - 启动守护进程并将详细信息输出到标准错误",
-    "content": "bluetoothd --debug",
+    "content": "bluetoothd {{[-d|--debug]}}",
     "group": "Linux 运维",
     "description": "bluetoothd: 管理蓝牙设备的守护进程。 (启动守护进程并将详细信息输出到标准错误)",
     "tags": [
@@ -7473,7 +7473,7 @@
     "id": "tldr-zh-linux-bluetoothd-4",
     "type": "command",
     "title": "bluetoothd - 使用来自 bluetoothd 或插件源中特定文件启动守护进程并输出详细信息",
-    "content": "bluetoothd --debug={{文件一:文件二:...}}",
+    "content": "bluetoothd {{[-d|--debug=]}}{{文件一:文件二:...}}",
     "group": "Linux 运维",
     "description": "bluetoothd: 管理蓝牙设备的守护进程。 (使用来自 bluetoothd 或插件源中特定文件启动守护进程并输出详细信息)",
     "tags": [
@@ -10083,7 +10083,7 @@
     "id": "tldr-zh-linux-balooctl-7",
     "type": "command",
     "title": "balooctl - 显示帮助",
-    "content": "balooctl --help",
+    "content": "balooctl {{[-h|--help]}}",
     "group": "Linux 运维",
     "description": "balooctl: KDE Plasma 的文件索引和搜索框架。 (显示帮助)",
     "tags": [
@@ -10293,7 +10293,7 @@
     "id": "tldr-zh-linux-blkdiscard-1",
     "type": "command",
     "title": "blkdiscard - 安全地丢弃设备上的所有块，删除所有数据",
-    "content": "blkdiscard --secure {{/dev/设备名}}",
+    "content": "blkdiscard {{[-s|--secure]}} {{/dev/设备名}}",
     "group": "Linux 运维",
     "description": "blkdiscard: 丢弃存储设备上的设备扇区。对 SSD 有用。 (安全地丢弃设备上的所有块，删除所有数据)",
     "tags": [
@@ -10308,7 +10308,7 @@
     "id": "tldr-zh-linux-blkdiscard-2",
     "type": "command",
     "title": "blkdiscard - 丢弃设备的前 100 MB",
-    "content": "blkdiscard --length {{100MB}} {{/dev/设备名}}",
+    "content": "blkdiscard {{[-l|--length]}} {{100MB}} {{/dev/设备名}}",
     "group": "Linux 运维",
     "description": "blkdiscard: 丢弃存储设备上的设备扇区。对 SSD 有用。 (丢弃设备的前 100 MB)",
     "tags": [
@@ -10599,6 +10599,81 @@
     "tags": [
       "linux",
       "flatpak",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-linux-modprobe-0",
+    "type": "command",
+    "title": "modprobe - 假装将模块加载到内核中，但实际上不这样做",
+    "content": "modprobe {{[-n|--dry-run]}} {{模块名}}",
+    "group": "Linux 运维",
+    "description": "modprobe: 从 Linux 内核添加或移除模块。 另请参阅：`kmod`。 (假装将模块加载到内核中，但实际上不这样做)",
+    "tags": [
+      "linux",
+      "modprobe",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-linux-modprobe-1",
+    "type": "command",
+    "title": "modprobe - 加载模块到内核",
+    "content": "sudo modprobe {{模块名}}",
+    "group": "Linux 运维",
+    "description": "modprobe: 从 Linux 内核添加或移除模块。 另请参阅：`kmod`。 (加载模块到内核)",
+    "tags": [
+      "linux",
+      "modprobe",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-linux-modprobe-2",
+    "type": "command",
+    "title": "modprobe - 从内核移除模块",
+    "content": "sudo modprobe {{[-r|--remove]}} {{模块名}}",
+    "group": "Linux 运维",
+    "description": "modprobe: 从 Linux 内核添加或移除模块。 另请参阅：`kmod`。 (从内核移除模块)",
+    "tags": [
+      "linux",
+      "modprobe",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-linux-modprobe-3",
+    "type": "command",
+    "title": "modprobe - 从内核移除模块及所有依赖它的模块",
+    "content": "sudo modprobe {{[-r|--remove]}} --remove-holders {{模块名}}",
+    "group": "Linux 运维",
+    "description": "modprobe: 从 Linux 内核添加或移除模块。 另请参阅：`kmod`。 (从内核移除模块及所有依赖它的模块)",
+    "tags": [
+      "linux",
+      "modprobe",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-linux-modprobe-4",
+    "type": "command",
+    "title": "modprobe - 显示内核模块的依赖",
+    "content": "sudo modprobe {{[-D|--show-depends]}} {{模块名}}",
+    "group": "Linux 运维",
+    "description": "modprobe: 从 Linux 内核添加或移除模块。 另请参阅：`kmod`。 (显示内核模块的依赖)",
+    "tags": [
+      "linux",
+      "modprobe",
       "tldr",
       "zh"
     ],

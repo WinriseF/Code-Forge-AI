@@ -3003,7 +3003,7 @@
     "id": "tldr-zh-common-gunicorn-1",
     "type": "command",
     "title": "gunicorn - 在 localhost 上监听 8080 端口",
-    "content": "gunicorn --bind {{localhost}}:{{8080}} {{导入路径：应用程序}}",
+    "content": "gunicorn {{[-b|--bind]}} {{localhost}}:{{8080}} {{导入路径：应用程序}}",
     "group": "通用工具 (Common)",
     "description": "gunicorn: Python 的 WSGI HTTP 服务器。 (在 localhost 上监听 8080 端口)",
     "tags": [
@@ -3033,7 +3033,7 @@
     "id": "tldr-zh-common-gunicorn-3",
     "type": "command",
     "title": "gunicorn - 使用 4 个工作进程处理请求",
-    "content": "gunicorn --workers {{4}} {{导入路径：应用程序}}",
+    "content": "gunicorn {{[-w|--workers]}} {{4}} {{导入路径：应用程序}}",
     "group": "通用工具 (Common)",
     "description": "gunicorn: Python 的 WSGI HTTP 服务器。 (使用 4 个工作进程处理请求)",
     "tags": [
@@ -3258,7 +3258,7 @@
     "id": "tldr-zh-common-gpg-zip-0",
     "type": "command",
     "title": "gpg-zip - 使用密码将一个目录加密为`archive.gpg`",
-    "content": "gpg-zip --symmetric --output {{archive.gpg}} {{path/to/directory}}",
+    "content": "gpg-zip {{[-c|--symmetric]}} {{[-o|--output]}} {{archive.gpg}} {{path/to/directory}}",
     "group": "通用工具 (Common)",
     "description": "gpg-zip: 使用`GPG`加密存档中的文件和目录。 (使用密码将一个目录加密为`archive.gpg`)",
     "tags": [
@@ -3273,7 +3273,7 @@
     "id": "tldr-zh-common-gpg-zip-1",
     "type": "command",
     "title": "gpg-zip - 将`archive.gpg`解密到同名目录中",
-    "content": "gpg-zip --decrypt {{path/to/archive.gpg}}",
+    "content": "gpg-zip {{[-d|--decrypt]}} {{path/to/archive.gpg}}",
     "group": "通用工具 (Common)",
     "description": "gpg-zip: 使用`GPG`加密存档中的文件和目录。 (将`archive.gpg`解密到同名目录中)",
     "tags": [
@@ -3348,7 +3348,7 @@
     "id": "tldr-zh-common-unflatten-0",
     "type": "command",
     "title": "unflatten - 调整一个或多个有向图以改善布局的纵横比",
-    "content": "unflatten {{路径/到/输入1.gv}} {{路径/到/输入2.gv ...}} > {{路径/到/输出.gv}}",
+    "content": "unflatten {{路径/到/输入1.gv 路径/到/输入2.gv ...}} > {{路径/到/输出.gv}}",
     "group": "通用工具 (Common)",
     "description": "unflatten: 调整有向图以改善布局的纵横比。 Graphviz 过滤器: `acyclic`, `bcomps`, `comps`, `edgepaint`, `gvcolor`, `gvpack`, `mingle`, `nop`, `sccmap`, `tred`, 和 `unflatten`。 (调整一个或多个有向图以改善布局的纵横比)",
     "tags": [
@@ -3558,7 +3558,7 @@
     "id": "tldr-zh-common-yq-1",
     "type": "command",
     "title": "yq - 以漂亮打印格式输出 YAML 文件（v3）",
-    "content": "yq read {{路径/到/file.yaml}} --colors",
+    "content": "yq read {{路径/到/file.yaml}} {{[-C|--colors]}}",
     "group": "通用工具 (Common)",
     "description": "yq: 一个轻量级且可移植的命令行 YAML 处理器。 (以漂亮打印格式输出 YAML 文件（v3）)",
     "tags": [
@@ -3603,7 +3603,7 @@
     "id": "tldr-zh-common-yq-4",
     "type": "command",
     "title": "yq - 在文件中设置（或覆盖）键的值（v4+）",
-    "content": "yq eval '.{{键}} = \"{{值}}\"' --inplace {{路径/到/file.yaml}}",
+    "content": "yq eval '.{{键}} = \"{{值}}\"' {{[-i|--inplace]}} {{路径/到/file.yaml}}",
     "group": "通用工具 (Common)",
     "description": "yq: 一个轻量级且可移植的命令行 YAML 处理器。 (在文件中设置（或覆盖）键的值（v4+）)",
     "tags": [
@@ -3618,7 +3618,7 @@
     "id": "tldr-zh-common-yq-5",
     "type": "command",
     "title": "yq - 在文件中设置（或覆盖）键的值（v3）",
-    "content": "yq write --inplace {{路径/到/file.yaml}} '{{键}}' '{{值}}'",
+    "content": "yq write {{[-i|--inplace]}} {{路径/到/file.yaml}} '{{键}}' '{{值}}'",
     "group": "通用工具 (Common)",
     "description": "yq: 一个轻量级且可移植的命令行 YAML 处理器。 (在文件中设置（或覆盖）键的值（v3）)",
     "tags": [
@@ -3648,7 +3648,7 @@
     "id": "tldr-zh-common-yq-7",
     "type": "command",
     "title": "yq - 合并两个文件并打印到 `stdout`（v3）",
-    "content": "yq merge {{路径/到/file1.yaml}} {{路径/到/file2.yaml}} --colors",
+    "content": "yq merge {{路径/到/file1.yaml}} {{路径/到/file2.yaml}} {{[-C|--colors]}}",
     "group": "通用工具 (Common)",
     "description": "yq: 一个轻量级且可移植的命令行 YAML 处理器。 (合并两个文件并打印到 `stdout`（v3）)",
     "tags": [
@@ -4278,9 +4278,9 @@
     "id": "tldr-zh-common-cargo-new-0",
     "type": "command",
     "title": "cargo-new - 使用二进制目标创建一个新的 Rust 项目",
-    "content": "cargo new {{path/to/directory}}",
+    "content": "cargo new {{路径/到/目录}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-new: 创建一个新的 Cargo 包。 相当于 `cargo init`，但是需要指定一个目录。 (使用二进制目标创建一个新的 Rust 项目)",
+    "description": "cargo-new: 创建一个新的 Cargo 软件包。 相当于 `cargo init`，但是必须指定一个目录。 (使用二进制目标创建一个新的 Rust 项目)",
     "tags": [
       "common",
       "cargo-new",
@@ -8163,7 +8163,7 @@
     "id": "tldr-zh-common-jc.json-2",
     "type": "command",
     "title": "jc.json - 通过管道输出格式化的 JSON",
-    "content": "{{ifconfig}} | jc {{--ifconfig}} -p",
+    "content": "{{ifconfig}} | jc {{--ifconfig}} {{[-p|--pretty]}}",
     "group": "通用工具 (Common)",
     "description": "jc.json: 将多个命令的输出转换为 JSON。 (通过管道输出格式化的 JSON)",
     "tags": [
@@ -8178,7 +8178,7 @@
     "id": "tldr-zh-common-jc.json-3",
     "type": "command",
     "title": "jc.json - 通过魔术语法输出格式化的 JSON",
-    "content": "jc -p {{ifconfig}}",
+    "content": "jc {{[-p|--pretty]}} {{ifconfig}}",
     "group": "通用工具 (Common)",
     "description": "jc.json: 将多个命令的输出转换为 JSON。 (通过魔术语法输出格式化的 JSON)",
     "tags": [
@@ -10923,7 +10923,7 @@
     "id": "tldr-zh-common-john-2",
     "type": "command",
     "title": "john - 按用户标识符从多个文件中显示用户的已破解密码",
-    "content": "john --show --users={{用户_IDs}} {{路径/到/hashes1.txt 路径/到/hashes2.txt ...}}",
+    "content": "john --show --users={{用户标识符}} {{路径/到/hashes1.txt 路径/到/hashes2.txt ...}}",
     "group": "通用工具 (Common)",
     "description": "john: 密码破解工具。 (按用户标识符从多个文件中显示用户的已破解密码)",
     "tags": [
@@ -11373,7 +11373,7 @@
     "id": "tldr-zh-common-q-0",
     "type": "command",
     "title": "q - 指定分隔符为 ',' 来查询 CSV 文件",
-    "content": "q -d',' \"SELECT * from {{路径/到/文件}}\"",
+    "content": "q {{[-d|--delimiter]}} ',' \"SELECT * from {{路径/到/文件}}\"",
     "group": "通用工具 (Common)",
     "description": "q: 在 CSV 和 TSV 文件上执行类似 SQL 的查询。 (指定分隔符为 ',' 来查询 CSV 文件)",
     "tags": [
@@ -11388,7 +11388,7 @@
     "id": "tldr-zh-common-q-1",
     "type": "command",
     "title": "q - 查询 TSV 文件",
-    "content": "q -t \"SELECT * from {{路径/到/文件}}\"",
+    "content": "q {{[-t|--tab-delimited]}} \"SELECT * from {{路径/到/文件}}\"",
     "group": "通用工具 (Common)",
     "description": "q: 在 CSV 和 TSV 文件上执行类似 SQL 的查询。 (查询 TSV 文件)",
     "tags": [
@@ -11403,7 +11403,7 @@
     "id": "tldr-zh-common-q-2",
     "type": "command",
     "title": "q - 查询带有表头行的文件",
-    "content": "q -d{{分隔符}} -H \"SELECT * from {{路径/到/文件}}\"",
+    "content": "q {{[-d|--delimiter]}} {{分隔符}} {{[-H|--skip-header]}} \"SELECT * from {{路径/到/文件}}\"",
     "group": "通用工具 (Common)",
     "description": "q: 在 CSV 和 TSV 文件上执行类似 SQL 的查询。 (查询带有表头行的文件)",
     "tags": [
@@ -11448,7 +11448,7 @@
     "id": "tldr-zh-common-q-5",
     "type": "command",
     "title": "q - 使用包含输出标题行的输出分隔符来格式化输出（注意：命令将根据输入文件标题或在查询中覆盖的列别名输出列名）",
-    "content": "q -D{{分隔符}} -O \"SELECT {{列}} as {{别名}} from {{路径/到/文件}}\"",
+    "content": "q {{[-D|--output-delimiter]}} {{分隔符}} {{[-O|--output-header]}} \"SELECT {{列}} as {{别名}} from {{路径/到/文件}}\"",
     "group": "通用工具 (Common)",
     "description": "q: 在 CSV 和 TSV 文件上执行类似 SQL 的查询。 (使用包含输出标题行的输出分隔符来格式化输出（注意：命令将根据输入文件标题或在查询中覆盖的列别名输出列名）)",
     "tags": [
@@ -12783,7 +12783,7 @@
     "id": "tldr-zh-common-yt-dlp-1",
     "type": "command",
     "title": "yt-dlp - 列出可下载的视频格式",
-    "content": "yt-dlp --list-formats \"{{https://www.youtube.com/watch?v=oHg5SJYRHA0}}\"",
+    "content": "yt-dlp {{[-F|--list-formats]}} \"{{https://www.youtube.com/watch?v=oHg5SJYRHA0}}\"",
     "group": "通用工具 (Common)",
     "description": "yt-dlp: 一个具有额外功能和修复的 youtube-dl 分支。 从 YouTube 和其他网站下载视频。 另请参阅：`ytfzf`。 (列出可下载的视频格式)",
     "tags": [
@@ -12798,7 +12798,7 @@
     "id": "tldr-zh-common-yt-dlp-2",
     "type": "command",
     "title": "yt-dlp - 使用最佳 MP4 视频格式下载视频或播放列表（默认为 \"bv\\*+ba/b\"）",
-    "content": "yt-dlp --format \"{{bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]}}\" \"{{https://www.youtube.com/watch?v=oHg5SJYRHA0}}\"",
+    "content": "yt-dlp {{[-f|--format]}} \"{{bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]}}\" \"{{https://www.youtube.com/watch?v=oHg5SJYRHA0}}\"",
     "group": "通用工具 (Common)",
     "description": "yt-dlp: 一个具有额外功能和修复的 youtube-dl 分支。 从 YouTube 和其他网站下载视频。 另请参阅：`ytfzf`。 (使用最佳 MP4 视频格式下载视频或播放列表（默认为 \"bv\\*+ba/b\"）)",
     "tags": [
@@ -12813,7 +12813,7 @@
     "id": "tldr-zh-common-yt-dlp-3",
     "type": "command",
     "title": "yt-dlp - 从视频中提取音频（需要 ffmpeg 或 ffprobe）",
-    "content": "yt-dlp --extract-audio \"{{https://www.youtube.com/watch?v=oHg5SJYRHA0}}\"",
+    "content": "yt-dlp {{[-x|--extract-audio]}} \"{{https://www.youtube.com/watch?v=oHg5SJYRHA0}}\"",
     "group": "通用工具 (Common)",
     "description": "yt-dlp: 一个具有额外功能和修复的 youtube-dl 分支。 从 YouTube 和其他网站下载视频。 另请参阅：`ytfzf`。 (从视频中提取音频（需要 ffmpeg 或 ffprobe）)",
     "tags": [
@@ -12828,7 +12828,7 @@
     "id": "tldr-zh-common-yt-dlp-4",
     "type": "command",
     "title": "yt-dlp - 指定提取音频的格式和音质（0（最佳）到 10（最差），默认值为 5）",
-    "content": "yt-dlp --extract-audio --audio-format {{mp3}} --audio-quality {{0}} \"{{https://www.youtube.com/watch?v=oHg5SJYRHA0}}\"",
+    "content": "yt-dlp {{[-x|--extract-audio]}} --audio-format {{mp3}} --audio-quality {{0}} \"{{https://www.youtube.com/watch?v=oHg5SJYRHA0}}\"",
     "group": "通用工具 (Common)",
     "description": "yt-dlp: 一个具有额外功能和修复的 youtube-dl 分支。 从 YouTube 和其他网站下载视频。 另请参阅：`ytfzf`。 (指定提取音频的格式和音质（0（最佳）到 10（最差），默认值为 5）)",
     "tags": [
@@ -12843,7 +12843,7 @@
     "id": "tldr-zh-common-yt-dlp-5",
     "type": "command",
     "title": "yt-dlp - 仅下载播放列表中的第二、第四、第五、第六和最后一项（第一项为 1，而非 0）",
-    "content": "yt-dlp --playlist-items 2,4:6,-1 \"{{https://youtube.com/playlist?list=PLbzoR-pLrL6pTJfLQ3UwtB-3V4fimdqnA}}\"",
+    "content": "yt-dlp {{[-I|--playlist-items]}} 2,4:6,-1 \"{{https://youtube.com/playlist?list=PLbzoR-pLrL6pTJfLQ3UwtB-3V4fimdqnA}}\"",
     "group": "通用工具 (Common)",
     "description": "yt-dlp: 一个具有额外功能和修复的 youtube-dl 分支。 从 YouTube 和其他网站下载视频。 另请参阅：`ytfzf`。 (仅下载播放列表中的第二、第四、第五、第六和最后一项（第一项为 1，而非 0）)",
     "tags": [
@@ -12858,7 +12858,7 @@
     "id": "tldr-zh-common-yt-dlp-6",
     "type": "command",
     "title": "yt-dlp - 下载 YouTube 频道/用户的所有播放列表，并将每个播放列表保存在单独的目录中",
-    "content": "yt-dlp -o \"{{%(uploader)s/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s}}\" \"{{https://www.youtube.com/user/TheLinuxFoundation/playlists}}\"",
+    "content": "yt-dlp {{[-o|--output]}} \"{{%(uploader)s/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s}}\" \"{{https://www.youtube.com/user/TheLinuxFoundation/playlists}}\"",
     "group": "通用工具 (Common)",
     "description": "yt-dlp: 一个具有额外功能和修复的 youtube-dl 分支。 从 YouTube 和其他网站下载视频。 另请参阅：`ytfzf`。 (下载 YouTube 频道/用户的所有播放列表，并将每个播放列表保存在单独的目录中)",
     "tags": [
@@ -12873,7 +12873,7 @@
     "id": "tldr-zh-common-yt-dlp-7",
     "type": "command",
     "title": "yt-dlp - 下载 Udemy 课程，并将每章保存在单独的目录中",
-    "content": "yt-dlp -u {{用户}} -p {{密码}} -P \"{{路径/到/目录}}\" -o \"{{%(playlist)s/%(chapter_number)s - %(chapter)s/%(title)s.%(ext)s}}\" \"{{https://www.udemy.com/java-tutorial}}\"",
+    "content": "yt-dlp {{[-u|--username]}} {{用户}} {{[-p|--password]}} {{密码}} {{[-P|--paths]}} \"{{路径/到/目录}}\" {{[-o|--output]}} \"{{%(playlist)s/%(chapter_number)s - %(chapter)s/%(title)s.%(ext)s}}\" \"{{https://www.udemy.com/java-tutorial}}\"",
     "group": "通用工具 (Common)",
     "description": "yt-dlp: 一个具有额外功能和修复的 youtube-dl 分支。 从 YouTube 和其他网站下载视频。 另请参阅：`ytfzf`。 (下载 Udemy 课程，并将每章保存在单独的目录中)",
     "tags": [
@@ -14118,7 +14118,7 @@
     "id": "tldr-zh-common-virtualenv-1",
     "type": "command",
     "title": "virtualenv - 自定义提示符",
-    "content": "virtualenv --prompt={{prompt_prefix}} {{path/to/venv}}",
+    "content": "virtualenv --prompt {{prompt_prefix}} {{path/to/venv}}",
     "group": "通用工具 (Common)",
     "description": "virtualenv: 创建被隔离的的 Python 虚拟环境。 (自定义提示符)",
     "tags": [
@@ -14133,7 +14133,7 @@
     "id": "tldr-zh-common-virtualenv-2",
     "type": "command",
     "title": "virtualenv - 为虚拟环境使用不同的 Python 版本",
-    "content": "virtualenv --python={{path/to/pythonbin}} {{path/to/venv}}",
+    "content": "virtualenv {{[-p|--python]}} {{path/to/pythonbin}} {{path/to/venv}}",
     "group": "通用工具 (Common)",
     "description": "virtualenv: 创建被隔离的的 Python 虚拟环境。 (为虚拟环境使用不同的 Python 版本)",
     "tags": [
@@ -14523,7 +14523,7 @@
     "id": "tldr-zh-common-jmeter-0",
     "type": "command",
     "title": "jmeter - 在非 GUI 模式下运行指定的测试计划",
-    "content": "jmeter --nongui --testfile {{路径/到/文件.jmx}}",
+    "content": "jmeter {{[-n|--nongui]}} {{[-t|--testfile]}} {{路径/到/文件.jmx}}",
     "group": "通用工具 (Common)",
     "description": "jmeter: 开源的 Java 应用程序，旨在对功能行为进行负载测试并衡量性能。 (在非 GUI 模式下运行指定的测试计划)",
     "tags": [
@@ -14538,7 +14538,7 @@
     "id": "tldr-zh-common-jmeter-1",
     "type": "command",
     "title": "jmeter - 在非 GUI 模式下使用指定的日志文件运行测试计划",
-    "content": "jmeter --nogui --testfile {{路径/到/文件.jmx}} --logfile {{路径/到/日志文件.jtl}}",
+    "content": "jmeter {{[-n|--nongui]}} {{[-t|--testfile]}} {{路径/到/文件.jmx}} {{[-l|--logfile]}} {{路径/到/日志文件.jtl}}",
     "group": "通用工具 (Common)",
     "description": "jmeter: 开源的 Java 应用程序，旨在对功能行为进行负载测试并衡量性能。 (在非 GUI 模式下使用指定的日志文件运行测试计划)",
     "tags": [
@@ -14553,7 +14553,7 @@
     "id": "tldr-zh-common-jmeter-2",
     "type": "command",
     "title": "jmeter - 在非 GUI 模式下使用指定代理运行测试计划",
-    "content": "jmeter --nongui --testfile {{路径/到/文件.jmx}} --proxyHost {{127.0.0.1}} --proxyPort {{8888}}",
+    "content": "jmeter {{[-n|--nongui]}} {{[-t|--testfile]}} {{路径/到/文件.jmx}} {{[-H-|--proxyHost]}} {{127.0.0.1}} {{[-P|--proxyPort]}} {{8888}}",
     "group": "通用工具 (Common)",
     "description": "jmeter: 开源的 Java 应用程序，旨在对功能行为进行负载测试并衡量性能。 (在非 GUI 模式下使用指定代理运行测试计划)",
     "tags": [
@@ -14568,7 +14568,7 @@
     "id": "tldr-zh-common-jmeter-3",
     "type": "command",
     "title": "jmeter - 在非 GUI 模式下使用指定的 JMeter 属性运行测试计划",
-    "content": "jmeter --jmeterproperty {{键}}='{{值}}' --nongui --testfile {{路径/到/文件.jmx}}",
+    "content": "jmeter {{[-n|--nongui]}} {{[-t|--testfile]}} {{路径/到/文件.jmx}} {{[-J|--jmeterproperty]}} {{键}}='{{值}}'",
     "group": "通用工具 (Common)",
     "description": "jmeter: 开源的 Java 应用程序，旨在对功能行为进行负载测试并衡量性能。 (在非 GUI 模式下使用指定的 JMeter 属性运行测试计划)",
     "tags": [
@@ -15363,7 +15363,7 @@
     "id": "tldr-zh-common-tcpdump-6",
     "type": "command",
     "title": "tcpdump - 捕获除 22 端口以外的所有流量，并写入转储文件",
-    "content": "sudo tcpdump -w {{dumpfile.pcap}} port not {{22}}",
+    "content": "sudo tcpdump -w {{dumpfile.pcap}} port not 22",
     "group": "通用工具 (Common)",
     "description": "tcpdump: 转储网络上的流量。 (捕获除 22 端口以外的所有流量，并写入转储文件)",
     "tags": [
@@ -15738,7 +15738,7 @@
     "id": "tldr-zh-common-bmaptool-0",
     "type": "command",
     "title": "bmaptool - 使用图片生成块图文件",
-    "content": "bmaptool create -o {{blockmap 格式文件.bmap}} {{图片文件}}",
+    "content": "bmaptool create {{[-o|--output]}} {{blockmap 格式文件.bmap}} {{图片文件}}",
     "group": "通用工具 (Common)",
     "description": "bmaptool: 便捷地创建或复制块文件映射（被设计的比`cp`或`dd`更快）。 (使用图片生成块图文件)",
     "tags": [
@@ -17162,10 +17162,10 @@
   {
     "id": "tldr-zh-common-cargo-pkgid-0",
     "type": "command",
-    "title": "cargo-pkgid - 打印当前项目的完全限定包规范",
+    "title": "cargo-pkgid - 打印当前项目的完全限定软件包标识规范",
     "content": "cargo pkgid",
     "group": "通用工具 (Common)",
-    "description": "cargo-pkgid: 打印当前工作空间中包或依赖项的完全限定包 ID 指定符。 (打印当前项目的完全限定包规范)",
+    "description": "cargo-pkgid: 打印当前工作空间中软件包或依赖项的完全限定软件包 ID 标识符。 (打印当前项目的完全限定软件包标识规范)",
     "tags": [
       "common",
       "cargo-pkgid",
@@ -17177,10 +17177,10 @@
   {
     "id": "tldr-zh-common-cargo-pkgid-1",
     "type": "command",
-    "title": "cargo-pkgid - 打印指定包的完全限定包规范",
-    "content": "cargo pkgid {{部分包规范}}",
+    "title": "cargo-pkgid - 打印指定软件包的完全限定软件包标识规范",
+    "content": "cargo pkgid {{部分包标识规范}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-pkgid: 打印当前工作空间中包或依赖项的完全限定包 ID 指定符。 (打印指定包的完全限定包规范)",
+    "description": "cargo-pkgid: 打印当前工作空间中软件包或依赖项的完全限定软件包 ID 标识符。 (打印指定软件包的完全限定软件包标识规范)",
     "tags": [
       "common",
       "cargo-pkgid",
@@ -17822,10 +17822,10 @@
   {
     "id": "tldr-zh-common-cargo-package-0",
     "type": "command",
-    "title": "cargo-package - 执行检查并创建一个 `.crate` 文件 (相当于 `cargo publish --dry-run`)",
+    "title": "cargo-package - 执行检查并创建一个 `.crate` 文件（相当于 `cargo publish --dry-run`）",
     "content": "cargo package",
     "group": "通用工具 (Common)",
-    "description": "cargo-package: 将本地包装成一个可分发的 tarball 文件（`.crate` 文件）。 类似于 `cargo publish --dry-run`，但具有更多选项。 (执行检查并创建一个 `.crate` 文件 (相当于 `cargo publish --dry-run`))",
+    "description": "cargo-package: 将一个本地软件包打包成一个可分发的 tarball（`.crate` 文件）。 类似于 `cargo publish --dry-run`，但具有更多选项。 (执行检查并创建一个 `.crate` 文件（相当于 `cargo publish --dry-run`）)",
     "tags": [
       "common",
       "cargo-package",
@@ -17837,10 +17837,10 @@
   {
     "id": "tldr-zh-common-cargo-package-1",
     "type": "command",
-    "title": "cargo-package - 显示将包含在tarball中的文件，而不实际创建它",
+    "title": "cargo-package - 显示将包含在 tarball 中的文件，而不实际创建它",
     "content": "cargo package {{[-l|--list]}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-package: 将本地包装成一个可分发的 tarball 文件（`.crate` 文件）。 类似于 `cargo publish --dry-run`，但具有更多选项。 (显示将包含在tarball中的文件，而不实际创建它)",
+    "description": "cargo-package: 将一个本地软件包打包成一个可分发的 tarball（`.crate` 文件）。 类似于 `cargo publish --dry-run`，但具有更多选项。 (显示将包含在 tarball 中的文件，而不实际创建它)",
     "tags": [
       "common",
       "cargo-package",
@@ -19578,7 +19578,7 @@
     "id": "tldr-zh-common-you-get-0",
     "type": "command",
     "title": "you-get - 打印网络上指定媒体的媒体信息",
-    "content": "you-get --info {{https://example.com/video?id=value}}",
+    "content": "you-get {{[-i|--info]}} {{https://example.com/video?id=value}}",
     "group": "通用工具 (Common)",
     "description": "you-get: 从网络下载媒体内容（视频、音频、图像）。 另请参阅：`yt-dlp`, `youtube-viewer`, `instaloader`。 (打印网络上指定媒体的媒体信息)",
     "tags": [
@@ -19623,7 +19623,7 @@
     "id": "tldr-zh-common-you-get-3",
     "type": "command",
     "title": "you-get - 将媒体下载到指定位置",
-    "content": "you-get --output-dir {{路径/到/目录}} --output-filename {{文件名}} {{https://example.com/watch?v=value}}",
+    "content": "you-get {{[-o|--output-dir]}} {{路径/到/目录}} {{[-O|--output-filename]}} {{文件名}} {{https://example.com/watch?v=value}}",
     "group": "通用工具 (Common)",
     "description": "you-get: 从网络下载媒体内容（视频、音频、图像）。 另请参阅：`yt-dlp`, `youtube-viewer`, `instaloader`。 (将媒体下载到指定位置)",
     "tags": [
@@ -19638,7 +19638,7 @@
     "id": "tldr-zh-common-you-get-4",
     "type": "command",
     "title": "you-get - 使用代理下载媒体",
-    "content": "you-get --http-proxy {{代理服务器}} {{https://example.com/watch?v=value}}",
+    "content": "you-get {{[-x|--http-proxy]}} {{代理服务器}} {{https://example.com/watch?v=value}}",
     "group": "通用工具 (Common)",
     "description": "you-get: 从网络下载媒体内容（视频、音频、图像）。 另请参阅：`yt-dlp`, `youtube-viewer`, `instaloader`。 (使用代理下载媒体)",
     "tags": [
@@ -20568,7 +20568,7 @@
     "id": "tldr-zh-common-yadm-transcrypt-0",
     "type": "command",
     "title": "yadm-transcrypt - 设置用于加密的对称加密算法",
-    "content": "yadm transcrypt --cipher={{加密算法}}",
+    "content": "yadm transcrypt {{[-c|--cipher]}} {{加密算法}}",
     "group": "通用工具 (Common)",
     "description": "yadm-transcrypt: 如果已安装 `transcrypt`，此命令允许直接向 `transcrypt` 传递选项。 环境配置为使用 yadm 仓库。 Transcrypt 使 Git 仓库中的文件能够透明地加密和解密。 (设置用于加密的对称加密算法)",
     "tags": [
@@ -20583,7 +20583,7 @@
     "id": "tldr-zh-common-yadm-transcrypt-1",
     "type": "command",
     "title": "yadm-transcrypt - 提供用来派生密钥的密码",
-    "content": "yadm transcrypt --password={{密码}}",
+    "content": "yadm transcrypt {{[-p|--password]}} {{密码}}",
     "group": "通用工具 (Common)",
     "description": "yadm-transcrypt: 如果已安装 `transcrypt`，此命令允许直接向 `transcrypt` 传递选项。 环境配置为使用 yadm 仓库。 Transcrypt 使 Git 仓库中的文件能够透明地加密和解密。 (提供用来派生密钥的密码)",
     "tags": [
@@ -20598,7 +20598,7 @@
     "id": "tldr-zh-common-yadm-transcrypt-2",
     "type": "command",
     "title": "yadm-transcrypt - 假设所有回答为“是”并接受未指定选项的默认值",
-    "content": "yadm transcrypt --yes",
+    "content": "yadm transcrypt {{[-y|--yes]}}",
     "group": "通用工具 (Common)",
     "description": "yadm-transcrypt: 如果已安装 `transcrypt`，此命令允许直接向 `transcrypt` 传递选项。 环境配置为使用 yadm 仓库。 Transcrypt 使 Git 仓库中的文件能够透明地加密和解密。 (假设所有回答为“是”并接受未指定选项的默认值)",
     "tags": [
@@ -20613,7 +20613,7 @@
     "id": "tldr-zh-common-yadm-transcrypt-3",
     "type": "command",
     "title": "yadm-transcrypt - 显示当前仓库的加密算法和密码",
-    "content": "yadm transcrypt --display",
+    "content": "yadm transcrypt {{[-d|--display]}}",
     "group": "通用工具 (Common)",
     "description": "yadm-transcrypt: 如果已安装 `transcrypt`，此命令允许直接向 `transcrypt` 传递选项。 环境配置为使用 yadm 仓库。 Transcrypt 使 Git 仓库中的文件能够透明地加密和解密。 (显示当前仓库的加密算法和密码)",
     "tags": [
@@ -20628,7 +20628,7 @@
     "id": "tldr-zh-common-yadm-transcrypt-4",
     "type": "command",
     "title": "yadm-transcrypt - 使用新的凭证重新加密所有已加密的文件",
-    "content": "yadm transcrypt --rekey",
+    "content": "yadm transcrypt {{[-r|--rekey]}}",
     "group": "通用工具 (Common)",
     "description": "yadm-transcrypt: 如果已安装 `transcrypt`，此命令允许直接向 `transcrypt` 传递选项。 环境配置为使用 yadm 仓库。 Transcrypt 使 Git 仓库中的文件能够透明地加密和解密。 (使用新的凭证重新加密所有已加密的文件)",
     "tags": [
@@ -22610,7 +22610,7 @@
     "title": "cargo-owner - 邀请指定的用户或团队作为所有者",
     "content": "cargo owner {{[-a|--add]}} {{用户名|github:机构名称:团队名称}} {{包名}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-owner: 管理包在注册表上的所有者。 (邀请指定的用户或团队作为所有者)",
+    "description": "cargo-owner: 管理包（crate）在注册表上的所有者。 (邀请指定的用户或团队作为所有者)",
     "tags": [
       "common",
       "cargo-owner",
@@ -22625,7 +22625,7 @@
     "title": "cargo-owner - 将指定的用户或团队从所有者中删除",
     "content": "cargo owner {{[-r|--remove]}} {{用户名|github:机构名称:团队名称}} {{包名}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-owner: 管理包在注册表上的所有者。 (将指定的用户或团队从所有者中删除)",
+    "description": "cargo-owner: 管理包（crate）在注册表上的所有者。 (将指定的用户或团队从所有者中删除)",
     "tags": [
       "common",
       "cargo-owner",
@@ -22637,10 +22637,10 @@
   {
     "id": "tldr-zh-common-cargo-owner-2",
     "type": "command",
-    "title": "cargo-owner - 列出一个包的所有者",
+    "title": "cargo-owner - 列出一个包（crate）的所有者",
     "content": "cargo owner {{[-l|--list]}} {{包名}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-owner: 管理包在注册表上的所有者。 (列出一个包的所有者)",
+    "description": "cargo-owner: 管理包（crate）在注册表上的所有者。 (列出一个包（crate）的所有者)",
     "tags": [
       "common",
       "cargo-owner",
@@ -22652,10 +22652,10 @@
   {
     "id": "tldr-zh-common-cargo-owner-3",
     "type": "command",
-    "title": "cargo-owner - 使用指定的注册表 (注册表名称可以在配置中定义，默认为 <https://crates.io>)",
+    "title": "cargo-owner - 使用指定的注册表（注册表名称可以在配置中定义，默认为 <https://crates.io>）",
     "content": "cargo owner --registry {{名称}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-owner: 管理包在注册表上的所有者。 (使用指定的注册表 (注册表名称可以在配置中定义，默认为 <https://crates.io>))",
+    "description": "cargo-owner: 管理包（crate）在注册表上的所有者。 (使用指定的注册表（注册表名称可以在配置中定义，默认为 <https://crates.io>）)",
     "tags": [
       "common",
       "cargo-owner",
@@ -23733,7 +23733,7 @@
     "id": "tldr-zh-common-json5-2",
     "type": "command",
     "title": "json5 - 将 JSON5 文件转换为指定的 JSON 文件",
-    "content": "json5 {{路径/到/输入文件.json5}} --out-file {{路径/到/输出文件.json}}",
+    "content": "json5 {{路径/到/输入文件.json5}} {{[-o|--out-file]}} {{路径/到/输出文件.json}}",
     "group": "通用工具 (Common)",
     "description": "json5: 将 JSON5 文件转换为 JSON。 (将 JSON5 文件转换为指定的 JSON 文件)",
     "tags": [
@@ -23748,7 +23748,7 @@
     "id": "tldr-zh-common-json5-3",
     "type": "command",
     "title": "json5 - 验证一个 JSON5 文件",
-    "content": "json5 {{路径/到/输入文件.json5}} --validate",
+    "content": "json5 {{路径/到/输入文件.json5}} {{[-v|--validate]}}",
     "group": "通用工具 (Common)",
     "description": "json5: 将 JSON5 文件转换为 JSON。 (验证一个 JSON5 文件)",
     "tags": [
@@ -23763,7 +23763,7 @@
     "id": "tldr-zh-common-json5-4",
     "type": "command",
     "title": "json5 - 指定缩进的空格数（或使用 \"t\" 表示制表符）",
-    "content": "json5 --space {{缩进量}}",
+    "content": "json5 {{[-s|--space]}} {{缩进量}}",
     "group": "通用工具 (Common)",
     "description": "json5: 将 JSON5 文件转换为 JSON。 (指定缩进的空格数（或使用 \"t\" 表示制表符）)",
     "tags": [
@@ -23778,7 +23778,7 @@
     "id": "tldr-zh-common-json5-5",
     "type": "command",
     "title": "json5 - 显示帮助",
-    "content": "json5 --help",
+    "content": "json5 {{[-h|--help]}}",
     "group": "通用工具 (Common)",
     "description": "json5: 将 JSON5 文件转换为 JSON。 (显示帮助)",
     "tags": [
@@ -24918,7 +24918,7 @@
     "id": "tldr-zh-common-jadx-1",
     "type": "command",
     "title": "jadx - 将一个 Dex 文件反编译到一个特定目录中",
-    "content": "jadx --output-dir {{路径/到/目录}} {{路径/到/文件}}",
+    "content": "jadx {{[-d|--output-dir]}} {{路径/到/目录}} {{路径/到/文件}}",
     "group": "通用工具 (Common)",
     "description": "jadx: Dex 到 Java 的反编译器。 将 Android Dex 和 APK 文件生成 Java 源代码。 (将一个 Dex 文件反编译到一个特定目录中)",
     "tags": [
@@ -25473,7 +25473,7 @@
     "id": "tldr-zh-common-jtbl-2",
     "type": "command",
     "title": "jtbl - 打印表格并截断行而不是换行",
-    "content": "cat {{文件.json}} | jtbl -t",
+    "content": "cat {{文件.json}} | jtbl {{[-t|--truncate]}}",
     "group": "通用工具 (Common)",
     "description": "jtbl: 用于在终端中将 JSON 和 JSON Lines 数据打印为表格的工具。 (打印表格并截断行而不是换行)",
     "tags": [
@@ -25488,7 +25488,7 @@
     "id": "tldr-zh-common-jtbl-3",
     "type": "command",
     "title": "jtbl - 打印表格并不换行或截断行",
-    "content": "cat {{文件.json}} | jtbl -n",
+    "content": "cat {{文件.json}} | jtbl {{[-n|--no-wrap]}}",
     "group": "通用工具 (Common)",
     "description": "jtbl: 用于在终端中将 JSON 和 JSON Lines 数据打印为表格的工具。 (打印表格并不换行或截断行)",
     "tags": [
@@ -27755,7 +27755,7 @@
     "title": "cargo-binstall - 从 <https://crates.io> 安装一个软件包",
     "content": "cargo binstall {{软件包}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-binstall: 从 CI 产物安装 Rust 二进制文件。 如果没有可用的二进制文件，则回退到 `cargo install`（从源代码安装）。 (从 <https://crates.io> 安装一个软件包)",
+    "description": "cargo-binstall: 从 CI 产物安装 Rust 二进制文件。 如果没有可用的二进制文件，则回退到 `cargo install`（从源代码安装）。 注意：这不是 Cargo 的内置命令，你需要先安装它。 (从 <https://crates.io> 安装一个软件包)",
     "tags": [
       "common",
       "cargo-binstall",
@@ -27770,7 +27770,7 @@
     "title": "cargo-binstall - 安装指定版本的软件包（默认为最新版本）",
     "content": "cargo binstall {{软件包}}@{{版本号}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-binstall: 从 CI 产物安装 Rust 二进制文件。 如果没有可用的二进制文件，则回退到 `cargo install`（从源代码安装）。 (安装指定版本的软件包（默认为最新版本）)",
+    "description": "cargo-binstall: 从 CI 产物安装 Rust 二进制文件。 如果没有可用的二进制文件，则回退到 `cargo install`（从源代码安装）。 注意：这不是 Cargo 的内置命令，你需要先安装它。 (安装指定版本的软件包（默认为最新版本）)",
     "tags": [
       "common",
       "cargo-binstall",
@@ -27785,7 +27785,7 @@
     "title": "cargo-binstall - 安装软件包并禁用确认提示",
     "content": "cargo binstall {{[-y|--no-confirm]}} {{软件包}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-binstall: 从 CI 产物安装 Rust 二进制文件。 如果没有可用的二进制文件，则回退到 `cargo install`（从源代码安装）。 (安装软件包并禁用确认提示)",
+    "description": "cargo-binstall: 从 CI 产物安装 Rust 二进制文件。 如果没有可用的二进制文件，则回退到 `cargo install`（从源代码安装）。 注意：这不是 Cargo 的内置命令，你需要先安装它。 (安装软件包并禁用确认提示)",
     "tags": [
       "common",
       "cargo-binstall",
@@ -29117,10 +29117,10 @@
   {
     "id": "tldr-zh-common-cp-7",
     "type": "command",
-    "title": "cp - 使用第一个参数作为目标目录（对于 `xargs ... | cp -t <目标_目录>` 这样的命令非常有用）",
+    "title": "cp - 使用第一个参数作为目标目录（对于 `xargs ... | cp -t 目标_目录` 这样的命令非常有用）",
     "content": "cp {{[-t|--target-directory]}} {{路径/到/目标目录}} {{路径/到/文件或目录1 路径/到/文件或目录2 ...}}",
     "group": "通用工具 (Common)",
-    "description": "cp: 复制文件和目录。 (使用第一个参数作为目标目录（对于 `xargs ... | cp -t <目标_目录>` 这样的命令非常有用）)",
+    "description": "cp: 复制文件和目录。 (使用第一个参数作为目标目录（对于 `xargs ... | cp -t 目标_目录` 这样的命令非常有用）)",
     "tags": [
       "common",
       "cp",
@@ -30258,7 +30258,7 @@
     "id": "tldr-zh-common-bcomps-0",
     "type": "command",
     "title": "bcomps - 将一个或多个图形分解为它们的双连通分量",
-    "content": "bcomps {{路径/到/输入1.gv}} {{路径/到/输入2.gv ...}} > {{路径/到/输出.gv}}",
+    "content": "bcomps {{路径/到/输入1.gv 路径/到/输入2.gv ...}} > {{路径/到/输出.gv}}",
     "group": "通用工具 (Common)",
     "description": "bcomps: 将图形分解为它们的双连通分量。 Graphviz 过滤器：`acyclic`、`bcomps`、`comps`、`edgepaint`、`gvcolor`、`gvpack`、`mingle`、`nop`、`sccmap`、`tred` 和 `unflatten`。 (将一个或多个图形分解为它们的双连通分量)",
     "tags": [
@@ -30273,7 +30273,7 @@
     "id": "tldr-zh-common-bcomps-1",
     "type": "command",
     "title": "bcomps - 打印一个或多个图形中的块和切割顶点的数量",
-    "content": "bcomps -v -s {{路径/到/输入1.gv}} {{路径/到/输入2.gv ...}}",
+    "content": "bcomps -v -s {{路径/到/输入1.gv 路径/到/输入2.gv ...}}",
     "group": "通用工具 (Common)",
     "description": "bcomps: 将图形分解为它们的双连通分量。 Graphviz 过滤器：`acyclic`、`bcomps`、`comps`、`edgepaint`、`gvcolor`、`gvpack`、`mingle`、`nop`、`sccmap`、`tred` 和 `unflatten`。 (打印一个或多个图形中的块和切割顶点的数量)",
     "tags": [
@@ -30348,7 +30348,7 @@
     "id": "tldr-zh-common-zek-1",
     "type": "command",
     "title": "zek - 从 `stdin` 中给定的 XML 生成一个 Go 结构体，并将输出发送到文件",
-    "content": "curl -s {{https://url/to/xml}} | zek -o {{路径/到/输出.go}}",
+    "content": "curl {{[-s|--silent]}} {{https://url/to/xml}} | zek -o {{路径/到/输出.go}}",
     "group": "通用工具 (Common)",
     "description": "zek: 从 XML 生成一个 Go 结构体。 (从 `stdin` 中给定的 XML 生成一个 Go 结构体，并将输出发送到文件)",
     "tags": [
@@ -32778,7 +32778,7 @@
     "id": "tldr-zh-common-jq-1",
     "type": "command",
     "title": "jq - 执行特定的脚本",
-    "content": "{{cat 路径/到/文件.json}} | jq --from-file {{路径/到/脚本.jq}}",
+    "content": "{{cat 路径/到/文件.json}} | jq {{[-f|--from-file]}} {{路径/到/脚本.jq}}",
     "group": "通用工具 (Common)",
     "description": "jq: 一个使用特定领域语言（DSL）的 JSON 处理器。 (执行特定的脚本)",
     "tags": [
@@ -33063,7 +33063,7 @@
     "id": "tldr-zh-common-zipgrep-1",
     "type": "command",
     "title": "zipgrep - 打印匹配的文件名和行号",
-    "content": "zipgrep -H -n \"{{搜索模式}}\" {{路径/到/文件.zip}}",
+    "content": "zipgrep {{[-H|--with-filename]}} {{[-n|--line-number]}} \"{{搜索模式}}\" {{路径/到/文件.zip}}",
     "group": "通用工具 (Common)",
     "description": "zipgrep: 在 Zip 压缩档案中的文件中使用扩展正则表达式查找模式（支持 `?`、`+`、`{}`、`()` 和 `|`）。 (打印匹配的文件名和行号)",
     "tags": [
@@ -33078,7 +33078,7 @@
     "id": "tldr-zh-common-zipgrep-2",
     "type": "command",
     "title": "zipgrep - 搜索与模式不匹配的行",
-    "content": "zipgrep -v \"{{搜索模式}}\" {{路径/到/文件.zip}}",
+    "content": "zipgrep {{[-v|--invert-match]}} \"{{搜索模式}}\" {{路径/到/文件.zip}}",
     "group": "通用工具 (Common)",
     "description": "zipgrep: 在 Zip 压缩档案中的文件中使用扩展正则表达式查找模式（支持 `?`、`+`、`{}`、`()` 和 `|`）。 (搜索与模式不匹配的行)",
     "tags": [
@@ -33108,7 +33108,7 @@
     "id": "tldr-zh-common-zipgrep-4",
     "type": "command",
     "title": "zipgrep - 排除在 Zip 压缩档案中要搜索的文件",
-    "content": "zipgrep \"{{搜索模式}}\" {{路径/到/文件.zip}} -x {{要排除的文件1}} {{要排除的文件2}}",
+    "content": "zipgrep \"{{搜索模式}}\" {{路径/到/文件.zip}} {{[-x|--line-regexp]}} {{要排除的文件1}} {{要排除的文件2}}",
     "group": "通用工具 (Common)",
     "description": "zipgrep: 在 Zip 压缩档案中的文件中使用扩展正则表达式查找模式（支持 `?`、`+`、`{}`、`()` 和 `|`）。 (排除在 Zip 压缩档案中要搜索的文件)",
     "tags": [
@@ -33603,7 +33603,7 @@
     "id": "tldr-zh-common-gvcolor-0",
     "type": "command",
     "title": "gvcolor - 为一个或多个已被 `dot` 处理的有序有向图着色",
-    "content": "gvcolor {{路径/到/布局1.gv}} {{路径/到/布局2.gv ...}} > {{路径/到/输出.gv}}",
+    "content": "gvcolor {{路径/到/布局1.gv 路径/到/布局2.gv ...}} > {{路径/到/输出.gv}}",
     "group": "通用工具 (Common)",
     "description": "gvcolor: 用一系列颜色为有序有向图着色。 Graphviz 过滤器: `acyclic`, `bcomps`, `comps`, `edgepaint`, `gvcolor`, `gvpack`, `mingle`, `nop`, `sccmap`, `tred`, and `unflatten`。 (为一个或多个已被 `dot` 处理的有序有向图着色)",
     "tags": [
@@ -33663,7 +33663,7 @@
     "id": "tldr-zh-common-zdb-1",
     "type": "command",
     "title": "zdb - 显示特定 ZFS 存储池的详细配置",
-    "content": "zdb -C {{存储池名称}}",
+    "content": "zdb {{[-C|--config]}} {{存储池名称}}",
     "group": "通用工具 (Common)",
     "description": "zdb: ZFS 调试器。 (显示特定 ZFS 存储池的详细配置)",
     "tags": [
@@ -33678,7 +33678,7 @@
     "id": "tldr-zh-common-zdb-2",
     "type": "command",
     "title": "zdb - 显示关于块的数量、大小和重复数据删除的统计信息",
-    "content": "zdb -b {{存储池名称}}",
+    "content": "zdb {{[-b|--block-stats]}} {{存储池名称}}",
     "group": "通用工具 (Common)",
     "description": "zdb: ZFS 调试器。 (显示关于块的数量、大小和重复数据删除的统计信息)",
     "tags": [
@@ -35688,7 +35688,7 @@
     "id": "tldr-zh-common-buku-0",
     "type": "command",
     "title": "buku - 根据关键词和标签“隐私”查找书签",
-    "content": "buku {{关键词}} --stag {{隐私}}",
+    "content": "buku {{关键词}} {{[-t|--stag]}} {{隐私}}",
     "group": "通用工具 (Common)",
     "description": "buku: 命令行版本的书签管理器。 (根据关键词和标签“隐私”查找书签)",
     "tags": [
@@ -35703,7 +35703,7 @@
     "id": "tldr-zh-common-buku-1",
     "type": "command",
     "title": "buku - 添加书签，并且打上标签“搜索引擎”和“隐私”",
-    "content": "buku --add {{https://example.com}} {{搜索引擎}}, {{隐私}}",
+    "content": "buku {{[-a|--add]}} {{https://example.com}} {{搜索引擎}}, {{隐私}}",
     "group": "通用工具 (Common)",
     "description": "buku: 命令行版本的书签管理器。 (添加书签，并且打上标签“搜索引擎”和“隐私”)",
     "tags": [
@@ -35718,7 +35718,7 @@
     "id": "tldr-zh-common-buku-2",
     "type": "command",
     "title": "buku - 删除一个书签",
-    "content": "buku --delete {{书签 id}}",
+    "content": "buku {{[-d|--delete]}} {{书签 id}}",
     "group": "通用工具 (Common)",
     "description": "buku: 命令行版本的书签管理器。 (删除一个书签)",
     "tags": [
@@ -35733,7 +35733,7 @@
     "id": "tldr-zh-common-buku-3",
     "type": "command",
     "title": "buku - 打开编辑器，修改书签",
-    "content": "buku --write {{书签 id}}",
+    "content": "buku {{[-w|--write]}} {{书签 id}}",
     "group": "通用工具 (Common)",
     "description": "buku: 命令行版本的书签管理器。 (打开编辑器，修改书签)",
     "tags": [
@@ -35748,7 +35748,7 @@
     "id": "tldr-zh-common-buku-4",
     "type": "command",
     "title": "buku - 移除一个书签中的标签“搜索引擎”",
-    "content": "buku --update {{书签 id}} --tag {{-}} {{搜索引擎}}",
+    "content": "buku {{[-u|--update]}} {{书签 id}} --tag - {{搜索引擎}}",
     "group": "通用工具 (Common)",
     "description": "buku: 命令行版本的书签管理器。 (移除一个书签中的标签“搜索引擎”)",
     "tags": [
@@ -38958,7 +38958,7 @@
     "id": "tldr-zh-common-edgepaint-0",
     "type": "command",
     "title": "edgepaint - 对一个或多个已经有布局信息的图形布局的边缘进行着色，以澄清交叉边缘",
-    "content": "edgepaint {{路径/到/布局1.gv}} {{路径/到/布局2.gv ...}} > {{路径/到/输出.gv}}",
+    "content": "edgepaint {{路径/到/布局1.gv 路径/到/布局2.gv ...}} > {{路径/到/输出.gv}}",
     "group": "通用工具 (Common)",
     "description": "edgepaint: 对图形布局的边缘进行着色，以澄清交叉边缘。 Graphviz 过滤器：`acyclic`、`bcomps`、`comps`、`edgepaint`、`gvcolor`、`gvpack`、`mingle`、`nop`、`sccmap`、`tred` 和 `unflatten`。 (对一个或多个已经有布局信息的图形布局的边缘进行着色，以澄清交叉边缘)",
     "tags": [
@@ -39873,7 +39873,7 @@
     "id": "tldr-zh-common-ani-cli-1",
     "type": "command",
     "title": "ani-cli - 下载（[d]ownload）剧集",
-    "content": "ani-cli -d \"{{动漫名称}}\"",
+    "content": "ani-cli {{[-d|--download]}} \"{{动漫名称}}\"",
     "group": "通用工具 (Common)",
     "description": "ani-cli: 一个用于浏览和观看动漫的命令行工具。 另请参阅：`animdl`。 (下载（[d]ownload）剧集)",
     "tags": [
@@ -39888,7 +39888,7 @@
     "id": "tldr-zh-common-ani-cli-2",
     "type": "command",
     "title": "ani-cli - 下载（[d]ownload）一个范围（[r]ange）的剧集",
-    "content": "ani-cli -d -r \"{{1 6}}\" \"{{动漫名称}}\"",
+    "content": "ani-cli {{[-d|--download]}} {{[-r|--range]}} \"{{1 6}}\" \"{{动漫名称}}\"",
     "group": "通用工具 (Common)",
     "description": "ani-cli: 一个用于浏览和观看动漫的命令行工具。 另请参阅：`animdl`。 (下载（[d]ownload）一个范围（[r]ange）的剧集)",
     "tags": [
@@ -39903,7 +39903,7 @@
     "id": "tldr-zh-common-ani-cli-3",
     "type": "command",
     "title": "ani-cli - 下载（[d]ownload）整部动漫（所有剧集的范围）",
-    "content": "ani-cli -d -r \"1 -1\" \"{{动漫名称}}\"",
+    "content": "ani-cli {{[-d|--download]}} {{[-r|--range]}} \"1 -1\" \"{{动漫名称}}\"",
     "group": "通用工具 (Common)",
     "description": "ani-cli: 一个用于浏览和观看动漫的命令行工具。 另请参阅：`animdl`。 (下载（[d]ownload）整部动漫（所有剧集的范围）)",
     "tags": [
@@ -39918,7 +39918,7 @@
     "id": "tldr-zh-common-ani-cli-4",
     "type": "command",
     "title": "ani-cli - 使用 [v]LC 播放器播放",
-    "content": "ani-cli -v \"{{动漫名称}}\"",
+    "content": "ani-cli {{[-v|--vlc]}} \"{{动漫名称}}\"",
     "group": "通用工具 (Common)",
     "description": "ani-cli: 一个用于浏览和观看动漫的命令行工具。 另请参阅：`animdl`。 (使用 [v]LC 播放器播放)",
     "tags": [
@@ -39933,7 +39933,7 @@
     "id": "tldr-zh-common-ani-cli-5",
     "type": "command",
     "title": "ani-cli - 观看特定（[e]pisode）剧集",
-    "content": "ani-cli -e {{剧集序号}} \"{{动漫名称}}\"",
+    "content": "ani-cli {{[-e|--episode]}} {{剧集序号}} \"{{动漫名称}}\"",
     "group": "通用工具 (Common)",
     "description": "ani-cli: 一个用于浏览和观看动漫的命令行工具。 另请参阅：`animdl`。 (观看特定（[e]pisode）剧集)",
     "tags": [
@@ -39948,7 +39948,7 @@
     "id": "tldr-zh-common-ani-cli-6",
     "type": "command",
     "title": "ani-cli - 从历史记录中（[c]ontinue）继续观看动漫",
-    "content": "ani-cli -c",
+    "content": "ani-cli {{[-c|--continue]}}",
     "group": "通用工具 (Common)",
     "description": "ani-cli: 一个用于浏览和观看动漫的命令行工具。 另请参阅：`animdl`。 (从历史记录中（[c]ontinue）继续观看动漫)",
     "tags": [
@@ -39963,7 +39963,7 @@
     "id": "tldr-zh-common-ani-cli-7",
     "type": "command",
     "title": "ani-cli - 更新（[U]pdate）`ani-cli`",
-    "content": "ani-cli -U",
+    "content": "ani-cli {{[-U|--update]}}",
     "group": "通用工具 (Common)",
     "description": "ani-cli: 一个用于浏览和观看动漫的命令行工具。 另请参阅：`animdl`。 (更新（[U]pdate）`ani-cli`)",
     "tags": [
@@ -40743,7 +40743,7 @@
     "id": "tldr-zh-common-just.1-2",
     "type": "command",
     "title": "just.1 - 在默认编辑器中编辑 justfile",
-    "content": "just -e",
+    "content": "just {{[-e|--edit]}}",
     "group": "通用工具 (Common)",
     "description": "just.1: 保存并运行项目特定的命令。 (在默认编辑器中编辑 justfile)",
     "tags": [
@@ -40758,7 +40758,7 @@
     "id": "tldr-zh-common-just.1-3",
     "type": "command",
     "title": "just.1 - 列出 justfile 中可用的配方",
-    "content": "just -l",
+    "content": "just {{[-l|--list]}}",
     "group": "通用工具 (Common)",
     "description": "just.1: 保存并运行项目特定的命令。 (列出 justfile 中可用的配方)",
     "tags": [
@@ -42318,7 +42318,7 @@
     "id": "tldr-zh-common-jhat-1",
     "type": "command",
     "title": "jhat - 分析堆转储文件，为 HTTP 服务指定备用端口",
-    "content": "jhat -p {{端口}} {{路径/堆转储文件}}",
+    "content": "jhat {{[-p|-port]}} {{端口}} {{路径/堆转储文件}}",
     "group": "通用工具 (Common)",
     "description": "jhat: Java 堆分析工具。 (分析堆转储文件，为 HTTP 服务指定备用端口)",
     "tags": [
@@ -43173,7 +43173,7 @@
     "id": "tldr-zh-common-unar-1",
     "type": "command",
     "title": "unar - 提取一个归档文件到指定目录",
-    "content": "unar -o {{路径/到/目录}} {{归档文件}}",
+    "content": "unar {{[-o|-output-directory]}} {{路径/到/目录}} {{归档文件}}",
     "group": "通用工具 (Common)",
     "description": "unar: 从归档文件中提取内容。 (提取一个归档文件到指定目录)",
     "tags": [
@@ -43188,7 +43188,7 @@
     "id": "tldr-zh-common-unar-2",
     "type": "command",
     "title": "unar - 如果要提取的文件已经存在，则总是覆盖",
-    "content": "unar -f {{归档文件}}",
+    "content": "unar {{[-f|-force-overwrite]}} {{归档文件}}",
     "group": "通用工具 (Common)",
     "description": "unar: 从归档文件中提取内容。 (如果要提取的文件已经存在，则总是覆盖)",
     "tags": [
@@ -43203,7 +43203,7 @@
     "id": "tldr-zh-common-unar-3",
     "type": "command",
     "title": "unar - 如果要提取的文件已经存在，则总是重命名",
-    "content": "unar -r {{归档文件}}",
+    "content": "unar {{[-r|-force-rename]}} {{归档文件}}",
     "group": "通用工具 (Common)",
     "description": "unar: 从归档文件中提取内容。 (如果要提取的文件已经存在，则总是重命名)",
     "tags": [
@@ -43218,7 +43218,7 @@
     "id": "tldr-zh-common-unar-4",
     "type": "command",
     "title": "unar - 如果要提取的文件已经存在，则总是跳过",
-    "content": "unar -s {{归档文件}}",
+    "content": "unar {{[-s|-force-skip]}} {{归档文件}}",
     "group": "通用工具 (Common)",
     "description": "unar: 从归档文件中提取内容。 (如果要提取的文件已经存在，则总是跳过)",
     "tags": [
@@ -43848,7 +43848,7 @@
     "id": "tldr-zh-common-jmtpfs-2",
     "type": "command",
     "title": "jmtpfs - 列出可用的 MTP 设备",
-    "content": "jmtpfs --listDevices",
+    "content": "jmtpfs {{[-l|--listDevices]}}",
     "group": "通用工具 (Common)",
     "description": "jmtpfs: 基于 FUSE 的文件系统，用于访问 MTP 设备。 (列出可用的 MTP 设备)",
     "tags": [
@@ -44178,7 +44178,7 @@
     "id": "tldr-zh-common-mingle-0",
     "type": "command",
     "title": "mingle - 捆绑一个或多个已经有布局信息的图形布局的边缘",
-    "content": "mingle {{路径/到/布局1.gv}} {{路径/到/布局2.gv ...}} > {{路径/到/输出.gv}}",
+    "content": "mingle {{路径/到/布局1.gv 路径/到/布局2.gv ...}} > {{路径/到/输出.gv}}",
     "group": "通用工具 (Common)",
     "description": "mingle: 捆绑图形布局中的边缘。 Graphviz 过滤器：`acyclic`、`bcomps`、`comps`、`edgepaint`、`gvcolor`、`gvpack`、`mingle`、`nop`、`sccmap`、`tred` 和 `unflatten`。 (捆绑一个或多个已经有布局信息的图形布局的边缘)",
     "tags": [
@@ -47043,7 +47043,7 @@
     "id": "tldr-zh-common-qrencode-0",
     "type": "command",
     "title": "qrencode - 将字符串转换为二维码并保存到输出文件",
-    "content": "qrencode -o {{路径/到/输出文件.png}} {{字符串}}",
+    "content": "qrencode {{[-o|--output]}} {{路径/到/输出文件.png}} {{字符串}}",
     "group": "通用工具 (Common)",
     "description": "qrencode: 二维码生成器。支持 PNG 和 EPS 格式。 另请参阅：`qr`。 (将字符串转换为二维码并保存到输出文件)",
     "tags": [
@@ -47058,7 +47058,7 @@
     "id": "tldr-zh-common-qrencode-1",
     "type": "command",
     "title": "qrencode - 将输入文件转换为二维码并保存到输出文件",
-    "content": "qrencode -o {{路径/到/输出文件.png}} -r {{路径/到/输入文件}}",
+    "content": "qrencode {{[-o|--output]}} {{路径/到/输出文件.png}} {{[-r|--read-from]}} {{路径/到/输入文件}}",
     "group": "通用工具 (Common)",
     "description": "qrencode: 二维码生成器。支持 PNG 和 EPS 格式。 另请参阅：`qr`。 (将输入文件转换为二维码并保存到输出文件)",
     "tags": [
@@ -47073,7 +47073,7 @@
     "id": "tldr-zh-common-qrencode-2",
     "type": "command",
     "title": "qrencode - 将字符串转换为二维码并在终端中打印",
-    "content": "qrencode -t ansiutf8 {{字符串}}",
+    "content": "qrencode {{[-t|--type]}} ansiutf8 {{字符串}}",
     "group": "通用工具 (Common)",
     "description": "qrencode: 二维码生成器。支持 PNG 和 EPS 格式。 另请参阅：`qr`。 (将字符串转换为二维码并在终端中打印)",
     "tags": [
@@ -47088,7 +47088,7 @@
     "id": "tldr-zh-common-qrencode-3",
     "type": "command",
     "title": "qrencode - 从管道输入转换为二维码并在终端中打印",
-    "content": "echo {{字符串}} | qrencode -t utf8",
+    "content": "echo {{字符串}} | qrencode {{[-t|--type]}} utf8",
     "group": "通用工具 (Common)",
     "description": "qrencode: 二维码生成器。支持 PNG 和 EPS 格式。 另请参阅：`qr`。 (从管道输入转换为二维码并在终端中打印)",
     "tags": [
@@ -51993,7 +51993,7 @@
     "id": "tldr-zh-common-qcp-2",
     "type": "command",
     "title": "qcp - 复制文件，但在编辑器中交换源文件名和目标文件名的位置",
-    "content": "qcp --option swap {{*.jpg}}",
+    "content": "qcp {{[-o|--option]}} swap {{*.jpg}}",
     "group": "通用工具 (Common)",
     "description": "qcp: 使用默认文本编辑器复制文件，以定义文件名。 (复制文件，但在编辑器中交换源文件名和目标文件名的位置)",
     "tags": [
