@@ -291,7 +291,13 @@
     "workingTree": "工作区",
     "unstagedChanges": "未暂存的更改",
     "stashExportUnsupported": "折叠后的 stash 差异暂不支持导出",
-    "stashCompareUnsupported": "折叠后的 stash 差异暂不支持比较"
+    "stashCompareUnsupported": "折叠后的 stash 差异暂不支持比较",
+    "selectFolderForExport": "选择此文件夹",
+    "unselectFolderForExport": "取消选择此文件夹",
+    "binaryFileExportDisabled": "二进制文件无法导出",
+    "binaryFileExportDisabledShort": "二进制",
+    "largeFileExportDisabled": "超过 {{size}} 的文件无法导出",
+    "largeFileExportDisabledShort": "过大"
   },
   "editor": {
     "titleNew": "新建指令",

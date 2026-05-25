@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { invoke } from '@tauri-apps/api/core';
 import { GitDiffSummary, GraphCommit, PatchFileItem } from '@/components/features/patch/patch_types';
+import { isExportablePatchFile } from '@/lib/patch_tree_utils';
 import {
   getStashBaseHash,
   getStashUntrackedHash,
@@ -82,6 +83,7 @@ interface GitGraphState {
   closeDiff: () => void;
   cancelCompare: (projectPath: string) => void;
   toggleExportPath: (path: string, checked: boolean) => void;
+  toggleExportPaths: (paths: string[], checked: boolean) => void;
   refreshGitView: (projectPath: string, searchQuery?: string) => Promise<void>;
 }
 
@@ -105,7 +107,7 @@ function mapDiffFiles(result: GitDiffFile[]): PatchFileItem[] {
 }
 
 function exportablePaths(files: PatchFileItem[]): Set<string> {
-  return new Set(files.filter((f) => !f.isBinary && !f.isLarge).map((f) => f.path));
+  return new Set(files.filter(isExportablePatchFile).map((f) => f.path));
 }
 
 function normalizeExportSelection(files: PatchFileItem[], selectedPaths?: Set<string> | null): Set<string> {
@@ -539,9 +541,30 @@ export const useGitGraphStore = create<GitGraphState>((set, get) => ({
 
   toggleExportPath: (path: string, checked: boolean) => {
     set((state) => {
+      if (!exportablePaths(state.diffFiles).has(path)) {
+        return state;
+      }
+
       const next = new Set(state.selectedExportPaths);
       if (checked) next.add(path);
       else next.delete(path);
+      return { selectedExportPaths: next };
+    });
+  },
+
+  toggleExportPaths: (paths: string[], checked: boolean) => {
+    set((state) => {
+      const exportable = exportablePaths(state.diffFiles);
+      const normalizedPaths = paths.filter((path) => exportable.has(path));
+      if (normalizedPaths.length === 0) {
+        return state;
+      }
+
+      const next = new Set(state.selectedExportPaths);
+      for (const path of normalizedPaths) {
+        if (checked) next.add(path);
+        else next.delete(path);
+      }
       return { selectedExportPaths: next };
     });
   },

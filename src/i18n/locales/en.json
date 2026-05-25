@@ -291,7 +291,13 @@
     "workingTree": "Working Tree",
     "unstagedChanges": "Unstaged changes",
     "stashExportUnsupported": "Collapsed stash diffs cannot be exported yet",
-    "stashCompareUnsupported": "Collapsed stash diffs cannot be compared yet"
+    "stashCompareUnsupported": "Collapsed stash diffs cannot be compared yet",
+    "selectFolderForExport": "Select this folder",
+    "unselectFolderForExport": "Unselect this folder",
+    "binaryFileExportDisabled": "Binary files cannot be exported",
+    "binaryFileExportDisabledShort": "Binary",
+    "largeFileExportDisabled": "Files larger than {{size}} cannot be exported",
+    "largeFileExportDisabledShort": "Too large"
   },
   "editor": {
     "titleNew": "New Prompt",

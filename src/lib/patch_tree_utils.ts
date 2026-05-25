@@ -9,6 +9,10 @@ export interface PatchTreeNode {
   fileData?: PatchFileItem;
 }
 
+export function isExportablePatchFile(file: PatchFileItem | undefined): file is PatchFileItem {
+  return Boolean(file && !file.isBinary && !file.isLarge);
+}
+
 /**
  * Convert flat PatchFileItem[] into a tree by splitting paths on '/'.
  * Dirs before files, siblings sorted alphabetically.
@@ -101,4 +105,26 @@ export function allDirIds(nodes: PatchTreeNode[]): string[] {
   };
   walk(nodes);
   return ids;
+}
+
+/** Collect exportable file paths under a tree node. Binary and oversized files are skipped. */
+export function collectExportablePatchFilePaths(node: PatchTreeNode): string[] {
+  if (node.kind === 'file') {
+    return isExportablePatchFile(node.fileData) ? [node.path] : [];
+  }
+
+  const paths: string[] = [];
+  const walk = (children: PatchTreeNode[]) => {
+    for (const child of children) {
+      if (child.kind === 'file') {
+        if (isExportablePatchFile(child.fileData)) {
+          paths.push(child.path);
+        }
+      } else {
+        walk(child.children);
+      }
+    }
+  };
+  walk(node.children);
+  return paths;
 }

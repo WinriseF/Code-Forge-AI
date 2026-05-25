@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import type { GraphCommit } from '@/components/features/patch/patch_types';
+import type { GraphCommit, PatchFileItem } from '@/components/features/patch/patch_types';
 
 const { invokeMock } = vi.hoisted(() => ({
   invokeMock: vi.fn(),
@@ -49,6 +49,20 @@ function makeDiffResponse(files = [
       insertions: files.reduce((sum, file) => sum + file.additions, 0),
       deletions: files.reduce((sum, file) => sum + file.deletions, 0),
     },
+  };
+}
+
+function makePatchFile(path: string, overrides: Partial<PatchFileItem> = {}): PatchFileItem {
+  return {
+    id: path,
+    path,
+    original: 'before',
+    modified: 'after',
+    status: 'success',
+    gitStatus: 'Modified',
+    additions: 1,
+    deletions: 1,
+    ...overrides,
   };
 }
 
@@ -300,6 +314,72 @@ describe('useGitGraphStore selectCommit', () => {
       isLoading: false,
     });
     expect(useGitGraphStore.getState().diffFiles.map((file) => file.path)).toEqual(['src/tracked.ts']);
+  });
+});
+
+describe('useGitGraphStore export selection', () => {
+  beforeEach(() => {
+    invokeMock.mockReset();
+  });
+
+  it('adds multiple exportable paths at once', async () => {
+    const { useGitGraphStore } = await importFreshGitGraphStore();
+
+    useGitGraphStore.setState({
+      diffFiles: [
+        makePatchFile('src/a.ts'),
+        makePatchFile('src/b.ts'),
+        makePatchFile('other/c.ts'),
+      ],
+      selectedExportPaths: new Set(['other/c.ts']),
+    });
+
+    useGitGraphStore.getState().toggleExportPaths(['src/a.ts', 'src/b.ts'], true);
+
+    expect(Array.from(useGitGraphStore.getState().selectedExportPaths)).toEqual([
+      'other/c.ts',
+      'src/a.ts',
+      'src/b.ts',
+    ]);
+  });
+
+  it('removes selected folder paths while preserving unrelated selections', async () => {
+    const { useGitGraphStore } = await importFreshGitGraphStore();
+
+    useGitGraphStore.setState({
+      diffFiles: [
+        makePatchFile('src/a.ts'),
+        makePatchFile('src/b.ts'),
+        makePatchFile('other/c.ts'),
+      ],
+      selectedExportPaths: new Set(['src/a.ts', 'src/b.ts', 'other/c.ts']),
+    });
+
+    useGitGraphStore.getState().toggleExportPaths(['src/a.ts', 'src/b.ts'], false);
+
+    expect(Array.from(useGitGraphStore.getState().selectedExportPaths)).toEqual(['other/c.ts']);
+  });
+
+  it('filters stale, binary, and oversized paths during batch updates', async () => {
+    const { useGitGraphStore } = await importFreshGitGraphStore();
+
+    useGitGraphStore.setState({
+      diffFiles: [
+        makePatchFile('src/a.ts'),
+        makePatchFile('src/image.png', { isBinary: true }),
+        makePatchFile('src/large.json', { isLarge: true }),
+      ],
+      selectedExportPaths: new Set(),
+    });
+
+    useGitGraphStore.getState().toggleExportPaths([
+      'src/a.ts',
+      'src/image.png',
+      'src/large.json',
+      'missing.ts',
+    ], true);
+
+    expect(Array.from(useGitGraphStore.getState().selectedExportPaths)).toEqual(['src/a.ts']);
   });
 });
 

@@ -6,9 +6,12 @@ import {
   FileImage,
   AlertOctagon,
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
 import type { PatchTreeNode } from '@/lib/patch_tree_utils';
 import type { PatchFileItem } from './patch_types';
+
+const PATCH_EXPORT_SIZE_LIMIT_LABEL = '2 MB';
 
 interface PatchFileTreeNodeProps {
   node: PatchTreeNode;
@@ -21,6 +24,7 @@ interface PatchFileTreeNodeProps {
   onSelectFile: (id: string) => void;
   onToggleExpand: (id: string) => void;
   onToggleExport?: (id: string, checked: boolean) => void;
+  onDirectoryContextMenu?: (node: PatchTreeNode, event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 export function PatchFileTreeNode({
@@ -34,7 +38,9 @@ export function PatchFileTreeNode({
   onSelectFile,
   onToggleExpand,
   onToggleExport,
+  onDirectoryContextMenu,
 }: PatchFileTreeNodeProps) {
+  const { t } = useTranslation();
   const indent = depth * 16 + 12;
   const hasChildren = node.kind === 'dir' && node.children.length > 0;
 
@@ -49,6 +55,7 @@ export function PatchFileTreeNode({
         )}
         style={{ paddingLeft: `${indent}px` }}
         onClick={() => onToggleExpand(node.id)}
+        onContextMenu={(event) => onDirectoryContextMenu?.(node, event)}
         title={node.path}
       >
         <div className="w-5 h-5 flex items-center justify-center shrink-0 text-muted-foreground">
@@ -78,6 +85,19 @@ export function PatchFileTreeNode({
   // ── File row ───────────────────────────────────────────────────
   const fileData = node.fileData as PatchFileItem | undefined;
   const gitStatus = fileData?.gitStatus;
+  const disabledReason = fileData?.isBinary
+    ? t('patch.binaryFileExportDisabled', 'Binary files cannot be exported')
+    : fileData?.isLarge
+      ? t('patch.largeFileExportDisabled', {
+          size: PATCH_EXPORT_SIZE_LIMIT_LABEL,
+          defaultValue: 'Files larger than {{size}} cannot be exported',
+        })
+      : undefined;
+  const disabledLabel = fileData?.isBinary
+    ? t('patch.binaryFileExportDisabledShort', 'Binary')
+    : fileData?.isLarge
+      ? t('patch.largeFileExportDisabledShort', 'Too large')
+      : undefined;
 
   const handleCheckboxClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -98,37 +118,60 @@ export function PatchFileTreeNode({
       )}
       style={{ paddingLeft: `${indent}px` }}
       onClick={() => !isDisabled && onSelectFile(node.id)}
-      title={node.path}
+      title={disabledReason ? `${node.path}\n${disabledReason}` : node.path}
     >
       {/* Expand spacer (files don't have arrow) */}
-      <div className="w-5 h-5 shrink-0 mt-0.5" />
+      <div className="w-5 h-5 shrink-0" />
 
       {/* Checkbox (diff mode export) */}
       {showCheckbox && (
-        <div className="mr-2 flex items-center" onClick={handleCheckboxClick}>
+        <div
+          className="mr-2 flex h-5 w-4 shrink-0 items-center justify-center"
+          data-testid="patch-file-checkbox-slot"
+          onClick={handleCheckboxClick}
+        >
           <input
             type="checkbox"
             checked={isChecked}
+            disabled={isDisabled}
+            title={disabledReason}
+            aria-label={disabledReason ?? node.path}
             onChange={() => {}} // handled by parent div click
-            className="w-3.5 h-3.5 rounded border-slate-600 bg-transparent text-primary focus:ring-0 cursor-pointer accent-primary"
+            className="block h-3.5 w-3.5 rounded border-slate-600 bg-transparent text-primary accent-primary focus:ring-0 disabled:cursor-not-allowed"
           />
         </div>
       )}
 
       {/* File icon */}
-      {fileData?.isBinary ? (
-        <FileImage size={14} className="mr-2 mt-0.5 shrink-0 text-orange-400" />
-      ) : fileData?.isLarge ? (
-        <AlertOctagon size={14} className="mr-2 mt-0.5 shrink-0 text-red-400" />
-      ) : (
-        <FileCode size={14} className="mr-2 mt-0.5 shrink-0 text-muted-foreground" />
-      )}
+      <div
+        className="mr-2 flex h-5 w-4 shrink-0 items-center justify-center"
+        data-testid="patch-file-icon-slot"
+        title={disabledReason}
+      >
+        {fileData?.isBinary ? (
+          <FileImage size={14} className="shrink-0 text-orange-400" />
+        ) : fileData?.isLarge ? (
+          <AlertOctagon size={14} className="shrink-0 text-red-400" />
+        ) : (
+          <FileCode size={14} className="shrink-0 text-muted-foreground" />
+        )}
+      </div>
 
       {/* File name */}
       <div className="min-w-0 flex-1">
-        <span className={cn('block truncate', isSelected && 'font-medium')}>
-          {node.name}
-        </span>
+        <div className="flex min-w-0 items-center gap-1.5">
+          <span className={cn('min-w-0 truncate', isSelected && 'font-medium')}>
+            {node.name}
+          </span>
+          {disabledReason && disabledLabel && (
+            <span
+              className="inline-flex h-4 shrink-0 items-center rounded border border-border/70 bg-secondary/50 px-1.5 text-[10px] leading-none text-muted-foreground"
+              title={disabledReason}
+            >
+              {disabledLabel}
+            </span>
+          )}
+        </div>
         {fileData?.renameFrom && (
           <span className="block truncate text-[10px] text-muted-foreground">
             {fileData.renameFrom}
@@ -137,7 +180,7 @@ export function PatchFileTreeNode({
       </div>
 
       {typeof fileData?.additions === 'number' && typeof fileData?.deletions === 'number' && (
-        <div className="mr-2 mt-0.5 flex items-center gap-1 shrink-0 text-[10px] font-mono">
+        <div className="mr-2 flex h-5 shrink-0 items-center gap-1 text-[10px] font-mono">
           <span className="text-green-400">+{fileData.additions}</span>
           <span className="text-red-400">-{fileData.deletions}</span>
         </div>
@@ -147,7 +190,7 @@ export function PatchFileTreeNode({
       {gitStatus && (
         <span
           className={cn(
-            'text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded shrink-0 mr-1 mt-0.5',
+            'mr-1 flex h-5 w-4 shrink-0 items-center justify-center rounded text-[10px] font-bold',
             gitStatus === 'Added' && 'bg-green-500/20 text-green-500',
             gitStatus === 'Modified' && 'bg-blue-500/20 text-blue-500',
             gitStatus === 'Deleted' && 'bg-red-500/20 text-red-600',

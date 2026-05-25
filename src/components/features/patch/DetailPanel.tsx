@@ -1,6 +1,12 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useGitGraphStore, WORKING_TREE_HASH } from '@/store/useGitGraphStore';
-import { buildPatchFileTree, flattenPatchTree, allDirIds } from '@/lib/patch_tree_utils';
+import {
+  buildPatchFileTree,
+  flattenPatchTree,
+  allDirIds,
+  collectExportablePatchFilePaths,
+  type PatchTreeNode,
+} from '@/lib/patch_tree_utils';
 import { GitRefBadges } from './GitRefBadges';
 import { PatchFileTreeNode } from './PatchFileTreeNode';
 import { FileDown, FolderOpen, ArrowRight } from 'lucide-react';
@@ -24,11 +30,17 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
   const isLoading = useGitGraphStore((s) => s.isLoading);
   const selectedExportPaths = useGitGraphStore((s) => s.selectedExportPaths);
   const toggleExportPath = useGitGraphStore((s) => s.toggleExportPath);
+  const toggleExportPaths = useGitGraphStore((s) => s.toggleExportPaths);
   const canExportCurrentDiff = useGitGraphStore((s) => s.canExportCurrentDiff);
 
   const { t } = useTranslation();
 
   const [expandedDirs, setExpandedDirs] = useState<Set<string>>(new Set());
+  const [directoryMenu, setDirectoryMenu] = useState<{
+    x: number;
+    y: number;
+    exportablePaths: string[];
+  } | null>(null);
   const commitByHash = useMemo(() => new Map(commits.map((commit) => [commit.hash, commit])), [commits]);
 
   const selectedCommit = useMemo(
@@ -67,6 +79,44 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
       return next;
     });
   }, []);
+
+  const openDirectoryMenu = useCallback((node: PatchTreeNode, event: React.MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setDirectoryMenu({
+      x: event.clientX,
+      y: event.clientY,
+      exportablePaths: collectExportablePatchFilePaths(node),
+    });
+  }, []);
+
+  const applyDirectoryExportSelection = useCallback((checked: boolean) => {
+    if (!directoryMenu || directoryMenu.exportablePaths.length === 0 || !canExportCurrentDiff) {
+      setDirectoryMenu(null);
+      return;
+    }
+
+    toggleExportPaths(directoryMenu.exportablePaths, checked);
+    setDirectoryMenu(null);
+  }, [canExportCurrentDiff, directoryMenu, toggleExportPaths]);
+
+  useEffect(() => {
+    if (!directoryMenu) return;
+
+    const close = () => setDirectoryMenu(null);
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        close();
+      }
+    };
+
+    document.addEventListener('mousedown', close);
+    document.addEventListener('keydown', closeOnEscape);
+    return () => {
+      document.removeEventListener('mousedown', close);
+      document.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [directoryMenu]);
 
   // Empty state: nothing selected
   if (!selectedCommit && selectedCommitHash !== WORKING_TREE_HASH) {
@@ -226,11 +276,40 @@ export function DetailPanel({ onExport }: DetailPanelProps) {
               onSelectFile={selectFile}
               onToggleExpand={toggleExpand}
               onToggleExport={toggleExportPath}
+              onDirectoryContextMenu={openDirectoryMenu}
             />
             );
           })
         )}
       </div>
+
+      {directoryMenu && (
+        <div
+          className="fixed z-50 min-w-40 rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-lg"
+          style={{ left: directoryMenu.x, top: directoryMenu.y }}
+          onMouseDown={(event) => event.stopPropagation()}
+          role="menu"
+        >
+          <button
+            type="button"
+            role="menuitem"
+            disabled={directoryMenu.exportablePaths.length === 0 || !canExportCurrentDiff}
+            onClick={() => applyDirectoryExportSelection(true)}
+            className="flex w-full items-center rounded-sm px-2 py-1.5 text-left text-xs hover:bg-accent disabled:pointer-events-none disabled:opacity-50"
+          >
+            {t('patch.selectFolderForExport', 'Select this folder')}
+          </button>
+          <button
+            type="button"
+            role="menuitem"
+            disabled={directoryMenu.exportablePaths.length === 0 || !canExportCurrentDiff}
+            onClick={() => applyDirectoryExportSelection(false)}
+            className="flex w-full items-center rounded-sm px-2 py-1.5 text-left text-xs hover:bg-accent disabled:pointer-events-none disabled:opacity-50"
+          >
+            {t('patch.unselectFolderForExport', 'Unselect this folder')}
+          </button>
+        </div>
+      )}
     </div>
   );
 }
