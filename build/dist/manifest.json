@@ -1,5 +1,5 @@
 {
-  "updated_at": 1779080113479,
+  "updated_at": 1779680613505,
   "version": "2.1.0",
   "packages": [
     {
@@ -7,9 +7,9 @@
       "language": "en",
       "platform": "llm",
       "name": "ChatGPT Prompts (English)",
-      "description": "Collection of 1809 role-play prompts.",
-      "count": 1809,
-      "size_kb": 5318.1,
+      "description": "Collection of 1830 role-play prompts.",
+      "count": 1830,
+      "size_kb": 5358.4,
       "url": "packs/prompts/en/roles.json",
       "category": "prompt"
     },
@@ -22,94 +22,6 @@
       "count": 124,
       "size_kb": 95.58,
       "url": "packs/prompts/zh/roles.json",
-      "category": "prompt"
-    },
-    {
-      "id": "en-image2",
-      "language": "en",
-      "platform": "image",
-      "name": "Awesome GPT Image 2 Prompts",
-      "description": "Collection of 6456 GPT Image 2 prompts.",
-      "count": 6456,
-      "size_kb": 19615.25,
-      "url": "packs/prompts/en/image2.json",
-      "category": "prompt"
-    },
-    {
-      "id": "zh-image2",
-      "language": "zh",
-      "platform": "image",
-      "name": "GPT Image 2 提示词精选",
-      "description": "Collection of 6456 GPT Image 2 prompts.",
-      "count": 6456,
-      "size_kb": 19359.04,
-      "url": "packs/prompts/zh/image2.json",
-      "category": "prompt"
-    },
-    {
-      "id": "en-seedance2",
-      "language": "en",
-      "platform": "video",
-      "name": "Awesome Seedance 2.0 Video Prompts",
-      "description": "Collection of 3031 Seedance 2.0 video-generation prompts.",
-      "count": 3031,
-      "size_kb": 8963.24,
-      "url": "packs/prompts/en/seedance2.json",
-      "category": "prompt"
-    },
-    {
-      "id": "zh-seedance2",
-      "language": "zh",
-      "platform": "video",
-      "name": "Seedance 2.0 视频提示词精选",
-      "description": "Collection of 3032 Seedance 2.0 video-generation prompts.",
-      "count": 3032,
-      "size_kb": 8737.33,
-      "url": "packs/prompts/zh/seedance2.json",
-      "category": "prompt"
-    },
-    {
-      "id": "en-gemini3",
-      "language": "en",
-      "platform": "llm",
-      "name": "Awesome Gemini 3 Prompts",
-      "description": "Collection of 49 Gemini 3 prompts.",
-      "count": 49,
-      "size_kb": 75.41,
-      "url": "packs/prompts/en/gemini3.json",
-      "category": "prompt"
-    },
-    {
-      "id": "zh-gemini3",
-      "language": "zh",
-      "platform": "llm",
-      "name": "Gemini 3 提示词精选",
-      "description": "Collection of 49 Gemini 3 prompts.",
-      "count": 49,
-      "size_kb": 75.81,
-      "url": "packs/prompts/zh/gemini3.json",
-      "category": "prompt"
-    },
-    {
-      "id": "en-nano-banana-pro",
-      "language": "en",
-      "platform": "image",
-      "name": "Awesome Nano Banana Pro Prompts",
-      "description": "Collection of 13483 Nano Banana Pro image-generation prompts.",
-      "count": 13483,
-      "size_kb": 38811.7,
-      "url": "packs/prompts/en/nano-banana-pro.json",
-      "category": "prompt"
-    },
-    {
-      "id": "zh-nano-banana-pro",
-      "language": "zh",
-      "platform": "image",
-      "name": "Nano Banana Pro 提示词精选",
-      "description": "Collection of 13491 Nano Banana Pro image-generation prompts.",
-      "count": 13491,
-      "size_kb": 38107.16,
-      "url": "packs/prompts/zh/nano-banana-pro.json",
       "category": "prompt"
     },
     {
@@ -172,9 +84,9 @@
       "language": "zh",
       "platform": "common",
       "name": "通用工具 (Common) (ZH)",
-      "description": "Contains 3667 zh commands for common.",
-      "count": 3667,
-      "size_kb": 1791,
+      "description": "Contains 3688 zh commands for common.",
+      "count": 3688,
+      "size_kb": 1801,
       "url": "packs/commands/zh/common.json",
       "category": "command"
     },
@@ -185,7 +97,7 @@
       "name": "Linux 运维 (ZH)",
       "description": "Contains 777 zh commands for linux.",
       "count": 777,
-      "size_kb": 349,
+      "size_kb": 350,
       "url": "packs/commands/zh/linux.json",
       "category": "command"
     },
@@ -293,9 +205,9 @@
       "language": "en",
       "platform": "common",
       "name": "Common Tools (EN)",
-      "description": "Contains 20575 en commands for common.",
-      "count": 20575,
-      "size_kb": 9966,
+      "description": "Contains 20595 en commands for common.",
+      "count": 20595,
+      "size_kb": 9975,
       "url": "packs/commands/en/common.json",
       "category": "command"
     },
@@ -304,9 +216,9 @@
       "language": "en",
       "platform": "linux",
       "name": "Linux Ops (EN)",
-      "description": "Contains 8045 en commands for linux.",
-      "count": 8045,
-      "size_kb": 3804,
+      "description": "Contains 8060 en commands for linux.",
+      "count": 8060,
+      "size_kb": 3811,
       "url": "packs/commands/en/linux.json",
       "category": "command"
     },
@@ -342,6 +254,94 @@
       "size_kb": 19,
       "url": "packs/commands/en/netbsd.json",
       "category": "command"
+    },
+    {
+      "id": "custom-prompt-en-nano-banana-pro",
+      "language": "en",
+      "platform": "custom",
+      "name": "nano-banana-pro",
+      "description": "nano-banana-pro",
+      "count": 13483,
+      "size_kb": 38811.7,
+      "url": "packs/prompts/en/nano-banana-pro.json",
+      "category": "prompt"
+    },
+    {
+      "id": "custom-prompt-en-gemini3",
+      "language": "en",
+      "platform": "custom",
+      "name": "gemini3",
+      "description": "gemini3",
+      "count": 49,
+      "size_kb": 75.41,
+      "url": "packs/prompts/en/gemini3.json",
+      "category": "prompt"
+    },
+    {
+      "id": "custom-prompt-en-seedance2",
+      "language": "en",
+      "platform": "custom",
+      "name": "seedance2",
+      "description": "seedance2",
+      "count": 3031,
+      "size_kb": 8963.24,
+      "url": "packs/prompts/en/seedance2.json",
+      "category": "prompt"
+    },
+    {
+      "id": "custom-prompt-en-image2",
+      "language": "en",
+      "platform": "custom",
+      "name": "image2",
+      "description": "image2",
+      "count": 6456,
+      "size_kb": 19615.25,
+      "url": "packs/prompts/en/image2.json",
+      "category": "prompt"
+    },
+    {
+      "id": "custom-prompt-zh-nano-banana-pro",
+      "language": "zh",
+      "platform": "custom",
+      "name": "nano-banana-pro",
+      "description": "nano-banana-pro",
+      "count": 13491,
+      "size_kb": 38107.16,
+      "url": "packs/prompts/zh/nano-banana-pro.json",
+      "category": "prompt"
+    },
+    {
+      "id": "custom-prompt-zh-gemini3",
+      "language": "zh",
+      "platform": "custom",
+      "name": "gemini3",
+      "description": "gemini3",
+      "count": 49,
+      "size_kb": 75.81,
+      "url": "packs/prompts/zh/gemini3.json",
+      "category": "prompt"
+    },
+    {
+      "id": "custom-prompt-zh-seedance2",
+      "language": "zh",
+      "platform": "custom",
+      "name": "seedance2",
+      "description": "seedance2",
+      "count": 3032,
+      "size_kb": 8737.33,
+      "url": "packs/prompts/zh/seedance2.json",
+      "category": "prompt"
+    },
+    {
+      "id": "custom-prompt-zh-image2",
+      "language": "zh",
+      "platform": "custom",
+      "name": "image2",
+      "description": "image2",
+      "count": 6456,
+      "size_kb": 19359.04,
+      "url": "packs/prompts/zh/image2.json",
+      "category": "prompt"
     },
     {
       "id": "custom-prompt-zh-code",

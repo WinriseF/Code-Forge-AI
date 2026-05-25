@@ -25713,7 +25713,7 @@
     "id": "tldr-en-linux-pw-cat-1",
     "type": "command",
     "title": "pw-cat - Play a MIDI file",
-    "content": "pw-cat {{[-p|--playback]}} {{[-m|--midi]}} {{path/to/file.mid}}",
+    "content": "pw-cat {{[-pm|--playback --midi]}} {{path/to/file.mid}}",
     "group": "Linux Ops",
     "description": "pw-cat: Play and record audio files through PipeWire. (Play a MIDI file)",
     "tags": [
@@ -25728,7 +25728,7 @@
     "id": "tldr-en-linux-pw-cat-2",
     "type": "command",
     "title": "pw-cat - Play a DSD file",
-    "content": "pw-cat {{[-p|--playback]}} {{[-d|--dsd]}} {{path/to/file.dsf}}",
+    "content": "pw-cat {{[-pd|--playback --dsd]}} {{path/to/file.dsf}}",
     "group": "Linux Ops",
     "description": "pw-cat: Play and record audio files through PipeWire. (Play a DSD file)",
     "tags": [
@@ -25743,7 +25743,7 @@
     "id": "tldr-en-linux-pw-cat-3",
     "type": "command",
     "title": "pw-cat - Play a compressed audio file using passthrough (requires FFmpeg integration)",
-    "content": "pw-cat {{[-p|--playback]}} {{[-o|--encoded]}} {{path/to/file.ac3}}",
+    "content": "pw-cat {{[-po|--playback --encoded]}} {{path/to/file.ac3}}",
     "group": "Linux Ops",
     "description": "pw-cat: Play and record audio files through PipeWire. (Play a compressed audio file using passthrough (requires FFmpeg integration))",
     "tags": [
@@ -25773,7 +25773,7 @@
     "id": "tldr-en-linux-pw-cat-5",
     "type": "command",
     "title": "pw-cat - Record a MIDI file",
-    "content": "pw-cat {{[-r|--record]}} {{[-m|--midi]}} {{path/to/file.mid}}",
+    "content": "pw-cat {{[-rm|--record --midi]}} {{path/to/file.mid}}",
     "group": "Linux Ops",
     "description": "pw-cat: Play and record audio files through PipeWire. (Record a MIDI file)",
     "tags": [
@@ -52820,7 +52820,7 @@
     "title": "ip-neighbour - Display the neighbour/ARP table entries",
     "content": "ip {{[n|neighbour]}}",
     "group": "Linux Ops",
-    "description": "ip-neighbour: Neighbour/ARP tables management IP subcommand. (Display the neighbour/ARP table entries)",
+    "description": "ip-neighbour: Neighbour/ARP/NDP tables management IP subcommand. (Display the neighbour/ARP table entries)",
     "tags": [
       "linux",
       "ip-neighbour",
@@ -52835,7 +52835,7 @@
     "title": "ip-neighbour - Remove entries in the neighbour table on device `ethX`",
     "content": "sudo ip {{[n|neighbour]}} {{[f|flush]}} dev {{ethX}}",
     "group": "Linux Ops",
-    "description": "ip-neighbour: Neighbour/ARP tables management IP subcommand. (Remove entries in the neighbour table on device `ethX`)",
+    "description": "ip-neighbour: Neighbour/ARP/NDP tables management IP subcommand. (Remove entries in the neighbour table on device `ethX`)",
     "tags": [
       "linux",
       "ip-neighbour",
@@ -52850,7 +52850,7 @@
     "title": "ip-neighbour - Perform a neighbour lookup and return a neighbour entry",
     "content": "ip {{[n|neighbour]}} {{[g|get]}} {{lookup_ip}} dev {{ethX}}",
     "group": "Linux Ops",
-    "description": "ip-neighbour: Neighbour/ARP tables management IP subcommand. (Perform a neighbour lookup and return a neighbour entry)",
+    "description": "ip-neighbour: Neighbour/ARP/NDP tables management IP subcommand. (Perform a neighbour lookup and return a neighbour entry)",
     "tags": [
       "linux",
       "ip-neighbour",
@@ -52865,7 +52865,7 @@
     "title": "ip-neighbour - Add or delete an ARP entry for the neighbour IP address to `ethX`",
     "content": "sudo ip {{[n|neighbour]}} {{add|delete}} {{ip_address}} lladdr {{mac_address}} dev {{ethX}} nud reachable",
     "group": "Linux Ops",
-    "description": "ip-neighbour: Neighbour/ARP tables management IP subcommand. (Add or delete an ARP entry for the neighbour IP address to `ethX`)",
+    "description": "ip-neighbour: Neighbour/ARP/NDP tables management IP subcommand. (Add or delete an ARP entry for the neighbour IP address to `ethX`)",
     "tags": [
       "linux",
       "ip-neighbour",
@@ -52880,7 +52880,22 @@
     "title": "ip-neighbour - Change or replace an ARP entry for the neighbour IP address to `ethX`",
     "content": "sudo ip {{[n|neighbour]}} {{change|replace}} {{ip_address}} lladdr {{new_mac_address}} dev {{ethX}}",
     "group": "Linux Ops",
-    "description": "ip-neighbour: Neighbour/ARP tables management IP subcommand. (Change or replace an ARP entry for the neighbour IP address to `ethX`)",
+    "description": "ip-neighbour: Neighbour/ARP/NDP tables management IP subcommand. (Change or replace an ARP entry for the neighbour IP address to `ethX`)",
+    "tags": [
+      "linux",
+      "ip-neighbour",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ip-neighbour-5",
+    "type": "command",
+    "title": "ip-neighbour - Display only IPv6 or IPv4 neighbours",
+    "content": "ip {{-6|-4}} {{[n|neighbour]}}",
+    "group": "Linux Ops",
+    "description": "ip-neighbour: Neighbour/ARP/NDP tables management IP subcommand. (Display only IPv6 or IPv4 neighbours)",
     "tags": [
       "linux",
       "ip-neighbour",
@@ -80325,6 +80340,126 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-ukify-0",
+    "type": "command",
+    "title": "ukify - Build a Unified Kernel Image",
+    "content": "ukify build --linux {{path/to/vmlinuz}} --initrd {{path/to/initrd.img}} --cmdline \"{{root=UUID=xxxx}}\"",
+    "group": "Linux Ops",
+    "description": "ukify: Build and sign Unified Kernel Images (UKIs). (Build a Unified Kernel Image)",
+    "tags": [
+      "linux",
+      "ukify",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ukify-1",
+    "type": "command",
+    "title": "ukify - Build a UKI with multiple initrd files",
+    "content": "ukify build --linux {{path/to/vmlinuz}} --initrd {{path/to/initrd1.img}} --initrd {{path/to/initrd2.img}} --cmdline \"{{root=UUID=xxxx}}\"",
+    "group": "Linux Ops",
+    "description": "ukify: Build and sign Unified Kernel Images (UKIs). (Build a UKI with multiple initrd files)",
+    "tags": [
+      "linux",
+      "ukify",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ukify-2",
+    "type": "command",
+    "title": "ukify - Build a UKI, specifying the output filename",
+    "content": "ukify build --linux {{path/to/vmlinuz}} --initrd {{path/to/initrd.img}} --cmdline \"{{root=UUID=xxxx}}\" --output {{path/to/output.efi}}",
+    "group": "Linux Ops",
+    "description": "ukify: Build and sign Unified Kernel Images (UKIs). (Build a UKI, specifying the output filename)",
+    "tags": [
+      "linux",
+      "ukify",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ukify-3",
+    "type": "command",
+    "title": "ukify - Build a UKI including CPU microcode",
+    "content": "ukify build --linux {{path/to/vmlinuz}} --initrd {{path/to/initrd.img}} --microcode {{path/to/microcode.img}} --cmdline \"{{root=UUID=xxxx}}\"",
+    "group": "Linux Ops",
+    "description": "ukify: Build and sign Unified Kernel Images (UKIs). (Build a UKI including CPU microcode)",
+    "tags": [
+      "linux",
+      "ukify",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ukify-4",
+    "type": "command",
+    "title": "ukify - Sign the UKI for Secure Boot",
+    "content": "ukify build --linux {{path/to/vmlinuz}} --initrd {{path/to/initrd.img}} --cmdline \"{{root=UUID=xxxx}}\" --secureboot-private-key {{path/to/private_key.pem}} --secureboot-certificate {{path/to/certificate.pem}}",
+    "group": "Linux Ops",
+    "description": "ukify: Build and sign Unified Kernel Images (UKIs). (Sign the UKI for Secure Boot)",
+    "tags": [
+      "linux",
+      "ukify",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ukify-5",
+    "type": "command",
+    "title": "ukify - Inspect a UKI file",
+    "content": "ukify inspect {{path/to/uki.efi}}",
+    "group": "Linux Ops",
+    "description": "ukify: Build and sign Unified Kernel Images (UKIs). (Inspect a UKI file)",
+    "tags": [
+      "linux",
+      "ukify",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ukify-6",
+    "type": "command",
+    "title": "ukify - Generate signing keys",
+    "content": "ukify genkey --secureboot-certificate-validity {{365}}",
+    "group": "Linux Ops",
+    "description": "ukify: Build and sign Unified Kernel Images (UKIs). (Generate signing keys)",
+    "tags": [
+      "linux",
+      "ukify",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ukify-7",
+    "type": "command",
+    "title": "ukify - Display help",
+    "content": "ukify {{[-h|--help]}}",
+    "group": "Linux Ops",
+    "description": "ukify: Build and sign Unified Kernel Images (UKIs). (Display help)",
+    "tags": [
+      "linux",
+      "ukify",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-mt-0",
     "type": "command",
     "title": "mt - Check the status of a tape drive",
@@ -100794,6 +100929,96 @@
     "tags": [
       "linux",
       "xdg-terminal-exec",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-dnf-system-upgrade-0",
+    "type": "command",
+    "title": "dnf-system-upgrade - Prepare the system by upgrading all installed packages",
+    "content": "sudo dnf upgrade --refresh",
+    "group": "Linux Ops",
+    "description": "dnf-system-upgrade: Upgrade Fedora to a new major release. (Prepare the system by upgrading all installed packages)",
+    "tags": [
+      "linux",
+      "dnf-system-upgrade",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-dnf-system-upgrade-1",
+    "type": "command",
+    "title": "dnf-system-upgrade - Download packages required for the new release version",
+    "content": "sudo dnf system-upgrade download --releasever {{release_version}}",
+    "group": "Linux Ops",
+    "description": "dnf-system-upgrade: Upgrade Fedora to a new major release. (Download packages required for the new release version)",
+    "tags": [
+      "linux",
+      "dnf-system-upgrade",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-dnf-system-upgrade-2",
+    "type": "command",
+    "title": "dnf-system-upgrade - Reboot and start the upgrade process",
+    "content": "sudo dnf system-upgrade reboot",
+    "group": "Linux Ops",
+    "description": "dnf-system-upgrade: Upgrade Fedora to a new major release. (Reboot and start the upgrade process)",
+    "tags": [
+      "linux",
+      "dnf-system-upgrade",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-dnf-system-upgrade-3",
+    "type": "command",
+    "title": "dnf-system-upgrade - Display the status of the current upgrade transaction",
+    "content": "sudo dnf system-upgrade status",
+    "group": "Linux Ops",
+    "description": "dnf-system-upgrade: Upgrade Fedora to a new major release. (Display the status of the current upgrade transaction)",
+    "tags": [
+      "linux",
+      "dnf-system-upgrade",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-dnf-system-upgrade-4",
+    "type": "command",
+    "title": "dnf-system-upgrade - Display logs from previous upgrade attempts",
+    "content": "sudo dnf system-upgrade log",
+    "group": "Linux Ops",
+    "description": "dnf-system-upgrade: Upgrade Fedora to a new major release. (Display logs from previous upgrade attempts)",
+    "tags": [
+      "linux",
+      "dnf-system-upgrade",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-dnf-system-upgrade-5",
+    "type": "command",
+    "title": "dnf-system-upgrade - Remove cached upgrade data and packages",
+    "content": "sudo dnf system-upgrade clean",
+    "group": "Linux Ops",
+    "description": "dnf-system-upgrade: Upgrade Fedora to a new major release. (Remove cached upgrade data and packages)",
+    "tags": [
+      "linux",
+      "dnf-system-upgrade",
       "tldr",
       "en"
     ],

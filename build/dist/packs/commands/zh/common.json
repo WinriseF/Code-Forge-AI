@@ -4850,7 +4850,7 @@
     "title": "cargo-run - 运行默认的二进制目标",
     "content": "cargo {{[r|run]}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-run: 运行当前的 Cargo 包。 注意: 执行的二进制文件的工作目录将设置为当前工作目录。 (运行默认的二进制目标)",
+    "description": "cargo-run: 运行当前的 Cargo 软件包。 注意: 执行二进制的工作目录将设置为当前工作目录。 (运行默认的二进制目标)",
     "tags": [
       "common",
       "cargo-run",
@@ -4865,7 +4865,7 @@
     "title": "cargo-run - 运行指定的二进制文件",
     "content": "cargo {{[r|run]}} --bin {{名称}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-run: 运行当前的 Cargo 包。 注意: 执行的二进制文件的工作目录将设置为当前工作目录。 (运行指定的二进制文件)",
+    "description": "cargo-run: 运行当前的 Cargo 软件包。 注意: 执行二进制的工作目录将设置为当前工作目录。 (运行指定的二进制文件)",
     "tags": [
       "common",
       "cargo-run",
@@ -4880,7 +4880,7 @@
     "title": "cargo-run - 运行指定的示例",
     "content": "cargo {{[r|run]}} --example {{示例名}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-run: 运行当前的 Cargo 包。 注意: 执行的二进制文件的工作目录将设置为当前工作目录。 (运行指定的示例)",
+    "description": "cargo-run: 运行当前的 Cargo 软件包。 注意: 执行二进制的工作目录将设置为当前工作目录。 (运行指定的示例)",
     "tags": [
       "common",
       "cargo-run",
@@ -4895,7 +4895,7 @@
     "title": "cargo-run - 激活一系列以空格或逗号分隔的功能",
     "content": "cargo {{[r|run]}} {{[-F|--features]}} \"{{功能1 功能2 ...}}\"",
     "group": "通用工具 (Common)",
-    "description": "cargo-run: 运行当前的 Cargo 包。 注意: 执行的二进制文件的工作目录将设置为当前工作目录。 (激活一系列以空格或逗号分隔的功能)",
+    "description": "cargo-run: 运行当前的 Cargo 软件包。 注意: 执行二进制的工作目录将设置为当前工作目录。 (激活一系列以空格或逗号分隔的功能)",
     "tags": [
       "common",
       "cargo-run",
@@ -4910,7 +4910,7 @@
     "title": "cargo-run - 禁用默认功能",
     "content": "cargo {{[r|run]}} --no-default-features",
     "group": "通用工具 (Common)",
-    "description": "cargo-run: 运行当前的 Cargo 包。 注意: 执行的二进制文件的工作目录将设置为当前工作目录。 (禁用默认功能)",
+    "description": "cargo-run: 运行当前的 Cargo 软件包。 注意: 执行二进制的工作目录将设置为当前工作目录。 (禁用默认功能)",
     "tags": [
       "common",
       "cargo-run",
@@ -4925,7 +4925,7 @@
     "title": "cargo-run - 激活所有可用的功能",
     "content": "cargo {{[r|run]}} --all-features",
     "group": "通用工具 (Common)",
-    "description": "cargo-run: 运行当前的 Cargo 包。 注意: 执行的二进制文件的工作目录将设置为当前工作目录。 (激活所有可用的功能)",
+    "description": "cargo-run: 运行当前的 Cargo 软件包。 注意: 执行二进制的工作目录将设置为当前工作目录。 (激活所有可用的功能)",
     "tags": [
       "common",
       "cargo-run",
@@ -4938,9 +4938,9 @@
     "id": "tldr-zh-common-cargo-run-6",
     "type": "command",
     "title": "cargo-run - 使用指定的配置文件运行",
-    "content": "cargo {{[r|run]}} --profile {{配置文件名称}}",
+    "content": "cargo {{[r|run]}} --profile {{名称}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-run: 运行当前的 Cargo 包。 注意: 执行的二进制文件的工作目录将设置为当前工作目录。 (使用指定的配置文件运行)",
+    "description": "cargo-run: 运行当前的 Cargo 软件包。 注意: 执行二进制的工作目录将设置为当前工作目录。 (使用指定的配置文件运行)",
     "tags": [
       "common",
       "cargo-run",
@@ -7209,6 +7209,111 @@
     "tags": [
       "common",
       "adb-connect",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-codex-0",
+    "type": "command",
+    "title": "codex - 在当前目录中启动交互式 Codex 会话",
+    "content": "codex",
+    "group": "通用工具 (Common)",
+    "description": "codex: 由 OpenAI 驱动的终端自然语言代码助手。 读取并编辑当前目录中的文件以完成请求。 (在当前目录中启动交互式 Codex 会话)",
+    "tags": [
+      "common",
+      "codex",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-codex-1",
+    "type": "command",
+    "title": "codex - 使用提示词运行单个 Codex 命令",
+    "content": "codex \"{{提示词}}\"",
+    "group": "通用工具 (Common)",
+    "description": "codex: 由 OpenAI 驱动的终端自然语言代码助手。 读取并编辑当前目录中的文件以完成请求。 (使用提示词运行单个 Codex 命令)",
+    "tags": [
+      "common",
+      "codex",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-codex-2",
+    "type": "command",
+    "title": "codex - 运行提示词，允许 Codex 编辑工作区中的文件",
+    "content": "codex --sandbox workspace-write \"{{提示词}}\"",
+    "group": "通用工具 (Common)",
+    "description": "codex: 由 OpenAI 驱动的终端自然语言代码助手。 读取并编辑当前目录中的文件以完成请求。 (运行提示词，允许 Codex 编辑工作区中的文件)",
+    "tags": [
+      "common",
+      "codex",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-codex-3",
+    "type": "command",
+    "title": "codex - 使用特定模型",
+    "content": "codex {{[-m|--model]}} {{模型名称}} \"{{提示词}}\"",
+    "group": "通用工具 (Common)",
+    "description": "codex: 由 OpenAI 驱动的终端自然语言代码助手。 读取并编辑当前目录中的文件以完成请求。 (使用特定模型)",
+    "tags": [
+      "common",
+      "codex",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-codex-4",
+    "type": "command",
+    "title": "codex - 使用本地开源模型提供商",
+    "content": "codex --oss --local-provider {{lmstudio|ollama}} \"{{提示词}}\"",
+    "group": "通用工具 (Common)",
+    "description": "codex: 由 OpenAI 驱动的终端自然语言代码助手。 读取并编辑当前目录中的文件以完成请求。 (使用本地开源模型提供商)",
+    "tags": [
+      "common",
+      "codex",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-codex-5",
+    "type": "command",
+    "title": "codex - [交互式] 显示会话配置和词元使用情况",
+    "content": "/status",
+    "group": "通用工具 (Common)",
+    "description": "codex: 由 OpenAI 驱动的终端自然语言代码助手。 读取并编辑当前目录中的文件以完成请求。 ([交互式] 显示会话配置和词元使用情况)",
+    "tags": [
+      "common",
+      "codex",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-codex-6",
+    "type": "command",
+    "title": "codex - 显示帮助",
+    "content": "codex {{[-h|--help]}}",
+    "group": "通用工具 (Common)",
+    "description": "codex: 由 OpenAI 驱动的终端自然语言代码助手。 读取并编辑当前目录中的文件以完成请求。 (显示帮助)",
+    "tags": [
+      "common",
+      "codex",
       "tldr",
       "zh"
     ],
@@ -11574,6 +11679,126 @@
     "tags": [
       "common",
       "uv-add",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-docker-compose-up-0",
+    "type": "command",
+    "title": "docker-compose-up - 启动 docker-compose 文件中定义的所有服务",
+    "content": "docker compose up",
+    "group": "通用工具 (Common)",
+    "description": "docker-compose-up: 启动并运行 Compose 文件中定义的 Docker 服务。 (启动 docker-compose 文件中定义的所有服务)",
+    "tags": [
+      "common",
+      "docker-compose-up",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-docker-compose-up-1",
+    "type": "command",
+    "title": "docker-compose-up - 在后台启动服务（分离模式）",
+    "content": "docker compose up {{[-d|--detach]}}",
+    "group": "通用工具 (Common)",
+    "description": "docker-compose-up: 启动并运行 Compose 文件中定义的 Docker 服务。 (在后台启动服务（分离模式）)",
+    "tags": [
+      "common",
+      "docker-compose-up",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-docker-compose-up-2",
+    "type": "command",
+    "title": "docker-compose-up - 启动服务前重新构建镜像",
+    "content": "docker compose up --build",
+    "group": "通用工具 (Common)",
+    "description": "docker-compose-up: 启动并运行 Compose 文件中定义的 Docker 服务。 (启动服务前重新构建镜像)",
+    "tags": [
+      "common",
+      "docker-compose-up",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-docker-compose-up-3",
+    "type": "command",
+    "title": "docker-compose-up - 仅启动指定服务",
+    "content": "docker compose up {{服务1 服务2 ...}}",
+    "group": "通用工具 (Common)",
+    "description": "docker-compose-up: 启动并运行 Compose 文件中定义的 Docker 服务。 (仅启动指定服务)",
+    "tags": [
+      "common",
+      "docker-compose-up",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-docker-compose-up-4",
+    "type": "command",
+    "title": "docker-compose-up - 使用自定义 compose 文件启动服务",
+    "content": "docker compose {{[-f|--file]}} {{路径/到/配置文件}} up",
+    "group": "通用工具 (Common)",
+    "description": "docker-compose-up: 启动并运行 Compose 文件中定义的 Docker 服务。 (使用自定义 compose 文件启动服务)",
+    "tags": [
+      "common",
+      "docker-compose-up",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-docker-compose-up-5",
+    "type": "command",
+    "title": "docker-compose-up - 启动服务并删除孤立容器",
+    "content": "docker compose up --remove-orphans",
+    "group": "通用工具 (Common)",
+    "description": "docker-compose-up: 启动并运行 Compose 文件中定义的 Docker 服务。 (启动服务并删除孤立容器)",
+    "tags": [
+      "common",
+      "docker-compose-up",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-docker-compose-up-6",
+    "type": "command",
+    "title": "docker-compose-up - 启动服务并指定实例数量",
+    "content": "docker compose up --scale {{服务}}={{数量}}",
+    "group": "通用工具 (Common)",
+    "description": "docker-compose-up: 启动并运行 Compose 文件中定义的 Docker 服务。 (启动服务并指定实例数量)",
+    "tags": [
+      "common",
+      "docker-compose-up",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-docker-compose-up-7",
+    "type": "command",
+    "title": "docker-compose-up - 启动服务并在日志中显示时间戳",
+    "content": "docker compose up --timestamps",
+    "group": "通用工具 (Common)",
+    "description": "docker-compose-up: 启动并运行 Compose 文件中定义的 Docker 服务。 (启动服务并在日志中显示时间戳)",
+    "tags": [
+      "common",
+      "docker-compose-up",
       "tldr",
       "zh"
     ],
@@ -22590,6 +22815,96 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-agy-0",
+    "type": "command",
+    "title": "agy - 打开特定文件或目录",
+    "content": "agy {{路径/到/文件或目录}}",
+    "group": "通用工具 (Common)",
+    "description": "agy: Google 的代理式开发平台。 (打开特定文件或目录)",
+    "tags": [
+      "common",
+      "agy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-agy-1",
+    "type": "command",
+    "title": "agy - 比较两个文件",
+    "content": "agy {{[-d|--diff]}} {{路径/到/文件1}} {{路径/到/文件2}}",
+    "group": "通用工具 (Common)",
+    "description": "agy: Google 的代理式开发平台。 (比较两个文件)",
+    "tags": [
+      "common",
+      "agy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-agy-2",
+    "type": "command",
+    "title": "agy - 传入提示词来运行一个在当前工作目录的聊天会话",
+    "content": "agy chat \"{{提示词}}\"",
+    "group": "通用工具 (Common)",
+    "description": "agy: Google 的代理式开发平台。 (传入提示词来运行一个在当前工作目录的聊天会话)",
+    "tags": [
+      "common",
+      "agy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-agy-3",
+    "type": "command",
+    "title": "agy - 安装或卸载特定扩展",
+    "content": "agy --{{install|uninstall}}-extension {{发布者.扩展|路径/到/扩展.vsix}}",
+    "group": "通用工具 (Common)",
+    "description": "agy: Google 的代理式开发平台。 (安装或卸载特定扩展)",
+    "tags": [
+      "common",
+      "agy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-agy-4",
+    "type": "command",
+    "title": "agy - 向用户配置文件添加 MCP（Model Context Protocol）服务器定义",
+    "content": "agy --add-mcp \"{{json_字符串}}\"",
+    "group": "通用工具 (Common)",
+    "description": "agy: Google 的代理式开发平台。 (向用户配置文件添加 MCP（Model Context Protocol）服务器定义)",
+    "tags": [
+      "common",
+      "agy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-agy-5",
+    "type": "command",
+    "title": "agy - 显示帮助",
+    "content": "agy {{[-h|--help]}}",
+    "group": "通用工具 (Common)",
+    "description": "agy: Google 的代理式开发平台。 (显示帮助)",
+    "tags": [
+      "common",
+      "agy",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-hd-0",
     "type": "command",
     "title": "hd - 查看原命令的文档",
@@ -22773,7 +23088,7 @@
     "id": "tldr-zh-common-yacas-2",
     "type": "command",
     "title": "yacas - 在 `yacas` 会话中，显示一个示例",
-    "content": "{{Example()}};",
+    "content": "Example();",
     "group": "通用工具 (Common)",
     "description": "yacas: 另一个计算机代数系统。 (在 `yacas` 会话中，显示一个示例)",
     "tags": [
@@ -22788,7 +23103,7 @@
     "id": "tldr-zh-common-yacas-3",
     "type": "command",
     "title": "yacas - 从 `yacas` 会话中退出",
-    "content": "{{quit}}",
+    "content": "quit",
     "group": "通用工具 (Common)",
     "description": "yacas: 另一个计算机代数系统。 (从 `yacas` 会话中退出)",
     "tags": [
@@ -22803,7 +23118,7 @@
     "id": "tldr-zh-common-yacas-4",
     "type": "command",
     "title": "yacas - 执行一个或多个 `yacas` 脚本（没有终端或提示符），然后退出",
-    "content": "yacas -p -c {{路径/到/脚本1}} {{路径/到/脚本2}}",
+    "content": "yacas -p -c {{路径/到/脚本1 路径/到/脚本2 ...}}",
     "group": "通用工具 (Common)",
     "description": "yacas: 另一个计算机代数系统。 (执行一个或多个 `yacas` 脚本（没有终端或提示符），然后退出)",
     "tags": [
@@ -26120,7 +26435,7 @@
     "title": "cargo-rustdoc - 向 `rustdoc` 传递选项",
     "content": "cargo rustdoc -- {{rustdoc_options}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-rustdoc: 构建 Rust 包的文档。 类似于 `cargo doc`，但您可以向 `rustdoc` 传递选项。查看 `rustdoc --help` 获取所有可用选项。 (向 `rustdoc` 传递选项)",
+    "description": "cargo-rustdoc: 构建 Rust 软件包的文档。 类似于 `cargo doc`，但您可以向 `rustdoc` 传递选项。查看 `rustdoc --help` 获取所有可用选项。 另请参阅：`rustdoc`。 (向 `rustdoc` 传递选项)",
     "tags": [
       "common",
       "cargo-rustdoc",
@@ -26133,9 +26448,9 @@
     "id": "tldr-zh-common-cargo-rustdoc-1",
     "type": "command",
     "title": "cargo-rustdoc - 关于文档 lint 发出警告",
-    "content": "cargo rustdoc -- --warn rustdoc::{{lint_name}}",
+    "content": "cargo rustdoc -- {{[-W|--warn]}} rustdoc::{{lint_name}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-rustdoc: 构建 Rust 包的文档。 类似于 `cargo doc`，但您可以向 `rustdoc` 传递选项。查看 `rustdoc --help` 获取所有可用选项。 (关于文档 lint 发出警告)",
+    "description": "cargo-rustdoc: 构建 Rust 软件包的文档。 类似于 `cargo doc`，但您可以向 `rustdoc` 传递选项。查看 `rustdoc --help` 获取所有可用选项。 另请参阅：`rustdoc`。 (关于文档 lint 发出警告)",
     "tags": [
       "common",
       "cargo-rustdoc",
@@ -26148,9 +26463,9 @@
     "id": "tldr-zh-common-cargo-rustdoc-2",
     "type": "command",
     "title": "cargo-rustdoc - 忽略文档 lint",
-    "content": "cargo rustdoc -- --allow rustdoc::{{lint_name}}",
+    "content": "cargo rustdoc -- {{[-A|--allow]}} rustdoc::{{lint_name}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-rustdoc: 构建 Rust 包的文档。 类似于 `cargo doc`，但您可以向 `rustdoc` 传递选项。查看 `rustdoc --help` 获取所有可用选项。 (忽略文档 lint)",
+    "description": "cargo-rustdoc: 构建 Rust 软件包的文档。 类似于 `cargo doc`，但您可以向 `rustdoc` 传递选项。查看 `rustdoc --help` 获取所有可用选项。 另请参阅：`rustdoc`。 (忽略文档 lint)",
     "tags": [
       "common",
       "cargo-rustdoc",
@@ -26162,10 +26477,10 @@
   {
     "id": "tldr-zh-common-cargo-rustdoc-3",
     "type": "command",
-    "title": "cargo-rustdoc - 为包的库生成文档",
+    "title": "cargo-rustdoc - 为软件包的库生成文档",
     "content": "cargo rustdoc --lib",
     "group": "通用工具 (Common)",
-    "description": "cargo-rustdoc: 构建 Rust 包的文档。 类似于 `cargo doc`，但您可以向 `rustdoc` 传递选项。查看 `rustdoc --help` 获取所有可用选项。 (为包的库生成文档)",
+    "description": "cargo-rustdoc: 构建 Rust 软件包的文档。 类似于 `cargo doc`，但您可以向 `rustdoc` 传递选项。查看 `rustdoc --help` 获取所有可用选项。 另请参阅：`rustdoc`。 (为软件包的库生成文档)",
     "tags": [
       "common",
       "cargo-rustdoc",
@@ -26180,7 +26495,7 @@
     "title": "cargo-rustdoc - 为指定的二进制文件生成文档",
     "content": "cargo rustdoc --bin {{名称}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-rustdoc: 构建 Rust 包的文档。 类似于 `cargo doc`，但您可以向 `rustdoc` 传递选项。查看 `rustdoc --help` 获取所有可用选项。 (为指定的二进制文件生成文档)",
+    "description": "cargo-rustdoc: 构建 Rust 软件包的文档。 类似于 `cargo doc`，但您可以向 `rustdoc` 传递选项。查看 `rustdoc --help` 获取所有可用选项。 另请参阅：`rustdoc`。 (为指定的二进制文件生成文档)",
     "tags": [
       "common",
       "cargo-rustdoc",
@@ -26195,7 +26510,7 @@
     "title": "cargo-rustdoc - 为指定的示例生成文档",
     "content": "cargo rustdoc --example {{名称}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-rustdoc: 构建 Rust 包的文档。 类似于 `cargo doc`，但您可以向 `rustdoc` 传递选项。查看 `rustdoc --help` 获取所有可用选项。 (为指定的示例生成文档)",
+    "description": "cargo-rustdoc: 构建 Rust 软件包的文档。 类似于 `cargo doc`，但您可以向 `rustdoc` 传递选项。查看 `rustdoc --help` 获取所有可用选项。 另请参阅：`rustdoc`。 (为指定的示例生成文档)",
     "tags": [
       "common",
       "cargo-rustdoc",
@@ -26210,7 +26525,7 @@
     "title": "cargo-rustdoc - 为指定的集成测试生成文档",
     "content": "cargo rustdoc --test {{名称}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-rustdoc: 构建 Rust 包的文档。 类似于 `cargo doc`，但您可以向 `rustdoc` 传递选项。查看 `rustdoc --help` 获取所有可用选项。 (为指定的集成测试生成文档)",
+    "description": "cargo-rustdoc: 构建 Rust 软件包的文档。 类似于 `cargo doc`，但您可以向 `rustdoc` 传递选项。查看 `rustdoc --help` 获取所有可用选项。 另请参阅：`rustdoc`。 (为指定的集成测试生成文档)",
     "tags": [
       "common",
       "cargo-rustdoc",
@@ -40937,10 +41252,10 @@
   {
     "id": "tldr-zh-common-cargo-rustc-0",
     "type": "command",
-    "title": "cargo-rustc - 构建包并向 `rustc` 传递选项",
+    "title": "cargo-rustc - 构建软件包并向 `rustc` 传递选项",
     "content": "cargo rustc -- {{rustc_options}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-rustc: 编译一个 Rust 包。类似于 `cargo build`，但您可以向编译器传递额外的选项。 查看 `rustc --help` 获取所有可用选项。 (构建包并向 `rustc` 传递选项)",
+    "description": "cargo-rustc: 编译一个 Rust 软件包。类似于 `cargo build`，但您可以向编译器传递额外的选项。 查看 `rustc --help` 获取所有可用选项。 另请参阅：`rustc`。 (构建软件包并向 `rustc` 传递选项)",
     "tags": [
       "common",
       "cargo-rustc",
@@ -40952,10 +41267,10 @@
   {
     "id": "tldr-zh-common-cargo-rustc-1",
     "type": "command",
-    "title": "cargo-rustc - 在 release 模式下构建构建，启用优化",
+    "title": "cargo-rustc - 在 release 模式下构建，启用优化",
     "content": "cargo rustc {{[-r|--release]}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-rustc: 编译一个 Rust 包。类似于 `cargo build`，但您可以向编译器传递额外的选项。 查看 `rustc --help` 获取所有可用选项。 (在 release 模式下构建构建，启用优化)",
+    "description": "cargo-rustc: 编译一个 Rust 软件包。类似于 `cargo build`，但您可以向编译器传递额外的选项。 查看 `rustc --help` 获取所有可用选项。 另请参阅：`rustc`。 (在 release 模式下构建，启用优化)",
     "tags": [
       "common",
       "cargo-rustc",
@@ -40968,9 +41283,9 @@
     "id": "tldr-zh-common-cargo-rustc-2",
     "type": "command",
     "title": "cargo-rustc - 使用针对当前 CPU 的特定架构优化编译",
-    "content": "cargo rustc {{[-r|--release]}} -- -C target-cpu=native",
+    "content": "cargo rustc {{[-r|--release]}} -- {{[-C|--codegen]}} target-cpu=native",
     "group": "通用工具 (Common)",
-    "description": "cargo-rustc: 编译一个 Rust 包。类似于 `cargo build`，但您可以向编译器传递额外的选项。 查看 `rustc --help` 获取所有可用选项。 (使用针对当前 CPU 的特定架构优化编译)",
+    "description": "cargo-rustc: 编译一个 Rust 软件包。类似于 `cargo build`，但您可以向编译器传递额外的选项。 查看 `rustc --help` 获取所有可用选项。 另请参阅：`rustc`。 (使用针对当前 CPU 的特定架构优化编译)",
     "tags": [
       "common",
       "cargo-rustc",
@@ -40983,9 +41298,9 @@
     "id": "tldr-zh-common-cargo-rustc-3",
     "type": "command",
     "title": "cargo-rustc - 使用速度优化编译",
-    "content": "cargo rustc -- -C opt-level {{1|2|3}}",
+    "content": "cargo rustc -- {{[-C|--codegen]}} opt-level={{1|2|3}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-rustc: 编译一个 Rust 包。类似于 `cargo build`，但您可以向编译器传递额外的选项。 查看 `rustc --help` 获取所有可用选项。 (使用速度优化编译)",
+    "description": "cargo-rustc: 编译一个 Rust 软件包。类似于 `cargo build`，但您可以向编译器传递额外的选项。 查看 `rustc --help` 获取所有可用选项。 另请参阅：`rustc`。 (使用速度优化编译)",
     "tags": [
       "common",
       "cargo-rustc",
@@ -40997,10 +41312,10 @@
   {
     "id": "tldr-zh-common-cargo-rustc-4",
     "type": "command",
-    "title": "cargo-rustc - 使用 [s]ize 优化编译（`z` 也会关闭循环向量化）",
-    "content": "cargo rustc -- -C opt-level {{s|z}}",
+    "title": "cargo-rustc - 使用体积（[s]ize）优化编译（`z` 也会关闭循环向量化）",
+    "content": "cargo rustc -- {{[-C|--codegen]}} opt-level={{s|z}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-rustc: 编译一个 Rust 包。类似于 `cargo build`，但您可以向编译器传递额外的选项。 查看 `rustc --help` 获取所有可用选项。 (使用 [s]ize 优化编译（`z` 也会关闭循环向量化）)",
+    "description": "cargo-rustc: 编译一个 Rust 软件包。类似于 `cargo build`，但您可以向编译器传递额外的选项。 查看 `rustc --help` 获取所有可用选项。 另请参阅：`rustc`。 (使用体积（[s]ize）优化编译（`z` 也会关闭循环向量化）)",
     "tags": [
       "common",
       "cargo-rustc",
@@ -41012,10 +41327,10 @@
   {
     "id": "tldr-zh-common-cargo-rustc-5",
     "type": "command",
-    "title": "cargo-rustc - 检查您的包是否使用了不安全的代码",
+    "title": "cargo-rustc - 检查您的软件包是否使用了不安全的代码",
     "content": "cargo rustc --lib -- -D unsafe-code",
     "group": "通用工具 (Common)",
-    "description": "cargo-rustc: 编译一个 Rust 包。类似于 `cargo build`，但您可以向编译器传递额外的选项。 查看 `rustc --help` 获取所有可用选项。 (检查您的包是否使用了不安全的代码)",
+    "description": "cargo-rustc: 编译一个 Rust 软件包。类似于 `cargo build`，但您可以向编译器传递额外的选项。 查看 `rustc --help` 获取所有可用选项。 另请参阅：`rustc`。 (检查您的软件包是否使用了不安全的代码)",
     "tags": [
       "common",
       "cargo-rustc",
@@ -41027,10 +41342,10 @@
   {
     "id": "tldr-zh-common-cargo-rustc-6",
     "type": "command",
-    "title": "cargo-rustc - 构建特定的包",
-    "content": "cargo rustc {{[-p|--package]}} {{package}}",
+    "title": "cargo-rustc - 构建特定的软件包",
+    "content": "cargo rustc {{[-p|--package]}} {{软件包}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-rustc: 编译一个 Rust 包。类似于 `cargo build`，但您可以向编译器传递额外的选项。 查看 `rustc --help` 获取所有可用选项。 (构建特定的包)",
+    "description": "cargo-rustc: 编译一个 Rust 软件包。类似于 `cargo build`，但您可以向编译器传递额外的选项。 查看 `rustc --help` 获取所有可用选项。 另请参阅：`rustc`。 (构建特定的软件包)",
     "tags": [
       "common",
       "cargo-rustc",
@@ -41045,7 +41360,7 @@
     "title": "cargo-rustc - 仅构建指定的二进制文件",
     "content": "cargo rustc --bin {{名称}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-rustc: 编译一个 Rust 包。类似于 `cargo build`，但您可以向编译器传递额外的选项。 查看 `rustc --help` 获取所有可用选项。 (仅构建指定的二进制文件)",
+    "description": "cargo-rustc: 编译一个 Rust 软件包。类似于 `cargo build`，但您可以向编译器传递额外的选项。 查看 `rustc --help` 获取所有可用选项。 另请参阅：`rustc`。 (仅构建指定的二进制文件)",
     "tags": [
       "common",
       "cargo-rustc",

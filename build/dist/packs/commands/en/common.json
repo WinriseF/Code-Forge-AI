@@ -41403,7 +41403,7 @@
     "id": "tldr-en-common-codex-1",
     "type": "command",
     "title": "codex - Run a single Codex command using a prompt",
-    "content": "codex \"{{your prompt}}\"",
+    "content": "codex \"{{prompt}}\"",
     "group": "Common Tools",
     "description": "codex: Natural language code assistant for the terminal, powered by OpenAI. Reads and edits files in your current directory to fulfill requests. (Run a single Codex command using a prompt)",
     "tags": [
@@ -41417,10 +41417,10 @@
   {
     "id": "tldr-en-common-codex-2",
     "type": "command",
-    "title": "codex - Run a prompt in full auto mode",
-    "content": "codex --full-auto \"{{your prompt}}\"",
+    "title": "codex - Run a prompt allowing Codex to edit files in the workspace",
+    "content": "codex --sandbox workspace-write \"{{prompt}}\"",
     "group": "Common Tools",
-    "description": "codex: Natural language code assistant for the terminal, powered by OpenAI. Reads and edits files in your current directory to fulfill requests. (Run a prompt in full auto mode)",
+    "description": "codex: Natural language code assistant for the terminal, powered by OpenAI. Reads and edits files in your current directory to fulfill requests. (Run a prompt allowing Codex to edit files in the workspace)",
     "tags": [
       "common",
       "codex",
@@ -41433,7 +41433,7 @@
     "id": "tldr-en-common-codex-3",
     "type": "command",
     "title": "codex - Use a specific model",
-    "content": "codex {{[-m|--model]}} {{model_name}} \"{{your prompt}}\"",
+    "content": "codex {{[-m|--model]}} {{model_name}} \"{{prompt}}\"",
     "group": "Common Tools",
     "description": "codex: Natural language code assistant for the terminal, powered by OpenAI. Reads and edits files in your current directory to fulfill requests. (Use a specific model)",
     "tags": [
@@ -41448,7 +41448,7 @@
     "id": "tldr-en-common-codex-4",
     "type": "command",
     "title": "codex - Use a local open source model provider",
-    "content": "codex --oss --local-provider {{lmstudio|ollama}} \"{{your prompt}}\"",
+    "content": "codex --oss --local-provider {{lmstudio|ollama}} \"{{prompt}}\"",
     "group": "Common Tools",
     "description": "codex: Natural language code assistant for the terminal, powered by OpenAI. Reads and edits files in your current directory to fulfill requests. (Use a local open source model provider)",
     "tags": [
@@ -41462,10 +41462,10 @@
   {
     "id": "tldr-en-common-codex-5",
     "type": "command",
-    "title": "codex - [Interactive] Show the resource usage for the current session",
-    "content": "/cost",
+    "title": "codex - [Interactive] Display session configuration and token usage",
+    "content": "/status",
     "group": "Common Tools",
-    "description": "codex: Natural language code assistant for the terminal, powered by OpenAI. Reads and edits files in your current directory to fulfill requests. ([Interactive] Show the resource usage for the current session)",
+    "description": "codex: Natural language code assistant for the terminal, powered by OpenAI. Reads and edits files in your current directory to fulfill requests. ([Interactive] Display session configuration and token usage)",
     "tags": [
       "common",
       "codex",
@@ -49412,10 +49412,10 @@
   {
     "id": "tldr-en-common-sd-3",
     "type": "command",
-    "title": "sd - Find and replace in all files in the current project (output stream: `stdout`)",
-    "content": "sd '{{from \"react\"}}' '{{from \"preact\"}}' \"$(find . -type f)\"",
+    "title": "sd - Find and replace in all files in the current project",
+    "content": "find . -type f -exec sd '{{from \"react\"}}' '{{from \"preact\"}}' {} \\;",
     "group": "Common Tools",
-    "description": "sd: Intuitive find and replace. (Find and replace in all files in the current project (output stream: `stdout`))",
+    "description": "sd: Intuitive find and replace. (Find and replace in all files in the current project)",
     "tags": [
       "common",
       "sd",
@@ -129075,6 +129075,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-supabase-7",
+    "type": "command",
+    "title": "supabase - Generate the autocompletion script for a specific shell",
+    "content": "supabase completion {{bash|fish|zsh|...}}",
+    "group": "Common Tools",
+    "description": "supabase: Develop, deploy, and manage Supabase projects locally and on the cloud. (Generate the autocompletion script for a specific shell)",
+    "tags": [
+      "common",
+      "supabase",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-git-extras-0",
     "type": "command",
     "title": "git-extras - Install or upgrade `git-extras` commands",
@@ -144138,7 +144153,7 @@
     "id": "tldr-en-common-cargo-rustdoc-1",
     "type": "command",
     "title": "cargo-rustdoc - Warn about a documentation lint",
-    "content": "cargo rustdoc -- --warn rustdoc::{{lint_name}}",
+    "content": "cargo rustdoc -- {{[-W|--warn]}} rustdoc::{{lint_name}}",
     "group": "Common Tools",
     "description": "cargo-rustdoc: Build the documentation of Rust packages. Similar to `cargo doc`, but you can pass options to `rustdoc`. See `rustdoc --help` for all available options. (Warn about a documentation lint)",
     "tags": [
@@ -144153,7 +144168,7 @@
     "id": "tldr-en-common-cargo-rustdoc-2",
     "type": "command",
     "title": "cargo-rustdoc - Ignore a documentation lint",
-    "content": "cargo rustdoc -- --allow rustdoc::{{lint_name}}",
+    "content": "cargo rustdoc -- {{[-A|--allow]}} rustdoc::{{lint_name}}",
     "group": "Common Tools",
     "description": "cargo-rustdoc: Build the documentation of Rust packages. Similar to `cargo doc`, but you can pass options to `rustdoc`. See `rustdoc --help` for all available options. (Ignore a documentation lint)",
     "tags": [
@@ -144219,6 +144234,51 @@
     "tags": [
       "common",
       "cargo-rustdoc",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-jxlinfo-0",
+    "type": "command",
+    "title": "jxlinfo - Display brief information about an image",
+    "content": "jxlinfo {{path/to/file}}.jxl",
+    "group": "Common Tools",
+    "description": "jxlinfo: Display JPEG XL metadata. (Display brief information about an image)",
+    "tags": [
+      "common",
+      "jxlinfo",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-jxlinfo-1",
+    "type": "command",
+    "title": "jxlinfo - Display verbose information about an image",
+    "content": "jxlinfo {{[-v|--verbose]}} {{path/to/file}}.jxl",
+    "group": "Common Tools",
+    "description": "jxlinfo: Display JPEG XL metadata. (Display verbose information about an image)",
+    "tags": [
+      "common",
+      "jxlinfo",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-jxlinfo-2",
+    "type": "command",
+    "title": "jxlinfo - Display help",
+    "content": "jxlinfo {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "jxlinfo: Display JPEG XL metadata. (Display help)",
+    "tags": [
+      "common",
+      "jxlinfo",
       "tldr",
       "en"
     ],
@@ -175179,6 +175239,126 @@
     "tags": [
       "common",
       "gdm-binary",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dagger-0",
+    "type": "command",
+    "title": "dagger - Initialize a new module with the specified SDK",
+    "content": "dagger init --sdk {{go|python|typescript}} {{path/to/module}}",
+    "group": "Common Tools",
+    "description": "dagger: Programmable CI/CD engine that runs pipelines in containers locally, in CI, or in the cloud. (Initialize a new module with the specified SDK)",
+    "tags": [
+      "common",
+      "dagger",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dagger-1",
+    "type": "command",
+    "title": "dagger - Prepare a local module for development",
+    "content": "dagger develop",
+    "group": "Common Tools",
+    "description": "dagger: Programmable CI/CD engine that runs pipelines in containers locally, in CI, or in the cloud. (Prepare a local module for development)",
+    "tags": [
+      "common",
+      "dagger",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dagger-2",
+    "type": "command",
+    "title": "dagger - List available functions in the current module",
+    "content": "dagger functions",
+    "group": "Common Tools",
+    "description": "dagger: Programmable CI/CD engine that runs pipelines in containers locally, in CI, or in the cloud. (List available functions in the current module)",
+    "tags": [
+      "common",
+      "dagger",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dagger-3",
+    "type": "command",
+    "title": "dagger - Call a function on the current module",
+    "content": "dagger call {{function_name}}",
+    "group": "Common Tools",
+    "description": "dagger: Programmable CI/CD engine that runs pipelines in containers locally, in CI, or in the cloud. (Call a function on the current module)",
+    "tags": [
+      "common",
+      "dagger",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dagger-4",
+    "type": "command",
+    "title": "dagger - Install a module dependency from a Git repository",
+    "content": "dagger install {{github.com/user/repo}}",
+    "group": "Common Tools",
+    "description": "dagger: Programmable CI/CD engine that runs pipelines in containers locally, in CI, or in the cloud. (Install a module dependency from a Git repository)",
+    "tags": [
+      "common",
+      "dagger",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dagger-5",
+    "type": "command",
+    "title": "dagger - Update a module's dependencies",
+    "content": "dagger update",
+    "group": "Common Tools",
+    "description": "dagger: Programmable CI/CD engine that runs pipelines in containers locally, in CI, or in the cloud. (Update a module's dependencies)",
+    "tags": [
+      "common",
+      "dagger",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dagger-6",
+    "type": "command",
+    "title": "dagger - Display help",
+    "content": "dagger {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "dagger: Programmable CI/CD engine that runs pipelines in containers locally, in CI, or in the cloud. (Display help)",
+    "tags": [
+      "common",
+      "dagger",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dagger-7",
+    "type": "command",
+    "title": "dagger - Display version",
+    "content": "dagger version",
+    "group": "Common Tools",
+    "description": "dagger: Programmable CI/CD engine that runs pipelines in containers locally, in CI, or in the cloud. (Display version)",
+    "tags": [
+      "common",
+      "dagger",
       "tldr",
       "en"
     ],
@@ -232008,7 +232188,7 @@
     "id": "tldr-en-common-cargo-rustc-2",
     "type": "command",
     "title": "cargo-rustc - Compile with architecture-specific optimizations for the current CPU",
-    "content": "cargo rustc {{[-r|--release]}} -- -C target-cpu=native",
+    "content": "cargo rustc {{[-r|--release]}} -- {{[-C|--codegen]}} target-cpu=native",
     "group": "Common Tools",
     "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. See `rustc --help` for all available options. (Compile with architecture-specific optimizations for the current CPU)",
     "tags": [
@@ -232023,7 +232203,7 @@
     "id": "tldr-en-common-cargo-rustc-3",
     "type": "command",
     "title": "cargo-rustc - Compile with speed optimizations",
-    "content": "cargo rustc -- -C opt-level {{1|2|3}}",
+    "content": "cargo rustc -- {{[-C|--codegen]}} opt-level={{1|2|3}}",
     "group": "Common Tools",
     "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. See `rustc --help` for all available options. (Compile with speed optimizations)",
     "tags": [
@@ -232038,7 +232218,7 @@
     "id": "tldr-en-common-cargo-rustc-4",
     "type": "command",
     "title": "cargo-rustc - Compile with [s]ize optimizations (`z` also turns off loop vectorization)",
-    "content": "cargo rustc -- -C opt-level {{s|z}}",
+    "content": "cargo rustc -- {{[-C|--codegen]}} opt-level={{s|z}}",
     "group": "Common Tools",
     "description": "cargo-rustc: Compile a Rust package. Similar to `cargo build`, but you can pass extra options to the compiler. See `rustc --help` for all available options. (Compile with [s]ize optimizations (`z` also turns off loop vectorization))",
     "tags": [
@@ -241337,6 +241517,51 @@
   {
     "id": "tldr-en-common-typos-3",
     "type": "command",
+    "title": "typos - Check a file or directory, including hidden files and directories",
+    "content": "typos --hidden {{path/to/file_or_directory}}",
+    "group": "Common Tools",
+    "description": "typos: Find and correct spelling mistakes in source code. (Check a file or directory, including hidden files and directories)",
+    "tags": [
+      "common",
+      "typos",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-typos-4",
+    "type": "command",
+    "title": "typos - Check a file or directory, ignoring files that match a specific glob pattern",
+    "content": "typos --exclude {{pattern}} {{path/to/file_or_directory}}",
+    "group": "Common Tools",
+    "description": "typos: Find and correct spelling mistakes in source code. (Check a file or directory, ignoring files that match a specific glob pattern)",
+    "tags": [
+      "common",
+      "typos",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-typos-5",
+    "type": "command",
+    "title": "typos - Write the current configuration to a specific file",
+    "content": "typos --dump-config {{path/to/typos.toml}}",
+    "group": "Common Tools",
+    "description": "typos: Find and correct spelling mistakes in source code. (Write the current configuration to a specific file)",
+    "tags": [
+      "common",
+      "typos",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-typos-6",
+    "type": "command",
     "title": "typos - List all supported file types",
     "content": "typos --type-list",
     "group": "Common Tools",
@@ -241350,7 +241575,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-typos-4",
+    "id": "tldr-en-common-typos-7",
     "type": "command",
     "title": "typos - Show spelling mistakes in a specific output format (defaults to `long`)",
     "content": "typos --format {{brief|long|json|...}} {{path/to/file_or_directory}}",
@@ -304059,6 +304284,81 @@
     "tags": [
       "common",
       "git-daemon",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-sqlfluff-0",
+    "type": "command",
+    "title": "sqlfluff - Lint a SQL file or directory with a specific dialect",
+    "content": "sqlfluff lint {{[-d|--dialect]}} {{dialect}} {{path/to/file_or_directory}}",
+    "group": "Common Tools",
+    "description": "sqlfluff: Lint and auto-format SQL files across multiple dialects. (Lint a SQL file or directory with a specific dialect)",
+    "tags": [
+      "common",
+      "sqlfluff",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-sqlfluff-1",
+    "type": "command",
+    "title": "sqlfluff - Auto-format a SQL file or directory with a specific dialect",
+    "content": "sqlfluff format {{[-d|--dialect]}} {{dialect}} {{path/to/file_or_directory}}",
+    "group": "Common Tools",
+    "description": "sqlfluff: Lint and auto-format SQL files across multiple dialects. (Auto-format a SQL file or directory with a specific dialect)",
+    "tags": [
+      "common",
+      "sqlfluff",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-sqlfluff-2",
+    "type": "command",
+    "title": "sqlfluff - Automatically fix linting violations in a SQL file or directory",
+    "content": "sqlfluff fix {{[-d|--dialect]}} {{dialect}} {{[-r|--rules]}} {{rule1,rule2,...}} {{path/to/file_or_directory}}",
+    "group": "Common Tools",
+    "description": "sqlfluff: Lint and auto-format SQL files across multiple dialects. (Automatically fix linting violations in a SQL file or directory)",
+    "tags": [
+      "common",
+      "sqlfluff",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-sqlfluff-3",
+    "type": "command",
+    "title": "sqlfluff - Parse a SQL file or directory and display the parse tree",
+    "content": "sqlfluff parse {{[-d|--dialect]}} {{dialect}} {{path/to/file_or_directory}}",
+    "group": "Common Tools",
+    "description": "sqlfluff: Lint and auto-format SQL files across multiple dialects. (Parse a SQL file or directory and display the parse tree)",
+    "tags": [
+      "common",
+      "sqlfluff",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-sqlfluff-4",
+    "type": "command",
+    "title": "sqlfluff - Show all supported SQL dialects",
+    "content": "sqlfluff dialects",
+    "group": "Common Tools",
+    "description": "sqlfluff: Lint and auto-format SQL files across multiple dialects. (Show all supported SQL dialects)",
+    "tags": [
+      "common",
+      "sqlfluff",
       "tldr",
       "en"
     ],

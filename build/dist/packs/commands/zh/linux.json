@@ -2733,7 +2733,7 @@
     "id": "tldr-zh-linux-tmt-2",
     "type": "command",
     "title": "tmt - 基于模板和链接创建新的测试",
-    "content": "tmt test create --template {{beakerlib}} --link {{verifies:issue#1234}}",
+    "content": "tmt test create {{[-t|--template]}} {{beakerlib}} --link {{verifies:issue#1234}}",
     "group": "Linux 运维",
     "description": "tmt: 创建、运行和调试测试的测试管理工具。 诸如`运行`、`尝试`等子命令，均有相应的用法文档。 (基于模板和链接创建新的测试)",
     "tags": [
@@ -2763,7 +2763,7 @@
     "id": "tldr-zh-linux-tmt-4",
     "type": "command",
     "title": "tmt - 在给定的上下文中显示详细的测试元数据",
-    "content": "tmt --context {{arch=aarch64}} test show",
+    "content": "tmt {{[-c|--context]}} {{arch=aarch64}} test show",
     "group": "Linux 运维",
     "description": "tmt: 创建、运行和调试测试的测试管理工具。 诸如`运行`、`尝试`等子命令，均有相应的用法文档。 (在给定的上下文中显示详细的测试元数据)",
     "tags": [
@@ -2793,7 +2793,7 @@
     "id": "tldr-zh-linux-tmt-6",
     "type": "command",
     "title": "tmt - 使用筛选条件",
-    "content": "tmt tests ls --filter {{tag:foo}} --filter {{tier:0}}",
+    "content": "tmt tests ls {{[-f|--filter]}} {{tag:foo}} {{[-f|--filter]}} {{tier:0}}",
     "group": "Linux 运维",
     "description": "tmt: 创建、运行和调试测试的测试管理工具。 诸如`运行`、`尝试`等子命令，均有相应的用法文档。 (使用筛选条件)",
     "tags": [
@@ -4743,7 +4743,7 @@
     "id": "tldr-zh-linux-tmt-run-1",
     "type": "command",
     "title": "tmt-run - 仅在发现步骤中显示将要执行的测试",
-    "content": "tmt run discover -v",
+    "content": "tmt run discover {{[-v|--verbose]}}",
     "group": "Linux 运维",
     "description": "tmt-run: 执行测试步骤。默认情况下，所有测试步骤都被执行。 (仅在发现步骤中显示将要执行的测试)",
     "tags": [
@@ -4758,7 +4758,7 @@
     "id": "tldr-zh-linux-tmt-run-2",
     "type": "command",
     "title": "tmt-run - 运行所有测试步骤并调整测试环境配置步骤选项",
-    "content": "tmt run --all provision --how {{container}} --image {{fedora:rawhide}}",
+    "content": "tmt run {{[-a|--all]}} provision {{[-h|--how]}} {{container}} {{[-i|--image]}} {{fedora:rawhide}}",
     "group": "Linux 运维",
     "description": "tmt-run: 执行测试步骤。默认情况下，所有测试步骤都被执行。 (运行所有测试步骤并调整测试环境配置步骤选项)",
     "tags": [
@@ -4773,7 +4773,7 @@
     "id": "tldr-zh-linux-tmt-run-3",
     "type": "command",
     "title": "tmt-run - 仅执行选定的计划和测试",
-    "content": "tmt run plan --name {{/plan/name}} test --name {{/test/name}}",
+    "content": "tmt run plan {{[-n|--name]}} {{/plan/name}} test {{[-n|--name]}} {{/test/name}}",
     "group": "Linux 运维",
     "description": "tmt-run: 执行测试步骤。默认情况下，所有测试步骤都被执行。 (仅执行选定的计划和测试)",
     "tags": [
@@ -4788,7 +4788,7 @@
     "id": "tldr-zh-linux-tmt-run-4",
     "type": "command",
     "title": "tmt-run - 在网页浏览器中显示上次运行的结果",
-    "content": "tmt run --last report --how {{html}} --open",
+    "content": "tmt run {{[-l|--last]}} report {{[-h|--how]}} {{html}} {{[-o|--open]}}",
     "group": "Linux 运维",
     "description": "tmt-run: 执行测试步骤。默认情况下，所有测试步骤都被执行。 (在网页浏览器中显示上次运行的结果)",
     "tags": [
@@ -4803,7 +4803,7 @@
     "id": "tldr-zh-linux-tmt-run-5",
     "type": "command",
     "title": "tmt-run - 在提供的上下文中运行测试",
-    "content": "tmt run --context {{key=value}} -c {{distro=fedora}}",
+    "content": "tmt run {{[-c|--context]}} {{key=value}} {{[-c|--context]}} {{distro=fedora}}",
     "group": "Linux 运维",
     "description": "tmt-run: 执行测试步骤。默认情况下，所有测试步骤都被执行。 (在提供的上下文中运行测试)",
     "tags": [
@@ -4818,7 +4818,7 @@
     "id": "tldr-zh-linux-tmt-run-6",
     "type": "command",
     "title": "tmt-run - 以交互方式运行测试（在测试运行过程中调试测试代码）",
-    "content": "tmt run --all execute --how {{tmt}} --interactive",
+    "content": "tmt run {{[-a|--all]}} execute {{[-h|--how]}} {{tmt}} --interactive",
     "group": "Linux 运维",
     "description": "tmt-run: 执行测试步骤。默认情况下，所有测试步骤都被执行。 (以交互方式运行测试（在测试运行过程中调试测试代码）)",
     "tags": [
@@ -4833,7 +4833,7 @@
     "id": "tldr-zh-linux-tmt-run-7",
     "type": "command",
     "title": "tmt-run - 使用干模式查看接下来将发生的动作，并将输出详实度设置为最高级",
-    "content": "tmt run --dry -vvv",
+    "content": "tmt run {{[-n|--dry]}} {{[-vvv|--verbose --verbose --verbose]}}",
     "group": "Linux 运维",
     "description": "tmt-run: 执行测试步骤。默认情况下，所有测试步骤都被执行。 (使用干模式查看接下来将发生的动作，并将输出详实度设置为最高级)",
     "tags": [

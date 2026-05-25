@@ -438,7 +438,7 @@
     "id": "tldr-en-osx-sips-4",
     "type": "command",
     "title": "sips - Convert an image from CMYK to RGB",
-    "content": "sips --matchTo \"/System/Library/ColorSync/Profiles/Generic RGB Profile.icc\" {{path/to/image.ext}} {{path/to/output_directory}}",
+    "content": "sips --matchTo \"/System/Library/ColorSync/Profiles/Generic RGB Profile.icc\" {{path/to/image.ext}} --out {{path/to/output_directory}}",
     "group": "macOS",
     "description": "sips: Apple Scriptable Image Processing System. Raster/Query images and ColorSync ICC Profiles. (Convert an image from CMYK to RGB)",
     "tags": [
