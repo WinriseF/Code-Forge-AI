@@ -1,4 +1,9 @@
-use std::path::{Path, PathBuf};
+use std::{
+    path::{Component, Path, PathBuf},
+    process::{Command, Output, Stdio},
+    thread,
+    time::{Duration, Instant},
+};
 
 use ctxrun_process_utils::new_background_command;
 use regex::Regex;
@@ -8,6 +13,7 @@ use crate::models::ExecRiskLevel;
 use crate::utils::encode_utf16_base64;
 
 const POWERSHELL_PARSER_SCRIPT: &str = include_str!("powershell_parser.ps1");
+const POWERSHELL_PARSE_TIMEOUT_MS: u64 = 1_500;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum SafetyDecision {
@@ -40,6 +46,12 @@ struct PowershellParseResult {
     commands: Vec<Vec<String>>,
 }
 
+#[derive(Debug, Clone)]
+struct SafetyScope {
+    root: PathBuf,
+    workdir: PathBuf,
+}
+
 #[derive(Debug, thiserror::Error)]
 pub enum SafetyError {
     #[error("workspaceRoot is required.")]
@@ -63,49 +75,27 @@ pub fn assess_command(
     if trimmed.is_empty() {
         return Err(SafetyError::MissingCommand);
     }
-    let workdir = resolve_workdir(workspace_root, workdir)?;
+    let scope = resolve_scope(workspace_root, workdir)?;
+
+    if let Some(simple_words) = try_parse_simple_command_words(trimmed) {
+        return Ok(assess_parsed_commands(
+            vec![simple_words],
+            &scope,
+            "Simple read-only command matched the auto-allowed safelist.",
+        ));
+    }
 
     if looks_blocked_raw(trimmed) {
-        return Ok(SafetyAssessment {
-            decision: SafetyDecision::Blocked,
-            reason: "Blocked because the command includes a dangerous process or shell launcher."
-                .to_string(),
-            risk: ExecRiskLevel::High,
-            workdir,
-            parsed_commands: Vec::new(),
-            prefix_rule: None,
-        });
+        return Ok(blocked_assessment(
+            "Blocked because the command includes a dangerous process or shell launcher.",
+            scope.workdir,
+            Vec::new(),
+        ));
     }
 
     let parse_result = parse_powershell_script(trimmed);
     let parsed_commands = parse_result.commands.clone();
     if parsed_commands.is_empty() {
-        if let Some(fallback_words) = try_parse_simple_command_words(trimmed) {
-            if is_blocked_command(&fallback_words) {
-                return Ok(SafetyAssessment {
-                    decision: SafetyDecision::Blocked,
-                    reason:
-                        "Blocked because the command maps to a dangerous cmdlet or shell launcher."
-                            .to_string(),
-                    risk: ExecRiskLevel::High,
-                    workdir,
-                    parsed_commands: vec![fallback_words],
-                    prefix_rule: None,
-                });
-            }
-
-            if is_safe_read_only_command(&fallback_words) {
-                return Ok(SafetyAssessment {
-                    decision: SafetyDecision::SafeAuto,
-                    reason: "Simple read-only command matched the fallback safelist after PowerShell parsing was inconclusive.".to_string(),
-                    risk: ExecRiskLevel::Low,
-                    workdir,
-                    parsed_commands: vec![fallback_words],
-                    prefix_rule: None,
-                });
-            }
-        }
-
         let (reason, risk) = match parse_result.status {
             PowershellParseStatus::ParseErrors => (
                 "PowerShell parser reported syntax issues, so explicit approval is required.".to_string(),
@@ -125,53 +115,73 @@ pub fn assess_command(
             decision: SafetyDecision::ApprovalRequired,
             reason,
             risk,
-            workdir,
+            workdir: scope.workdir,
             parsed_commands,
             prefix_rule: None,
         });
     }
 
-    if parsed_commands
-        .iter()
-        .any(|words| is_blocked_command(words))
-    {
-        return Ok(SafetyAssessment {
-            decision: SafetyDecision::Blocked,
-            reason: "Blocked because the command maps to a dangerous cmdlet or shell launcher."
-                .to_string(),
-            risk: ExecRiskLevel::High,
-            workdir,
+    Ok(assess_parsed_commands(
+        parsed_commands,
+        &scope,
+        "Read-only command is in the auto-allowed safelist.",
+    ))
+}
+
+fn assess_parsed_commands(
+    parsed_commands: Vec<Vec<String>>,
+    scope: &SafetyScope,
+    safe_reason: &str,
+) -> SafetyAssessment {
+    if parsed_commands.iter().any(|words| is_blocked_command(words)) {
+        return blocked_assessment(
+            "Blocked because the command maps to a dangerous cmdlet or shell launcher.",
+            scope.workdir.clone(),
             parsed_commands,
-            prefix_rule: None,
-        });
+        );
     }
 
     if parsed_commands
         .iter()
-        .all(|words| is_safe_read_only_command(words))
+        .all(|words| is_safe_read_only_command(words, scope))
     {
-        return Ok(SafetyAssessment {
+        return SafetyAssessment {
             decision: SafetyDecision::SafeAuto,
-            reason: "Read-only command is in the auto-allowed safelist.".to_string(),
+            reason: safe_reason.to_string(),
             risk: ExecRiskLevel::Low,
-            workdir,
+            workdir: scope.workdir.clone(),
             prefix_rule: None,
             parsed_commands,
-        });
+        };
     }
 
-    Ok(SafetyAssessment {
+    SafetyAssessment {
         decision: SafetyDecision::ApprovalRequired,
         reason: "Command is not in the read-only safelist and requires explicit approval."
             .to_string(),
         risk: ExecRiskLevel::Medium,
         prefix_rule: suggested_prefix_rule(&parsed_commands),
-        workdir,
+        workdir: scope.workdir.clone(),
         parsed_commands,
-    })
+    }
 }
 
-fn resolve_workdir(workspace_root: &str, workdir: Option<&str>) -> Result<PathBuf, SafetyError> {
+fn blocked_assessment(
+    reason: &str,
+    workdir: PathBuf,
+    parsed_commands: Vec<Vec<String>>,
+) -> SafetyAssessment {
+    SafetyAssessment {
+        decision: SafetyDecision::Blocked,
+        reason: reason.to_string(),
+        risk: ExecRiskLevel::High,
+        workdir,
+        parsed_commands,
+        prefix_rule: None,
+    }
+}
+
+fn resolve_scope(workspace_root: &str, workdir: Option<&str>) -> Result<SafetyScope, SafetyError> {
     let workspace_root = workspace_root.trim();
     if workspace_root.is_empty() {
         return Err(SafetyError::MissingWorkspaceRoot);
@@ -191,7 +201,10 @@ fn resolve_workdir(workspace_root: &str, workdir: Option<&str>) -> Result<PathBu
         return Err(SafetyError::WorkdirOutsideWorkspace);
     }
 
-    Ok(canonical)
+    Ok(SafetyScope {
+        root,
+        workdir: canonical,
+    })
 }
 
 fn path_is_within_workspace(path: &Path, root: &Path) -> bool {
@@ -244,8 +257,10 @@ fn looks_blocked_raw(command: &str) -> bool {
     static BLOCKED_PATTERN: std::sync::OnceLock<Regex> = std::sync::OnceLock::new();
 
     let blocked = BLOCKED_PATTERN.get_or_init(|| {
-        Regex::new(r"(?i)\b(start-process|stop-process|invoke-item|ii|cmd|bash|sh)\b")
-            .expect("valid blocked regex")
+        Regex::new(
+            r"(?i)(^|[^a-z0-9_])(?:start-process|stop-process|invoke-item|ii|cmd(?:\.exe)?|powershell(?:\.exe)?|pwsh(?:\.exe)?|bash(?:\.exe)?|sh(?:\.exe)?|wsl(?:\.exe)?)(?:$|[^a-z0-9_])",
+        )
+        .expect("valid blocked regex")
     });
     blocked.is_match(command)
 }
@@ -264,8 +279,17 @@ fn parse_powershell_script(script: &str) -> PowershellParseResult {
     ]);
     command.env("CTXRUN_POWERSHELL_PAYLOAD", encoded_script);
 
-    let output = match command.output() {
-        Ok(output) => output,
+    let output = match command_output_with_timeout(
+        command,
+        Duration::from_millis(POWERSHELL_PARSE_TIMEOUT_MS),
+    ) {
+        Ok(Some(output)) => output,
+        Ok(None) => {
+            return PowershellParseResult {
+                status: PowershellParseStatus::ParseFailed,
+                commands: Vec::new(),
+            };
+        }
         Err(_) => {
             return PowershellParseResult {
                 status: PowershellParseStatus::ParseFailed,
@@ -308,6 +332,31 @@ fn parse_powershell_script(script: &str) -> PowershellParseResult {
             status: PowershellParseStatus::ParseFailed,
             commands: Vec::new(),
         },
+    }
+}
+
+fn command_output_with_timeout(
+    mut command: Command,
+    timeout: Duration,
+) -> std::io::Result<Option<Output>> {
+    command.stdout(Stdio::piped());
+    command.stderr(Stdio::piped());
+
+    let mut child = command.spawn()?;
+    let started_at = Instant::now();
+
+    loop {
+        if child.try_wait()?.is_some() {
+            return child.wait_with_output().map(Some);
+        }
+
+        if started_at.elapsed() >= timeout {
+            let _ = child.kill();
+            let _ = child.wait();
+            return Ok(None);
+        }
+
+        thread::sleep(Duration::from_millis(10));
     }
 }
 
@@ -359,7 +408,7 @@ fn try_parse_simple_command_words(script: &str) -> Option<Vec<String>> {
     if words.is_empty() { None } else { Some(words) }
 }
 
-fn is_safe_read_only_command(words: &[String]) -> bool {
+fn is_safe_read_only_command(words: &[String], scope: &SafetyScope) -> bool {
     if words.is_empty() {
         return false;
     }
@@ -367,19 +416,20 @@ fn is_safe_read_only_command(words: &[String]) -> bool {
     let command = normalize_name(&words[0]);
     match command.as_str() {
         "echo" | "write-output" | "write-host" => true,
-        "dir" | "ls" | "get-childitem" | "gci" => true,
-        "cat" | "type" | "gc" | "get-content" => true,
-        "select-string" | "sls" | "findstr" => true,
+        "dir" | "ls" | "get-childitem" | "gci" => is_safe_path_command(words, scope),
+        "cat" | "type" | "gc" | "get-content" => is_safe_path_command(words, scope),
+        "select-string" | "sls" => is_safe_select_string(words, scope),
+        "findstr" => is_safe_findstr(words, scope),
         "measure-object" | "measure" => true,
         "get-location" | "gl" | "pwd" => true,
-        "test-path" | "tp" => true,
-        "resolve-path" | "rvpa" => true,
+        "test-path" | "tp" => is_safe_path_command(words, scope),
+        "resolve-path" | "rvpa" => is_safe_path_command(words, scope),
         "select-object" | "select" => true,
-        "get-item" => true,
+        "get-item" => is_safe_path_command(words, scope),
         "get-date" | "date" => true,
         "hostname" | "whoami" => true,
         "git" => is_safe_git_command(words),
-        "rg" => is_safe_ripgrep(words),
+        "rg" => is_safe_ripgrep(words, scope),
         _ => false,
     }
 }
@@ -393,10 +443,7 @@ fn is_safe_git_command(words: &[String]) -> bool {
                 arg_lc.as_str(),
                 "-c" | "--config" | "--git-dir" | "--work-tree"
             ) {
-                if iter.next().is_none() {
-                    return false;
-                }
-                continue;
+                return false;
             }
             continue;
         }
@@ -419,10 +466,12 @@ fn git_tail_is_read_only(args: Vec<String>) -> bool {
     for arg in &args {
         let lower = arg.to_ascii_lowercase();
         match lower.as_str() {
+            "--" | "-c" | "--config" | "--git-dir" | "--work-tree" | "-o" => return false,
             "--list" | "-l" | "--show-current" | "-a" | "--all" | "-r" | "--remotes" | "-v"
             | "-vv" | "--verbose" => {
                 saw_branch_query = true;
             }
+            _ if lower.starts_with("--output") => return false,
             _ if lower.starts_with("--format=") => {
                 saw_branch_query = true;
             }
@@ -434,15 +483,228 @@ fn git_tail_is_read_only(args: Vec<String>) -> bool {
     saw_branch_query
 }
 
-fn is_safe_ripgrep(words: &[String]) -> bool {
-    !words.iter().skip(1).any(|arg| {
+fn is_safe_ripgrep(words: &[String], scope: &SafetyScope) -> bool {
+    if words.iter().skip(1).any(|arg| {
         let arg_lc = arg.to_ascii_lowercase();
         matches!(arg_lc.as_str(), "--search-zip" | "-z")
             || arg_lc == "--pre"
             || arg_lc.starts_with("--pre=")
             || arg_lc == "--hostname-bin"
             || arg_lc.starts_with("--hostname-bin=")
-    })
+            || arg_lc == "-g"
+            || arg_lc == "--glob"
+            || arg_lc.starts_with("--glob=")
+    }) {
+        return false;
+    }
+
+    let mut paths = Vec::new();
+    let mut saw_pattern = false;
+    let mut path_only_mode = false;
+    let mut iter = words.iter().skip(1).peekable();
+
+    while let Some(arg) = iter.next() {
+        let lower = arg.to_ascii_lowercase();
+        if lower == "--" {
+            return false;
+        }
+
+        if lower == "--files" {
+            path_only_mode = true;
+            continue;
+        }
+
+        if lower == "-e" || lower == "--regexp" {
+            if iter.next().is_none() {
+                return false;
+            }
+            saw_pattern = true;
+            continue;
+        }
+
+        if lower.starts_with('-') {
+            continue;
+        }
+
+        if path_only_mode || saw_pattern {
+            paths.push(arg.clone());
+        } else {
+            saw_pattern = true;
+        }
+    }
+
+    paths_are_safe(&paths, scope)
+}
+
+fn is_safe_path_command(words: &[String], scope: &SafetyScope) -> bool {
+    let Some(paths) = collect_path_args(words, PositionalPathMode::All) else {
+        return false;
+    };
+    paths_are_safe(&paths, scope)
+}
+
+fn is_safe_select_string(words: &[String], scope: &SafetyScope) -> bool {
+    let Some(paths) = collect_path_args(words, PositionalPathMode::AfterFirst) else {
+        return false;
+    };
+    paths_are_safe(&paths, scope)
+}
+
+fn is_safe_findstr(words: &[String], scope: &SafetyScope) -> bool {
+    let mut paths = Vec::new();
+    let mut saw_pattern = false;
+
+    for arg in words.iter().skip(1) {
+        if arg.starts_with('/') {
+            continue;
+        }
+
+        if saw_pattern {
+            paths.push(arg.clone());
+        } else {
+            saw_pattern = true;
+        }
+    }
+
+    paths_are_safe(&paths, scope)
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+enum PositionalPathMode {
+    All,
+    AfterFirst,
+}
+
+fn collect_path_args(words: &[String], positional_mode: PositionalPathMode) -> Option<Vec<String>> {
+    let mut paths = Vec::new();
+    let mut positional_count = 0usize;
+    let mut iter = words.iter().skip(1).peekable();
+
+    while let Some(arg) = iter.next() {
+        if arg == "--" {
+            return None;
+        }
+
+        if let Some(value) = inline_path_option_value(arg) {
+            paths.push(value);
+            continue;
+        }
+
+        if is_path_option(arg) {
+            let value = iter.next()?;
+            paths.push(value.clone());
+            continue;
+        }
+
+        if arg.starts_with('-') {
+            continue;
+        }
+
+        match positional_mode {
+            PositionalPathMode::All => paths.push(arg.clone()),
+            PositionalPathMode::AfterFirst => {
+                if positional_count > 0 {
+                    paths.push(arg.clone());
+                }
+                positional_count += 1;
+            }
+        }
+    }
+
+    Some(paths)
+}
+
+fn inline_path_option_value(arg: &str) -> Option<String> {
+    let trimmed = arg.trim();
+    if !trimmed.starts_with('-') {
+        return None;
+    }
+
+    for separator in ['=', ':'] {
+        let Some((name, value)) = trimmed.split_once(separator) else {
+            continue;
+        };
+        if is_path_option_name(name) && !value.trim().is_empty() {
+            return Some(value.trim().to_string());
+        }
+    }
+
+    None
+}
+
+fn is_path_option(arg: &str) -> bool {
+    is_path_option_name(arg)
+}
+
+fn is_path_option_name(arg: &str) -> bool {
+    let name = arg
+        .trim_start_matches('-')
+        .split(['=', ':'])
+        .next()
+        .unwrap_or_default()
+        .to_ascii_lowercase();
+    matches!(name.as_str(), "path" | "literalpath" | "pspath")
+}
+
+fn paths_are_safe(paths: &[String], scope: &SafetyScope) -> bool {
+    paths
+        .iter()
+        .all(|path| is_safe_workspace_path_arg(path, scope))
+}
+
+fn is_safe_workspace_path_arg(raw: &str, scope: &SafetyScope) -> bool {
+    let value = raw.trim();
+    if value.is_empty() {
+        return false;
+    }
+
+    if value.starts_with('~')
+        || value.contains('$')
+        || value.contains('%')
+        || value.contains('`')
+        || value.contains('*')
+        || value.contains('?')
+        || value.contains('[')
+        || value.contains(']')
+    {
+        return false;
+    }
+
+    let path = Path::new(value);
+    if path
+        .components()
+        .any(|component| matches!(component, Component::ParentDir))
+    {
+        return false;
+    }
+
+    let candidate = if path.is_absolute() {
+        path.to_path_buf()
+    } else {
+        scope.workdir.join(path)
+    };
+
+    let Some(normalized) = lexically_normalize_path(&candidate) else {
+        return false;
+    };
+
+    path_is_within_workspace(&normalized, &scope.root)
+}
+
+fn lexically_normalize_path(path: &Path) -> Option<PathBuf> {
+    let mut normalized = PathBuf::new();
+
+    for component in path.components() {
+        match component {
+            Component::Prefix(prefix) => normalized.push(prefix.as_os_str()),
+            Component::RootDir => normalized.push(component.as_os_str()),
+            Component::CurDir => {}
+            Component::Normal(segment) => normalized.push(segment),
+            Component::ParentDir => return None,
+        }
+    }
+
+    Some(normalized)
 }
 
 fn is_blocked_command(words: &[String]) -> bool {
@@ -453,7 +715,16 @@ fn is_blocked_command(words: &[String]) -> bool {
     let command = normalize_name(&words[0]);
     if matches!(
         command.as_str(),
-        "start-process" | "stop-process" | "invoke-item" | "ii" | "cmd" | "bash" | "sh"
+        "start-process"
+            | "stop-process"
+            | "invoke-item"
+            | "ii"
+            | "cmd"
+            | "powershell"
+            | "pwsh"
+            | "bash"
+            | "sh"
+            | "wsl"
     ) {
         return true;
     }
@@ -496,20 +767,34 @@ fn suggested_prefix_rule(parsed_commands: &[Vec<String>]) -> Option<Vec<String>>
 }
 
 fn normalize_name(value: &str) -> String {
-    Path::new(value)
-        .file_name()
-        .and_then(|segment| segment.to_str())
-        .unwrap_or(value)
+    let trimmed = value
+        .trim()
         .trim_matches(|ch| ch == '(' || ch == ')')
-        .trim_start_matches('-')
-        .to_ascii_lowercase()
+        .trim_matches(|ch| ch == '"' || ch == '\'')
+        .trim_start_matches('-');
+    let file_name = trimmed
+        .rsplit(['/', '\\'])
+        .find(|segment| !segment.is_empty())
+        .unwrap_or(trimmed);
+    let lower = file_name.to_ascii_lowercase();
+    lower
+        .strip_suffix(".exe")
+        .unwrap_or(lower.as_str())
+        .to_string()
 }
 
 #[cfg(test)]
 mod tests {
-    use std::{fs, path::PathBuf};
+    use std::{
+        fs,
+        io::ErrorKind,
+        path::PathBuf,
+        time::{Duration, Instant},
+    };
 
-    use super::{SafetyDecision, assess_command};
+    use ctxrun_process_utils::new_background_command;
+
+    use super::{SafetyDecision, assess_command, command_output_with_timeout};
 
     struct TestWorkspace {
         root: PathBuf,
@@ -527,6 +812,14 @@ mod tests {
 
         fn root_str(&self) -> String {
             self.root.display().to_string()
+        }
+
+        fn write_file(&self, relative: &str, content: &str) {
+            let path = self.root.join(relative);
+            if let Some(parent) = path.parent() {
+                fs::create_dir_all(parent).expect("create parent directory");
+            }
+            fs::write(path, content).expect("write test file");
         }
     }
 
@@ -570,6 +863,98 @@ mod tests {
             .expect("assess command");
 
         assert_eq!(assessment.decision, SafetyDecision::Blocked);
+    }
+
+    #[test]
+    fn shell_launchers_are_blocked_after_normalization() {
+        let workspace = TestWorkspace::new();
+        for command in [
+            "cmd.exe /C dir",
+            "powershell.exe -NoProfile",
+            "pwsh -NoProfile",
+            "bash.exe -lc ls",
+            "./bash -c ls",
+            "'bash' -c ls",
+            "wsl ls",
+        ] {
+            let assessment =
+                assess_command(command, &workspace.root_str(), None).expect("assess command");
+            assert_eq!(
+                assessment.decision,
+                SafetyDecision::Blocked,
+                "{command} should be blocked"
+            );
+        }
+    }
+
+    #[test]
+    fn read_only_file_commands_reject_workspace_escape_paths() {
+        let workspace = TestWorkspace::new();
+        let outside = std::env::temp_dir().join(format!(
+            "ctxrun-exec-runtime-outside-{}",
+            uuid::Uuid::new_v4()
+        ));
+        fs::write(&outside, "outside").expect("write outside file");
+
+        let cases = [
+            "Get-Content ../secret.txt".to_string(),
+            format!("Get-Content {}", outside.display()),
+            "rg needle ..".to_string(),
+            "git show HEAD:../../secret.txt".to_string(),
+        ];
+
+        for command in cases {
+            let assessment =
+                assess_command(&command, &workspace.root_str(), None).expect("assess command");
+            assert_ne!(
+                assessment.decision,
+                SafetyDecision::SafeAuto,
+                "{command} should not be auto-approved"
+            );
+        }
+
+        let _ = fs::remove_file(outside);
+    }
+
+    #[test]
+    fn read_only_file_commands_allow_workspace_local_paths() {
+        let workspace = TestWorkspace::new();
+        workspace.write_file("src/file.txt", "hello");
+
+        for command in ["Get-Content src/file.txt", "rg hello src"] {
+            let assessment =
+                assess_command(command, &workspace.root_str(), None).expect("assess command");
+            assert_eq!(
+                assessment.decision,
+                SafetyDecision::SafeAuto,
+                "{command} should be auto-approved"
+            );
+        }
+    }
+
+    #[test]
+    fn powershell_parser_command_timeout_returns_none() {
+        let mut command = new_background_command("powershell.exe");
+        command.args([
+            "-NoLogo",
+            "-NoProfile",
+            "-NonInteractive",
+            "-Command",
+            "Start-Sleep -Seconds 5",
+        ]);
+
+        let started = Instant::now();
+        match command_output_with_timeout(command, Duration::from_millis(100)) {
+            Ok(None) => {
+                assert!(
+                    started.elapsed() < Duration::from_secs(2),
+                    "timeout helper should return promptly"
+                );
+            }
+            Ok(Some(_)) => panic!("expected sleeping PowerShell command to time out"),
+            Err(err) if err.kind() == ErrorKind::NotFound => {}
+            Err(err) => panic!("unexpected timeout helper error: {err}"),
+        }
     }
 }
 

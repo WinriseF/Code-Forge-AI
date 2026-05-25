@@ -126,7 +126,7 @@ pub fn toggle<R: Runtime>(app: &AppHandle<R>) {
     let state = app.state::<AutomatorState>();
 
     if state.is_running.load(Ordering::SeqCst) {
-        state.is_running.store(false, Ordering::SeqCst);
+        state.stop();
         let _ = app.emit("automator:status", false);
         return;
     }
@@ -156,7 +156,9 @@ pub fn toggle<R: Runtime>(app: &AppHandle<R>) {
                 .or_else(|| persisted.workflows.first().cloned());
 
             if let Some(workflow) = selected_workflow {
-                state.is_running.store(true, Ordering::SeqCst);
+                if !state.try_start() {
+                    return;
+                }
                 let _ = app.emit("automator:status", true);
 
                 if let Some(graph) = workflow_to_graph(&workflow) {

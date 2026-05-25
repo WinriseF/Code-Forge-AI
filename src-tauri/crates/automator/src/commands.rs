@@ -4,7 +4,6 @@ use crate::error::{AutomatorError, Result};
 use crate::inspector::PickedElement;
 use crate::models::{PickedWebTarget, Workflow, WorkflowGraph};
 use crate::screen;
-use std::sync::atomic::Ordering;
 use tauri::{AppHandle, Emitter, Runtime, State};
 
 #[tauri::command]
@@ -13,11 +12,10 @@ pub async fn execute_workflow<R: Runtime>(
     state: State<'_, AutomatorState>,
     workflow: Workflow,
 ) -> Result<()> {
-    if state.is_running.load(Ordering::SeqCst) {
+    if !state.try_start() {
         return Err(AutomatorError::AlreadyRunning);
     }
 
-    state.is_running.store(true, Ordering::SeqCst);
     let _ = app.emit("automator:status", true);
 
     run_workflow_task(app, workflow, state.is_running.clone());
@@ -30,7 +28,7 @@ pub async fn stop_workflow<R: Runtime>(
     app: AppHandle<R>,
     state: State<'_, AutomatorState>,
 ) -> Result<()> {
-    state.is_running.store(false, Ordering::SeqCst);
+    state.stop();
     let _ = app.emit("automator:status", false);
     Ok(())
 }
@@ -61,11 +59,10 @@ pub async fn execute_workflow_graph<R: Runtime>(
     state: State<'_, AutomatorState>,
     graph: WorkflowGraph,
 ) -> Result<()> {
-    if state.is_running.load(Ordering::SeqCst) {
+    if !state.try_start() {
         return Err(AutomatorError::AlreadyRunning);
     }
 
-    state.is_running.store(true, Ordering::SeqCst);
     let _ = app.emit("automator:status", true);
 
     run_graph_task(app, graph, state.is_running.clone());

@@ -24,6 +24,16 @@ impl AutomatorState {
             is_running: Arc::new(AtomicBool::new(false)),
         }
     }
+
+    pub fn try_start(&self) -> bool {
+        self.is_running
+            .compare_exchange(false, true, Ordering::SeqCst, Ordering::SeqCst)
+            .is_ok()
+    }
+
+    pub fn stop(&self) {
+        self.is_running.store(false, Ordering::SeqCst);
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -1034,4 +1044,20 @@ pub fn run_graph_task<R: Runtime>(
         running_flag.store(false, Ordering::SeqCst);
         let _ = app.emit("automator:status", false);
     });
+}
+
+#[cfg(test)]
+mod tests {
+    use super::AutomatorState;
+
+    #[test]
+    fn automator_state_try_start_is_atomic() {
+        let state = AutomatorState::new();
+
+        assert!(state.try_start());
+        assert!(!state.try_start());
+
+        state.stop();
+        assert!(state.try_start());
+    }
 }
