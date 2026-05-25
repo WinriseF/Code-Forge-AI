@@ -1226,7 +1226,7 @@ dependencies = [
 
 [[package]]
 name = "ctxrun"
-version = "2.4.0"
+version = "2.4.1"
 dependencies = [
  "ctxrun-db",
  "ctxrun-env-probe",
