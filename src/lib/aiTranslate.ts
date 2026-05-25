@@ -121,31 +121,90 @@ function getStrategyKey(previewType: PreviewType): string {
 // Chunking
 // ---------------------------------------------------------------------------
 
+interface TranslationChunk {
+  text: string;
+  separatorBefore: string;
+}
+
 /**
  * Split text into chunks at natural boundaries.
  * Priority: paragraphs → sentences → lines → characters.
  * Each chunk stays within `maxChars` and ends at a clean boundary.
  */
-function splitIntoChunks(text: string, maxChars: number): string[] {
-  if (text.length <= maxChars) return [text];
+function splitIntoChunks(text: string, maxChars: number): TranslationChunk[] {
+  if (text.length <= maxChars) return [{ text, separatorBefore: '' }];
 
   // Level 1: Split by paragraph boundaries (2+ newlines)
-  const paragraphs = text.split(/\n{2,}/);
-  const chunks: string[] = [];
-  let current = '';
+  return groupSeparatedPieces(
+    splitWithSeparators(text, /\n{2,}/g),
+    maxChars,
+    splitOversized
+  );
+}
 
-  for (const para of paragraphs) {
-    const candidate = current ? current + '\n\n' + para : para;
-    if (candidate.length > maxChars && current) {
-      chunks.push(...splitOversized(current, maxChars));
-      current = para;
+function splitWithSeparators(text: string, separatorPattern: RegExp): TranslationChunk[] {
+  const chunks: TranslationChunk[] = [];
+  let cursor = 0;
+  let separatorBefore = '';
+
+  for (const match of text.matchAll(separatorPattern)) {
+    const separator = match[0];
+    const index = match.index ?? 0;
+    const segment = text.slice(cursor, index);
+
+    if (segment) {
+      chunks.push({ text: segment, separatorBefore });
+      separatorBefore = separator;
     } else {
+      separatorBefore += separator;
+    }
+
+    cursor = index + separator.length;
+  }
+
+  const tail = text.slice(cursor);
+  if (tail) {
+    chunks.push({ text: tail, separatorBefore });
+  }
+
+  return chunks;
+}
+
+function groupSeparatedPieces(
+  pieces: TranslationChunk[],
+  maxChars: number,
+  splitOversizedPiece: (text: string, maxChars: number, separatorBefore: string) => TranslationChunk[]
+): TranslationChunk[] {
+  const chunks: TranslationChunk[] = [];
+  let current = '';
+  let currentSeparator = '';
+
+  for (const piece of pieces) {
+    if (piece.text.length > maxChars) {
+      if (current) {
+        chunks.push({ text: current, separatorBefore: currentSeparator });
+        current = '';
+        currentSeparator = '';
+      }
+      chunks.push(...splitOversizedPiece(piece.text, maxChars, piece.separatorBefore));
+      continue;
+    }
+
+    const candidate = current ? `${current}${piece.separatorBefore}${piece.text}` : piece.text;
+    if (candidate.length > maxChars && current) {
+      chunks.push({ text: current, separatorBefore: currentSeparator });
+      current = piece.text;
+      currentSeparator = piece.separatorBefore;
+    } else {
+      if (!current) {
+        currentSeparator = `${currentSeparator}${piece.separatorBefore}`;
+      }
       current = candidate;
     }
   }
 
   if (current) {
-    chunks.push(...splitOversized(current, maxChars));
+    chunks.push({ text: current, separatorBefore: currentSeparator });
   }
 
   return chunks;
@@ -155,8 +214,8 @@ function splitIntoChunks(text: string, maxChars: number): string[] {
  * Split oversized text: try sentences first, fall back to lines, then chars.
  * Sentence matches include trailing whitespace so concatenation preserves format.
  */
-function splitOversized(text: string, maxChars: number): string[] {
-  if (text.length <= maxChars) return [text];
+function splitOversized(text: string, maxChars: number, separatorBefore = ''): TranslationChunk[] {
+  if (text.length <= maxChars) return [{ text, separatorBefore }];
 
   // Level 2: Split by sentence boundaries
   // Matches "content + punctuation + trailing whitespace"
@@ -168,66 +227,63 @@ function splitOversized(text: string, maxChars: number): string[] {
     if (covered.length < text.length) {
       sentences.push(text.slice(covered.length));
     }
-    return groupPieces(sentences, maxChars);
+    return groupPieces(sentences, maxChars, separatorBefore);
   }
 
   // Level 3+4: No sentence boundaries — fall back to lines → chars
-  return forceSplitLines(text, maxChars);
+  return forceSplitLines(text, maxChars, separatorBefore);
 }
 
 /** Group small pieces into chunks of <= maxChars. Preserves original formatting. */
-function groupPieces(pieces: string[], maxChars: number): string[] {
-  const chunks: string[] = [];
+function groupPieces(pieces: string[], maxChars: number, separatorBefore = ''): TranslationChunk[] {
+  const chunks: TranslationChunk[] = [];
   let current = '';
+  let currentSeparator = separatorBefore;
 
   for (const piece of pieces) {
     if (piece.length > maxChars) {
       if (current) {
-        chunks.push(current);
+        chunks.push({ text: current, separatorBefore: currentSeparator });
         current = '';
+        currentSeparator = '';
       }
-      chunks.push(...forceSplitLines(piece, maxChars));
+      chunks.push(...forceSplitLines(piece, maxChars, currentSeparator));
     } else {
       const candidate = current + piece;
       if (candidate.length > maxChars && current) {
-        chunks.push(current);
+        chunks.push({ text: current, separatorBefore: currentSeparator });
         current = piece;
+        currentSeparator = '';
       } else {
         current = candidate;
       }
     }
   }
 
-  if (current) chunks.push(current);
+  if (current) chunks.push({ text: current, separatorBefore: currentSeparator });
   return chunks;
 }
 
 /** Force-split by single newlines, then by character limit (last resort). */
-function forceSplitLines(text: string, maxChars: number): string[] {
-  const lines = text.split('\n');
-  const chunks: string[] = [];
-  let current = '';
+function forceSplitLines(text: string, maxChars: number, separatorBefore = ''): TranslationChunk[] {
+  return groupSeparatedPieces(
+    splitWithSeparators(text, /\n/g),
+    maxChars,
+    forceSplitChars
+  ).map((chunk, index) => ({
+    ...chunk,
+    separatorBefore: index === 0 ? `${separatorBefore}${chunk.separatorBefore}` : chunk.separatorBefore,
+  }));
+}
 
-  for (const line of lines) {
-    const candidate = current ? current + '\n' + line : line;
-    if (candidate.length > maxChars && current) {
-      chunks.push(current);
-      current = line;
-    } else {
-      current = candidate;
-    }
+function forceSplitChars(text: string, maxChars: number, separatorBefore = ''): TranslationChunk[] {
+  const chunks: TranslationChunk[] = [];
+  for (let i = 0; i < text.length; i += maxChars) {
+    chunks.push({
+      text: text.slice(i, i + maxChars),
+      separatorBefore: i === 0 ? separatorBefore : '',
+    });
   }
-
-  if (current) {
-    if (current.length <= maxChars) {
-      chunks.push(current);
-    } else {
-      for (let i = 0; i < current.length; i += maxChars) {
-        chunks.push(current.slice(i, i + maxChars));
-      }
-    }
-  }
-
   return chunks;
 }
 
@@ -329,12 +385,12 @@ export async function translate(
 
     const messages: ChatRequestMessage[] = [
       { role: 'system', content: systemPrompt },
-      { role: 'user', content: strategy.buildUserPrompt(chunks[i], targetLangName) },
+      { role: 'user', content: strategy.buildUserPrompt(chunks[i].text, targetLangName) },
     ];
 
-    // Inject separator between chunks
-    if (i > 0) {
-      callbacks.onContentDelta('\n\n');
+    const separator = chunks[i].separatorBefore;
+    if (separator) {
+      callbacks.onContentDelta(separator);
     }
 
     try {
@@ -353,7 +409,7 @@ export async function translate(
       if (signal?.aborted) return;
 
       const sanitized = sanitizeChunkOutput(result.content);
-      fullTranslated += (i > 0 ? '\n\n' : '') + sanitized;
+      fullTranslated += separator + sanitized;
       callbacks.onChunkProgress?.(i + 1, chunks.length);
     } catch (err) {
       if (!signal?.aborted) {

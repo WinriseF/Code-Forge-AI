@@ -35,6 +35,10 @@ function normalizeLanguage(language: string): string {
 }
 
 function setCachedTree(cacheKey: string, tree: HighlightTree | null): HighlightTree | null {
+  if (treeCache.has(cacheKey)) {
+    treeCache.delete(cacheKey);
+  }
+
   if (treeCache.size >= HIGHLIGHT_CACHE_LIMIT) {
     const oldestKey = treeCache.keys().next().value;
     if (oldestKey) {
@@ -44,6 +48,17 @@ function setCachedTree(cacheKey: string, tree: HighlightTree | null): HighlightT
 
   treeCache.set(cacheKey, tree);
   return tree;
+}
+
+function getCachedTree(cacheKey: string): HighlightTree | null | undefined {
+  const cached = treeCache.get(cacheKey);
+  if (cached === undefined) {
+    return undefined;
+  }
+
+  treeCache.delete(cacheKey);
+  treeCache.set(cacheKey, cached);
+  return cached;
 }
 
 async function getStarryNight(): Promise<StarryNightInstance> {
@@ -75,12 +90,12 @@ function resolveScope(starryNight: StarryNightInstance, language: string): strin
 }
 
 export function getCachedHighlightTree(language: string, value: string): HighlightTree | null | undefined {
-  return treeCache.get(getCacheKey(language, value));
+  return getCachedTree(getCacheKey(language, value));
 }
 
 export async function highlightCodeTree(language: string, value: string): Promise<HighlightTree | null> {
   const cacheKey = getCacheKey(language, value);
-  const cached = treeCache.get(cacheKey);
+  const cached = getCachedTree(cacheKey);
   if (cached !== undefined) {
     return cached;
   }

@@ -28,8 +28,34 @@ async function emitAppStoreEvent<T>(eventName: string, payload: T, label: string
   }
 }
 
+type ProjectRootSyncListener = (payload: ProjectRootSyncPayload) => void;
+
+const projectRootSyncListeners = new Set<ProjectRootSyncListener>();
+
+export function subscribeProjectRootSync(listener: ProjectRootSyncListener): () => void {
+  projectRootSyncListeners.add(listener);
+  return () => {
+    projectRootSyncListeners.delete(listener);
+  };
+}
+
+function notifyProjectRootSyncListeners(payload: ProjectRootSyncPayload): void {
+  projectRootSyncListeners.forEach((listener) => {
+    try {
+      listener(payload);
+    } catch (err) {
+      console.error('[AppStoreEvents] Failed to notify project root sync listener:', err);
+    }
+  });
+}
+
 export function broadcastProjectRootSync(payload: ProjectRootSyncPayload): void {
+  notifyProjectRootSyncListeners(payload);
   void emitAppStoreEvent(PROJECT_ROOT_SYNC_EVENT, payload, 'project root sync');
+}
+
+export function consumeProjectRootSync(payload: ProjectRootSyncPayload): void {
+  notifyProjectRootSyncListeners(payload);
 }
 
 export function broadcastLanguageSync(payload: LanguageSyncPayload): void {

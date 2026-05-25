@@ -69,4 +69,32 @@ describe('starryNight helpers', () => {
     expect(starryNight.renderHighlightTree({ type: 'root' } as any)).toBe('jsx-tree');
     expect(toJsxRuntimeMock).toHaveBeenCalled();
   });
+
+  it('refreshes cached tree recency and evicts the least recently used entry', async () => {
+    createStarryNightMock.mockResolvedValue({
+      flagToScope: flagToScopeMock.mockImplementation((flag: string) =>
+        flag === 'txt' ? 'scope:text' : undefined
+      ),
+      highlight: highlightMock.mockImplementation((value: string) => ({ type: 'root', value })),
+    });
+
+    const starryNight = await importFreshStarryNight();
+
+    for (let index = 0; index < 200; index += 1) {
+      await starryNight.highlightCodeTree('txt', `value-${index}`);
+    }
+
+    expect(starryNight.getCachedHighlightTree('txt', 'value-0')).toEqual({
+      type: 'root',
+      value: 'value-0',
+    });
+
+    await starryNight.highlightCodeTree('txt', 'value-200');
+
+    expect(starryNight.getCachedHighlightTree('txt', 'value-0')).toEqual({
+      type: 'root',
+      value: 'value-0',
+    });
+    expect(starryNight.getCachedHighlightTree('txt', 'value-1')).toBeUndefined();
+  });
 });

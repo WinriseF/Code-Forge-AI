@@ -808,7 +808,10 @@ fn map_button(btn: &MouseButton) -> Button {
 }
 
 fn map_key(key_str: &str) -> Option<Key> {
-    match key_str.to_lowercase().as_str() {
+    let trimmed = key_str.trim();
+    let normalized = trimmed.to_lowercase();
+
+    match normalized.as_str() {
         "enter" | "return" => Some(Key::Return),
         "space" => Some(Key::Space),
         "backspace" => Some(Key::Backspace),
@@ -835,43 +838,29 @@ fn map_key(key_str: &str) -> Option<Key> {
         "f10" => Some(Key::F10),
         "f11" => Some(Key::F11),
         "f12" => Some(Key::F12),
-        "a" => Some(Key::Unicode('a')),
-        "b" => Some(Key::Unicode('b')),
-        "c" => Some(Key::Unicode('c')),
-        "d" => Some(Key::Unicode('d')),
-        "e" => Some(Key::Unicode('e')),
-        "f" => Some(Key::Unicode('f')),
-        "g" => Some(Key::Unicode('g')),
-        "h" => Some(Key::Unicode('h')),
-        "i" => Some(Key::Unicode('i')),
-        "j" => Some(Key::Unicode('j')),
-        "k" => Some(Key::Unicode('k')),
-        "l" => Some(Key::Unicode('l')),
-        "m" => Some(Key::Unicode('m')),
-        "n" => Some(Key::Unicode('n')),
-        "o" => Some(Key::Unicode('o')),
-        "p" => Some(Key::Unicode('p')),
-        "q" => Some(Key::Unicode('q')),
-        "r" => Some(Key::Unicode('r')),
-        "s" => Some(Key::Unicode('s')),
-        "t" => Some(Key::Unicode('t')),
-        "u" => Some(Key::Unicode('u')),
-        "v" => Some(Key::Unicode('v')),
-        "w" => Some(Key::Unicode('w')),
-        "x" => Some(Key::Unicode('x')),
-        "y" => Some(Key::Unicode('y')),
-        "z" => Some(Key::Unicode('z')),
-        "0" => Some(Key::Unicode('0')),
-        "1" => Some(Key::Unicode('1')),
-        "2" => Some(Key::Unicode('2')),
-        "3" => Some(Key::Unicode('3')),
-        "4" => Some(Key::Unicode('4')),
-        "5" => Some(Key::Unicode('5')),
-        "6" => Some(Key::Unicode('6')),
-        "7" => Some(Key::Unicode('7')),
-        "8" => Some(Key::Unicode('8')),
-        "9" => Some(Key::Unicode('9')),
-        _ => None,
+        "f13" => Some(Key::F13),
+        "f14" => Some(Key::F14),
+        "f15" => Some(Key::F15),
+        "f16" => Some(Key::F16),
+        "f17" => Some(Key::F17),
+        "f18" => Some(Key::F18),
+        "f19" => Some(Key::F19),
+        "f20" => Some(Key::F20),
+        #[cfg(any(target_os = "windows", all(unix, not(target_os = "macos"))))]
+        "f21" => Some(Key::F21),
+        #[cfg(any(target_os = "windows", all(unix, not(target_os = "macos"))))]
+        "f22" => Some(Key::F22),
+        #[cfg(any(target_os = "windows", all(unix, not(target_os = "macos"))))]
+        "f23" => Some(Key::F23),
+        #[cfg(any(target_os = "windows", all(unix, not(target_os = "macos"))))]
+        "f24" => Some(Key::F24),
+        _ => {
+            let mut chars = trimmed.chars();
+            match (chars.next(), chars.next()) {
+                (Some(ch), None) => Some(Key::Unicode(ch)),
+                _ => None,
+            }
+        }
     }
 }
 
@@ -881,14 +870,15 @@ fn execute_key_combination(enigo: &mut Enigo, key_combo: &str) {
     let mut main_key = None;
 
     for part in parts {
-        let part_lower = part.trim().to_lowercase();
+        let part_trimmed = part.trim();
+        let part_lower = part_trimmed.to_lowercase();
         match part_lower.as_str() {
             "control" | "ctrl" => modifiers.push(Key::Control),
             "alt" => modifiers.push(Key::Alt),
             "shift" => modifiers.push(Key::Shift),
             "meta" | "command" | "cmd" => modifiers.push(Key::Meta),
-            other => {
-                if let Some(k) = map_key(other) {
+            _ => {
+                if let Some(k) = map_key(part_trimmed) {
                     main_key = Some(k);
                 }
             }
@@ -1048,7 +1038,8 @@ pub fn run_graph_task<R: Runtime>(
 
 #[cfg(test)]
 mod tests {
-    use super::AutomatorState;
+    use super::{map_key, AutomatorState};
+    use enigo::Key;
 
     #[test]
     fn automator_state_try_start_is_atomic() {
@@ -1059,5 +1050,22 @@ mod tests {
 
         state.stop();
         assert!(state.try_start());
+    }
+
+    #[test]
+    fn map_key_supports_named_function_keys_and_single_characters() {
+        assert!(matches!(map_key("enter"), Some(Key::Return)));
+        assert!(matches!(map_key("F13"), Some(Key::F13)));
+        assert!(matches!(map_key("f20"), Some(Key::F20)));
+        assert!(matches!(map_key("A"), Some(Key::Unicode('A'))));
+        assert!(matches!(map_key("?"), Some(Key::Unicode('?'))));
+        assert!(matches!(map_key("7"), Some(Key::Unicode('7'))));
+        assert!(matches!(map_key("ab"), None));
+
+        #[cfg(any(target_os = "windows", all(unix, not(target_os = "macos"))))]
+        {
+            assert!(matches!(map_key("f21"), Some(Key::F21)));
+            assert!(matches!(map_key("F24"), Some(Key::F24)));
+        }
     }
 }

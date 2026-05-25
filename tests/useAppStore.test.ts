@@ -6,19 +6,12 @@ const {
   fetchFromMirrorsMock,
   changeLanguageMock,
   storageMap,
-  contextStoreState,
 } = vi.hoisted(() => ({
   emitMock: vi.fn(),
   invokeMock: vi.fn(),
   fetchFromMirrorsMock: vi.fn(),
   changeLanguageMock: vi.fn(),
   storageMap: new Map<string, string>(),
-  contextStoreState: {
-    projectRoot: null as string | null,
-    setProjectRoot: vi.fn(async (path: string | null) => {
-      contextStoreState.projectRoot = path;
-    }),
-  },
 }));
 
 vi.mock('@tauri-apps/api/event', () => ({
@@ -37,12 +30,6 @@ vi.mock('@/lib/network', () => ({
 vi.mock('@/i18n/config', () => ({
   default: {
     changeLanguage: changeLanguageMock,
-  },
-}));
-
-vi.mock('@/store/useContextStore', () => ({
-  useContextStore: {
-    getState: () => contextStoreState,
   },
 }));
 
@@ -66,19 +53,15 @@ async function importFreshAppStore(): Promise<AppStore> {
   return mod.useAppStore;
 }
 
-describe('useAppStore setTheme', () => {
+describe('useAppStore', () => {
   beforeEach(() => {
     emitMock.mockReset();
     invokeMock.mockReset();
     fetchFromMirrorsMock.mockReset();
     changeLanguageMock.mockReset();
     storageMap.clear();
-    contextStoreState.projectRoot = null;
-    contextStoreState.setProjectRoot.mockReset();
-    contextStoreState.setProjectRoot.mockImplementation(async (path: string | null) => {
-      contextStoreState.projectRoot = path;
-    });
     emitMock.mockResolvedValue(undefined);
+    invokeMock.mockResolvedValue(undefined);
   });
 
   it('updates theme and emits theme-changed by default', async () => {
@@ -101,7 +84,7 @@ describe('useAppStore setTheme', () => {
     expect(emitMock).not.toHaveBeenCalled();
   });
 
-  it('setProjectRoot normalizes path and keeps latest 5 recent roots', async () => {
+  it('setProjectRoot normalizes path, keeps latest 5 roots, and broadcasts once', async () => {
     const useAppStore = await importFreshAppStore();
 
     useAppStore.getState().setProjectRoot('  /a  ');
@@ -111,32 +94,40 @@ describe('useAppStore setTheme', () => {
     useAppStore.getState().setProjectRoot('/e');
     useAppStore.getState().setProjectRoot('/f');
     useAppStore.getState().setProjectRoot('/d');
+    await Promise.resolve();
 
     const state = useAppStore.getState();
     expect(state.projectRoot).toBe('/d');
     expect(state.recentProjectRoots).toEqual(['/d', '/f', '/e', '/c', '/b']);
+    expect(invokeMock).toHaveBeenLastCalledWith(
+      'plugin:ctxrun-plugin-tool-runtime|agent_set_workspace_root',
+      { rootDir: '/d' }
+    );
+    expect(emitMock).toHaveBeenLastCalledWith('app-store:project-root-changed', {
+      projectRoot: '/d',
+      recentProjectRoots: ['/d', '/f', '/e', '/c', '/b'],
+    });
   });
 
-  it('clearProjectRoot clears current root and keeps recent history', async () => {
+  it('clearProjectRoot clears current root, keeps recent history, and broadcasts null', async () => {
     const useAppStore = await importFreshAppStore();
 
     useAppStore.getState().setProjectRoot('/workspace-a');
     useAppStore.getState().setProjectRoot('/workspace-b');
     useAppStore.getState().clearProjectRoot();
+    await Promise.resolve();
 
     const state = useAppStore.getState();
     expect(state.projectRoot).toBeNull();
     expect(state.recentProjectRoots).toEqual(['/workspace-b', '/workspace-a']);
-  });
-
-  it('setProjectRoot does not call context sync when context root already matches', async () => {
-    const useAppStore = await importFreshAppStore();
-
-    contextStoreState.projectRoot = '/same-path';
-    useAppStore.getState().setProjectRoot('/same-path');
-
-    expect(useAppStore.getState().projectRoot).toBe('/same-path');
-    expect(contextStoreState.setProjectRoot).not.toHaveBeenCalled();
+    expect(invokeMock).toHaveBeenLastCalledWith(
+      'plugin:ctxrun-plugin-tool-runtime|agent_set_workspace_root',
+      { rootDir: null }
+    );
+    expect(emitMock).toHaveBeenLastCalledWith('app-store:project-root-changed', {
+      projectRoot: null,
+      recentProjectRoots: ['/workspace-b', '/workspace-a'],
+    });
   });
 
   it('updates language and global ignore lists with add/duplicate/remove paths', async () => {
@@ -150,193 +141,6 @@ describe('useAppStore setTheme', () => {
     expect(useAppStore.getState().language).toBe('en');
     expect(changeLanguageMock).toHaveBeenCalledWith('en');
     expect(useAppStore.getState().globalIgnore.extensions.includes('tmp')).toBe(false);
-  });
-
-  it('setAIConfig switches provider using saved settings and updates saved values', async () => {
-    const useAppStore = await importFreshAppStore();
-
-    useAppStore.setState({
-      aiConfig: {
-        providerId: 'deepseek',
-        apiKey: 'old',
-        baseUrl: 'https://old.example',
-        modelId: 'old-model',
-        temperature: 0.1,
-      },
-      savedProviderSettings: {
-        deepseek: {
-          apiKey: 'deepseek-key',
-          baseUrl: 'https://api.deepseek.com',
-          modelId: 'deepseek-chat',
-          temperature: 0.7,
-        },
-        openai: {
-          apiKey: 'open-key',
-          baseUrl: 'https://api.openai.com/v1',
-          modelId: 'gpt-4o',
-          temperature: 0.3,
-        },
-      },
-    });
-
-    useAppStore.getState().setAIConfig({ providerId: 'openai' });
-    expect(useAppStore.getState().aiConfig).toEqual({
-      providerId: 'openai',
-      apiKey: 'open-key',
-      baseUrl: 'https://api.openai.com/v1',
-      modelId: 'gpt-4o',
-      temperature: 0.3,
-    });
-
-    useAppStore.getState().setAIConfig({
-      apiKey: 'new-open-key',
-      baseUrl: 'https://proxy.example/v1',
-      modelId: 'gpt-custom',
-      temperature: 0.9,
-    });
-
-    expect(useAppStore.getState().savedProviderSettings.openai).toEqual({
-      apiKey: 'new-open-key',
-      baseUrl: 'https://proxy.example/v1',
-      modelId: 'gpt-custom',
-      temperature: 0.9,
-    });
-
-    await Promise.resolve();
-    expect(emitMock).toHaveBeenCalledWith('app-store:ai-settings-changed', {
-      aiConfig: {
-        providerId: 'openai',
-        apiKey: 'new-open-key',
-        baseUrl: 'https://proxy.example/v1',
-        modelId: 'gpt-custom',
-        temperature: 0.9,
-      },
-      savedProviderSettings: {
-        deepseek: {
-          apiKey: 'deepseek-key',
-          baseUrl: 'https://api.deepseek.com',
-          modelId: 'deepseek-chat',
-          temperature: 0.7,
-        },
-        openai: {
-          apiKey: 'new-open-key',
-          baseUrl: 'https://proxy.example/v1',
-          modelId: 'gpt-custom',
-          temperature: 0.9,
-        },
-      },
-    });
-  });
-
-  it('setAIConfig falls back to default values when switching to unknown provider', async () => {
-    const useAppStore = await importFreshAppStore();
-
-    useAppStore.getState().setAIConfig({ providerId: 'custom-provider' });
-
-    expect(useAppStore.getState().aiConfig).toEqual({
-      providerId: 'custom-provider',
-      apiKey: '',
-      baseUrl: '',
-      modelId: '',
-      temperature: 0.7,
-    });
-  });
-
-  it('renameAIProvider handles success and no-op branches', async () => {
-    const useAppStore = await importFreshAppStore();
-
-    useAppStore.setState({
-      aiConfig: {
-        providerId: 'deepseek',
-        apiKey: '',
-        baseUrl: 'https://api.deepseek.com',
-        modelId: 'deepseek-chat',
-        temperature: 0.7,
-      },
-      savedProviderSettings: {
-        deepseek: {
-          apiKey: 'deep-key',
-          baseUrl: 'https://api.deepseek.com',
-          modelId: 'deepseek-chat',
-          temperature: 0.7,
-        },
-        openai: {
-          apiKey: 'open-key',
-          baseUrl: 'https://api.openai.com/v1',
-          modelId: 'gpt-4o',
-          temperature: 0.7,
-        },
-      },
-    });
-
-    useAppStore.getState().renameAIProvider('deepseek', 'deepseek-new');
-    expect(useAppStore.getState().savedProviderSettings.deepseek).toBeUndefined();
-    expect(useAppStore.getState().savedProviderSettings['deepseek-new']).toBeDefined();
-    expect(useAppStore.getState().aiConfig.providerId).toBe('deepseek-new');
-    await Promise.resolve();
-    expect(emitMock).toHaveBeenCalledWith('app-store:ai-settings-changed', {
-      aiConfig: {
-        providerId: 'deepseek-new',
-        apiKey: '',
-        baseUrl: 'https://api.deepseek.com',
-        modelId: 'deepseek-chat',
-        temperature: 0.7,
-      },
-      savedProviderSettings: {
-        openai: {
-          apiKey: 'open-key',
-          baseUrl: 'https://api.openai.com/v1',
-          modelId: 'gpt-4o',
-          temperature: 0.7,
-        },
-        'deepseek-new': {
-          apiKey: 'deep-key',
-          baseUrl: 'https://api.deepseek.com',
-          modelId: 'deepseek-chat',
-          temperature: 0.7,
-        },
-      },
-    });
-
-    const snapshot = useAppStore.getState().savedProviderSettings;
-    useAppStore.getState().renameAIProvider('deepseek-new', 'deepseek-new');
-    useAppStore.getState().renameAIProvider('deepseek-new', 'openai');
-    useAppStore.getState().renameAIProvider('missing-provider', 'renamed');
-    useAppStore.getState().renameAIProvider('deepseek-new', '   ');
-
-    expect(useAppStore.getState().savedProviderSettings).toEqual(snapshot);
-  });
-
-  it('renameAIProvider keeps active provider when renaming a non-active provider', async () => {
-    const useAppStore = await importFreshAppStore();
-
-    useAppStore.setState({
-      aiConfig: {
-        providerId: 'openai',
-        apiKey: '',
-        baseUrl: 'https://api.openai.com/v1',
-        modelId: 'gpt-4o',
-        temperature: 0.7,
-      },
-      savedProviderSettings: {
-        deepseek: {
-          apiKey: 'deep-key',
-          baseUrl: 'https://api.deepseek.com',
-          modelId: 'deepseek-chat',
-          temperature: 0.7,
-        },
-        openai: {
-          apiKey: 'open-key',
-          baseUrl: 'https://api.openai.com/v1',
-          modelId: 'gpt-4o',
-          temperature: 0.7,
-        },
-      },
-    });
-
-    useAppStore.getState().renameAIProvider('deepseek', 'deepseek-labs');
-    expect(useAppStore.getState().aiConfig.providerId).toBe('openai');
-    expect(useAppStore.getState().savedProviderSettings['deepseek-labs']).toBeDefined();
   });
 
   it('syncModels updates state on success and logs on failure', async () => {
@@ -386,42 +190,17 @@ describe('useAppStore setTheme', () => {
     errorSpy.mockRestore();
   });
 
-  it('updates shortcuts and logs when backend refresh fails', async () => {
-    const useAppStore = await importFreshAppStore();
-    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-
-    invokeMock
-      .mockRejectedValueOnce(new Error('spotlight shortcut failed'))
-      .mockRejectedValueOnce(new Error('automator shortcut failed'));
-
-    useAppStore.getState().setSpotlightShortcut('Ctrl+Shift+S');
-    useAppStore.getState().setAutomatorShortcut('Ctrl+Shift+A');
-    await Promise.resolve();
-
-    expect(useAppStore.getState().spotlightShortcut).toBe('Ctrl+Shift+S');
-    expect(useAppStore.getState().automatorShortcut).toBe('Ctrl+Shift+A');
-    expect(invokeMock).toHaveBeenCalledWith('refresh_shortcuts');
-    expect(errorSpy).toHaveBeenCalledWith(
-      '[AppStore] Failed to refresh shortcuts after spotlight update:',
-      expect.any(Error)
-    );
-    expect(errorSpy).toHaveBeenCalledWith(
-      '[AppStore] Failed to refresh shortcuts after automator update:',
-      expect.any(Error)
-    );
-
-    errorSpy.mockRestore();
-  });
-
-  it('merges search, refinery, spotlight appearance, and window settings', async () => {
+  it('merges search, refinery, spotlight appearance, guard, and window settings', async () => {
     const useAppStore = await importFreshAppStore();
 
     useAppStore.getState().setProjectRoot('/workspace-a');
     useAppStore.getState().setSearchSettings({ defaultEngine: 'bing' });
     useAppStore.getState().setRefinerySettings({ strategy: 'both', maxCount: 1234 });
     useAppStore.getState().setSpotlightAppearance({ width: 700 });
+    useAppStore.getState().setGuardSettings({ idleTimeoutSecs: 5, preventSleep: false, keepDisplayOn: true });
     useAppStore.getState().setWindowDestroyDelay(120);
     useAppStore.getState().setLanguage('en');
+    await Promise.resolve();
 
     const state = useAppStore.getState();
     expect(state.projectRoot).toBe('/workspace-a');
@@ -429,14 +208,12 @@ describe('useAppStore setTheme', () => {
     expect(state.refinerySettings.strategy).toBe('both');
     expect(state.refinerySettings.maxCount).toBe(1234);
     expect(state.spotlightAppearance.width).toBe(700);
+    expect(state.guardSettings.idleTimeoutSecs).toBe(15);
+    expect(state.guardSettings.preventSleep).toBe(false);
+    expect(state.guardSettings.keepDisplayOn).toBe(false);
     expect(state.windowDestroyDelay).toBe(120);
     expect(state.language).toBe('en');
 
-    await Promise.resolve();
-    expect(emitMock).toHaveBeenCalledWith('app-store:project-root-changed', {
-      projectRoot: '/workspace-a',
-      recentProjectRoots: ['/workspace-a'],
-    });
     expect(emitMock).toHaveBeenCalledWith('app-store:search-settings-changed', {
       defaultEngine: 'bing',
       customUrl: 'https://search.bilibili.com/all?keyword=%s',

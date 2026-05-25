@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { cleanup, render, waitFor } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
-  AI_SETTINGS_SYNC_EVENT,
   LANGUAGE_SYNC_EVENT,
   PROJECT_ROOT_SYNC_EVENT,
   SEARCH_SETTINGS_SYNC_EVENT,
@@ -11,6 +10,7 @@ import {
 
 const {
   listenMock,
+  emitMock,
   listeners,
   unlistenFns,
   changeLanguageMock,
@@ -47,6 +47,7 @@ const {
   return {
     listeners,
     unlistenFns,
+    emitMock: vi.fn(),
     listenMock: vi.fn(async (event: string, handler: (event: { payload: any }) => void) => {
       listeners.set(event, handler);
       const unlisten = vi.fn();
@@ -64,6 +65,7 @@ const {
 
 vi.mock('@tauri-apps/api/event', () => ({
   listen: listenMock,
+  emit: emitMock,
 }));
 
 vi.mock('@/store/useAppStore', () => ({
@@ -86,11 +88,15 @@ vi.mock('@/i18n/config', () => ({
 }));
 
 type UseCrossWindowAppStoreSync = typeof import('@/lib/hooks/useCrossWindowAppStoreSync')['useCrossWindowAppStoreSync'];
+type BroadcastProjectRootSync = typeof import('@/lib/appStoreEvents')['broadcastProjectRootSync'];
 
 let useCrossWindowAppStoreSyncFn: UseCrossWindowAppStoreSync | undefined;
+let broadcastProjectRootSyncFn: BroadcastProjectRootSync | undefined;
 
 async function importFreshHook(): Promise<UseCrossWindowAppStoreSync> {
   vi.resetModules();
+  const events = await import('@/lib/appStoreEvents');
+  broadcastProjectRootSyncFn = events.broadcastProjectRootSync;
   const mod = await import('@/lib/hooks/useCrossWindowAppStoreSync');
   return mod.useCrossWindowAppStoreSync;
 }
@@ -103,6 +109,7 @@ function Harness() {
 describe('useCrossWindowAppStoreSync', () => {
   beforeEach(() => {
     listenMock.mockClear();
+    emitMock.mockClear();
     useAppStoreSetStateMock.mockClear();
     changeLanguageMock.mockClear();
     listeners.clear();
@@ -110,6 +117,7 @@ describe('useCrossWindowAppStoreSync', () => {
     useContextStoreState.projectRoot = '/repo';
     useContextStoreState.setProjectRoot.mockClear();
     useCrossWindowAppStoreSyncFn = undefined;
+    broadcastProjectRootSyncFn = undefined;
   });
 
   afterEach(() => {
@@ -121,30 +129,7 @@ describe('useCrossWindowAppStoreSync', () => {
 
     render(<Harness />);
 
-    await waitFor(() => expect(listenMock).toHaveBeenCalledTimes(5));
-
-    listeners.get(AI_SETTINGS_SYNC_EVENT)?.({
-      payload: {
-        aiConfig: useAppStoreState.aiConfig,
-        savedProviderSettings: useAppStoreState.savedProviderSettings,
-      },
-    });
-    expect(useAppStoreSetStateMock).not.toHaveBeenCalled();
-
-    listeners.get(AI_SETTINGS_SYNC_EVENT)?.({
-      payload: {
-        aiConfig: {
-          ...useAppStoreState.aiConfig,
-          modelId: 'gpt-4.1-mini',
-        },
-        savedProviderSettings: useAppStoreState.savedProviderSettings,
-      },
-    });
-    expect(useAppStoreSetStateMock).toHaveBeenCalledWith(
-      expect.objectContaining({
-        aiConfig: expect.objectContaining({ modelId: 'gpt-4.1-mini' }),
-      })
-    );
+    await waitFor(() => expect(listenMock).toHaveBeenCalledTimes(4));
 
     listeners.get(PROJECT_ROOT_SYNC_EVENT)?.({
       payload: {
@@ -167,6 +152,24 @@ describe('useCrossWindowAppStoreSync', () => {
       })
     );
     expect(useContextStoreState.setProjectRoot).toHaveBeenCalledWith('/repo-next');
+
+    useAppStoreSetStateMock.mockClear();
+    useContextStoreState.setProjectRoot.mockClear();
+    broadcastProjectRootSyncFn?.({
+      projectRoot: '/repo-local',
+      recentProjectRoots: ['/repo-local', '/repo-next', '/repo'],
+    });
+    expect(useAppStoreSetStateMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        projectRoot: '/repo-local',
+        recentProjectRoots: ['/repo-local', '/repo-next', '/repo'],
+      })
+    );
+    expect(useContextStoreState.setProjectRoot).toHaveBeenCalledWith('/repo-local');
+    expect(emitMock).toHaveBeenCalledWith('app-store:project-root-changed', {
+      projectRoot: '/repo-local',
+      recentProjectRoots: ['/repo-local', '/repo-next', '/repo'],
+    });
 
     listeners.get(LANGUAGE_SYNC_EVENT)?.({
       payload: { language: 'zh' },
@@ -218,7 +221,7 @@ describe('useCrossWindowAppStoreSync', () => {
 
     cleanup();
     await waitFor(() => {
-      expect(unlistenFns).toHaveLength(5);
+      expect(unlistenFns).toHaveLength(4);
       expect(unlistenFns.every((fn) => fn.mock.calls.length === 1)).toBe(true);
     });
   });

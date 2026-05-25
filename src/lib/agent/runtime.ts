@@ -22,6 +22,8 @@ const DEFAULT_MAX_RUNTIME_MS = 8 * 60 * 1000;
 const MAX_IDENTICAL_TOOL_OUTCOME_STREAK = 4;
 const HARD_MAX_TOOL_ROUNDS = 512;
 const MAX_EMPTY_FINAL_RESPONSE_RETRIES = 2;
+const EMPTY_FINAL_RESPONSE_RECENT_MESSAGE_LIMIT = 24;
+const EMPTY_FINAL_RESPONSE_TOOL_CONTENT_LIMIT = 6_000;
 const DEFAULT_AGENT_SYSTEM_PROMPT =
   `You are CtxRun, a coding-focused assistant with tool access.
 
@@ -159,6 +161,68 @@ function appendSystemPrompt(messages: ChatRequestMessage[], systemPrompt?: strin
 function compactValue(value: string, maxChars: number): string {
   if (value.length <= maxChars) return value;
   return `${value.slice(0, Math.max(0, maxChars - 1))}…`;
+}
+
+function compactToolMessageContent(content: ChatRequestMessage['content']): ChatRequestMessage['content'] {
+  if (typeof content === 'string') {
+    return compactValue(content, EMPTY_FINAL_RESPONSE_TOOL_CONTENT_LIMIT);
+  }
+
+  return content.map((part) => {
+    if (part.type !== 'text') {
+      return part;
+    }
+
+    return {
+      ...part,
+      text: compactValue(part.text, EMPTY_FINAL_RESPONSE_TOOL_CONTENT_LIMIT),
+    };
+  });
+}
+
+function compactRecoveryMessage(message: ChatRequestMessage): ChatRequestMessage {
+  if (message.role !== 'tool') {
+    return { ...message };
+  }
+
+  return {
+    ...message,
+    content: compactToolMessageContent(message.content),
+  };
+}
+
+export function buildFinalResponseRecoveryMessages(history: ChatRequestMessage[]): ChatRequestMessage[] {
+  const recentStart = Math.max(0, history.length - EMPTY_FINAL_RESPONSE_RECENT_MESSAGE_LIMIT);
+  const anchorIndexes: number[] = [];
+
+  history.forEach((message, index) => {
+    if (index >= recentStart) {
+      return;
+    }
+    if (message.role === 'system') {
+      anchorIndexes.push(index);
+    }
+  });
+
+  const firstUserIndex = history.findIndex((message, index) => index < recentStart && message.role === 'user');
+  if (firstUserIndex >= 0) {
+    anchorIndexes.push(firstUserIndex);
+  }
+
+  const orderedAnchorIndexes = Array.from(new Set(anchorIndexes)).sort((a, b) => a - b);
+  const recentMessages = history.slice(recentStart);
+  while (recentMessages[0]?.role === 'tool') {
+    recentMessages.shift();
+  }
+
+  return [
+    ...orderedAnchorIndexes.map((index) => compactRecoveryMessage(history[index])),
+    ...recentMessages.map(compactRecoveryMessage),
+    {
+      role: 'system',
+      content: EMPTY_FINAL_RESPONSE_RECOVERY_PROMPT,
+    },
+  ];
 }
 
 function stringifyForFingerprint(input: unknown): string {
@@ -394,13 +458,7 @@ export async function runAgentTurn(
           .map(toChatToolDefinition)
       : [];
     const completionMessages = forceFinalizeAnswer
-      ? [
-          ...history,
-          {
-            role: 'system' as const,
-            content: EMPTY_FINAL_RESPONSE_RECOVERY_PROMPT,
-          },
-        ]
+      ? buildFinalResponseRecoveryMessages(history)
       : history;
 
     let completion: ChatCompletionResult;

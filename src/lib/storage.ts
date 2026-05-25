@@ -44,6 +44,17 @@ function isValidJsonContent(content: string): boolean {
   }
 }
 
+function isMissingFileError(err: unknown): boolean {
+  const message = err instanceof Error ? err.message : String(err);
+  const normalized = message.toLowerCase();
+  return (
+    normalized.includes('not found') ||
+    normalized.includes('no such file') ||
+    normalized.includes('missing') ||
+    normalized.includes('cannot find')
+  );
+}
+
 function buildTempFileName(fileName: string): string {
   // Multiple windows persist the same stores concurrently, so a shared temp name
   // causes one window to rename away the other's temp file on Windows.
@@ -164,21 +175,32 @@ export const fileStorage = {
 
     const fileName = `${name}.json`;
     try {
-      if (await hasFile(fileName)) {
-        await remove(fileName, BASE_DIR_OPT);
-      }
       const backupFileName = `${fileName}${BACKUP_SUFFIX}`;
-      const tempFileNames = [
+      const candidateFileNames = Array.from(new Set([
+        fileName,
         buildLegacyTempFileName(fileName),
         buildTempFileName(fileName),
-      ];
-      for (const tempFileName of new Set(tempFileNames)) {
-        if (await hasFile(tempFileName)) {
-          await remove(tempFileName, BASE_DIR_OPT);
+        backupFileName,
+      ]));
+
+      const existingFileNames = (
+        await Promise.all(
+          candidateFileNames.map(async (candidateFileName) =>
+            (await hasFile(candidateFileName)) ? candidateFileName : null
+          )
+        )
+      ).filter((candidateFileName): candidateFileName is string => candidateFileName !== null);
+
+      const results = await Promise.allSettled(
+        existingFileNames.map(async (candidateFileName) => {
+          await remove(candidateFileName, BASE_DIR_OPT);
+        })
+      );
+
+      for (const result of results) {
+        if (result.status === 'rejected' && !isMissingFileError(result.reason)) {
+          throw result.reason;
         }
-      }
-      if (await hasFile(backupFileName)) {
-        await remove(backupFileName, BASE_DIR_OPT);
       }
     } catch (err) {
       logStorageError('remove', fileName, err);
@@ -205,14 +227,10 @@ export const fileStorage = {
         return;
       }
 
-      try {
-        await fileStorage.packs.ensureDir();
-        await enqueueWrite(`${PACKS_SUBDIR}/${filename}`, async () => {
-          await atomicWriteTextFile(`${PACKS_SUBDIR}/${filename}`, content);
-        });
-      } catch (e) {
-        throw e;
-      }
+      await fileStorage.packs.ensureDir();
+      await enqueueWrite(`${PACKS_SUBDIR}/${filename}`, async () => {
+        await atomicWriteTextFile(`${PACKS_SUBDIR}/${filename}`, content);
+      });
     },
 
     readPack: async (filename: string): Promise<string | null> => {

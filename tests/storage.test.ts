@@ -106,25 +106,44 @@ describe('fileStorage', () => {
     );
   });
 
-  it('removeItem removes only when target file exists', async () => {
-    existsMock
-      .mockResolvedValueOnce(true)
-      .mockResolvedValueOnce(false)
-      .mockResolvedValueOnce(false)
-      .mockResolvedValueOnce(false)
-      .mockResolvedValueOnce(false)
-      .mockResolvedValueOnce(false);
+  it('removeItem removes existing primary and related files', async () => {
+    existsMock.mockImplementation(async (path: string) =>
+      path === 'app-config.json' ||
+      path === 'app-config.json.bak' ||
+      /^app-config\.json\.[a-z0-9-]+\.tmp$/.test(path)
+    );
     removeMock.mockResolvedValue(undefined);
     const fileStorage = await importFreshStorage();
 
     await fileStorage.removeItem('app-config');
     await fileStorage.removeItem('missing');
 
-    expect(removeMock).toHaveBeenCalledTimes(1);
+    expect(removeMock).toHaveBeenCalledTimes(3);
     expect(removeMock).toHaveBeenCalledWith(
       'app-config.json',
       expect.objectContaining({ baseDir: 'AppLocalData' })
     );
+    expect(removeMock).toHaveBeenCalledWith(
+      'app-config.json.bak',
+      expect.objectContaining({ baseDir: 'AppLocalData' })
+    );
+    expect(removeMock).toHaveBeenCalledWith(
+      expect.stringMatching(/^app-config\.json\.[a-z0-9-]+\.tmp$/),
+      expect.objectContaining({ baseDir: 'AppLocalData' })
+    );
+  });
+
+  it('removeItem ignores files that disappear between exists and remove', async () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    existsMock.mockResolvedValue(true);
+    removeMock.mockRejectedValue(new Error('not found'));
+    const fileStorage = await importFreshStorage();
+
+    await fileStorage.removeItem('app-config');
+
+    expect(removeMock).toHaveBeenCalled();
+    expect(errorSpy).not.toHaveBeenCalled();
+    errorSpy.mockRestore();
   });
 
   it('packs listInstalled filters only json files', async () => {

@@ -2,10 +2,12 @@ import { useEffect } from 'react';
 import { listen } from '@tauri-apps/api/event';
 import i18n from '@/i18n/config';
 import {
+  consumeProjectRootSync,
   LANGUAGE_SYNC_EVENT,
   PROJECT_ROOT_SYNC_EVENT,
   SEARCH_SETTINGS_SYNC_EVENT,
   SPOTLIGHT_APPEARANCE_SYNC_EVENT,
+  subscribeProjectRootSync,
   type LanguageSyncPayload,
   type ProjectRootSyncPayload,
   type SearchSettingsSyncPayload,
@@ -36,26 +38,37 @@ function areSpotlightAppearanceEqual(
   );
 }
 
+function applyProjectRootSync(payload: ProjectRootSyncPayload): void {
+  const state = useAppStore.getState();
+  if (
+    state.projectRoot !== payload.projectRoot ||
+    !areStringArraysEqual(state.recentProjectRoots, payload.recentProjectRoots)
+  ) {
+    useAppStore.setState({
+      projectRoot: payload.projectRoot,
+      recentProjectRoots: payload.recentProjectRoots,
+    });
+  }
+
+  const contextState = useContextStore.getState();
+  if (contextState.projectRoot !== payload.projectRoot) {
+    void contextState.setProjectRoot(payload.projectRoot);
+  }
+}
+
 export function useCrossWindowAppStoreSync(): void {
   useEffect(() => {
+    const unsubscribeProjectRootSync = subscribeProjectRootSync(applyProjectRootSync);
+    const initialState = useAppStore.getState();
+    applyProjectRootSync({
+      projectRoot: initialState.projectRoot,
+      recentProjectRoots: initialState.recentProjectRoots,
+    });
+
     const projectRootUnlisten = listen<ProjectRootSyncPayload>(
       PROJECT_ROOT_SYNC_EVENT,
       ({ payload }) => {
-        const state = useAppStore.getState();
-        if (
-          state.projectRoot !== payload.projectRoot ||
-          !areStringArraysEqual(state.recentProjectRoots, payload.recentProjectRoots)
-        ) {
-          useAppStore.setState({
-            projectRoot: payload.projectRoot,
-            recentProjectRoots: payload.recentProjectRoots,
-          });
-        }
-
-        const contextState = useContextStore.getState();
-        if (contextState.projectRoot !== payload.projectRoot) {
-          void contextState.setProjectRoot(payload.projectRoot);
-        }
+        consumeProjectRootSync(payload);
       }
     );
 
@@ -91,6 +104,7 @@ export function useCrossWindowAppStoreSync(): void {
     );
 
     return () => {
+      unsubscribeProjectRootSync();
       projectRootUnlisten.then((unlisten) => unlisten());
       languageUnlisten.then((unlisten) => unlisten());
       searchSettingsUnlisten.then((unlisten) => unlisten());

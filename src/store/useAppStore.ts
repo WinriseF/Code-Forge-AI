@@ -13,8 +13,6 @@ import {
 } from '@/lib/appStoreEvents';
 import { fetchFromMirrors, MODEL_MIRROR_BASES } from '@/lib/network';
 import i18n from '@/i18n/config';
-import { isPeekWindow } from '@/lib/windowContext';
-import { useContextStore } from './useContextStore';
 import {
   DEFAULT_SPOTLIGHT_APPEARANCE,
   normalizeSpotlightAppearance,
@@ -237,11 +235,6 @@ export const useAppStore = create<AppState>()(
           };
         });
 
-        const contextState = useContextStore.getState();
-        if (contextState.projectRoot !== normalizedPath) {
-          void contextState.setProjectRoot(normalizedPath);
-        }
-
         const nextState = useAppStore.getState();
         broadcastProjectRootSync({
           projectRoot: nextState.projectRoot,
@@ -251,11 +244,6 @@ export const useAppStore = create<AppState>()(
       clearProjectRoot: () => {
         syncAgentWorkspaceRoot(null);
         set((state) => (state.projectRoot === null ? state : { projectRoot: null }));
-
-        const contextState = useContextStore.getState();
-        if (contextState.projectRoot !== null) {
-          void contextState.setProjectRoot(null);
-        }
 
         const nextState = useAppStore.getState();
         broadcastProjectRootSync({
@@ -367,10 +355,7 @@ export const useAppStore = create<AppState>()(
           i18n.changeLanguage(state.language);
           broadcastLanguageSync({ language: state.language });
         }
-        // Keep context store in sync after persisted app root is restored.
-        if (state?.projectRoot && !isPeekWindow()) {
-          void useContextStore.getState().setProjectRoot(state.projectRoot);
-        }
+        syncAgentWorkspaceRoot(state?.projectRoot ?? null);
       },
       partialize: (state) => ({
         theme: state.theme,
