@@ -2,12 +2,12 @@ import os
 import json
 import csv
 import uuid
-import time
 import re
 import requests
 import sys
 import subprocess
 import platform
+import hashlib
 
 try:
     csv.field_size_limit(sys.maxsize)
@@ -213,17 +213,22 @@ CATEGORY_MAP = {
     ],
 }
 
-
-def get_current_timestamp():
-    return int(time.time() * 1000)
-
-
-def generate_uuid():
-    return str(uuid.uuid4())
+STABLE_PROMPT_TIMESTAMP = 1704067200000
 
 
 def generate_stable_uuid(seed):
     return str(uuid.uuid5(uuid.NAMESPACE_URL, seed))
+
+
+def generate_prompt_stable_seed(config, item, final_content):
+    source = config.get("source", "official")
+    external_id = item.get("external_id")
+
+    if external_id:
+        return f"{source}:{config['lang']}:{external_id}"
+
+    content_hash = hashlib.sha256(final_content.encode("utf-8")).hexdigest()[:16]
+    return f"{source}:{config['lang']}:{item['act']}:{content_hash}"
 
 
 def unique_list(items):
@@ -493,7 +498,6 @@ def process_source(key, config):
 
     final_prompts = []
     is_external_pack = config['format'] in ['markdown_prompt_readme', 'youmind_prompt_api']
-    now = get_current_timestamp()
 
     for item in prompts:
         title = item['act']
@@ -519,17 +523,8 @@ def process_source(key, config):
 
         prompt_tags = unique_list([config['lang'], *config.get('tags', []), group.lower()])
 
-        if config['format'] == 'youmind_prompt_api':
-            stable_seed = f"{config.get('source')}:{config['lang']}:{item.get('external_id') or title}"
-            prompt_id = generate_stable_uuid(stable_seed)
-        elif config['format'] == 'markdown_prompt_readme':
-            stable_seed = (
-                f"{config.get('source')}:{config['lang']}:"
-                f"{item.get('external_id') or title}:{final_content[:240]}"
-            )
-            prompt_id = generate_stable_uuid(stable_seed)
-        else:
-            prompt_id = generate_uuid()
+        stable_seed = generate_prompt_stable_seed(config, item, final_content)
+        prompt_id = generate_stable_uuid(stable_seed)
 
         prompt_obj = {
             "id": prompt_id,
@@ -540,8 +535,8 @@ def process_source(key, config):
             "description": item_description or f"{title} - AI Prompt",
             "tags": prompt_tags,
             "isFavorite": False,
-            "createdAt": now,
-            "updatedAt": now,
+            "createdAt": STABLE_PROMPT_TIMESTAMP,
+            "updatedAt": STABLE_PROMPT_TIMESTAMP,
             "source": config.get("source", "official"),
         }
 

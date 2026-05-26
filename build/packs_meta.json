@@ -1,6 +1,46 @@
 {
+  "packs/prompts/en/roles.json": {
+    "name": "ChatGPT Role Prompts",
+    "description": "Curated role-play prompts for ChatGPT and general LLM workflows."
+  },
+  "packs/prompts/zh/roles.json": {
+    "name": "中文角色扮演提示词精选",
+    "description": "适用于 ChatGPT 和通用大语言模型的中文角色扮演提示词合集。"
+  },
+  "packs/prompts/en/image2.json": {
+    "name": "GPT Image 2 Prompt Collection",
+    "description": "Prompt collection for GPT Image 2 image-generation workflows."
+  },
+  "packs/prompts/zh/image2.json": {
+    "name": "GPT Image 2 图像提示词精选",
+    "description": "适用于 GPT Image 2 图像生成工作流的提示词合集。"
+  },
+  "packs/prompts/en/seedance2.json": {
+    "name": "Seedance 2.0 Video Prompt Collection",
+    "description": "Prompt collection for Seedance 2.0 video-generation workflows."
+  },
+  "packs/prompts/zh/seedance2.json": {
+    "name": "Seedance 2.0 视频提示词精选",
+    "description": "适用于 Seedance 2.0 视频生成工作流的提示词合集。"
+  },
+  "packs/prompts/en/gemini3.json": {
+    "name": "Gemini 3 Prompt Collection",
+    "description": "Prompt collection for Gemini 3 multimodal and LLM workflows."
+  },
+  "packs/prompts/zh/gemini3.json": {
+    "name": "Gemini 3 提示词精选",
+    "description": "适用于 Gemini 3 多模态和大语言模型工作流的提示词合集。"
+  },
+  "packs/prompts/en/nano-banana-pro.json": {
+    "name": "Nano Banana Pro Image Prompt Collection",
+    "description": "Prompt collection for Nano Banana Pro image-generation workflows."
+  },
+  "packs/prompts/zh/nano-banana-pro.json": {
+    "name": "Nano Banana Pro 图像提示词精选",
+    "description": "适用于 Nano Banana Pro 图像生成工作流的提示词合集。"
+  },
   "packs/prompts/zh/code.json": {
-    "name": "编程精选",
-    "description": "编程相关的高质量 Prompt"
+    "name": "编程提示词精选",
+    "description": "编程、开发和代码辅助场景的高质量提示词合集。"
   }
 }
