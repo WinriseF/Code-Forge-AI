@@ -177813,7 +177813,7 @@
     "id": "tldr-en-common-jf-2",
     "type": "command",
     "title": "jf - Search for artifacts within the given repository and directory",
-    "content": "jf rt search --recursive {{repostiory_name}}/{{path}}/",
+    "content": "jf rt search --recursive {{repository_name}}/{{path}}/",
     "group": "Common Tools",
     "description": "jf: Interact with JFrog products like Artifactory, Xray, Distribution, Pipelines, and Mission Control. (Search for artifacts within the given repository and directory)",
     "tags": [
