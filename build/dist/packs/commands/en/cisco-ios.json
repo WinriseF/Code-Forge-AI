@@ -1,89 +1,224 @@
 [
   {
-    "id": "tldr-en-cisco-ios-question-mark-0",
+    "id": "tldr-en-cisco-ios-ip-0",
     "type": "command",
-    "title": "question-mark - Get available commands",
-    "content": "?",
+    "title": "ip - Set the SSH version",
+    "content": "ip ssh version {{2}}",
     "group": "Cisco-Ios",
-    "description": "question-mark: Get context sensitive. (Get available commands)",
+    "description": "ip: Manage IP configurations. Accessed in configuration mode. (Set the SSH version)",
     "tags": [
       "cisco-ios",
-      "question-mark",
+      "ip",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-cisco-ios-question-mark-1",
+    "id": "tldr-en-cisco-ios-ip-1",
     "type": "command",
-    "title": "question-mark - Get storages that are listable",
-    "content": "dir ?",
+    "title": "ip - Set the address of the device (This is done under `interface command`)",
+    "content": "ip address {{10.0.0.1}} {{255.255.255.0}}",
     "group": "Cisco-Ios",
-    "description": "question-mark: Get context sensitive. (Get storages that are listable)",
+    "description": "ip: Manage IP configurations. Accessed in configuration mode. (Set the address of the device (This is done under `interface command`))",
     "tags": [
       "cisco-ios",
-      "question-mark",
+      "ip",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-cisco-ios-question-mark-2",
+    "id": "tldr-en-cisco-ios-ip-2",
     "type": "command",
-    "title": "question-mark - Show what IP information is viewable",
-    "content": "ip show ?",
+    "title": "ip - Set the address to be determined with DHCP (This is done under `interface command`)",
+    "content": "ip address dhcp",
     "group": "Cisco-Ios",
-    "description": "question-mark: Get context sensitive. (Show what IP information is viewable)",
+    "description": "ip: Manage IP configurations. Accessed in configuration mode. (Set the address to be determined with DHCP (This is done under `interface command`))",
     "tags": [
       "cisco-ios",
-      "question-mark",
+      "ip",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-cisco-ios-write-0",
+    "id": "tldr-en-cisco-ios-ip-3",
     "type": "command",
-    "title": "write - Write current configuration to memory",
-    "content": "write memory",
+    "title": "ip - Define a domain name",
+    "content": "ip domain-name {{example.com}}",
     "group": "Cisco-Ios",
-    "description": "write: Write data to memory. (Write current configuration to memory)",
+    "description": "ip: Manage IP configurations. Accessed in configuration mode. (Define a domain name)",
     "tags": [
       "cisco-ios",
-      "write",
+      "ip",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-cisco-ios-write-1",
+    "id": "tldr-en-cisco-ios-username-0",
     "type": "command",
-    "title": "write - Delete the configuration in memory",
-    "content": "write erase",
+    "title": "username - Set up an admin account",
+    "content": "username {{admin}} privilege 15 secret {{password}}",
     "group": "Cisco-Ios",
-    "description": "write: Write data to memory. (Delete the configuration in memory)",
+    "description": "username: Manage users. Accessed in configuration mode. (Set up an admin account)",
     "tags": [
       "cisco-ios",
-      "write",
+      "username",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-cisco-ios-write-2",
+    "id": "tldr-en-cisco-ios-login-0",
     "type": "command",
-    "title": "write - Display help",
-    "content": "write ?",
+    "title": "login - Use local username and password for authentication",
+    "content": "login local",
     "group": "Cisco-Ios",
-    "description": "write: Write data to memory. (Display help)",
+    "description": "login: Manage console and virtual line authentication. Accessed in configuration mode under `line`. (Use local username and password for authentication)",
     "tags": [
       "cisco-ios",
-      "write",
+      "login",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-interface-0",
+    "type": "command",
+    "title": "interface - Configure a VLAN",
+    "content": "interface vlan {{1}}",
+    "group": "Cisco-Ios",
+    "description": "interface: Manage interfaces. Accessed in configuration mode. (Configure a VLAN)",
+    "tags": [
+      "cisco-ios",
+      "interface",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-interface-1",
+    "type": "command",
+    "title": "interface - Set an interface to be active or inactive (this is run inside the interface command)",
+    "content": "{{no shutdown|shutdown}}",
+    "group": "Cisco-Ios",
+    "description": "interface: Manage interfaces. Accessed in configuration mode. (Set an interface to be active or inactive (this is run inside the interface command))",
+    "tags": [
+      "cisco-ios",
+      "interface",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-transport-0",
+    "type": "command",
+    "title": "transport - Restrict line protocols to `ssh`",
+    "content": "transport input ssh",
+    "group": "Cisco-Ios",
+    "description": "transport: Manage line transport protocols. Accessed in configuration mode under `line`. (Restrict line protocols to `ssh`)",
+    "tags": [
+      "cisco-ios",
+      "transport",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-transport-1",
+    "type": "command",
+    "title": "transport - Restrict line protocols to `telnet`",
+    "content": "transport input telnet",
+    "group": "Cisco-Ios",
+    "description": "transport: Manage line transport protocols. Accessed in configuration mode under `line`. (Restrict line protocols to `telnet`)",
+    "tags": [
+      "cisco-ios",
+      "transport",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-configure-0",
+    "type": "command",
+    "title": "configure - Configure from the terminal",
+    "content": "{{[conf|configure]}} {{[t|terminal]}}",
+    "group": "Cisco-Ios",
+    "description": "configure: Enter configuration mode. (Configure from the terminal)",
+    "tags": [
+      "cisco-ios",
+      "configure",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-configure-1",
+    "type": "command",
+    "title": "configure - Back out one level in configuration mode",
+    "content": "exit",
+    "group": "Cisco-Ios",
+    "description": "configure: Enter configuration mode. (Back out one level in configuration mode)",
+    "tags": [
+      "cisco-ios",
+      "configure",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-configure-2",
+    "type": "command",
+    "title": "configure - Exit out of configuration mode",
+    "content": "end",
+    "group": "Cisco-Ios",
+    "description": "configure: Enter configuration mode. (Exit out of configuration mode)",
+    "tags": [
+      "cisco-ios",
+      "configure",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-line-0",
+    "type": "command",
+    "title": "line - Configure lines from 0 to 15",
+    "content": "line vty 0 15",
+    "group": "Cisco-Ios",
+    "description": "line: Manage lines. Accessed in configuration mode. (Configure lines from 0 to 15)",
+    "tags": [
+      "cisco-ios",
+      "line",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-enable-0",
+    "type": "command",
+    "title": "enable - Enter privileged execution mode",
+    "content": "enable",
+    "group": "Cisco-Ios",
+    "description": "enable: Enter privileged execution mode. (Enter privileged execution mode)",
+    "tags": [
+      "cisco-ios",
+      "enable",
       "tldr",
       "en"
     ],
@@ -165,30 +300,45 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-cisco-ios-enable-0",
+    "id": "tldr-en-cisco-ios-dir-0",
     "type": "command",
-    "title": "enable - Enter privileged execution mode",
-    "content": "enable",
+    "title": "dir - List files in the current working directory",
+    "content": "dir",
     "group": "Cisco-Ios",
-    "description": "enable: Enter privileged execution mode. (Enter privileged execution mode)",
+    "description": "dir: List files. (List files in the current working directory)",
     "tags": [
       "cisco-ios",
-      "enable",
+      "dir",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-cisco-ios-line-0",
+    "id": "tldr-en-cisco-ios-dir-1",
     "type": "command",
-    "title": "line - Configure lines from 0 to 15",
-    "content": "line vty 0 15",
+    "title": "dir - List files in a specific filesystem",
+    "content": "dir {{flash}}:",
     "group": "Cisco-Ios",
-    "description": "line: Manage lines. Accessed in configuration mode. (Configure lines from 0 to 15)",
+    "description": "dir: List files. (List files in a specific filesystem)",
     "tags": [
       "cisco-ios",
-      "line",
+      "dir",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-dir-2",
+    "type": "command",
+    "title": "dir - List available filesystems",
+    "content": "dir ?",
+    "group": "Cisco-Ios",
+    "description": "dir: List files. (List available filesystems)",
+    "tags": [
+      "cisco-ios",
+      "dir",
       "tldr",
       "en"
     ],
@@ -234,126 +384,6 @@
     "tags": [
       "cisco-ios",
       "reload",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-cisco-ios-transport-0",
-    "type": "command",
-    "title": "transport - Restrict line protocols to `ssh`",
-    "content": "transport input ssh",
-    "group": "Cisco-Ios",
-    "description": "transport: Manage line transport protocols. Accessed in configuration mode under `line`. (Restrict line protocols to `ssh`)",
-    "tags": [
-      "cisco-ios",
-      "transport",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-cisco-ios-transport-1",
-    "type": "command",
-    "title": "transport - Restrict line protocols to `telnet`",
-    "content": "transport input telnet",
-    "group": "Cisco-Ios",
-    "description": "transport: Manage line transport protocols. Accessed in configuration mode under `line`. (Restrict line protocols to `telnet`)",
-    "tags": [
-      "cisco-ios",
-      "transport",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-cisco-ios-interface-0",
-    "type": "command",
-    "title": "interface - Configure a VLAN",
-    "content": "interface vlan {{1}}",
-    "group": "Cisco-Ios",
-    "description": "interface: Manage interfaces. Accessed in configuration mode. (Configure a VLAN)",
-    "tags": [
-      "cisco-ios",
-      "interface",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-cisco-ios-interface-1",
-    "type": "command",
-    "title": "interface - Set an interface to be active or inactive (this is run inside the interface command)",
-    "content": "{{no shutdown|shutdown}}",
-    "group": "Cisco-Ios",
-    "description": "interface: Manage interfaces. Accessed in configuration mode. (Set an interface to be active or inactive (this is run inside the interface command))",
-    "tags": [
-      "cisco-ios",
-      "interface",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-cisco-ios-ip-0",
-    "type": "command",
-    "title": "ip - Set the SSH version",
-    "content": "ip ssh version {{2}}",
-    "group": "Cisco-Ios",
-    "description": "ip: Manage IP configurations. Accessed in configuration mode. (Set the SSH version)",
-    "tags": [
-      "cisco-ios",
-      "ip",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-cisco-ios-ip-1",
-    "type": "command",
-    "title": "ip - Set the address of the device (This is done under `interface command`)",
-    "content": "ip address {{10.0.0.1}} {{255.255.255.0}}",
-    "group": "Cisco-Ios",
-    "description": "ip: Manage IP configurations. Accessed in configuration mode. (Set the address of the device (This is done under `interface command`))",
-    "tags": [
-      "cisco-ios",
-      "ip",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-cisco-ios-ip-2",
-    "type": "command",
-    "title": "ip - Set the address to be determined with DHCP (This is done under `interface command`)",
-    "content": "ip address dhcp",
-    "group": "Cisco-Ios",
-    "description": "ip: Manage IP configurations. Accessed in configuration mode. (Set the address to be determined with DHCP (This is done under `interface command`))",
-    "tags": [
-      "cisco-ios",
-      "ip",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-cisco-ios-ip-3",
-    "type": "command",
-    "title": "ip - Define a domain name",
-    "content": "ip domain-name {{example.com}}",
-    "group": "Cisco-Ios",
-    "description": "ip: Manage IP configurations. Accessed in configuration mode. (Define a domain name)",
-    "tags": [
-      "cisco-ios",
-      "ip",
       "tldr",
       "en"
     ],
@@ -420,51 +450,6 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-cisco-ios-dir-0",
-    "type": "command",
-    "title": "dir - List files in the current working directory",
-    "content": "dir",
-    "group": "Cisco-Ios",
-    "description": "dir: List files. (List files in the current working directory)",
-    "tags": [
-      "cisco-ios",
-      "dir",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-cisco-ios-dir-1",
-    "type": "command",
-    "title": "dir - List files in a specific filesystem",
-    "content": "dir {{flash}}:",
-    "group": "Cisco-Ios",
-    "description": "dir: List files. (List files in a specific filesystem)",
-    "tags": [
-      "cisco-ios",
-      "dir",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-cisco-ios-dir-2",
-    "type": "command",
-    "title": "dir - List available filesystems",
-    "content": "dir ?",
-    "group": "Cisco-Ios",
-    "description": "dir: List files. (List available filesystems)",
-    "tags": [
-      "cisco-ios",
-      "dir",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-en-cisco-ios-delete-0",
     "type": "command",
     "title": "delete - Delete a file from flash memory",
@@ -480,15 +465,90 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-cisco-ios-username-0",
+    "id": "tldr-en-cisco-ios-write-0",
     "type": "command",
-    "title": "username - Set up an admin account",
-    "content": "username {{admin}} privilege 15 secret {{password}}",
+    "title": "write - Write current configuration to memory",
+    "content": "write memory",
     "group": "Cisco-Ios",
-    "description": "username: Manage users. Accessed in configuration mode. (Set up an admin account)",
+    "description": "write: Write data to memory. (Write current configuration to memory)",
     "tags": [
       "cisco-ios",
-      "username",
+      "write",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-write-1",
+    "type": "command",
+    "title": "write - Delete the configuration in memory",
+    "content": "write erase",
+    "group": "Cisco-Ios",
+    "description": "write: Write data to memory. (Delete the configuration in memory)",
+    "tags": [
+      "cisco-ios",
+      "write",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-write-2",
+    "type": "command",
+    "title": "write - Display help",
+    "content": "write ?",
+    "group": "Cisco-Ios",
+    "description": "write: Write data to memory. (Display help)",
+    "tags": [
+      "cisco-ios",
+      "write",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-question-mark-0",
+    "type": "command",
+    "title": "question-mark - Get available commands",
+    "content": "?",
+    "group": "Cisco-Ios",
+    "description": "question-mark: Get context sensitive. (Get available commands)",
+    "tags": [
+      "cisco-ios",
+      "question-mark",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-question-mark-1",
+    "type": "command",
+    "title": "question-mark - Get storages that are listable",
+    "content": "dir ?",
+    "group": "Cisco-Ios",
+    "description": "question-mark: Get context sensitive. (Get storages that are listable)",
+    "tags": [
+      "cisco-ios",
+      "question-mark",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-cisco-ios-question-mark-2",
+    "type": "command",
+    "title": "question-mark - Show what IP information is viewable",
+    "content": "ip show ?",
+    "group": "Cisco-Ios",
+    "description": "question-mark: Get context sensitive. (Show what IP information is viewable)",
+    "tags": [
+      "cisco-ios",
+      "question-mark",
       "tldr",
       "en"
     ],
@@ -564,66 +624,6 @@
     "tags": [
       "cisco-ios",
       "crypto",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-cisco-ios-configure-0",
-    "type": "command",
-    "title": "configure - Configure from the terminal",
-    "content": "{{[conf|configure]}} {{[t|terminal]}}",
-    "group": "Cisco-Ios",
-    "description": "configure: Enter configuration mode. (Configure from the terminal)",
-    "tags": [
-      "cisco-ios",
-      "configure",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-cisco-ios-configure-1",
-    "type": "command",
-    "title": "configure - Back out one level in configuration mode",
-    "content": "exit",
-    "group": "Cisco-Ios",
-    "description": "configure: Enter configuration mode. (Back out one level in configuration mode)",
-    "tags": [
-      "cisco-ios",
-      "configure",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-cisco-ios-configure-2",
-    "type": "command",
-    "title": "configure - Exit out of configuration mode",
-    "content": "end",
-    "group": "Cisco-Ios",
-    "description": "configure: Enter configuration mode. (Exit out of configuration mode)",
-    "tags": [
-      "cisco-ios",
-      "configure",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-cisco-ios-login-0",
-    "type": "command",
-    "title": "login - Use local username and password for authentication",
-    "content": "login local",
-    "group": "Cisco-Ios",
-    "description": "login: Manage console and virtual line authentication. Accessed in configuration mode under `line`. (Use local username and password for authentication)",
-    "tags": [
-      "cisco-ios",
-      "login",
       "tldr",
       "en"
     ],

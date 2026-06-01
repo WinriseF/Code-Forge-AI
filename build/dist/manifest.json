@@ -1,5 +1,5 @@
 {
-  "updated_at": 1779772319564,
+  "updated_at": 1780286169388,
   "version": "2.1.0",
   "packages": [
     {
@@ -8,8 +8,8 @@
       "platform": "llm",
       "name": "ChatGPT Role Prompts",
       "description": "Curated role-play prompts for ChatGPT and general LLM workflows.",
-      "count": 1836,
-      "size_kb": 5368.91,
+      "count": 1844,
+      "size_kb": 5376.81,
       "url": "packs/prompts/en/roles.json",
       "category": "prompt"
     },
@@ -25,14 +25,47 @@
       "category": "prompt"
     },
     {
-      "id": "zh-sunos",
+      "id": "zh-freebsd",
       "language": "zh",
-      "platform": "sunos",
-      "name": "SunOS (ZH)",
-      "description": "Contains 3 zh commands for sunos.",
-      "count": 3,
+      "platform": "freebsd",
+      "name": "Freebsd (ZH)",
+      "description": "Contains 5 zh commands for freebsd.",
+      "count": 5,
+      "size_kb": 2,
+      "url": "packs/commands/zh/freebsd.json",
+      "category": "command"
+    },
+    {
+      "id": "zh-linux",
+      "language": "zh",
+      "platform": "linux",
+      "name": "Linux 运维 (ZH)",
+      "description": "Contains 778 zh commands for linux.",
+      "count": 778,
+      "size_kb": 350,
+      "url": "packs/commands/zh/linux.json",
+      "category": "command"
+    },
+    {
+      "id": "zh-netbsd",
+      "language": "zh",
+      "platform": "netbsd",
+      "name": "Netbsd (ZH)",
+      "description": "Contains 2 zh commands for netbsd.",
+      "count": 2,
       "size_kb": 1,
-      "url": "packs/commands/zh/sunos.json",
+      "url": "packs/commands/zh/netbsd.json",
+      "category": "command"
+    },
+    {
+      "id": "zh-windows",
+      "language": "zh",
+      "platform": "windows",
+      "name": "Windows (ZH)",
+      "description": "Contains 426 zh commands for windows.",
+      "count": 426,
+      "size_kb": 184,
+      "url": "packs/commands/zh/windows.json",
       "category": "command"
     },
     {
@@ -47,14 +80,14 @@
       "category": "command"
     },
     {
-      "id": "zh-freebsd",
+      "id": "zh-android",
       "language": "zh",
-      "platform": "freebsd",
-      "name": "Freebsd (ZH)",
-      "description": "Contains 5 zh commands for freebsd.",
-      "count": 5,
-      "size_kb": 2,
-      "url": "packs/commands/zh/freebsd.json",
+      "platform": "android",
+      "name": "Android 开发 (ZH)",
+      "description": "Contains 54 zh commands for android.",
+      "count": 54,
+      "size_kb": 23,
+      "url": "packs/commands/zh/android.json",
       "category": "command"
     },
     {
@@ -62,8 +95,8 @@
       "language": "zh",
       "platform": "osx",
       "name": "macOS (ZH)",
-      "description": "Contains 458 zh commands for osx.",
-      "count": 458,
+      "description": "Contains 459 zh commands for osx.",
+      "count": 459,
       "size_kb": 194,
       "url": "packs/commands/zh/osx.json",
       "category": "command"
@@ -80,80 +113,25 @@
       "category": "command"
     },
     {
+      "id": "zh-sunos",
+      "language": "zh",
+      "platform": "sunos",
+      "name": "SunOS (ZH)",
+      "description": "Contains 3 zh commands for sunos.",
+      "count": 3,
+      "size_kb": 1,
+      "url": "packs/commands/zh/sunos.json",
+      "category": "command"
+    },
+    {
       "id": "zh-common",
       "language": "zh",
       "platform": "common",
       "name": "通用工具 (Common) (ZH)",
-      "description": "Contains 3688 zh commands for common.",
-      "count": 3688,
-      "size_kb": 1801,
+      "description": "Contains 3690 zh commands for common.",
+      "count": 3690,
+      "size_kb": 1802,
       "url": "packs/commands/zh/common.json",
-      "category": "command"
-    },
-    {
-      "id": "zh-linux",
-      "language": "zh",
-      "platform": "linux",
-      "name": "Linux 运维 (ZH)",
-      "description": "Contains 777 zh commands for linux.",
-      "count": 777,
-      "size_kb": 350,
-      "url": "packs/commands/zh/linux.json",
-      "category": "command"
-    },
-    {
-      "id": "zh-windows",
-      "language": "zh",
-      "platform": "windows",
-      "name": "Windows (ZH)",
-      "description": "Contains 426 zh commands for windows.",
-      "count": 426,
-      "size_kb": 184,
-      "url": "packs/commands/zh/windows.json",
-      "category": "command"
-    },
-    {
-      "id": "zh-android",
-      "language": "zh",
-      "platform": "android",
-      "name": "Android 开发 (ZH)",
-      "description": "Contains 54 zh commands for android.",
-      "count": 54,
-      "size_kb": 23,
-      "url": "packs/commands/zh/android.json",
-      "category": "command"
-    },
-    {
-      "id": "zh-netbsd",
-      "language": "zh",
-      "platform": "netbsd",
-      "name": "Netbsd (ZH)",
-      "description": "Contains 2 zh commands for netbsd.",
-      "count": 2,
-      "size_kb": 1,
-      "url": "packs/commands/zh/netbsd.json",
-      "category": "command"
-    },
-    {
-      "id": "en-sunos",
-      "language": "en",
-      "platform": "sunos",
-      "name": "SunOS (EN)",
-      "description": "Contains 49 en commands for sunos.",
-      "count": 49,
-      "size_kb": 21,
-      "url": "packs/commands/en/sunos.json",
-      "category": "command"
-    },
-    {
-      "id": "en-dos",
-      "language": "en",
-      "platform": "dos",
-      "name": "Dos (EN)",
-      "description": "Contains 64 en commands for dos.",
-      "count": 64,
-      "size_kb": 24,
-      "url": "packs/commands/en/dos.json",
       "category": "command"
     },
     {
@@ -168,80 +146,14 @@
       "category": "command"
     },
     {
-      "id": "en-osx",
-      "language": "en",
-      "platform": "osx",
-      "name": "macOS (EN)",
-      "description": "Contains 958 en commands for osx.",
-      "count": 958,
-      "size_kb": 424,
-      "url": "packs/commands/en/osx.json",
-      "category": "command"
-    },
-    {
-      "id": "en-cisco-ios",
-      "language": "en",
-      "platform": "cisco-ios",
-      "name": "Cisco-Ios (EN)",
-      "description": "Contains 42 en commands for cisco-ios.",
-      "count": 42,
-      "size_kb": 17,
-      "url": "packs/commands/en/cisco-ios.json",
-      "category": "command"
-    },
-    {
-      "id": "en-openbsd",
-      "language": "en",
-      "platform": "openbsd",
-      "name": "Openbsd (EN)",
-      "description": "Contains 36 en commands for openbsd.",
-      "count": 36,
-      "size_kb": 16,
-      "url": "packs/commands/en/openbsd.json",
-      "category": "command"
-    },
-    {
-      "id": "en-common",
-      "language": "en",
-      "platform": "common",
-      "name": "Common Tools (EN)",
-      "description": "Contains 20595 en commands for common.",
-      "count": 20595,
-      "size_kb": 9975,
-      "url": "packs/commands/en/common.json",
-      "category": "command"
-    },
-    {
       "id": "en-linux",
       "language": "en",
       "platform": "linux",
       "name": "Linux Ops (EN)",
-      "description": "Contains 8060 en commands for linux.",
-      "count": 8060,
-      "size_kb": 3811,
+      "description": "Contains 8180 en commands for linux.",
+      "count": 8180,
+      "size_kb": 3862,
       "url": "packs/commands/en/linux.json",
-      "category": "command"
-    },
-    {
-      "id": "en-windows",
-      "language": "en",
-      "platform": "windows",
-      "name": "Windows (EN)",
-      "description": "Contains 1108 en commands for windows.",
-      "count": 1108,
-      "size_kb": 543,
-      "url": "packs/commands/en/windows.json",
-      "category": "command"
-    },
-    {
-      "id": "en-android",
-      "language": "en",
-      "platform": "android",
-      "name": "Android Dev (EN)",
-      "description": "Contains 57 en commands for android.",
-      "count": 57,
-      "size_kb": 25,
-      "url": "packs/commands/en/android.json",
       "category": "command"
     },
     {
@@ -256,58 +168,102 @@
       "category": "command"
     },
     {
-      "id": "custom-prompt-en-nano-banana-pro",
+      "id": "en-windows",
       "language": "en",
-      "platform": "custom",
-      "name": "Nano Banana Pro Image Prompt Collection",
-      "description": "Prompt collection for Nano Banana Pro image-generation workflows.",
-      "count": 13483,
-      "size_kb": 38811.7,
-      "url": "packs/prompts/en/nano-banana-pro.json",
-      "category": "prompt"
+      "platform": "windows",
+      "name": "Windows (EN)",
+      "description": "Contains 1108 en commands for windows.",
+      "count": 1108,
+      "size_kb": 543,
+      "url": "packs/commands/en/windows.json",
+      "category": "command"
     },
     {
-      "id": "custom-prompt-en-gemini3",
+      "id": "en-dos",
       "language": "en",
-      "platform": "custom",
-      "name": "Gemini 3 Prompt Collection",
-      "description": "Prompt collection for Gemini 3 multimodal and LLM workflows.",
+      "platform": "dos",
+      "name": "Dos (EN)",
+      "description": "Contains 64 en commands for dos.",
+      "count": 64,
+      "size_kb": 24,
+      "url": "packs/commands/en/dos.json",
+      "category": "command"
+    },
+    {
+      "id": "en-android",
+      "language": "en",
+      "platform": "android",
+      "name": "Android Dev (EN)",
+      "description": "Contains 57 en commands for android.",
+      "count": 57,
+      "size_kb": 25,
+      "url": "packs/commands/en/android.json",
+      "category": "command"
+    },
+    {
+      "id": "en-osx",
+      "language": "en",
+      "platform": "osx",
+      "name": "macOS (EN)",
+      "description": "Contains 958 en commands for osx.",
+      "count": 958,
+      "size_kb": 424,
+      "url": "packs/commands/en/osx.json",
+      "category": "command"
+    },
+    {
+      "id": "en-openbsd",
+      "language": "en",
+      "platform": "openbsd",
+      "name": "Openbsd (EN)",
+      "description": "Contains 36 en commands for openbsd.",
+      "count": 36,
+      "size_kb": 16,
+      "url": "packs/commands/en/openbsd.json",
+      "category": "command"
+    },
+    {
+      "id": "en-sunos",
+      "language": "en",
+      "platform": "sunos",
+      "name": "SunOS (EN)",
+      "description": "Contains 49 en commands for sunos.",
       "count": 49,
-      "size_kb": 75.41,
-      "url": "packs/prompts/en/gemini3.json",
-      "category": "prompt"
+      "size_kb": 21,
+      "url": "packs/commands/en/sunos.json",
+      "category": "command"
     },
     {
-      "id": "custom-prompt-en-seedance2",
+      "id": "en-cisco-ios",
       "language": "en",
-      "platform": "custom",
-      "name": "Seedance 2.0 Video Prompt Collection",
-      "description": "Prompt collection for Seedance 2.0 video-generation workflows.",
-      "count": 3031,
-      "size_kb": 8963.24,
-      "url": "packs/prompts/en/seedance2.json",
-      "category": "prompt"
+      "platform": "cisco-ios",
+      "name": "Cisco-Ios (EN)",
+      "description": "Contains 42 en commands for cisco-ios.",
+      "count": 42,
+      "size_kb": 17,
+      "url": "packs/commands/en/cisco-ios.json",
+      "category": "command"
     },
     {
-      "id": "custom-prompt-en-image2",
+      "id": "en-common",
       "language": "en",
-      "platform": "custom",
-      "name": "GPT Image 2 Prompt Collection",
-      "description": "Prompt collection for GPT Image 2 image-generation workflows.",
-      "count": 6456,
-      "size_kb": 19615.25,
-      "url": "packs/prompts/en/image2.json",
-      "category": "prompt"
+      "platform": "common",
+      "name": "Common Tools (EN)",
+      "description": "Contains 20620 en commands for common.",
+      "count": 20620,
+      "size_kb": 9987,
+      "url": "packs/commands/en/common.json",
+      "category": "command"
     },
     {
-      "id": "custom-prompt-zh-nano-banana-pro",
+      "id": "custom-prompt-zh-image2",
       "language": "zh",
       "platform": "custom",
-      "name": "Nano Banana Pro 图像提示词精选",
-      "description": "适用于 Nano Banana Pro 图像生成工作流的提示词合集。",
-      "count": 13491,
-      "size_kb": 38107.16,
-      "url": "packs/prompts/zh/nano-banana-pro.json",
+      "name": "GPT Image 2 图像提示词精选",
+      "description": "适用于 GPT Image 2 图像生成工作流的提示词合集。",
+      "count": 6456,
+      "size_kb": 19359.04,
+      "url": "packs/prompts/zh/image2.json",
       "category": "prompt"
     },
     {
@@ -333,14 +289,14 @@
       "category": "prompt"
     },
     {
-      "id": "custom-prompt-zh-image2",
+      "id": "custom-prompt-zh-nano-banana-pro",
       "language": "zh",
       "platform": "custom",
-      "name": "GPT Image 2 图像提示词精选",
-      "description": "适用于 GPT Image 2 图像生成工作流的提示词合集。",
-      "count": 6456,
-      "size_kb": 19359.04,
-      "url": "packs/prompts/zh/image2.json",
+      "name": "Nano Banana Pro 图像提示词精选",
+      "description": "适用于 Nano Banana Pro 图像生成工作流的提示词合集。",
+      "count": 13491,
+      "size_kb": 38107.16,
+      "url": "packs/prompts/zh/nano-banana-pro.json",
       "category": "prompt"
     },
     {
@@ -352,6 +308,50 @@
       "count": 27,
       "size_kb": 56.97,
       "url": "packs/prompts/zh/code.json",
+      "category": "prompt"
+    },
+    {
+      "id": "custom-prompt-en-image2",
+      "language": "en",
+      "platform": "custom",
+      "name": "GPT Image 2 Prompt Collection",
+      "description": "Prompt collection for GPT Image 2 image-generation workflows.",
+      "count": 6456,
+      "size_kb": 19615.25,
+      "url": "packs/prompts/en/image2.json",
+      "category": "prompt"
+    },
+    {
+      "id": "custom-prompt-en-gemini3",
+      "language": "en",
+      "platform": "custom",
+      "name": "Gemini 3 Prompt Collection",
+      "description": "Prompt collection for Gemini 3 multimodal and LLM workflows.",
+      "count": 49,
+      "size_kb": 75.41,
+      "url": "packs/prompts/en/gemini3.json",
+      "category": "prompt"
+    },
+    {
+      "id": "custom-prompt-en-seedance2",
+      "language": "en",
+      "platform": "custom",
+      "name": "Seedance 2.0 Video Prompt Collection",
+      "description": "Prompt collection for Seedance 2.0 video-generation workflows.",
+      "count": 3031,
+      "size_kb": 8963.24,
+      "url": "packs/prompts/en/seedance2.json",
+      "category": "prompt"
+    },
+    {
+      "id": "custom-prompt-en-nano-banana-pro",
+      "language": "en",
+      "platform": "custom",
+      "name": "Nano Banana Pro Image Prompt Collection",
+      "description": "Prompt collection for Nano Banana Pro image-generation workflows.",
+      "count": 13483,
+      "size_kb": 38811.7,
+      "url": "packs/prompts/en/nano-banana-pro.json",
       "category": "prompt"
     }
   ]

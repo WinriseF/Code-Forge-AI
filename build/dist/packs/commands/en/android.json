@@ -1,20 +1,5 @@
 [
   {
-    "id": "tldr-en-android-screencap-0",
-    "type": "command",
-    "title": "screencap - Take a screenshot",
-    "content": "screencap {{path/to/file}}",
-    "group": "Android Dev",
-    "description": "screencap: Take a screenshot of a mobile display. This command can only be used through `adb shell`. (Take a screenshot)",
-    "tags": [
-      "android",
-      "screencap",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-en-android-cmd-0",
     "type": "command",
     "title": "cmd - [l]ist all running services",
@@ -60,75 +45,30 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-android-input-0",
+    "id": "tldr-en-android-wm-0",
     "type": "command",
-    "title": "input - Send an event code for a single character to an Android device",
-    "content": "input keyevent {{event_code}}",
+    "title": "wm - Display the physical size of an Android device's screen",
+    "content": "wm size",
     "group": "Android Dev",
-    "description": "input: Send event codes or touchscreen gestures to an Android device. This command can only be used through `adb shell`. (Send an event code for a single character to an Android device)",
+    "description": "wm: Show information about the screen of an Android device. This command can only be used through `adb shell`. (Display the physical size of an Android device's screen)",
     "tags": [
       "android",
-      "input",
+      "wm",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-android-input-1",
+    "id": "tldr-en-android-wm-1",
     "type": "command",
-    "title": "input - Send a text to an Android device (`%s` represents spaces)",
-    "content": "input text \"{{text}}\"",
+    "title": "wm - Display the physical density of an Android device's screen",
+    "content": "wm density",
     "group": "Android Dev",
-    "description": "input: Send event codes or touchscreen gestures to an Android device. This command can only be used through `adb shell`. (Send a text to an Android device (`%s` represents spaces))",
+    "description": "wm: Show information about the screen of an Android device. This command can only be used through `adb shell`. (Display the physical density of an Android device's screen)",
     "tags": [
       "android",
-      "input",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-input-2",
-    "type": "command",
-    "title": "input - Send a single tap to an Android device",
-    "content": "input tap {{x_position}} {{y_position}}",
-    "group": "Android Dev",
-    "description": "input: Send event codes or touchscreen gestures to an Android device. This command can only be used through `adb shell`. (Send a single tap to an Android device)",
-    "tags": [
-      "android",
-      "input",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-input-3",
-    "type": "command",
-    "title": "input - Send a swipe gesture to an Android device",
-    "content": "input swipe {{x_start}} {{y_start}} {{x_end}} {{y_end}} {{duration_in_ms}}",
-    "group": "Android Dev",
-    "description": "input: Send event codes or touchscreen gestures to an Android device. This command can only be used through `adb shell`. (Send a swipe gesture to an Android device)",
-    "tags": [
-      "android",
-      "input",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-input-4",
-    "type": "command",
-    "title": "input - Send a long press to an Android device using a swipe gesture",
-    "content": "input swipe {{x_position}} {{y_position}} {{x_position}} {{y_position}} {{duration_in_ms}}",
-    "group": "Android Dev",
-    "description": "input: Send event codes or touchscreen gestures to an Android device. This command can only be used through `adb shell`. (Send a long press to an Android device using a swipe gesture)",
-    "tags": [
-      "android",
-      "input",
+      "wm",
       "tldr",
       "en"
     ],
@@ -225,66 +165,6 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-android-am-0",
-    "type": "command",
-    "title": "am - Start the activity with a specific component and package [n]ame",
-    "content": "am start -n {{com.android.settings/.Settings}}",
-    "group": "Android Dev",
-    "description": "am: Android activity manager. (Start the activity with a specific component and package [n]ame)",
-    "tags": [
-      "android",
-      "am",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-am-1",
-    "type": "command",
-    "title": "am - Start an intent [a]ction and pass [d]ata to it",
-    "content": "am start -a {{android.intent.action.VIEW}} -d {{tel:123}}",
-    "group": "Android Dev",
-    "description": "am: Android activity manager. (Start an intent [a]ction and pass [d]ata to it)",
-    "tags": [
-      "android",
-      "am",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-am-2",
-    "type": "command",
-    "title": "am - Start an activity matching a specific [a]ction and [c]ategory",
-    "content": "am start -a {{android.intent.action.MAIN}} -c {{android.intent.category.HOME}}",
-    "group": "Android Dev",
-    "description": "am: Android activity manager. (Start an activity matching a specific [a]ction and [c]ategory)",
-    "tags": [
-      "android",
-      "am",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-am-3",
-    "type": "command",
-    "title": "am - Convert an intent to a URI",
-    "content": "am to-uri -a {{android.intent.action.VIEW}} -d {{tel:123}}",
-    "group": "Android Dev",
-    "description": "am: Android activity manager. (Convert an intent to a URI)",
-    "tags": [
-      "android",
-      "am",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-en-android-bugreportz-0",
     "type": "command",
     "title": "bugreportz - Generate a complete zipped bug report of an Android device",
@@ -360,375 +240,60 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-android-dalvikvm-0",
+    "id": "tldr-en-android-am-0",
     "type": "command",
-    "title": "dalvikvm - Start a specific Java program",
-    "content": "dalvikvm -classpath {{path/to/file.jar}} {{classname}}",
+    "title": "am - Start the activity with a specific component and package [n]ame",
+    "content": "am start -n {{com.android.settings/.Settings}}",
     "group": "Android Dev",
-    "description": "dalvikvm: Android Java virtual machine. (Start a specific Java program)",
+    "description": "am: Android activity manager. (Start the activity with a specific component and package [n]ame)",
     "tags": [
       "android",
-      "dalvikvm",
+      "am",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-android-logcat-0",
+    "id": "tldr-en-android-am-1",
     "type": "command",
-    "title": "logcat - Display system logs",
-    "content": "logcat",
+    "title": "am - Start an intent [a]ction and pass [d]ata to it",
+    "content": "am start -a {{android.intent.action.VIEW}} -d {{tel:123}}",
     "group": "Android Dev",
-    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Display system logs)",
+    "description": "am: Android activity manager. (Start an intent [a]ction and pass [d]ata to it)",
     "tags": [
       "android",
-      "logcat",
+      "am",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-android-logcat-1",
+    "id": "tldr-en-android-am-2",
     "type": "command",
-    "title": "logcat - Write system logs to a [f]ile",
-    "content": "logcat -f {{path/to/file}}",
+    "title": "am - Start an activity matching a specific [a]ction and [c]ategory",
+    "content": "am start -a {{android.intent.action.MAIN}} -c {{android.intent.category.HOME}}",
     "group": "Android Dev",
-    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Write system logs to a [f]ile)",
+    "description": "am: Android activity manager. (Start an activity matching a specific [a]ction and [c]ategory)",
     "tags": [
       "android",
-      "logcat",
+      "am",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-android-logcat-2",
+    "id": "tldr-en-android-am-3",
     "type": "command",
-    "title": "logcat - Display lines that match a `regex`",
-    "content": "logcat --regex {{regex}}",
+    "title": "am - Convert an intent to a URI",
+    "content": "am to-uri -a {{android.intent.action.VIEW}} -d {{tel:123}}",
     "group": "Android Dev",
-    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Display lines that match a `regex`)",
+    "description": "am: Android activity manager. (Convert an intent to a URI)",
     "tags": [
       "android",
-      "logcat",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-logcat-3",
-    "type": "command",
-    "title": "logcat - Display logs for a specific PID",
-    "content": "logcat --pid {{pid}}",
-    "group": "Android Dev",
-    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Display logs for a specific PID)",
-    "tags": [
-      "android",
-      "logcat",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-logcat-4",
-    "type": "command",
-    "title": "logcat - Display logs for the process of a specific package",
-    "content": "logcat --pid $(pidof -s {{package}})",
-    "group": "Android Dev",
-    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Display logs for the process of a specific package)",
-    "tags": [
-      "android",
-      "logcat",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-getprop-0",
-    "type": "command",
-    "title": "getprop - Display information about Android system properties",
-    "content": "getprop",
-    "group": "Android Dev",
-    "description": "getprop: Show information about Android system properties. (Display information about Android system properties)",
-    "tags": [
-      "android",
-      "getprop",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-getprop-1",
-    "type": "command",
-    "title": "getprop - Display information about a specific property",
-    "content": "getprop {{property}}",
-    "group": "Android Dev",
-    "description": "getprop: Show information about Android system properties. (Display information about a specific property)",
-    "tags": [
-      "android",
-      "getprop",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-getprop-2",
-    "type": "command",
-    "title": "getprop - Display the SDK API level",
-    "content": "getprop {{ro.build.version.sdk}}",
-    "group": "Android Dev",
-    "description": "getprop: Show information about Android system properties. (Display the SDK API level)",
-    "tags": [
-      "android",
-      "getprop",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-getprop-3",
-    "type": "command",
-    "title": "getprop - Display the Android version",
-    "content": "getprop {{ro.build.version.release}}",
-    "group": "Android Dev",
-    "description": "getprop: Show information about Android system properties. (Display the Android version)",
-    "tags": [
-      "android",
-      "getprop",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-getprop-4",
-    "type": "command",
-    "title": "getprop - Display the Android device model",
-    "content": "getprop {{ro.vendor.product.model}}",
-    "group": "Android Dev",
-    "description": "getprop: Show information about Android system properties. (Display the Android device model)",
-    "tags": [
-      "android",
-      "getprop",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-getprop-5",
-    "type": "command",
-    "title": "getprop - Display the OEM unlock status",
-    "content": "getprop {{ro.oem_unlock_supported}}",
-    "group": "Android Dev",
-    "description": "getprop: Show information about Android system properties. (Display the OEM unlock status)",
-    "tags": [
-      "android",
-      "getprop",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-getprop-6",
-    "type": "command",
-    "title": "getprop - Display the MAC address of the Android's Wi-Fi card",
-    "content": "getprop {{ro.boot.wifimacaddr}}",
-    "group": "Android Dev",
-    "description": "getprop: Show information about Android system properties. (Display the MAC address of the Android's Wi-Fi card)",
-    "tags": [
-      "android",
-      "getprop",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-wm-0",
-    "type": "command",
-    "title": "wm - Display the physical size of an Android device's screen",
-    "content": "wm size",
-    "group": "Android Dev",
-    "description": "wm: Show information about the screen of an Android device. This command can only be used through `adb shell`. (Display the physical size of an Android device's screen)",
-    "tags": [
-      "android",
-      "wm",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-wm-1",
-    "type": "command",
-    "title": "wm - Display the physical density of an Android device's screen",
-    "content": "wm density",
-    "group": "Android Dev",
-    "description": "wm: Show information about the screen of an Android device. This command can only be used through `adb shell`. (Display the physical density of an Android device's screen)",
-    "tags": [
-      "android",
-      "wm",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-settings-0",
-    "type": "command",
-    "title": "settings - List the settings in the `global` namespace",
-    "content": "settings list {{global}}",
-    "group": "Android Dev",
-    "description": "settings: Get information about the Android OS. (List the settings in the `global` namespace)",
-    "tags": [
-      "android",
-      "settings",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-settings-1",
-    "type": "command",
-    "title": "settings - Get a value of a specific setting",
-    "content": "settings get {{global}} {{airplane_mode_on}}",
-    "group": "Android Dev",
-    "description": "settings: Get information about the Android OS. (Get a value of a specific setting)",
-    "tags": [
-      "android",
-      "settings",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-settings-2",
-    "type": "command",
-    "title": "settings - Set a specific value of a setting",
-    "content": "settings put {{system}} {{screen_brightness}} {{42}}",
-    "group": "Android Dev",
-    "description": "settings: Get information about the Android OS. (Set a specific value of a setting)",
-    "tags": [
-      "android",
-      "settings",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-settings-3",
-    "type": "command",
-    "title": "settings - Delete a specific setting",
-    "content": "settings delete {{secure}} {{screensaver_enabled}}",
-    "group": "Android Dev",
-    "description": "settings: Get information about the Android OS. (Delete a specific setting)",
-    "tags": [
-      "android",
-      "settings",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-0",
-    "type": "command",
-    "title": "pm - List all installed apps",
-    "content": "pm list packages",
-    "group": "Android Dev",
-    "description": "pm: Display information about apps on an Android device. (List all installed apps)",
-    "tags": [
-      "android",
-      "pm",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-1",
-    "type": "command",
-    "title": "pm - List all installed [s]ystem apps",
-    "content": "pm list packages -s",
-    "group": "Android Dev",
-    "description": "pm: Display information about apps on an Android device. (List all installed [s]ystem apps)",
-    "tags": [
-      "android",
-      "pm",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-2",
-    "type": "command",
-    "title": "pm - List all installed [3]rd-party apps",
-    "content": "pm list packages -3",
-    "group": "Android Dev",
-    "description": "pm: Display information about apps on an Android device. (List all installed [3]rd-party apps)",
-    "tags": [
-      "android",
-      "pm",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-3",
-    "type": "command",
-    "title": "pm - List apps matching specific keywords",
-    "content": "pm list packages {{keyword1 keyword2 ...}}",
-    "group": "Android Dev",
-    "description": "pm: Display information about apps on an Android device. (List apps matching specific keywords)",
-    "tags": [
-      "android",
-      "pm",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-4",
-    "type": "command",
-    "title": "pm - Display a path of the APK of a specific app",
-    "content": "pm path {{app}}",
-    "group": "Android Dev",
-    "description": "pm: Display information about apps on an Android device. (Display a path of the APK of a specific app)",
-    "tags": [
-      "android",
-      "pm",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-bugreport-0",
-    "type": "command",
-    "title": "bugreport - Display a complete bug report of an Android device",
-    "content": "bugreport",
-    "group": "Android Dev",
-    "description": "bugreport: Show an Android bug report. Note: Can only be used through `adb shell`. (Display a complete bug report of an Android device)",
-    "tags": [
-      "android",
-      "bugreport",
+      "am",
       "tldr",
       "en"
     ],
@@ -849,6 +414,441 @@
     "tags": [
       "android",
       "pkg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-screencap-0",
+    "type": "command",
+    "title": "screencap - Take a screenshot",
+    "content": "screencap {{path/to/file}}",
+    "group": "Android Dev",
+    "description": "screencap: Take a screenshot of a mobile display. This command can only be used through `adb shell`. (Take a screenshot)",
+    "tags": [
+      "android",
+      "screencap",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-bugreport-0",
+    "type": "command",
+    "title": "bugreport - Display a complete bug report of an Android device",
+    "content": "bugreport",
+    "group": "Android Dev",
+    "description": "bugreport: Show an Android bug report. Note: Can only be used through `adb shell`. (Display a complete bug report of an Android device)",
+    "tags": [
+      "android",
+      "bugreport",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-getprop-0",
+    "type": "command",
+    "title": "getprop - Display information about Android system properties",
+    "content": "getprop",
+    "group": "Android Dev",
+    "description": "getprop: Show information about Android system properties. (Display information about Android system properties)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-getprop-1",
+    "type": "command",
+    "title": "getprop - Display information about a specific property",
+    "content": "getprop {{property}}",
+    "group": "Android Dev",
+    "description": "getprop: Show information about Android system properties. (Display information about a specific property)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-getprop-2",
+    "type": "command",
+    "title": "getprop - Display the SDK API level",
+    "content": "getprop {{ro.build.version.sdk}}",
+    "group": "Android Dev",
+    "description": "getprop: Show information about Android system properties. (Display the SDK API level)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-getprop-3",
+    "type": "command",
+    "title": "getprop - Display the Android version",
+    "content": "getprop {{ro.build.version.release}}",
+    "group": "Android Dev",
+    "description": "getprop: Show information about Android system properties. (Display the Android version)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-getprop-4",
+    "type": "command",
+    "title": "getprop - Display the Android device model",
+    "content": "getprop {{ro.vendor.product.model}}",
+    "group": "Android Dev",
+    "description": "getprop: Show information about Android system properties. (Display the Android device model)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-getprop-5",
+    "type": "command",
+    "title": "getprop - Display the OEM unlock status",
+    "content": "getprop {{ro.oem_unlock_supported}}",
+    "group": "Android Dev",
+    "description": "getprop: Show information about Android system properties. (Display the OEM unlock status)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-getprop-6",
+    "type": "command",
+    "title": "getprop - Display the MAC address of the Android's Wi-Fi card",
+    "content": "getprop {{ro.boot.wifimacaddr}}",
+    "group": "Android Dev",
+    "description": "getprop: Show information about Android system properties. (Display the MAC address of the Android's Wi-Fi card)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-0",
+    "type": "command",
+    "title": "pm - List all installed apps",
+    "content": "pm list packages",
+    "group": "Android Dev",
+    "description": "pm: Display information about apps on an Android device. (List all installed apps)",
+    "tags": [
+      "android",
+      "pm",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-1",
+    "type": "command",
+    "title": "pm - List all installed [s]ystem apps",
+    "content": "pm list packages -s",
+    "group": "Android Dev",
+    "description": "pm: Display information about apps on an Android device. (List all installed [s]ystem apps)",
+    "tags": [
+      "android",
+      "pm",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-2",
+    "type": "command",
+    "title": "pm - List all installed [3]rd-party apps",
+    "content": "pm list packages -3",
+    "group": "Android Dev",
+    "description": "pm: Display information about apps on an Android device. (List all installed [3]rd-party apps)",
+    "tags": [
+      "android",
+      "pm",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-3",
+    "type": "command",
+    "title": "pm - List apps matching specific keywords",
+    "content": "pm list packages {{keyword1 keyword2 ...}}",
+    "group": "Android Dev",
+    "description": "pm: Display information about apps on an Android device. (List apps matching specific keywords)",
+    "tags": [
+      "android",
+      "pm",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-4",
+    "type": "command",
+    "title": "pm - Display a path of the APK of a specific app",
+    "content": "pm path {{app}}",
+    "group": "Android Dev",
+    "description": "pm: Display information about apps on an Android device. (Display a path of the APK of a specific app)",
+    "tags": [
+      "android",
+      "pm",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-settings-0",
+    "type": "command",
+    "title": "settings - List the settings in the `global` namespace",
+    "content": "settings list {{global}}",
+    "group": "Android Dev",
+    "description": "settings: Get information about the Android OS. (List the settings in the `global` namespace)",
+    "tags": [
+      "android",
+      "settings",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-settings-1",
+    "type": "command",
+    "title": "settings - Get a value of a specific setting",
+    "content": "settings get {{global}} {{airplane_mode_on}}",
+    "group": "Android Dev",
+    "description": "settings: Get information about the Android OS. (Get a value of a specific setting)",
+    "tags": [
+      "android",
+      "settings",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-settings-2",
+    "type": "command",
+    "title": "settings - Set a specific value of a setting",
+    "content": "settings put {{system}} {{screen_brightness}} {{42}}",
+    "group": "Android Dev",
+    "description": "settings: Get information about the Android OS. (Set a specific value of a setting)",
+    "tags": [
+      "android",
+      "settings",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-settings-3",
+    "type": "command",
+    "title": "settings - Delete a specific setting",
+    "content": "settings delete {{secure}} {{screensaver_enabled}}",
+    "group": "Android Dev",
+    "description": "settings: Get information about the Android OS. (Delete a specific setting)",
+    "tags": [
+      "android",
+      "settings",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-dalvikvm-0",
+    "type": "command",
+    "title": "dalvikvm - Start a specific Java program",
+    "content": "dalvikvm -classpath {{path/to/file.jar}} {{classname}}",
+    "group": "Android Dev",
+    "description": "dalvikvm: Android Java virtual machine. (Start a specific Java program)",
+    "tags": [
+      "android",
+      "dalvikvm",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-input-0",
+    "type": "command",
+    "title": "input - Send an event code for a single character to an Android device",
+    "content": "input keyevent {{event_code}}",
+    "group": "Android Dev",
+    "description": "input: Send event codes or touchscreen gestures to an Android device. This command can only be used through `adb shell`. (Send an event code for a single character to an Android device)",
+    "tags": [
+      "android",
+      "input",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-input-1",
+    "type": "command",
+    "title": "input - Send a text to an Android device (`%s` represents spaces)",
+    "content": "input text \"{{text}}\"",
+    "group": "Android Dev",
+    "description": "input: Send event codes or touchscreen gestures to an Android device. This command can only be used through `adb shell`. (Send a text to an Android device (`%s` represents spaces))",
+    "tags": [
+      "android",
+      "input",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-input-2",
+    "type": "command",
+    "title": "input - Send a single tap to an Android device",
+    "content": "input tap {{x_position}} {{y_position}}",
+    "group": "Android Dev",
+    "description": "input: Send event codes or touchscreen gestures to an Android device. This command can only be used through `adb shell`. (Send a single tap to an Android device)",
+    "tags": [
+      "android",
+      "input",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-input-3",
+    "type": "command",
+    "title": "input - Send a swipe gesture to an Android device",
+    "content": "input swipe {{x_start}} {{y_start}} {{x_end}} {{y_end}} {{duration_in_ms}}",
+    "group": "Android Dev",
+    "description": "input: Send event codes or touchscreen gestures to an Android device. This command can only be used through `adb shell`. (Send a swipe gesture to an Android device)",
+    "tags": [
+      "android",
+      "input",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-input-4",
+    "type": "command",
+    "title": "input - Send a long press to an Android device using a swipe gesture",
+    "content": "input swipe {{x_position}} {{y_position}} {{x_position}} {{y_position}} {{duration_in_ms}}",
+    "group": "Android Dev",
+    "description": "input: Send event codes or touchscreen gestures to an Android device. This command can only be used through `adb shell`. (Send a long press to an Android device using a swipe gesture)",
+    "tags": [
+      "android",
+      "input",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-logcat-0",
+    "type": "command",
+    "title": "logcat - Display system logs",
+    "content": "logcat",
+    "group": "Android Dev",
+    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Display system logs)",
+    "tags": [
+      "android",
+      "logcat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-logcat-1",
+    "type": "command",
+    "title": "logcat - Write system logs to a [f]ile",
+    "content": "logcat -f {{path/to/file}}",
+    "group": "Android Dev",
+    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Write system logs to a [f]ile)",
+    "tags": [
+      "android",
+      "logcat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-logcat-2",
+    "type": "command",
+    "title": "logcat - Display lines that match a `regex`",
+    "content": "logcat --regex {{regex}}",
+    "group": "Android Dev",
+    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Display lines that match a `regex`)",
+    "tags": [
+      "android",
+      "logcat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-logcat-3",
+    "type": "command",
+    "title": "logcat - Display logs for a specific PID",
+    "content": "logcat --pid {{pid}}",
+    "group": "Android Dev",
+    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Display logs for a specific PID)",
+    "tags": [
+      "android",
+      "logcat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-logcat-4",
+    "type": "command",
+    "title": "logcat - Display logs for the process of a specific package",
+    "content": "logcat --pid $(pidof -s {{package}})",
+    "group": "Android Dev",
+    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Display logs for the process of a specific package)",
+    "tags": [
+      "android",
+      "logcat",
       "tldr",
       "en"
     ],

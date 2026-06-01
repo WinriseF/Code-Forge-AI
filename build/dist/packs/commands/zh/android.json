@@ -1,20 +1,5 @@
 [
   {
-    "id": "tldr-zh-android-screencap-0",
-    "type": "command",
-    "title": "screencap - 捕获屏幕截图",
-    "content": "screencap {{路径/到/文件}}",
-    "group": "Android 开发",
-    "description": "screencap: 捕获移动设备显示器的屏幕截图。 此命令只能通过 `adb shell` 使用。 (捕获屏幕截图)",
-    "tags": [
-      "android",
-      "screencap",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-zh-android-cmd-0",
     "type": "command",
     "title": "cmd - 列出所有正在运行的服务",
@@ -60,75 +45,30 @@
     "source": "official"
   },
   {
-    "id": "tldr-zh-android-input-0",
+    "id": "tldr-zh-android-wm-0",
     "type": "command",
-    "title": "input - 将单个字符的事件代码发送到 Android 设备",
-    "content": "input keyevent {{event_code}}",
+    "title": "wm - 显示 Android 设备屏幕的物理尺寸",
+    "content": "wm size",
     "group": "Android 开发",
-    "description": "input: 将事件代码或触摸屏手势发送到 Android 设备。 此命令只能通过 `adb shell` 使用。 (将单个字符的事件代码发送到 Android 设备)",
+    "description": "wm: 显示关于 Android 设备屏幕的信息。 此命令只能通过 `adb shell` 使用。 (显示 Android 设备屏幕的物理尺寸)",
     "tags": [
       "android",
-      "input",
+      "wm",
       "tldr",
       "zh"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-zh-android-input-1",
+    "id": "tldr-zh-android-wm-1",
     "type": "command",
-    "title": "input - 将文本发送到 Android 设备（`%s` 代表空格）",
-    "content": "input text \"{{text}}\"",
+    "title": "wm - 显示 Android 设备屏幕的物理密度",
+    "content": "wm density",
     "group": "Android 开发",
-    "description": "input: 将事件代码或触摸屏手势发送到 Android 设备。 此命令只能通过 `adb shell` 使用。 (将文本发送到 Android 设备（`%s` 代表空格）)",
+    "description": "wm: 显示关于 Android 设备屏幕的信息。 此命令只能通过 `adb shell` 使用。 (显示 Android 设备屏幕的物理密度)",
     "tags": [
       "android",
-      "input",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-android-input-2",
-    "type": "command",
-    "title": "input - 将轻触发送到 Android 设备",
-    "content": "input tap {{x_pos}} {{y_pos}}",
-    "group": "Android 开发",
-    "description": "input: 将事件代码或触摸屏手势发送到 Android 设备。 此命令只能通过 `adb shell` 使用。 (将轻触发送到 Android 设备)",
-    "tags": [
-      "android",
-      "input",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-android-input-3",
-    "type": "command",
-    "title": "input - 将滑动手势发送到 Android 设备",
-    "content": "input swipe {{x_start}} {{y_start}} {{x_end}} {{y_end}} {{duration_in_ms}}",
-    "group": "Android 开发",
-    "description": "input: 将事件代码或触摸屏手势发送到 Android 设备。 此命令只能通过 `adb shell` 使用。 (将滑动手势发送到 Android 设备)",
-    "tags": [
-      "android",
-      "input",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-android-input-4",
-    "type": "command",
-    "title": "input - 使用滑动手势将长按发送到 Android 设备",
-    "content": "input swipe {{x_pos}} {{y_pos}} {{x_pos}} {{y_pos}} {{duration_in_ms}}",
-    "group": "Android 开发",
-    "description": "input: 将事件代码或触摸屏手势发送到 Android 设备。 此命令只能通过 `adb shell` 使用。 (使用滑动手势将长按发送到 Android 设备)",
-    "tags": [
-      "android",
-      "input",
+      "wm",
       "tldr",
       "zh"
     ],
@@ -225,66 +165,6 @@
     "source": "official"
   },
   {
-    "id": "tldr-zh-android-am-0",
-    "type": "command",
-    "title": "am - 启动一个指定的活动",
-    "content": "am start -n {{com.android.settings/.Settings}}",
-    "group": "Android 开发",
-    "description": "am: Android 活动管理器。 (启动一个指定的活动)",
-    "tags": [
-      "android",
-      "am",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-android-am-1",
-    "type": "command",
-    "title": "am - 启动一个活动并将数据传递给它",
-    "content": "am start -a {{android.intent.action.VIEW}} -d {{tel:123}}",
-    "group": "Android 开发",
-    "description": "am: Android 活动管理器。 (启动一个活动并将数据传递给它)",
-    "tags": [
-      "android",
-      "am",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-android-am-2",
-    "type": "command",
-    "title": "am - 启动与特定操作和类别匹配的活动",
-    "content": "am start -a {{android.intent.action.MAIN}} -c {{android.intent.category.HOME}}",
-    "group": "Android 开发",
-    "description": "am: Android 活动管理器。 (启动与特定操作和类别匹配的活动)",
-    "tags": [
-      "android",
-      "am",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-android-am-3",
-    "type": "command",
-    "title": "am - 将意图转换为 URI",
-    "content": "am to-uri -a {{android.intent.action.VIEW}} -d {{tel:123}}",
-    "group": "Android 开发",
-    "description": "am: Android 活动管理器。 (将意图转换为 URI)",
-    "tags": [
-      "android",
-      "am",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-zh-android-bugreportz-0",
     "type": "command",
     "title": "bugreportz - 生成一个完整的 Android 设备压缩错误报告",
@@ -360,90 +240,165 @@
     "source": "official"
   },
   {
-    "id": "tldr-zh-android-dalvikvm-0",
+    "id": "tldr-zh-android-am-0",
     "type": "command",
-    "title": "dalvikvm - 启动一个 Java 程序",
-    "content": "dalvikvm -classpath {{path/to/file.jar}} {{classname}}",
+    "title": "am - 启动一个指定的活动",
+    "content": "am start -n {{com.android.settings/.Settings}}",
     "group": "Android 开发",
-    "description": "dalvikvm: Android Java 虚拟机。 (启动一个 Java 程序)",
+    "description": "am: Android 活动管理器。 (启动一个指定的活动)",
     "tags": [
       "android",
-      "dalvikvm",
+      "am",
       "tldr",
       "zh"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-zh-android-logcat-0",
+    "id": "tldr-zh-android-am-1",
     "type": "command",
-    "title": "logcat - 显示系统日志",
-    "content": "logcat",
+    "title": "am - 启动一个活动并将数据传递给它",
+    "content": "am start -a {{android.intent.action.VIEW}} -d {{tel:123}}",
     "group": "Android 开发",
-    "description": "logcat: 转储系统消息日志，包括发生错误时的堆栈跟踪信息，以及应用程序记录的信息消息。 (显示系统日志)",
+    "description": "am: Android 活动管理器。 (启动一个活动并将数据传递给它)",
     "tags": [
       "android",
-      "logcat",
+      "am",
       "tldr",
       "zh"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-zh-android-logcat-1",
+    "id": "tldr-zh-android-am-2",
     "type": "command",
-    "title": "logcat - 将系统日志写入文件（[f]ile）",
-    "content": "logcat -f {{路径/到/文件}}",
+    "title": "am - 启动与特定操作和类别匹配的活动",
+    "content": "am start -a {{android.intent.action.MAIN}} -c {{android.intent.category.HOME}}",
     "group": "Android 开发",
-    "description": "logcat: 转储系统消息日志，包括发生错误时的堆栈跟踪信息，以及应用程序记录的信息消息。 (将系统日志写入文件（[f]ile）)",
+    "description": "am: Android 活动管理器。 (启动与特定操作和类别匹配的活动)",
     "tags": [
       "android",
-      "logcat",
+      "am",
       "tldr",
       "zh"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-zh-android-logcat-2",
+    "id": "tldr-zh-android-am-3",
     "type": "command",
-    "title": "logcat - 显示与`regex`式匹配的日志行",
-    "content": "logcat --regex {{正则表达式}}",
+    "title": "am - 将意图转换为 URI",
+    "content": "am to-uri -a {{android.intent.action.VIEW}} -d {{tel:123}}",
     "group": "Android 开发",
-    "description": "logcat: 转储系统消息日志，包括发生错误时的堆栈跟踪信息，以及应用程序记录的信息消息。 (显示与`regex`式匹配的日志行)",
+    "description": "am: Android 活动管理器。 (将意图转换为 URI)",
     "tags": [
       "android",
-      "logcat",
+      "am",
       "tldr",
       "zh"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-zh-android-logcat-3",
+    "id": "tldr-zh-android-pkg-0",
     "type": "command",
-    "title": "logcat - 显示特定 PID 的日志",
-    "content": "logcat --pid {{pid}}",
+    "title": "pkg - 升级所有已安装的包",
+    "content": "pkg upgrade",
     "group": "Android 开发",
-    "description": "logcat: 转储系统消息日志，包括发生错误时的堆栈跟踪信息，以及应用程序记录的信息消息。 (显示特定 PID 的日志)",
+    "description": "pkg: Termux 的包管理工具。 (升级所有已安装的包)",
     "tags": [
       "android",
-      "logcat",
+      "pkg",
       "tldr",
       "zh"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-zh-android-logcat-4",
+    "id": "tldr-zh-android-pkg-1",
     "type": "command",
-    "title": "logcat - 显示特定包的进程日志",
-    "content": "logcat --pid $(pidof -s {{包}})",
+    "title": "pkg - 安装一个包",
+    "content": "pkg install {{包名}}",
     "group": "Android 开发",
-    "description": "logcat: 转储系统消息日志，包括发生错误时的堆栈跟踪信息，以及应用程序记录的信息消息。 (显示特定包的进程日志)",
+    "description": "pkg: Termux 的包管理工具。 (安装一个包)",
     "tags": [
       "android",
-      "logcat",
+      "pkg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pkg-2",
+    "type": "command",
+    "title": "pkg - 卸载一个包",
+    "content": "pkg uninstall {{包名}}",
+    "group": "Android 开发",
+    "description": "pkg: Termux 的包管理工具。 (卸载一个包)",
+    "tags": [
+      "android",
+      "pkg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pkg-3",
+    "type": "command",
+    "title": "pkg - 重新安装一个包",
+    "content": "pkg reinstall {{包名}}",
+    "group": "Android 开发",
+    "description": "pkg: Termux 的包管理工具。 (重新安装一个包)",
+    "tags": [
+      "android",
+      "pkg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pkg-4",
+    "type": "command",
+    "title": "pkg - 搜索一个包",
+    "content": "pkg search {{包名}}",
+    "group": "Android 开发",
+    "description": "pkg: Termux 的包管理工具。 (搜索一个包)",
+    "tags": [
+      "android",
+      "pkg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-screencap-0",
+    "type": "command",
+    "title": "screencap - 捕获屏幕截图",
+    "content": "screencap {{路径/到/文件}}",
+    "group": "Android 开发",
+    "description": "screencap: 捕获移动设备显示器的屏幕截图。 此命令只能通过 `adb shell` 使用。 (捕获屏幕截图)",
+    "tags": [
+      "android",
+      "screencap",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-bugreport-0",
+    "type": "command",
+    "title": "bugreport - 显示 Android 设备的完整错误报告",
+    "content": "bugreport",
+    "group": "Android 开发",
+    "description": "bugreport: 显示安卓的 Bug 报告。 该命令只能通过 `adb shell` 使用。 (显示 Android 设备的完整错误报告)",
+    "tags": [
+      "android",
+      "bugreport",
       "tldr",
       "zh"
     ],
@@ -555,96 +510,6 @@
     "source": "official"
   },
   {
-    "id": "tldr-zh-android-wm-0",
-    "type": "command",
-    "title": "wm - 显示 Android 设备屏幕的物理尺寸",
-    "content": "wm size",
-    "group": "Android 开发",
-    "description": "wm: 显示关于 Android 设备屏幕的信息。 此命令只能通过 `adb shell` 使用。 (显示 Android 设备屏幕的物理尺寸)",
-    "tags": [
-      "android",
-      "wm",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-android-wm-1",
-    "type": "command",
-    "title": "wm - 显示 Android 设备屏幕的物理密度",
-    "content": "wm density",
-    "group": "Android 开发",
-    "description": "wm: 显示关于 Android 设备屏幕的信息。 此命令只能通过 `adb shell` 使用。 (显示 Android 设备屏幕的物理密度)",
-    "tags": [
-      "android",
-      "wm",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-android-settings-0",
-    "type": "command",
-    "title": "settings - 在 `全局` 命名空间中显示环境变量列表",
-    "content": "settings list {{global}}",
-    "group": "Android 开发",
-    "description": "settings: 获取关于 Android OS 的信息。 (在 `全局` 命名空间中显示环境变量列表)",
-    "tags": [
-      "android",
-      "settings",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-android-settings-1",
-    "type": "command",
-    "title": "settings - 获取指定环境变量的值",
-    "content": "settings get {{global}} {{airplane_mode_on}}",
-    "group": "Android 开发",
-    "description": "settings: 获取关于 Android OS 的信息。 (获取指定环境变量的值)",
-    "tags": [
-      "android",
-      "settings",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-android-settings-2",
-    "type": "command",
-    "title": "settings - 设置指定环境变量的值",
-    "content": "settings put {{system}} {{screen_brightness}} {{42}}",
-    "group": "Android 开发",
-    "description": "settings: 获取关于 Android OS 的信息。 (设置指定环境变量的值)",
-    "tags": [
-      "android",
-      "settings",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-android-settings-3",
-    "type": "command",
-    "title": "settings - 删除指定环境变量",
-    "content": "settings delete {{secure}} {{screensaver_enabled}}",
-    "group": "Android 开发",
-    "description": "settings: 获取关于 Android OS 的信息。 (删除指定环境变量)",
-    "tags": [
-      "android",
-      "settings",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-zh-android-pm-0",
     "type": "command",
     "title": "pm - 打印所有已安装应用程序的列表",
@@ -720,90 +585,225 @@
     "source": "official"
   },
   {
-    "id": "tldr-zh-android-bugreport-0",
+    "id": "tldr-zh-android-settings-0",
     "type": "command",
-    "title": "bugreport - 显示 Android 设备的完整错误报告",
-    "content": "bugreport",
+    "title": "settings - 在 `全局` 命名空间中显示环境变量列表",
+    "content": "settings list {{global}}",
     "group": "Android 开发",
-    "description": "bugreport: 显示安卓的 Bug 报告。 该命令只能通过 `adb shell` 使用。 (显示 Android 设备的完整错误报告)",
+    "description": "settings: 获取关于 Android OS 的信息。 (在 `全局` 命名空间中显示环境变量列表)",
     "tags": [
       "android",
-      "bugreport",
+      "settings",
       "tldr",
       "zh"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-zh-android-pkg-0",
+    "id": "tldr-zh-android-settings-1",
     "type": "command",
-    "title": "pkg - 升级所有已安装的包",
-    "content": "pkg upgrade",
+    "title": "settings - 获取指定环境变量的值",
+    "content": "settings get {{global}} {{airplane_mode_on}}",
     "group": "Android 开发",
-    "description": "pkg: Termux 的包管理工具。 (升级所有已安装的包)",
+    "description": "settings: 获取关于 Android OS 的信息。 (获取指定环境变量的值)",
     "tags": [
       "android",
-      "pkg",
+      "settings",
       "tldr",
       "zh"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-zh-android-pkg-1",
+    "id": "tldr-zh-android-settings-2",
     "type": "command",
-    "title": "pkg - 安装一个包",
-    "content": "pkg install {{包名}}",
+    "title": "settings - 设置指定环境变量的值",
+    "content": "settings put {{system}} {{screen_brightness}} {{42}}",
     "group": "Android 开发",
-    "description": "pkg: Termux 的包管理工具。 (安装一个包)",
+    "description": "settings: 获取关于 Android OS 的信息。 (设置指定环境变量的值)",
     "tags": [
       "android",
-      "pkg",
+      "settings",
       "tldr",
       "zh"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-zh-android-pkg-2",
+    "id": "tldr-zh-android-settings-3",
     "type": "command",
-    "title": "pkg - 卸载一个包",
-    "content": "pkg uninstall {{包名}}",
+    "title": "settings - 删除指定环境变量",
+    "content": "settings delete {{secure}} {{screensaver_enabled}}",
     "group": "Android 开发",
-    "description": "pkg: Termux 的包管理工具。 (卸载一个包)",
+    "description": "settings: 获取关于 Android OS 的信息。 (删除指定环境变量)",
     "tags": [
       "android",
-      "pkg",
+      "settings",
       "tldr",
       "zh"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-zh-android-pkg-3",
+    "id": "tldr-zh-android-dalvikvm-0",
     "type": "command",
-    "title": "pkg - 重新安装一个包",
-    "content": "pkg reinstall {{包名}}",
+    "title": "dalvikvm - 启动一个 Java 程序",
+    "content": "dalvikvm -classpath {{path/to/file.jar}} {{classname}}",
     "group": "Android 开发",
-    "description": "pkg: Termux 的包管理工具。 (重新安装一个包)",
+    "description": "dalvikvm: Android Java 虚拟机。 (启动一个 Java 程序)",
     "tags": [
       "android",
-      "pkg",
+      "dalvikvm",
       "tldr",
       "zh"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-zh-android-pkg-4",
+    "id": "tldr-zh-android-input-0",
     "type": "command",
-    "title": "pkg - 搜索一个包",
-    "content": "pkg search {{包名}}",
+    "title": "input - 将单个字符的事件代码发送到 Android 设备",
+    "content": "input keyevent {{event_code}}",
     "group": "Android 开发",
-    "description": "pkg: Termux 的包管理工具。 (搜索一个包)",
+    "description": "input: 将事件代码或触摸屏手势发送到 Android 设备。 此命令只能通过 `adb shell` 使用。 (将单个字符的事件代码发送到 Android 设备)",
     "tags": [
       "android",
-      "pkg",
+      "input",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-input-1",
+    "type": "command",
+    "title": "input - 将文本发送到 Android 设备（`%s` 代表空格）",
+    "content": "input text \"{{text}}\"",
+    "group": "Android 开发",
+    "description": "input: 将事件代码或触摸屏手势发送到 Android 设备。 此命令只能通过 `adb shell` 使用。 (将文本发送到 Android 设备（`%s` 代表空格）)",
+    "tags": [
+      "android",
+      "input",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-input-2",
+    "type": "command",
+    "title": "input - 将轻触发送到 Android 设备",
+    "content": "input tap {{x_pos}} {{y_pos}}",
+    "group": "Android 开发",
+    "description": "input: 将事件代码或触摸屏手势发送到 Android 设备。 此命令只能通过 `adb shell` 使用。 (将轻触发送到 Android 设备)",
+    "tags": [
+      "android",
+      "input",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-input-3",
+    "type": "command",
+    "title": "input - 将滑动手势发送到 Android 设备",
+    "content": "input swipe {{x_start}} {{y_start}} {{x_end}} {{y_end}} {{duration_in_ms}}",
+    "group": "Android 开发",
+    "description": "input: 将事件代码或触摸屏手势发送到 Android 设备。 此命令只能通过 `adb shell` 使用。 (将滑动手势发送到 Android 设备)",
+    "tags": [
+      "android",
+      "input",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-input-4",
+    "type": "command",
+    "title": "input - 使用滑动手势将长按发送到 Android 设备",
+    "content": "input swipe {{x_pos}} {{y_pos}} {{x_pos}} {{y_pos}} {{duration_in_ms}}",
+    "group": "Android 开发",
+    "description": "input: 将事件代码或触摸屏手势发送到 Android 设备。 此命令只能通过 `adb shell` 使用。 (使用滑动手势将长按发送到 Android 设备)",
+    "tags": [
+      "android",
+      "input",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-logcat-0",
+    "type": "command",
+    "title": "logcat - 显示系统日志",
+    "content": "logcat",
+    "group": "Android 开发",
+    "description": "logcat: 转储系统消息日志，包括发生错误时的堆栈跟踪信息，以及应用程序记录的信息消息。 (显示系统日志)",
+    "tags": [
+      "android",
+      "logcat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-logcat-1",
+    "type": "command",
+    "title": "logcat - 将系统日志写入文件（[f]ile）",
+    "content": "logcat -f {{路径/到/文件}}",
+    "group": "Android 开发",
+    "description": "logcat: 转储系统消息日志，包括发生错误时的堆栈跟踪信息，以及应用程序记录的信息消息。 (将系统日志写入文件（[f]ile）)",
+    "tags": [
+      "android",
+      "logcat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-logcat-2",
+    "type": "command",
+    "title": "logcat - 显示与`regex`式匹配的日志行",
+    "content": "logcat --regex {{正则表达式}}",
+    "group": "Android 开发",
+    "description": "logcat: 转储系统消息日志，包括发生错误时的堆栈跟踪信息，以及应用程序记录的信息消息。 (显示与`regex`式匹配的日志行)",
+    "tags": [
+      "android",
+      "logcat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-logcat-3",
+    "type": "command",
+    "title": "logcat - 显示特定 PID 的日志",
+    "content": "logcat --pid {{pid}}",
+    "group": "Android 开发",
+    "description": "logcat: 转储系统消息日志，包括发生错误时的堆栈跟踪信息，以及应用程序记录的信息消息。 (显示特定 PID 的日志)",
+    "tags": [
+      "android",
+      "logcat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-logcat-4",
+    "type": "command",
+    "title": "logcat - 显示特定包的进程日志",
+    "content": "logcat --pid $(pidof -s {{包}})",
+    "group": "Android 开发",
+    "description": "logcat: 转储系统消息日志，包括发生错误时的堆栈跟踪信息，以及应用程序记录的信息消息。 (显示特定包的进程日志)",
+    "tags": [
+      "android",
+      "logcat",
       "tldr",
       "zh"
     ],
