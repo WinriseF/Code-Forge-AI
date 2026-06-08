@@ -1698,7 +1698,7 @@
     "id": "tldr-zh-linux-xcowsay-2",
     "type": "command",
     "title": "xcowsay - 显示一头有指定 X 和 Y 坐标的牛",
-    "content": "xcowsay --at={{X}},{{Y}}",
+    "content": "xcowsay --at {{X}},{{Y}}",
     "group": "Linux 运维",
     "description": "xcowsay: 在您的 Linux 桌面上显示一头可爱的牛和指定的消息。 牛的显示时间是固定的或则是根据文本大小计算得出的。 点击牛即马上关闭。 (显示一头有指定 X 和 Y 坐标的牛)",
     "tags": [
@@ -1713,7 +1713,7 @@
     "id": "tldr-zh-linux-xcowsay-3",
     "type": "command",
     "title": "xcowsay - 显示一头不同大小的牛",
-    "content": "xcowsay --cow-size={{small|med|large}}",
+    "content": "xcowsay --cow-size {{small|med|large}}",
     "group": "Linux 运维",
     "description": "xcowsay: 在您的 Linux 桌面上显示一头可爱的牛和指定的消息。 牛的显示时间是固定的或则是根据文本大小计算得出的。 点击牛即马上关闭。 (显示一头不同大小的牛)",
     "tags": [
@@ -1743,7 +1743,7 @@
     "id": "tldr-zh-linux-xcowsay-5",
     "type": "command",
     "title": "xcowsay - 用指定的照片来代替默认的牛",
-    "content": "xcowsay --image={{路径/到/文件}}",
+    "content": "xcowsay --image {{路径/到/文件}}",
     "group": "Linux 运维",
     "description": "xcowsay: 在您的 Linux 桌面上显示一头可爱的牛和指定的消息。 牛的显示时间是固定的或则是根据文本大小计算得出的。 点击牛即马上关闭。 (用指定的照片来代替默认的牛)",
     "tags": [

@@ -3180,6 +3180,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-windows-saracmd-expertexperienceadmintask-0",
+    "type": "command",
+    "title": "saracmd-expertexperienceadmintask - View documentation for the original command",
+    "content": "tldr gethelpcmd-expertexperienceadmintask",
+    "group": "Windows",
+    "description": "saracmd-expertexperienceadmintask: This command is an alias of `GetHelpCmd.exe -S ExpertExperienceAdminTask`. (View documentation for the original command)",
+    "tags": [
+      "windows",
+      "saracmd-expertexperienceadmintask",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-windows-forfiles-0",
     "type": "command",
     "title": "forfiles - Search for files in the current directory",
@@ -3444,6 +3459,21 @@
     "tags": [
       "windows",
       "rmdir",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-saracmd-0",
+    "type": "command",
+    "title": "saracmd - View documentation for the original command",
+    "content": "tldr gethelpcmd",
+    "group": "Windows",
+    "description": "saracmd: This command is an alias of `GetHelpCmd.exe`. (View documentation for the original command)",
+    "tags": [
+      "windows",
+      "saracmd",
       "tldr",
       "en"
     ],
@@ -6750,6 +6780,51 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-windows-gethelpcmd-0",
+    "type": "command",
+    "title": "gethelpcmd - View documentation for PowerShell's `Get-Help` command",
+    "content": "tldr get-help",
+    "group": "Windows",
+    "description": "gethelpcmd: Analyse and fix common problems in Microsoft 365 Enterprise installations. Formerly Microsoft Support and Recovery Assistant (SaRA), command-line version (`SaRAcmd.exe`). Note: This tool is not related to PowerShell (`Get-Help`), and has been deprecated in favor of the GUI troubleshooters available within Windows Settings. Some subcommands such as `OutlookCalendarCheckTask`, `ExpertExperienceAdminTask` have their own usage documentation. (View documentation for PowerShell's `Get-Help` command)",
+    "tags": [
+      "windows",
+      "gethelpcmd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-gethelpcmd-1",
+    "type": "command",
+    "title": "gethelpcmd - View documentation for the `ExpertExperienceAdminTask` scenario",
+    "content": "tldr gethelpcmd-expertexperienceadmintask",
+    "group": "Windows",
+    "description": "gethelpcmd: Analyse and fix common problems in Microsoft 365 Enterprise installations. Formerly Microsoft Support and Recovery Assistant (SaRA), command-line version (`SaRAcmd.exe`). Note: This tool is not related to PowerShell (`Get-Help`), and has been deprecated in favor of the GUI troubleshooters available within Windows Settings. Some subcommands such as `OutlookCalendarCheckTask`, `ExpertExperienceAdminTask` have their own usage documentation. (View documentation for the `ExpertExperienceAdminTask` scenario)",
+    "tags": [
+      "windows",
+      "gethelpcmd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-gethelpcmd-2",
+    "type": "command",
+    "title": "gethelpcmd - View documentation for the `OutlookCalendarCheckTask` scenario",
+    "content": "tldr gethelpcmd-outlookcalendarchecktask",
+    "group": "Windows",
+    "description": "gethelpcmd: Analyse and fix common problems in Microsoft 365 Enterprise installations. Formerly Microsoft Support and Recovery Assistant (SaRA), command-line version (`SaRAcmd.exe`). Note: This tool is not related to PowerShell (`Get-Help`), and has been deprecated in favor of the GUI troubleshooters available within Windows Settings. Some subcommands such as `OutlookCalendarCheckTask`, `ExpertExperienceAdminTask` have their own usage documentation. (View documentation for the `OutlookCalendarCheckTask` scenario)",
+    "tags": [
+      "windows",
+      "gethelpcmd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-windows-mimikatz-process-0",
     "type": "command",
     "title": "mimikatz-process - List processes with their tokens",
@@ -7524,6 +7599,51 @@
     "tags": [
       "windows",
       "gcrane-completion",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-gethelpcmd-expertexperienceadmintask-0",
+    "type": "command",
+    "title": "gethelpcmd-expertexperienceadmintask - Get detailed information and accept this command's End-User License Agreement (EULA)",
+    "content": "GetHelpCmd.exe -S ExpertExperienceAdminTask -AcceptEula",
+    "group": "Windows",
+    "description": "gethelpcmd-expertexperienceadmintask: Get detailed installation and configuration information on legacy Microsoft Outlook with Microsoft Office and Windows. Part of `GetHelpCmd.exe`, formerly `SaRAcmd.exe` (Microsoft Support and Recovery Assistant). Note: This tool has been deprecated and will not work in the new Outlook application. (Get detailed information and accept this command's End-User License Agreement (EULA))",
+    "tags": [
+      "windows",
+      "gethelpcmd-expertexperienceadmintask",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-gethelpcmd-expertexperienceadmintask-1",
+    "type": "command",
+    "title": "gethelpcmd-expertexperienceadmintask - Get detailed information and save the logs to a specific directory",
+    "content": "GetHelpCmd.exe -S ExpertExperienceAdminTask -AcceptEula -LogFolder {{path\\to\\directory}}",
+    "group": "Windows",
+    "description": "gethelpcmd-expertexperienceadmintask: Get detailed installation and configuration information on legacy Microsoft Outlook with Microsoft Office and Windows. Part of `GetHelpCmd.exe`, formerly `SaRAcmd.exe` (Microsoft Support and Recovery Assistant). Note: This tool has been deprecated and will not work in the new Outlook application. (Get detailed information and save the logs to a specific directory)",
+    "tags": [
+      "windows",
+      "gethelpcmd-expertexperienceadmintask",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-gethelpcmd-expertexperienceadmintask-2",
+    "type": "command",
+    "title": "gethelpcmd-expertexperienceadmintask - Get detailed information without showing the progress",
+    "content": "GetHelpCmd.exe -S ExpertExperienceAdminTask -AcceptEula -HideProgress",
+    "group": "Windows",
+    "description": "gethelpcmd-expertexperienceadmintask: Get detailed installation and configuration information on legacy Microsoft Outlook with Microsoft Office and Windows. Part of `GetHelpCmd.exe`, formerly `SaRAcmd.exe` (Microsoft Support and Recovery Assistant). Note: This tool has been deprecated and will not work in the new Outlook application. (Get detailed information without showing the progress)",
+    "tags": [
+      "windows",
+      "gethelpcmd-expertexperienceadmintask",
       "tldr",
       "en"
     ],
@@ -11013,7 +11133,7 @@
     "id": "tldr-en-windows-powercfg-2",
     "type": "command",
     "title": "powercfg - Set the active power scheme by its GUID",
-    "content": "powercfg /setactive {{GUID}}",
+    "content": "powercfg /setactive {{guid}}",
     "group": "Windows",
     "description": "powercfg: Configure power settings and manage power schemes. (Set the active power scheme by its GUID)",
     "tags": [
@@ -14715,6 +14835,66 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-windows-gethelpcmd-outlookcalendarchecktask-0",
+    "type": "command",
+    "title": "gethelpcmd-outlookcalendarchecktask - Analyse the calendar for the current, active profile, and accept this command's End-User License Agreement (EULA)",
+    "content": "GetHelpCmd.exe -S OutlookCalendarCheckTask -AcceptEula",
+    "group": "Windows",
+    "description": "gethelpcmd-outlookcalendarchecktask: Scan for calendar configuration issues in legacy Microsoft Outlook applications. Part of `GetHelpCmd.exe`, formerly `SaRAcmd.exe` (Microsoft Support and Recovery Assistant). Note: This tool has been deprecated and will not work in the new Outlook application. (Analyse the calendar for the current, active profile, and accept this command's End-User License Agreement (EULA))",
+    "tags": [
+      "windows",
+      "gethelpcmd-outlookcalendarchecktask",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-gethelpcmd-outlookcalendarchecktask-1",
+    "type": "command",
+    "title": "gethelpcmd-outlookcalendarchecktask - Analyse calendar for a specific Outlook profile",
+    "content": "GetHelpCmd.exe -S OutlookCalendarCheckTask -AcceptEula -P {{profile}}",
+    "group": "Windows",
+    "description": "gethelpcmd-outlookcalendarchecktask: Scan for calendar configuration issues in legacy Microsoft Outlook applications. Part of `GetHelpCmd.exe`, formerly `SaRAcmd.exe` (Microsoft Support and Recovery Assistant). Note: This tool has been deprecated and will not work in the new Outlook application. (Analyse calendar for a specific Outlook profile)",
+    "tags": [
+      "windows",
+      "gethelpcmd-outlookcalendarchecktask",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-gethelpcmd-outlookcalendarchecktask-2",
+    "type": "command",
+    "title": "gethelpcmd-outlookcalendarchecktask - Analyze the calendar for a specific profile and save the logs to a specific directory",
+    "content": "GetHelpCmd.exe -S OutlookCalendarCheckTask -AcceptEula -P {{profile}} -LogFolder {{path\\to\\directory}}",
+    "group": "Windows",
+    "description": "gethelpcmd-outlookcalendarchecktask: Scan for calendar configuration issues in legacy Microsoft Outlook applications. Part of `GetHelpCmd.exe`, formerly `SaRAcmd.exe` (Microsoft Support and Recovery Assistant). Note: This tool has been deprecated and will not work in the new Outlook application. (Analyze the calendar for a specific profile and save the logs to a specific directory)",
+    "tags": [
+      "windows",
+      "gethelpcmd-outlookcalendarchecktask",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-gethelpcmd-outlookcalendarchecktask-3",
+    "type": "command",
+    "title": "gethelpcmd-outlookcalendarchecktask - Analyze the calendar for a specific profile without showing the progress",
+    "content": "GetHelpCmd.exe -S OutlookCalendarCheckTask -AcceptEula -P {{profile}} -HideProgress",
+    "group": "Windows",
+    "description": "gethelpcmd-outlookcalendarchecktask: Scan for calendar configuration issues in legacy Microsoft Outlook applications. Part of `GetHelpCmd.exe`, formerly `SaRAcmd.exe` (Microsoft Support and Recovery Assistant). Note: This tool has been deprecated and will not work in the new Outlook application. (Analyze the calendar for a specific profile without showing the progress)",
+    "tags": [
+      "windows",
+      "gethelpcmd-outlookcalendarchecktask",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-windows-msiexec-0",
     "type": "command",
     "title": "msiexec - Install a program from its MSI package",
@@ -15414,6 +15594,21 @@
     "tags": [
       "windows",
       "wsl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-saracmd-outlookcalendarchecktask-0",
+    "type": "command",
+    "title": "saracmd-outlookcalendarchecktask - View documentation for the original command",
+    "content": "tldr gethelpcmd-outlookcalendarchecktask",
+    "group": "Windows",
+    "description": "saracmd-outlookcalendarchecktask: This command is an alias of `GetHelpCmd.exe -S OutlookCalendarCheckTask`. (View documentation for the original command)",
+    "tags": [
+      "windows",
+      "saracmd-outlookcalendarchecktask",
       "tldr",
       "en"
     ],

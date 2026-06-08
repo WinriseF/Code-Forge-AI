@@ -1,5 +1,5 @@
 {
-  "updated_at": 1780286169388,
+  "updated_at": 1780890732258,
   "version": "2.1.0",
   "packages": [
     {
@@ -8,8 +8,8 @@
       "platform": "llm",
       "name": "ChatGPT Role Prompts",
       "description": "Curated role-play prompts for ChatGPT and general LLM workflows.",
-      "count": 1844,
-      "size_kb": 5376.81,
+      "count": 1860,
+      "size_kb": 5412.24,
       "url": "packs/prompts/en/roles.json",
       "category": "prompt"
     },
@@ -150,9 +150,9 @@
       "language": "en",
       "platform": "linux",
       "name": "Linux Ops (EN)",
-      "description": "Contains 8180 en commands for linux.",
-      "count": 8180,
-      "size_kb": 3862,
+      "description": "Contains 8195 en commands for linux.",
+      "count": 8195,
+      "size_kb": 3869,
       "url": "packs/commands/en/linux.json",
       "category": "command"
     },
@@ -172,9 +172,9 @@
       "language": "en",
       "platform": "windows",
       "name": "Windows (EN)",
-      "description": "Contains 1108 en commands for windows.",
-      "count": 1108,
-      "size_kb": 543,
+      "description": "Contains 1121 en commands for windows.",
+      "count": 1121,
+      "size_kb": 553,
       "url": "packs/commands/en/windows.json",
       "category": "command"
     },
@@ -194,9 +194,9 @@
       "language": "en",
       "platform": "android",
       "name": "Android Dev (EN)",
-      "description": "Contains 57 en commands for android.",
-      "count": 57,
-      "size_kb": 25,
+      "description": "Contains 59 en commands for android.",
+      "count": 59,
+      "size_kb": 26,
       "url": "packs/commands/en/android.json",
       "category": "command"
     },
@@ -205,9 +205,9 @@
       "language": "en",
       "platform": "osx",
       "name": "macOS (EN)",
-      "description": "Contains 958 en commands for osx.",
-      "count": 958,
-      "size_kb": 424,
+      "description": "Contains 955 en commands for osx.",
+      "count": 955,
+      "size_kb": 423,
       "url": "packs/commands/en/osx.json",
       "category": "command"
     },
@@ -249,9 +249,9 @@
       "language": "en",
       "platform": "common",
       "name": "Common Tools (EN)",
-      "description": "Contains 20620 en commands for common.",
-      "count": 20620,
-      "size_kb": 9987,
+      "description": "Contains 20655 en commands for common.",
+      "count": 20655,
+      "size_kb": 10007,
       "url": "packs/commands/en/common.json",
       "category": "command"
     },

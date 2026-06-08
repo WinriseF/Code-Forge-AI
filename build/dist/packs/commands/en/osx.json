@@ -1755,51 +1755,6 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-osx-lldb-0",
-    "type": "command",
-    "title": "lldb - Debug an executable",
-    "content": "lldb \"{{executable}}\"",
-    "group": "macOS",
-    "description": "lldb: The LLVM Low-Level Debugger. (Debug an executable)",
-    "tags": [
-      "osx",
-      "lldb",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-osx-lldb-1",
-    "type": "command",
-    "title": "lldb - Attach `lldb` to a running process with a given PID",
-    "content": "lldb -p {{pid}}",
-    "group": "macOS",
-    "description": "lldb: The LLVM Low-Level Debugger. (Attach `lldb` to a running process with a given PID)",
-    "tags": [
-      "osx",
-      "lldb",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-osx-lldb-2",
-    "type": "command",
-    "title": "lldb - Wait for a new process to launch with a given name, and attach to it",
-    "content": "lldb -w -n \"{{process_name}}\"",
-    "group": "macOS",
-    "description": "lldb: The LLVM Low-Level Debugger. (Wait for a new process to launch with a given name, and attach to it)",
-    "tags": [
-      "osx",
-      "lldb",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-en-osx-gunits-0",
     "type": "command",
     "title": "gunits - View documentation for the original command",
@@ -1983,7 +1938,7 @@
     "id": "tldr-en-osx-security-3",
     "type": "command",
     "title": "security - Set a certificate to use with a website or [s]ervice by its [c]ommon name (fails if several certificates with the same common name exist)",
-    "content": "security set-identity-preference -s {{URL|hostname|service}} -c \"{{common_name}}\" {{path/to/file.keychain}}",
+    "content": "security set-identity-preference -s {{url|hostname|service}} -c \"{{common_name}}\" {{path/to/file.keychain}}",
     "group": "macOS",
     "description": "security: Administer keychains, keys, certificates, and the Security framework. (Set a certificate to use with a website or [s]ervice by its [c]ommon name (fails if several certificates with the same common name exist))",
     "tags": [
@@ -11868,7 +11823,7 @@
     "id": "tldr-en-osx-gshuf-0",
     "type": "command",
     "title": "gshuf - View documentation for the original command",
-    "content": "tldr {{[-p|--platform]}} coomon shuf",
+    "content": "tldr {{[-p|--platform]}} common shuf",
     "group": "macOS",
     "description": "gshuf: This command is an alias of GNU `shuf`. (View documentation for the original command)",
     "tags": [

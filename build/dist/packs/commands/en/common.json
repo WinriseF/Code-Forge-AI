@@ -2628,7 +2628,7 @@
     "id": "tldr-en-common-apg-2",
     "type": "command",
     "title": "apg - Create a password with 16 characters",
-    "content": "apg -m {{16}}",
+    "content": "apg -m 16",
     "group": "Common Tools",
     "description": "apg: Create arbitrarily complex random passwords. (Create a password with 16 characters)",
     "tags": [
@@ -2643,7 +2643,7 @@
     "id": "tldr-en-common-apg-3",
     "type": "command",
     "title": "apg - Create a password with maximum length of 16",
-    "content": "apg -x {{16}}",
+    "content": "apg -x 16",
     "group": "Common Tools",
     "description": "apg: Create arbitrarily complex random passwords. (Create a password with maximum length of 16)",
     "tags": [
@@ -4775,7 +4775,7 @@
     "title": "cs-install - Install a specific application",
     "content": "cs install {{application_name}}",
     "group": "Common Tools",
-    "description": "cs-install: Install an application in the installation directory onfigured when installing `cs` (to enable the binary to be loaded add to your `.bash_profile` the `$ eval \"$(cs install --env)\"` command). (Install a specific application)",
+    "description": "cs-install: Install an application in the installation directory configured when installing `cs` (to enable the binary to be loaded add to your `.bash_profile` the `$ eval \"$(cs install --env)\"` command). (Install a specific application)",
     "tags": [
       "common",
       "cs-install",
@@ -4790,7 +4790,7 @@
     "title": "cs-install - Install a specific version of an application",
     "content": "cs install {{application_name}}:{{application_version}}",
     "group": "Common Tools",
-    "description": "cs-install: Install an application in the installation directory onfigured when installing `cs` (to enable the binary to be loaded add to your `.bash_profile` the `$ eval \"$(cs install --env)\"` command). (Install a specific version of an application)",
+    "description": "cs-install: Install an application in the installation directory configured when installing `cs` (to enable the binary to be loaded add to your `.bash_profile` the `$ eval \"$(cs install --env)\"` command). (Install a specific version of an application)",
     "tags": [
       "common",
       "cs-install",
@@ -4805,7 +4805,7 @@
     "title": "cs-install - Search an application by a specific name",
     "content": "cs search {{application_partial_name}}",
     "group": "Common Tools",
-    "description": "cs-install: Install an application in the installation directory onfigured when installing `cs` (to enable the binary to be loaded add to your `.bash_profile` the `$ eval \"$(cs install --env)\"` command). (Search an application by a specific name)",
+    "description": "cs-install: Install an application in the installation directory configured when installing `cs` (to enable the binary to be loaded add to your `.bash_profile` the `$ eval \"$(cs install --env)\"` command). (Search an application by a specific name)",
     "tags": [
       "common",
       "cs-install",
@@ -4820,7 +4820,7 @@
     "title": "cs-install - Update a specific application if available",
     "content": "cs update {{application_name}}",
     "group": "Common Tools",
-    "description": "cs-install: Install an application in the installation directory onfigured when installing `cs` (to enable the binary to be loaded add to your `.bash_profile` the `$ eval \"$(cs install --env)\"` command). (Update a specific application if available)",
+    "description": "cs-install: Install an application in the installation directory configured when installing `cs` (to enable the binary to be loaded add to your `.bash_profile` the `$ eval \"$(cs install --env)\"` command). (Update a specific application if available)",
     "tags": [
       "common",
       "cs-install",
@@ -4835,7 +4835,7 @@
     "title": "cs-install - Update all the installed applications",
     "content": "cs update",
     "group": "Common Tools",
-    "description": "cs-install: Install an application in the installation directory onfigured when installing `cs` (to enable the binary to be loaded add to your `.bash_profile` the `$ eval \"$(cs install --env)\"` command). (Update all the installed applications)",
+    "description": "cs-install: Install an application in the installation directory configured when installing `cs` (to enable the binary to be loaded add to your `.bash_profile` the `$ eval \"$(cs install --env)\"` command). (Update all the installed applications)",
     "tags": [
       "common",
       "cs-install",
@@ -4850,7 +4850,7 @@
     "title": "cs-install - Uninstall a specific application",
     "content": "cs uninstall {{application_name}}",
     "group": "Common Tools",
-    "description": "cs-install: Install an application in the installation directory onfigured when installing `cs` (to enable the binary to be loaded add to your `.bash_profile` the `$ eval \"$(cs install --env)\"` command). (Uninstall a specific application)",
+    "description": "cs-install: Install an application in the installation directory configured when installing `cs` (to enable the binary to be loaded add to your `.bash_profile` the `$ eval \"$(cs install --env)\"` command). (Uninstall a specific application)",
     "tags": [
       "common",
       "cs-install",
@@ -4865,7 +4865,7 @@
     "title": "cs-install - List all installed applications",
     "content": "cs list",
     "group": "Common Tools",
-    "description": "cs-install: Install an application in the installation directory onfigured when installing `cs` (to enable the binary to be loaded add to your `.bash_profile` the `$ eval \"$(cs install --env)\"` command). (List all installed applications)",
+    "description": "cs-install: Install an application in the installation directory configured when installing `cs` (to enable the binary to be loaded add to your `.bash_profile` the `$ eval \"$(cs install --env)\"` command). (List all installed applications)",
     "tags": [
       "common",
       "cs-install",
@@ -4880,7 +4880,7 @@
     "title": "cs-install - Pass specific Java options to an installed application",
     "content": "{{application_name}} {{-Jjava_option_name1=value1 -Jjava_option_name2=value2 ...}}",
     "group": "Common Tools",
-    "description": "cs-install: Install an application in the installation directory onfigured when installing `cs` (to enable the binary to be loaded add to your `.bash_profile` the `$ eval \"$(cs install --env)\"` command). (Pass specific Java options to an installed application)",
+    "description": "cs-install: Install an application in the installation directory configured when installing `cs` (to enable the binary to be loaded add to your `.bash_profile` the `$ eval \"$(cs install --env)\"` command). (Pass specific Java options to an installed application)",
     "tags": [
       "common",
       "cs-install",
@@ -5372,10 +5372,10 @@
   {
     "id": "tldr-en-common-ld-1",
     "type": "command",
-    "title": "ld - Link two object files together",
-    "content": "ld {{path/to/file1.o}} {{path/to/file2.o}} {{[-o|--output]}} {{path/to/output_executable}}",
+    "title": "ld - Link multiple object files together",
+    "content": "ld {{path/to/file1.o path/to/file2.o ...}} {{[-o|--output]}} {{path/to/output_executable}}",
     "group": "Common Tools",
-    "description": "ld: Link object files together. (Link two object files together)",
+    "description": "ld: Link object files together. (Link multiple object files together)",
     "tags": [
       "common",
       "ld",
@@ -5387,8 +5387,23 @@
   {
     "id": "tldr-en-common-ld-2",
     "type": "command",
+    "title": "ld - Link a object file to a specific target emulation",
+    "content": "ld {{path/to/file.o}} -m {{target_emulation}} {{[-o|--output]}} {{path/to/output_executable}}",
+    "group": "Common Tools",
+    "description": "ld: Link object files together. (Link a object file to a specific target emulation)",
+    "tags": [
+      "common",
+      "ld",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-ld-3",
+    "type": "command",
     "title": "ld - Dynamically link an x86_64 program to glibc (file paths change depending on the system)",
-    "content": "ld {{[-o|--output]}} {{path/to/output_executable}} {{[-I|--dynamic-linker]}} /lib/ld-linux-x86-64.so.2 /lib/crt1.o /lib/crti.o -lc {{path/to/file.o}} /lib/crtn.o",
+    "content": "ld {{[-o|--output]}} {{path/to/output_executable}} {{[-I|--dynamic-linker]}} {{/lib/ld-linux-x86-64.so.2}} {{/lib/crt1.o}} {{/lib/crti.o}} -lc {{path/to/file.o}} {{/lib/crtn.o}}",
     "group": "Common Tools",
     "description": "ld: Link object files together. (Dynamically link an x86_64 program to glibc (file paths change depending on the system))",
     "tags": [
@@ -8238,7 +8253,7 @@
     "id": "tldr-en-common-svn-2",
     "type": "command",
     "title": "svn - Put files and directories under version control, scheduling them for addition to repository. They will be added in next commit",
-    "content": "svn add {{PATH}}",
+    "content": "svn add {{path/to/file_or_directory}}",
     "group": "Common Tools",
     "description": "svn: Subversion client tool. (Put files and directories under version control, scheduling them for addition to repository. They will be added in next commit)",
     "tags": [
@@ -8253,7 +8268,7 @@
     "id": "tldr-en-common-svn-3",
     "type": "command",
     "title": "svn - Send changes from your working copy to the repository",
-    "content": "svn {{[ci|commit]}} {{[-m|--message]}} {{commit_log_message}} [{{PATH}}]",
+    "content": "svn {{[ci|commit]}} {{[-m|--message]}} {{commit_log_message}} {{path/to/directory}}",
     "group": "Common Tools",
     "description": "svn: Subversion client tool. (Send changes from your working copy to the repository)",
     "tags": [
@@ -11328,7 +11343,7 @@
     "id": "tldr-en-common-alias-4",
     "type": "command",
     "title": "alias - Turn `rm` into an interactive command",
-    "content": "alias {{rm}}=\"{{rm --interactive}}\"",
+    "content": "alias rm=\"rm --interactive\"",
     "group": "Common Tools",
     "description": "alias: Create aliases - words that are replaced by a command string. Aliases expire with the current shell session unless defined in the shell's configuration file, e.g. `~/.bashrc` for Bash or `~/.zshrc` for Zsh. (Turn `rm` into an interactive command)",
     "tags": [
@@ -11343,7 +11358,7 @@
     "id": "tldr-en-common-alias-5",
     "type": "command",
     "title": "alias - Create `la` as a shortcut for `ls --all`",
-    "content": "alias {{la}}=\"{{ls --all}}\"",
+    "content": "alias la=\"ls --all\"",
     "group": "Common Tools",
     "description": "alias: Create aliases - words that are replaced by a command string. Aliases expire with the current shell session unless defined in the shell's configuration file, e.g. `~/.bashrc` for Bash or `~/.zshrc` for Zsh. (Create `la` as a shortcut for `ls --all`)",
     "tags": [
@@ -11898,7 +11913,7 @@
     "id": "tldr-en-common-ascii-image-converter-0",
     "type": "command",
     "title": "ascii-image-converter - Convert an image into ASCII",
-    "content": "ascii-image-converter {{path/to/image|URL}}",
+    "content": "ascii-image-converter {{path/to/image|url}}",
     "group": "Common Tools",
     "description": "ascii-image-converter: Convert an image into ASCII. (Convert an image into ASCII)",
     "tags": [
@@ -11913,7 +11928,7 @@
     "id": "tldr-en-common-ascii-image-converter-1",
     "type": "command",
     "title": "ascii-image-converter - Colorize the output",
-    "content": "ascii-image-converter {{[-C|--color]}} {{path/to/image|URL}}",
+    "content": "ascii-image-converter {{[-C|--color]}} {{path/to/image|url}}",
     "group": "Common Tools",
     "description": "ascii-image-converter: Convert an image into ASCII. (Colorize the output)",
     "tags": [
@@ -11928,7 +11943,7 @@
     "id": "tldr-en-common-ascii-image-converter-2",
     "type": "command",
     "title": "ascii-image-converter - Create a tresholded image using braille (if the image is barely visible, try changing the terminal font)",
-    "content": "ascii-image-converter {{[-b|--braille]}} {{path/to/image|URL}}",
+    "content": "ascii-image-converter {{[-b|--braille]}} {{path/to/image|url}}",
     "group": "Common Tools",
     "description": "ascii-image-converter: Convert an image into ASCII. (Create a tresholded image using braille (if the image is barely visible, try changing the terminal font))",
     "tags": [
@@ -11943,7 +11958,7 @@
     "id": "tldr-en-common-ascii-image-converter-3",
     "type": "command",
     "title": "ascii-image-converter - Create a dithered image using braille (if the image is barely visible, try changing the terminal font)",
-    "content": "ascii-image-converter {{[-b|--braille]}} --dither {{path/to/image|URL}}",
+    "content": "ascii-image-converter {{[-b|--braille]}} --dither {{path/to/image|url}}",
     "group": "Common Tools",
     "description": "ascii-image-converter: Convert an image into ASCII. (Create a dithered image using braille (if the image is barely visible, try changing the terminal font))",
     "tags": [
@@ -11958,7 +11973,7 @@
     "id": "tldr-en-common-ascii-image-converter-4",
     "type": "command",
     "title": "ascii-image-converter - Display the image with negative colors",
-    "content": "ascii-image-converter {{[-Cn|--color --negative]}} {{path/to/image|URL}}",
+    "content": "ascii-image-converter {{[-Cn|--color --negative]}} {{path/to/image|url}}",
     "group": "Common Tools",
     "description": "ascii-image-converter: Convert an image into ASCII. (Display the image with negative colors)",
     "tags": [
@@ -11973,7 +11988,7 @@
     "id": "tldr-en-common-ascii-image-converter-5",
     "type": "command",
     "title": "ascii-image-converter - Use a wider range of characters to display an image (may improve image accuracy)",
-    "content": "ascii-image-converter {{[-c|--complex]}} {{path/to/image|URL}}",
+    "content": "ascii-image-converter {{[-c|--complex]}} {{path/to/image|url}}",
     "group": "Common Tools",
     "description": "ascii-image-converter: Convert an image into ASCII. (Use a wider range of characters to display an image (may improve image accuracy))",
     "tags": [
@@ -14688,7 +14703,7 @@
     "id": "tldr-en-common-xmllint-5",
     "type": "command",
     "title": "xmllint - Validate XML against DTD schema hosted online",
-    "content": "xmllint --dtdvalid {{URL}} {{source_file.xml}}",
+    "content": "xmllint --dtdvalid {{url}} {{source_file.xml}}",
     "group": "Common Tools",
     "description": "xmllint: XML parser and linter that supports XPath, a syntax for navigating XML trees. (Validate XML against DTD schema hosted online)",
     "tags": [
@@ -16143,7 +16158,7 @@
     "id": "tldr-en-common-rainbowstream-1",
     "type": "command",
     "title": "rainbowstream - [Interactive] Show your timeline (optional number of tweets to display, default is 5)",
-    "content": "home [{{num_of_last_tweets}}]",
+    "content": "home {{number_of_tweets}}",
     "group": "Common Tools",
     "description": "rainbowstream: Interactive Twitter client supporting realtime tweetstream, trends, sending, search, favorites, and user management. Online help with ``, `` and `` for history, `` to auto-complete and 2-`` for suggestion. ([Interactive] Show your timeline (optional number of tweets to display, default is 5))",
     "tags": [
@@ -21738,7 +21753,7 @@
     "id": "tldr-en-common-rabbitmqctl-users-6",
     "type": "command",
     "title": "rabbitmqctl-users - Assign one or more tags (e.g., administrator) to a user",
-    "content": "rabbitmqctl set_user_tags {{username}} {{tag1}} [{{tag2}}]",
+    "content": "rabbitmqctl set_user_tags {{username}} {{tag1 tag2 ...}}",
     "group": "Common Tools",
     "description": "rabbitmqctl-users: Manage RabbitMQ users, their permissions, and tags. (Assign one or more tags (e.g., administrator) to a user)",
     "tags": [
@@ -24318,7 +24333,7 @@
     "id": "tldr-en-common-xml-validate-0",
     "type": "command",
     "title": "xml-validate - Validate one or more XML documents for well-formedness only",
-    "content": "xml {{[val|validate]}} {{path/to/input1.xml|URI1 path/to/input2.xml|URI2 ...}}",
+    "content": "xml {{[val|validate]}} {{path/to/input1.xml|uri1 path/to/input2.xml|uri2 ...}}",
     "group": "Common Tools",
     "description": "xml-validate: Validate XML documents. (Validate one or more XML documents for well-formedness only)",
     "tags": [
@@ -24333,7 +24348,7 @@
     "id": "tldr-en-common-xml-validate-1",
     "type": "command",
     "title": "xml-validate - Validate one or more XML documents against a Document Type Definition (DTD)",
-    "content": "xml {{[val|validate]}} {{[-d|--dtd]}} {{path/to/schema.dtd}} {{path/to/input1.xml|URI1 path/to/input2.xml|URI2 ...}}",
+    "content": "xml {{[val|validate]}} {{[-d|--dtd]}} {{path/to/schema.dtd}} {{path/to/input1.xml|uri1 path/to/input2.xml|uri2 ...}}",
     "group": "Common Tools",
     "description": "xml-validate: Validate XML documents. (Validate one or more XML documents against a Document Type Definition (DTD))",
     "tags": [
@@ -24348,7 +24363,7 @@
     "id": "tldr-en-common-xml-validate-2",
     "type": "command",
     "title": "xml-validate - Validate one or more XML documents against an XML Schema Definition (XSD)",
-    "content": "xml {{[val|validate]}} {{[-s|--xsd]}} {{path/to/schema.xsd}} {{path/to/input1.xml|URI1 path/to/input2.xml|URI2 ...}}",
+    "content": "xml {{[val|validate]}} {{[-s|--xsd]}} {{path/to/schema.xsd}} {{path/to/input1.xml|uri1 path/to/input2.xml|uri2 ...}}",
     "group": "Common Tools",
     "description": "xml-validate: Validate XML documents. (Validate one or more XML documents against an XML Schema Definition (XSD))",
     "tags": [
@@ -24363,7 +24378,7 @@
     "id": "tldr-en-common-xml-validate-3",
     "type": "command",
     "title": "xml-validate - Validate one or more XML documents against a Relax NG schema (RNG)",
-    "content": "xml {{[val|validate]}} {{[-r|--relaxng]}} {{path/to/schema.rng}} {{path/to/input1.xml|URI1 path/to/input2.xml|URI2 ...}}",
+    "content": "xml {{[val|validate]}} {{[-r|--relaxng]}} {{path/to/schema.rng}} {{path/to/input1.xml|uri1 path/to/input2.xml|uri2 ...}}",
     "group": "Common Tools",
     "description": "xml-validate: Validate XML documents. (Validate one or more XML documents against a Relax NG schema (RNG))",
     "tags": [
@@ -24993,7 +25008,7 @@
     "id": "tldr-en-common-perldoc-2",
     "type": "command",
     "title": "perldoc - Send output directly to `stdout` (by default, it is send to a pager)",
-    "content": "perldoc -T {{page|module|program|URL}}",
+    "content": "perldoc -T {{page|module|program|url}}",
     "group": "Common Tools",
     "description": "perldoc: Look up Perl documentation in `.pod` format. (Send output directly to `stdout` (by default, it is send to a pager))",
     "tags": [
@@ -25008,7 +25023,7 @@
     "id": "tldr-en-common-perldoc-3",
     "type": "command",
     "title": "perldoc - Specify the language code of the desired translation",
-    "content": "perldoc -L {{language_code}} {{page|module|program|URL}}",
+    "content": "perldoc -L {{language_code}} {{page|module|program|url}}",
     "group": "Common Tools",
     "description": "perldoc: Look up Perl documentation in `.pod` format. (Specify the language code of the desired translation)",
     "tags": [
@@ -25188,7 +25203,7 @@
     "id": "tldr-en-common-trivy-3",
     "type": "command",
     "title": "trivy - Scan the filesystem for vulnerabilities and misconfigurations",
-    "content": "trivy fs --security-checks {{vuln,config}} {{path/to/project_directory}}",
+    "content": "trivy fs --scanners {{vuln,misconfig}} {{path/to/project_directory}}",
     "group": "Common Tools",
     "description": "trivy: Scanner for vulnerabilities in container images, filesystems, and Git repositories, as well as for configuration issues. (Scan the filesystem for vulnerabilities and misconfigurations)",
     "tags": [
@@ -29928,7 +29943,7 @@
     "id": "tldr-en-common-xml-canonic-0",
     "type": "command",
     "title": "xml-canonic - Make an XML document canonical, preserving comments",
-    "content": "xml {{[c14n|canonic]}} {{path/to/input.xml|URI}} > {{path/to/output.xml}}",
+    "content": "xml {{[c14n|canonic]}} {{path/to/input.xml|uri}} > {{path/to/output.xml}}",
     "group": "Common Tools",
     "description": "xml-canonic: Make XML documents canonical. (Make an XML document canonical, preserving comments)",
     "tags": [
@@ -29943,7 +29958,7 @@
     "id": "tldr-en-common-xml-canonic-1",
     "type": "command",
     "title": "xml-canonic - Make an XML document canonical, removing comments",
-    "content": "xml {{[c14n|canonic]}} --without-comments {{path/to/input.xml|URI}} > {{path/to/output.xml}}",
+    "content": "xml {{[c14n|canonic]}} --without-comments {{path/to/input.xml|uri}} > {{path/to/output.xml}}",
     "group": "Common Tools",
     "description": "xml-canonic: Make XML documents canonical. (Make an XML document canonical, removing comments)",
     "tags": [
@@ -29958,7 +29973,7 @@
     "id": "tldr-en-common-xml-canonic-2",
     "type": "command",
     "title": "xml-canonic - Make XML exclusively canonical, using an XPATH from a file, preserving comments",
-    "content": "xml {{[c14n|canonic]}} --exc-with-comments {{path/to/input.xml|URI}} {{path/to/c14n.xpath}}",
+    "content": "xml {{[c14n|canonic]}} --exc-with-comments {{path/to/input.xml|uri}} {{path/to/c14n.xpath}}",
     "group": "Common Tools",
     "description": "xml-canonic: Make XML documents canonical. (Make XML exclusively canonical, using an XPATH from a file, preserving comments)",
     "tags": [
@@ -32223,7 +32238,7 @@
     "id": "tldr-en-common-lldb-0",
     "type": "command",
     "title": "lldb - Debug an executable",
-    "content": "lldb {{executable}}",
+    "content": "lldb \"{{executable}}\"",
     "group": "Common Tools",
     "description": "lldb: The LLVM Low-Level Debugger. (Debug an executable)",
     "tags": [
@@ -32253,7 +32268,7 @@
     "id": "tldr-en-common-lldb-2",
     "type": "command",
     "title": "lldb - Wait for a new process to launch with a given name, and attach to it",
-    "content": "lldb -w -n {{process_name}}",
+    "content": "lldb -w -n \"{{process_name}}\"",
     "group": "Common Tools",
     "description": "lldb: The LLVM Low-Level Debugger. (Wait for a new process to launch with a given name, and attach to it)",
     "tags": [
@@ -36710,7 +36725,7 @@
     "title": "go-fmt - Format Go source files in the current directory",
     "content": "go fmt",
     "group": "Common Tools",
-    "description": "go-fmt: Format Go source files, printing the changed filenames. (Format Go source files in the current directory)",
+    "description": "go-fmt: Format Go source files, printing the changed filenames. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Format Go source files in the current directory)",
     "tags": [
       "common",
       "go-fmt",
@@ -36725,7 +36740,7 @@
     "title": "go-fmt - Format a specific Go package in your import path (`$GOPATH/src`)",
     "content": "go fmt {{path/to/package}}",
     "group": "Common Tools",
-    "description": "go-fmt: Format Go source files, printing the changed filenames. (Format a specific Go package in your import path (`$GOPATH/src`))",
+    "description": "go-fmt: Format Go source files, printing the changed filenames. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Format a specific Go package in your import path (`$GOPATH/src`))",
     "tags": [
       "common",
       "go-fmt",
@@ -36740,7 +36755,7 @@
     "title": "go-fmt - Format the package in the current directory and all subdirectories (note the `...`)",
     "content": "go fmt {{./...}}",
     "group": "Common Tools",
-    "description": "go-fmt: Format Go source files, printing the changed filenames. (Format the package in the current directory and all subdirectories (note the `...`))",
+    "description": "go-fmt: Format Go source files, printing the changed filenames. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Format the package in the current directory and all subdirectories (note the `...`))",
     "tags": [
       "common",
       "go-fmt",
@@ -36755,7 +36770,7 @@
     "title": "go-fmt - Print what format commands would've been run, without modifying anything",
     "content": "go fmt -n",
     "group": "Common Tools",
-    "description": "go-fmt: Format Go source files, printing the changed filenames. (Print what format commands would've been run, without modifying anything)",
+    "description": "go-fmt: Format Go source files, printing the changed filenames. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Print what format commands would've been run, without modifying anything)",
     "tags": [
       "common",
       "go-fmt",
@@ -36770,7 +36785,7 @@
     "title": "go-fmt - Print which format commands are run as they are run",
     "content": "go fmt -x",
     "group": "Common Tools",
-    "description": "go-fmt: Format Go source files, printing the changed filenames. (Print which format commands are run as they are run)",
+    "description": "go-fmt: Format Go source files, printing the changed filenames. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Print which format commands are run as they are run)",
     "tags": [
       "common",
       "go-fmt",
@@ -40098,7 +40113,7 @@
     "id": "tldr-en-common-markdown2pdf-3",
     "type": "command",
     "title": "markdown2pdf - Convert from URL (this will convert a Markdown file at that URL to a local PDF file)",
-    "content": "markdown2pdf {{[-u|--url]}} {{URL}} {{[-o|--output]}} {{path/to/output_file.pdf}}",
+    "content": "markdown2pdf {{[-u|--url]}} {{url}} {{[-o|--output]}} {{path/to/output_file.pdf}}",
     "group": "Common Tools",
     "description": "markdown2pdf: Convert markdown to PDF. (Convert from URL (this will convert a Markdown file at that URL to a local PDF file))",
     "tags": [
@@ -44478,7 +44493,7 @@
     "id": "tldr-en-common-git-notes-1",
     "type": "command",
     "title": "git-notes - List all notes attached to a given object (defaults to `HEAD`)",
-    "content": "git notes list [{{object}}]",
+    "content": "git notes list {{object}}",
     "group": "Common Tools",
     "description": "git-notes: Add or inspect object notes. (List all notes attached to a given object (defaults to `HEAD`))",
     "tags": [
@@ -44493,7 +44508,7 @@
     "id": "tldr-en-common-git-notes-2",
     "type": "command",
     "title": "git-notes - Show the notes attached to a given object (defaults to `HEAD`)",
-    "content": "git notes show [{{object}}]",
+    "content": "git notes show {{object}}",
     "group": "Common Tools",
     "description": "git-notes: Add or inspect object notes. (Show the notes attached to a given object (defaults to `HEAD`))",
     "tags": [
@@ -44538,7 +44553,7 @@
     "id": "tldr-en-common-git-notes-5",
     "type": "command",
     "title": "git-notes - Edit an existing note (defaults to `HEAD`)",
-    "content": "git notes edit [{{object}}]",
+    "content": "git notes edit {{object}}",
     "group": "Common Tools",
     "description": "git-notes: Add or inspect object notes. (Edit an existing note (defaults to `HEAD`))",
     "tags": [
@@ -47523,7 +47538,7 @@
     "id": "tldr-en-common-alex-3",
     "type": "command",
     "title": "alex - Analyze all Markdown files except `example.md`",
-    "content": "alex *.md !{{example.md}}",
+    "content": "alex *.md !example.md",
     "group": "Common Tools",
     "description": "alex: Catch insensitive, inconsiderate writing. It helps you find gender favouring, polarising, race related, religion inconsiderate, or other unequal phrasing in text. (Analyze all Markdown files except `example.md`)",
     "tags": [
@@ -51573,7 +51588,7 @@
     "id": "tldr-en-common-limactl-1",
     "type": "command",
     "title": "limactl - Create a VM using the default settings and optionally provide a name and/or a template (see `limactl create --list-templates` for available templates)",
-    "content": "limactl create --name {{vm_name}} template://{{debian|fedora|ubuntu|...}}",
+    "content": "limactl create --name {{vm_name}} template:{{debian|fedora|ubuntu|...}}",
     "group": "Common Tools",
     "description": "limactl: Virtual machine manager for Linux guests, with multiple VM templates available. Can be used to run containers on macOS, but also for generic virtual machine use cases on macOS and Linux hosts. (Create a VM using the default settings and optionally provide a name and/or a template (see `limactl create --list-templates` for available templates))",
     "tags": [
@@ -78753,7 +78768,7 @@
     "id": "tldr-en-common-xml-1",
     "type": "command",
     "title": "xml - Execute a subcommand with input from a file or URI, printing to `stdout`",
-    "content": "xml {{subcommand}} {{options}} {{path/to/input.xml|URI}}",
+    "content": "xml {{subcommand}} {{options}} {{path/to/input.xml|uri}}",
     "group": "Common Tools",
     "description": "xml: XMLStarlet Toolkit: query, edit, check, convert, and transform XML documents. Some subcommands such as `validate` have their own usage documentation. (Execute a subcommand with input from a file or URI, printing to `stdout`)",
     "tags": [
@@ -78783,7 +78798,7 @@
     "id": "tldr-en-common-xml-3",
     "type": "command",
     "title": "xml - Execute a subcommand with input from a file or URI and output to a file",
-    "content": "xml {{subcommand}} {{options}} {{path/to/input.xml|URI}} > {{path/to/output}}",
+    "content": "xml {{subcommand}} {{options}} {{path/to/input.xml|uri}} > {{path/to/output}}",
     "group": "Common Tools",
     "description": "xml: XMLStarlet Toolkit: query, edit, check, convert, and transform XML documents. Some subcommands such as `validate` have their own usage documentation. (Execute a subcommand with input from a file or URI and output to a file)",
     "tags": [
@@ -79899,6 +79914,36 @@
     "tags": [
       "common",
       "nix-channel",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-git-update-server-info-0",
+    "type": "command",
+    "title": "git-update-server-info - Update Git's auxiliary files for dumb HTTP serving",
+    "content": "git update-server-info",
+    "group": "Common Tools",
+    "description": "git-update-server-info: Update auxiliary repository information for dumb servers (a regular web server that only serves files). (Update Git's auxiliary files for dumb HTTP serving)",
+    "tags": [
+      "common",
+      "git-update-server-info",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-git-update-server-info-1",
+    "type": "command",
+    "title": "git-update-server-info - Rebuild the auxiliary info files from scratch",
+    "content": "git update-server-info {{[-f|--force]}}",
+    "group": "Common Tools",
+    "description": "git-update-server-info: Update auxiliary repository information for dumb servers (a regular web server that only serves files). (Rebuild the auxiliary info files from scratch)",
+    "tags": [
+      "common",
+      "git-update-server-info",
       "tldr",
       "en"
     ],
@@ -84843,7 +84888,7 @@
     "id": "tldr-en-common-xml-edit-0",
     "type": "command",
     "title": "xml-edit - Delete elements matching an XPATH from an XML document",
-    "content": "xml {{[ed|edit]}} {{[-d|--delete]}} \"{{XPATH1}}\" {{path/to/input.xml|URI}}",
+    "content": "xml {{[ed|edit]}} {{[-d|--delete]}} \"{{XPATH1}}\" {{path/to/input.xml|uri}}",
     "group": "Common Tools",
     "description": "xml-edit: Edit an XML document. (Delete elements matching an XPATH from an XML document)",
     "tags": [
@@ -84858,7 +84903,7 @@
     "id": "tldr-en-common-xml-edit-1",
     "type": "command",
     "title": "xml-edit - Move an element node of an XML document from XPATH1 to XPATH2",
-    "content": "xml {{[ed|edit]}} {{[-m|--move]}} \"{{XPATH1}}\" \"{{XPATH2}}\" {{path/to/input.xml|URI}}",
+    "content": "xml {{[ed|edit]}} {{[-m|--move]}} \"{{XPATH1}}\" \"{{XPATH2}}\" {{path/to/input.xml|uri}}",
     "group": "Common Tools",
     "description": "xml-edit: Edit an XML document. (Move an element node of an XML document from XPATH1 to XPATH2)",
     "tags": [
@@ -84873,7 +84918,7 @@
     "id": "tldr-en-common-xml-edit-2",
     "type": "command",
     "title": "xml-edit - Rename all attributes named \"id\" to \"ID\"",
-    "content": "xml {{[ed|edit]}} {{[-r|--rename]}} \"{{//*/@id}}\" -v \"{{ID}}\" {{path/to/input.xml|URI}}",
+    "content": "xml {{[ed|edit]}} {{[-r|--rename]}} \"{{//*/@id}}\" -v \"{{ID}}\" {{path/to/input.xml|uri}}",
     "group": "Common Tools",
     "description": "xml-edit: Edit an XML document. (Rename all attributes named \"id\" to \"ID\")",
     "tags": [
@@ -84888,7 +84933,7 @@
     "id": "tldr-en-common-xml-edit-3",
     "type": "command",
     "title": "xml-edit - Rename sub-elements of the element \"table\" that are named \"rec\" to \"record\"",
-    "content": "xml {{[ed|edit]}} {{[-r|--rename]}} \"{{/xml/table/rec}}\" -v \"{{record}}\" {{path/to/input.xml|URI}}",
+    "content": "xml {{[ed|edit]}} {{[-r|--rename]}} \"{{/xml/table/rec}}\" -v \"{{record}}\" {{path/to/input.xml|uri}}",
     "group": "Common Tools",
     "description": "xml-edit: Edit an XML document. (Rename sub-elements of the element \"table\" that are named \"rec\" to \"record\")",
     "tags": [
@@ -84903,7 +84948,7 @@
     "id": "tldr-en-common-xml-edit-4",
     "type": "command",
     "title": "xml-edit - Update the XML table record with \"id=3\" to the value \"id=5\"",
-    "content": "xml {{[ed|edit]}} {{[-u|--update]}} \"{{xml/table/rec[@id=3]/@id}}\" {{[-v|--value]}} {{5}} {{path/to/input.xml|URI}}",
+    "content": "xml {{[ed|edit]}} {{[-u|--update]}} \"{{xml/table/rec[@id=3]/@id}}\" {{[-v|--value]}} {{5}} {{path/to/input.xml|uri}}",
     "group": "Common Tools",
     "description": "xml-edit: Edit an XML document. (Update the XML table record with \"id=3\" to the value \"id=5\")",
     "tags": [
@@ -91848,7 +91893,7 @@
     "id": "tldr-en-common-xml-format-0",
     "type": "command",
     "title": "xml-format - Format an XML document, indenting with tabs",
-    "content": "xml {{[fo|format]}} {{[-t|--indent-tab]}} {{path/to/input.xml|URI}} > {{path/to/output.xml}}",
+    "content": "xml {{[fo|format]}} {{[-t|--indent-tab]}} {{path/to/input.xml|uri}} > {{path/to/output.xml}}",
     "group": "Common Tools",
     "description": "xml-format: Format an XML document. (Format an XML document, indenting with tabs)",
     "tags": [
@@ -91863,7 +91908,7 @@
     "id": "tldr-en-common-xml-format-1",
     "type": "command",
     "title": "xml-format - Format an HTML document, indenting with 4 spaces",
-    "content": "xml {{[fo|format]}} {{[-H|--html]}} {{[-s|--indent-spaces]}} {{4}} {{path/to/input.html|URI}} > {{path/to/output.html}}",
+    "content": "xml {{[fo|format]}} {{[-H|--html]}} {{[-s|--indent-spaces]}} {{4}} {{path/to/input.html|uri}} > {{path/to/output.html}}",
     "group": "Common Tools",
     "description": "xml-format: Format an XML document. (Format an HTML document, indenting with 4 spaces)",
     "tags": [
@@ -91878,7 +91923,7 @@
     "id": "tldr-en-common-xml-format-2",
     "type": "command",
     "title": "xml-format - Recover parsable parts of a malformed XML document, without indenting",
-    "content": "xml {{[fo|format]}} {{[-R|--recover]}} {{[-n|--noindent]}} {{path/to/malformed.xml|URI}} > {{path/to/recovered.xml}}",
+    "content": "xml {{[fo|format]}} {{[-R|--recover]}} {{[-n|--noindent]}} {{path/to/malformed.xml|uri}} > {{path/to/recovered.xml}}",
     "group": "Common Tools",
     "description": "xml-format: Format an XML document. (Recover parsable parts of a malformed XML document, without indenting)",
     "tags": [
@@ -91908,7 +91953,7 @@
     "id": "tldr-en-common-xml-format-4",
     "type": "command",
     "title": "xml-format - Format an XML document, omitting the XML declaration",
-    "content": "xml {{[fo|format]}} {{[-o|--omit-decl]}} {{path/to/input.xml|URI}} > {{path/to/output.xml}}",
+    "content": "xml {{[fo|format]}} {{[-o|--omit-decl]}} {{path/to/input.xml|uri}} > {{path/to/output.xml}}",
     "group": "Common Tools",
     "description": "xml-format: Format an XML document. (Format an XML document, omitting the XML declaration)",
     "tags": [
@@ -94038,7 +94083,7 @@
     "id": "tldr-en-common-omf-0",
     "type": "command",
     "title": "omf - Install one or more packages",
-    "content": "omf install {{name}}",
+    "content": "omf install {{package1 package2 ...}}",
     "group": "Common Tools",
     "description": "omf: Oh My Fish, the Fishshell Framework. Install packages to extend and modify the fish shell. (Install one or more packages)",
     "tags": [
@@ -95990,7 +96035,7 @@
     "title": "vainfo - Show version and supported entrypoints",
     "content": "vainfo",
     "group": "Common Tools",
-    "description": "vainfo: Display information from VA API driver . (Show version and supported entrypoints)",
+    "description": "vainfo: Display information from VA API driver. (Show version and supported entrypoints)",
     "tags": [
       "common",
       "vainfo",
@@ -96005,7 +96050,7 @@
     "title": "vainfo - Test a specific display protocol",
     "content": "vainfo --display {{wayland|x11|drm|...}}",
     "group": "Common Tools",
-    "description": "vainfo: Display information from VA API driver . (Test a specific display protocol)",
+    "description": "vainfo: Display information from VA API driver. (Test a specific display protocol)",
     "tags": [
       "common",
       "vainfo",
@@ -96020,7 +96065,7 @@
     "title": "vainfo - Show available display protocols",
     "content": "vainfo --display help",
     "group": "Common Tools",
-    "description": "vainfo: Display information from VA API driver . (Show available display protocols)",
+    "description": "vainfo: Display information from VA API driver. (Show available display protocols)",
     "tags": [
       "common",
       "vainfo",
@@ -96035,7 +96080,7 @@
     "title": "vainfo - Show all supported entrypoints",
     "content": "vainfo {{[-a|--all]}}",
     "group": "Common Tools",
-    "description": "vainfo: Display information from VA API driver . (Show all supported entrypoints)",
+    "description": "vainfo: Display information from VA API driver. (Show all supported entrypoints)",
     "tags": [
       "common",
       "vainfo",
@@ -96050,7 +96095,7 @@
     "title": "vainfo - Display help",
     "content": "vainfo --help",
     "group": "Common Tools",
-    "description": "vainfo: Display information from VA API driver . (Display help)",
+    "description": "vainfo: Display information from VA API driver. (Display help)",
     "tags": [
       "common",
       "vainfo",
@@ -96789,6 +96834,111 @@
     "tags": [
       "common",
       "doctl-kubernetes-cluster",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-fc-scan-0",
+    "type": "command",
+    "title": "fc-scan - Scan a font file",
+    "content": "fc-scan {{path/to/font_file}}",
+    "group": "Common Tools",
+    "description": "fc-scan: Scan font files or directories and print pattern information for each face found. (Scan a font file)",
+    "tags": [
+      "common",
+      "fc-scan",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-fc-scan-1",
+    "type": "command",
+    "title": "fc-scan - Scan a directory of fonts recursively",
+    "content": "fc-scan {{path/to/directory}}",
+    "group": "Common Tools",
+    "description": "fc-scan: Scan font files or directories and print pattern information for each face found. (Scan a directory of fonts recursively)",
+    "tags": [
+      "common",
+      "fc-scan",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-fc-scan-2",
+    "type": "command",
+    "title": "fc-scan - Scan multiple files or directories",
+    "content": "fc-scan {{path/to/font1.ttf path/to/font2.otf ...}}",
+    "group": "Common Tools",
+    "description": "fc-scan: Scan font files or directories and print pattern information for each face found. (Scan multiple files or directories)",
+    "tags": [
+      "common",
+      "fc-scan",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-fc-scan-3",
+    "type": "command",
+    "title": "fc-scan - Print results without including font sizes",
+    "content": "fc-scan {{[-b|--brief]}} {{path/to/font_file}}",
+    "group": "Common Tools",
+    "description": "fc-scan: Scan font files or directories and print pattern information for each face found. (Print results without including font sizes)",
+    "tags": [
+      "common",
+      "fc-scan",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-fc-scan-4",
+    "type": "command",
+    "title": "fc-scan - Print results using a custom output format",
+    "content": "fc-scan {{[-f|--format]}} \"{{%{family}\\n}}\" {{path/to/font_file}}",
+    "group": "Common Tools",
+    "description": "fc-scan: Scan font files or directories and print pattern information for each face found. (Print results using a custom output format)",
+    "tags": [
+      "common",
+      "fc-scan",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-fc-scan-5",
+    "type": "command",
+    "title": "fc-scan - Display help",
+    "content": "fc-scan {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "fc-scan: Scan font files or directories and print pattern information for each face found. (Display help)",
+    "tags": [
+      "common",
+      "fc-scan",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-fc-scan-6",
+    "type": "command",
+    "title": "fc-scan - Display version",
+    "content": "fc-scan {{[-V|--version]}}",
+    "group": "Common Tools",
+    "description": "fc-scan: Scan font files or directories and print pattern information for each face found. (Display version)",
+    "tags": [
+      "common",
+      "fc-scan",
       "tldr",
       "en"
     ],
@@ -98163,7 +98313,7 @@
     "id": "tldr-en-common-rustscan-0",
     "type": "command",
     "title": "rustscan - Scan all ports of one or more comma-delimited addresses using the default values",
-    "content": "rustscan {{[-a|--addresses]}} {{ip_or_hostname}}",
+    "content": "rustscan {{[-a|--addresses]}} {{ip_or_hostname1,ip_or_hostname2,...}}",
     "group": "Common Tools",
     "description": "rustscan: Modern Port Scanner written in Rust. Note: `nmap` must be installed for some of the examples below to work. (Scan all ports of one or more comma-delimited addresses using the default values)",
     "tags": [
@@ -98178,7 +98328,7 @@
     "id": "tldr-en-common-rustscan-1",
     "type": "command",
     "title": "rustscan - Scan the top 1000 ports with service and version detection",
-    "content": "rustscan --top {{[-a|--addresses]}} {{address_or_addresses}}",
+    "content": "rustscan --top {{[-a|--addresses]}} {{address}}",
     "group": "Common Tools",
     "description": "rustscan: Modern Port Scanner written in Rust. Note: `nmap` must be installed for some of the examples below to work. (Scan the top 1000 ports with service and version detection)",
     "tags": [
@@ -98193,7 +98343,7 @@
     "id": "tldr-en-common-rustscan-2",
     "type": "command",
     "title": "rustscan - Scan a specific list of ports",
-    "content": "rustscan {{[-p|--ports]}} {{port1,port2,...}} {{[-a|--addresses]}} {{address_or_addresses}}",
+    "content": "rustscan {{[-p|--ports]}} {{port1,port2,...}} {{[-a|--addresses]}} {{address}}",
     "group": "Common Tools",
     "description": "rustscan: Modern Port Scanner written in Rust. Note: `nmap` must be installed for some of the examples below to work. (Scan a specific list of ports)",
     "tags": [
@@ -98208,7 +98358,7 @@
     "id": "tldr-en-common-rustscan-3",
     "type": "command",
     "title": "rustscan - Scan a specific range of ports",
-    "content": "rustscan {{[-r|--range]}} {{start}}-{{end}} {{[-a|--addresses]}} {{address_or_addresses}}",
+    "content": "rustscan {{[-r|--range]}} {{start}}-{{end}} {{[-a|--addresses]}} {{address}}",
     "group": "Common Tools",
     "description": "rustscan: Modern Port Scanner written in Rust. Note: `nmap` must be installed for some of the examples below to work. (Scan a specific range of ports)",
     "tags": [
@@ -98223,7 +98373,7 @@
     "id": "tldr-en-common-rustscan-4",
     "type": "command",
     "title": "rustscan - Invoke `nmap` functionalities (Nmap's OS detection and default scripts)",
-    "content": "rustscan {{[-a|--addresses]}} {{address_or_addresses}} -- -O {{[-sC|--script=default]}}",
+    "content": "rustscan {{[-a|--addresses]}} {{address}} -- -O {{[-sC|--script=default]}}",
     "group": "Common Tools",
     "description": "rustscan: Modern Port Scanner written in Rust. Note: `nmap` must be installed for some of the examples below to work. (Invoke `nmap` functionalities (Nmap's OS detection and default scripts))",
     "tags": [
@@ -98238,7 +98388,7 @@
     "id": "tldr-en-common-rustscan-5",
     "type": "command",
     "title": "rustscan - Scan with custom batch size (default: 4500) and timeout (default: 1500ms)",
-    "content": "rustscan {{[-b|--batch-size]}} {{batch_size}} {{[-t|--timeout]}} {{timeout}} {{[-a|--addresses]}} {{address_or_addresses}}",
+    "content": "rustscan {{[-b|--batch-size]}} {{batch_size}} {{[-t|--timeout]}} {{timeout}} {{[-a|--addresses]}} {{address}}",
     "group": "Common Tools",
     "description": "rustscan: Modern Port Scanner written in Rust. Note: `nmap` must be installed for some of the examples below to work. (Scan with custom batch size (default: 4500) and timeout (default: 1500ms))",
     "tags": [
@@ -98253,7 +98403,7 @@
     "id": "tldr-en-common-rustscan-6",
     "type": "command",
     "title": "rustscan - Scan with specific port order",
-    "content": "rustscan --scan-order {{serial|random}} {{[-a|--addresses]}} {{address_or_addresses}}",
+    "content": "rustscan --scan-order {{serial|random}} {{[-a|--addresses]}} {{address}}",
     "group": "Common Tools",
     "description": "rustscan: Modern Port Scanner written in Rust. Note: `nmap` must be installed for some of the examples below to work. (Scan with specific port order)",
     "tags": [
@@ -98268,7 +98418,7 @@
     "id": "tldr-en-common-rustscan-7",
     "type": "command",
     "title": "rustscan - Scan in greppable mode (only output of the ports, no `nmap`)",
-    "content": "rustscan {{[-g|--greppable]}} {{[-a|--addresses]}} {{address_or_addresses}}",
+    "content": "rustscan {{[-g|--greppable]}} {{[-a|--addresses]}} {{address}}",
     "group": "Common Tools",
     "description": "rustscan: Modern Port Scanner written in Rust. Note: `nmap` must be installed for some of the examples below to work. (Scan in greppable mode (only output of the ports, no `nmap`))",
     "tags": [
@@ -115427,10 +115577,10 @@
   {
     "id": "tldr-en-common-poetry-cache-1",
     "type": "command",
-    "title": "poetry-cache - Remove all packages from a cache (e.g.: PyPI)",
+    "title": "poetry-cache - Remove all packages from a cache (e.g. PyPI)",
     "content": "poetry cache clear PyPI --all",
     "group": "Common Tools",
-    "description": "poetry-cache: Manage Poetry's cache. (Remove all packages from a cache (e.g.: PyPI))",
+    "description": "poetry-cache: Manage Poetry's cache. (Remove all packages from a cache (e.g. PyPI))",
     "tags": [
       "common",
       "poetry-cache",
@@ -118188,7 +118338,7 @@
     "id": "tldr-en-common-skills-6",
     "type": "command",
     "title": "skills - Create a new `SKILL.md` template",
-    "content": "skills init {{[skill_name]}}",
+    "content": "skills init {{skill_name}}",
     "group": "Common Tools",
     "description": "skills: Manage reusable agent skills across AI coding agents. (Create a new `SKILL.md` template)",
     "tags": [
@@ -120363,7 +120513,7 @@
     "id": "tldr-en-common-flask-unsign-1",
     "type": "command",
     "title": "flask-unsign - Decode a session cookie fetched from a URL which returns a `Set-Cookie` header",
-    "content": "flask-unsign {{[-d|--decode]}} --server {{URL}}",
+    "content": "flask-unsign {{[-d|--decode]}} --server {{url}}",
     "group": "Common Tools",
     "description": "flask-unsign: A tool to brute-force, decode, and craft `Flask` session cookies. (Decode a session cookie fetched from a URL which returns a `Set-Cookie` header)",
     "tags": [
@@ -123408,7 +123558,7 @@
     "id": "tldr-en-common-docker-service-2",
     "type": "command",
     "title": "docker-service - Display detailed information about one or more services",
-    "content": "docker service inspect {{service_name_or_id1 service_name_or_id2}}",
+    "content": "docker service inspect {{service_name_or_id1 service_name_or_id2 ...}}",
     "group": "Common Tools",
     "description": "docker-service: Manage the services on a Docker daemon. (Display detailed information about one or more services)",
     "tags": [
@@ -123453,7 +123603,7 @@
     "id": "tldr-en-common-docker-service-5",
     "type": "command",
     "title": "docker-service - Remove one or more services",
-    "content": "docker service rm {{service_name_or_id1 service_name_or_id2}}",
+    "content": "docker service rm {{service_name_or_id1 service_name_or_id2 ...}}",
     "group": "Common Tools",
     "description": "docker-service: Manage the services on a Docker daemon. (Remove one or more services)",
     "tags": [
@@ -134118,7 +134268,7 @@
     "id": "tldr-en-common-xml-pyx-0",
     "type": "command",
     "title": "xml-pyx - Convert an XML document to PYX format",
-    "content": "xml pyx {{path/to/input.xml|URI}} > {{path/to/output.pyx}}",
+    "content": "xml pyx {{path/to/input.xml|uri}} > {{path/to/output.pyx}}",
     "group": "Common Tools",
     "description": "xml-pyx: Convert an XML document to PYX (ESIS - ISO 8879) format. (Convert an XML document to PYX format)",
     "tags": [
@@ -145293,7 +145443,7 @@
     "id": "tldr-en-common-trdsql-3",
     "type": "command",
     "title": "trdsql - Merge content of 2 CSV files to one CSV file",
-    "content": "trdsql \"SELECT {{column1,colum2}} FROM {{path/to/file1.csv}} UNION SELECT {{column1,column2}} FROM {{path/to/file2.csv}}\"",
+    "content": "trdsql \"SELECT {{column1,column2}} FROM {{path/to/file1.csv}} UNION SELECT {{column1,column2}} FROM {{path/to/file2.csv}}\"",
     "group": "Common Tools",
     "description": "trdsql: Execute SQL on CSV, LTSV, JSON, YAML, and TBLN files. (Merge content of 2 CSV files to one CSV file)",
     "tags": [
@@ -145323,7 +145473,7 @@
     "id": "tldr-en-common-trdsql-5",
     "type": "command",
     "title": "trdsql - Create table data to MySQL database from CSV file",
-    "content": "trdsql -driver mysql -dsn \"{{username}}:{{password}}@{{hostname}}/{{database}}\" -ih \"CREATE TABLE {{table}} ({{column1}} int, {{colum2}} varchar(20)) AS SELECT {{column3}} AS {{column1}},{{column2}} FROM {{path/to/header_file.csv}}\"",
+    "content": "trdsql -driver mysql -dsn \"{{username}}:{{password}}@{{hostname}}/{{database}}\" -ih \"CREATE TABLE {{table}} ({{column1}} int, {{column2}} varchar(20)) AS SELECT {{column3}} AS {{column1}},{{column2}} FROM {{path/to/header_file.csv}}\"",
     "group": "Common Tools",
     "description": "trdsql: Execute SQL on CSV, LTSV, JSON, YAML, and TBLN files. (Create table data to MySQL database from CSV file)",
     "tags": [
@@ -156918,7 +157068,7 @@
     "id": "tldr-en-common-wlc-1",
     "type": "command",
     "title": "wlc - List components in a project and override API URL and API key",
-    "content": "wlc {{[-u|--url]}} {{URL}} {{[-k|--key]}} {{key}} ls {{project}}",
+    "content": "wlc {{[-u|--url]}} {{url}} {{[-k|--key]}} {{key}} ls {{project}}",
     "group": "Common Tools",
     "description": "wlc: Manage localization projects on a Weblate instance. (List components in a project and override API URL and API key)",
     "tags": [
@@ -157053,7 +157203,7 @@
     "id": "tldr-en-common-clementine-1",
     "type": "command",
     "title": "clementine - Start playing music",
-    "content": "clementine {{URL|path/to/music.ext}}",
+    "content": "clementine {{url|path/to/music.ext}}",
     "group": "Common Tools",
     "description": "clementine: A modern music player and library organizer. (Start playing music)",
     "tags": [
@@ -157113,7 +157263,7 @@
     "id": "tldr-en-common-clementine-5",
     "type": "command",
     "title": "clementine - Create a new playlist with one or more music files or URLs",
-    "content": "clementine {{[-c|--create]}} {{URL1|path/to/music1.ext URL2|path/to/music2.ext ...}}",
+    "content": "clementine {{[-c|--create]}} {{url1|path/to/music1.ext url2|path/to/music2.ext ...}}",
     "group": "Common Tools",
     "description": "clementine: A modern music player and library organizer. (Create a new playlist with one or more music files or URLs)",
     "tags": [
@@ -166112,10 +166262,10 @@
   {
     "id": "tldr-en-common-procs-2",
     "type": "command",
-    "title": "procs - List information about processes, if the commands which started them contain Zsh",
+    "title": "procs - List information about processes, if the commands which started them contain `zsh`",
     "content": "procs {{zsh}}",
     "group": "Common Tools",
-    "description": "procs: Display information about the active processes. (List information about processes, if the commands which started them contain Zsh)",
+    "description": "procs: Display information about the active processes. (List information about processes, if the commands which started them contain `zsh`)",
     "tags": [
       "common",
       "procs",
@@ -167148,7 +167298,7 @@
     "id": "tldr-en-common-gcalcli-1",
     "type": "command",
     "title": "gcalcli - Show events starting from or between specific dates (also takes relative dates e.g. \"tomorrow\")",
-    "content": "gcalcli agenda {{mm/dd}} [{{mm/dd}}]",
+    "content": "gcalcli agenda {{mm/dd}}",
     "group": "Common Tools",
     "description": "gcalcli: Interact with Google Calendar. Requests Google API authorization upon first launch. (Show events starting from or between specific dates (also takes relative dates e.g. \"tomorrow\"))",
     "tags": [
@@ -167161,6 +167311,21 @@
   },
   {
     "id": "tldr-en-common-gcalcli-2",
+    "type": "command",
+    "title": "gcalcli - Show events between specific dates (also takes relative dates e.g. \"tomorrow\")",
+    "content": "gcalcli agenda {{mm/dd}} {{mm/dd}}",
+    "group": "Common Tools",
+    "description": "gcalcli: Interact with Google Calendar. Requests Google API authorization upon first launch. (Show events between specific dates (also takes relative dates e.g. \"tomorrow\"))",
+    "tags": [
+      "common",
+      "gcalcli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gcalcli-3",
     "type": "command",
     "title": "gcalcli - List events from a specific calendar",
     "content": "gcalcli --calendar {{calendar_name}} agenda",
@@ -167175,7 +167340,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-gcalcli-3",
+    "id": "tldr-en-common-gcalcli-4",
     "type": "command",
     "title": "gcalcli - Display an ASCII calendar of events by week",
     "content": "gcalcli calw",
@@ -167190,7 +167355,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-gcalcli-4",
+    "id": "tldr-en-common-gcalcli-5",
     "type": "command",
     "title": "gcalcli - Display an ASCII calendar of events for a month",
     "content": "gcalcli calm",
@@ -167205,7 +167370,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-gcalcli-5",
+    "id": "tldr-en-common-gcalcli-6",
     "type": "command",
     "title": "gcalcli - Quick-add an event to your calendar",
     "content": "gcalcli --calendar {{calendar_name}} quick \"{{mm/dd}} {{HH:MM}} {{event_name}}\"",
@@ -167220,7 +167385,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-gcalcli-6",
+    "id": "tldr-en-common-gcalcli-7",
     "type": "command",
     "title": "gcalcli - Add an event to calendar. Triggers interactive prompt",
     "content": "gcalcli --calendar \"{{calendar_name}}\" add",
@@ -169278,7 +169443,7 @@
     "id": "tldr-en-common-xml-elements-0",
     "type": "command",
     "title": "xml-elements - Extract elements from an XML document (producing XPATH expressions)",
-    "content": "xml {{[el|elements]}} {{path/to/input.xml|URI}} > {{path/to/elements.xpath}}",
+    "content": "xml {{[el|elements]}} {{path/to/input.xml|uri}} > {{path/to/elements.xpath}}",
     "group": "Common Tools",
     "description": "xml-elements: Extract elements and display the structure of an XML document. (Extract elements from an XML document (producing XPATH expressions))",
     "tags": [
@@ -169293,7 +169458,7 @@
     "id": "tldr-en-common-xml-elements-1",
     "type": "command",
     "title": "xml-elements - Extract elements and their attributes from an XML document",
-    "content": "xml {{[el|elements]}} -a {{path/to/input.xml|URI}} > {{path/to/elements.xpath}}",
+    "content": "xml {{[el|elements]}} -a {{path/to/input.xml|uri}} > {{path/to/elements.xpath}}",
     "group": "Common Tools",
     "description": "xml-elements: Extract elements and display the structure of an XML document. (Extract elements and their attributes from an XML document)",
     "tags": [
@@ -169308,7 +169473,7 @@
     "id": "tldr-en-common-xml-elements-2",
     "type": "command",
     "title": "xml-elements - Extract elements and their attributes and values from an XML document",
-    "content": "xml {{[el|elements]}} -v {{path/to/input.xml|URI}} > {{path/to/elements.xpath}}",
+    "content": "xml {{[el|elements]}} -v {{path/to/input.xml|uri}} > {{path/to/elements.xpath}}",
     "group": "Common Tools",
     "description": "xml-elements: Extract elements and display the structure of an XML document. (Extract elements and their attributes and values from an XML document)",
     "tags": [
@@ -169323,7 +169488,7 @@
     "id": "tldr-en-common-xml-elements-3",
     "type": "command",
     "title": "xml-elements - Print sorted unique elements from an XML document to see its structure",
-    "content": "xml {{[el|elements]}} -u {{path/to/input.xml|URI}}",
+    "content": "xml {{[el|elements]}} -u {{path/to/input.xml|uri}}",
     "group": "Common Tools",
     "description": "xml-elements: Extract elements and display the structure of an XML document. (Print sorted unique elements from an XML document to see its structure)",
     "tags": [
@@ -169338,7 +169503,7 @@
     "id": "tldr-en-common-xml-elements-4",
     "type": "command",
     "title": "xml-elements - Print sorted unique elements from an XML document up to a depth of 3",
-    "content": "xml {{[el|elements]}} -d{{3}} {{path/to/input.xml|URI}}",
+    "content": "xml {{[el|elements]}} -d{{3}} {{path/to/input.xml|uri}}",
     "group": "Common Tools",
     "description": "xml-elements: Extract elements and display the structure of an XML document. (Print sorted unique elements from an XML document up to a depth of 3)",
     "tags": [
@@ -181548,7 +181713,7 @@
     "id": "tldr-en-common-git-rev-list-0",
     "type": "command",
     "title": "git-rev-list - List all commits on the current branch",
-    "content": "git rev-list {{HEAD}}",
+    "content": "git rev-list HEAD",
     "group": "Common Tools",
     "description": "git-rev-list: List revisions (commits) in reverse chronological order. (List all commits on the current branch)",
     "tags": [
@@ -183183,7 +183348,7 @@
     "id": "tldr-en-common-podman-7",
     "type": "command",
     "title": "podman - Display the logs of one or more containers and follow log output",
-    "content": "podman logs {{[-f|--follow]}} {{container_name}} {{container_id}}",
+    "content": "podman logs {{[-f|--follow]}} {{container_name_or_id1 container_name_or_id2 ...}}",
     "group": "Common Tools",
     "description": "podman: Simple management tool for pods, containers, and images. Podman provides a Docker-CLI comparable command-line. Simply put: `alias docker=podman`. (Display the logs of one or more containers and follow log output)",
     "tags": [
@@ -190818,7 +190983,7 @@
     "id": "tldr-en-common-bosh-0",
     "type": "command",
     "title": "bosh - Create local alias for director in a specific environment",
-    "content": "bosh alias-env {{environment_name}} {{[-e|--environment]}} {{ip_address|URL}} --ca-cert {{ca_certificate}}",
+    "content": "bosh alias-env {{environment_name}} {{[-e|--environment]}} {{ip_address|url}} --ca-cert {{ca_certificate}}",
     "group": "Common Tools",
     "description": "bosh: Deploy and manage the BOSH director. (Create local alias for director in a specific environment)",
     "tags": [
@@ -194334,6 +194499,126 @@
     "tags": [
       "common",
       "pgrep",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-pyinstaller-0",
+    "type": "command",
+    "title": "pyinstaller - Bundle a Python script into a one-folder bundle (output goes to `dist/`)",
+    "content": "pyinstaller {{path/to/script.py}}",
+    "group": "Common Tools",
+    "description": "pyinstaller: Bundle a Python application and its dependencies into a single package. (Bundle a Python script into a one-folder bundle (output goes to `dist/`))",
+    "tags": [
+      "common",
+      "pyinstaller",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-pyinstaller-1",
+    "type": "command",
+    "title": "pyinstaller - Bundle a Python script into a single executable file",
+    "content": "pyinstaller {{[-F|--onefile]}} {{path/to/script.py}}",
+    "group": "Common Tools",
+    "description": "pyinstaller: Bundle a Python application and its dependencies into a single package. (Bundle a Python script into a single executable file)",
+    "tags": [
+      "common",
+      "pyinstaller",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-pyinstaller-2",
+    "type": "command",
+    "title": "pyinstaller - Bundle a GUI application without opening a console window",
+    "content": "pyinstaller {{[-w|--windowed]}} {{path/to/script.py}}",
+    "group": "Common Tools",
+    "description": "pyinstaller: Bundle a Python application and its dependencies into a single package. (Bundle a GUI application without opening a console window)",
+    "tags": [
+      "common",
+      "pyinstaller",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-pyinstaller-3",
+    "type": "command",
+    "title": "pyinstaller - Set the name of the bundled executable",
+    "content": "pyinstaller {{[-n|--name]}} {{app_name}} {{path/to/script.py}}",
+    "group": "Common Tools",
+    "description": "pyinstaller: Bundle a Python application and its dependencies into a single package. (Set the name of the bundled executable)",
+    "tags": [
+      "common",
+      "pyinstaller",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-pyinstaller-4",
+    "type": "command",
+    "title": "pyinstaller - Set a custom icon for the executable",
+    "content": "pyinstaller {{[-i|--icon]}} {{path/to/icon.ico}} {{path/to/script.py}}",
+    "group": "Common Tools",
+    "description": "pyinstaller: Bundle a Python application and its dependencies into a single package. (Set a custom icon for the executable)",
+    "tags": [
+      "common",
+      "pyinstaller",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-pyinstaller-5",
+    "type": "command",
+    "title": "pyinstaller - Include additional data files or directories in the bundle",
+    "content": "pyinstaller --add-data \"{{path/to/source}}:{{destination}}\" {{path/to/script.py}}",
+    "group": "Common Tools",
+    "description": "pyinstaller: Bundle a Python application and its dependencies into a single package. (Include additional data files or directories in the bundle)",
+    "tags": [
+      "common",
+      "pyinstaller",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-pyinstaller-6",
+    "type": "command",
+    "title": "pyinstaller - Display help",
+    "content": "pyinstaller {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "pyinstaller: Bundle a Python application and its dependencies into a single package. (Display help)",
+    "tags": [
+      "common",
+      "pyinstaller",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-pyinstaller-7",
+    "type": "command",
+    "title": "pyinstaller - Display version",
+    "content": "pyinstaller {{[-v|--version]}}",
+    "group": "Common Tools",
+    "description": "pyinstaller: Bundle a Python application and its dependencies into a single package. (Display version)",
+    "tags": [
+      "common",
+      "pyinstaller",
       "tldr",
       "en"
     ],
@@ -210933,7 +211218,7 @@
     "id": "tldr-en-common-noseyparker-3",
     "type": "command",
     "title": "noseyparker - Scan a remote Git repo (and Git history) for secrets",
-    "content": "noseyparker scan --git-url {{URL}} {{[-d|--datastore]}} {{path/to/datastore.np}}",
+    "content": "noseyparker scan --git-url {{url}} {{[-d|--datastore]}} {{path/to/datastore.np}}",
     "group": "Common Tools",
     "description": "noseyparker: Scan text and Git history for secrets and sensitive information. Note: Use a separate datastore directory (`--datastore`) for each scan. (Scan a remote Git repo (and Git history) for secrets)",
     "tags": [
@@ -212267,10 +212552,10 @@
   {
     "id": "tldr-en-common-rustup-override-0",
     "type": "command",
-    "title": "rustup-override - List directiory toolchain overrides",
+    "title": "rustup-override - List directory toolchain overrides",
     "content": "rustup override list",
     "group": "Common Tools",
-    "description": "rustup-override: Modify directory toolchain overrides. See `rustup help toolchain` for more information about toolchains. (List directiory toolchain overrides)",
+    "description": "rustup-override: Modify directory toolchain overrides. See `rustup help toolchain` for more information about toolchains. (List directory toolchain overrides)",
     "tags": [
       "common",
       "rustup-override",
@@ -218223,7 +218508,7 @@
     "id": "tldr-en-common-xml-depyx-0",
     "type": "command",
     "title": "xml-depyx - Convert a PYX (ESIS - ISO 8879) document to XML format",
-    "content": "xml {{[p2x|depyx]}} {{path/to/input.pyx|URI}} > {{path/to/output.xml}}",
+    "content": "xml {{[p2x|depyx]}} {{path/to/input.pyx|uri}} > {{path/to/output.xml}}",
     "group": "Common Tools",
     "description": "xml-depyx: Convert a PYX (ESIS - ISO 8879) document to XML format. (Convert a PYX (ESIS - ISO 8879) document to XML format)",
     "tags": [
@@ -225273,7 +225558,7 @@
     "id": "tldr-en-common-mpg321-0",
     "type": "command",
     "title": "mpg321 - Play an audio source exactly `n` times (0 means forever)",
-    "content": "mpg321 {{[-l|--loop]}} {{n}} {{path/to/file1|URL1 path/to/file2|URL2 ...}}",
+    "content": "mpg321 {{[-l|--loop]}} {{n}} {{path/to/file1|url1 path/to/file2|url2 ...}}",
     "group": "Common Tools",
     "description": "mpg321: High Performance MPEG 1.0/2.0/2.5 Audio Player for Layer 1, 2, and 3. Mpg321 was written (sometime in 1999) to be a drop-in replacement for the (previously) non-free mpg123 player. (Play an audio source exactly `n` times (0 means forever))",
     "tags": [
@@ -225303,7 +225588,7 @@
     "id": "tldr-en-common-mpg321-2",
     "type": "command",
     "title": "mpg321 - Enable Basic Keys ( `*` or `/` - Increase or decrease volume, `n` - Skip song, `m` - Mute/unmute.) while playing",
-    "content": "mpg321 -K {{path/to/file1|URL1 path/to/file2|URL2 ...}}",
+    "content": "mpg321 -K {{path/to/file1|url1 path/to/file2|url2 ...}}",
     "group": "Common Tools",
     "description": "mpg321: High Performance MPEG 1.0/2.0/2.5 Audio Player for Layer 1, 2, and 3. Mpg321 was written (sometime in 1999) to be a drop-in replacement for the (previously) non-free mpg123 player. (Enable Basic Keys ( `*` or `/` - Increase or decrease volume, `n` - Skip song, `m` - Mute/unmute.) while playing)",
     "tags": [
@@ -225318,7 +225603,7 @@
     "id": "tldr-en-common-mpg321-3",
     "type": "command",
     "title": "mpg321 - Play files randomly until interrupted",
-    "content": "mpg321 {{[-Z|--random]}} {{path/to/file1|URL1 path/to/file2|URL2 ...}}",
+    "content": "mpg321 {{[-Z|--random]}} {{path/to/file1|url1 path/to/file2|url2 ...}}",
     "group": "Common Tools",
     "description": "mpg321: High Performance MPEG 1.0/2.0/2.5 Audio Player for Layer 1, 2, and 3. Mpg321 was written (sometime in 1999) to be a drop-in replacement for the (previously) non-free mpg123 player. (Play files randomly until interrupted)",
     "tags": [
@@ -225333,7 +225618,7 @@
     "id": "tldr-en-common-mpg321-4",
     "type": "command",
     "title": "mpg321 - Shuffle the files before playing them once",
-    "content": "mpg321 {{[-z|--shuffle]}} {{path/to/file1|URL1 path/to/file2|URL2 ...}}",
+    "content": "mpg321 {{[-z|--shuffle]}} {{path/to/file1|url1 path/to/file2|url2 ...}}",
     "group": "Common Tools",
     "description": "mpg321: High Performance MPEG 1.0/2.0/2.5 Audio Player for Layer 1, 2, and 3. Mpg321 was written (sometime in 1999) to be a drop-in replacement for the (previously) non-free mpg123 player. (Shuffle the files before playing them once)",
     "tags": [
@@ -229968,7 +230253,7 @@
     "id": "tldr-en-common-podman-rmi-0",
     "type": "command",
     "title": "podman-rmi - Remove one or more images given their names",
-    "content": "podman rmi {{image:tag image2:tag ...}}",
+    "content": "podman rmi {{image1:tag image2:tag ...}}",
     "group": "Common Tools",
     "description": "podman-rmi: Remove OCI/Docker images. (Remove one or more images given their names)",
     "tags": [
@@ -232472,10 +232757,10 @@
   {
     "id": "tldr-en-common-shopt-0",
     "type": "command",
-    "title": "shopt - List of all setable options and whether they are set",
+    "title": "shopt - List of all settable options and whether they are set",
     "content": "shopt",
     "group": "Common Tools",
-    "description": "shopt: Manage Bash shell options: variables (stored in `$BASHOPTS`) that control behavior specific to the Bash shell. Generic POSIX shell variables (stored in `$SHELLOPTS`) are managed with the `set` command instead. (List of all setable options and whether they are set)",
+    "description": "shopt: Manage Bash shell options: variables (stored in `$BASHOPTS`) that control behavior specific to the Bash shell. Generic POSIX shell variables (stored in `$SHELLOPTS`) are managed with the `set` command instead. (List of all settable options and whether they are set)",
     "tags": [
       "common",
       "shopt",
@@ -236388,7 +236673,7 @@
     "id": "tldr-en-common-zmap-0",
     "type": "command",
     "title": "zmap - Scan a subnet or full IPv4 space for a specific TCP port (default: 80)",
-    "content": "zmap {{SUBNETS}} {{[-p|--target-ports]}} {{port}}",
+    "content": "sudo zmap {{[-p|--target-ports]}} {{port}} {{subnet}}",
     "group": "Common Tools",
     "description": "zmap: Fast, open-source network scanner for Internet-wide surveys. (Scan a subnet or full IPv4 space for a specific TCP port (default: 80))",
     "tags": [
@@ -236403,7 +236688,7 @@
     "id": "tldr-en-common-zmap-1",
     "type": "command",
     "title": "zmap - Scan specific ports or port ranges across a subnet",
-    "content": "zmap {{[-p|--target-ports]}} {{port1,port2-port3,...}} {{SUBNETS}}",
+    "content": "sudo zmap {{[-p|--target-ports]}} {{port1,port2-port3,...}} {{subnet}}",
     "group": "Common Tools",
     "description": "zmap: Fast, open-source network scanner for Internet-wide surveys. (Scan specific ports or port ranges across a subnet)",
     "tags": [
@@ -236418,7 +236703,7 @@
     "id": "tldr-en-common-zmap-2",
     "type": "command",
     "title": "zmap - Output results to a CSV file with custom fields",
-    "content": "zmap {{[-o|--output-file]}} {{path/to/output_file.csv}} {{[-f|--output-fields]}} \"{{saddr,daddr,sport,dport}}\" {{SUBNETS}}",
+    "content": "sudo zmap {{[-o|--output-file]}} {{path/to/output_file.csv}} {{[-f|--output-fields]}} \"{{saddr,daddr,sport,dport}}\" {{subnet}}",
     "group": "Common Tools",
     "description": "zmap: Fast, open-source network scanner for Internet-wide surveys. (Output results to a CSV file with custom fields)",
     "tags": [
@@ -236433,7 +236718,7 @@
     "id": "tldr-en-common-zmap-3",
     "type": "command",
     "title": "zmap - Limit the scan rate to a specific number of packets per second",
-    "content": "zmap {{[-r|--rate]}} {{packets_per_second}} {{SUBNETS}}",
+    "content": "sudo zmap {{[-r|--rate]}} {{packets_per_second}} {{subnet}}",
     "group": "Common Tools",
     "description": "zmap: Fast, open-source network scanner for Internet-wide surveys. (Limit the scan rate to a specific number of packets per second)",
     "tags": [
@@ -236448,7 +236733,7 @@
     "id": "tldr-en-common-zmap-4",
     "type": "command",
     "title": "zmap - Perform a dry run without sending packets",
-    "content": "zmap {{[-d|--dryrun]}} {{SUBNETS}}",
+    "content": "zmap {{[-d|--dryrun]}} {{subnet}}",
     "group": "Common Tools",
     "description": "zmap: Fast, open-source network scanner for Internet-wide surveys. (Perform a dry run without sending packets)",
     "tags": [
@@ -236463,7 +236748,7 @@
     "id": "tldr-en-common-zmap-5",
     "type": "command",
     "title": "zmap - Exclude subnets using a blocklist file in CIDR notation",
-    "content": "zmap {{[-b|--blocklist-file]}} {{path/to/blocklist.txt}} {{SUBNETS}}",
+    "content": "sudo zmap {{[-b|--blocklist-file]}} {{path/to/blocklist.txt}} {{subnet}}",
     "group": "Common Tools",
     "description": "zmap: Fast, open-source network scanner for Internet-wide surveys. (Exclude subnets using a blocklist file in CIDR notation)",
     "tags": [
@@ -236478,7 +236763,7 @@
     "id": "tldr-en-common-zmap-6",
     "type": "command",
     "title": "zmap - Set a specific source IP for scan packets",
-    "content": "zmap {{[-S|--source-ip]}} {{source_ip}} {{SUBNETS}}",
+    "content": "sudo zmap {{[-S|--source-ip]}} {{source_ip}} {{subnet}}",
     "group": "Common Tools",
     "description": "zmap: Fast, open-source network scanner for Internet-wide surveys. (Set a specific source IP for scan packets)",
     "tags": [
@@ -236493,7 +236778,7 @@
     "id": "tldr-en-common-zmap-7",
     "type": "command",
     "title": "zmap - Cap the number/percentage of targets to probe (e.g. 1000 IP/port pairs)",
-    "content": "zmap {{[-n|--max-targets]}} {{1000}} {{SUBNETS}} {{[-p|--target-ports]}} {{port1,port2-port3}}",
+    "content": "sudo zmap {{[-p|--target-ports]}} {{port1,port2-port3}} {{[-n|--max-targets]}} {{1000}} {{subnet}}",
     "group": "Common Tools",
     "description": "zmap: Fast, open-source network scanner for Internet-wide surveys. (Cap the number/percentage of targets to probe (e.g. 1000 IP/port pairs))",
     "tags": [
@@ -245373,7 +245658,7 @@
     "id": "tldr-en-common-axel-6",
     "type": "command",
     "title": "axel - Limit output to `stdout` and use a custom user-agent when downloading",
-    "content": "axel {{[-q|--quiet]}} {{[-U|--user-agent]}} {{\"Mozilla/5.0\"}} {{url}}",
+    "content": "axel {{[-q|--quiet]}} {{[-U|--user-agent]}} \"{{Mozilla/5.0}}\" {{url}}",
     "group": "Common Tools",
     "description": "axel: Download accelerator. Supports HTTP, HTTPS, FTP, and FTPs. (Limit output to `stdout` and use a custom user-agent when downloading)",
     "tags": [
@@ -254160,6 +254445,126 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-helmfile-0",
+    "type": "command",
+    "title": "helmfile - Install required Helm plugins",
+    "content": "helmfile init",
+    "group": "Common Tools",
+    "description": "helmfile: Declare and manage Helm releases and related Kubernetes manifests. (Install required Helm plugins)",
+    "tags": [
+      "common",
+      "helmfile",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-helmfile-1",
+    "type": "command",
+    "title": "helmfile - Preview the changes that would be applied to the cluster",
+    "content": "helmfile diff",
+    "group": "Common Tools",
+    "description": "helmfile: Declare and manage Helm releases and related Kubernetes manifests. (Preview the changes that would be applied to the cluster)",
+    "tags": [
+      "common",
+      "helmfile",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-helmfile-2",
+    "type": "command",
+    "title": "helmfile - Apply releases defined in `helmfile.yaml` to the cluster",
+    "content": "helmfile apply",
+    "group": "Common Tools",
+    "description": "helmfile: Declare and manage Helm releases and related Kubernetes manifests. (Apply releases defined in `helmfile.yaml` to the cluster)",
+    "tags": [
+      "common",
+      "helmfile",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-helmfile-3",
+    "type": "command",
+    "title": "helmfile - Synchronize the cluster with the desired state, force-recreating if needed",
+    "content": "helmfile sync",
+    "group": "Common Tools",
+    "description": "helmfile: Declare and manage Helm releases and related Kubernetes manifests. (Synchronize the cluster with the desired state, force-recreating if needed)",
+    "tags": [
+      "common",
+      "helmfile",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-helmfile-4",
+    "type": "command",
+    "title": "helmfile - Apply releases for a specific environment",
+    "content": "helmfile {{[-e|--environment]}} {{dev|production|staging}} apply",
+    "group": "Common Tools",
+    "description": "helmfile: Declare and manage Helm releases and related Kubernetes manifests. (Apply releases for a specific environment)",
+    "tags": [
+      "common",
+      "helmfile",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-helmfile-5",
+    "type": "command",
+    "title": "helmfile - Destroy all releases defined in `helmfile.yaml`",
+    "content": "helmfile destroy",
+    "group": "Common Tools",
+    "description": "helmfile: Declare and manage Helm releases and related Kubernetes manifests. (Destroy all releases defined in `helmfile.yaml`)",
+    "tags": [
+      "common",
+      "helmfile",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-helmfile-6",
+    "type": "command",
+    "title": "helmfile - Display help",
+    "content": "helmfile {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "helmfile: Declare and manage Helm releases and related Kubernetes manifests. (Display help)",
+    "tags": [
+      "common",
+      "helmfile",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-helmfile-7",
+    "type": "command",
+    "title": "helmfile - Display version",
+    "content": "helmfile version",
+    "group": "Common Tools",
+    "description": "helmfile: Declare and manage Helm releases and related Kubernetes manifests. (Display version)",
+    "tags": [
+      "common",
+      "helmfile",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-jira-0",
     "type": "command",
     "title": "jira - Create a configuration file (required before using `jira`)",
@@ -254628,7 +255033,7 @@
     "id": "tldr-en-common-xml-select-0",
     "type": "command",
     "title": "xml-select - Select all elements matching \"XPATH1\" and print the value of their sub-element \"XPATH2\"",
-    "content": "xml {{[sel|select]}} {{[-t|--template]}} {{[-m|--match]}} \"{{XPATH1}}\" {{[-v|--value-of]}} \"{{XPATH2}}\" {{path/to/input.xml|URI}}",
+    "content": "xml {{[sel|select]}} {{[-t|--template]}} {{[-m|--match]}} \"{{XPATH1}}\" {{[-v|--value-of]}} \"{{XPATH2}}\" {{path/to/input.xml|uri}}",
     "group": "Common Tools",
     "description": "xml-select: Select from XML documents using XPATHs. Tip: use `xml elements` to display the XPATHs of an XML document. (Select all elements matching \"XPATH1\" and print the value of their sub-element \"XPATH2\")",
     "tags": [
@@ -254643,7 +255048,7 @@
     "id": "tldr-en-common-xml-select-1",
     "type": "command",
     "title": "xml-select - Match \"XPATH1\" and print the value of \"XPATH2\" as text with new-lines",
-    "content": "xml {{[sel|select]}} {{[-T|--text]}} {{[-t|--template]}} {{[-m|--match]}} \"{{XPATH1}}\" {{[-v|--value-of]}} \"{{XPATH2}}\" {{[-n|--nl]}} {{path/to/input.xml|URI}}",
+    "content": "xml {{[sel|select]}} {{[-T|--text]}} {{[-t|--template]}} {{[-m|--match]}} \"{{XPATH1}}\" {{[-v|--value-of]}} \"{{XPATH2}}\" {{[-n|--nl]}} {{path/to/input.xml|uri}}",
     "group": "Common Tools",
     "description": "xml-select: Select from XML documents using XPATHs. Tip: use `xml elements` to display the XPATHs of an XML document. (Match \"XPATH1\" and print the value of \"XPATH2\" as text with new-lines)",
     "tags": [
@@ -254658,7 +255063,7 @@
     "id": "tldr-en-common-xml-select-2",
     "type": "command",
     "title": "xml-select - Count the elements of \"XPATH1\"",
-    "content": "xml {{[sel|select]}} {{[-t|--template]}} {{[-v|--value-of]}} \"count({{XPATH1}})\" {{path/to/input.xml|URI}}",
+    "content": "xml {{[sel|select]}} {{[-t|--template]}} {{[-v|--value-of]}} \"count({{XPATH1}})\" {{path/to/input.xml|uri}}",
     "group": "Common Tools",
     "description": "xml-select: Select from XML documents using XPATHs. Tip: use `xml elements` to display the XPATHs of an XML document. (Count the elements of \"XPATH1\")",
     "tags": [
@@ -254673,7 +255078,7 @@
     "id": "tldr-en-common-xml-select-3",
     "type": "command",
     "title": "xml-select - Count all nodes in one or more XML documents",
-    "content": "xml {{[sel|select]}} {{[-T|--text]}} {{[-t|--template]}} {{[-f|--inp-name]}} {{[-o|--output]}} \" \" {{[-v|--value-of]}} \"count(node())\" {{[-n|--nl]}} {{path/to/input1.xml|URI}} {{path/to/input2.xml|URI}}",
+    "content": "xml {{[sel|select]}} {{[-T|--text]}} {{[-t|--template]}} {{[-f|--inp-name]}} {{[-o|--output]}} \" \" {{[-v|--value-of]}} \"count(node())\" {{[-n|--nl]}} {{path/to/input1.xml|uri}} {{path/to/input2.xml|uri}}",
     "group": "Common Tools",
     "description": "xml-select: Select from XML documents using XPATHs. Tip: use `xml elements` to display the XPATHs of an XML document. (Count all nodes in one or more XML documents)",
     "tags": [
@@ -254943,7 +255348,7 @@
     "id": "tldr-en-common-xml-transform-0",
     "type": "command",
     "title": "xml-transform - Transform an XML document using an XSL stylesheet, passing one XPATH parameter and one literal string parameter",
-    "content": "xml {{[tr|transform]}} {{path/to/stylesheet.xsl}} -p \"{{Count='count(/xml/table/rec)'}}\" -s {{Text=\"Count=\"}} {{path/to/input.xml|URI}}",
+    "content": "xml {{[tr|transform]}} {{path/to/stylesheet.xsl}} -p \"{{Count='count(/xml/table/rec)'}}\" -s {{Text=\"Count=\"}} {{path/to/input.xml|uri}}",
     "group": "Common Tools",
     "description": "xml-transform: Transform XML documents using XSLT. (Transform an XML document using an XSL stylesheet, passing one XPATH parameter and one literal string parameter)",
     "tags": [
@@ -260118,7 +260523,7 @@
     "id": "tldr-en-common-opencode-import-1",
     "type": "command",
     "title": "opencode-import - Import from a share URL",
-    "content": "opencode import {{URL}}",
+    "content": "opencode import {{url}}",
     "group": "Common Tools",
     "description": "opencode-import: Import session data from a JSON file or URL. (Import from a share URL)",
     "tags": [
@@ -265145,7 +265550,7 @@
     "title": "go-list - List packages",
     "content": "go list ./...",
     "group": "Common Tools",
-    "description": "go-list: List packages or modules. (List packages)",
+    "description": "go-list: List packages or modules. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (List packages)",
     "tags": [
       "common",
       "go-list",
@@ -265160,7 +265565,7 @@
     "title": "go-list - List standard packages",
     "content": "go list std",
     "group": "Common Tools",
-    "description": "go-list: List packages or modules. (List standard packages)",
+    "description": "go-list: List packages or modules. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (List standard packages)",
     "tags": [
       "common",
       "go-list",
@@ -265175,7 +265580,7 @@
     "title": "go-list - List packages in JSON format",
     "content": "go list -json time net/http",
     "group": "Common Tools",
-    "description": "go-list: List packages or modules. (List packages in JSON format)",
+    "description": "go-list: List packages or modules. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (List packages in JSON format)",
     "tags": [
       "common",
       "go-list",
@@ -265190,7 +265595,7 @@
     "title": "go-list - List module dependencies and available updates",
     "content": "go list -m -u all",
     "group": "Common Tools",
-    "description": "go-list: List packages or modules. (List module dependencies and available updates)",
+    "description": "go-list: List packages or modules. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (List module dependencies and available updates)",
     "tags": [
       "common",
       "go-list",
@@ -268292,10 +268697,10 @@
   {
     "id": "tldr-en-common-at-5",
     "type": "command",
-    "title": "at - View a specied job",
+    "title": "at - View a specified job",
     "content": "at -c {{job_number}}",
     "group": "Common Tools",
-    "description": "at: Execute commands once at a later time. Results will be sent to the users mail. (View a specied job)",
+    "description": "at: Execute commands once at a later time. Results will be sent to the users mail. (View a specified job)",
     "tags": [
       "common",
       "at",
@@ -269943,7 +270348,7 @@
     "id": "tldr-en-common-bower-1",
     "type": "command",
     "title": "bower - Install one or more packages to the bower_components directory",
-    "content": "bower install {{package}} {{package}}",
+    "content": "bower install {{package1 package2 ...}}",
     "group": "Common Tools",
     "description": "bower: A package manager optimized for front-end web development. A package can be a GitHub user/repo shorthand, a Git endpoint, a URL or a registered package. (Install one or more packages to the bower_components directory)",
     "tags": [
@@ -269958,7 +270363,7 @@
     "id": "tldr-en-common-bower-2",
     "type": "command",
     "title": "bower - Uninstall packages locally from the bower_components directory",
-    "content": "bower uninstall {{package}} {{package}}",
+    "content": "bower uninstall {{package1 package2 ...}}",
     "group": "Common Tools",
     "description": "bower: A package manager optimized for front-end web development. A package can be a GitHub user/repo shorthand, a Git endpoint, a URL or a registered package. (Uninstall packages locally from the bower_components directory)",
     "tags": [
@@ -272870,7 +273275,7 @@
     "title": "go-test - Test the package found in the current directory",
     "content": "go test",
     "group": "Common Tools",
-    "description": "go-test: Test Go packages (files have to end with `_test.go`). (Test the package found in the current directory)",
+    "description": "go-test: Test Go packages (files have to end with `_test.go`). Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Test the package found in the current directory)",
     "tags": [
       "common",
       "go-test",
@@ -272885,7 +273290,7 @@
     "title": "go-test - [v]erbosely test the package in the current directory",
     "content": "go test -v",
     "group": "Common Tools",
-    "description": "go-test: Test Go packages (files have to end with `_test.go`). ([v]erbosely test the package in the current directory)",
+    "description": "go-test: Test Go packages (files have to end with `_test.go`). Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. ([v]erbosely test the package in the current directory)",
     "tags": [
       "common",
       "go-test",
@@ -272897,10 +273302,10 @@
   {
     "id": "tldr-en-common-go-test-2",
     "type": "command",
-    "title": "go-test - Test the packages in the current directory and all subdirectories (note the `...`)",
+    "title": "go-test - Test the packages in the current directory and all subdirectories",
     "content": "go test -v ./...",
     "group": "Common Tools",
-    "description": "go-test: Test Go packages (files have to end with `_test.go`). (Test the packages in the current directory and all subdirectories (note the `...`))",
+    "description": "go-test: Test Go packages (files have to end with `_test.go`). Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Test the packages in the current directory and all subdirectories)",
     "tags": [
       "common",
       "go-test",
@@ -272915,7 +273320,7 @@
     "title": "go-test - Test the package in the current directory and run all benchmarks",
     "content": "go test -v -bench .",
     "group": "Common Tools",
-    "description": "go-test: Test Go packages (files have to end with `_test.go`). (Test the package in the current directory and run all benchmarks)",
+    "description": "go-test: Test Go packages (files have to end with `_test.go`). Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Test the package in the current directory and run all benchmarks)",
     "tags": [
       "common",
       "go-test",
@@ -272930,7 +273335,7 @@
     "title": "go-test - Test the package in the current directory and run all benchmarks for 50 seconds",
     "content": "go test -v -bench . -benchtime 50s",
     "group": "Common Tools",
-    "description": "go-test: Test Go packages (files have to end with `_test.go`). (Test the package in the current directory and run all benchmarks for 50 seconds)",
+    "description": "go-test: Test Go packages (files have to end with `_test.go`). Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Test the package in the current directory and run all benchmarks for 50 seconds)",
     "tags": [
       "common",
       "go-test",
@@ -272945,7 +273350,7 @@
     "title": "go-test - Test the package with coverage analysis",
     "content": "go test -cover",
     "group": "Common Tools",
-    "description": "go-test: Test Go packages (files have to end with `_test.go`). (Test the package with coverage analysis)",
+    "description": "go-test: Test Go packages (files have to end with `_test.go`). Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Test the package with coverage analysis)",
     "tags": [
       "common",
       "go-test",
@@ -274113,7 +274518,7 @@
     "id": "tldr-en-common-browsh-1",
     "type": "command",
     "title": "browsh - Start browsh in a specific webpage",
-    "content": "browsh --startup-url {{URL}}",
+    "content": "browsh --startup-url {{url}}",
     "group": "Common Tools",
     "description": "browsh: View webpages on the terminal using a Firefox backend. (Start browsh in a specific webpage)",
     "tags": [
@@ -275222,21 +275627,6 @@
   {
     "id": "tldr-en-common-plesk-1",
     "type": "command",
-    "title": "plesk - Show product version information",
-    "content": "plesk version",
-    "group": "Common Tools",
-    "description": "plesk: Plesk hosting control panel. (Show product version information)",
-    "tags": [
-      "common",
-      "plesk",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-common-plesk-2",
-    "type": "command",
     "title": "plesk - List all hosted domains",
     "content": "plesk bin domain --list",
     "group": "Common Tools",
@@ -275250,7 +275640,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-plesk-3",
+    "id": "tldr-en-common-plesk-2",
     "type": "command",
     "title": "plesk - Start watching for changes in the `panel.log` file",
     "content": "plesk log {{panel.log}}",
@@ -275265,7 +275655,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-plesk-4",
+    "id": "tldr-en-common-plesk-3",
     "type": "command",
     "title": "plesk - Start the interactive MySQL console",
     "content": "plesk db",
@@ -275280,12 +275670,27 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-plesk-5",
+    "id": "tldr-en-common-plesk-4",
     "type": "command",
     "title": "plesk - Open the Plesk main configuration file in the default editor",
     "content": "plesk conf {{panel.ini}}",
     "group": "Common Tools",
     "description": "plesk: Plesk hosting control panel. (Open the Plesk main configuration file in the default editor)",
+    "tags": [
+      "common",
+      "plesk",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-plesk-5",
+    "type": "command",
+    "title": "plesk - Display version",
+    "content": "plesk version",
+    "group": "Common Tools",
+    "description": "plesk: Plesk hosting control panel. (Display version)",
     "tags": [
       "common",
       "plesk",
@@ -283134,6 +283539,126 @@
     "tags": [
       "common",
       "ddev",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-buildx-create-0",
+    "type": "command",
+    "title": "docker-buildx-create - Create a new builder instance using the default Docker context",
+    "content": "docker buildx create",
+    "group": "Common Tools",
+    "description": "docker-buildx-create: Create a new builder instance. (Create a new builder instance using the default Docker context)",
+    "tags": [
+      "common",
+      "docker-buildx-create",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-buildx-create-1",
+    "type": "command",
+    "title": "docker-buildx-create - Create a new builder instance with a specific name",
+    "content": "docker buildx create --name {{builder_name}}",
+    "group": "Common Tools",
+    "description": "docker-buildx-create: Create a new builder instance. (Create a new builder instance with a specific name)",
+    "tags": [
+      "common",
+      "docker-buildx-create",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-buildx-create-2",
+    "type": "command",
+    "title": "docker-buildx-create - Create a new builder instance and immediately set it as the current active builder",
+    "content": "docker buildx create --name {{builder_name}} --use",
+    "group": "Common Tools",
+    "description": "docker-buildx-create: Create a new builder instance. (Create a new builder instance and immediately set it as the current active builder)",
+    "tags": [
+      "common",
+      "docker-buildx-create",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-buildx-create-3",
+    "type": "command",
+    "title": "docker-buildx-create - Create a new builder instance using a specific driver (defaults to `docker`)",
+    "content": "docker buildx create --driver {{docker-container|kubernetes|remote|...}}",
+    "group": "Common Tools",
+    "description": "docker-buildx-create: Create a new builder instance. (Create a new builder instance using a specific driver (defaults to `docker`))",
+    "tags": [
+      "common",
+      "docker-buildx-create",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-buildx-create-4",
+    "type": "command",
+    "title": "docker-buildx-create - Create a new builder instance with specific supported platforms",
+    "content": "docker buildx create --platform {{linux/amd64,linux/arm64,...}}",
+    "group": "Common Tools",
+    "description": "docker-buildx-create: Create a new builder instance. (Create a new builder instance with specific supported platforms)",
+    "tags": [
+      "common",
+      "docker-buildx-create",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-buildx-create-5",
+    "type": "command",
+    "title": "docker-buildx-create - Append a new node to an existing builder",
+    "content": "docker buildx create --name {{builder_name}} --append {{context|endpoint}}",
+    "group": "Common Tools",
+    "description": "docker-buildx-create: Create a new builder instance. (Append a new node to an existing builder)",
+    "tags": [
+      "common",
+      "docker-buildx-create",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-buildx-create-6",
+    "type": "command",
+    "title": "docker-buildx-create - Create a new builder instance with specific BuildKit daemon flags",
+    "content": "docker buildx create --buildkitd-flags \"{{--debug --debugaddr 0.0.0.0:6666}}\"",
+    "group": "Common Tools",
+    "description": "docker-buildx-create: Create a new builder instance. (Create a new builder instance with specific BuildKit daemon flags)",
+    "tags": [
+      "common",
+      "docker-buildx-create",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-buildx-create-7",
+    "type": "command",
+    "title": "docker-buildx-create - Create a new builder instance and boot it immediately",
+    "content": "docker buildx create --name {{builder_name}} --bootstrap",
+    "group": "Common Tools",
+    "description": "docker-buildx-create: Create a new builder instance. (Create a new builder instance and boot it immediately)",
+    "tags": [
+      "common",
+      "docker-buildx-create",
       "tldr",
       "en"
     ],
@@ -294273,7 +294798,7 @@
     "id": "tldr-en-common-fisher-0",
     "type": "command",
     "title": "fisher - Install one or more plugins",
-    "content": "fisher {{plugin1}} {{plugin2}}",
+    "content": "fisher {{plugin1 plugin2 ...}}",
     "group": "Common Tools",
     "description": "fisher: Fisher, a fish-shell plugin manager. Install plugins by name or from a managed `fishfile` for bundled installs. (Install one or more plugins)",
     "tags": [
@@ -294348,7 +294873,7 @@
     "id": "tldr-en-common-fisher-5",
     "type": "command",
     "title": "fisher - Remove one or more plugins",
-    "content": "fisher remove {{plugin1}} {{plugin2}}",
+    "content": "fisher remove {{plugin1 plugin2 ...}}",
     "group": "Common Tools",
     "description": "fisher: Fisher, a fish-shell plugin manager. Install plugins by name or from a managed `fishfile` for bundled installs. (Remove one or more plugins)",
     "tags": [
@@ -294588,7 +295113,7 @@
     "id": "tldr-en-common-solcjs-3",
     "type": "command",
     "title": "solcjs - Specify one or more paths to include containing external code",
-    "content": "solcjs --bin --include-path {{path/to/directory}} {{path/to/file.sol}}",
+    "content": "solcjs --bin --include-path {{path/to/directory path/to/file.sol ...}}",
     "group": "Common Tools",
     "description": "solcjs: A set of JavaScript bindings for the Solidity compiler. (Specify one or more paths to include containing external code)",
     "tags": [
@@ -297318,7 +297843,7 @@
     "id": "tldr-en-common-bundle-3",
     "type": "command",
     "title": "bundle - Update one or more specific gem(s) defined in the `Gemfile`",
-    "content": "bundle update {{gem_name1}} {{gem_name2}}",
+    "content": "bundle update {{gem_name1 gem_name2 ...}}",
     "group": "Common Tools",
     "description": "bundle: Dependency manager for the Ruby programming language. (Update one or more specific gem(s) defined in the `Gemfile`)",
     "tags": [
@@ -297333,7 +297858,7 @@
     "id": "tldr-en-common-bundle-4",
     "type": "command",
     "title": "bundle - Update one or more specific gems(s) defined in the `Gemfile` but only to the next patch version",
-    "content": "bundle update --patch {{gem_name1}} {{gem_name2}}",
+    "content": "bundle update --patch {{gem_name1 gem_name2 ...}}",
     "group": "Common Tools",
     "description": "bundle: Dependency manager for the Ruby programming language. (Update one or more specific gems(s) defined in the `Gemfile` but only to the next patch version)",
     "tags": [
@@ -302177,10 +302702,10 @@
   {
     "id": "tldr-en-common-gcrane-1",
     "type": "command",
-    "title": "gcrane - List tags, manifests, and sub-repostiories",
+    "title": "gcrane - List tags, manifests, and sub-repositories",
     "content": "gcrane ls {{registry}}/{{project_id}}",
     "group": "Common Tools",
-    "description": "gcrane: Container images managing tool. This tool implements a superset of the `crane` commands, with additional commands that are specific to Google Container Registry (`gcr.io`). Some subcommands such as `append`, `auth`, `copy`, etc. have their own usage documentation which can be found under `crane`. Some subcommands such as `completion`, `gc`, `help` are specific to gcrane and have their own usage documentation. (List tags, manifests, and sub-repostiories)",
+    "description": "gcrane: Container images managing tool. This tool implements a superset of the `crane` commands, with additional commands that are specific to Google Container Registry (`gcr.io`). Some subcommands such as `append`, `auth`, `copy`, etc. have their own usage documentation which can be found under `crane`. Some subcommands such as `completion`, `gc`, `help` are specific to gcrane and have their own usage documentation. (List tags, manifests, and sub-repositories)",
     "tags": [
       "common",
       "gcrane",
@@ -306798,7 +307323,7 @@
     "id": "tldr-en-common-fakedata-1",
     "type": "command",
     "title": "fakedata - Generate data using one or more generators",
-    "content": "fakedata {{generator1}} {{generator2}}",
+    "content": "fakedata {{generator1 generator2 ...}}",
     "group": "Common Tools",
     "description": "fakedata: Generate fake data using a large variety of generators. (Generate data using one or more generators)",
     "tags": [

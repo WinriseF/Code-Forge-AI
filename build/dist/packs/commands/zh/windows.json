@@ -633,7 +633,7 @@
     "id": "tldr-zh-windows-choco-info-2",
     "type": "command",
     "title": "choco-info - 从一个自定义的源来获取包的信息",
-    "content": "choco info {{包名}} {{[-s|--source]}} {{源 URL|别名}}",
+    "content": "choco info {{包名}} {{[-s|--source]}} {{源url|别名}}",
     "group": "Windows",
     "description": "choco-info: 显示有关 Chocolatey 包的详细信息。 (从一个自定义的源来获取包的信息)",
     "tags": [
@@ -1983,7 +1983,7 @@
     "id": "tldr-zh-windows-choco-outdated-2",
     "type": "command",
     "title": "choco-outdated - 从自定义的源处检查过时的包",
-    "content": "choco outdated --source {{源 URL|别名}}",
+    "content": "choco outdated --source {{源url|别名}}",
     "group": "Windows",
     "description": "choco-outdated: 使用 Chocolatey 检查过时的包。 (从自定义的源处检查过时的包)",
     "tags": [
@@ -2658,7 +2658,7 @@
     "id": "tldr-zh-windows-choco-list-4",
     "type": "command",
     "title": "choco-list - 从指定的源列出软件包",
-    "content": "choco list {{[-s|--source]}} {{源 URL|别名}}",
+    "content": "choco list {{[-s|--source]}} {{源url|别名}}",
     "group": "Windows",
     "description": "choco-list: 使用 Chocolatey 显示包列表。 (从指定的源列出软件包)",
     "tags": [
@@ -3573,7 +3573,7 @@
     "id": "tldr-zh-windows-choco-install-6",
     "type": "command",
     "title": "choco-install - 从自定义的源处获取包",
-    "content": "choco install {{包名}} --source {{源 URL|别名}}",
+    "content": "choco install {{包名}} --source {{源url|别名}}",
     "group": "Windows",
     "description": "choco-install: 使用 Chocolatey 下载一个或多个包。 (从自定义的源处获取包)",
     "tags": [
@@ -3678,7 +3678,7 @@
     "id": "tldr-zh-windows-choco-upgrade-5",
     "type": "command",
     "title": "choco-upgrade - 从自定义源处升级包",
-    "content": "choco upgrade {{包名}} --source {{源 URL|别名}}",
+    "content": "choco upgrade {{包名}} --source {{源url|别名}}",
     "group": "Windows",
     "description": "choco-upgrade: 使用 Chocolatey 升级一个或多个包。 (从自定义源处升级包)",
     "tags": [
@@ -5058,7 +5058,7 @@
     "id": "tldr-zh-windows-choco-search-4",
     "type": "command",
     "title": "choco-search - 从自定义的源处搜索包",
-    "content": "choco search {{查询语句}} {{[-s|--source]}} {{源 URL|别名}}",
+    "content": "choco search {{查询语句}} {{[-s|--source]}} {{源url|别名}}",
     "group": "Windows",
     "description": "choco-search: 使用 Chocolatey 搜索一个本地或远程的包。 (从自定义的源处搜索包)",
     "tags": [

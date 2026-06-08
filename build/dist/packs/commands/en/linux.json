@@ -5328,7 +5328,7 @@
     "id": "tldr-en-linux-qm-stop-1",
     "type": "command",
     "title": "qm-stop - Stop a virtual machine and wait for at most 10 seconds",
-    "content": "qm stop {{100}} --timeout {{10}}",
+    "content": "qm stop {{100}} --timeout 10",
     "group": "Linux Ops",
     "description": "qm-stop: Stop a virtual machine. (Stop a virtual machine and wait for at most 10 seconds)",
     "tags": [
@@ -5343,7 +5343,7 @@
     "id": "tldr-en-linux-qm-stop-2",
     "type": "command",
     "title": "qm-stop - Stop a virtual machine and skip lock (only root can use this option)",
-    "content": "qm stop {{100}} --skiplock {{true}}",
+    "content": "qm stop {{100}} --skiplock true",
     "group": "Linux Ops",
     "description": "qm-stop: Stop a virtual machine. (Stop a virtual machine and skip lock (only root can use this option))",
     "tags": [
@@ -5358,7 +5358,7 @@
     "id": "tldr-en-linux-qm-stop-3",
     "type": "command",
     "title": "qm-stop - Stop a virtual machine and don't deactivate storage volumes",
-    "content": "qm stop {{100}} --keepActive {{true}}",
+    "content": "qm stop {{100}} --keepActive true",
     "group": "Linux Ops",
     "description": "qm-stop: Stop a virtual machine. (Stop a virtual machine and don't deactivate storage volumes)",
     "tags": [
@@ -16427,10 +16427,10 @@
   {
     "id": "tldr-en-linux-rpcclient-4",
     "type": "command",
-    "title": "rpcclient - Display domain users",
-    "content": "rpcclient $> enumdomusers",
+    "title": "rpcclient - [Interactive] Display domain users",
+    "content": "enumdomusers",
     "group": "Linux Ops",
-    "description": "rpcclient: MS-RPC client tool (part of the samba suite). (Display domain users)",
+    "description": "rpcclient: MS-RPC client tool (part of the samba suite). ([Interactive] Display domain users)",
     "tags": [
       "linux",
       "rpcclient",
@@ -16442,10 +16442,10 @@
   {
     "id": "tldr-en-linux-rpcclient-5",
     "type": "command",
-    "title": "rpcclient - Display privileges",
-    "content": "rpcclient $> enumprivs",
+    "title": "rpcclient - [Interactive] Display privileges",
+    "content": "enumprivs",
     "group": "Linux Ops",
-    "description": "rpcclient: MS-RPC client tool (part of the samba suite). (Display privileges)",
+    "description": "rpcclient: MS-RPC client tool (part of the samba suite). ([Interactive] Display privileges)",
     "tags": [
       "linux",
       "rpcclient",
@@ -16457,10 +16457,10 @@
   {
     "id": "tldr-en-linux-rpcclient-6",
     "type": "command",
-    "title": "rpcclient - Display information about a specific user",
-    "content": "rpcclient $> queryuser {{username|rid}}",
+    "title": "rpcclient - [Interactive] Display information about a specific user",
+    "content": "queryuser {{username|rid}}",
     "group": "Linux Ops",
-    "description": "rpcclient: MS-RPC client tool (part of the samba suite). (Display information about a specific user)",
+    "description": "rpcclient: MS-RPC client tool (part of the samba suite). ([Interactive] Display information about a specific user)",
     "tags": [
       "linux",
       "rpcclient",
@@ -16472,10 +16472,10 @@
   {
     "id": "tldr-en-linux-rpcclient-7",
     "type": "command",
-    "title": "rpcclient - Create a new user in the domain",
-    "content": "rpcclient $> createdomuser {{username}}",
+    "title": "rpcclient - [Interactive] Create a new user in the domain",
+    "content": "createdomuser {{username}}",
     "group": "Linux Ops",
-    "description": "rpcclient: MS-RPC client tool (part of the samba suite). (Create a new user in the domain)",
+    "description": "rpcclient: MS-RPC client tool (part of the samba suite). ([Interactive] Create a new user in the domain)",
     "tags": [
       "linux",
       "rpcclient",
@@ -20028,7 +20028,7 @@
     "id": "tldr-en-linux-rpcinfo-1",
     "type": "command",
     "title": "rpcinfo - Show concise table of all RPC services registered on localhost",
-    "content": "rpcinfo -s {{localhost}}",
+    "content": "rpcinfo -s localhost",
     "group": "Linux Ops",
     "description": "rpcinfo: Make an RPC call to an RPC server and reports what it finds. (Show concise table of all RPC services registered on localhost)",
     "tags": [
@@ -24333,7 +24333,7 @@
     "id": "tldr-en-linux-shutdown-2",
     "type": "command",
     "title": "shutdown - Reboot in 5 minutes",
-    "content": "shutdown {{[-r|--reboot]}} +{{5}} &",
+    "content": "shutdown {{[-r|--reboot]}} +5 &",
     "group": "Linux Ops",
     "description": "shutdown: Shutdown and reboot the system. (Reboot in 5 minutes)",
     "tags": [
@@ -41387,10 +41387,10 @@
   {
     "id": "tldr-en-linux-apx-pkgmanagers-1",
     "type": "command",
-    "title": "apx-pkgmanagers - List all available package manager confirgurations",
+    "title": "apx-pkgmanagers - List all available package manager configurations",
     "content": "apx pkgmanagers list",
     "group": "Linux Ops",
-    "description": "apx-pkgmanagers: Manage package managers in `apx`. Note: User-created package manager configurations are stored in `~/.local/share/apx/pkgmanagers`. (List all available package manager confirgurations)",
+    "description": "apx-pkgmanagers: Manage package managers in `apx`. Note: User-created package manager configurations are stored in `~/.local/share/apx/pkgmanagers`. (List all available package manager configurations)",
     "tags": [
       "linux",
       "apx-pkgmanagers",
@@ -42579,6 +42579,96 @@
     "tags": [
       "linux",
       "systemctl-mask",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-depmod-0",
+    "type": "command",
+    "title": "depmod - Generate dependency and map files for the current kernel",
+    "content": "depmod",
+    "group": "Linux Ops",
+    "description": "depmod: Generate `modules.dep` and map files for Linux kernel modules. (Generate dependency and map files for the current kernel)",
+    "tags": [
+      "linux",
+      "depmod",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-depmod-1",
+    "type": "command",
+    "title": "depmod - Generate dependency and map files in a specified directory",
+    "content": "depmod {{[-o|--outdir]}} {{path/to/directory}}",
+    "group": "Linux Ops",
+    "description": "depmod: Generate `modules.dep` and map files for Linux kernel modules. (Generate dependency and map files in a specified directory)",
+    "tags": [
+      "linux",
+      "depmod",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-depmod-2",
+    "type": "command",
+    "title": "depmod - Generate dependency and map files for a specific kernel version",
+    "content": "depmod {{kernel_version}}",
+    "group": "Linux Ops",
+    "description": "depmod: Generate `modules.dep` and map files for Linux kernel modules. (Generate dependency and map files for a specific kernel version)",
+    "tags": [
+      "linux",
+      "depmod",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-depmod-3",
+    "type": "command",
+    "title": "depmod - Examine a specific module instead of all modules",
+    "content": "depmod {{kernel_version}} /{{path/to/module.ko}}",
+    "group": "Linux Ops",
+    "description": "depmod: Generate `modules.dep` and map files for Linux kernel modules. (Examine a specific module instead of all modules)",
+    "tags": [
+      "linux",
+      "depmod",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-depmod-4",
+    "type": "command",
+    "title": "depmod - Use an alternative root filesystem directory",
+    "content": "depmod {{[-b|--basedir]}} {{path/to/root_directory}}",
+    "group": "Linux Ops",
+    "description": "depmod: Generate `modules.dep` and map files for Linux kernel modules. (Use an alternative root filesystem directory)",
+    "tags": [
+      "linux",
+      "depmod",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-depmod-5",
+    "type": "command",
+    "title": "depmod - Write dependency information to `stdout` instead of writing to files",
+    "content": "depmod {{[-n|--dry-run]}}",
+    "group": "Linux Ops",
+    "description": "depmod: Generate `modules.dep` and map files for Linux kernel modules. (Write dependency information to `stdout` instead of writing to files)",
+    "tags": [
+      "linux",
+      "depmod",
       "tldr",
       "en"
     ],
@@ -44118,7 +44208,7 @@
     "id": "tldr-en-linux-stratis-1",
     "type": "command",
     "title": "stratis - Create a storage pool from one or more devices",
-    "content": "sudo stratis pool create {{pool_name}} {{/dev/sdX}} {{/dev/sdY}}",
+    "content": "sudo stratis pool create {{pool_name}} {{/dev/sdX /dev/sdY ...}}",
     "group": "Linux Ops",
     "description": "stratis: Manage local storage pools and volumes using the Stratis storage manager. Stratis volumes use the XFS filesystem and require the `stratisd` service. (Create a storage pool from one or more devices)",
     "tags": [
@@ -52428,7 +52518,7 @@
     "id": "tldr-en-linux-ttyplot-0",
     "type": "command",
     "title": "ttyplot - Plot the values `1`, `2`, and `3` (Note: `cat` prevents `ttyplot` from exiting)",
-    "content": "{ echo {{1 2 3}}; cat; } | ttyplot",
+    "content": "{ echo 1 2 3; cat; } | ttyplot",
     "group": "Linux Ops",
     "description": "ttyplot: A realtime plotting utility for the command-line with data input from `stdin`. (Plot the values `1`, `2`, and `3` (Note: `cat` prevents `ttyplot` from exiting))",
     "tags": [
@@ -52458,7 +52548,7 @@
     "id": "tldr-en-linux-ttyplot-2",
     "type": "command",
     "title": "ttyplot - Use a while loop to continuously plot random values",
-    "content": "{ while {{true}}; do echo {{$RANDOM}}; sleep {{1}}; done } | ttyplot",
+    "content": "{ while true; do echo $RANDOM; sleep {{1}}; done } | ttyplot",
     "group": "Linux Ops",
     "description": "ttyplot: A realtime plotting utility for the command-line with data input from `stdin`. (Use a while loop to continuously plot random values)",
     "tags": [
@@ -52533,7 +52623,7 @@
     "id": "tldr-en-linux-lvmdevices-3",
     "type": "command",
     "title": "lvmdevices - Add a physical volume by its PVID",
-    "content": "sudo lvmdevices --addpvid {{PVID}}",
+    "content": "sudo lvmdevices --addpvid {{pvid}}",
     "group": "Linux Ops",
     "description": "lvmdevices: Manage the LVM devices file that lists block devices allowed for physical volumes. (Add a physical volume by its PVID)",
     "tags": [
@@ -52548,7 +52638,7 @@
     "id": "tldr-en-linux-lvmdevices-4",
     "type": "command",
     "title": "lvmdevices - Remove a physical volume by its PVID",
-    "content": "sudo lvmdevices --delpvid {{PVID}}",
+    "content": "sudo lvmdevices --delpvid {{pvid}}",
     "group": "Linux Ops",
     "description": "lvmdevices: Manage the LVM devices file that lists block devices allowed for physical volumes. (Remove a physical volume by its PVID)",
     "tags": [
@@ -64488,7 +64578,7 @@
     "id": "tldr-en-linux-chcpu-0",
     "type": "command",
     "title": "chcpu - Disable one or more CPUs by their IDs",
-    "content": "chcpu {{[-d|--disable]}} {{1,3}}",
+    "content": "chcpu {{[-d|--disable]}} {{1,3,...}}",
     "group": "Linux Ops",
     "description": "chcpu: Enable/disable a system's CPUs. (Disable one or more CPUs by their IDs)",
     "tags": [
@@ -64503,7 +64593,7 @@
     "id": "tldr-en-linux-chcpu-1",
     "type": "command",
     "title": "chcpu - Enable one or more ranges of CPUs by their IDs",
-    "content": "chcpu {{[-e|--enable]}} {{1-3,5-7}}",
+    "content": "chcpu {{[-e|--enable]}} {{1-3,5-7,...}}",
     "group": "Linux Ops",
     "description": "chcpu: Enable/disable a system's CPUs. (Enable one or more ranges of CPUs by their IDs)",
     "tags": [
@@ -66333,7 +66423,7 @@
     "id": "tldr-en-linux-mkosi-1",
     "type": "command",
     "title": "mkosi - Build an image with default settings (if no distribution is selected, the distribution of the host system is used)",
-    "content": "mkosi build --distribution {{fedora|debian|ubuntu|arch|opensuse|...}}",
+    "content": "mkosi build {{[-d|--distribution]}} {{fedora|debian|ubuntu|arch|opensuse|...}}",
     "group": "Linux Ops",
     "description": "mkosi: Build modern, legacy-free Linux images. Part of `systemd`. (Build an image with default settings (if no distribution is selected, the distribution of the host system is used))",
     "tags": [
@@ -67367,6 +67457,21 @@
   {
     "id": "tldr-en-linux-aur-sync-2",
     "type": "command",
+    "title": "aur-sync - Ignore specific packages when upgrading",
+    "content": "aur sync {{[-u|--upgrades]}} --ignore {{package1,package2,...}}",
+    "group": "Linux Ops",
+    "description": "aur-sync: Download and build AUR packages automatically. Note: A local repository needs to be defined in `/etc/pacman.conf` and `vifm` needs to be installed for this to fully function. (Ignore specific packages when upgrading)",
+    "tags": [
+      "linux",
+      "aur-sync",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-aur-sync-3",
+    "type": "command",
     "title": "aur-sync - Clean build files after install",
     "content": "aur sync {{[-C|--clean]}} {{package}}",
     "group": "Linux Ops",
@@ -67380,27 +67485,12 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-linux-aur-sync-3",
+    "id": "tldr-en-linux-aur-sync-4",
     "type": "command",
     "title": "aur-sync - Install a package without viewing changes in Vim and do not confirm dependency installation",
     "content": "aur sync --noview {{[-n|--noconfirm]}} {{package}}",
     "group": "Linux Ops",
     "description": "aur-sync: Download and build AUR packages automatically. Note: A local repository needs to be defined in `/etc/pacman.conf` and `vifm` needs to be installed for this to fully function. (Install a package without viewing changes in Vim and do not confirm dependency installation)",
-    "tags": [
-      "linux",
-      "aur-sync",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-aur-sync-4",
-    "type": "command",
-    "title": "aur-sync - Ignore specific packages when upgrading",
-    "content": "aur sync {{[-u|--upgrades]}} --ignore {{package1,package2,...}}",
-    "group": "Linux Ops",
-    "description": "aur-sync: Download and build AUR packages automatically. Note: A local repository needs to be defined in `/etc/pacman.conf` and `vifm` needs to be installed for this to fully function. (Ignore specific packages when upgrading)",
     "tags": [
       "linux",
       "aur-sync",
@@ -73338,7 +73428,7 @@
     "id": "tldr-en-linux-goaccess-0",
     "type": "command",
     "title": "goaccess - Analyze one or more log files in interactive mode",
-    "content": "goaccess {{path/to/logfile1 path/to/file2 ...}}",
+    "content": "goaccess {{path/to/log1 path/to/log2 ...}}",
     "group": "Linux Ops",
     "description": "goaccess: An open source real-time web log analyzer. (Analyze one or more log files in interactive mode)",
     "tags": [
@@ -75375,6 +75465,81 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-inference-snap-0",
+    "type": "command",
+    "title": "inference-snap - Start a chat in terminal (and a chat server in background on first start)",
+    "content": "{{inference-snap}} chat",
+    "group": "Linux Ops",
+    "description": "inference-snap: Chat with generative AI Language Models that runs locally without internet. Here inference-snap is one of the supported models: `deepseek-r1`, `gemma3`, `gemma4`, `nemotron3-nano`, `qwen-vl`. (Start a chat in terminal (and a chat server in background on first start))",
+    "tags": [
+      "linux",
+      "inference-snap",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-inference-snap-1",
+    "type": "command",
+    "title": "inference-snap - Show current engine and status of chat server",
+    "content": "{{inference-snap}} status",
+    "group": "Linux Ops",
+    "description": "inference-snap: Chat with generative AI Language Models that runs locally without internet. Here inference-snap is one of the supported models: `deepseek-r1`, `gemma3`, `gemma4`, `nemotron3-nano`, `qwen-vl`. (Show current engine and status of chat server)",
+    "tags": [
+      "linux",
+      "inference-snap",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-inference-snap-2",
+    "type": "command",
+    "title": "inference-snap - Select specific engine (eg. `cuda` for NVIDIA GPU). Download and use the appropriate model for the engine",
+    "content": "sudo {{inference-snap}} use-engine {{engine}}",
+    "group": "Linux Ops",
+    "description": "inference-snap: Chat with generative AI Language Models that runs locally without internet. Here inference-snap is one of the supported models: `deepseek-r1`, `gemma3`, `gemma4`, `nemotron3-nano`, `qwen-vl`. (Select specific engine (eg. `cuda` for NVIDIA GPU). Download and use the appropriate model for the engine)",
+    "tags": [
+      "linux",
+      "inference-snap",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-inference-snap-3",
+    "type": "command",
+    "title": "inference-snap - Show detailed device hardware information (RAM, architecture, etc.)",
+    "content": "sudo {{inference-snap}} show-machine",
+    "group": "Linux Ops",
+    "description": "inference-snap: Chat with generative AI Language Models that runs locally without internet. Here inference-snap is one of the supported models: `deepseek-r1`, `gemma3`, `gemma4`, `nemotron3-nano`, `qwen-vl`. (Show detailed device hardware information (RAM, architecture, etc.))",
+    "tags": [
+      "linux",
+      "inference-snap",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-inference-snap-4",
+    "type": "command",
+    "title": "inference-snap - Get all configuration (`http.host`, `http.port`) of running chat server",
+    "content": "{{inference-snap}} get",
+    "group": "Linux Ops",
+    "description": "inference-snap: Chat with generative AI Language Models that runs locally without internet. Here inference-snap is one of the supported models: `deepseek-r1`, `gemma3`, `gemma4`, `nemotron3-nano`, `qwen-vl`. (Get all configuration (`http.host`, `http.port`) of running chat server)",
+    "tags": [
+      "linux",
+      "inference-snap",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-wpctl-0",
     "type": "command",
     "title": "wpctl - List all objects managed by WirePlumber",
@@ -76374,6 +76539,66 @@
     "tags": [
       "linux",
       "koji-resubmit",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-walker-0",
+    "type": "command",
+    "title": "walker - Open the launcher",
+    "content": "walker",
+    "group": "Linux Ops",
+    "description": "walker: A Wayland-native application launcher and runner with pluggable providers. (Open the launcher)",
+    "tags": [
+      "linux",
+      "walker",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-walker-1",
+    "type": "command",
+    "title": "walker - Restrict the launcher to a single provider",
+    "content": "walker {{[-m|--provider]}} {{desktopapplications|calc|clipboard|runner|...}}",
+    "group": "Linux Ops",
+    "description": "walker: A Wayland-native application launcher and runner with pluggable providers. (Restrict the launcher to a single provider)",
+    "tags": [
+      "linux",
+      "walker",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-walker-2",
+    "type": "command",
+    "title": "walker - Read items from `stdin` and print the selected item to `stdout` (dmenu mode)",
+    "content": "printf \"{{Choice1\\nChoice2\\nChoice3}}\" | walker {{[-d|--dmenu]}}",
+    "group": "Linux Ops",
+    "description": "walker: A Wayland-native application launcher and runner with pluggable providers. (Read items from `stdin` and print the selected item to `stdout` (dmenu mode))",
+    "tags": [
+      "linux",
+      "walker",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-walker-3",
+    "type": "command",
+    "title": "walker - Open the launcher with a specific theme",
+    "content": "walker {{[-t|--theme]}} {{theme_name}}",
+    "group": "Linux Ops",
+    "description": "walker: A Wayland-native application launcher and runner with pluggable providers. (Open the launcher with a specific theme)",
+    "tags": [
+      "linux",
+      "walker",
       "tldr",
       "en"
     ],
@@ -77522,10 +77747,10 @@
   {
     "id": "tldr-en-linux-nvtop-6",
     "type": "command",
-    "title": "nvtop - Show the program version",
+    "title": "nvtop - Display version",
     "content": "nvtop {{[-v|--version]}}",
     "group": "Linux Ops",
-    "description": "nvtop: Interactive ncurses-based GPU process and status viewer for AMD, Intel, and NVIDIA GPUs. (Show the program version)",
+    "description": "nvtop: Interactive ncurses-based GPU process and status viewer for AMD, Intel, and NVIDIA GPUs. (Display version)",
     "tags": [
       "linux",
       "nvtop",
@@ -85953,9 +86178,24 @@
     "id": "tldr-en-linux-vgcreate-1",
     "type": "command",
     "title": "vgcreate - Create a new volume group using multiple devices",
-    "content": "sudo vgcreate {{volume_group}} {{/dev/sdXY}} {{/dev/sdXZ}}",
+    "content": "sudo vgcreate {{volume_group}} {{/dev/sdXY /dev/sdXZ ...}}",
     "group": "Linux Ops",
     "description": "vgcreate: Create volume groups combining multiple mass-storage devices. (Create a new volume group using multiple devices)",
+    "tags": [
+      "linux",
+      "vgcreate",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-vgcreate-2",
+    "type": "command",
+    "title": "vgcreate - Create a new volume group with custom physical extent size",
+    "content": "sudo vgcreate {{-s|--physicalextentsize}} {{8M}} {{volume_group}} {{/dev/sdXY /dev/sdXZ ...}}",
+    "group": "Linux Ops",
+    "description": "vgcreate: Create volume groups combining multiple mass-storage devices. (Create a new volume group with custom physical extent size)",
     "tags": [
       "linux",
       "vgcreate",
@@ -88284,81 +88524,6 @@
     "tags": [
       "linux",
       "sic",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-inference-snaps-0",
-    "type": "command",
-    "title": "inference-snaps - Start a chat in terminal (and a chat server in background on first start)",
-    "content": "{{inference-snap}} chat",
-    "group": "Linux Ops",
-    "description": "inference-snaps: Chat with generative AI Language Models that runs locally without internet. Here inference-snap is one of the supported models: `deepseek-r1`, `gemma3`, `gemma4`, `nemotron3-nano`, `qwen-vl` . (Start a chat in terminal (and a chat server in background on first start))",
-    "tags": [
-      "linux",
-      "inference-snaps",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-inference-snaps-1",
-    "type": "command",
-    "title": "inference-snaps - Show current engine and status of chat server",
-    "content": "{{inference-snap}} status",
-    "group": "Linux Ops",
-    "description": "inference-snaps: Chat with generative AI Language Models that runs locally without internet. Here inference-snap is one of the supported models: `deepseek-r1`, `gemma3`, `gemma4`, `nemotron3-nano`, `qwen-vl` . (Show current engine and status of chat server)",
-    "tags": [
-      "linux",
-      "inference-snaps",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-inference-snaps-2",
-    "type": "command",
-    "title": "inference-snaps - Select specific engine (eg. `cuda` for NVIDIA GPU). Download and use the appropriate model for the engine",
-    "content": "sudo {{inference-snap}} use-engine {{engine}}",
-    "group": "Linux Ops",
-    "description": "inference-snaps: Chat with generative AI Language Models that runs locally without internet. Here inference-snap is one of the supported models: `deepseek-r1`, `gemma3`, `gemma4`, `nemotron3-nano`, `qwen-vl` . (Select specific engine (eg. `cuda` for NVIDIA GPU). Download and use the appropriate model for the engine)",
-    "tags": [
-      "linux",
-      "inference-snaps",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-inference-snaps-3",
-    "type": "command",
-    "title": "inference-snaps - Show detailed device hardware information (RAM, architecture, etc.)",
-    "content": "sudo {{inference-snap}} show-machine",
-    "group": "Linux Ops",
-    "description": "inference-snaps: Chat with generative AI Language Models that runs locally without internet. Here inference-snap is one of the supported models: `deepseek-r1`, `gemma3`, `gemma4`, `nemotron3-nano`, `qwen-vl` . (Show detailed device hardware information (RAM, architecture, etc.))",
-    "tags": [
-      "linux",
-      "inference-snaps",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-inference-snaps-4",
-    "type": "command",
-    "title": "inference-snaps - Get all configuration (`http.host`, `http.port`) of running chat server",
-    "content": "{{inference-snap}} get",
-    "group": "Linux Ops",
-    "description": "inference-snaps: Chat with generative AI Language Models that runs locally without internet. Here inference-snap is one of the supported models: `deepseek-r1`, `gemma3`, `gemma4`, `nemotron3-nano`, `qwen-vl` . (Get all configuration (`http.host`, `http.port`) of running chat server)",
-    "tags": [
-      "linux",
-      "inference-snaps",
       "tldr",
       "en"
     ],
@@ -92238,7 +92403,7 @@
     "id": "tldr-en-linux-rolldice-0",
     "type": "command",
     "title": "rolldice - Roll a single 20 sided dice",
-    "content": "rolldice d{{20}}",
+    "content": "rolldice d20",
     "group": "Linux Ops",
     "description": "rolldice: Roll virtual dice. (Roll a single 20 sided dice)",
     "tags": [
@@ -92253,7 +92418,7 @@
     "id": "tldr-en-linux-rolldice-1",
     "type": "command",
     "title": "rolldice - Roll two six sided dice and drop the lowest roll",
-    "content": "rolldice {{2}}d{{6}}s{{1}}",
+    "content": "rolldice 2d6s1",
     "group": "Linux Ops",
     "description": "rolldice: Roll virtual dice. (Roll two six sided dice and drop the lowest roll)",
     "tags": [
@@ -92268,7 +92433,7 @@
     "id": "tldr-en-linux-rolldice-2",
     "type": "command",
     "title": "rolldice - Roll two 20 sided dice and add a modifier value",
-    "content": "rolldice {{2}}d{{20}}{{+5}}",
+    "content": "rolldice 2d20{{+5}}",
     "group": "Linux Ops",
     "description": "rolldice: Roll virtual dice. (Roll two 20 sided dice and add a modifier value)",
     "tags": [
@@ -92283,7 +92448,7 @@
     "id": "tldr-en-linux-rolldice-3",
     "type": "command",
     "title": "rolldice - Roll a 20 sided dice two times",
-    "content": "rolldice {{2}}xd{{20}}",
+    "content": "rolldice 2xd20",
     "group": "Linux Ops",
     "description": "rolldice: Roll virtual dice. (Roll a 20 sided dice two times)",
     "tags": [
@@ -107717,10 +107882,10 @@
   {
     "id": "tldr-en-linux-at-6",
     "type": "command",
-    "title": "at - View a specied job",
+    "title": "at - View a specified job",
     "content": "at -c {{job_number}}",
     "group": "Linux Ops",
-    "description": "at: Execute commands once at a later time. Results will be sent to the users mail. (View a specied job)",
+    "description": "at: Execute commands once at a later time. Results will be sent to the users mail. (View a specified job)",
     "tags": [
       "linux",
       "at",
@@ -111271,6 +111436,66 @@
   },
   {
     "id": "tldr-en-linux-steamosctl-3",
+    "type": "command",
+    "title": "steamosctl - Get currently used CPU scheduler",
+    "content": "steamosctl get-cpu-scheduler",
+    "group": "Linux Ops",
+    "description": "steamosctl: Control the SteamOS system. (Get currently used CPU scheduler)",
+    "tags": [
+      "linux",
+      "steamosctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-steamosctl-4",
+    "type": "command",
+    "title": "steamosctl - Set the system to use a specific CPU scheduler",
+    "content": "steamosctl set-cpu-scheduler {{none|lavd|...}}",
+    "group": "Linux Ops",
+    "description": "steamosctl: Control the SteamOS system. (Set the system to use a specific CPU scheduler)",
+    "tags": [
+      "linux",
+      "steamosctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-steamosctl-5",
+    "type": "command",
+    "title": "steamosctl - Display available desktop sessions",
+    "content": "steamosctl get-valid-desktop-sessions",
+    "group": "Linux Ops",
+    "description": "steamosctl: Control the SteamOS system. (Display available desktop sessions)",
+    "tags": [
+      "linux",
+      "steamosctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-steamosctl-6",
+    "type": "command",
+    "title": "steamosctl - Set the the default desktop session",
+    "content": "steamosctl set-default-desktop-session {{plasma.desktop|plasmax11.desktop|...}}",
+    "group": "Linux Ops",
+    "description": "steamosctl: Control the SteamOS system. (Set the the default desktop session)",
+    "tags": [
+      "linux",
+      "steamosctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-steamosctl-7",
     "type": "command",
     "title": "steamosctl - Display help",
     "content": "steamosctl",
@@ -115833,7 +116058,7 @@
     "id": "tldr-en-linux-importctl-0",
     "type": "command",
     "title": "importctl - Download image in tarball format from a url via pull",
-    "content": "sudo importctl pull-tar {{URL}} {{path/to/directory}}",
+    "content": "sudo importctl pull-tar {{url}} {{path/to/directory}}",
     "group": "Linux Ops",
     "description": "importctl: Download, Import, or Export disk images. (Download image in tarball format from a url via pull)",
     "tags": [

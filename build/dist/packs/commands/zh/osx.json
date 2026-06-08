@@ -5778,7 +5778,7 @@
     "id": "tldr-zh-osx-gshuf-0",
     "type": "command",
     "title": "gshuf - 原命令的文档在",
-    "content": "tldr {{[-p|--platform]}} coomon shuf",
+    "content": "tldr {{[-p|--platform]}} common shuf",
     "group": "macOS",
     "description": "gshuf: 这是 `shuf` 命令的一个别名。 (原命令的文档在)",
     "tags": [

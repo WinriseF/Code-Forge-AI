@@ -12153,7 +12153,7 @@
     "id": "tldr-zh-common-cargo-install-1",
     "type": "command",
     "title": "cargo-install - 从指定的 Git 仓库安装一个软件包",
-    "content": "cargo install --git {{仓库 URL}}",
+    "content": "cargo install --git {{仓库url}}",
     "group": "通用工具 (Common)",
     "description": "cargo-install: 构建并安装一个 Rust 二进制文件。 (从指定的 Git 仓库安装一个软件包)",
     "tags": [
@@ -12168,7 +12168,7 @@
     "id": "tldr-zh-common-cargo-install-2",
     "type": "command",
     "title": "cargo-install - 从 Git 仓库安装时，根据指定的 branch/tag/commit 构建",
-    "content": "cargo install --git {{仓库 URL}} --{{branch|tag|rev}} {{branch_name|tag|commit_hash}}",
+    "content": "cargo install --git {{仓库url}} --{{branch|tag|rev}} {{branch_name|tag|commit_hash}}",
     "group": "通用工具 (Common)",
     "description": "cargo-install: 构建并安装一个 Rust 二进制文件。 (从 Git 仓库安装时，根据指定的 branch/tag/commit 构建)",
     "tags": [
@@ -22488,7 +22488,7 @@
     "id": "tldr-zh-common-git-remote-2",
     "type": "command",
     "title": "git-remote - 添加远程仓库",
-    "content": "git remote add {{远程仓库名字}} {{远程仓库 URL}}",
+    "content": "git remote add {{远程仓库名字}} {{远程仓库url}}",
     "group": "通用工具 (Common)",
     "description": "git-remote: 管理跟踪的远程仓库（remotes）。 (添加远程仓库)",
     "tags": [
@@ -22503,7 +22503,7 @@
     "id": "tldr-zh-common-git-remote-3",
     "type": "command",
     "title": "git-remote - 更改远程仓库地址链接（使用 `--add` 选项不会移除现有的 URL）",
-    "content": "git remote set-url {{远程仓库名字}} {{新 URL}}",
+    "content": "git remote set-url {{远程仓库名字}} {{新url}}",
     "group": "通用工具 (Common)",
     "description": "git-remote: 管理跟踪的远程仓库（remotes）。 (更改远程仓库地址链接（使用 `--add` 选项不会移除现有的 URL）)",
     "tags": [
@@ -48213,7 +48213,7 @@
     "id": "tldr-zh-common-bower-1",
     "type": "command",
     "title": "bower - 安装一个或者多个依赖到 `bower_components` 目录",
-    "content": "bower install {{包名1}} {{包名2}}",
+    "content": "bower install {{包名1 包名2 ...}}",
     "group": "通用工具 (Common)",
     "description": "bower: 前端 web 开发的包管理优化工具。 一个包可以是 GitHub 中 user/repo 的缩写，一个 Git 端口，一个 URL 链接或者一个已注册的包。 (安装一个或者多个依赖到 `bower_components` 目录)",
     "tags": [
@@ -48228,7 +48228,7 @@
     "id": "tldr-zh-common-bower-2",
     "type": "command",
     "title": "bower - 从本地的 `bower_components` 目录卸载依赖",
-    "content": "bower uninstall {{包名1}} {{包名2}}",
+    "content": "bower uninstall {{包名1 包名2 ...}}",
     "group": "通用工具 (Common)",
     "description": "bower: 前端 web 开发的包管理优化工具。 一个包可以是 GitHub 中 user/repo 的缩写，一个 Git 端口，一个 URL 链接或者一个已注册的包。 (从本地的 `bower_components` 目录卸载依赖)",
     "tags": [

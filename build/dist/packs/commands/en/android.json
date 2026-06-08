@@ -45,6 +45,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-android-pm-uninstall-0",
+    "type": "command",
+    "title": "pm-uninstall - Uninstall a package from the device",
+    "content": "pm uninstall {{package}}",
+    "group": "Android Dev",
+    "description": "pm-uninstall: Uninstall a package. (Uninstall a package from the device)",
+    "tags": [
+      "android",
+      "pm-uninstall",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-uninstall-1",
+    "type": "command",
+    "title": "pm-uninstall - Remove an app from a specific user",
+    "content": "pm uninstall --user {{user_id}} {{package}}",
+    "group": "Android Dev",
+    "description": "pm-uninstall: Uninstall a package. (Remove an app from a specific user)",
+    "tags": [
+      "android",
+      "pm-uninstall",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-android-wm-0",
     "type": "command",
     "title": "wm - Display the physical size of an Android device's screen",
