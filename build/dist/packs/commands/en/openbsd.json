@@ -1,350 +1,5 @@
 [
   {
-    "id": "tldr-en-openbsd-sed-0",
-    "type": "command",
-    "title": "sed - Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in all input lines and print the result to `stdout`",
-    "content": "{{command}} | sed 's/apple/mango/g'",
-    "group": "Openbsd",
-    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in all input lines and print the result to `stdout`)",
-    "tags": [
-      "openbsd",
-      "sed",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-sed-1",
-    "type": "command",
-    "title": "sed - Execute a specific script [f]ile and print the result to `stdout`",
-    "content": "{{command}} | sed -f {{path/to/script.sed}}",
-    "group": "Openbsd",
-    "description": "sed: Edit text in a scriptable manner. (Execute a specific script [f]ile and print the result to `stdout`)",
-    "tags": [
-      "openbsd",
-      "sed",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-sed-2",
-    "type": "command",
-    "title": "sed - Delay opening each file until a command containing the related `w` function or flag is applied to a line of input",
-    "content": "{{command}} | sed -fa {{path/to/script.sed}}",
-    "group": "Openbsd",
-    "description": "sed: Edit text in a scriptable manner. (Delay opening each file until a command containing the related `w` function or flag is applied to a line of input)",
-    "tags": [
-      "openbsd",
-      "sed",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-sed-3",
-    "type": "command",
-    "title": "sed - Replace all `apple` (extended `regex`) occurrences with `APPLE` (extended `regex`) in all input lines and print the result to `stdout`",
-    "content": "{{command}} | sed -E 's/(apple)/\\U\\1/g'",
-    "group": "Openbsd",
-    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (extended `regex`) occurrences with `APPLE` (extended `regex`) in all input lines and print the result to `stdout`)",
-    "tags": [
-      "openbsd",
-      "sed",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-sed-4",
-    "type": "command",
-    "title": "sed - Print just a first line to `stdout`",
-    "content": "{{command}} | sed -n '1p'",
-    "group": "Openbsd",
-    "description": "sed: Edit text in a scriptable manner. (Print just a first line to `stdout`)",
-    "tags": [
-      "openbsd",
-      "sed",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-sed-5",
-    "type": "command",
-    "title": "sed - Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in a specific file and overwrite the original file in place",
-    "content": "sed -i 's/apple/mango/g' {{path/to/file}}",
-    "group": "Openbsd",
-    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in a specific file and overwrite the original file in place)",
-    "tags": [
-      "openbsd",
-      "sed",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg_delete-0",
-    "type": "command",
-    "title": "pkg_delete - Delete a package",
-    "content": "pkg_delete {{package}}",
-    "group": "Openbsd",
-    "description": "pkg_delete: Remove packages in OpenBSD. (Delete a package)",
-    "tags": [
-      "openbsd",
-      "pkg_delete",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg_delete-1",
-    "type": "command",
-    "title": "pkg_delete - Delete a package, including its unused dependencies",
-    "content": "pkg_delete -a {{package}}",
-    "group": "Openbsd",
-    "description": "pkg_delete: Remove packages in OpenBSD. (Delete a package, including its unused dependencies)",
-    "tags": [
-      "openbsd",
-      "pkg_delete",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg_delete-2",
-    "type": "command",
-    "title": "pkg_delete - Dry-run deletion of a package",
-    "content": "pkg_delete -n {{package}}",
-    "group": "Openbsd",
-    "description": "pkg_delete: Remove packages in OpenBSD. (Dry-run deletion of a package)",
-    "tags": [
-      "openbsd",
-      "pkg_delete",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-chsh-0",
-    "type": "command",
-    "title": "chsh - View documentation for the original command",
-    "content": "tldr chpass",
-    "group": "Openbsd",
-    "description": "chsh: This command is an alias of `chpass`. (View documentation for the original command)",
-    "tags": [
-      "openbsd",
-      "chsh",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg-0",
-    "type": "command",
-    "title": "pkg - View documentation for installing/updating packages",
-    "content": "tldr pkg_add",
-    "group": "Openbsd",
-    "description": "pkg: OpenBSD package manager utility. (View documentation for installing/updating packages)",
-    "tags": [
-      "openbsd",
-      "pkg",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg-1",
-    "type": "command",
-    "title": "pkg - View documentation for removing packages",
-    "content": "tldr pkg_delete",
-    "group": "Openbsd",
-    "description": "pkg: OpenBSD package manager utility. (View documentation for removing packages)",
-    "tags": [
-      "openbsd",
-      "pkg",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg-2",
-    "type": "command",
-    "title": "pkg - View documentation for viewing information about packages",
-    "content": "tldr pkg_info",
-    "group": "Openbsd",
-    "description": "pkg: OpenBSD package manager utility. (View documentation for viewing information about packages)",
-    "tags": [
-      "openbsd",
-      "pkg",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-chpass-0",
-    "type": "command",
-    "title": "chpass - Set a specific login shell for the current user interactively",
-    "content": "doas chpass",
-    "group": "Openbsd",
-    "description": "chpass: Add or change user database information, including login shell and password. (Set a specific login shell for the current user interactively)",
-    "tags": [
-      "openbsd",
-      "chpass",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-chpass-1",
-    "type": "command",
-    "title": "chpass - Set a specific login [s]hell for the current user",
-    "content": "doas chpass -s {{path/to/shell}}",
-    "group": "Openbsd",
-    "description": "chpass: Add or change user database information, including login shell and password. (Set a specific login [s]hell for the current user)",
-    "tags": [
-      "openbsd",
-      "chpass",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-chpass-2",
-    "type": "command",
-    "title": "chpass - Set a login [s]hell for a specific user",
-    "content": "doas chpass -s {{path/to/shell}} {{username}}",
-    "group": "Openbsd",
-    "description": "chpass: Add or change user database information, including login shell and password. (Set a login [s]hell for a specific user)",
-    "tags": [
-      "openbsd",
-      "chpass",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-chpass-3",
-    "type": "command",
-    "title": "chpass - Specify a user database entry in the `passwd` file format",
-    "content": "doas chpass -a {{username:encrypted_password:uid:gid:...}}",
-    "group": "Openbsd",
-    "description": "chpass: Add or change user database information, including login shell and password. (Specify a user database entry in the `passwd` file format)",
-    "tags": [
-      "openbsd",
-      "chpass",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg_add-0",
-    "type": "command",
-    "title": "pkg_add - Update all packages, including dependencies",
-    "content": "pkg_add -u",
-    "group": "Openbsd",
-    "description": "pkg_add: Install/update packages in OpenBSD. (Update all packages, including dependencies)",
-    "tags": [
-      "openbsd",
-      "pkg_add",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg_add-1",
-    "type": "command",
-    "title": "pkg_add - Install a new package",
-    "content": "pkg_add {{package}}",
-    "group": "Openbsd",
-    "description": "pkg_add: Install/update packages in OpenBSD. (Install a new package)",
-    "tags": [
-      "openbsd",
-      "pkg_add",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg_add-2",
-    "type": "command",
-    "title": "pkg_add - Install packages from the raw output of `pkg_info`",
-    "content": "pkg_add -l {{path/to/file}}",
-    "group": "Openbsd",
-    "description": "pkg_add: Install/update packages in OpenBSD. (Install packages from the raw output of `pkg_info`)",
-    "tags": [
-      "openbsd",
-      "pkg_add",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg_info-0",
-    "type": "command",
-    "title": "pkg_info - Search for a package using the package name",
-    "content": "pkg_info -Q {{package}}",
-    "group": "Openbsd",
-    "description": "pkg_info: View information about packages in OpenBSD. (Search for a package using the package name)",
-    "tags": [
-      "openbsd",
-      "pkg_info",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-pkg_info-1",
-    "type": "command",
-    "title": "pkg_info - Output a list of installed packages for use with `pkg_add -l`",
-    "content": "pkg_info -mz",
-    "group": "Openbsd",
-    "description": "pkg_info: View information about packages in OpenBSD. (Output a list of installed packages for use with `pkg_add -l`)",
-    "tags": [
-      "openbsd",
-      "pkg_info",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-openbsd-chfn-0",
-    "type": "command",
-    "title": "chfn - View documentation for the original command",
-    "content": "tldr chpass",
-    "group": "Openbsd",
-    "description": "chfn: This command is an alias of `chpass`. (View documentation for the original command)",
-    "tags": [
-      "openbsd",
-      "chfn",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-en-openbsd-df-0",
     "type": "command",
     "title": "df - Display all filesystems and their disk usage (using 512-byte units)",
@@ -534,6 +189,351 @@
     "tags": [
       "openbsd",
       "cal",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-chfn-0",
+    "type": "command",
+    "title": "chfn - View documentation for the original command",
+    "content": "tldr chpass",
+    "group": "Openbsd",
+    "description": "chfn: This command is an alias of `chpass`. (View documentation for the original command)",
+    "tags": [
+      "openbsd",
+      "chfn",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-pkg_delete-0",
+    "type": "command",
+    "title": "pkg_delete - Delete a package",
+    "content": "pkg_delete {{package}}",
+    "group": "Openbsd",
+    "description": "pkg_delete: Remove packages in OpenBSD. (Delete a package)",
+    "tags": [
+      "openbsd",
+      "pkg_delete",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-pkg_delete-1",
+    "type": "command",
+    "title": "pkg_delete - Delete a package, including its unused dependencies",
+    "content": "pkg_delete -a {{package}}",
+    "group": "Openbsd",
+    "description": "pkg_delete: Remove packages in OpenBSD. (Delete a package, including its unused dependencies)",
+    "tags": [
+      "openbsd",
+      "pkg_delete",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-pkg_delete-2",
+    "type": "command",
+    "title": "pkg_delete - Dry-run deletion of a package",
+    "content": "pkg_delete -n {{package}}",
+    "group": "Openbsd",
+    "description": "pkg_delete: Remove packages in OpenBSD. (Dry-run deletion of a package)",
+    "tags": [
+      "openbsd",
+      "pkg_delete",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-pkg-0",
+    "type": "command",
+    "title": "pkg - View documentation for installing/updating packages",
+    "content": "tldr pkg_add",
+    "group": "Openbsd",
+    "description": "pkg: OpenBSD package manager utility. (View documentation for installing/updating packages)",
+    "tags": [
+      "openbsd",
+      "pkg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-pkg-1",
+    "type": "command",
+    "title": "pkg - View documentation for removing packages",
+    "content": "tldr pkg_delete",
+    "group": "Openbsd",
+    "description": "pkg: OpenBSD package manager utility. (View documentation for removing packages)",
+    "tags": [
+      "openbsd",
+      "pkg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-pkg-2",
+    "type": "command",
+    "title": "pkg - View documentation for viewing information about packages",
+    "content": "tldr pkg_info",
+    "group": "Openbsd",
+    "description": "pkg: OpenBSD package manager utility. (View documentation for viewing information about packages)",
+    "tags": [
+      "openbsd",
+      "pkg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-pkg_add-0",
+    "type": "command",
+    "title": "pkg_add - Update all packages, including dependencies",
+    "content": "pkg_add -u",
+    "group": "Openbsd",
+    "description": "pkg_add: Install/update packages in OpenBSD. (Update all packages, including dependencies)",
+    "tags": [
+      "openbsd",
+      "pkg_add",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-pkg_add-1",
+    "type": "command",
+    "title": "pkg_add - Install a new package",
+    "content": "pkg_add {{package}}",
+    "group": "Openbsd",
+    "description": "pkg_add: Install/update packages in OpenBSD. (Install a new package)",
+    "tags": [
+      "openbsd",
+      "pkg_add",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-pkg_add-2",
+    "type": "command",
+    "title": "pkg_add - Install packages from the raw output of `pkg_info`",
+    "content": "pkg_add -l {{path/to/file}}",
+    "group": "Openbsd",
+    "description": "pkg_add: Install/update packages in OpenBSD. (Install packages from the raw output of `pkg_info`)",
+    "tags": [
+      "openbsd",
+      "pkg_add",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-chpass-0",
+    "type": "command",
+    "title": "chpass - Set a specific login shell for the current user interactively",
+    "content": "doas chpass",
+    "group": "Openbsd",
+    "description": "chpass: Add or change user database information, including login shell and password. (Set a specific login shell for the current user interactively)",
+    "tags": [
+      "openbsd",
+      "chpass",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-chpass-1",
+    "type": "command",
+    "title": "chpass - Set a specific login [s]hell for the current user",
+    "content": "doas chpass -s {{path/to/shell}}",
+    "group": "Openbsd",
+    "description": "chpass: Add or change user database information, including login shell and password. (Set a specific login [s]hell for the current user)",
+    "tags": [
+      "openbsd",
+      "chpass",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-chpass-2",
+    "type": "command",
+    "title": "chpass - Set a login [s]hell for a specific user",
+    "content": "doas chpass -s {{path/to/shell}} {{username}}",
+    "group": "Openbsd",
+    "description": "chpass: Add or change user database information, including login shell and password. (Set a login [s]hell for a specific user)",
+    "tags": [
+      "openbsd",
+      "chpass",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-chpass-3",
+    "type": "command",
+    "title": "chpass - Specify a user database entry in the `passwd` file format",
+    "content": "doas chpass -a {{username:encrypted_password:uid:gid:...}}",
+    "group": "Openbsd",
+    "description": "chpass: Add or change user database information, including login shell and password. (Specify a user database entry in the `passwd` file format)",
+    "tags": [
+      "openbsd",
+      "chpass",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-pkg_info-0",
+    "type": "command",
+    "title": "pkg_info - Search for a package using the package name",
+    "content": "pkg_info -Q {{package}}",
+    "group": "Openbsd",
+    "description": "pkg_info: View information about packages in OpenBSD. (Search for a package using the package name)",
+    "tags": [
+      "openbsd",
+      "pkg_info",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-pkg_info-1",
+    "type": "command",
+    "title": "pkg_info - Output a list of installed packages for use with `pkg_add -l`",
+    "content": "pkg_info -mz",
+    "group": "Openbsd",
+    "description": "pkg_info: View information about packages in OpenBSD. (Output a list of installed packages for use with `pkg_add -l`)",
+    "tags": [
+      "openbsd",
+      "pkg_info",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-sed-0",
+    "type": "command",
+    "title": "sed - Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in all input lines and print the result to `stdout`",
+    "content": "{{command}} | sed 's/apple/mango/g'",
+    "group": "Openbsd",
+    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in all input lines and print the result to `stdout`)",
+    "tags": [
+      "openbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-sed-1",
+    "type": "command",
+    "title": "sed - Execute a specific script [f]ile and print the result to `stdout`",
+    "content": "{{command}} | sed -f {{path/to/script.sed}}",
+    "group": "Openbsd",
+    "description": "sed: Edit text in a scriptable manner. (Execute a specific script [f]ile and print the result to `stdout`)",
+    "tags": [
+      "openbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-sed-2",
+    "type": "command",
+    "title": "sed - Delay opening each file until a command containing the related `w` function or flag is applied to a line of input",
+    "content": "{{command}} | sed -fa {{path/to/script.sed}}",
+    "group": "Openbsd",
+    "description": "sed: Edit text in a scriptable manner. (Delay opening each file until a command containing the related `w` function or flag is applied to a line of input)",
+    "tags": [
+      "openbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-sed-3",
+    "type": "command",
+    "title": "sed - Replace all `apple` (extended `regex`) occurrences with `APPLE` (extended `regex`) in all input lines and print the result to `stdout`",
+    "content": "{{command}} | sed -E 's/(apple)/\\U\\1/g'",
+    "group": "Openbsd",
+    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (extended `regex`) occurrences with `APPLE` (extended `regex`) in all input lines and print the result to `stdout`)",
+    "tags": [
+      "openbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-sed-4",
+    "type": "command",
+    "title": "sed - Print just a first line to `stdout`",
+    "content": "{{command}} | sed -n '1p'",
+    "group": "Openbsd",
+    "description": "sed: Edit text in a scriptable manner. (Print just a first line to `stdout`)",
+    "tags": [
+      "openbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-sed-5",
+    "type": "command",
+    "title": "sed - Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in a specific file and overwrite the original file in place",
+    "content": "sed -i 's/apple/mango/g' {{path/to/file}}",
+    "group": "Openbsd",
+    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in a specific file and overwrite the original file in place)",
+    "tags": [
+      "openbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-openbsd-chsh-0",
+    "type": "command",
+    "title": "chsh - View documentation for the original command",
+    "content": "tldr chpass",
+    "group": "Openbsd",
+    "description": "chsh: This command is an alias of `chpass`. (View documentation for the original command)",
+    "tags": [
+      "openbsd",
+      "chsh",
       "tldr",
       "en"
     ],

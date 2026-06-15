@@ -1,5 +1,5 @@
 {
-  "updated_at": 1780890732258,
+  "updated_at": 1781496581694,
   "version": "2.1.0",
   "packages": [
     {
@@ -8,8 +8,8 @@
       "platform": "llm",
       "name": "ChatGPT Role Prompts",
       "description": "Curated role-play prompts for ChatGPT and general LLM workflows.",
-      "count": 1860,
-      "size_kb": 5412.24,
+      "count": 1878,
+      "size_kb": 5433.81,
       "url": "packs/prompts/en/roles.json",
       "category": "prompt"
     },
@@ -25,6 +25,28 @@
       "category": "prompt"
     },
     {
+      "id": "zh-openbsd",
+      "language": "zh",
+      "platform": "openbsd",
+      "name": "Openbsd (ZH)",
+      "description": "Contains 2 zh commands for openbsd.",
+      "count": 2,
+      "size_kb": 1,
+      "url": "packs/commands/zh/openbsd.json",
+      "category": "command"
+    },
+    {
+      "id": "zh-android",
+      "language": "zh",
+      "platform": "android",
+      "name": "Android 开发 (ZH)",
+      "description": "Contains 57 zh commands for android.",
+      "count": 57,
+      "size_kb": 24,
+      "url": "packs/commands/zh/android.json",
+      "category": "command"
+    },
+    {
       "id": "zh-freebsd",
       "language": "zh",
       "platform": "freebsd",
@@ -36,6 +58,17 @@
       "category": "command"
     },
     {
+      "id": "zh-common",
+      "language": "zh",
+      "platform": "common",
+      "name": "通用工具 (Common) (ZH)",
+      "description": "Contains 3682 zh commands for common.",
+      "count": 3682,
+      "size_kb": 1798,
+      "url": "packs/commands/zh/common.json",
+      "category": "command"
+    },
+    {
       "id": "zh-linux",
       "language": "zh",
       "platform": "linux",
@@ -44,17 +77,6 @@
       "count": 778,
       "size_kb": 350,
       "url": "packs/commands/zh/linux.json",
-      "category": "command"
-    },
-    {
-      "id": "zh-netbsd",
-      "language": "zh",
-      "platform": "netbsd",
-      "name": "Netbsd (ZH)",
-      "description": "Contains 2 zh commands for netbsd.",
-      "count": 2,
-      "size_kb": 1,
-      "url": "packs/commands/zh/netbsd.json",
       "category": "command"
     },
     {
@@ -80,36 +102,14 @@
       "category": "command"
     },
     {
-      "id": "zh-android",
+      "id": "zh-netbsd",
       "language": "zh",
-      "platform": "android",
-      "name": "Android 开发 (ZH)",
-      "description": "Contains 54 zh commands for android.",
-      "count": 54,
-      "size_kb": 23,
-      "url": "packs/commands/zh/android.json",
-      "category": "command"
-    },
-    {
-      "id": "zh-osx",
-      "language": "zh",
-      "platform": "osx",
-      "name": "macOS (ZH)",
-      "description": "Contains 459 zh commands for osx.",
-      "count": 459,
-      "size_kb": 194,
-      "url": "packs/commands/zh/osx.json",
-      "category": "command"
-    },
-    {
-      "id": "zh-openbsd",
-      "language": "zh",
-      "platform": "openbsd",
-      "name": "Openbsd (ZH)",
-      "description": "Contains 2 zh commands for openbsd.",
+      "platform": "netbsd",
+      "name": "Netbsd (ZH)",
+      "description": "Contains 2 zh commands for netbsd.",
       "count": 2,
       "size_kb": 1,
-      "url": "packs/commands/zh/openbsd.json",
+      "url": "packs/commands/zh/netbsd.json",
       "category": "command"
     },
     {
@@ -124,14 +124,47 @@
       "category": "command"
     },
     {
-      "id": "zh-common",
+      "id": "zh-osx",
       "language": "zh",
-      "platform": "common",
-      "name": "通用工具 (Common) (ZH)",
-      "description": "Contains 3690 zh commands for common.",
-      "count": 3690,
-      "size_kb": 1802,
-      "url": "packs/commands/zh/common.json",
+      "platform": "osx",
+      "name": "macOS (ZH)",
+      "description": "Contains 459 zh commands for osx.",
+      "count": 459,
+      "size_kb": 194,
+      "url": "packs/commands/zh/osx.json",
+      "category": "command"
+    },
+    {
+      "id": "en-openbsd",
+      "language": "en",
+      "platform": "openbsd",
+      "name": "Openbsd (EN)",
+      "description": "Contains 36 en commands for openbsd.",
+      "count": 36,
+      "size_kb": 16,
+      "url": "packs/commands/en/openbsd.json",
+      "category": "command"
+    },
+    {
+      "id": "en-cisco-ios",
+      "language": "en",
+      "platform": "cisco-ios",
+      "name": "Cisco-Ios (EN)",
+      "description": "Contains 42 en commands for cisco-ios.",
+      "count": 42,
+      "size_kb": 17,
+      "url": "packs/commands/en/cisco-ios.json",
+      "category": "command"
+    },
+    {
+      "id": "en-android",
+      "language": "en",
+      "platform": "android",
+      "name": "Android Dev (EN)",
+      "description": "Contains 87 en commands for android.",
+      "count": 87,
+      "size_kb": 39,
+      "url": "packs/commands/en/android.json",
       "category": "command"
     },
     {
@@ -139,10 +172,21 @@
       "language": "en",
       "platform": "freebsd",
       "name": "Freebsd (EN)",
-      "description": "Contains 63 en commands for freebsd.",
-      "count": 63,
-      "size_kb": 29,
+      "description": "Contains 69 en commands for freebsd.",
+      "count": 69,
+      "size_kb": 31,
       "url": "packs/commands/en/freebsd.json",
+      "category": "command"
+    },
+    {
+      "id": "en-common",
+      "language": "en",
+      "platform": "common",
+      "name": "Common Tools (EN)",
+      "description": "Contains 20653 en commands for common.",
+      "count": 20653,
+      "size_kb": 10005,
+      "url": "packs/commands/en/common.json",
       "category": "command"
     },
     {
@@ -150,21 +194,10 @@
       "language": "en",
       "platform": "linux",
       "name": "Linux Ops (EN)",
-      "description": "Contains 8195 en commands for linux.",
-      "count": 8195,
-      "size_kb": 3869,
+      "description": "Contains 8266 en commands for linux.",
+      "count": 8266,
+      "size_kb": 3902,
       "url": "packs/commands/en/linux.json",
-      "category": "command"
-    },
-    {
-      "id": "en-netbsd",
-      "language": "en",
-      "platform": "netbsd",
-      "name": "Netbsd (EN)",
-      "description": "Contains 41 en commands for netbsd.",
-      "count": 41,
-      "size_kb": 19,
-      "url": "packs/commands/en/netbsd.json",
       "category": "command"
     },
     {
@@ -172,9 +205,9 @@
       "language": "en",
       "platform": "windows",
       "name": "Windows (EN)",
-      "description": "Contains 1121 en commands for windows.",
-      "count": 1121,
-      "size_kb": 553,
+      "description": "Contains 1134 en commands for windows.",
+      "count": 1134,
+      "size_kb": 562,
       "url": "packs/commands/en/windows.json",
       "category": "command"
     },
@@ -190,36 +223,14 @@
       "category": "command"
     },
     {
-      "id": "en-android",
+      "id": "en-netbsd",
       "language": "en",
-      "platform": "android",
-      "name": "Android Dev (EN)",
-      "description": "Contains 59 en commands for android.",
-      "count": 59,
-      "size_kb": 26,
-      "url": "packs/commands/en/android.json",
-      "category": "command"
-    },
-    {
-      "id": "en-osx",
-      "language": "en",
-      "platform": "osx",
-      "name": "macOS (EN)",
-      "description": "Contains 955 en commands for osx.",
-      "count": 955,
-      "size_kb": 423,
-      "url": "packs/commands/en/osx.json",
-      "category": "command"
-    },
-    {
-      "id": "en-openbsd",
-      "language": "en",
-      "platform": "openbsd",
-      "name": "Openbsd (EN)",
-      "description": "Contains 36 en commands for openbsd.",
-      "count": 36,
-      "size_kb": 16,
-      "url": "packs/commands/en/openbsd.json",
+      "platform": "netbsd",
+      "name": "Netbsd (EN)",
+      "description": "Contains 41 en commands for netbsd.",
+      "count": 41,
+      "size_kb": 19,
+      "url": "packs/commands/en/netbsd.json",
       "category": "command"
     },
     {
@@ -234,36 +245,25 @@
       "category": "command"
     },
     {
-      "id": "en-cisco-ios",
+      "id": "en-osx",
       "language": "en",
-      "platform": "cisco-ios",
-      "name": "Cisco-Ios (EN)",
-      "description": "Contains 42 en commands for cisco-ios.",
-      "count": 42,
-      "size_kb": 17,
-      "url": "packs/commands/en/cisco-ios.json",
+      "platform": "osx",
+      "name": "macOS (EN)",
+      "description": "Contains 964 en commands for osx.",
+      "count": 964,
+      "size_kb": 427,
+      "url": "packs/commands/en/osx.json",
       "category": "command"
     },
     {
-      "id": "en-common",
-      "language": "en",
-      "platform": "common",
-      "name": "Common Tools (EN)",
-      "description": "Contains 20655 en commands for common.",
-      "count": 20655,
-      "size_kb": 10007,
-      "url": "packs/commands/en/common.json",
-      "category": "command"
-    },
-    {
-      "id": "custom-prompt-zh-image2",
+      "id": "custom-prompt-zh-nano-banana-pro",
       "language": "zh",
       "platform": "custom",
-      "name": "GPT Image 2 图像提示词精选",
-      "description": "适用于 GPT Image 2 图像生成工作流的提示词合集。",
-      "count": 6456,
-      "size_kb": 19359.04,
-      "url": "packs/prompts/zh/image2.json",
+      "name": "Nano Banana Pro 图像提示词精选",
+      "description": "适用于 Nano Banana Pro 图像生成工作流的提示词合集。",
+      "count": 13491,
+      "size_kb": 38107.16,
+      "url": "packs/prompts/zh/nano-banana-pro.json",
       "category": "prompt"
     },
     {
@@ -289,17 +289,6 @@
       "category": "prompt"
     },
     {
-      "id": "custom-prompt-zh-nano-banana-pro",
-      "language": "zh",
-      "platform": "custom",
-      "name": "Nano Banana Pro 图像提示词精选",
-      "description": "适用于 Nano Banana Pro 图像生成工作流的提示词合集。",
-      "count": 13491,
-      "size_kb": 38107.16,
-      "url": "packs/prompts/zh/nano-banana-pro.json",
-      "category": "prompt"
-    },
-    {
       "id": "custom-prompt-zh-code",
       "language": "zh",
       "platform": "custom",
@@ -311,14 +300,25 @@
       "category": "prompt"
     },
     {
-      "id": "custom-prompt-en-image2",
+      "id": "custom-prompt-zh-image2",
+      "language": "zh",
+      "platform": "custom",
+      "name": "GPT Image 2 图像提示词精选",
+      "description": "适用于 GPT Image 2 图像生成工作流的提示词合集。",
+      "count": 6456,
+      "size_kb": 19359.04,
+      "url": "packs/prompts/zh/image2.json",
+      "category": "prompt"
+    },
+    {
+      "id": "custom-prompt-en-nano-banana-pro",
       "language": "en",
       "platform": "custom",
-      "name": "GPT Image 2 Prompt Collection",
-      "description": "Prompt collection for GPT Image 2 image-generation workflows.",
-      "count": 6456,
-      "size_kb": 19615.25,
-      "url": "packs/prompts/en/image2.json",
+      "name": "Nano Banana Pro Image Prompt Collection",
+      "description": "Prompt collection for Nano Banana Pro image-generation workflows.",
+      "count": 13483,
+      "size_kb": 38811.7,
+      "url": "packs/prompts/en/nano-banana-pro.json",
       "category": "prompt"
     },
     {
@@ -344,14 +344,14 @@
       "category": "prompt"
     },
     {
-      "id": "custom-prompt-en-nano-banana-pro",
+      "id": "custom-prompt-en-image2",
       "language": "en",
       "platform": "custom",
-      "name": "Nano Banana Pro Image Prompt Collection",
-      "description": "Prompt collection for Nano Banana Pro image-generation workflows.",
-      "count": 13483,
-      "size_kb": 38811.7,
-      "url": "packs/prompts/en/nano-banana-pro.json",
+      "name": "GPT Image 2 Prompt Collection",
+      "description": "Prompt collection for GPT Image 2 image-generation workflows.",
+      "count": 6456,
+      "size_kb": 19615.25,
+      "url": "packs/prompts/en/image2.json",
       "category": "prompt"
     }
   ]

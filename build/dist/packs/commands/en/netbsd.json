@@ -1,5 +1,110 @@
 [
   {
+    "id": "tldr-en-netbsd-df-0",
+    "type": "command",
+    "title": "df - Display all filesystems and their disk usage (using 512-byte units)",
+    "content": "df",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Display all filesystems and their disk usage (using 512-byte units))",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-1",
+    "type": "command",
+    "title": "df - Use [h]uman-readable units (based on powers of 1024)",
+    "content": "df -h",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Use [h]uman-readable units (based on powers of 1024))",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-2",
+    "type": "command",
+    "title": "df - Display all the fields of the structure(s) returned by `statvfs`",
+    "content": "df -G",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Display all the fields of the structure(s) returned by `statvfs`)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-3",
+    "type": "command",
+    "title": "df - Display the filesystem containing the specified file or directory",
+    "content": "df {{path/to/file_or_directory}}",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Display the filesystem containing the specified file or directory)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-4",
+    "type": "command",
+    "title": "df - Include statistics on the number of free and used [i]nodes",
+    "content": "df -i",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Include statistics on the number of free and used [i]nodes)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-5",
+    "type": "command",
+    "title": "df - Use [k]ibibyte (1024 byte) units when showing size figures",
+    "content": "df -k",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Use [k]ibibyte (1024 byte) units when showing size figures)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-6",
+    "type": "command",
+    "title": "df - Display information in a [P]ortable way",
+    "content": "df -P",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Display information in a [P]ortable way)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-netbsd-sockstat-0",
     "type": "command",
     "title": "sockstat - Show information for IPv4, IPv6, and Unix sockets for both listening and connected sockets",
@@ -75,120 +180,135 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-sed-0",
+    "id": "tldr-en-netbsd-cal-0",
     "type": "command",
-    "title": "sed - Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in all input lines and print the result to `stdout`",
-    "content": "{{command}} | sed 's/apple/mango/g'",
+    "title": "cal - Display a calendar for the current month",
+    "content": "cal",
     "group": "Netbsd",
-    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in all input lines and print the result to `stdout`)",
+    "description": "cal: Display a calendar. (Display a calendar for the current month)",
     "tags": [
       "netbsd",
-      "sed",
+      "cal",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-sed-1",
+    "id": "tldr-en-netbsd-cal-1",
     "type": "command",
-    "title": "sed - Execute a specific script [f]ile and print the result to `stdout`",
-    "content": "{{command}} | sed -f {{path/to/script.sed}}",
+    "title": "cal - Display a calendar for a specific year",
+    "content": "cal {{year}}",
     "group": "Netbsd",
-    "description": "sed: Edit text in a scriptable manner. (Execute a specific script [f]ile and print the result to `stdout`)",
+    "description": "cal: Display a calendar. (Display a calendar for a specific year)",
     "tags": [
       "netbsd",
-      "sed",
+      "cal",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-sed-2",
+    "id": "tldr-en-netbsd-cal-2",
     "type": "command",
-    "title": "sed - Delay opening each file until a command containing the related `w` function or flag is applied to a line of input",
-    "content": "{{command}} | sed -fa {{path/to/script.sed}}",
+    "title": "cal - Display a calendar for a specific month and year",
+    "content": "cal {{month}} {{year}}",
     "group": "Netbsd",
-    "description": "sed: Edit text in a scriptable manner. (Delay opening each file until a command containing the related `w` function or flag is applied to a line of input)",
+    "description": "cal: Display a calendar. (Display a calendar for a specific month and year)",
     "tags": [
       "netbsd",
-      "sed",
+      "cal",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-sed-3",
+    "id": "tldr-en-netbsd-cal-3",
     "type": "command",
-    "title": "sed - Turn on [g]NU `regex` extension",
-    "content": "{{command}} | sed -fg {{path/to/script.sed}}",
+    "title": "cal - Display the whole calendar for the current year using [j]ulian days (one-based, numbered from January 1)",
+    "content": "cal -y -j",
     "group": "Netbsd",
-    "description": "sed: Edit text in a scriptable manner. (Turn on [g]NU `regex` extension)",
+    "description": "cal: Display a calendar. (Display the whole calendar for the current year using [j]ulian days (one-based, numbered from January 1))",
     "tags": [
       "netbsd",
-      "sed",
+      "cal",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-sed-4",
+    "id": "tldr-en-netbsd-cal-4",
     "type": "command",
-    "title": "sed - Replace all `apple` (extended `regex`) occurrences with `APPLE` (extended `regex`) in all input lines and print the result to `stdout`",
-    "content": "{{command}} | sed -E 's/(apple)/\\U\\1/g'",
+    "title": "cal - [h]ighlight today and display [3] months spanning the date",
+    "content": "cal -h -3 {{month}} {{year}}",
     "group": "Netbsd",
-    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (extended `regex`) occurrences with `APPLE` (extended `regex`) in all input lines and print the result to `stdout`)",
+    "description": "cal: Display a calendar. ([h]ighlight today and display [3] months spanning the date)",
     "tags": [
       "netbsd",
-      "sed",
+      "cal",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-sed-5",
+    "id": "tldr-en-netbsd-cal-5",
     "type": "command",
-    "title": "sed - Print just a first line to `stdout`",
-    "content": "{{command}} | sed -n '1p'",
+    "title": "cal - Display the 2 months [B]efore and 3 [A]fter a specific [m]onth of the current year",
+    "content": "cal -A 3 -B 2 {{month}}",
     "group": "Netbsd",
-    "description": "sed: Edit text in a scriptable manner. (Print just a first line to `stdout`)",
+    "description": "cal: Display a calendar. (Display the 2 months [B]efore and 3 [A]fter a specific [m]onth of the current year)",
     "tags": [
       "netbsd",
-      "sed",
+      "cal",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-sed-6",
+    "id": "tldr-en-netbsd-cal-6",
     "type": "command",
-    "title": "sed - Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in a specific file and overwrite the original file in place",
-    "content": "sed -i 's/apple/mango/g' {{path/to/file}}",
+    "title": "cal - Display a specific number of months before and after ([C]ontext) the specified month",
+    "content": "cal -C {{months}} {{month}}",
     "group": "Netbsd",
-    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in a specific file and overwrite the original file in place)",
+    "description": "cal: Display a calendar. (Display a specific number of months before and after ([C]ontext) the specified month)",
     "tags": [
       "netbsd",
-      "sed",
+      "cal",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-chsh-0",
+    "id": "tldr-en-netbsd-cal-7",
     "type": "command",
-    "title": "chsh - View documentation for the original command",
+    "title": "cal - Specify the starting [d]ay of the week (0: Sunday, 1: Monday, ..., 6: Saturday)",
+    "content": "cal -d {{0..6}}",
+    "group": "Netbsd",
+    "description": "cal: Display a calendar. (Specify the starting [d]ay of the week (0: Sunday, 1: Monday, ..., 6: Saturday))",
+    "tags": [
+      "netbsd",
+      "cal",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-chfn-0",
+    "type": "command",
+    "title": "chfn - View documentation for the original command",
     "content": "tldr chpass",
     "group": "Netbsd",
-    "description": "chsh: This command is an alias of `chpass`. (View documentation for the original command)",
+    "description": "chfn: This command is an alias of `chpass`. (View documentation for the original command)",
     "tags": [
       "netbsd",
-      "chsh",
+      "chfn",
       "tldr",
       "en"
     ],
@@ -375,240 +495,120 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-netbsd-chfn-0",
+    "id": "tldr-en-netbsd-sed-0",
     "type": "command",
-    "title": "chfn - View documentation for the original command",
+    "title": "sed - Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in all input lines and print the result to `stdout`",
+    "content": "{{command}} | sed 's/apple/mango/g'",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in all input lines and print the result to `stdout`)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-1",
+    "type": "command",
+    "title": "sed - Execute a specific script [f]ile and print the result to `stdout`",
+    "content": "{{command}} | sed -f {{path/to/script.sed}}",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. (Execute a specific script [f]ile and print the result to `stdout`)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-2",
+    "type": "command",
+    "title": "sed - Delay opening each file until a command containing the related `w` function or flag is applied to a line of input",
+    "content": "{{command}} | sed -fa {{path/to/script.sed}}",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. (Delay opening each file until a command containing the related `w` function or flag is applied to a line of input)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-3",
+    "type": "command",
+    "title": "sed - Turn on [g]NU `regex` extension",
+    "content": "{{command}} | sed -fg {{path/to/script.sed}}",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. (Turn on [g]NU `regex` extension)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-4",
+    "type": "command",
+    "title": "sed - Replace all `apple` (extended `regex`) occurrences with `APPLE` (extended `regex`) in all input lines and print the result to `stdout`",
+    "content": "{{command}} | sed -E 's/(apple)/\\U\\1/g'",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (extended `regex`) occurrences with `APPLE` (extended `regex`) in all input lines and print the result to `stdout`)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-5",
+    "type": "command",
+    "title": "sed - Print just a first line to `stdout`",
+    "content": "{{command}} | sed -n '1p'",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. (Print just a first line to `stdout`)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-6",
+    "type": "command",
+    "title": "sed - Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in a specific file and overwrite the original file in place",
+    "content": "sed -i 's/apple/mango/g' {{path/to/file}}",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in a specific file and overwrite the original file in place)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-chsh-0",
+    "type": "command",
+    "title": "chsh - View documentation for the original command",
     "content": "tldr chpass",
     "group": "Netbsd",
-    "description": "chfn: This command is an alias of `chpass`. (View documentation for the original command)",
+    "description": "chsh: This command is an alias of `chpass`. (View documentation for the original command)",
     "tags": [
       "netbsd",
-      "chfn",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-df-0",
-    "type": "command",
-    "title": "df - Display all filesystems and their disk usage (using 512-byte units)",
-    "content": "df",
-    "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Display all filesystems and their disk usage (using 512-byte units))",
-    "tags": [
-      "netbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-df-1",
-    "type": "command",
-    "title": "df - Use [h]uman-readable units (based on powers of 1024)",
-    "content": "df -h",
-    "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Use [h]uman-readable units (based on powers of 1024))",
-    "tags": [
-      "netbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-df-2",
-    "type": "command",
-    "title": "df - Display all the fields of the structure(s) returned by `statvfs`",
-    "content": "df -G",
-    "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Display all the fields of the structure(s) returned by `statvfs`)",
-    "tags": [
-      "netbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-df-3",
-    "type": "command",
-    "title": "df - Display the filesystem containing the specified file or directory",
-    "content": "df {{path/to/file_or_directory}}",
-    "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Display the filesystem containing the specified file or directory)",
-    "tags": [
-      "netbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-df-4",
-    "type": "command",
-    "title": "df - Include statistics on the number of free and used [i]nodes",
-    "content": "df -i",
-    "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Include statistics on the number of free and used [i]nodes)",
-    "tags": [
-      "netbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-df-5",
-    "type": "command",
-    "title": "df - Use [k]ibibyte (1024 byte) units when showing size figures",
-    "content": "df -k",
-    "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Use [k]ibibyte (1024 byte) units when showing size figures)",
-    "tags": [
-      "netbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-df-6",
-    "type": "command",
-    "title": "df - Display information in a [P]ortable way",
-    "content": "df -P",
-    "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Display information in a [P]ortable way)",
-    "tags": [
-      "netbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-cal-0",
-    "type": "command",
-    "title": "cal - Display a calendar for the current month",
-    "content": "cal",
-    "group": "Netbsd",
-    "description": "cal: Display a calendar. (Display a calendar for the current month)",
-    "tags": [
-      "netbsd",
-      "cal",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-cal-1",
-    "type": "command",
-    "title": "cal - Display a calendar for a specific year",
-    "content": "cal {{year}}",
-    "group": "Netbsd",
-    "description": "cal: Display a calendar. (Display a calendar for a specific year)",
-    "tags": [
-      "netbsd",
-      "cal",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-cal-2",
-    "type": "command",
-    "title": "cal - Display a calendar for a specific month and year",
-    "content": "cal {{month}} {{year}}",
-    "group": "Netbsd",
-    "description": "cal: Display a calendar. (Display a calendar for a specific month and year)",
-    "tags": [
-      "netbsd",
-      "cal",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-cal-3",
-    "type": "command",
-    "title": "cal - Display the whole calendar for the current year using [j]ulian days (one-based, numbered from January 1)",
-    "content": "cal -y -j",
-    "group": "Netbsd",
-    "description": "cal: Display a calendar. (Display the whole calendar for the current year using [j]ulian days (one-based, numbered from January 1))",
-    "tags": [
-      "netbsd",
-      "cal",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-cal-4",
-    "type": "command",
-    "title": "cal - [h]ighlight today and display [3] months spanning the date",
-    "content": "cal -h -3 {{month}} {{year}}",
-    "group": "Netbsd",
-    "description": "cal: Display a calendar. ([h]ighlight today and display [3] months spanning the date)",
-    "tags": [
-      "netbsd",
-      "cal",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-cal-5",
-    "type": "command",
-    "title": "cal - Display the 2 months [B]efore and 3 [A]fter a specific [m]onth of the current year",
-    "content": "cal -A 3 -B 2 {{month}}",
-    "group": "Netbsd",
-    "description": "cal: Display a calendar. (Display the 2 months [B]efore and 3 [A]fter a specific [m]onth of the current year)",
-    "tags": [
-      "netbsd",
-      "cal",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-cal-6",
-    "type": "command",
-    "title": "cal - Display a specific number of months before and after ([C]ontext) the specified month",
-    "content": "cal -C {{months}} {{month}}",
-    "group": "Netbsd",
-    "description": "cal: Display a calendar. (Display a specific number of months before and after ([C]ontext) the specified month)",
-    "tags": [
-      "netbsd",
-      "cal",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-cal-7",
-    "type": "command",
-    "title": "cal - Specify the starting [d]ay of the week (0: Sunday, 1: Monday, ..., 6: Saturday)",
-    "content": "cal -d {{0..6}}",
-    "group": "Netbsd",
-    "description": "cal: Display a calendar. (Specify the starting [d]ay of the week (0: Sunday, 1: Monday, ..., 6: Saturday))",
-    "tags": [
-      "netbsd",
-      "cal",
+      "chsh",
       "tldr",
       "en"
     ],
