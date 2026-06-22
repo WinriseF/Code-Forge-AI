@@ -7937,10 +7937,10 @@
   {
     "id": "tldr-en-osx-automount-0",
     "type": "command",
-    "title": "automount - Run automount, flush the cache(`-c`) beforehand, and be verbose(`-v`) about it (most common use)",
+    "title": "automount - Run automount, flush the [c]ache beforehand, and be [v]erbose about it (most common use)",
     "content": "automount -cv",
     "group": "macOS",
-    "description": "automount: Read the `/etc/auto_master` file and mount `autofs` on the appropriate mount points to trigger the on-demand mounting of directories. Essentially, it's a way to manually initiate the system's automounting process. Note: You'll most likely need to run with `sudo` if you don't have the necessary permissions. (Run automount, flush the cache(`-c`) beforehand, and be verbose(`-v`) about it (most common use))",
+    "description": "automount: Read the `/etc/auto_master` file and mount `autofs` on the appropriate mount points to trigger the on-demand mounting of directories. Essentially, it's a way to manually initiate the system's automounting process. Note: You'll most likely need to run with `sudo` if you don't have the necessary permissions. (Run automount, flush the [c]ache beforehand, and be [v]erbose about it (most common use))",
     "tags": [
       "osx",
       "automount",
@@ -7967,10 +7967,10 @@
   {
     "id": "tldr-en-osx-automount-2",
     "type": "command",
-    "title": "automount - Unmount anything previously mounted by automount and/or defined in `/etc/auto_master`",
+    "title": "automount - [u]nmount anything previously mounted by automount and/or defined in `/etc/auto_master`",
     "content": "automount -u",
     "group": "macOS",
-    "description": "automount: Read the `/etc/auto_master` file and mount `autofs` on the appropriate mount points to trigger the on-demand mounting of directories. Essentially, it's a way to manually initiate the system's automounting process. Note: You'll most likely need to run with `sudo` if you don't have the necessary permissions. (Unmount anything previously mounted by automount and/or defined in `/etc/auto_master`)",
+    "description": "automount: Read the `/etc/auto_master` file and mount `autofs` on the appropriate mount points to trigger the on-demand mounting of directories. Essentially, it's a way to manually initiate the system's automounting process. Note: You'll most likely need to run with `sudo` if you don't have the necessary permissions. ([u]nmount anything previously mounted by automount and/or defined in `/etc/auto_master`)",
     "tags": [
       "osx",
       "automount",

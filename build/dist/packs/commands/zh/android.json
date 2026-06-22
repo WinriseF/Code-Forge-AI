@@ -135,6 +135,111 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-android-pm-list-packages-0",
+    "type": "command",
+    "title": "pm-list-packages - 列出所有已安装的软件包",
+    "content": "pm list packages",
+    "group": "Android 开发",
+    "description": "pm-list-packages: 列出安卓设备上，已安装的，已知的或经过自定义筛选后的软件包。 (列出所有已安装的软件包)",
+    "tags": [
+      "android",
+      "pm-list-packages",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pm-list-packages-1",
+    "type": "command",
+    "title": "pm-list-packages - 列出所有软件包，以及与它们关联的 APK 文件的路径",
+    "content": "pm list packages -f",
+    "group": "Android 开发",
+    "description": "pm-list-packages: 列出安卓设备上，已安装的，已知的或经过自定义筛选后的软件包。 (列出所有软件包，以及与它们关联的 APK 文件的路径)",
+    "tags": [
+      "android",
+      "pm-list-packages",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pm-list-packages-2",
+    "type": "command",
+    "title": "pm-list-packages - 仅列出禁用的软件包",
+    "content": "pm list packages -d",
+    "group": "Android 开发",
+    "description": "pm-list-packages: 列出安卓设备上，已安装的，已知的或经过自定义筛选后的软件包。 (仅列出禁用的软件包)",
+    "tags": [
+      "android",
+      "pm-list-packages",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pm-list-packages-3",
+    "type": "command",
+    "title": "pm-list-packages - 仅列出启用的软件包",
+    "content": "pm list packages -e",
+    "group": "Android 开发",
+    "description": "pm-list-packages: 列出安卓设备上，已安装的，已知的或经过自定义筛选后的软件包。 (仅列出启用的软件包)",
+    "tags": [
+      "android",
+      "pm-list-packages",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pm-list-packages-4",
+    "type": "command",
+    "title": "pm-list-packages - 仅列出系统软件包",
+    "content": "pm list packages -s",
+    "group": "Android 开发",
+    "description": "pm-list-packages: 列出安卓设备上，已安装的，已知的或经过自定义筛选后的软件包。 (仅列出系统软件包)",
+    "tags": [
+      "android",
+      "pm-list-packages",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pm-list-packages-5",
+    "type": "command",
+    "title": "pm-list-packages - 仅列出第三方（非系统）的软件包",
+    "content": "pm list packages -3",
+    "group": "Android 开发",
+    "description": "pm-list-packages: 列出安卓设备上，已安装的，已知的或经过自定义筛选后的软件包。 (仅列出第三方（非系统）的软件包)",
+    "tags": [
+      "android",
+      "pm-list-packages",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pm-list-packages-6",
+    "type": "command",
+    "title": "pm-list-packages - 显示每个包的安装来源",
+    "content": "pm list packages -i",
+    "group": "Android 开发",
+    "description": "pm-list-packages: 列出安卓设备上，已安装的，已知的或经过自定义筛选后的软件包。 (显示每个包的安装来源)",
+    "tags": [
+      "android",
+      "pm-list-packages",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-android-bugreport-0",
     "type": "command",
     "title": "bugreport - 显示 Android 设备的完整错误报告",
@@ -198,7 +303,7 @@
     "id": "tldr-zh-android-settings-0",
     "type": "command",
     "title": "settings - 在 `全局` 命名空间中显示环境变量列表",
-    "content": "settings list {{global}}",
+    "content": "settings list global",
     "group": "Android 开发",
     "description": "settings: 获取关于 Android OS 的信息。 (在 `全局` 命名空间中显示环境变量列表)",
     "tags": [
@@ -849,6 +954,111 @@
     "tags": [
       "android",
       "screencap",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pm-list-0",
+    "type": "command",
+    "title": "pm-list - 列出所有已安装的包",
+    "content": "pm list packages",
+    "group": "Android 开发",
+    "description": "pm-list: 列出软件包管理器中所管理的用户，软件包，权限，插桩测试 (instrumentation)，权限组，功能和库。 (列出所有已安装的包)",
+    "tags": [
+      "android",
+      "pm-list",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pm-list-1",
+    "type": "command",
+    "title": "pm-list - 显示系统上的所有用户",
+    "content": "pm list users",
+    "group": "Android 开发",
+    "description": "pm-list: 列出软件包管理器中所管理的用户，软件包，权限，插桩测试 (instrumentation)，权限组，功能和库。 (显示系统上的所有用户)",
+    "tags": [
+      "android",
+      "pm-list",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pm-list-2",
+    "type": "command",
+    "title": "pm-list - 显示所有已知的权限组",
+    "content": "pm list permission-groups",
+    "group": "Android 开发",
+    "description": "pm-list: 列出软件包管理器中所管理的用户，软件包，权限，插桩测试 (instrumentation)，权限组，功能和库。 (显示所有已知的权限组)",
+    "tags": [
+      "android",
+      "pm-list",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pm-list-3",
+    "type": "command",
+    "title": "pm-list - 显示所有已知的权限",
+    "content": "pm list permissions",
+    "group": "Android 开发",
+    "description": "pm-list: 列出软件包管理器中所管理的用户，软件包，权限，插桩测试 (instrumentation)，权限组，功能和库。 (显示所有已知的权限)",
+    "tags": [
+      "android",
+      "pm-list",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pm-list-4",
+    "type": "command",
+    "title": "pm-list - 显示所有的测试包",
+    "content": "pm list instrumentation",
+    "group": "Android 开发",
+    "description": "pm-list: 列出软件包管理器中所管理的用户，软件包，权限，插桩测试 (instrumentation)，权限组，功能和库。 (显示所有的测试包)",
+    "tags": [
+      "android",
+      "pm-list",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pm-list-5",
+    "type": "command",
+    "title": "pm-list - 显示系统上的所有功能",
+    "content": "pm list features",
+    "group": "Android 开发",
+    "description": "pm-list: 列出软件包管理器中所管理的用户，软件包，权限，插桩测试 (instrumentation)，权限组，功能和库。 (显示系统上的所有功能)",
+    "tags": [
+      "android",
+      "pm-list",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-android-pm-list-6",
+    "type": "command",
+    "title": "pm-list - 显示当前设备支持的所有库",
+    "content": "pm list libraries",
+    "group": "Android 开发",
+    "description": "pm-list: 列出软件包管理器中所管理的用户，软件包，权限，插桩测试 (instrumentation)，权限组，功能和库。 (显示当前设备支持的所有库)",
+    "tags": [
+      "android",
+      "pm-list",
       "tldr",
       "zh"
     ],

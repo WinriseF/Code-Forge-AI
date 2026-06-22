@@ -77310,6 +77310,111 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-footclient-0",
+    "type": "command",
+    "title": "footclient - Start a new terminal window, wait until the window is closed and return its exit code",
+    "content": "footclient",
+    "group": "Common Tools",
+    "description": "footclient: Start a new terminal window handled by the `foot` server. Note: `foot --server` must be started before using the client. (Start a new terminal window, wait until the window is closed and return its exit code)",
+    "tags": [
+      "common",
+      "footclient",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-footclient-1",
+    "type": "command",
+    "title": "footclient - Start a new terminal window and exit immediately",
+    "content": "footclient {{[-N|--no-wait]}}",
+    "group": "Common Tools",
+    "description": "footclient: Start a new terminal window handled by the `foot` server. Note: `foot --server` must be started before using the client. (Start a new terminal window and exit immediately)",
+    "tags": [
+      "common",
+      "footclient",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-footclient-2",
+    "type": "command",
+    "title": "footclient - Execute a command in a new terminal window",
+    "content": "footclient {{command}}",
+    "group": "Common Tools",
+    "description": "footclient: Start a new terminal window handled by the `foot` server. Note: `foot --server` must be started before using the client. (Execute a command in a new terminal window)",
+    "tags": [
+      "common",
+      "footclient",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-footclient-3",
+    "type": "command",
+    "title": "footclient - Start a terminal in fullscreen mode",
+    "content": "footclient {{[-F|--fullscreen]}}",
+    "group": "Common Tools",
+    "description": "footclient: Start a new terminal window handled by the `foot` server. Note: `foot --server` must be started before using the client. (Start a terminal in fullscreen mode)",
+    "tags": [
+      "common",
+      "footclient",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-footclient-4",
+    "type": "command",
+    "title": "footclient - Start a terminal with the specified window dimensions, in pixels",
+    "content": "footclient {{[-w|--window-size-pixels]}} {{width}}x{{height}}",
+    "group": "Common Tools",
+    "description": "footclient: Start a new terminal window handled by the `foot` server. Note: `foot --server` must be started before using the client. (Start a terminal with the specified window dimensions, in pixels)",
+    "tags": [
+      "common",
+      "footclient",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-footclient-5",
+    "type": "command",
+    "title": "footclient - Start a terminal with the specified Wayland app id (default: `footclient`)",
+    "content": "footclient {{[-a|--app-id]}} {{id}}",
+    "group": "Common Tools",
+    "description": "footclient: Start a new terminal window handled by the `foot` server. Note: `foot --server` must be started before using the client. (Start a terminal with the specified Wayland app id (default: `footclient`))",
+    "tags": [
+      "common",
+      "footclient",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-footclient-6",
+    "type": "command",
+    "title": "footclient - Override a configuration option",
+    "content": "footclient {{[-o|--override]}} {{section}}.{{key}}={{value}}",
+    "group": "Common Tools",
+    "description": "footclient: Start a new terminal window handled by the `foot` server. Note: `foot --server` must be started before using the client. (Override a configuration option)",
+    "tags": [
+      "common",
+      "footclient",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-airmon-ng-0",
     "type": "command",
     "title": "airmon-ng - List wireless devices and their statuses",
@@ -83163,9 +83268,24 @@
     "id": "tldr-en-common-ps-6",
     "type": "command",
     "title": "ps - Sort processes by memory consumption",
-    "content": "ps --sort size",
+    "content": "ps {{[k|--sort]}} size",
     "group": "Common Tools",
     "description": "ps: Information about running processes. (Sort processes by memory consumption)",
+    "tags": [
+      "common",
+      "ps",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-ps-7",
+    "type": "command",
+    "title": "ps - Display threads for a specific process",
+    "content": "ps -L {{[-p|--pid]}} {{process_id}}",
+    "group": "Common Tools",
+    "description": "ps: Information about running processes. (Display threads for a specific process)",
     "tags": [
       "common",
       "ps",
@@ -85794,6 +85914,96 @@
     "tags": [
       "common",
       "doctl-databases",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-posh-0",
+    "type": "command",
+    "title": "posh - Download documentation to your machine (run inside a Ruby project) and print full sync report",
+    "content": "posh sync --full",
+    "group": "Common Tools",
+    "description": "posh: Gems documentation browser for Ruby developers. (Download documentation to your machine (run inside a Ruby project) and print full sync report)",
+    "tags": [
+      "common",
+      "posh",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-posh-1",
+    "type": "command",
+    "title": "posh - Start the interactive documentation browser for the current project",
+    "content": "posh",
+    "group": "Common Tools",
+    "description": "posh: Gems documentation browser for Ruby developers. (Start the interactive documentation browser for the current project)",
+    "tags": [
+      "common",
+      "posh",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-posh-2",
+    "type": "command",
+    "title": "posh - Clear all docsets from your machine",
+    "content": "posh clear",
+    "group": "Common Tools",
+    "description": "posh: Gems documentation browser for Ruby developers. (Clear all docsets from your machine)",
+    "tags": [
+      "common",
+      "posh",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-posh-3",
+    "type": "command",
+    "title": "posh - Generate the autocompletion script for your shell",
+    "content": "posh completion {{bash|fish|powershell|zsh}}",
+    "group": "Common Tools",
+    "description": "posh: Gems documentation browser for Ruby developers. (Generate the autocompletion script for your shell)",
+    "tags": [
+      "common",
+      "posh",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-posh-4",
+    "type": "command",
+    "title": "posh - Display help",
+    "content": "posh {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "posh: Gems documentation browser for Ruby developers. (Display help)",
+    "tags": [
+      "common",
+      "posh",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-posh-5",
+    "type": "command",
+    "title": "posh - Display help for a specific subcommand",
+    "content": "posh {{subcommand}} {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "posh: Gems documentation browser for Ruby developers. (Display help for a specific subcommand)",
+    "tags": [
+      "common",
+      "posh",
       "tldr",
       "en"
     ],
@@ -129242,10 +129452,10 @@
   {
     "id": "tldr-en-common-pammixinterlace-0",
     "type": "command",
-    "title": "pammixinterlace - Merge each row in an image with its two neighbours",
+    "title": "pammixinterlace - Merge each row in an image with its two neighbors",
     "content": "pammixinterlace {{path/to/image.ppm}} > {{path/to/output.ppm}}",
     "group": "Common Tools",
-    "description": "pammixinterlace: Merge each row in an image with its two neighbours. (Merge each row in an image with its two neighbours)",
+    "description": "pammixinterlace: Merge each row in an image with its two neighbors. (Merge each row in an image with its two neighbors)",
     "tags": [
       "common",
       "pammixinterlace",
@@ -129260,7 +129470,7 @@
     "title": "pammixinterlace - Use the specified filtering mechanism",
     "content": "pammixinterlace {{[-f|-filter]}} {{linear|fir|ffmpeg}} {{path/to/image.ppm}} > {{path/to/output.ppm}}",
     "group": "Common Tools",
-    "description": "pammixinterlace: Merge each row in an image with its two neighbours. (Use the specified filtering mechanism)",
+    "description": "pammixinterlace: Merge each row in an image with its two neighbors. (Use the specified filtering mechanism)",
     "tags": [
       "common",
       "pammixinterlace",
@@ -129275,7 +129485,7 @@
     "title": "pammixinterlace - Turn on adaptive filtering mode, i.e., only modify pixels that are obviously part of a comb pattern",
     "content": "pammixinterlace {{[-a|-adaptive]}} {{path/to/image.ppm}} > {{path/to/output.ppm}}",
     "group": "Common Tools",
-    "description": "pammixinterlace: Merge each row in an image with its two neighbours. (Turn on adaptive filtering mode, i.e., only modify pixels that are obviously part of a comb pattern)",
+    "description": "pammixinterlace: Merge each row in an image with its two neighbors. (Turn on adaptive filtering mode, i.e., only modify pixels that are obviously part of a comb pattern)",
     "tags": [
       "common",
       "pammixinterlace",
@@ -139472,6 +139682,21 @@
   {
     "id": "tldr-en-common-magick-4",
     "type": "command",
+    "title": "magick - Vertically/horizontally append images and have the empty space be transparent",
+    "content": "magick convert -background none {{path/to/image1.png path/to/image2.png ...}} {{-append|+append}} {{path/to/output_image.png}}",
+    "group": "Common Tools",
+    "description": "magick: Create, edit, compose, or convert between image formats. This tool replaces `convert` in ImageMagick 7+. See `magick convert` to use the old tool in versions 7+. Some subcommands, such as `mogrify` have their own usage documentation. (Vertically/horizontally append images and have the empty space be transparent)",
+    "tags": [
+      "common",
+      "magick",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-magick-5",
+    "type": "command",
     "title": "magick - Create a GIF out of all JPEG images in the current directory",
     "content": "magick {{*.jpg}} {{path/to/images.gif}}",
     "group": "Common Tools",
@@ -139485,7 +139710,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-magick-5",
+    "id": "tldr-en-common-magick-6",
     "type": "command",
     "title": "magick - Create a checkerboard pattern",
     "content": "magick -size {{640x480}} pattern:checkerboard {{path/to/checkerboard.png}}",
@@ -139500,7 +139725,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-magick-6",
+    "id": "tldr-en-common-magick-7",
     "type": "command",
     "title": "magick - Create a PDF file out of all JPEG images in the current directory",
     "content": "magick {{*.jpg}} -adjoin {{path/to/file.pdf}}",
@@ -152469,6 +152694,51 @@
     "tags": [
       "common",
       "ed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wayland-info-0",
+    "type": "command",
+    "title": "wayland-info - Display information about the current Wayland compositor and available protocols",
+    "content": "wayland-info",
+    "group": "Common Tools",
+    "description": "wayland-info: Display information about a Wayland compositor and available protocols. (Display information about the current Wayland compositor and available protocols)",
+    "tags": [
+      "common",
+      "wayland-info",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wayland-info-1",
+    "type": "command",
+    "title": "wayland-info - Display information for interfaces matching a specific name",
+    "content": "wayland-info {{[-i|--interface]}} {{wl_output}}",
+    "group": "Common Tools",
+    "description": "wayland-info: Display information about a Wayland compositor and available protocols. (Display information for interfaces matching a specific name)",
+    "tags": [
+      "common",
+      "wayland-info",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wayland-info-2",
+    "type": "command",
+    "title": "wayland-info - Save the output to a file",
+    "content": "wayland-info > {{path/to/file.txt}}",
+    "group": "Common Tools",
+    "description": "wayland-info: Display information about a Wayland compositor and available protocols. (Save the output to a file)",
+    "tags": [
+      "common",
+      "wayland-info",
       "tldr",
       "en"
     ],
@@ -175592,6 +175862,21 @@
   {
     "id": "tldr-en-common-lpstat-0",
     "type": "command",
+    "title": "lpstat - List all queued print jobs",
+    "content": "lpstat",
+    "group": "Common Tools",
+    "description": "lpstat: Show status information about printers. (List all queued print jobs)",
+    "tags": [
+      "common",
+      "lpstat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-lpstat-1",
+    "type": "command",
     "title": "lpstat - List printers present on the machine and whether they are enabled for printing",
     "content": "lpstat -p",
     "group": "Common Tools",
@@ -175605,7 +175890,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-lpstat-1",
+    "id": "tldr-en-common-lpstat-2",
     "type": "command",
     "title": "lpstat - Show the default printer",
     "content": "lpstat -d",
@@ -175620,7 +175905,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-lpstat-2",
+    "id": "tldr-en-common-lpstat-3",
     "type": "command",
     "title": "lpstat - Display all available status information",
     "content": "lpstat -t",
@@ -175635,7 +175920,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-lpstat-3",
+    "id": "tldr-en-common-lpstat-4",
     "type": "command",
     "title": "lpstat - List print jobs queued by a specific user",
     "content": "lpstat -u {{user}}",
@@ -190989,6 +191274,126 @@
     "tags": [
       "common",
       "mtr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-syft-0",
+    "type": "command",
+    "title": "syft - Generate an SBOM from a container image",
+    "content": "syft {{image:tag}}",
+    "group": "Common Tools",
+    "description": "syft: Generate a Software Bill of Materials (SBOM) from container images and filesystems. (Generate an SBOM from a container image)",
+    "tags": [
+      "common",
+      "syft",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-syft-1",
+    "type": "command",
+    "title": "syft - Generate an SBOM from a local directory",
+    "content": "syft {{path/to/directory}}",
+    "group": "Common Tools",
+    "description": "syft: Generate a Software Bill of Materials (SBOM) from container images and filesystems. (Generate an SBOM from a local directory)",
+    "tags": [
+      "common",
+      "syft",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-syft-2",
+    "type": "command",
+    "title": "syft - Generate an SBOM from a container archive file",
+    "content": "syft {{path/to/archive.tar}}",
+    "group": "Common Tools",
+    "description": "syft: Generate a Software Bill of Materials (SBOM) from container images and filesystems. (Generate an SBOM from a container archive file)",
+    "tags": [
+      "common",
+      "syft",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-syft-3",
+    "type": "command",
+    "title": "syft - Generate an SBOM in SPDX JSON format",
+    "content": "syft {{image:tag}} {{[-o|--output]}} spdx-json",
+    "group": "Common Tools",
+    "description": "syft: Generate a Software Bill of Materials (SBOM) from container images and filesystems. (Generate an SBOM in SPDX JSON format)",
+    "tags": [
+      "common",
+      "syft",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-syft-4",
+    "type": "command",
+    "title": "syft - Generate an SBOM in CycloneDX JSON format",
+    "content": "syft {{image:tag}} {{[-o|--output]}} cyclonedx-json",
+    "group": "Common Tools",
+    "description": "syft: Generate a Software Bill of Materials (SBOM) from container images and filesystems. (Generate an SBOM in CycloneDX JSON format)",
+    "tags": [
+      "common",
+      "syft",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-syft-5",
+    "type": "command",
+    "title": "syft - Write the SBOM to a file in a specific format",
+    "content": "syft {{image:tag}} {{[-o|--output]}} {{format}}={{path/to/output_file}}",
+    "group": "Common Tools",
+    "description": "syft: Generate a Software Bill of Materials (SBOM) from container images and filesystems. (Write the SBOM to a file in a specific format)",
+    "tags": [
+      "common",
+      "syft",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-syft-6",
+    "type": "command",
+    "title": "syft - Display help",
+    "content": "syft {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "syft: Generate a Software Bill of Materials (SBOM) from container images and filesystems. (Display help)",
+    "tags": [
+      "common",
+      "syft",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-syft-7",
+    "type": "command",
+    "title": "syft - Display version",
+    "content": "syft --version",
+    "group": "Common Tools",
+    "description": "syft: Generate a Software Bill of Materials (SBOM) from container images and filesystems. (Display version)",
+    "tags": [
+      "common",
+      "syft",
       "tldr",
       "en"
     ],
@@ -235470,6 +235875,66 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-tip-0",
+    "type": "command",
+    "title": "tip - Connect to a remote system defined in `/etc/remote`",
+    "content": "tip {{system_name}}",
+    "group": "Common Tools",
+    "description": "tip: Connect to a remote system or serial console. (Connect to a remote system defined in `/etc/remote`)",
+    "tags": [
+      "common",
+      "tip",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tip-1",
+    "type": "command",
+    "title": "tip - Connect at a specific baud rate",
+    "content": "tip -{{115200}} {{system_name}}",
+    "group": "Common Tools",
+    "description": "tip: Connect to a remote system or serial console. (Connect at a specific baud rate)",
+    "tags": [
+      "common",
+      "tip",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tip-2",
+    "type": "command",
+    "title": "tip - Connect with verbose output",
+    "content": "tip -v {{system_name}}",
+    "group": "Common Tools",
+    "description": "tip: Connect to a remote system or serial console. (Connect with verbose output)",
+    "tags": [
+      "common",
+      "tip",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tip-3",
+    "type": "command",
+    "title": "tip - Connect with tilde escape sequences disabled",
+    "content": "tip -n {{system_name}}",
+    "group": "Common Tools",
+    "description": "tip: Connect to a remote system or serial console. (Connect with tilde escape sequences disabled)",
+    "tags": [
+      "common",
+      "tip",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-minifab-0",
     "type": "command",
     "title": "minifab - Bring up the default Hyperledger Fabric network",
@@ -249872,10 +250337,10 @@
   {
     "id": "tldr-en-common-arping-4",
     "type": "command",
-    "title": "arping - Broadcast ARP request packets to update neighbours' ARP caches ([U]nsolicited ARP mode)",
+    "title": "arping - Broadcast ARP request packets to update neighbors' ARP caches ([U]nsolicited ARP mode)",
     "content": "sudo arping -U {{ip_to_broadcast}}",
     "group": "Common Tools",
-    "description": "arping: Discover and probe hosts in a network using the ARP protocol. Useful for MAC address discovery. (Broadcast ARP request packets to update neighbours' ARP caches ([U]nsolicited ARP mode))",
+    "description": "arping: Discover and probe hosts in a network using the ARP protocol. Useful for MAC address discovery. (Broadcast ARP request packets to update neighbors' ARP caches ([U]nsolicited ARP mode))",
     "tags": [
       "common",
       "arping",
@@ -252309,6 +252774,126 @@
     "tags": [
       "common",
       "sfdk-package",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gosec-0",
+    "type": "command",
+    "title": "gosec - Scan a Go package recursively in the current directory",
+    "content": "gosec ./...",
+    "group": "Common Tools",
+    "description": "gosec: Inspect Go source code for security problems. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Scan a Go package recursively in the current directory)",
+    "tags": [
+      "common",
+      "gosec",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gosec-1",
+    "type": "command",
+    "title": "gosec - Scan a specific Go package",
+    "content": "gosec {{path/to/package}}",
+    "group": "Common Tools",
+    "description": "gosec: Inspect Go source code for security problems. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Scan a specific Go package)",
+    "tags": [
+      "common",
+      "gosec",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gosec-2",
+    "type": "command",
+    "title": "gosec - Scan a Go package recursively and save results to a file",
+    "content": "gosec -fmt {{json|yaml|csv|html|sonarqube|golint|sarif|junit-xml}} -out {{path/to/report}} {{./...}}",
+    "group": "Common Tools",
+    "description": "gosec: Inspect Go source code for security problems. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Scan a Go package recursively and save results to a file)",
+    "tags": [
+      "common",
+      "gosec",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gosec-3",
+    "type": "command",
+    "title": "gosec - Only include a specific set of rules (by default, all rules will run)",
+    "content": "gosec -include {{G101,G203,G401,...}} {{./...}}",
+    "group": "Common Tools",
+    "description": "gosec: Inspect Go source code for security problems. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Only include a specific set of rules (by default, all rules will run))",
+    "tags": [
+      "common",
+      "gosec",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gosec-4",
+    "type": "command",
+    "title": "gosec - Exclude directories from scanning",
+    "content": "gosec -exclude-dir {{path/to/excluded_directory}} {{./...}}",
+    "group": "Common Tools",
+    "description": "gosec: Inspect Go source code for security problems. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Exclude directories from scanning)",
+    "tags": [
+      "common",
+      "gosec",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gosec-5",
+    "type": "command",
+    "title": "gosec - Scan with a specific severity or confidence level",
+    "content": "gosec -severity {{low|medium|high}} -confidence {{low|medium|high}} {{./...}}",
+    "group": "Common Tools",
+    "description": "gosec: Inspect Go source code for security problems. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Scan with a specific severity or confidence level)",
+    "tags": [
+      "common",
+      "gosec",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gosec-6",
+    "type": "command",
+    "title": "gosec - Exclude a specific set of rules from scanning",
+    "content": "gosec -exclude {{G101,G304,G401,...}} {{./...}}",
+    "group": "Common Tools",
+    "description": "gosec: Inspect Go source code for security problems. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Exclude a specific set of rules from scanning)",
+    "tags": [
+      "common",
+      "gosec",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gosec-7",
+    "type": "command",
+    "title": "gosec - Scan test files as well",
+    "content": "gosec -tests {{./...}}",
+    "group": "Common Tools",
+    "description": "gosec: Inspect Go source code for security problems. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Scan test files as well)",
+    "tags": [
+      "common",
+      "gosec",
       "tldr",
       "en"
     ],
@@ -264375,6 +264960,126 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-foot-0",
+    "type": "command",
+    "title": "foot - Start a terminal",
+    "content": "foot",
+    "group": "Common Tools",
+    "description": "foot: A fast, lightweight, and minimalistic Wayland terminal emulator. (Start a terminal)",
+    "tags": [
+      "common",
+      "foot",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-foot-1",
+    "type": "command",
+    "title": "foot - Start the server (use `footclient` to start terminal windows that connect to the server)",
+    "content": "foot {{[-s|--server]}}",
+    "group": "Common Tools",
+    "description": "foot: A fast, lightweight, and minimalistic Wayland terminal emulator. (Start the server (use `footclient` to start terminal windows that connect to the server))",
+    "tags": [
+      "common",
+      "foot",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-foot-2",
+    "type": "command",
+    "title": "foot - Execute a command in a new terminal window",
+    "content": "foot {{command}}",
+    "group": "Common Tools",
+    "description": "foot: A fast, lightweight, and minimalistic Wayland terminal emulator. (Execute a command in a new terminal window)",
+    "tags": [
+      "common",
+      "foot",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-foot-3",
+    "type": "command",
+    "title": "foot - Start a terminal in fullscreen mode",
+    "content": "foot {{[-F|--fullscreen]}}",
+    "group": "Common Tools",
+    "description": "foot: A fast, lightweight, and minimalistic Wayland terminal emulator. (Start a terminal in fullscreen mode)",
+    "tags": [
+      "common",
+      "foot",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-foot-4",
+    "type": "command",
+    "title": "foot - Start a terminal with the specified window dimensions, in pixels",
+    "content": "foot {{[-w|--window-size-pixels]}} {{width}}x{{height}}",
+    "group": "Common Tools",
+    "description": "foot: A fast, lightweight, and minimalistic Wayland terminal emulator. (Start a terminal with the specified window dimensions, in pixels)",
+    "tags": [
+      "common",
+      "foot",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-foot-5",
+    "type": "command",
+    "title": "foot - Start a terminal with the specified Wayland app id (default: `foot`)",
+    "content": "foot {{[-a|--app-id]}} {{id}}",
+    "group": "Common Tools",
+    "description": "foot: A fast, lightweight, and minimalistic Wayland terminal emulator. (Start a terminal with the specified Wayland app id (default: `foot`))",
+    "tags": [
+      "common",
+      "foot",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-foot-6",
+    "type": "command",
+    "title": "foot - Check for errors in the configuration file",
+    "content": "foot {{[-C|--check-config]}}",
+    "group": "Common Tools",
+    "description": "foot: A fast, lightweight, and minimalistic Wayland terminal emulator. (Check for errors in the configuration file)",
+    "tags": [
+      "common",
+      "foot",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-foot-7",
+    "type": "command",
+    "title": "foot - Override a configuration option",
+    "content": "foot {{[-o|--override]}} {{section}}.{{key}}={{value}}",
+    "group": "Common Tools",
+    "description": "foot: A fast, lightweight, and minimalistic Wayland terminal emulator. (Override a configuration option)",
+    "tags": [
+      "common",
+      "foot",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-nicotine-0",
     "type": "command",
     "title": "nicotine - Start Nicotine+",
@@ -268802,10 +269507,10 @@
   {
     "id": "tldr-en-common-ping-6",
     "type": "command",
-    "title": "ping - Ping a host with specific number of pings, per-packet response timeout (`-W`), and total time limit (`-w`) of the entire ping run",
+    "title": "ping - Ping a host with specific [c]ount of pings, per-packet time to [W]ait for a response, and total [w]ait time limit of the entire ping run",
     "content": "ping -c {{count}} -W {{seconds}} -w {{seconds}} {{host}}",
     "group": "Common Tools",
-    "description": "ping: Send ICMP ECHO_REQUEST packets to network hosts. (Ping a host with specific number of pings, per-packet response timeout (`-W`), and total time limit (`-w`) of the entire ping run)",
+    "description": "ping: Send ICMP ECHO_REQUEST packets to network hosts. (Ping a host with specific [c]ount of pings, per-packet time to [W]ait for a response, and total [w]ait time limit of the entire ping run)",
     "tags": [
       "common",
       "ping",
@@ -301847,10 +302552,10 @@
   {
     "id": "tldr-en-common-pbmclean-2",
     "type": "command",
-    "title": "pbmclean - Specify the minimum number of neighbouring pixels of the same color in order for a pixel not to be considered isolated",
-    "content": "pbmclean {{[-m|-minneighbours]}} {{3}} {{path/to/image.pbm}} > {{path/to/output.pbm}}",
+    "title": "pbmclean - Specify the minimum number of neighboring pixels of the same color in order for a pixel not to be considered isolated",
+    "content": "pbmclean {{[-m|-minneighbors]}} {{3}} {{path/to/image.pbm}} > {{path/to/output.pbm}}",
     "group": "Common Tools",
-    "description": "pbmclean: Clean up a PBM image by erasing isolated black and white pixels. (Specify the minimum number of neighbouring pixels of the same color in order for a pixel not to be considered isolated)",
+    "description": "pbmclean: Clean up a PBM image by erasing isolated black and white pixels. (Specify the minimum number of neighboring pixels of the same color in order for a pixel not to be considered isolated)",
     "tags": [
       "common",
       "pbmclean",

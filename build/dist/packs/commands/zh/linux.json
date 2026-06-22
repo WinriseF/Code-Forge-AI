@@ -1395,6 +1395,66 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-linux-pgrep-0",
+    "type": "command",
+    "title": "pgrep - 返回命令字符串匹配的所有正在运行进程的 PID",
+    "content": "pgrep {{进程名称}}",
+    "group": "Linux 运维",
+    "description": "pgrep: 按名称查找进程或向进程发送信号。 另请参阅：`pidof`。 (返回命令字符串匹配的所有正在运行进程的 PID)",
+    "tags": [
+      "linux",
+      "pgrep",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-linux-pgrep-1",
+    "type": "command",
+    "title": "pgrep - 同时显示完整命令",
+    "content": "pgrep {{[-a|--list-full]}} {{进程名称}}",
+    "group": "Linux 运维",
+    "description": "pgrep: 按名称查找进程或向进程发送信号。 另请参阅：`pidof`。 (同时显示完整命令)",
+    "tags": [
+      "linux",
+      "pgrep",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-linux-pgrep-2",
+    "type": "command",
+    "title": "pgrep - 搜索进程时包含其命令行选项",
+    "content": "pgrep {{[-f|--full]}} \"{{进程名称}} {{参数}}\"",
+    "group": "Linux 运维",
+    "description": "pgrep: 按名称查找进程或向进程发送信号。 另请参阅：`pidof`。 (搜索进程时包含其命令行选项)",
+    "tags": [
+      "linux",
+      "pgrep",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-linux-pgrep-3",
+    "type": "command",
+    "title": "pgrep - 搜索由特定用户运行的进程",
+    "content": "pgrep {{[-u|--euid]}} {{用户名}} {{进程名称}}",
+    "group": "Linux 运维",
+    "description": "pgrep: 按名称查找进程或向进程发送信号。 另请参阅：`pidof`。 (搜索由特定用户运行的进程)",
+    "tags": [
+      "linux",
+      "pgrep",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-linux-mkfs.vfat-0",
     "type": "command",
     "title": "mkfs.vfat - 查看原命令的文档",
@@ -5820,6 +5880,111 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-linux-trash-0",
+    "type": "command",
+    "title": "trash - 将文件移入回收站",
+    "content": "trash {{路径/到/文件}}",
+    "group": "Linux 运维",
+    "description": "trash: 管理回收站。 (将文件移入回收站)",
+    "tags": [
+      "linux",
+      "trash",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-linux-trash-1",
+    "type": "command",
+    "title": "trash - 列出回收站中的所有文件",
+    "content": "trash-list",
+    "group": "Linux 运维",
+    "description": "trash: 管理回收站。 (列出回收站中的所有文件)",
+    "tags": [
+      "linux",
+      "trash",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-linux-trash-2",
+    "type": "command",
+    "title": "trash - 以交互方式从回收站恢复文件",
+    "content": "trash-restore",
+    "group": "Linux 运维",
+    "description": "trash: 管理回收站。 (以交互方式从回收站恢复文件)",
+    "tags": [
+      "linux",
+      "trash",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-linux-trash-3",
+    "type": "command",
+    "title": "trash - 清空回收站",
+    "content": "trash-empty",
+    "group": "Linux 运维",
+    "description": "trash: 管理回收站。 (清空回收站)",
+    "tags": [
+      "linux",
+      "trash",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-linux-trash-4",
+    "type": "command",
+    "title": "trash - 永久删除回收站中超过 10 天的所有文件",
+    "content": "trash-empty 10",
+    "group": "Linux 运维",
+    "description": "trash: 管理回收站。 (永久删除回收站中超过 10 天的所有文件)",
+    "tags": [
+      "linux",
+      "trash",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-linux-trash-5",
+    "type": "command",
+    "title": "trash - 删除回收站中匹配指定 glob 模式的所有文件",
+    "content": "trash-rm \"{{*.o}}\"",
+    "group": "Linux 运维",
+    "description": "trash: 管理回收站。 (删除回收站中匹配指定 glob 模式的所有文件)",
+    "tags": [
+      "linux",
+      "trash",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-linux-trash-6",
+    "type": "command",
+    "title": "trash - 删除具有指定原始位置的所有文件",
+    "content": "trash-rm /{{路径/到/文件或目录}}",
+    "group": "Linux 运维",
+    "description": "trash: 管理回收站。 (删除具有指定原始位置的所有文件)",
+    "tags": [
+      "linux",
+      "trash",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-linux-apt-cache-0",
     "type": "command",
     "title": "apt-cache - 在当前的软件源中查找一个软件包",
@@ -8793,7 +8958,7 @@
     "id": "tldr-zh-linux-mknod-3",
     "type": "command",
     "title": "mknod - 使用 SELinux 默认安全上下文创建设备文件",
-    "content": "sudo mknod {{[-Z |--context=]}}{{路径/到/设备文件}} {{类型}} {{主设备号}} {{次设备号}}",
+    "content": "sudo mknod {{[-Z|--context]}} {{路径/到/设备文件}} {{类型}} {{主设备号}} {{次设备号}}",
     "group": "Linux 运维",
     "description": "mknod: 创建块或字符设备特殊文件。 (使用 SELinux 默认安全上下文创建设备文件)",
     "tags": [

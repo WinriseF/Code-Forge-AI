@@ -3405,6 +3405,66 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-disown-0",
+    "type": "command",
+    "title": "disown - 解除当前作业与 shell 的关联",
+    "content": "disown",
+    "group": "通用工具 (Common)",
+    "description": "disown: 允许子进程在其所属的 shell 结束后继续运行。 另请参阅：`jobs`。 (解除当前作业与 shell 的关联)",
+    "tags": [
+      "common",
+      "disown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-disown-1",
+    "type": "command",
+    "title": "disown - 解除指定作业与 shell 的关联（运行 `jobs` 查找作业编号）",
+    "content": "disown %{{作业编号}}",
+    "group": "通用工具 (Common)",
+    "description": "disown: 允许子进程在其所属的 shell 结束后继续运行。 另请参阅：`jobs`。 (解除指定作业与 shell 的关联（运行 `jobs` 查找作业编号）)",
+    "tags": [
+      "common",
+      "disown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-disown-2",
+    "type": "command",
+    "title": "disown - 解除所有作业与 shell 的关联（仅限 Bash）",
+    "content": "disown -a",
+    "group": "通用工具 (Common)",
+    "description": "disown: 允许子进程在其所属的 shell 结束后继续运行。 另请参阅：`jobs`。 (解除所有作业与 shell 的关联（仅限 Bash）)",
+    "tags": [
+      "common",
+      "disown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-disown-3",
+    "type": "command",
+    "title": "disown - 保留作业（不解除关联），但标记为 shell 退出时不再接收 SIGHUP（仅限 Bash）",
+    "content": "disown -h %{{作业编号}}",
+    "group": "通用工具 (Common)",
+    "description": "disown: 允许子进程在其所属的 shell 结束后继续运行。 另请参阅：`jobs`。 (保留作业（不解除关联），但标记为 shell 退出时不再接收 SIGHUP（仅限 Bash）)",
+    "tags": [
+      "common",
+      "disown",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-jpegtopnm-0",
     "type": "command",
     "title": "jpegtopnm - 将 JPEG/JFIF 图像转换为 PPM 或 PGM 图像",
@@ -4329,6 +4389,66 @@
     "tags": [
       "common",
       "df",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-checks-0",
+    "type": "command",
+    "title": "gh-pr-checks - 显示当前分支关联的拉取请求的状态检查结果",
+    "content": "gh pr checks",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-checks: 查看 GitHub 拉取请求的 CI 状态检查结果。 (显示当前分支关联的拉取请求的状态检查结果)",
+    "tags": [
+      "common",
+      "gh-pr-checks",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-checks-1",
+    "type": "command",
+    "title": "gh-pr-checks - 显示指定拉取请求的状态检查结果",
+    "content": "gh pr checks {{pr_号}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-checks: 查看 GitHub 拉取请求的 CI 状态检查结果。 (显示指定拉取请求的状态检查结果)",
+    "tags": [
+      "common",
+      "gh-pr-checks",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-checks-2",
+    "type": "command",
+    "title": "gh-pr-checks - 实时监控状态检查，直到全部完成",
+    "content": "gh pr checks {{pr_号}} --watch",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-checks: 查看 GitHub 拉取请求的 CI 状态检查结果。 (实时监控状态检查，直到全部完成)",
+    "tags": [
+      "common",
+      "gh-pr-checks",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-checks-3",
+    "type": "command",
+    "title": "gh-pr-checks - 仅显示强制要求的检查结果",
+    "content": "gh pr checks {{pr_号}} --required",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-checks: 查看 GitHub 拉取请求的 CI 状态检查结果。 (仅显示强制要求的检查结果)",
+    "tags": [
+      "common",
+      "gh-pr-checks",
       "tldr",
       "zh"
     ],
@@ -5325,6 +5445,96 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-pgrep-0",
+    "type": "command",
+    "title": "pgrep - 查找命令行字符串匹配的进程，并输出其 PID",
+    "content": "pgrep {{进程名称}}",
+    "group": "通用工具 (Common)",
+    "description": "pgrep: 按名称查找进程。 (查找命令行字符串匹配的进程，并输出其 PID)",
+    "tags": [
+      "common",
+      "pgrep",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-pgrep-1",
+    "type": "command",
+    "title": "pgrep - 以长格式（[l]ong output）输出 PID 和进程名称",
+    "content": "pgrep -l {{进程名称}}",
+    "group": "通用工具 (Common)",
+    "description": "pgrep: 按名称查找进程。 (以长格式（[l]ong output）输出 PID 和进程名称)",
+    "tags": [
+      "common",
+      "pgrep",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-pgrep-2",
+    "type": "command",
+    "title": "pgrep - 按完整（[f]ull）参数列表匹配进程，而不只匹配进程名称",
+    "content": "pgrep -f \"{{进程名称}} {{参数}}\"",
+    "group": "通用工具 (Common)",
+    "description": "pgrep: 按名称查找进程。 (按完整（[f]ull）参数列表匹配进程，而不只匹配进程名称)",
+    "tags": [
+      "common",
+      "pgrep",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-pgrep-3",
+    "type": "command",
+    "title": "pgrep - 以列表（[l]ist）形式输出每个匹配进程的 PID 和完整（[f]ull）参数列表",
+    "content": "pgrep -fl \"{{进程名称}}\"",
+    "group": "通用工具 (Common)",
+    "description": "pgrep: 按名称查找进程。 (以列表（[l]ist）形式输出每个匹配进程的 PID 和完整（[f]ull）参数列表)",
+    "tags": [
+      "common",
+      "pgrep",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-pgrep-4",
+    "type": "command",
+    "title": "pgrep - 查找由指定用户（[u]ser，有效 UID）运行的进程",
+    "content": "pgrep -u {{用户名}} {{进程名称}}",
+    "group": "通用工具 (Common)",
+    "description": "pgrep: 按名称查找进程。 (查找由指定用户（[u]ser，有效 UID）运行的进程)",
+    "tags": [
+      "common",
+      "pgrep",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-pgrep-5",
+    "type": "command",
+    "title": "pgrep - 只输出最新（[n]ewest，最近启动）的匹配进程",
+    "content": "pgrep -n {{进程名称}}",
+    "group": "通用工具 (Common)",
+    "description": "pgrep: 按名称查找进程。 (只输出最新（[n]ewest，最近启动）的匹配进程)",
+    "tags": [
+      "common",
+      "pgrep",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-distcc-0",
     "type": "command",
     "title": "distcc - 使用类似 `gcc` 的编译器编译源文件",
@@ -5883,7 +6093,7 @@
     "id": "tldr-zh-common-alias-4",
     "type": "command",
     "title": "alias - 将 `rm` 转换为交互式命令",
-    "content": "alias {{rm}}=\"{{rm --interactive}}\"",
+    "content": "alias rm=\"rm --interactive\"",
     "group": "通用工具 (Common)",
     "description": "alias: 创建别名——用给定的字符串指代特定的命令。 别名只会在当前的 shell 会话中生效，除非它们在 shell 的配置文件中被定义，例如`~/.bashrc`。 另请参阅：`unalias`。 (将 `rm` 转换为交互式命令)",
     "tags": [
@@ -5898,7 +6108,7 @@
     "id": "tldr-zh-common-alias-5",
     "type": "command",
     "title": "alias - 创建别名 `la` 来指代 `ls --all`",
-    "content": "alias {{la}}=\"{{ls --all}}\"",
+    "content": "alias la=\"ls --all\"",
     "group": "通用工具 (Common)",
     "description": "alias: 创建别名——用给定的字符串指代特定的命令。 别名只会在当前的 shell 会话中生效，除非它们在 shell 的配置文件中被定义，例如`~/.bashrc`。 另请参阅：`unalias`。 (创建别名 `la` 来指代 `ls --all`)",
     "tags": [
@@ -7620,6 +7830,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-npm-whoami-0",
+    "type": "command",
+    "title": "npm-whoami - 显示当前已登录用户的用户名",
+    "content": "npm whoami",
+    "group": "通用工具 (Common)",
+    "description": "npm-whoami: 显示 npm 用户名。 (显示当前已登录用户的用户名)",
+    "tags": [
+      "common",
+      "npm-whoami",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-npm-whoami-1",
+    "type": "command",
+    "title": "npm-whoami - 显示当前用户在指定注册表中的用户名",
+    "content": "npm whoami --registry {{registry_url}}",
+    "group": "通用工具 (Common)",
+    "description": "npm-whoami: 显示 npm 用户名。 (显示当前用户在指定注册表中的用户名)",
+    "tags": [
+      "common",
+      "npm-whoami",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-agy-0",
     "type": "command",
     "title": "agy - 打开特定文件或目录",
@@ -8514,6 +8754,126 @@
     "tags": [
       "common",
       "mpv",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-0",
+    "type": "command",
+    "title": "gh - 克隆一个 GitHub 仓库到本地",
+    "content": "gh repo clone {{拥有者}}/{{仓库}}",
+    "group": "通用工具 (Common)",
+    "description": "gh: 在命令行无缝使用 GitHub。 一些子命令（例如 `config`）有自己的使用文档。 (克隆一个 GitHub 仓库到本地)",
+    "tags": [
+      "common",
+      "gh",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-1",
+    "type": "command",
+    "title": "gh - 创建一个新 issue",
+    "content": "gh issue {{[new|create]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh: 在命令行无缝使用 GitHub。 一些子命令（例如 `config`）有自己的使用文档。 (创建一个新 issue)",
+    "tags": [
+      "common",
+      "gh",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-2",
+    "type": "command",
+    "title": "gh - 查看并筛选当前仓库中未解决的 issue",
+    "content": "gh issue {{[ls|list]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh: 在命令行无缝使用 GitHub。 一些子命令（例如 `config`）有自己的使用文档。 (查看并筛选当前仓库中未解决的 issue)",
+    "tags": [
+      "common",
+      "gh",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-3",
+    "type": "command",
+    "title": "gh - 在默认浏览器中查看指定 issue",
+    "content": "gh issue view {{[-w|--web]}} {{issue_号|url}}",
+    "group": "通用工具 (Common)",
+    "description": "gh: 在命令行无缝使用 GitHub。 一些子命令（例如 `config`）有自己的使用文档。 (在默认浏览器中查看指定 issue)",
+    "tags": [
+      "common",
+      "gh",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-4",
+    "type": "command",
+    "title": "gh - 创建一个拉取请求",
+    "content": "gh pr {{[new|create]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh: 在命令行无缝使用 GitHub。 一些子命令（例如 `config`）有自己的使用文档。 (创建一个拉取请求)",
+    "tags": [
+      "common",
+      "gh",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-5",
+    "type": "command",
+    "title": "gh - 在默认浏览器中查看拉取请求",
+    "content": "gh pr view {{[-w|--web]}} {{pr_号|url|分支}}",
+    "group": "通用工具 (Common)",
+    "description": "gh: 在命令行无缝使用 GitHub。 一些子命令（例如 `config`）有自己的使用文档。 (在默认浏览器中查看拉取请求)",
+    "tags": [
+      "common",
+      "gh",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-6",
+    "type": "command",
+    "title": "gh - 在本地检出指定的拉取请求",
+    "content": "gh {{[co|pr checkout]}} {{pr_号|url|分支}}",
+    "group": "通用工具 (Common)",
+    "description": "gh: 在命令行无缝使用 GitHub。 一些子命令（例如 `config`）有自己的使用文档。 (在本地检出指定的拉取请求)",
+    "tags": [
+      "common",
+      "gh",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-7",
+    "type": "command",
+    "title": "gh - 查看当前仓库中拉取请求的状态",
+    "content": "gh pr status",
+    "group": "通用工具 (Common)",
+    "description": "gh: 在命令行无缝使用 GitHub。 一些子命令（例如 `config`）有自己的使用文档。 (查看当前仓库中拉取请求的状态)",
+    "tags": [
+      "common",
+      "gh",
       "tldr",
       "zh"
     ],
@@ -9420,6 +9780,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-npm-outdated-0",
+    "type": "command",
+    "title": "npm-outdated - 查找项目中过时的软件包",
+    "content": "npm outdated",
+    "group": "通用工具 (Common)",
+    "description": "npm-outdated: 检查过时的 npm 软件包依赖。 (查找项目中过时的软件包)",
+    "tags": [
+      "common",
+      "npm-outdated",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-npm-outdated-1",
+    "type": "command",
+    "title": "npm-outdated - 不考虑当前项目，查找所有过时的软件包",
+    "content": "npm outdated {{[-a|--all]}}",
+    "group": "通用工具 (Common)",
+    "description": "npm-outdated: 检查过时的 npm 软件包依赖。 (不考虑当前项目，查找所有过时的软件包)",
+    "tags": [
+      "common",
+      "npm-outdated",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-print-0",
     "type": "command",
     "title": "print - 查看 Zsh 内置命令的文档",
@@ -9438,7 +9828,7 @@
     "id": "tldr-zh-common-print-1",
     "type": "command",
     "title": "print - 查看 `run-mailcap` 的 `print` 别名的文档",
-    "content": "tldr --platform linux print.runmailcap",
+    "content": "tldr {{[-p|--platform]}} linux run-mailcap",
     "group": "通用工具 (Common)",
     "description": "print: `print` 可以引用具有相同名称的多个命令。 (查看 `run-mailcap` 的 `print` 别名的文档)",
     "tags": [
@@ -9453,7 +9843,7 @@
     "id": "tldr-zh-common-print-2",
     "type": "command",
     "title": "print - 查看在 Windows 上打印文本文件的文档",
-    "content": "tldr --platform windows print.win",
+    "content": "tldr {{[-p|--platform]}} windows print.win",
     "group": "通用工具 (Common)",
     "description": "print: `print` 可以引用具有相同名称的多个命令。 (查看在 Windows 上打印文本文件的文档)",
     "tags": [
@@ -10224,111 +10614,6 @@
     "tags": [
       "common",
       "qrttoppm",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-common-pm-list-packages-0",
-    "type": "command",
-    "title": "pm-list-packages - 列出所有已安装的软件包",
-    "content": "pm list packages",
-    "group": "通用工具 (Common)",
-    "description": "pm-list-packages: 列出安卓设备上，已安装的，已知的或经过自定义筛选后的软件包。 (列出所有已安装的软件包)",
-    "tags": [
-      "common",
-      "pm-list-packages",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-common-pm-list-packages-1",
-    "type": "command",
-    "title": "pm-list-packages - 列出所有软件包，以及与它们关联的 APK 文件的路径",
-    "content": "pm list packages -f",
-    "group": "通用工具 (Common)",
-    "description": "pm-list-packages: 列出安卓设备上，已安装的，已知的或经过自定义筛选后的软件包。 (列出所有软件包，以及与它们关联的 APK 文件的路径)",
-    "tags": [
-      "common",
-      "pm-list-packages",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-common-pm-list-packages-2",
-    "type": "command",
-    "title": "pm-list-packages - 仅列出禁用的软件包",
-    "content": "pm list packages -d",
-    "group": "通用工具 (Common)",
-    "description": "pm-list-packages: 列出安卓设备上，已安装的，已知的或经过自定义筛选后的软件包。 (仅列出禁用的软件包)",
-    "tags": [
-      "common",
-      "pm-list-packages",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-common-pm-list-packages-3",
-    "type": "command",
-    "title": "pm-list-packages - 仅列出启用的软件包",
-    "content": "pm list packages -e",
-    "group": "通用工具 (Common)",
-    "description": "pm-list-packages: 列出安卓设备上，已安装的，已知的或经过自定义筛选后的软件包。 (仅列出启用的软件包)",
-    "tags": [
-      "common",
-      "pm-list-packages",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-common-pm-list-packages-4",
-    "type": "command",
-    "title": "pm-list-packages - 仅列出系统软件包",
-    "content": "pm list packages -s",
-    "group": "通用工具 (Common)",
-    "description": "pm-list-packages: 列出安卓设备上，已安装的，已知的或经过自定义筛选后的软件包。 (仅列出系统软件包)",
-    "tags": [
-      "common",
-      "pm-list-packages",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-common-pm-list-packages-5",
-    "type": "command",
-    "title": "pm-list-packages - 仅列出第三方（非系统）的软件包",
-    "content": "pm list packages -3",
-    "group": "通用工具 (Common)",
-    "description": "pm-list-packages: 列出安卓设备上，已安装的，已知的或经过自定义筛选后的软件包。 (仅列出第三方（非系统）的软件包)",
-    "tags": [
-      "common",
-      "pm-list-packages",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-common-pm-list-packages-6",
-    "type": "command",
-    "title": "pm-list-packages - 显示每个包的安装来源",
-    "content": "pm list packages -i",
-    "group": "通用工具 (Common)",
-    "description": "pm-list-packages: 列出安卓设备上，已安装的，已知的或经过自定义筛选后的软件包。 (显示每个包的安装来源)",
-    "tags": [
-      "common",
-      "pm-list-packages",
       "tldr",
       "zh"
     ],
@@ -17013,7 +17298,7 @@
     "id": "tldr-zh-common-apg-2",
     "type": "command",
     "title": "apg - 生成 16 个字符的密码",
-    "content": "apg -m {{16}}",
+    "content": "apg -m 16",
     "group": "通用工具 (Common)",
     "description": "apg: 生成任意复杂度的随机密码。 (生成 16 个字符的密码)",
     "tags": [
@@ -17028,7 +17313,7 @@
     "id": "tldr-zh-common-apg-3",
     "type": "command",
     "title": "apg - 生成最大长度为 16 位的密码",
-    "content": "apg -x {{16}}",
+    "content": "apg -x 16",
     "group": "通用工具 (Common)",
     "description": "apg: 生成任意复杂度的随机密码。 (生成最大长度为 16 位的密码)",
     "tags": [
@@ -19125,6 +19410,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-npm-root-0",
+    "type": "command",
+    "title": "npm-root - 显示本地 `node_modules` 目录的路径",
+    "content": "npm root",
+    "group": "通用工具 (Common)",
+    "description": "npm-root: 显示 `node_modules` 目录的路径。 (显示本地 `node_modules` 目录的路径)",
+    "tags": [
+      "common",
+      "npm-root",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-npm-root-1",
+    "type": "command",
+    "title": "npm-root - 显示全局 `node_modules` 目录的路径",
+    "content": "npm root {{[-g|--global]}}",
+    "group": "通用工具 (Common)",
+    "description": "npm-root: 显示 `node_modules` 目录的路径。 (显示全局 `node_modules` 目录的路径)",
+    "tags": [
+      "common",
+      "npm-root",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-,-0",
     "type": "command",
     "title": ", - 运行命令",
@@ -20775,6 +21090,126 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-gh-pr-0",
+    "type": "command",
+    "title": "gh-pr - 创建一个拉取请求",
+    "content": "gh pr {{[new|create]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr: 管理 GitHub 拉取请求。 一些子命令（例如 `create`）有自己的使用文档。 (创建一个拉取请求)",
+    "tags": [
+      "common",
+      "gh-pr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-1",
+    "type": "command",
+    "title": "gh-pr - 在本地检出指定的拉取请求",
+    "content": "gh {{[co|pr checkout]}} {{pr_号|url|分支}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr: 管理 GitHub 拉取请求。 一些子命令（例如 `create`）有自己的使用文档。 (在本地检出指定的拉取请求)",
+    "tags": [
+      "common",
+      "gh-pr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-2",
+    "type": "command",
+    "title": "gh-pr - 查看当前分支上拉取请求所做的更改",
+    "content": "gh pr diff",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr: 管理 GitHub 拉取请求。 一些子命令（例如 `create`）有自己的使用文档。 (查看当前分支上拉取请求所做的更改)",
+    "tags": [
+      "common",
+      "gh-pr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-3",
+    "type": "command",
+    "title": "gh-pr - 批准当前分支关联的拉取请求",
+    "content": "gh pr review {{[-a|--approve]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr: 管理 GitHub 拉取请求。 一些子命令（例如 `create`）有自己的使用文档。 (批准当前分支关联的拉取请求)",
+    "tags": [
+      "common",
+      "gh-pr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-4",
+    "type": "command",
+    "title": "gh-pr - 以交互式方式合并当前分支关联的拉取请求",
+    "content": "gh pr merge",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr: 管理 GitHub 拉取请求。 一些子命令（例如 `create`）有自己的使用文档。 (以交互式方式合并当前分支关联的拉取请求)",
+    "tags": [
+      "common",
+      "gh-pr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-5",
+    "type": "command",
+    "title": "gh-pr - 以交互式方式编辑拉取请求",
+    "content": "gh pr edit",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr: 管理 GitHub 拉取请求。 一些子命令（例如 `create`）有自己的使用文档。 (以交互式方式编辑拉取请求)",
+    "tags": [
+      "common",
+      "gh-pr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-6",
+    "type": "command",
+    "title": "gh-pr - 修改拉取请求的目标分支",
+    "content": "gh pr edit {{[-B|--base]}} {{分支名}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr: 管理 GitHub 拉取请求。 一些子命令（例如 `create`）有自己的使用文档。 (修改拉取请求的目标分支)",
+    "tags": [
+      "common",
+      "gh-pr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-7",
+    "type": "command",
+    "title": "gh-pr - 查看当前仓库中拉取请求的状态",
+    "content": "gh pr status",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr: 管理 GitHub 拉取请求。 一些子命令（例如 `create`）有自己的使用文档。 (查看当前仓库中拉取请求的状态)",
+    "tags": [
+      "common",
+      "gh-pr",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-unflatten-0",
     "type": "command",
     "title": "unflatten - 调整一个或多个有向图以改善布局的纵横比",
@@ -21354,6 +21789,36 @@
     "tags": [
       "common",
       "llvm-nm",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-fg-0",
+    "type": "command",
+    "title": "fg - 将最近暂停或正在后台运行的作业切换到前台",
+    "content": "fg",
+    "group": "通用工具 (Common)",
+    "description": "fg: 在前台运行作业。 另请参阅：`jobs`, `bg`, `disown`, `%`。 (将最近暂停或正在后台运行的作业切换到前台)",
+    "tags": [
+      "common",
+      "fg",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-fg-1",
+    "type": "command",
+    "title": "fg - 将指定作业切换到前台（运行 `jobs` 查找作业编号）",
+    "content": "fg %{{作业编号}}",
+    "group": "通用工具 (Common)",
+    "description": "fg: 在前台运行作业。 另请参阅：`jobs`, `bg`, `disown`, `%`。 (将指定作业切换到前台（运行 `jobs` 查找作业编号）)",
+    "tags": [
+      "common",
+      "fg",
       "tldr",
       "zh"
     ],
@@ -25989,6 +26454,81 @@
     "tags": [
       "common",
       "jira-sprints",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-pkill-0",
+    "type": "command",
+    "title": "pkill - 终止所有匹配指定名称的进程",
+    "content": "pkill \"{{进程名称}}\"",
+    "group": "通用工具 (Common)",
+    "description": "pkill: 按名称向进程发送信号。 通常用于停止进程。 (终止所有匹配指定名称的进程)",
+    "tags": [
+      "common",
+      "pkill",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-pkill-1",
+    "type": "command",
+    "title": "pkill - 根据完整命令而不只是进程名称，终止所有匹配的进程",
+    "content": "pkill {{[-f|--full]}} \"{{命令名称}}\"",
+    "group": "通用工具 (Common)",
+    "description": "pkill: 按名称向进程发送信号。 通常用于停止进程。 (根据完整命令而不只是进程名称，终止所有匹配的进程)",
+    "tags": [
+      "common",
+      "pkill",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-pkill-2",
+    "type": "command",
+    "title": "pkill - 强制终止匹配的进程（该信号不能被捕获或忽略）",
+    "content": "pkill -9 \"{{进程名称}}\"",
+    "group": "通用工具 (Common)",
+    "description": "pkill: 按名称向进程发送信号。 通常用于停止进程。 (强制终止匹配的进程（该信号不能被捕获或忽略）)",
+    "tags": [
+      "common",
+      "pkill",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-pkill-3",
+    "type": "command",
+    "title": "pkill - 向匹配指定名称的进程发送 SIGUSR1 信号",
+    "content": "pkill -USR1 \"{{进程名称}}\"",
+    "group": "通用工具 (Common)",
+    "description": "pkill: 按名称向进程发送信号。 通常用于停止进程。 (向匹配指定名称的进程发送 SIGUSR1 信号)",
+    "tags": [
+      "common",
+      "pkill",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-pkill-4",
+    "type": "command",
+    "title": "pkill - 终止主 `firefox` 进程来关闭浏览器",
+    "content": "pkill {{[-o|--oldest]}} \"{{firefox}}\"",
+    "group": "通用工具 (Common)",
+    "description": "pkill: 按名称向进程发送信号。 通常用于停止进程。 (终止主 `firefox` 进程来关闭浏览器)",
+    "tags": [
+      "common",
+      "pkill",
       "tldr",
       "zh"
     ],
@@ -33993,7 +34533,7 @@
     "id": "tldr-zh-common-arthas-2",
     "type": "command",
     "title": "arthas - 退出当前 arthas 客户端的连接，但不停止 arthas 服务",
-    "content": "exit|quit|logout|q",
+    "content": "{{exit|quit|logout|q}}",
     "group": "通用工具 (Common)",
     "description": "arthas: Java 应用诊断利器。 另请参阅：`arthas-watch`, `arthas-trace`。 (退出当前 arthas 客户端的连接，但不停止 arthas 服务)",
     "tags": [
@@ -36240,6 +36780,186 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-gh-pr-view-0",
+    "type": "command",
+    "title": "gh-pr-view - 查看当前分支关联的拉取请求",
+    "content": "gh pr view",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-view: 查看 GitHub 拉取请求的详细信息。 (查看当前分支关联的拉取请求)",
+    "tags": [
+      "common",
+      "gh-pr-view",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-view-1",
+    "type": "command",
+    "title": "gh-pr-view - 查看指定的拉取请求",
+    "content": "gh pr view {{123}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-view: 查看 GitHub 拉取请求的详细信息。 (查看指定的拉取请求)",
+    "tags": [
+      "common",
+      "gh-pr-view",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-view-2",
+    "type": "command",
+    "title": "gh-pr-view - 在默认网页浏览器中打开拉取请求",
+    "content": "gh pr view {{[-w|--web]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-view: 查看 GitHub 拉取请求的详细信息。 (在默认网页浏览器中打开拉取请求)",
+    "tags": [
+      "common",
+      "gh-pr-view",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-view-3",
+    "type": "command",
+    "title": "gh-pr-view - 在终端显示评论信息",
+    "content": "gh pr view {{123}} {{[-c|--comments]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-view: 查看 GitHub 拉取请求的详细信息。 (在终端显示评论信息)",
+    "tags": [
+      "common",
+      "gh-pr-view",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-cosign-0",
+    "type": "command",
+    "title": "cosign - 生成密钥对",
+    "content": "cosign generate-key-pair",
+    "group": "通用工具 (Common)",
+    "description": "cosign: 在 OCI 注册表中对容器进行签名、验证和存储。 (生成密钥对)",
+    "tags": [
+      "common",
+      "cosign",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-cosign-1",
+    "type": "command",
+    "title": "cosign - 对容器进行签名，并将签名存储在注册表中",
+    "content": "cosign sign --key {{cosign.key}} {{镜像}}",
+    "group": "通用工具 (Common)",
+    "description": "cosign: 在 OCI 注册表中对容器进行签名、验证和存储。 (对容器进行签名，并将签名存储在注册表中)",
+    "tags": [
+      "common",
+      "cosign",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-cosign-2",
+    "type": "command",
+    "title": "cosign - 使用存储在 Kubernetes Secret 中的密钥对容器镜像进行签名",
+    "content": "cosign sign --key k8s://{{命名空间}}/{{密钥}} {{镜像}}",
+    "group": "通用工具 (Common)",
+    "description": "cosign: 在 OCI 注册表中对容器进行签名、验证和存储。 (使用存储在 Kubernetes Secret 中的密钥对容器镜像进行签名)",
+    "tags": [
+      "common",
+      "cosign",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-cosign-3",
+    "type": "command",
+    "title": "cosign - 使用本地密钥对 blob 文件进行签名",
+    "content": "cosign sign-blob --key {{cosign.key}} {{路径/到/文件}}",
+    "group": "通用工具 (Common)",
+    "description": "cosign: 在 OCI 注册表中对容器进行签名、验证和存储。 (使用本地密钥对 blob 文件进行签名)",
+    "tags": [
+      "common",
+      "cosign",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-cosign-4",
+    "type": "command",
+    "title": "cosign - 使用公钥验证容器",
+    "content": "cosign verify --key {{cosign.pub}} {{镜像}}",
+    "group": "通用工具 (Common)",
+    "description": "cosign: 在 OCI 注册表中对容器进行签名、验证和存储。 (使用公钥验证容器)",
+    "tags": [
+      "common",
+      "cosign",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-cosign-5",
+    "type": "command",
+    "title": "cosign - 使用 Dockerfile 中的公钥验证镜像",
+    "content": "cosign dockerfile verify -key {{cosign.pub}} {{路径/到/Dockerfile}}",
+    "group": "通用工具 (Common)",
+    "description": "cosign: 在 OCI 注册表中对容器进行签名、验证和存储。 (使用 Dockerfile 中的公钥验证镜像)",
+    "tags": [
+      "common",
+      "cosign",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-cosign-6",
+    "type": "command",
+    "title": "cosign - 使用存储在 Kubernetes Secret 中的公钥验证镜像",
+    "content": "cosign verify --key k8s://{{命名空间}}/{{密钥}} {{镜像}}",
+    "group": "通用工具 (Common)",
+    "description": "cosign: 在 OCI 注册表中对容器进行签名、验证和存储。 (使用存储在 Kubernetes Secret 中的公钥验证镜像)",
+    "tags": [
+      "common",
+      "cosign",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-cosign-7",
+    "type": "command",
+    "title": "cosign - 复制容器镜像及其签名",
+    "content": "cosign copy {{example.com/src:latest}} {{example.com/dest:latest}}",
+    "group": "通用工具 (Common)",
+    "description": "cosign: 在 OCI 注册表中对容器进行签名、验证和存储。 (复制容器镜像及其签名)",
+    "tags": [
+      "common",
+      "cosign",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-sudoedit-0",
     "type": "command",
     "title": "sudoedit - 查看原命令的文档",
@@ -36429,6 +37149,126 @@
     "tags": [
       "common",
       "jhat",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-tmux-0",
+    "type": "command",
+    "title": "tmux - 启动一个新会话",
+    "content": "tmux",
+    "group": "通用工具 (Common)",
+    "description": "tmux: 终端复用器。 支持包含窗口、窗格等的多个会话。 另请参阅：`zellij`, `screen`。 (启动一个新会话)",
+    "tags": [
+      "common",
+      "tmux",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-tmux-1",
+    "type": "command",
+    "title": "tmux - 启动一个指定名称的新会话（[s]ession）",
+    "content": "tmux {{[new|new-session]}} -s {{name}}",
+    "group": "通用工具 (Common)",
+    "description": "tmux: 终端复用器。 支持包含窗口、窗格等的多个会话。 另请参阅：`zellij`, `screen`。 (启动一个指定名称的新会话（[s]ession）)",
+    "tags": [
+      "common",
+      "tmux",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-tmux-2",
+    "type": "command",
+    "title": "tmux - 列出现有会话",
+    "content": "tmux {{[ls|list-sessions]}}",
+    "group": "通用工具 (Common)",
+    "description": "tmux: 终端复用器。 支持包含窗口、窗格等的多个会话。 另请参阅：`zellij`, `screen`。 (列出现有会话)",
+    "tags": [
+      "common",
+      "tmux",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-tmux-3",
+    "type": "command",
+    "title": "tmux - 连接到最近使用的会话",
+    "content": "tmux {{[a|attach]}}",
+    "group": "通用工具 (Common)",
+    "description": "tmux: 终端复用器。 支持包含窗口、窗格等的多个会话。 另请参阅：`zellij`, `screen`。 (连接到最近使用的会话)",
+    "tags": [
+      "common",
+      "tmux",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-tmux-4",
+    "type": "command",
+    "title": "tmux - 从当前 tmux 会话断开连接",
+    "content": "<Ctrl b><d>",
+    "group": "通用工具 (Common)",
+    "description": "tmux: 终端复用器。 支持包含窗口、窗格等的多个会话。 另请参阅：`zellij`, `screen`。 (从当前 tmux 会话断开连接)",
+    "tags": [
+      "common",
+      "tmux",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-tmux-5",
+    "type": "command",
+    "title": "tmux - 创建一个新窗口（在 tmux 会话中）",
+    "content": "<Ctrl b><c>",
+    "group": "通用工具 (Common)",
+    "description": "tmux: 终端复用器。 支持包含窗口、窗格等的多个会话。 另请参阅：`zellij`, `screen`。 (创建一个新窗口（在 tmux 会话中）)",
+    "tags": [
+      "common",
+      "tmux",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-tmux-6",
+    "type": "command",
+    "title": "tmux - 在会话和窗口之间切换（在 tmux 会话中）",
+    "content": "<Ctrl b><w>",
+    "group": "通用工具 (Common)",
+    "description": "tmux: 终端复用器。 支持包含窗口、窗格等的多个会话。 另请参阅：`zellij`, `screen`。 (在会话和窗口之间切换（在 tmux 会话中）)",
+    "tags": [
+      "common",
+      "tmux",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-tmux-7",
+    "type": "command",
+    "title": "tmux - 终止指定目标会话（[t]arget）",
+    "content": "tmux kill-session -t {{name}}",
+    "group": "通用工具 (Common)",
+    "description": "tmux: 终端复用器。 支持包含窗口、窗格等的多个会话。 另请参阅：`zellij`, `screen`。 (终止指定目标会话（[t]arget）)",
+    "tags": [
+      "common",
+      "tmux",
       "tldr",
       "zh"
     ],
@@ -39405,6 +40245,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-bird-0",
+    "type": "command",
+    "title": "bird - 使用特定配置文件启动 Bird",
+    "content": "bird -c {{路径/到/bird.conf}}",
+    "group": "通用工具 (Common)",
+    "description": "bird: BIRD 互联网路由守护程序。 支持 BGP、OSPF、Babel 等协议的路由守护进程。 (使用特定配置文件启动 Bird)",
+    "tags": [
+      "common",
+      "bird",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-bird-1",
+    "type": "command",
+    "title": "bird - 以特定用户和组身份启动 Bird",
+    "content": "bird -u {{用户名}} -g {{组}}",
+    "group": "通用工具 (Common)",
+    "description": "bird: BIRD 互联网路由守护程序。 支持 BGP、OSPF、Babel 等协议的路由守护进程。 (以特定用户和组身份启动 Bird)",
+    "tags": [
+      "common",
+      "bird",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-x-tping-0",
     "type": "command",
     "title": "x-tping - 使用详细模式 Ping 主机的 80 端口（默认端口）",
@@ -40173,7 +41043,7 @@
     "id": "tldr-zh-common-zapier-analytics-2",
     "type": "command",
     "title": "zapier-analytics - 显示额外的调试输出",
-    "content": "zapier analytics {{[-m|--mode]}} {{enabled|anonymous|disabled}} {{-d|--debug}}",
+    "content": "zapier analytics {{[-m|--mode]}} {{enabled|anonymous|disabled}} {{[-d|--debug]}}",
     "group": "通用工具 (Common)",
     "description": "zapier-analytics: 显示收集的分析数据的状态。也可用于更改收集的内容。 (显示额外的调试输出)",
     "tags": [
@@ -40749,6 +41619,111 @@
     "tags": [
       "common",
       "btm",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-git-reset-0",
+    "type": "command",
+    "title": "git-reset - 取消暂存所有文件",
+    "content": "git reset",
+    "group": "通用工具 (Common)",
+    "description": "git-reset: 撤销提交或取消暂存，将当前 Git HEAD 重置到指定状态。 如果传入文件路径，则执行\"取消暂存\"；如果传入提交哈希或分支名，则执行\"撤销提交\"。 (取消暂存所有文件)",
+    "tags": [
+      "common",
+      "git-reset",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-git-reset-1",
+    "type": "command",
+    "title": "git-reset - 取消暂存指定文件",
+    "content": "git reset {{路径/到/文件1 路径/到/文件2 ...}}",
+    "group": "通用工具 (Common)",
+    "description": "git-reset: 撤销提交或取消暂存，将当前 Git HEAD 重置到指定状态。 如果传入文件路径，则执行\"取消暂存\"；如果传入提交哈希或分支名，则执行\"撤销提交\"。 (取消暂存指定文件)",
+    "tags": [
+      "common",
+      "git-reset",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-git-reset-2",
+    "type": "command",
+    "title": "git-reset - 交互式地取消暂存文件的部分内容",
+    "content": "git reset {{[-p|--patch]}} {{路径/到/文件}}",
+    "group": "通用工具 (Common)",
+    "description": "git-reset: 撤销提交或取消暂存，将当前 Git HEAD 重置到指定状态。 如果传入文件路径，则执行\"取消暂存\"；如果传入提交哈希或分支名，则执行\"撤销提交\"。 (交互式地取消暂存文件的部分内容)",
+    "tags": [
+      "common",
+      "git-reset",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-git-reset-3",
+    "type": "command",
+    "title": "git-reset - 撤销最近一次提交，保留其更改（以及所有未提交的更改）在工作区中",
+    "content": "git reset HEAD~",
+    "group": "通用工具 (Common)",
+    "description": "git-reset: 撤销提交或取消暂存，将当前 Git HEAD 重置到指定状态。 如果传入文件路径，则执行\"取消暂存\"；如果传入提交哈希或分支名，则执行\"撤销提交\"。 (撤销最近一次提交，保留其更改（以及所有未提交的更改）在工作区中)",
+    "tags": [
+      "common",
+      "git-reset",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-git-reset-4",
+    "type": "command",
+    "title": "git-reset - 撤销最近两次提交，将其更改保留到暂存区中",
+    "content": "git reset --soft HEAD~2",
+    "group": "通用工具 (Common)",
+    "description": "git-reset: 撤销提交或取消暂存，将当前 Git HEAD 重置到指定状态。 如果传入文件路径，则执行\"取消暂存\"；如果传入提交哈希或分支名，则执行\"撤销提交\"。 (撤销最近两次提交，将其更改保留到暂存区中)",
+    "tags": [
+      "common",
+      "git-reset",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-git-reset-5",
+    "type": "command",
+    "title": "git-reset - 丢弃所有未提交的更改（包括已暂存和未暂存的），仅丢弃未暂存的更改请使用 `git checkout`",
+    "content": "git reset --hard",
+    "group": "通用工具 (Common)",
+    "description": "git-reset: 撤销提交或取消暂存，将当前 Git HEAD 重置到指定状态。 如果传入文件路径，则执行\"取消暂存\"；如果传入提交哈希或分支名，则执行\"撤销提交\"。 (丢弃所有未提交的更改（包括已暂存和未暂存的），仅丢弃未暂存的更改请使用 `git checkout`)",
+    "tags": [
+      "common",
+      "git-reset",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-git-reset-6",
+    "type": "command",
+    "title": "git-reset - 将仓库重置到指定提交，丢弃该提交之后的所有已提交、已暂存和未暂存的更改",
+    "content": "git reset --hard {{提交哈希}}",
+    "group": "通用工具 (Common)",
+    "description": "git-reset: 撤销提交或取消暂存，将当前 Git HEAD 重置到指定状态。 如果传入文件路径，则执行\"取消暂存\"；如果传入提交哈希或分支名，则执行\"撤销提交\"。 (将仓库重置到指定提交，丢弃该提交之后的所有已提交、已暂存和未暂存的更改)",
+    "tags": [
+      "common",
+      "git-reset",
       "tldr",
       "zh"
     ],
@@ -42960,6 +43935,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-npm-prefix-0",
+    "type": "command",
+    "title": "npm-prefix - 打印本地前缀",
+    "content": "npm prefix",
+    "group": "通用工具 (Common)",
+    "description": "npm-prefix: 将本地或全局前缀打印到标准输出。 (打印本地前缀)",
+    "tags": [
+      "common",
+      "npm-prefix",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-npm-prefix-1",
+    "type": "command",
+    "title": "npm-prefix - 打印全局前缀",
+    "content": "npm prefix {{[-g|--global]}}",
+    "group": "通用工具 (Common)",
+    "description": "npm-prefix: 将本地或全局前缀打印到标准输出。 (打印全局前缀)",
+    "tags": [
+      "common",
+      "npm-prefix",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-sshuttle-0",
     "type": "command",
     "title": "sshuttle - 通过远程 SSH 服务器转发所有 IPv4 TCP 流量",
@@ -44724,6 +45729,36 @@
     "tags": [
       "common",
       "rustdoc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-npm-ping-0",
+    "type": "command",
+    "title": "npm-ping - Ping 默认的 `npm` 注册表",
+    "content": "npm ping",
+    "group": "通用工具 (Common)",
+    "description": "npm-ping: Ping `npm` 注册表。 (Ping 默认的 `npm` 注册表)",
+    "tags": [
+      "common",
+      "npm-ping",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-npm-ping-1",
+    "type": "command",
+    "title": "npm-ping - Ping 自定义的 `npm` 注册表",
+    "content": "npm ping --registry {{custom_registry_url}}",
+    "group": "通用工具 (Common)",
+    "description": "npm-ping: Ping `npm` 注册表。 (Ping 自定义的 `npm` 注册表)",
+    "tags": [
+      "common",
+      "npm-ping",
       "tldr",
       "zh"
     ],
@@ -48003,7 +49038,7 @@
     "id": "tldr-zh-common-hostname-1",
     "type": "command",
     "title": "hostname - 显示主机名的网络地址",
-    "content": "hostname {{[-i|--ip-addresses]}}",
+    "content": "hostname {{[-i|--ip-address]}}",
     "group": "通用工具 (Common)",
     "description": "hostname: 显示或设置系统的主机名。 (显示主机名的网络地址)",
     "tags": [
@@ -49320,6 +50355,126 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-birdc-0",
+    "type": "command",
+    "title": "birdc - 打开远程控制台",
+    "content": "birdc",
+    "group": "通用工具 (Common)",
+    "description": "birdc: BIRD 远程控制。 从 bird 获取路由等信息，并在运行时执行配置。 (打开远程控制台)",
+    "tags": [
+      "common",
+      "birdc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-birdc-1",
+    "type": "command",
+    "title": "birdc - 无需重启 BIRD 即可重新加载配置",
+    "content": "birdc configure",
+    "group": "通用工具 (Common)",
+    "description": "birdc: BIRD 远程控制。 从 bird 获取路由等信息，并在运行时执行配置。 (无需重启 BIRD 即可重新加载配置)",
+    "tags": [
+      "common",
+      "birdc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-birdc-2",
+    "type": "command",
+    "title": "birdc - 显示 BIRD 的当前状态",
+    "content": "birdc show status",
+    "group": "通用工具 (Common)",
+    "description": "birdc: BIRD 远程控制。 从 bird 获取路由等信息，并在运行时执行配置。 (显示 BIRD 的当前状态)",
+    "tags": [
+      "common",
+      "birdc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-birdc-3",
+    "type": "command",
+    "title": "birdc - 显示所有已配置的协议",
+    "content": "birdc show protocols",
+    "group": "通用工具 (Common)",
+    "description": "birdc: BIRD 远程控制。 从 bird 获取路由等信息，并在运行时执行配置。 (显示所有已配置的协议)",
+    "tags": [
+      "common",
+      "birdc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-birdc-4",
+    "type": "command",
+    "title": "birdc - 显示协议的所有详细信息",
+    "content": "birdc show protocols {{上游1}} all",
+    "group": "通用工具 (Common)",
+    "description": "birdc: BIRD 远程控制。 从 bird 获取路由等信息，并在运行时执行配置。 (显示协议的所有详细信息)",
+    "tags": [
+      "common",
+      "birdc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-birdc-5",
+    "type": "command",
+    "title": "birdc - 显示包含特定 AS 号的所有路由",
+    "content": "birdc \"show route where bgp_path ~ [{{4242120045}}]\"",
+    "group": "通用工具 (Common)",
+    "description": "birdc: BIRD 远程控制。 从 bird 获取路由等信息，并在运行时执行配置。 (显示包含特定 AS 号的所有路由)",
+    "tags": [
+      "common",
+      "birdc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-birdc-6",
+    "type": "command",
+    "title": "birdc - 显示所有最佳路由",
+    "content": "birdc show route primary",
+    "group": "通用工具 (Common)",
+    "description": "birdc: BIRD 远程控制。 从 bird 获取路由等信息，并在运行时执行配置。 (显示所有最佳路由)",
+    "tags": [
+      "common",
+      "birdc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-birdc-7",
+    "type": "command",
+    "title": "birdc - 显示从给定前缀出发的所有路由的详细信息",
+    "content": "birdc show route for {{fd00:/8}} all",
+    "group": "通用工具 (Common)",
+    "description": "birdc: BIRD 远程控制。 从 bird 获取路由等信息，并在运行时执行配置。 (显示从给定前缀出发的所有路由的详细信息)",
+    "tags": [
+      "common",
+      "birdc",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-git-bundle-0",
     "type": "command",
     "title": "git-bundle - 创建包含特定分支所有对象和引用的打包文件",
@@ -49929,6 +51084,81 @@
     "tags": [
       "common",
       "zig",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-create-0",
+    "type": "command",
+    "title": "gh-pr-create - 以交互式方式创建一个拉取请求",
+    "content": "gh pr {{[new|create]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-create: 管理 GitHub 拉取请求。 (以交互式方式创建一个拉取请求)",
+    "tags": [
+      "common",
+      "gh-pr-create",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-create-1",
+    "type": "command",
+    "title": "gh-pr-create - 创建一个拉取请求，并根据当前分支的提交记录自动填充标题和描述",
+    "content": "gh pr {{[new|create]}} {{[-f|--fill]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-create: 管理 GitHub 拉取请求。 (创建一个拉取请求，并根据当前分支的提交记录自动填充标题和描述)",
+    "tags": [
+      "common",
+      "gh-pr-create",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-create-2",
+    "type": "command",
+    "title": "gh-pr-create - 创建一个草稿拉取请求",
+    "content": "gh pr {{[new|create]}} {{[-d|--draft]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-create: 管理 GitHub 拉取请求。 (创建一个草稿拉取请求)",
+    "tags": [
+      "common",
+      "gh-pr-create",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-create-3",
+    "type": "command",
+    "title": "gh-pr-create - 创建一个拉取请求并指定目标分支、标题和描述",
+    "content": "gh pr {{[new|create]}} {{[-B|--base]}} {{目标分支}} {{[-t|--title]}} \"{{标题}}\" {{[-b|--body]}} \"{{描述}}\"",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-create: 管理 GitHub 拉取请求。 (创建一个拉取请求并指定目标分支、标题和描述)",
+    "tags": [
+      "common",
+      "gh-pr-create",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-create-4",
+    "type": "command",
+    "title": "gh-pr-create - 在默认网页浏览器中打开以创建拉取请求",
+    "content": "gh pr {{[new|create]}} {{[-w|--web]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-create: 管理 GitHub 拉取请求。 (在默认网页浏览器中打开以创建拉取请求)",
+    "tags": [
+      "common",
+      "gh-pr-create",
       "tldr",
       "zh"
     ],
@@ -52740,6 +53970,66 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-nohup-0",
+    "type": "command",
+    "title": "nohup - 运行一个可在终端关闭后继续运行的进程",
+    "content": "nohup {{命令}} {{参数1 参数2 ...}}",
+    "group": "通用工具 (Common)",
+    "description": "nohup: 允许进程在终端关闭后继续运行。 (运行一个可在终端关闭后继续运行的进程)",
+    "tags": [
+      "common",
+      "nohup",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-nohup-1",
+    "type": "command",
+    "title": "nohup - 在后台模式下启动 `nohup`",
+    "content": "nohup {{命令}} {{参数1 参数2 ...}} &",
+    "group": "通用工具 (Common)",
+    "description": "nohup: 允许进程在终端关闭后继续运行。 (在后台模式下启动 `nohup`)",
+    "tags": [
+      "common",
+      "nohup",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-nohup-2",
+    "type": "command",
+    "title": "nohup - 运行一个可在终端关闭后继续运行的 shell 脚本",
+    "content": "nohup {{路径/到/脚本.sh}} &",
+    "group": "通用工具 (Common)",
+    "description": "nohup: 允许进程在终端关闭后继续运行。 (运行一个可在终端关闭后继续运行的 shell 脚本)",
+    "tags": [
+      "common",
+      "nohup",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-nohup-3",
+    "type": "command",
+    "title": "nohup - 运行一个进程，并将输出写入指定文件",
+    "content": "nohup {{命令}} {{参数1 参数2 ...}} > {{路径/到/输出文件}} &",
+    "group": "通用工具 (Common)",
+    "description": "nohup: 允许进程在终端关闭后继续运行。 (运行一个进程，并将输出写入指定文件)",
+    "tags": [
+      "common",
+      "nohup",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-kite-0",
     "type": "command",
     "title": "kite - 查看原命令的文档",
@@ -54135,6 +55425,96 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-gh-pr-merge-0",
+    "type": "command",
+    "title": "gh-pr-merge - 以交互式方式合并当前分支关联的拉取请求",
+    "content": "gh pr merge",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-merge: 合并 GitHub 拉取请求。 (以交互式方式合并当前分支关联的拉取请求)",
+    "tags": [
+      "common",
+      "gh-pr-merge",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-merge-1",
+    "type": "command",
+    "title": "gh-pr-merge - 合并当前分支到指定的拉取请求",
+    "content": "gh pr merge {{pr_号}} {{[-m|--merge]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-merge: 合并 GitHub 拉取请求。 (合并当前分支到指定的拉取请求)",
+    "tags": [
+      "common",
+      "gh-pr-merge",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-merge-2",
+    "type": "command",
+    "title": "gh-pr-merge - 压缩合并拉取请求，并删除该分支",
+    "content": "gh pr merge {{pr_号}} {{[-sd|--squash --delete-branch]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-merge: 合并 GitHub 拉取请求。 (压缩合并拉取请求，并删除该分支)",
+    "tags": [
+      "common",
+      "gh-pr-merge",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-merge-3",
+    "type": "command",
+    "title": "gh-pr-merge - 变基合并拉取请求",
+    "content": "gh pr merge {{pr_号}} {{[-r|--rebase]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-merge: 合并 GitHub 拉取请求。 (变基合并拉取请求)",
+    "tags": [
+      "common",
+      "gh-pr-merge",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-merge-4",
+    "type": "command",
+    "title": "gh-pr-merge - 开启自动合并（压缩合并）",
+    "content": "gh pr merge {{pr_号}} --auto {{[-s|--squash]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-merge: 合并 GitHub 拉取请求。 (开启自动合并（压缩合并）)",
+    "tags": [
+      "common",
+      "gh-pr-merge",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-pr-merge-5",
+    "type": "command",
+    "title": "gh-pr-merge - 使用管理员权限合并（如果允许）",
+    "content": "gh pr merge {{pr_号}} --admin",
+    "group": "通用工具 (Common)",
+    "description": "gh-pr-merge: 合并 GitHub 拉取请求。 (使用管理员权限合并（如果允许）)",
+    "tags": [
+      "common",
+      "gh-pr-merge",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-ab-0",
     "type": "command",
     "title": "ab - 向目标 URL 执行 100 次 HTTP GET 请求",
@@ -54675,111 +56055,6 @@
     "source": "official"
   },
   {
-    "id": "tldr-zh-common-pm-list-0",
-    "type": "command",
-    "title": "pm-list - 列出所有已安装的包",
-    "content": "pm list packages",
-    "group": "通用工具 (Common)",
-    "description": "pm-list: 列出软件包管理器中所管理的用户，软件包，权限，插桩测试 (instrumentation)，权限组，功能和库。 (列出所有已安装的包)",
-    "tags": [
-      "common",
-      "pm-list",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-common-pm-list-1",
-    "type": "command",
-    "title": "pm-list - 显示系统上的所有用户",
-    "content": "pm list users",
-    "group": "通用工具 (Common)",
-    "description": "pm-list: 列出软件包管理器中所管理的用户，软件包，权限，插桩测试 (instrumentation)，权限组，功能和库。 (显示系统上的所有用户)",
-    "tags": [
-      "common",
-      "pm-list",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-common-pm-list-2",
-    "type": "command",
-    "title": "pm-list - 显示所有已知的权限组",
-    "content": "pm list permission-groups",
-    "group": "通用工具 (Common)",
-    "description": "pm-list: 列出软件包管理器中所管理的用户，软件包，权限，插桩测试 (instrumentation)，权限组，功能和库。 (显示所有已知的权限组)",
-    "tags": [
-      "common",
-      "pm-list",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-common-pm-list-3",
-    "type": "command",
-    "title": "pm-list - 显示所有已知的权限",
-    "content": "pm list permissions",
-    "group": "通用工具 (Common)",
-    "description": "pm-list: 列出软件包管理器中所管理的用户，软件包，权限，插桩测试 (instrumentation)，权限组，功能和库。 (显示所有已知的权限)",
-    "tags": [
-      "common",
-      "pm-list",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-common-pm-list-4",
-    "type": "command",
-    "title": "pm-list - 显示所有的测试包",
-    "content": "pm list instrumentation",
-    "group": "通用工具 (Common)",
-    "description": "pm-list: 列出软件包管理器中所管理的用户，软件包，权限，插桩测试 (instrumentation)，权限组，功能和库。 (显示所有的测试包)",
-    "tags": [
-      "common",
-      "pm-list",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-common-pm-list-5",
-    "type": "command",
-    "title": "pm-list - 显示系统上的所有功能",
-    "content": "pm list features",
-    "group": "通用工具 (Common)",
-    "description": "pm-list: 列出软件包管理器中所管理的用户，软件包，权限，插桩测试 (instrumentation)，权限组，功能和库。 (显示系统上的所有功能)",
-    "tags": [
-      "common",
-      "pm-list",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-common-pm-list-6",
-    "type": "command",
-    "title": "pm-list - 显示当前设备支持的所有库",
-    "content": "pm list libraries",
-    "group": "通用工具 (Common)",
-    "description": "pm-list: 列出软件包管理器中所管理的用户，软件包，权限，插桩测试 (instrumentation)，权限组，功能和库。 (显示当前设备支持的所有库)",
-    "tags": [
-      "common",
-      "pm-list",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-zh-common-crontab-0",
     "type": "command",
     "title": "crontab - 编辑当前用户的 crontab 文件",
@@ -55179,6 +56454,111 @@
     "tags": [
       "common",
       "airdecap-ng",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-pixi-0",
+    "type": "command",
+    "title": "pixi - 初始化一个新项目",
+    "content": "pixi init {{路径/到/项目}}",
+    "group": "通用工具 (Common)",
+    "description": "pixi: 针对项目的开发人员工作流与环境管理。 (初始化一个新项目)",
+    "tags": [
+      "common",
+      "pixi",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-pixi-1",
+    "type": "command",
+    "title": "pixi - 添加项目依赖",
+    "content": "pixi add {{依赖项1 依赖项2 ...}}",
+    "group": "通用工具 (Common)",
+    "description": "pixi: 针对项目的开发人员工作流与环境管理。 (添加项目依赖)",
+    "tags": [
+      "common",
+      "pixi",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-pixi-2",
+    "type": "command",
+    "title": "pixi - 在项目环境中启动 pixi shell",
+    "content": "pixi shell",
+    "group": "通用工具 (Common)",
+    "description": "pixi: 针对项目的开发人员工作流与环境管理。 (在项目环境中启动 pixi shell)",
+    "tags": [
+      "common",
+      "pixi",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-pixi-3",
+    "type": "command",
+    "title": "pixi - 在项目环境中运行一个任务",
+    "content": "pixi run {{任务}}",
+    "group": "通用工具 (Common)",
+    "description": "pixi: 针对项目的开发人员工作流与环境管理。 (在项目环境中运行一个任务)",
+    "tags": [
+      "common",
+      "pixi",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-pixi-4",
+    "type": "command",
+    "title": "pixi - 在项目环境中管理任务",
+    "content": "pixi task {{命令}}",
+    "group": "通用工具 (Common)",
+    "description": "pixi: 针对项目的开发人员工作流与环境管理。 (在项目环境中管理任务)",
+    "tags": [
+      "common",
+      "pixi",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-pixi-5",
+    "type": "command",
+    "title": "pixi - 显示帮助",
+    "content": "pixi {{命令}} --help",
+    "group": "通用工具 (Common)",
+    "description": "pixi: 针对项目的开发人员工作流与环境管理。 (显示帮助)",
+    "tags": [
+      "common",
+      "pixi",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-pixi-6",
+    "type": "command",
+    "title": "pixi - 清理环境和任务缓存",
+    "content": "pixi clean",
+    "group": "通用工具 (Common)",
+    "description": "pixi: 针对项目的开发人员工作流与环境管理。 (清理环境和任务缓存)",
+    "tags": [
+      "common",
+      "pixi",
       "tldr",
       "zh"
     ],

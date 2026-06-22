@@ -5133,7 +5133,7 @@
     "id": "tldr-en-linux-needrestart-2",
     "type": "command",
     "title": "needrestart - List outdated processes in [v]erbose or [q]uiet mode",
-    "content": "needrestart -{{v|q}}",
+    "content": "needrestart {{-v|-q}}",
     "group": "Linux Ops",
     "description": "needrestart: Check which daemons need to be restarted after library upgrades. (List outdated processes in [v]erbose or [q]uiet mode)",
     "tags": [
@@ -5694,6 +5694,111 @@
     "tags": [
       "linux",
       "a2query",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-add-0",
+    "type": "command",
+    "title": "wine-reg-add - Add a new registry key",
+    "content": "wine reg add '{{HKEY_CURRENT_USER\\path\\to\\key}}'",
+    "group": "Linux Ops",
+    "description": "wine-reg-add: Add new keys and values to the Wine registry. (Add a new registry key)",
+    "tags": [
+      "linux",
+      "wine-reg-add",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-add-1",
+    "type": "command",
+    "title": "wine-reg-add - Add a [v]alue with specific [d]ata under a key",
+    "content": "wine reg add '{{HKEY_CURRENT_USER\\path\\to\\key}}' /v {{value_name}} /d {{data}}",
+    "group": "Linux Ops",
+    "description": "wine-reg-add: Add new keys and values to the Wine registry. (Add a [v]alue with specific [d]ata under a key)",
+    "tags": [
+      "linux",
+      "wine-reg-add",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-add-2",
+    "type": "command",
+    "title": "wine-reg-add - Add a value with a specific data [t]ype (defaults to `REG_SZ`)",
+    "content": "wine reg add '{{HKEY_CURRENT_USER\\path\\to\\key}}' /v {{value_name}} /t {{REG_SZ|REG_DWORD|REG_QWORD|REG_BINARY|REG_MULTI_SZ|REG_EXPAND_SZ|REG_NONE}} /d {{data}}",
+    "group": "Linux Ops",
+    "description": "wine-reg-add: Add new keys and values to the Wine registry. (Add a value with a specific data [t]ype (defaults to `REG_SZ`))",
+    "tags": [
+      "linux",
+      "wine-reg-add",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-add-3",
+    "type": "command",
+    "title": "wine-reg-add - Set the default (unnamed) value of a key",
+    "content": "wine reg add '{{HKEY_CURRENT_USER\\path\\to\\key}}' /ve /d {{data}}",
+    "group": "Linux Ops",
+    "description": "wine-reg-add: Add new keys and values to the Wine registry. (Set the default (unnamed) value of a key)",
+    "tags": [
+      "linux",
+      "wine-reg-add",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-add-4",
+    "type": "command",
+    "title": "wine-reg-add - Add a `REG_MULTI_SZ` value, specifying the string [s]eparator character",
+    "content": "wine reg add '{{HKEY_CURRENT_USER\\path\\to\\key}}' /v {{value_name}} /t REG_MULTI_SZ /s {{#}} /d '{{string1#string2#string3}}'",
+    "group": "Linux Ops",
+    "description": "wine-reg-add: Add new keys and values to the Wine registry. (Add a `REG_MULTI_SZ` value, specifying the string [s]eparator character)",
+    "tags": [
+      "linux",
+      "wine-reg-add",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-add-5",
+    "type": "command",
+    "title": "wine-reg-add - [f]orcefully overwrite an existing value without prompting for confirmation",
+    "content": "wine reg add '{{HKEY_CURRENT_USER\\path\\to\\key}}' /v {{value_name}} /d {{data}} /f",
+    "group": "Linux Ops",
+    "description": "wine-reg-add: Add new keys and values to the Wine registry. ([f]orcefully overwrite an existing value without prompting for confirmation)",
+    "tags": [
+      "linux",
+      "wine-reg-add",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-add-6",
+    "type": "command",
+    "title": "wine-reg-add - Display help",
+    "content": "wine reg add /?",
+    "group": "Linux Ops",
+    "description": "wine-reg-add: Add new keys and values to the Wine registry. (Display help)",
+    "tags": [
+      "linux",
+      "wine-reg-add",
       "tldr",
       "en"
     ],
@@ -18138,7 +18243,7 @@
     "id": "tldr-en-linux-ip-4",
     "type": "command",
     "title": "ip - Show neighbors (ARP table)",
-    "content": "ip {{[n|neighbour]}}",
+    "content": "ip {{[n|neighbor]}}",
     "group": "Linux Ops",
     "description": "ip: Show/manipulate routing, devices, policy routing and tunnels. Some subcommands such as `address` have their own usage documentation. (Show neighbors (ARP table))",
     "tags": [
@@ -27482,85 +27587,10 @@
   {
     "id": "tldr-en-linux-ip-neighbour-0",
     "type": "command",
-    "title": "ip-neighbour - Display the neighbour/ARP table entries",
-    "content": "ip {{[n|neighbour]}}",
+    "title": "ip-neighbour - View documentation for the original command",
+    "content": "tldr ip neighbor",
     "group": "Linux Ops",
-    "description": "ip-neighbour: Neighbour/ARP/NDP tables management IP subcommand. (Display the neighbour/ARP table entries)",
-    "tags": [
-      "linux",
-      "ip-neighbour",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-ip-neighbour-1",
-    "type": "command",
-    "title": "ip-neighbour - Remove entries in the neighbour table on device `ethX`",
-    "content": "sudo ip {{[n|neighbour]}} {{[f|flush]}} dev {{ethX}}",
-    "group": "Linux Ops",
-    "description": "ip-neighbour: Neighbour/ARP/NDP tables management IP subcommand. (Remove entries in the neighbour table on device `ethX`)",
-    "tags": [
-      "linux",
-      "ip-neighbour",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-ip-neighbour-2",
-    "type": "command",
-    "title": "ip-neighbour - Perform a neighbour lookup and return a neighbour entry",
-    "content": "ip {{[n|neighbour]}} {{[g|get]}} {{lookup_ip}} dev {{ethX}}",
-    "group": "Linux Ops",
-    "description": "ip-neighbour: Neighbour/ARP/NDP tables management IP subcommand. (Perform a neighbour lookup and return a neighbour entry)",
-    "tags": [
-      "linux",
-      "ip-neighbour",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-ip-neighbour-3",
-    "type": "command",
-    "title": "ip-neighbour - Add or delete an ARP entry for the neighbour IP address to `ethX`",
-    "content": "sudo ip {{[n|neighbour]}} {{add|delete}} {{ip_address}} lladdr {{mac_address}} dev {{ethX}} nud reachable",
-    "group": "Linux Ops",
-    "description": "ip-neighbour: Neighbour/ARP/NDP tables management IP subcommand. (Add or delete an ARP entry for the neighbour IP address to `ethX`)",
-    "tags": [
-      "linux",
-      "ip-neighbour",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-ip-neighbour-4",
-    "type": "command",
-    "title": "ip-neighbour - Change or replace an ARP entry for the neighbour IP address to `ethX`",
-    "content": "sudo ip {{[n|neighbour]}} {{change|replace}} {{ip_address}} lladdr {{new_mac_address}} dev {{ethX}}",
-    "group": "Linux Ops",
-    "description": "ip-neighbour: Neighbour/ARP/NDP tables management IP subcommand. (Change or replace an ARP entry for the neighbour IP address to `ethX`)",
-    "tags": [
-      "linux",
-      "ip-neighbour",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-ip-neighbour-5",
-    "type": "command",
-    "title": "ip-neighbour - Display only IPv6 or IPv4 neighbours",
-    "content": "ip {{-6|-4}} {{[n|neighbour]}}",
-    "group": "Linux Ops",
-    "description": "ip-neighbour: Neighbour/ARP/NDP tables management IP subcommand. (Display only IPv6 or IPv4 neighbours)",
+    "description": "ip-neighbour: This command is an alias of `ip neighbor`. (View documentation for the original command)",
     "tags": [
       "linux",
       "ip-neighbour",
@@ -30435,6 +30465,81 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-wine-reg-query-0",
+    "type": "command",
+    "title": "wine-reg-query - Display all values directly under a key",
+    "content": "wine reg query '{{HKEY_CURRENT_USER\\path\\to\\key}}'",
+    "group": "Linux Ops",
+    "description": "wine-reg-query: Display keys, values, and data in the Wine registry. (Display all values directly under a key)",
+    "tags": [
+      "linux",
+      "wine-reg-query",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-query-1",
+    "type": "command",
+    "title": "wine-reg-query - Display a specific [v]alue of a key",
+    "content": "wine reg query '{{HKEY_CURRENT_USER\\path\\to\\key}}' /v {{value_name}}",
+    "group": "Linux Ops",
+    "description": "wine-reg-query: Display keys, values, and data in the Wine registry. (Display a specific [v]alue of a key)",
+    "tags": [
+      "linux",
+      "wine-reg-query",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-query-2",
+    "type": "command",
+    "title": "wine-reg-query - Display the default (unnamed) value of a key",
+    "content": "wine reg query '{{HKEY_CURRENT_USER\\path\\to\\key}}' /ve",
+    "group": "Linux Ops",
+    "description": "wine-reg-query: Display keys, values, and data in the Wine registry. (Display the default (unnamed) value of a key)",
+    "tags": [
+      "linux",
+      "wine-reg-query",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-query-3",
+    "type": "command",
+    "title": "wine-reg-query - Recursively display a key together with all its [s]ubkeys and values",
+    "content": "wine reg query '{{HKEY_CURRENT_USER\\path\\to\\key}}' /s",
+    "group": "Linux Ops",
+    "description": "wine-reg-query: Display keys, values, and data in the Wine registry. (Recursively display a key together with all its [s]ubkeys and values)",
+    "tags": [
+      "linux",
+      "wine-reg-query",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-query-4",
+    "type": "command",
+    "title": "wine-reg-query - Display help",
+    "content": "wine reg query /?",
+    "group": "Linux Ops",
+    "description": "wine-reg-query: Display keys, values, and data in the Wine registry. (Display help)",
+    "tags": [
+      "linux",
+      "wine-reg-query",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-systemctl-switch-root-0",
     "type": "command",
     "title": "systemctl-switch-root - Switch to a new root filesystem and execute its default init system",
@@ -32364,6 +32469,51 @@
     "tags": [
       "linux",
       "bluetui",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-xbanish-0",
+    "type": "command",
+    "title": "xbanish - Hide the cursor on key press",
+    "content": "xbanish",
+    "group": "Linux Ops",
+    "description": "xbanish: Hide the X11 cursor when a key is pressed and turn it back on when the mouse is used. (Hide the cursor on key press)",
+    "tags": [
+      "linux",
+      "xbanish",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-xbanish-1",
+    "type": "command",
+    "title": "xbanish - Always keep the cursor hidden, ignoring key presses and mouse usage",
+    "content": "xbanish -a",
+    "group": "Linux Ops",
+    "description": "xbanish: Hide the X11 cursor when a key is pressed and turn it back on when the mouse is used. (Always keep the cursor hidden, ignoring key presses and mouse usage)",
+    "tags": [
+      "linux",
+      "xbanish",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-xbanish-2",
+    "type": "command",
+    "title": "xbanish - Automatically hide the cursor after `n` seconds of inactivity",
+    "content": "xbanish -t {{n}}",
+    "group": "Linux Ops",
+    "description": "xbanish: Hide the X11 cursor when a key is pressed and turn it back on when the mouse is used. (Automatically hide the cursor after `n` seconds of inactivity)",
+    "tags": [
+      "linux",
+      "xbanish",
       "tldr",
       "en"
     ],
@@ -36330,6 +36480,96 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-wine-reg-delete-0",
+    "type": "command",
+    "title": "wine-reg-delete - Delete a registry key and all of its values",
+    "content": "wine reg delete '{{HKEY_CURRENT_USER\\path\\to\\key}}'",
+    "group": "Linux Ops",
+    "description": "wine-reg-delete: Delete keys and values from the Wine registry. (Delete a registry key and all of its values)",
+    "tags": [
+      "linux",
+      "wine-reg-delete",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-delete-1",
+    "type": "command",
+    "title": "wine-reg-delete - Delete a specific [v]alue under a key",
+    "content": "wine reg delete '{{HKEY_CURRENT_USER\\path\\to\\key}}' /v {{value_name}}",
+    "group": "Linux Ops",
+    "description": "wine-reg-delete: Delete keys and values from the Wine registry. (Delete a specific [v]alue under a key)",
+    "tags": [
+      "linux",
+      "wine-reg-delete",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-delete-2",
+    "type": "command",
+    "title": "wine-reg-delete - Delete the default (unnamed) value of a key",
+    "content": "wine reg delete '{{HKEY_CURRENT_USER\\path\\to\\key}}' /ve",
+    "group": "Linux Ops",
+    "description": "wine-reg-delete: Delete keys and values from the Wine registry. (Delete the default (unnamed) value of a key)",
+    "tags": [
+      "linux",
+      "wine-reg-delete",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-delete-3",
+    "type": "command",
+    "title": "wine-reg-delete - Delete all values under a key without removing the key itself",
+    "content": "wine reg delete '{{HKEY_CURRENT_USER\\path\\to\\key}}' /va",
+    "group": "Linux Ops",
+    "description": "wine-reg-delete: Delete keys and values from the Wine registry. (Delete all values under a key without removing the key itself)",
+    "tags": [
+      "linux",
+      "wine-reg-delete",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-delete-4",
+    "type": "command",
+    "title": "wine-reg-delete - [f]orcefully delete without prompting for confirmation",
+    "content": "wine reg delete '{{HKEY_CURRENT_USER\\path\\to\\key}}' /f",
+    "group": "Linux Ops",
+    "description": "wine-reg-delete: Delete keys and values from the Wine registry. ([f]orcefully delete without prompting for confirmation)",
+    "tags": [
+      "linux",
+      "wine-reg-delete",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-delete-5",
+    "type": "command",
+    "title": "wine-reg-delete - Display help",
+    "content": "wine reg delete /?",
+    "group": "Linux Ops",
+    "description": "wine-reg-delete: Delete keys and values from the Wine registry. (Display help)",
+    "tags": [
+      "linux",
+      "wine-reg-delete",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-snap.esa-0",
     "type": "command",
     "title": "snap.esa - Display all updates",
@@ -37143,7 +37383,7 @@
     "id": "tldr-en-linux-rig-1",
     "type": "command",
     "title": "rig - Display a [m]ale (or [f]emale) random name and address",
-    "content": "rig -{{m|f}}",
+    "content": "rig {{-m|-f}}",
     "group": "Linux Ops",
     "description": "rig: Utility to piece together a random first name, last name, street number and address, along with a geographically consistent (ie, they all match the same area) city, state, ZIP code, and area code. (Display a [m]ale (or [f]emale) random name and address)",
     "tags": [
@@ -45765,6 +46005,66 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-wine-reg-export-0",
+    "type": "command",
+    "title": "wine-reg-export - Export a registry key and its subkeys to a file",
+    "content": "wine reg export '{{HKEY_CURRENT_USER\\path\\to\\key}}' {{path/to/file.reg}}",
+    "group": "Linux Ops",
+    "description": "wine-reg-export: Export keys, values, and data from the Wine registry to a `.reg` file. (Export a registry key and its subkeys to a file)",
+    "tags": [
+      "linux",
+      "wine-reg-export",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-export-1",
+    "type": "command",
+    "title": "wine-reg-export - Export an entire registry hive to a file",
+    "content": "wine reg export {{HKEY_CURRENT_USER}} {{path/to/file.reg}}",
+    "group": "Linux Ops",
+    "description": "wine-reg-export: Export keys, values, and data from the Wine registry to a `.reg` file. (Export an entire registry hive to a file)",
+    "tags": [
+      "linux",
+      "wine-reg-export",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-export-2",
+    "type": "command",
+    "title": "wine-reg-export - Overwrite the output file if it already exists, without prompting",
+    "content": "wine reg export '{{HKEY_CURRENT_USER\\path\\to\\key}}' {{path/to/file.reg}} /y",
+    "group": "Linux Ops",
+    "description": "wine-reg-export: Export keys, values, and data from the Wine registry to a `.reg` file. (Overwrite the output file if it already exists, without prompting)",
+    "tags": [
+      "linux",
+      "wine-reg-export",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-export-3",
+    "type": "command",
+    "title": "wine-reg-export - Display help",
+    "content": "wine reg export /?",
+    "group": "Linux Ops",
+    "description": "wine-reg-export: Export keys, values, and data from the Wine registry to a `.reg` file. (Display help)",
+    "tags": [
+      "linux",
+      "wine-reg-export",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-systemctl-list-machines-0",
     "type": "command",
     "title": "systemctl-list-machines - Show all machines (host and running containers/VMs)",
@@ -49517,10 +49817,25 @@
   {
     "id": "tldr-en-linux-nethogs-3",
     "type": "command",
-    "title": "nethogs - Specify refresh rate",
-    "content": "sudo nethogs -t {{seconds}}",
+    "title": "nethogs - Specify refresh interval in seconds",
+    "content": "sudo nethogs -d {{seconds}}",
     "group": "Linux Ops",
-    "description": "nethogs: Monitor bandwidth usage per process. (Specify refresh rate)",
+    "description": "nethogs: Monitor bandwidth usage per process. (Specify refresh interval in seconds)",
+    "tags": [
+      "linux",
+      "nethogs",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-nethogs-4",
+    "type": "command",
+    "title": "nethogs - Change the traffic display unit (default: 0, 0 = kB/s, 1 = total kB, 2 = total bytes, 3 = total MB, 4 = MB/s, 5 = GB/s)",
+    "content": "sudo nethogs -v {{0|1|2|3|4|5}}",
+    "group": "Linux Ops",
+    "description": "nethogs: Monitor bandwidth usage per process. (Change the traffic display unit (default: 0, 0 = kB/s, 1 = total kB, 2 = total bytes, 3 = total MB, 4 = MB/s, 5 = GB/s))",
     "tags": [
       "linux",
       "nethogs",
@@ -61260,6 +61575,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-wine-reg-import-0",
+    "type": "command",
+    "title": "wine-reg-import - Import registry entries from a file",
+    "content": "wine reg import {{path/to/file.reg}}",
+    "group": "Linux Ops",
+    "description": "wine-reg-import: Import keys, values, and data into the Wine registry from a `.reg` file. (Import registry entries from a file)",
+    "tags": [
+      "linux",
+      "wine-reg-import",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-import-1",
+    "type": "command",
+    "title": "wine-reg-import - Display help",
+    "content": "wine reg import /?",
+    "group": "Linux Ops",
+    "description": "wine-reg-import: Import keys, values, and data into the Wine registry from a `.reg` file. (Display help)",
+    "tags": [
+      "linux",
+      "wine-reg-import",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-qm-guest-exec-0",
     "type": "command",
     "title": "qm-guest-exec - Execute a specific command via a guest agent",
@@ -63234,6 +63579,111 @@
     "tags": [
       "linux",
       "xmodmap",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-0",
+    "type": "command",
+    "title": "wine-reg - Add or overwrite a value under a key (creating the key if needed)",
+    "content": "wine reg add '{{HKEY_CURRENT_USER\\path\\to\\key}}' /v {{value_name}} /d {{data}} /f",
+    "group": "Linux Ops",
+    "description": "wine-reg: Manage keys and their values in the Wine registry. Some subcommands such as `add`, `delete`, `query`, etc. have their own usage documentation. (Add or overwrite a value under a key (creating the key if needed))",
+    "tags": [
+      "linux",
+      "wine-reg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-1",
+    "type": "command",
+    "title": "wine-reg - Display the values stored under a key",
+    "content": "wine reg query '{{HKEY_CURRENT_USER\\path\\to\\key}}'",
+    "group": "Linux Ops",
+    "description": "wine-reg: Manage keys and their values in the Wine registry. Some subcommands such as `add`, `delete`, `query`, etc. have their own usage documentation. (Display the values stored under a key)",
+    "tags": [
+      "linux",
+      "wine-reg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-2",
+    "type": "command",
+    "title": "wine-reg - Delete a value from a key",
+    "content": "wine reg delete '{{HKEY_CURRENT_USER\\path\\to\\key}}' /v {{value_name}} /f",
+    "group": "Linux Ops",
+    "description": "wine-reg: Manage keys and their values in the Wine registry. Some subcommands such as `add`, `delete`, `query`, etc. have their own usage documentation. (Delete a value from a key)",
+    "tags": [
+      "linux",
+      "wine-reg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-3",
+    "type": "command",
+    "title": "wine-reg - Copy a key and all its subkeys to a new location",
+    "content": "wine reg copy '{{HKEY_CURRENT_USER\\path\\to\\source_key}}' '{{HKEY_CURRENT_USER\\path\\to\\destination_key}}' /s",
+    "group": "Linux Ops",
+    "description": "wine-reg: Manage keys and their values in the Wine registry. Some subcommands such as `add`, `delete`, `query`, etc. have their own usage documentation. (Copy a key and all its subkeys to a new location)",
+    "tags": [
+      "linux",
+      "wine-reg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-4",
+    "type": "command",
+    "title": "wine-reg - Export a key and its subkeys to a `.reg` file",
+    "content": "wine reg export '{{HKEY_CURRENT_USER\\path\\to\\key}}' {{path/to/file.reg}}",
+    "group": "Linux Ops",
+    "description": "wine-reg: Manage keys and their values in the Wine registry. Some subcommands such as `add`, `delete`, `query`, etc. have their own usage documentation. (Export a key and its subkeys to a `.reg` file)",
+    "tags": [
+      "linux",
+      "wine-reg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-5",
+    "type": "command",
+    "title": "wine-reg - Import registry entries from a `.reg` file",
+    "content": "wine reg import {{path/to/file.reg}}",
+    "group": "Linux Ops",
+    "description": "wine-reg: Manage keys and their values in the Wine registry. Some subcommands such as `add`, `delete`, `query`, etc. have their own usage documentation. (Import registry entries from a `.reg` file)",
+    "tags": [
+      "linux",
+      "wine-reg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-6",
+    "type": "command",
+    "title": "wine-reg - Display help",
+    "content": "wine reg /?",
+    "group": "Linux Ops",
+    "description": "wine-reg: Manage keys and their values in the Wine registry. Some subcommands such as `add`, `delete`, `query`, etc. have their own usage documentation. (Display help)",
+    "tags": [
+      "linux",
+      "wine-reg",
       "tldr",
       "en"
     ],
@@ -66159,6 +66609,81 @@
     "tags": [
       "linux",
       "systemctl-reenable",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-copy-0",
+    "type": "command",
+    "title": "wine-reg-copy - Copy a registry key to a new location",
+    "content": "wine reg copy '{{HKEY_CURRENT_USER\\path\\to\\source_key}}' '{{HKEY_CURRENT_USER\\path\\to\\destination_key}}'",
+    "group": "Linux Ops",
+    "description": "wine-reg-copy: Copy a registry key to a new location within the Wine registry. (Copy a registry key to a new location)",
+    "tags": [
+      "linux",
+      "wine-reg-copy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-copy-1",
+    "type": "command",
+    "title": "wine-reg-copy - Recursively copy a key together with all its [s]ubkeys and values",
+    "content": "wine reg copy '{{HKEY_CURRENT_USER\\path\\to\\source_key}}' '{{HKEY_CURRENT_USER\\path\\to\\destination_key}}' /s",
+    "group": "Linux Ops",
+    "description": "wine-reg-copy: Copy a registry key to a new location within the Wine registry. (Recursively copy a key together with all its [s]ubkeys and values)",
+    "tags": [
+      "linux",
+      "wine-reg-copy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-copy-2",
+    "type": "command",
+    "title": "wine-reg-copy - [f]orcefully overwrite the destination without prompting for confirmation",
+    "content": "wine reg copy '{{HKEY_CURRENT_USER\\path\\to\\source_key}}' '{{HKEY_CURRENT_USER\\path\\to\\destination_key}}' /f",
+    "group": "Linux Ops",
+    "description": "wine-reg-copy: Copy a registry key to a new location within the Wine registry. ([f]orcefully overwrite the destination without prompting for confirmation)",
+    "tags": [
+      "linux",
+      "wine-reg-copy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-copy-3",
+    "type": "command",
+    "title": "wine-reg-copy - Recursively and [f]orcefully copy a key, overwriting the destination",
+    "content": "wine reg copy '{{HKEY_CURRENT_USER\\path\\to\\source_key}}' '{{HKEY_CURRENT_USER\\path\\to\\destination_key}}' /s /f",
+    "group": "Linux Ops",
+    "description": "wine-reg-copy: Copy a registry key to a new location within the Wine registry. (Recursively and [f]orcefully copy a key, overwriting the destination)",
+    "tags": [
+      "linux",
+      "wine-reg-copy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-wine-reg-copy-4",
+    "type": "command",
+    "title": "wine-reg-copy - Display help",
+    "content": "wine reg copy /?",
+    "group": "Linux Ops",
+    "description": "wine-reg-copy: Copy a registry key to a new location within the Wine registry. (Display help)",
+    "tags": [
+      "linux",
+      "wine-reg-copy",
       "tldr",
       "en"
     ],
@@ -99045,6 +99570,96 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-ip-neighbor-0",
+    "type": "command",
+    "title": "ip-neighbor - Display the neighbor/ARP table entries",
+    "content": "ip {{[n|neighbor]}}",
+    "group": "Linux Ops",
+    "description": "ip-neighbor: Neighbor/ARP/NDP tables management IP subcommand. (Display the neighbor/ARP table entries)",
+    "tags": [
+      "linux",
+      "ip-neighbor",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ip-neighbor-1",
+    "type": "command",
+    "title": "ip-neighbor - Remove entries in the neighbor table on device `ethX`",
+    "content": "sudo ip {{[n|neighbor]}} {{[f|flush]}} dev {{ethX}}",
+    "group": "Linux Ops",
+    "description": "ip-neighbor: Neighbor/ARP/NDP tables management IP subcommand. (Remove entries in the neighbor table on device `ethX`)",
+    "tags": [
+      "linux",
+      "ip-neighbor",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ip-neighbor-2",
+    "type": "command",
+    "title": "ip-neighbor - Perform a neighbor lookup and return a neighbor entry",
+    "content": "ip {{[n|neighbor]}} {{[g|get]}} {{lookup_ip}} dev {{ethX}}",
+    "group": "Linux Ops",
+    "description": "ip-neighbor: Neighbor/ARP/NDP tables management IP subcommand. (Perform a neighbor lookup and return a neighbor entry)",
+    "tags": [
+      "linux",
+      "ip-neighbor",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ip-neighbor-3",
+    "type": "command",
+    "title": "ip-neighbor - Add or delete an ARP entry for the neighbor IP address to `ethX`",
+    "content": "sudo ip {{[n|neighbor]}} {{add|delete}} {{ip_address}} lladdr {{mac_address}} dev {{ethX}} nud reachable",
+    "group": "Linux Ops",
+    "description": "ip-neighbor: Neighbor/ARP/NDP tables management IP subcommand. (Add or delete an ARP entry for the neighbor IP address to `ethX`)",
+    "tags": [
+      "linux",
+      "ip-neighbor",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ip-neighbor-4",
+    "type": "command",
+    "title": "ip-neighbor - Change or replace an ARP entry for the neighbor IP address to `ethX`",
+    "content": "sudo ip {{[n|neighbor]}} {{change|replace}} {{ip_address}} lladdr {{new_mac_address}} dev {{ethX}}",
+    "group": "Linux Ops",
+    "description": "ip-neighbor: Neighbor/ARP/NDP tables management IP subcommand. (Change or replace an ARP entry for the neighbor IP address to `ethX`)",
+    "tags": [
+      "linux",
+      "ip-neighbor",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ip-neighbor-5",
+    "type": "command",
+    "title": "ip-neighbor - Display only IPv6 or IPv4 neighbors",
+    "content": "ip {{-6|-4}} {{[n|neighbor]}}",
+    "group": "Linux Ops",
+    "description": "ip-neighbor: Neighbor/ARP/NDP tables management IP subcommand. (Display only IPv6 or IPv4 neighbors)",
+    "tags": [
+      "linux",
+      "ip-neighbor",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-runcon-0",
     "type": "command",
     "title": "runcon - Print the security context of the current execution context",
@@ -105744,81 +106359,6 @@
     "tags": [
       "linux",
       "fbset",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-foot-0",
-    "type": "command",
-    "title": "foot - Spawn a terminal",
-    "content": "foot",
-    "group": "Linux Ops",
-    "description": "foot: A fast, lightweight, and minimalistic Wayland terminal emulator. (Spawn a terminal)",
-    "tags": [
-      "linux",
-      "foot",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-foot-1",
-    "type": "command",
-    "title": "foot - Verify your config",
-    "content": "foot {{[-C|--check-config]}}",
-    "group": "Linux Ops",
-    "description": "foot: A fast, lightweight, and minimalistic Wayland terminal emulator. (Verify your config)",
-    "tags": [
-      "linux",
-      "foot",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-foot-2",
-    "type": "command",
-    "title": "foot - Start the server (use `footclient` to start terminal windows that connect to the server)",
-    "content": "foot {{[-s|--server]}}",
-    "group": "Linux Ops",
-    "description": "foot: A fast, lightweight, and minimalistic Wayland terminal emulator. (Start the server (use `footclient` to start terminal windows that connect to the server))",
-    "tags": [
-      "linux",
-      "foot",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-foot-3",
-    "type": "command",
-    "title": "foot - Display help",
-    "content": "foot {{[-h|--help]}}",
-    "group": "Linux Ops",
-    "description": "foot: A fast, lightweight, and minimalistic Wayland terminal emulator. (Display help)",
-    "tags": [
-      "linux",
-      "foot",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-foot-4",
-    "type": "command",
-    "title": "foot - Display version",
-    "content": "foot {{[-v|--version]}}",
-    "group": "Linux Ops",
-    "description": "foot: A fast, lightweight, and minimalistic Wayland terminal emulator. (Display version)",
-    "tags": [
-      "linux",
-      "foot",
       "tldr",
       "en"
     ],
@@ -120677,10 +121217,10 @@
   {
     "id": "tldr-en-linux-avahi-browse-2",
     "type": "command",
-    "title": "avahi-browse - List domains in the neighbourhood",
+    "title": "avahi-browse - List domains in the neighborhood",
     "content": "avahi-browse {{[-D|--browse-domains]}}",
     "group": "Linux Ops",
-    "description": "avahi-browse: Display services and hosts exposed on the local network via mDNS/DNS-SD. Avahi is compatible with Bonjour (Zeroconf) found in Apple devices. (List domains in the neighbourhood)",
+    "description": "avahi-browse: Display services and hosts exposed on the local network via mDNS/DNS-SD. Avahi is compatible with Bonjour (Zeroconf) found in Apple devices. (List domains in the neighborhood)",
     "tags": [
       "linux",
       "avahi-browse",

@@ -887,10 +887,10 @@
   {
     "id": "tldr-en-windows-out-host-2",
     "type": "command",
-    "title": "out-host - Interactively display a text file within the paging view (equivalent to `more {{path/to/file}}`)",
+    "title": "out-host - Interactively display a text file within the paging view (equivalent to `more path/to/file`)",
     "content": "Get-Content {{path\\to\\file}} | Out-Host -Paging",
     "group": "Windows",
-    "description": "out-host: Handle and output `stdout` of any command within PowerShell session. Can also be used as a substitute of `more`. Note: This command can only be used through PowerShell. (Interactively display a text file within the paging view (equivalent to `more {{path/to/file}}`))",
+    "description": "out-host: Handle and output `stdout` of any command within PowerShell session. Can also be used as a substitute of `more`. Note: This command can only be used through PowerShell. (Interactively display a text file within the paging view (equivalent to `more path/to/file`))",
     "tags": [
       "windows",
       "out-host",
@@ -4215,6 +4215,66 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-windows-moviemk-0",
+    "type": "command",
+    "title": "moviemk - Launch Windows Movie Maker",
+    "content": "moviemk",
+    "group": "Windows",
+    "description": "moviemk: Create and edit videos. Note: This program has been deprecated. (Launch Windows Movie Maker)",
+    "tags": [
+      "windows",
+      "moviemk",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-moviemk-1",
+    "type": "command",
+    "title": "moviemk - Open an existing Windows Movie Maker project file",
+    "content": "moviemk {{path\\to\\file.mswmm}}",
+    "group": "Windows",
+    "description": "moviemk: Create and edit videos. Note: This program has been deprecated. (Open an existing Windows Movie Maker project file)",
+    "tags": [
+      "windows",
+      "moviemk",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-moviemk-2",
+    "type": "command",
+    "title": "moviemk - Import a new audio, image, or video asset into an existing project",
+    "content": "moviemk {{path\\to\\asset}}",
+    "group": "Windows",
+    "description": "moviemk: Create and edit videos. Note: This program has been deprecated. (Import a new audio, image, or video asset into an existing project)",
+    "tags": [
+      "windows",
+      "moviemk",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-moviemk-3",
+    "type": "command",
+    "title": "moviemk - Import assets predefined by a Windows Movie Maker import file list XML file",
+    "content": "moviemk {{path\\to\\file.xml}}",
+    "group": "Windows",
+    "description": "moviemk: Create and edit videos. Note: This program has been deprecated. (Import assets predefined by a Windows Movie Maker import file list XML file)",
+    "tags": [
+      "windows",
+      "moviemk",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-windows-type-0",
     "type": "command",
     "title": "type - View documentation of the equivalent PowerShell command",
@@ -4404,6 +4464,126 @@
     "tags": [
       "windows",
       "scoop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wscript-0",
+    "type": "command",
+    "title": "wscript - Set `cscript` (CLI) or `wscript` (GUI) as the default interpreter to run Windows Script Host programs",
+    "content": "wscript //h:{{cscript|wscript}}",
+    "group": "Windows",
+    "description": "wscript: Run Windows Script Host programs in the graphical user interface (GUI). (Set `cscript` (CLI) or `wscript` (GUI) as the default interpreter to run Windows Script Host programs)",
+    "tags": [
+      "windows",
+      "wscript",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wscript-1",
+    "type": "command",
+    "title": "wscript - Run a script",
+    "content": "wscript {{path\\to\\script.vbs}}",
+    "group": "Windows",
+    "description": "wscript: Run Windows Script Host programs in the graphical user interface (GUI). (Run a script)",
+    "tags": [
+      "windows",
+      "wscript",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wscript-2",
+    "type": "command",
+    "title": "wscript - Run script in the [i]nteractive or [b]atch mode (enable or suppress alerts, prompts, and scripting errors)",
+    "content": "wscript //{{i|b}} {{path\\to\\script.vbs}}",
+    "group": "Windows",
+    "description": "wscript: Run Windows Script Host programs in the graphical user interface (GUI). (Run script in the [i]nteractive or [b]atch mode (enable or suppress alerts, prompts, and scripting errors))",
+    "tags": [
+      "windows",
+      "wscript",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wscript-3",
+    "type": "command",
+    "title": "wscript - Show or hide the Windows Script Host logo before running (useful to get Host version / suppress outputs)",
+    "content": "wscript {{//logo|//nologo}} {{path\\to\\script.vbs}}",
+    "group": "Windows",
+    "description": "wscript: Run Windows Script Host programs in the graphical user interface (GUI). (Show or hide the Windows Script Host logo before running (useful to get Host version / suppress outputs))",
+    "tags": [
+      "windows",
+      "wscript",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wscript-4",
+    "type": "command",
+    "title": "wscript - Specify a custom execution engine to run the script (useful for using custom script filenames)",
+    "content": "wscript //e:{{jscript|vbscript|custom_engine}} {{path\\to\\script.vbs}}",
+    "group": "Windows",
+    "description": "wscript: Run Windows Script Host programs in the graphical user interface (GUI). (Specify a custom execution engine to run the script (useful for using custom script filenames))",
+    "tags": [
+      "windows",
+      "wscript",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wscript-5",
+    "type": "command",
+    "title": "wscript - Set a [t]imeout for running a given script (in seconds)",
+    "content": "wscript //t:{{seconds}} {{path\\to\\script.vbs}}",
+    "group": "Windows",
+    "description": "wscript: Run Windows Script Host programs in the graphical user interface (GUI). (Set a [t]imeout for running a given script (in seconds))",
+    "tags": [
+      "windows",
+      "wscript",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wscript-6",
+    "type": "command",
+    "title": "wscript - Start the [d]ebugger and wait until a scripting error occurs",
+    "content": "wscript //d {{path\\to\\script.vbs}}",
+    "group": "Windows",
+    "description": "wscript: Run Windows Script Host programs in the graphical user interface (GUI). (Start the [d]ebugger and wait until a scripting error occurs)",
+    "tags": [
+      "windows",
+      "wscript",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wscript-7",
+    "type": "command",
+    "title": "wscript - Start debugging from the first script line in an IDE (e.g., Visual Studio)",
+    "content": "wscript //x {{path\\to\\script.vbs}}",
+    "group": "Windows",
+    "description": "wscript: Run Windows Script Host programs in the graphical user interface (GUI). (Start debugging from the first script line in an IDE (e.g., Visual Studio))",
+    "tags": [
+      "windows",
+      "wscript",
       "tldr",
       "en"
     ],
@@ -5658,9 +5838,9 @@
     "id": "tldr-en-windows-slmgr.vbs-0",
     "type": "command",
     "title": "slmgr.vbs - [d]isplay the current Windows [l]icense [i]nformation",
-    "content": "slmgr.vbs /dli",
+    "content": "cscript slmgr.vbs /dli",
     "group": "Windows",
-    "description": "slmgr.vbs: Install, activate, and manage Windows licenses. This command may override, deactivate, and/or remove your current Windows license. Please proceed with caution. ([d]isplay the current Windows [l]icense [i]nformation)",
+    "description": "slmgr.vbs: Install, activate, and manage Windows licenses. Use `cscript` to run this program as a CLI, or `wscript` as a GUI. Note: This command may override, deactivate, and/or remove your current Windows license, so please proceed cautiously. ([d]isplay the current Windows [l]icense [i]nformation)",
     "tags": [
       "windows",
       "slmgr.vbs",
@@ -5673,9 +5853,9 @@
     "id": "tldr-en-windows-slmgr.vbs-1",
     "type": "command",
     "title": "slmgr.vbs - [d]isplay the ins[t]allation [i]D for the current device. Useful for offline license activation",
-    "content": "slmgr.vbs /dti",
+    "content": "cscript slmgr.vbs /dti",
     "group": "Windows",
-    "description": "slmgr.vbs: Install, activate, and manage Windows licenses. This command may override, deactivate, and/or remove your current Windows license. Please proceed with caution. ([d]isplay the ins[t]allation [i]D for the current device. Useful for offline license activation)",
+    "description": "slmgr.vbs: Install, activate, and manage Windows licenses. Use `cscript` to run this program as a CLI, or `wscript` as a GUI. Note: This command may override, deactivate, and/or remove your current Windows license, so please proceed cautiously. ([d]isplay the ins[t]allation [i]D for the current device. Useful for offline license activation)",
     "tags": [
       "windows",
       "slmgr.vbs",
@@ -5688,9 +5868,9 @@
     "id": "tldr-en-windows-slmgr.vbs-2",
     "type": "command",
     "title": "slmgr.vbs - Display the current license's e[xp]i[r]ation date and time",
-    "content": "slmgr.vbs /xpr",
+    "content": "cscript slmgr.vbs /xpr",
     "group": "Windows",
-    "description": "slmgr.vbs: Install, activate, and manage Windows licenses. This command may override, deactivate, and/or remove your current Windows license. Please proceed with caution. (Display the current license's e[xp]i[r]ation date and time)",
+    "description": "slmgr.vbs: Install, activate, and manage Windows licenses. Use `cscript` to run this program as a CLI, or `wscript` as a GUI. Note: This command may override, deactivate, and/or remove your current Windows license, so please proceed cautiously. (Display the current license's e[xp]i[r]ation date and time)",
     "tags": [
       "windows",
       "slmgr.vbs",
@@ -5703,9 +5883,9 @@
     "id": "tldr-en-windows-slmgr.vbs-3",
     "type": "command",
     "title": "slmgr.vbs - [i]nstall a new Windows license [p]roduct [k]ey. Requires Administrator privileges and will override the existing license",
-    "content": "slmgr.vbs /ipk {{product_key}}",
+    "content": "cscript slmgr.vbs /ipk {{product_key}}",
     "group": "Windows",
-    "description": "slmgr.vbs: Install, activate, and manage Windows licenses. This command may override, deactivate, and/or remove your current Windows license. Please proceed with caution. ([i]nstall a new Windows license [p]roduct [k]ey. Requires Administrator privileges and will override the existing license)",
+    "description": "slmgr.vbs: Install, activate, and manage Windows licenses. Use `cscript` to run this program as a CLI, or `wscript` as a GUI. Note: This command may override, deactivate, and/or remove your current Windows license, so please proceed cautiously. ([i]nstall a new Windows license [p]roduct [k]ey. Requires Administrator privileges and will override the existing license)",
     "tags": [
       "windows",
       "slmgr.vbs",
@@ -5718,9 +5898,9 @@
     "id": "tldr-en-windows-slmgr.vbs-4",
     "type": "command",
     "title": "slmgr.vbs - [a]c[t]ivate the Windows product license [o]nline. Requires Administrator privileges to do so",
-    "content": "slmgr.vbs /ato",
+    "content": "cscript slmgr.vbs /ato",
     "group": "Windows",
-    "description": "slmgr.vbs: Install, activate, and manage Windows licenses. This command may override, deactivate, and/or remove your current Windows license. Please proceed with caution. ([a]c[t]ivate the Windows product license [o]nline. Requires Administrator privileges to do so)",
+    "description": "slmgr.vbs: Install, activate, and manage Windows licenses. Use `cscript` to run this program as a CLI, or `wscript` as a GUI. Note: This command may override, deactivate, and/or remove your current Windows license, so please proceed cautiously. ([a]c[t]ivate the Windows product license [o]nline. Requires Administrator privileges to do so)",
     "tags": [
       "windows",
       "slmgr.vbs",
@@ -5733,9 +5913,9 @@
     "id": "tldr-en-windows-slmgr.vbs-5",
     "type": "command",
     "title": "slmgr.vbs - [a]c[t]ivate the Windows [p]roduct license offline. Requires Administrator privileges and a Confirmation ID provided by Microsoft Product Activation Center",
-    "content": "slmgr.vbs /atp {{confirmation_id}}",
+    "content": "cscript slmgr.vbs /atp {{confirmation_id}}",
     "group": "Windows",
-    "description": "slmgr.vbs: Install, activate, and manage Windows licenses. This command may override, deactivate, and/or remove your current Windows license. Please proceed with caution. ([a]c[t]ivate the Windows [p]roduct license offline. Requires Administrator privileges and a Confirmation ID provided by Microsoft Product Activation Center)",
+    "description": "slmgr.vbs: Install, activate, and manage Windows licenses. Use `cscript` to run this program as a CLI, or `wscript` as a GUI. Note: This command may override, deactivate, and/or remove your current Windows license, so please proceed cautiously. ([a]c[t]ivate the Windows [p]roduct license offline. Requires Administrator privileges and a Confirmation ID provided by Microsoft Product Activation Center)",
     "tags": [
       "windows",
       "slmgr.vbs",
@@ -5748,9 +5928,9 @@
     "id": "tldr-en-windows-slmgr.vbs-6",
     "type": "command",
     "title": "slmgr.vbs - [c]lear the current license's [p]roduct [k]e[y] from the Windows Registry. This will not deactivate or uninstall the current license, but prevents the key from being stolen by malicious programs in the future",
-    "content": "slmgr.vbs /cpky",
+    "content": "cscript slmgr.vbs /cpky",
     "group": "Windows",
-    "description": "slmgr.vbs: Install, activate, and manage Windows licenses. This command may override, deactivate, and/or remove your current Windows license. Please proceed with caution. ([c]lear the current license's [p]roduct [k]e[y] from the Windows Registry. This will not deactivate or uninstall the current license, but prevents the key from being stolen by malicious programs in the future)",
+    "description": "slmgr.vbs: Install, activate, and manage Windows licenses. Use `cscript` to run this program as a CLI, or `wscript` as a GUI. Note: This command may override, deactivate, and/or remove your current Windows license, so please proceed cautiously. ([c]lear the current license's [p]roduct [k]e[y] from the Windows Registry. This will not deactivate or uninstall the current license, but prevents the key from being stolen by malicious programs in the future)",
     "tags": [
       "windows",
       "slmgr.vbs",
@@ -5763,9 +5943,9 @@
     "id": "tldr-en-windows-slmgr.vbs-7",
     "type": "command",
     "title": "slmgr.vbs - [u]ninstall the current license (by its [p]roduct [k]ey)",
-    "content": "slmgr.vbs /upk",
+    "content": "cscript slmgr.vbs /upk",
     "group": "Windows",
-    "description": "slmgr.vbs: Install, activate, and manage Windows licenses. This command may override, deactivate, and/or remove your current Windows license. Please proceed with caution. ([u]ninstall the current license (by its [p]roduct [k]ey))",
+    "description": "slmgr.vbs: Install, activate, and manage Windows licenses. Use `cscript` to run this program as a CLI, or `wscript` as a GUI. Note: This command may override, deactivate, and/or remove your current Windows license, so please proceed cautiously. ([u]ninstall the current license (by its [p]roduct [k]ey))",
     "tags": [
       "windows",
       "slmgr.vbs",
@@ -6530,7 +6710,7 @@
     "title": "ospp.vbs - Install a product key (Note: It replaces the existing key)",
     "content": "cscript ospp.vbs /inpkey:{{product_key}}",
     "group": "Windows",
-    "description": "ospp.vbs: Install, activate, and manage volume licensed versions of Microsoft Office products. Note: This command may override, deactivate, and/or remove your current volume of licensed Office product versions, so please proceed cautiously. (Install a product key (Note: It replaces the existing key))",
+    "description": "ospp.vbs: Install, activate, and manage volume licensed versions of Microsoft Office products. Use `cscript` to run this program in the CLI, or `wscript` in the GUI. Note: This command may override, deactivate, and/or remove your current volume of licensed Office product versions, so please proceed cautiously. (Install a product key (Note: It replaces the existing key))",
     "tags": [
       "windows",
       "ospp.vbs",
@@ -6545,7 +6725,7 @@
     "title": "ospp.vbs - Uninstall an installed product key with the last five digits of the product key",
     "content": "cscript ospp.vbs /unpkey:{{product_key_digits}}",
     "group": "Windows",
-    "description": "ospp.vbs: Install, activate, and manage volume licensed versions of Microsoft Office products. Note: This command may override, deactivate, and/or remove your current volume of licensed Office product versions, so please proceed cautiously. (Uninstall an installed product key with the last five digits of the product key)",
+    "description": "ospp.vbs: Install, activate, and manage volume licensed versions of Microsoft Office products. Use `cscript` to run this program in the CLI, or `wscript` in the GUI. Note: This command may override, deactivate, and/or remove your current volume of licensed Office product versions, so please proceed cautiously. (Uninstall an installed product key with the last five digits of the product key)",
     "tags": [
       "windows",
       "ospp.vbs",
@@ -6560,7 +6740,7 @@
     "title": "ospp.vbs - Set a KMS host name",
     "content": "cscript ospp.vbs /sethst:{{ip|hostname}}",
     "group": "Windows",
-    "description": "ospp.vbs: Install, activate, and manage volume licensed versions of Microsoft Office products. Note: This command may override, deactivate, and/or remove your current volume of licensed Office product versions, so please proceed cautiously. (Set a KMS host name)",
+    "description": "ospp.vbs: Install, activate, and manage volume licensed versions of Microsoft Office products. Use `cscript` to run this program in the CLI, or `wscript` in the GUI. Note: This command may override, deactivate, and/or remove your current volume of licensed Office product versions, so please proceed cautiously. (Set a KMS host name)",
     "tags": [
       "windows",
       "ospp.vbs",
@@ -6575,7 +6755,7 @@
     "title": "ospp.vbs - Set a KMS port",
     "content": "cscript ospp.vbs /setprt:{{port}}",
     "group": "Windows",
-    "description": "ospp.vbs: Install, activate, and manage volume licensed versions of Microsoft Office products. Note: This command may override, deactivate, and/or remove your current volume of licensed Office product versions, so please proceed cautiously. (Set a KMS port)",
+    "description": "ospp.vbs: Install, activate, and manage volume licensed versions of Microsoft Office products. Use `cscript` to run this program in the CLI, or `wscript` in the GUI. Note: This command may override, deactivate, and/or remove your current volume of licensed Office product versions, so please proceed cautiously. (Set a KMS port)",
     "tags": [
       "windows",
       "ospp.vbs",
@@ -6590,7 +6770,7 @@
     "title": "ospp.vbs - Activate installed Office product keys",
     "content": "cscript ospp.vbs /act",
     "group": "Windows",
-    "description": "ospp.vbs: Install, activate, and manage volume licensed versions of Microsoft Office products. Note: This command may override, deactivate, and/or remove your current volume of licensed Office product versions, so please proceed cautiously. (Activate installed Office product keys)",
+    "description": "ospp.vbs: Install, activate, and manage volume licensed versions of Microsoft Office products. Use `cscript` to run this program in the CLI, or `wscript` in the GUI. Note: This command may override, deactivate, and/or remove your current volume of licensed Office product versions, so please proceed cautiously. (Activate installed Office product keys)",
     "tags": [
       "windows",
       "ospp.vbs",
@@ -6605,7 +6785,7 @@
     "title": "ospp.vbs - Display license information for installed product keys",
     "content": "cscript ospp.vbs /dstatus",
     "group": "Windows",
-    "description": "ospp.vbs: Install, activate, and manage volume licensed versions of Microsoft Office products. Note: This command may override, deactivate, and/or remove your current volume of licensed Office product versions, so please proceed cautiously. (Display license information for installed product keys)",
+    "description": "ospp.vbs: Install, activate, and manage volume licensed versions of Microsoft Office products. Use `cscript` to run this program in the CLI, or `wscript` in the GUI. Note: This command may override, deactivate, and/or remove your current volume of licensed Office product versions, so please proceed cautiously. (Display license information for installed product keys)",
     "tags": [
       "windows",
       "ospp.vbs",
@@ -6639,6 +6819,126 @@
     "tags": [
       "windows",
       "pwlauncher",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-cscript-0",
+    "type": "command",
+    "title": "cscript - Set `cscript` (CLI) or `wscript` (GUI) as the default interpreter to run Windows Script Host programs",
+    "content": "cscript //h:{{cscript|wscript}}",
+    "group": "Windows",
+    "description": "cscript: Run Windows Script Host programs in the command-line interface (CLI). (Set `cscript` (CLI) or `wscript` (GUI) as the default interpreter to run Windows Script Host programs)",
+    "tags": [
+      "windows",
+      "cscript",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-cscript-1",
+    "type": "command",
+    "title": "cscript - Run a script",
+    "content": "cscript {{path\\to\\script.vbs}}",
+    "group": "Windows",
+    "description": "cscript: Run Windows Script Host programs in the command-line interface (CLI). (Run a script)",
+    "tags": [
+      "windows",
+      "cscript",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-cscript-2",
+    "type": "command",
+    "title": "cscript - Run script in the [i]nteractive or [b]atch mode (enable or suppress alerts, prompts, and scripting errors)",
+    "content": "cscript //{{i|b}} {{path\\to\\script.vbs}}",
+    "group": "Windows",
+    "description": "cscript: Run Windows Script Host programs in the command-line interface (CLI). (Run script in the [i]nteractive or [b]atch mode (enable or suppress alerts, prompts, and scripting errors))",
+    "tags": [
+      "windows",
+      "cscript",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-cscript-3",
+    "type": "command",
+    "title": "cscript - Show or hide the Windows Script Host logo before running (useful to get Host version / suppress outputs)",
+    "content": "cscript {{//logo|//nologo}} {{path\\to\\script.vbs}}",
+    "group": "Windows",
+    "description": "cscript: Run Windows Script Host programs in the command-line interface (CLI). (Show or hide the Windows Script Host logo before running (useful to get Host version / suppress outputs))",
+    "tags": [
+      "windows",
+      "cscript",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-cscript-4",
+    "type": "command",
+    "title": "cscript - Specify a custom execution engine to run the script (useful for using custom script filenames)",
+    "content": "cscript //e:{{jscript|vbscript|custom_engine}} {{path\\to\\script.vbs}}",
+    "group": "Windows",
+    "description": "cscript: Run Windows Script Host programs in the command-line interface (CLI). (Specify a custom execution engine to run the script (useful for using custom script filenames))",
+    "tags": [
+      "windows",
+      "cscript",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-cscript-5",
+    "type": "command",
+    "title": "cscript - Set a [t]imeout for running a given script (in seconds)",
+    "content": "cscript //t:{{seconds}} {{path\\to\\script.vbs}}",
+    "group": "Windows",
+    "description": "cscript: Run Windows Script Host programs in the command-line interface (CLI). (Set a [t]imeout for running a given script (in seconds))",
+    "tags": [
+      "windows",
+      "cscript",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-cscript-6",
+    "type": "command",
+    "title": "cscript - Start [d]ebugger and wait until a scripting error occurs",
+    "content": "cscript //d {{path\\to\\script.vbs}}",
+    "group": "Windows",
+    "description": "cscript: Run Windows Script Host programs in the command-line interface (CLI). (Start [d]ebugger and wait until a scripting error occurs)",
+    "tags": [
+      "windows",
+      "cscript",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-cscript-7",
+    "type": "command",
+    "title": "cscript - Start debugging from the first script line in an IDE (e.g., Visual Studio)",
+    "content": "cscript //x {{path\\to\\script.vbs}}",
+    "group": "Windows",
+    "description": "cscript: Run Windows Script Host programs in the command-line interface (CLI). (Start debugging from the first script line in an IDE (e.g., Visual Studio))",
+    "tags": [
+      "windows",
+      "cscript",
       "tldr",
       "en"
     ],
@@ -7104,6 +7404,66 @@
     "tags": [
       "windows",
       "choco-push",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-dvdmaker-0",
+    "type": "command",
+    "title": "dvdmaker - Launch Windows DVD Maker",
+    "content": "dvdmaker",
+    "group": "Windows",
+    "description": "dvdmaker: Create and burn video DVDs. Note: This program has been deprecated. (Launch Windows DVD Maker)",
+    "tags": [
+      "windows",
+      "dvdmaker",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-dvdmaker-1",
+    "type": "command",
+    "title": "dvdmaker - Specify the DVD disk burner drive",
+    "content": "dvdmaker -drive:{{F}}",
+    "group": "Windows",
+    "description": "dvdmaker: Create and burn video DVDs. Note: This program has been deprecated. (Specify the DVD disk burner drive)",
+    "tags": [
+      "windows",
+      "dvdmaker",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-dvdmaker-2",
+    "type": "command",
+    "title": "dvdmaker - Import assets predefined by a Windows DVD Maker import file list XML file",
+    "content": "dvdmaker {{path\\to\\file.xml}}",
+    "group": "Windows",
+    "description": "dvdmaker: Create and burn video DVDs. Note: This program has been deprecated. (Import assets predefined by a Windows DVD Maker import file list XML file)",
+    "tags": [
+      "windows",
+      "dvdmaker",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-dvdmaker-3",
+    "type": "command",
+    "title": "dvdmaker - Reset Windows DVD Maker configuration to factory settings (Warning: This will reset your app settings)",
+    "content": "dvdmaker _clear_",
+    "group": "Windows",
+    "description": "dvdmaker: Create and burn video DVDs. Note: This program has been deprecated. (Reset Windows DVD Maker configuration to factory settings (Warning: This will reset your app settings))",
+    "tags": [
+      "windows",
+      "dvdmaker",
       "tldr",
       "en"
     ],
@@ -9564,6 +9924,36 @@
     "tags": [
       "windows",
       "mkdir",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wmpnscfg-0",
+    "type": "command",
+    "title": "wmpnscfg - Start the daemon",
+    "content": "wmpnscfg",
+    "group": "Windows",
+    "description": "wmpnscfg: Manage network sharing for Windows Media Player (legacy). Note: It should not be invoked manually. (Start the daemon)",
+    "tags": [
+      "windows",
+      "wmpnscfg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wmpnscfg-1",
+    "type": "command",
+    "title": "wmpnscfg - Close all instances of the daemon",
+    "content": "wmpnscfg /close",
+    "group": "Windows",
+    "description": "wmpnscfg: Manage network sharing for Windows Media Player (legacy). Note: It should not be invoked manually. (Close all instances of the daemon)",
+    "tags": [
+      "windows",
+      "wmpnscfg",
       "tldr",
       "en"
     ],
@@ -13740,6 +14130,111 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-windows-wmplayer-0",
+    "type": "command",
+    "title": "wmplayer - Launch Windows Media Player",
+    "content": "wmplayer",
+    "group": "Windows",
+    "description": "wmplayer: Play and manage media files using Windows Media Player. Note: This command only applies to Windows Media Player versions released prior to Windows 10. (Launch Windows Media Player)",
+    "tags": [
+      "windows",
+      "wmplayer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wmplayer-1",
+    "type": "command",
+    "title": "wmplayer - Play an audio, video, or playlist file",
+    "content": "wmplayer {{path\\to\\file}}",
+    "group": "Windows",
+    "description": "wmplayer: Play and manage media files using Windows Media Player. Note: This command only applies to Windows Media Player versions released prior to Windows 10. (Play an audio, video, or playlist file)",
+    "tags": [
+      "windows",
+      "wmplayer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wmplayer-2",
+    "type": "command",
+    "title": "wmplayer - Play a DVD or Audio CD",
+    "content": "wmplayer /device:{{dvd|audiocd}}",
+    "group": "Windows",
+    "description": "wmplayer: Play and manage media files using Windows Media Player. Note: This command only applies to Windows Media Player versions released prior to Windows 10. (Play a DVD or Audio CD)",
+    "tags": [
+      "windows",
+      "wmplayer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wmplayer-3",
+    "type": "command",
+    "title": "wmplayer - Play a file in fullscreen mode",
+    "content": "wmplayer {{path\\to\\file}} /fullscreen",
+    "group": "Windows",
+    "description": "wmplayer: Play and manage media files using Windows Media Player. Note: This command only applies to Windows Media Player versions released prior to Windows 10. (Play a file in fullscreen mode)",
+    "tags": [
+      "windows",
+      "wmplayer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wmplayer-4",
+    "type": "command",
+    "title": "wmplayer - Specify a user interface skin when playing a file",
+    "content": "wmplayer \"{{path\\to\\file}}?wmpskin={{skin_name}}\"",
+    "group": "Windows",
+    "description": "wmplayer: Play and manage media files using Windows Media Player. Note: This command only applies to Windows Media Player versions released prior to Windows 10. (Specify a user interface skin when playing a file)",
+    "tags": [
+      "windows",
+      "wmplayer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wmplayer-5",
+    "type": "command",
+    "title": "wmplayer - Show the Media Library page",
+    "content": "wmplayer /Task MediaLibrary",
+    "group": "Windows",
+    "description": "wmplayer: Play and manage media files using Windows Media Player. Note: This command only applies to Windows Media Player versions released prior to Windows 10. (Show the Media Library page)",
+    "tags": [
+      "windows",
+      "wmplayer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wmplayer-6",
+    "type": "command",
+    "title": "wmplayer - Show the Now Playing page",
+    "content": "wmplayer /Task NowPlaying",
+    "group": "Windows",
+    "description": "wmplayer: Play and manage media files using Windows Media Player. Note: This command only applies to Windows Media Player versions released prior to Windows 10. (Show the Now Playing page)",
+    "tags": [
+      "windows",
+      "wmplayer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-windows-reg-copy-0",
     "type": "command",
     "title": "reg-copy - Copy a registry key to a new registry location",
@@ -14034,6 +14529,81 @@
     "tags": [
       "windows",
       "lib",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wmpconfig-0",
+    "type": "command",
+    "title": "wmpconfig - Turn network sharing on or off",
+    "content": "wmpconfig {{HMEOn|HMEOff}}",
+    "group": "Windows",
+    "description": "wmpconfig: Manage network sharing for Windows Media Player (legacy). Note: This command requires administrator privileges. (Turn network sharing on or off)",
+    "tags": [
+      "windows",
+      "wmpconfig",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wmpconfig-1",
+    "type": "command",
+    "title": "wmpconfig - Stop a specific network device from sharing to this computer using its MAC address",
+    "content": "wmpconfig DisableHMEDevice {{mac_address}}",
+    "group": "Windows",
+    "description": "wmpconfig: Manage network sharing for Windows Media Player (legacy). Note: This command requires administrator privileges. (Stop a specific network device from sharing to this computer using its MAC address)",
+    "tags": [
+      "windows",
+      "wmpconfig",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wmpconfig-2",
+    "type": "command",
+    "title": "wmpconfig - Remove a network device from sharing to this computer",
+    "content": "wmpconfig RemoveHMEDevice {{mac_address}}",
+    "group": "Windows",
+    "description": "wmpconfig: Manage network sharing for Windows Media Player (legacy). Note: This command requires administrator privileges. (Remove a network device from sharing to this computer)",
+    "tags": [
+      "windows",
+      "wmpconfig",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wmpconfig-3",
+    "type": "command",
+    "title": "wmpconfig - Restore a network device from sharing to this computer",
+    "content": "wmpconfig RestoreHMEDevice {{mac_address}}",
+    "group": "Windows",
+    "description": "wmpconfig: Manage network sharing for Windows Media Player (legacy). Note: This command requires administrator privileges. (Restore a network device from sharing to this computer)",
+    "tags": [
+      "windows",
+      "wmpconfig",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-wmpconfig-4",
+    "type": "command",
+    "title": "wmpconfig - Set the parental control level for playing DVD content",
+    "content": "wmpconfig SetDVDParentalLevel {{3}}",
+    "group": "Windows",
+    "description": "wmpconfig: Manage network sharing for Windows Media Player (legacy). Note: This command requires administrator privileges. (Set the parental control level for playing DVD content)",
+    "tags": [
+      "windows",
+      "wmpconfig",
       "tldr",
       "en"
     ],
@@ -15234,6 +15804,81 @@
     "tags": [
       "windows",
       "if",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-compact-0",
+    "type": "command",
+    "title": "compact - Display the compression status of files in the current directory",
+    "content": "compact",
+    "group": "Windows",
+    "description": "compact: Display or change the compression state of files and directories on NTFS partitions. (Display the compression status of files in the current directory)",
+    "tags": [
+      "windows",
+      "compact",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-compact-1",
+    "type": "command",
+    "title": "compact - Compress a specific file",
+    "content": "compact /c {{path\\to\\file}}",
+    "group": "Windows",
+    "description": "compact: Display or change the compression state of files and directories on NTFS partitions. (Compress a specific file)",
+    "tags": [
+      "windows",
+      "compact",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-compact-2",
+    "type": "command",
+    "title": "compact - Uncompress a specific file",
+    "content": "compact /u {{path\\to\\file}}",
+    "group": "Windows",
+    "description": "compact: Display or change the compression state of files and directories on NTFS partitions. (Uncompress a specific file)",
+    "tags": [
+      "windows",
+      "compact",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-compact-3",
+    "type": "command",
+    "title": "compact - Compress all files in a directory and its subdirectories",
+    "content": "compact /c /s {{path\\to\\directory}}",
+    "group": "Windows",
+    "description": "compact: Display or change the compression state of files and directories on NTFS partitions. (Compress all files in a directory and its subdirectories)",
+    "tags": [
+      "windows",
+      "compact",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-compact-4",
+    "type": "command",
+    "title": "compact - Uncompress all files in a directory and its subdirectories",
+    "content": "compact /u /s {{path\\to\\directory}}",
+    "group": "Windows",
+    "description": "compact: Display or change the compression state of files and directories on NTFS partitions. (Uncompress all files in a directory and its subdirectories)",
+    "tags": [
+      "windows",
+      "compact",
       "tldr",
       "en"
     ],
