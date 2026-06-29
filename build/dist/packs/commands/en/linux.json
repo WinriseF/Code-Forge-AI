@@ -16907,10 +16907,10 @@
   {
     "id": "tldr-en-linux-lsipc-1",
     "type": "command",
-    "title": "lsipc - Show information about active shared [m]emory segments, message [q]ueues, or [s]empahore sets",
+    "title": "lsipc - Show information about active shared [m]emory segments, message [q]ueues, or [s]emaphore sets",
     "content": "lsipc {{--shmems|--queues|--semaphores}}",
     "group": "Linux Ops",
-    "description": "lsipc: Show information on System V IPC facilities currently employed in the system. (Show information about active shared [m]emory segments, message [q]ueues, or [s]empahore sets)",
+    "description": "lsipc: Show information on System V IPC facilities currently employed in the system. (Show information about active shared [m]emory segments, message [q]ueues, or [s]emaphore sets)",
     "tags": [
       "linux",
       "lsipc",
@@ -17823,9 +17823,9 @@
     "id": "tldr-en-linux-koji-call-0",
     "type": "command",
     "title": "koji-call - Call build function with scratch option",
-    "content": "koji call build '\"{{git+https://src.fedoraproject.org/rpms/vim.git#e847a50297a216229050bf4db3d06a139104e7cf}}\"' \\\"{{target}}\\\" --kwargs '{\"opts\":{\"scratch\": True}}'",
+    "content": "koji call build '\"{{git+https://src.fedoraproject.org/rpms/vim.git#e847a50297a216229050bf4db3d06a139104e7cf}}\"' \\\"{{target}}\\\" --kwargs '{\"opts\":{\"scratch\": True\\}\\}'",
     "group": "Linux Ops",
-    "description": "koji-call: Execute an arbitrary XML-RPC call. Eg: build function declaration is build(src, target, opts=None, priority=None, channel=None). (Call build function with scratch option)",
+    "description": "koji-call: Execute an arbitrary XML-RPC call. Example: a build function declaration is `build(src, target, opts=None, priority=None, channel=None)`. (Call build function with scratch option)",
     "tags": [
       "linux",
       "koji-call",
@@ -17838,9 +17838,9 @@
     "id": "tldr-en-linux-koji-call-1",
     "type": "command",
     "title": "koji-call - Call build function with arch_override option",
-    "content": "koji call build '\"{{git+https://src.fedoraproject.org/rpms/vim.git#e847a50297a216229050bf4db3d06a139104e7cf}}\"' \\\"{{target}}\\\" --kwargs '{\"opts\":{\"arch_override\":\"sw_64\"}}'",
+    "content": "koji call build '\"{{git+https://src.fedoraproject.org/rpms/vim.git#e847a50297a216229050bf4db3d06a139104e7cf}}\"' \\\"{{target}}\\\" --kwargs '{\"opts\":{\"arch_override\":\"sw_64\"\\}\\}'",
     "group": "Linux Ops",
-    "description": "koji-call: Execute an arbitrary XML-RPC call. Eg: build function declaration is build(src, target, opts=None, priority=None, channel=None). (Call build function with arch_override option)",
+    "description": "koji-call: Execute an arbitrary XML-RPC call. Example: a build function declaration is `build(src, target, opts=None, priority=None, channel=None)`. (Call build function with arch_override option)",
     "tags": [
       "linux",
       "koji-call",
@@ -17855,7 +17855,7 @@
     "title": "koji-call - Call build function on `default` channel",
     "content": "koji call build '\"{{git+https://src.fedoraproject.org/rpms/vim.git#e847a50297a216229050bf4db3d06a139104e7cf}}\"' \\\"{{target}}\\\" --kwargs '{\"channel\":\"default\"}'",
     "group": "Linux Ops",
-    "description": "koji-call: Execute an arbitrary XML-RPC call. Eg: build function declaration is build(src, target, opts=None, priority=None, channel=None). (Call build function on `default` channel)",
+    "description": "koji-call: Execute an arbitrary XML-RPC call. Example: a build function declaration is `build(src, target, opts=None, priority=None, channel=None)`. (Call build function on `default` channel)",
     "tags": [
       "linux",
       "koji-call",
@@ -17870,7 +17870,7 @@
     "title": "koji-call - Display help",
     "content": "koji call {{[-h|--help]}}",
     "group": "Linux Ops",
-    "description": "koji-call: Execute an arbitrary XML-RPC call. Eg: build function declaration is build(src, target, opts=None, priority=None, channel=None). (Display help)",
+    "description": "koji-call: Execute an arbitrary XML-RPC call. Example: a build function declaration is `build(src, target, opts=None, priority=None, channel=None)`. (Display help)",
     "tags": [
       "linux",
       "koji-call",
@@ -18174,6 +18174,111 @@
     "tags": [
       "linux",
       "wl-paste",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-grabc-0",
+    "type": "command",
+    "title": "grabc - Pick a pixel and print its color in hexadecimal",
+    "content": "grabc",
+    "group": "Linux Ops",
+    "description": "grabc: A tool to identify a pixel color of an X Window. (Pick a pixel and print its color in hexadecimal)",
+    "tags": [
+      "linux",
+      "grabc",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-grabc-1",
+    "type": "command",
+    "title": "grabc - Pick a pixel and print its RGB values",
+    "content": "grabc -rgb",
+    "group": "Linux Ops",
+    "description": "grabc: A tool to identify a pixel color of an X Window. (Pick a pixel and print its RGB values)",
+    "tags": [
+      "linux",
+      "grabc",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-grabc-2",
+    "type": "command",
+    "title": "grabc - Enable debug messages",
+    "content": "grabc -d",
+    "group": "Linux Ops",
+    "description": "grabc: A tool to identify a pixel color of an X Window. (Enable debug messages)",
+    "tags": [
+      "linux",
+      "grabc",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-grabc-3",
+    "type": "command",
+    "title": "grabc - Print the hex ID of the clicked window",
+    "content": "grabc -W",
+    "group": "Linux Ops",
+    "description": "grabc: A tool to identify a pixel color of an X Window. (Print the hex ID of the clicked window)",
+    "tags": [
+      "linux",
+      "grabc",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-grabc-4",
+    "type": "command",
+    "title": "grabc - Pick a pixel at a specific location on a specific window",
+    "content": "grabc -w {{window_id}} -l +{{x}}+{{y}}",
+    "group": "Linux Ops",
+    "description": "grabc: A tool to identify a pixel color of an X Window. (Pick a pixel at a specific location on a specific window)",
+    "tags": [
+      "linux",
+      "grabc",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-grabc-5",
+    "type": "command",
+    "title": "grabc - Print all 16 bits of color (default prints high 8 bits)",
+    "content": "grabc -a",
+    "group": "Linux Ops",
+    "description": "grabc: A tool to identify a pixel color of an X Window. (Print all 16 bits of color (default prints high 8 bits))",
+    "tags": [
+      "linux",
+      "grabc",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-grabc-6",
+    "type": "command",
+    "title": "grabc - Display help",
+    "content": "grabc -h",
+    "group": "Linux Ops",
+    "description": "grabc: A tool to identify a pixel color of an X Window. (Display help)",
+    "tags": [
+      "linux",
+      "grabc",
       "tldr",
       "en"
     ],
@@ -56805,6 +56910,81 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-llama-cli-0",
+    "type": "command",
+    "title": "llama-cli - Start up LLM [m]odel and interface",
+    "content": "llama-cli {{[-m|--model]}} {{path/to/model}}",
+    "group": "Linux Ops",
+    "description": "llama-cli: Command-line interface for LLM inference. (Start up LLM [m]odel and interface)",
+    "tags": [
+      "linux",
+      "llama-cli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-llama-cli-1",
+    "type": "command",
+    "title": "llama-cli - Start with setup prompt [c]ontext size",
+    "content": "llama-cli {{[-m|--model]}} {{path/to/model}} {{[-c|--ctx-size]}} {{number}}",
+    "group": "Linux Ops",
+    "description": "llama-cli: Command-line interface for LLM inference. (Start with setup prompt [c]ontext size)",
+    "tags": [
+      "linux",
+      "llama-cli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-llama-cli-2",
+    "type": "command",
+    "title": "llama-cli - Start with set offload [n]umber of layer [g]pu [l]ayers",
+    "content": "llama-cli {{[-m|--model]}} {{path/to/model}} {{[-ngl|--gpu-layers|--n-gpu-layers]}} {{auto|all|number}}",
+    "group": "Linux Ops",
+    "description": "llama-cli: Command-line interface for LLM inference. (Start with set offload [n]umber of layer [g]pu [l]ayers)",
+    "tags": [
+      "linux",
+      "llama-cli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-llama-cli-3",
+    "type": "command",
+    "title": "llama-cli - Start with sending content as [sys]tem prompt from a [f]ile",
+    "content": "llama-cli {{[-m|--model]}} {{path/to/model}} {{[-sysf|--system-prompt-file]}} {{path/to/prompt}}",
+    "group": "Linux Ops",
+    "description": "llama-cli: Command-line interface for LLM inference. (Start with sending content as [sys]tem prompt from a [f]ile)",
+    "tags": [
+      "linux",
+      "llama-cli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-llama-cli-4",
+    "type": "command",
+    "title": "llama-cli - Start with sending content in [f]ile as first prompt",
+    "content": "llama-cli {{[-m|--model]}} {{path/to/model}} {{[-f|--file]}} {{path/to/prompt}}",
+    "group": "Linux Ops",
+    "description": "llama-cli: Command-line interface for LLM inference. (Start with sending content in [f]ile as first prompt)",
+    "tags": [
+      "linux",
+      "llama-cli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-extrepo-0",
     "type": "command",
     "title": "extrepo - Search for a given package",
@@ -61367,10 +61547,10 @@
   {
     "id": "tldr-en-linux-grim-0",
     "type": "command",
-    "title": "grim - Screenshot all outputs",
+    "title": "grim - Screenshot all outputs to the default path",
     "content": "grim",
     "group": "Linux Ops",
-    "description": "grim: Grab images (Screenshots) from a Wayland compositor. (Screenshot all outputs)",
+    "description": "grim: Grab images (screenshots) from a Wayland compositor. By default, files are saved to `$GRIM_DEFAULT_DIR` or `$XDG_PICTURES_DIR` if the first variable is unset. If none of the environment variables are set, files are saved to the current working directory. (Screenshot all outputs to the default path)",
     "tags": [
       "linux",
       "grim",
@@ -61382,10 +61562,10 @@
   {
     "id": "tldr-en-linux-grim-1",
     "type": "command",
-    "title": "grim - Screenshot a specific output",
-    "content": "grim -o {{path/to/output_file}}",
+    "title": "grim - Screenshot a specific output to the specified file",
+    "content": "grim -o {{DP-1}} {{path/to/output.png}}",
     "group": "Linux Ops",
-    "description": "grim: Grab images (Screenshots) from a Wayland compositor. (Screenshot a specific output)",
+    "description": "grim: Grab images (screenshots) from a Wayland compositor. By default, files are saved to `$GRIM_DEFAULT_DIR` or `$XDG_PICTURES_DIR` if the first variable is unset. If none of the environment variables are set, files are saved to the current working directory. (Screenshot a specific output to the specified file)",
     "tags": [
       "linux",
       "grim",
@@ -61397,10 +61577,10 @@
   {
     "id": "tldr-en-linux-grim-2",
     "type": "command",
-    "title": "grim - Screenshot a specific region",
-    "content": "grim -g \"{{x_position}},{{y_position}} {{width}}x{{height}}\"",
+    "title": "grim - Select a specific region using `slurp` and screenshot it",
+    "content": "grim -g \"$(slurp)\" {{path/to/output.png}}",
     "group": "Linux Ops",
-    "description": "grim: Grab images (Screenshots) from a Wayland compositor. (Screenshot a specific region)",
+    "description": "grim: Grab images (screenshots) from a Wayland compositor. By default, files are saved to `$GRIM_DEFAULT_DIR` or `$XDG_PICTURES_DIR` if the first variable is unset. If none of the environment variables are set, files are saved to the current working directory. (Select a specific region using `slurp` and screenshot it)",
     "tags": [
       "linux",
       "grim",
@@ -61412,10 +61592,10 @@
   {
     "id": "tldr-en-linux-grim-3",
     "type": "command",
-    "title": "grim - Select a specific region and screenshot it, (using slurp)",
-    "content": "grim -g \"{{$(slurp)}}\"",
+    "title": "grim - Screenshot and copy the image to the clipboard",
+    "content": "grim - | {{clipboard_manager}}",
     "group": "Linux Ops",
-    "description": "grim: Grab images (Screenshots) from a Wayland compositor. (Select a specific region and screenshot it, (using slurp))",
+    "description": "grim: Grab images (screenshots) from a Wayland compositor. By default, files are saved to `$GRIM_DEFAULT_DIR` or `$XDG_PICTURES_DIR` if the first variable is unset. If none of the environment variables are set, files are saved to the current working directory. (Screenshot and copy the image to the clipboard)",
     "tags": [
       "linux",
       "grim",
@@ -61427,10 +61607,10 @@
   {
     "id": "tldr-en-linux-grim-4",
     "type": "command",
-    "title": "grim - Use a custom filename",
-    "content": "grim \"{{path/to/file.png}}\"",
+    "title": "grim - Set the output file type (default: `png`)",
+    "content": "grim -t {{png|ppm|jpeg}} {{path/to/output_file}}",
     "group": "Linux Ops",
-    "description": "grim: Grab images (Screenshots) from a Wayland compositor. (Use a custom filename)",
+    "description": "grim: Grab images (screenshots) from a Wayland compositor. By default, files are saved to `$GRIM_DEFAULT_DIR` or `$XDG_PICTURES_DIR` if the first variable is unset. If none of the environment variables are set, files are saved to the current working directory. (Set the output file type (default: `png`))",
     "tags": [
       "linux",
       "grim",
@@ -61442,10 +61622,40 @@
   {
     "id": "tldr-en-linux-grim-5",
     "type": "command",
-    "title": "grim - Screenshot and copy to clipboard",
-    "content": "grim - | {{clipboard_manager}}",
+    "title": "grim - Set the PNG compression level (default: 6)",
+    "content": "grim -l {{0-9}} {{path/to/output.png}}",
     "group": "Linux Ops",
-    "description": "grim: Grab images (Screenshots) from a Wayland compositor. (Screenshot and copy to clipboard)",
+    "description": "grim: Grab images (screenshots) from a Wayland compositor. By default, files are saved to `$GRIM_DEFAULT_DIR` or `$XDG_PICTURES_DIR` if the first variable is unset. If none of the environment variables are set, files are saved to the current working directory. (Set the PNG compression level (default: 6))",
+    "tags": [
+      "linux",
+      "grim",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-grim-6",
+    "type": "command",
+    "title": "grim - Set the JPEG quality level (default: 80)",
+    "content": "grim -t jpeg -q {{0-100}} {{path/to/output.jpg}}",
+    "group": "Linux Ops",
+    "description": "grim: Grab images (screenshots) from a Wayland compositor. By default, files are saved to `$GRIM_DEFAULT_DIR` or `$XDG_PICTURES_DIR` if the first variable is unset. If none of the environment variables are set, files are saved to the current working directory. (Set the JPEG quality level (default: 80))",
+    "tags": [
+      "linux",
+      "grim",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-grim-7",
+    "type": "command",
+    "title": "grim - Include cursors in the screenshot",
+    "content": "grim -c",
+    "group": "Linux Ops",
+    "description": "grim: Grab images (screenshots) from a Wayland compositor. By default, files are saved to `$GRIM_DEFAULT_DIR` or `$XDG_PICTURES_DIR` if the first variable is unset. If none of the environment variables are set, files are saved to the current working directory. (Include cursors in the screenshot)",
     "tags": [
       "linux",
       "grim",
@@ -72527,10 +72737,10 @@
   {
     "id": "tldr-en-linux-qm-snapshot-2",
     "type": "command",
-    "title": "qm-snapshot - Create a snapshot including the vmstate",
+    "title": "qm-snapshot - Create a snapshot including the running virtual machine state",
     "content": "qm {{[sn|snapshot]}} {{100}} {{snapshot_name}} --description {{description}} --vmstate 1",
     "group": "Linux Ops",
-    "description": "qm-snapshot: Create virtual machine snapshots. (Create a snapshot including the vmstate)",
+    "description": "qm-snapshot: Create virtual machine snapshots. (Create a snapshot including the running virtual machine state)",
     "tags": [
       "linux",
       "qm-snapshot",
@@ -89163,7 +89373,7 @@
     "id": "tldr-en-linux-woeusb-0",
     "type": "command",
     "title": "woeusb - Format a USB then create a bootable Windows installation drive",
-    "content": "woeusb {{[-d|--device]}} {{path/to/windows.iso}} {{/dev/sdX}}",
+    "content": "sudo woeusb {{[-d|--device]}} {{path/to/windows.iso}} {{/dev/sdX}}",
     "group": "Linux Ops",
     "description": "woeusb: Windows media creation tool. (Format a USB then create a bootable Windows installation drive)",
     "tags": [
@@ -123572,10 +123782,10 @@
   {
     "id": "tldr-en-linux-ipcs-1",
     "type": "command",
-    "title": "ipcs - Show information about active shared [m]emory segments, message [q]ueues or [s]empahore sets",
+    "title": "ipcs - Show information about active shared [m]emory segments, message [q]ueues or [s]emaphore sets",
     "content": "ipcs {{--shmems|--queues|--semaphores}}",
     "group": "Linux Ops",
-    "description": "ipcs: Show information about the usage of System V IPC facilities: shared memory segments, message queues, and semaphore arrays. (Show information about active shared [m]emory segments, message [q]ueues or [s]empahore sets)",
+    "description": "ipcs: Show information about the usage of System V IPC facilities: shared memory segments, message queues, and semaphore arrays. (Show information about active shared [m]emory segments, message [q]ueues or [s]emaphore sets)",
     "tags": [
       "linux",
       "ipcs",

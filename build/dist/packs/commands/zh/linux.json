@@ -2118,7 +2118,7 @@
     "id": "tldr-zh-linux-ip-4",
     "type": "command",
     "title": "ip - 显示邻居（ARP 表）",
-    "content": "ip {{[n|neighbour]}}",
+    "content": "ip {{[n|neighbor]}}",
     "group": "Linux 运维",
     "description": "ip: 显示/操作路由、设备、策略路由和隧道。 一些子命令（例如 `address`）有自己的使用文档。 (显示邻居（ARP 表）)",
     "tags": [

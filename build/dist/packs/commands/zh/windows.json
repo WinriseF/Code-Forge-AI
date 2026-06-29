@@ -2730,6 +2730,126 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-windows-clear-history-0",
+    "type": "command",
+    "title": "clear-history - 清除当前会话中的所有命令历史记录",
+    "content": "Clear-History",
+    "group": "Windows",
+    "description": "clear-history: 删除 PowerShell 会话命令历史记录中的条目。 注意：`clhy` 可以作为 `Clear-History` 的别名使用。 (清除当前会话中的所有命令历史记录)",
+    "tags": [
+      "windows",
+      "clear-history",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-clear-history-1",
+    "type": "command",
+    "title": "clear-history - 按指定名称清除命令",
+    "content": "Clear-History -CommandLine \"{{命令}}\"",
+    "group": "Windows",
+    "description": "clear-history: 删除 PowerShell 会话命令历史记录中的条目。 注意：`clhy` 可以作为 `Clear-History` 的别名使用。 (按指定名称清除命令)",
+    "tags": [
+      "windows",
+      "clear-history",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-clear-history-2",
+    "type": "command",
+    "title": "clear-history - 按名称清除多个命令",
+    "content": "Clear-History -CommandLine {{\"命令1\", \"命令2\", ...}}",
+    "group": "Windows",
+    "description": "clear-history: 删除 PowerShell 会话命令历史记录中的条目。 注意：`clhy` 可以作为 `Clear-History` 的别名使用。 (按名称清除多个命令)",
+    "tags": [
+      "windows",
+      "clear-history",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-clear-history-3",
+    "type": "command",
+    "title": "clear-history - 按 ID 清除指定历史记录条目",
+    "content": "Clear-History -Id {{ID_编号}}",
+    "group": "Windows",
+    "description": "clear-history: 删除 PowerShell 会话命令历史记录中的条目。 注意：`clhy` 可以作为 `Clear-History` 的别名使用。 (按 ID 清除指定历史记录条目)",
+    "tags": [
+      "windows",
+      "clear-history",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-clear-history-4",
+    "type": "command",
+    "title": "clear-history - 清除多个 ID",
+    "content": "Clear-History -Id {{id1, id2, ...}}",
+    "group": "Windows",
+    "description": "clear-history: 删除 PowerShell 会话命令历史记录中的条目。 注意：`clhy` 可以作为 `Clear-History` 的别名使用。 (清除多个 ID)",
+    "tags": [
+      "windows",
+      "clear-history",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-clear-history-5",
+    "type": "command",
+    "title": "clear-history - 清除 ID 范围内的命令",
+    "content": "Clear-History -Id ({{起始_ID}}..{{结束_ID}})",
+    "group": "Windows",
+    "description": "clear-history: 删除 PowerShell 会话命令历史记录中的条目。 注意：`clhy` 可以作为 `Clear-History` 的别名使用。 (清除 ID 范围内的命令)",
+    "tags": [
+      "windows",
+      "clear-history",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-clear-history-6",
+    "type": "command",
+    "title": "clear-history - 显示将被删除的内容",
+    "content": "Clear-History -WhatIf",
+    "group": "Windows",
+    "description": "clear-history: 删除 PowerShell 会话命令历史记录中的条目。 注意：`clhy` 可以作为 `Clear-History` 的别名使用。 (显示将被删除的内容)",
+    "tags": [
+      "windows",
+      "clear-history",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-clear-history-7",
+    "type": "command",
+    "title": "clear-history - 清除前请求确认",
+    "content": "Clear-History -Confirm",
+    "group": "Windows",
+    "description": "clear-history: 删除 PowerShell 会话命令历史记录中的条目。 注意：`clhy` 可以作为 `Clear-History` 的别名使用。 (清除前请求确认)",
+    "tags": [
+      "windows",
+      "clear-history",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-windows-choco-pack-0",
     "type": "command",
     "title": "choco-pack - 将 `.nuspec` 打包到已编译的 `.nupkg`",

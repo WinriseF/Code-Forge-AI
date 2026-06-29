@@ -11105,7 +11105,7 @@
     "title": "base64 - Encode a file",
     "content": "base64 {{path/to/file}}",
     "group": "Common Tools",
-    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout`. (Encode a file)",
+    "description": "base64: Encode or decode file or `stdin` to/from Base64, to `stdout`. (Encode a file)",
     "tags": [
       "common",
       "base64",
@@ -11120,7 +11120,7 @@
     "title": "base64 - Wrap encoded output at a specific width (`0` disables wrapping)",
     "content": "base64 {{[-w|--wrap]}} {{0|76|...}} {{path/to/file}}",
     "group": "Common Tools",
-    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout`. (Wrap encoded output at a specific width (`0` disables wrapping))",
+    "description": "base64: Encode or decode file or `stdin` to/from Base64, to `stdout`. (Wrap encoded output at a specific width (`0` disables wrapping))",
     "tags": [
       "common",
       "base64",
@@ -11135,7 +11135,7 @@
     "title": "base64 - Decode a file",
     "content": "base64 {{[-d|--decode]}} {{path/to/file}}",
     "group": "Common Tools",
-    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout`. (Decode a file)",
+    "description": "base64: Encode or decode file or `stdin` to/from Base64, to `stdout`. (Decode a file)",
     "tags": [
       "common",
       "base64",
@@ -11150,7 +11150,7 @@
     "title": "base64 - Encode from `stdin`",
     "content": "{{command}} | base64",
     "group": "Common Tools",
-    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout`. (Encode from `stdin`)",
+    "description": "base64: Encode or decode file or `stdin` to/from Base64, to `stdout`. (Encode from `stdin`)",
     "tags": [
       "common",
       "base64",
@@ -11165,7 +11165,7 @@
     "title": "base64 - Decode from `stdin`",
     "content": "{{command}} | base64 {{[-d|--decode]}}",
     "group": "Common Tools",
-    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout`. (Decode from `stdin`)",
+    "description": "base64: Encode or decode file or `stdin` to/from Base64, to `stdout`. (Decode from `stdin`)",
     "tags": [
       "common",
       "base64",
@@ -13404,6 +13404,126 @@
     "tags": [
       "common",
       "hyperfine",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-obsidian-0",
+    "type": "command",
+    "title": "obsidian - Open today's daily note",
+    "content": "obsidian daily",
+    "group": "Common Tools",
+    "description": "obsidian: Command-line interface for the Obsidian Markdown note-taking app. Note: Requires the Obsidian app to be running. (Open today's daily note)",
+    "tags": [
+      "common",
+      "obsidian",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-obsidian-1",
+    "type": "command",
+    "title": "obsidian - Append a task to today's daily note",
+    "content": "obsidian daily:append content=\"- [ ] {{task}}\"",
+    "group": "Common Tools",
+    "description": "obsidian: Command-line interface for the Obsidian Markdown note-taking app. Note: Requires the Obsidian app to be running. (Append a task to today's daily note)",
+    "tags": [
+      "common",
+      "obsidian",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-obsidian-2",
+    "type": "command",
+    "title": "obsidian - Create a new note from a template",
+    "content": "obsidian create name=\"{{note_name}}\" template={{template_name}}",
+    "group": "Common Tools",
+    "description": "obsidian: Command-line interface for the Obsidian Markdown note-taking app. Note: Requires the Obsidian app to be running. (Create a new note from a template)",
+    "tags": [
+      "common",
+      "obsidian",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-obsidian-3",
+    "type": "command",
+    "title": "obsidian - Search the vault for text",
+    "content": "obsidian search query=\"{{search_query}}\"",
+    "group": "Common Tools",
+    "description": "obsidian: Command-line interface for the Obsidian Markdown note-taking app. Note: Requires the Obsidian app to be running. (Search the vault for text)",
+    "tags": [
+      "common",
+      "obsidian",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-obsidian-4",
+    "type": "command",
+    "title": "obsidian - List all incomplete tasks in the vault",
+    "content": "obsidian tasks todo",
+    "group": "Common Tools",
+    "description": "obsidian: Command-line interface for the Obsidian Markdown note-taking app. Note: Requires the Obsidian app to be running. (List all incomplete tasks in the vault)",
+    "tags": [
+      "common",
+      "obsidian",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-obsidian-5",
+    "type": "command",
+    "title": "obsidian - Read a specific note",
+    "content": "obsidian read file={{note_name}}",
+    "group": "Common Tools",
+    "description": "obsidian: Command-line interface for the Obsidian Markdown note-taking app. Note: Requires the Obsidian app to be running. (Read a specific note)",
+    "tags": [
+      "common",
+      "obsidian",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-obsidian-6",
+    "type": "command",
+    "title": "obsidian - Read a note at a specific path relative to the vault root",
+    "content": "obsidian read path={{path/to/note.md}}",
+    "group": "Common Tools",
+    "description": "obsidian: Command-line interface for the Obsidian Markdown note-taking app. Note: Requires the Obsidian app to be running. (Read a note at a specific path relative to the vault root)",
+    "tags": [
+      "common",
+      "obsidian",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-obsidian-7",
+    "type": "command",
+    "title": "obsidian - Read the active note",
+    "content": "obsidian read",
+    "group": "Common Tools",
+    "description": "obsidian: Command-line interface for the Obsidian Markdown note-taking app. Note: Requires the Obsidian app to be running. (Read the active note)",
+    "tags": [
+      "common",
+      "obsidian",
       "tldr",
       "en"
     ],
@@ -25854,6 +25974,66 @@
     "tags": [
       "common",
       "talosctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-send-text-0",
+    "type": "command",
+    "title": "wacli-send-text - Send a text message to a phone number",
+    "content": "wacli send text --to {{phone_number}} --message \"{{message}}\"",
+    "group": "Common Tools",
+    "description": "wacli-send-text: Send a text message via WhatsApp. (Send a text message to a phone number)",
+    "tags": [
+      "common",
+      "wacli-send-text",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-send-text-1",
+    "type": "command",
+    "title": "wacli-send-text - Send a text message to a specific JID",
+    "content": "wacli send text --to {{phone_number}}@s.whatsapp.net --message \"{{message}}\"",
+    "group": "Common Tools",
+    "description": "wacli-send-text: Send a text message via WhatsApp. (Send a text message to a specific JID)",
+    "tags": [
+      "common",
+      "wacli-send-text",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-send-text-2",
+    "type": "command",
+    "title": "wacli-send-text - Send a text message with a custom timeout",
+    "content": "wacli send text --to {{phone_number}} --message \"{{message}}\" --timeout {{10m}}",
+    "group": "Common Tools",
+    "description": "wacli-send-text: Send a text message via WhatsApp. (Send a text message with a custom timeout)",
+    "tags": [
+      "common",
+      "wacli-send-text",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-send-text-3",
+    "type": "command",
+    "title": "wacli-send-text - Send a text message using a custom store path",
+    "content": "wacli send text --to {{phone_number}} --message \"{{message}}\" --store {{path/to/store}}",
+    "group": "Common Tools",
+    "description": "wacli-send-text: Send a text message via WhatsApp. (Send a text message using a custom store path)",
+    "tags": [
+      "common",
+      "wacli-send-text",
       "tldr",
       "en"
     ],
@@ -38852,10 +39032,10 @@
   {
     "id": "tldr-en-common-basenc-0",
     "type": "command",
-    "title": "basenc - Encode a file with base64 encoding",
+    "title": "basenc - Encode a file with Base64 encoding",
     "content": "basenc --base64 {{path/to/file}}",
     "group": "Common Tools",
-    "description": "basenc: Encode or decode file or `stdin` using a specified encoding, to `stdout`. (Encode a file with base64 encoding)",
+    "description": "basenc: Encode or decode file or `stdin` using a specified encoding, to `stdout`. (Encode a file with Base64 encoding)",
     "tags": [
       "common",
       "basenc",
@@ -38867,10 +39047,10 @@
   {
     "id": "tldr-en-common-basenc-1",
     "type": "command",
-    "title": "basenc - Decode a file with base64 encoding",
+    "title": "basenc - Decode a file with Base64 encoding",
     "content": "basenc {{[-d|--decode]}} --base64 {{path/to/file}}",
     "group": "Common Tools",
-    "description": "basenc: Encode or decode file or `stdin` using a specified encoding, to `stdout`. (Decode a file with base64 encoding)",
+    "description": "basenc: Encode or decode file or `stdin` using a specified encoding, to `stdout`. (Decode a file with Base64 encoding)",
     "tags": [
       "common",
       "basenc",
@@ -38882,10 +39062,10 @@
   {
     "id": "tldr-en-common-basenc-2",
     "type": "command",
-    "title": "basenc - Encode from `stdin` with base32 encoding with 42 columns",
+    "title": "basenc - Encode from `stdin` with Base32 encoding with 42 columns",
     "content": "{{command}} | basenc --base32 {{[-w|--wrap]}} 42",
     "group": "Common Tools",
-    "description": "basenc: Encode or decode file or `stdin` using a specified encoding, to `stdout`. (Encode from `stdin` with base32 encoding with 42 columns)",
+    "description": "basenc: Encode or decode file or `stdin` using a specified encoding, to `stdout`. (Encode from `stdin` with Base32 encoding with 42 columns)",
     "tags": [
       "common",
       "basenc",
@@ -38897,10 +39077,10 @@
   {
     "id": "tldr-en-common-basenc-3",
     "type": "command",
-    "title": "basenc - Encode from `stdin` with base32 encoding",
+    "title": "basenc - Encode from `stdin` with Base32 encoding",
     "content": "{{command}} | basenc --base32",
     "group": "Common Tools",
-    "description": "basenc: Encode or decode file or `stdin` using a specified encoding, to `stdout`. (Encode from `stdin` with base32 encoding)",
+    "description": "basenc: Encode or decode file or `stdin` using a specified encoding, to `stdout`. (Encode from `stdin` with Base32 encoding)",
     "tags": [
       "common",
       "basenc",
@@ -51647,10 +51827,10 @@
   {
     "id": "tldr-en-common-aws-kinesis-2",
     "type": "command",
-    "title": "aws-kinesis - Write a record to a Kinesis stream with inline base64 encoding",
+    "title": "aws-kinesis - Write a record to a Kinesis stream with inline Base64 encoding",
     "content": "aws kinesis put-record --stream-name {{name}} --partition-key {{key}} --data \"$( echo \"{{my raw message}}\" | base64 )\"",
     "group": "Common Tools",
-    "description": "aws-kinesis: Interact with the Amazon Kinesis Data Streams, a service that scales elastically for real-time processing of streaming big data. (Write a record to a Kinesis stream with inline base64 encoding)",
+    "description": "aws-kinesis: Interact with the Amazon Kinesis Data Streams, a service that scales elastically for real-time processing of streaming big data. (Write a record to a Kinesis stream with inline Base64 encoding)",
     "tags": [
       "common",
       "aws-kinesis",
@@ -55665,6 +55845,111 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-longbridge-0",
+    "type": "command",
+    "title": "longbridge - Display a real-time quote for a stock (US, HK, A-share, or Singapore)",
+    "content": "longbridge quote {{NVDA.US}}",
+    "group": "Common Tools",
+    "description": "longbridge: AI-native tool for Longbridge Securities - real-time market data, portfolio management, and trading. (Display a real-time quote for a stock (US, HK, A-share, or Singapore))",
+    "tags": [
+      "common",
+      "longbridge",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-longbridge-1",
+    "type": "command",
+    "title": "longbridge - Show a candlestick (K-line) chart for a symbol",
+    "content": "longbridge kline {{700.HK}}",
+    "group": "Common Tools",
+    "description": "longbridge: AI-native tool for Longbridge Securities - real-time market data, portfolio management, and trading. (Show a candlestick (K-line) chart for a symbol)",
+    "tags": [
+      "common",
+      "longbridge",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-longbridge-2",
+    "type": "command",
+    "title": "longbridge - List current portfolio positions",
+    "content": "longbridge positions",
+    "group": "Common Tools",
+    "description": "longbridge: AI-native tool for Longbridge Securities - real-time market data, portfolio management, and trading. (List current portfolio positions)",
+    "tags": [
+      "common",
+      "longbridge",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-longbridge-3",
+    "type": "command",
+    "title": "longbridge - Show portfolio P&L summary",
+    "content": "longbridge portfolio",
+    "group": "Common Tools",
+    "description": "longbridge: AI-native tool for Longbridge Securities - real-time market data, portfolio management, and trading. (Show portfolio P&L summary)",
+    "tags": [
+      "common",
+      "longbridge",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-longbridge-4",
+    "type": "command",
+    "title": "longbridge - Fetch the latest news for a symbol",
+    "content": "longbridge news {{AAPL.US}}",
+    "group": "Common Tools",
+    "description": "longbridge: AI-native tool for Longbridge Securities - real-time market data, portfolio management, and trading. (Fetch the latest news for a symbol)",
+    "tags": [
+      "common",
+      "longbridge",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-longbridge-5",
+    "type": "command",
+    "title": "longbridge - View financial statements for a company",
+    "content": "longbridge financial-report {{600519.SH}}",
+    "group": "Common Tools",
+    "description": "longbridge: AI-native tool for Longbridge Securities - real-time market data, portfolio management, and trading. (View financial statements for a company)",
+    "tags": [
+      "common",
+      "longbridge",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-longbridge-6",
+    "type": "command",
+    "title": "longbridge - Log in to a Longbridge account",
+    "content": "longbridge auth login",
+    "group": "Common Tools",
+    "description": "longbridge: AI-native tool for Longbridge Securities - real-time market data, portfolio management, and trading. (Log in to a Longbridge account)",
+    "tags": [
+      "common",
+      "longbridge",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-tlmgr-0",
     "type": "command",
     "title": "tlmgr - Install a package and its dependencies",
@@ -58862,10 +59147,10 @@
   {
     "id": "tldr-en-common-wfuzz-6",
     "type": "command",
-    "title": "wfuzz - Provide wordlists from a file applying base64 and md5 encoding on them (`wfuzz -e encoders` lists all available encoders)",
+    "title": "wfuzz - Provide wordlists from a file applying Base64 and MD5 encoding on them (`wfuzz -e encoders` lists all available encoders)",
     "content": "wfuzz -z file,{{path/to/file}},none-base64-md5 {{https://example.com/FUZZ}}",
     "group": "Common Tools",
-    "description": "wfuzz: A web application bruteforcer. (Provide wordlists from a file applying base64 and md5 encoding on them (`wfuzz -e encoders` lists all available encoders))",
+    "description": "wfuzz: A web application bruteforcer. (Provide wordlists from a file applying Base64 and MD5 encoding on them (`wfuzz -e encoders` lists all available encoders))",
     "tags": [
       "common",
       "wfuzz",
@@ -95115,6 +95400,111 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-mirrord-0",
+    "type": "command",
+    "title": "mirrord - Run a local binary connected to a remote pod",
+    "content": "mirrord exec {{[-t|--target]}} pod/{{pod_name}} -- {{command}} {{argument1 argument2 ...}}",
+    "group": "Common Tools",
+    "description": "mirrord: Run code locally as if it were a pod in a Kubernetes cluster. Skip the build-push-deploy cycle when shipping features or fixing bugs against real services. (Run a local binary connected to a remote pod)",
+    "tags": [
+      "common",
+      "mirrord",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mirrord-1",
+    "type": "command",
+    "title": "mirrord - Target a deployment in a specific namespace",
+    "content": "mirrord exec {{[-t|--target]}} deployment/{{deployment_name}} {{[-n|--target-namespace]}} {{namespace}} -- {{command}}",
+    "group": "Common Tools",
+    "description": "mirrord: Run code locally as if it were a pod in a Kubernetes cluster. Skip the build-push-deploy cycle when shipping features or fixing bugs against real services. (Target a deployment in a specific namespace)",
+    "tags": [
+      "common",
+      "mirrord",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mirrord-2",
+    "type": "command",
+    "title": "mirrord - Run with a configuration file",
+    "content": "mirrord exec {{[-f|--config-file]}} {{path/to/mirrord.json}} -- {{command}}",
+    "group": "Common Tools",
+    "description": "mirrord: Run code locally as if it were a pod in a Kubernetes cluster. Skip the build-push-deploy cycle when shipping features or fixing bugs against real services. (Run with a configuration file)",
+    "tags": [
+      "common",
+      "mirrord",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mirrord-3",
+    "type": "command",
+    "title": "mirrord - Forward a local port to a host reachable from inside the cluster",
+    "content": "mirrord port-forward {{[-t|--target]}} pod/{{pod_name}} --port-mapping {{local_port}}:{{remote_port}}",
+    "group": "Common Tools",
+    "description": "mirrord: Run code locally as if it were a pod in a Kubernetes cluster. Skip the build-push-deploy cycle when shipping features or fixing bugs against real services. (Forward a local port to a host reachable from inside the cluster)",
+    "tags": [
+      "common",
+      "mirrord",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mirrord-4",
+    "type": "command",
+    "title": "mirrord - Print incoming TCP traffic from specific ports on a remote target",
+    "content": "mirrord dump {{[-t|--target]}} pod/{{pod_name}} {{[-p|--ports]}} {{8080}}",
+    "group": "Common Tools",
+    "description": "mirrord: Run code locally as if it were a pod in a Kubernetes cluster. Skip the build-push-deploy cycle when shipping features or fixing bugs against real services. (Print incoming TCP traffic from specific ports on a remote target)",
+    "tags": [
+      "common",
+      "mirrord",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mirrord-5",
+    "type": "command",
+    "title": "mirrord - Launch the interactive configuration wizard",
+    "content": "mirrord wizard",
+    "group": "Common Tools",
+    "description": "mirrord: Run code locally as if it were a pod in a Kubernetes cluster. Skip the build-push-deploy cycle when shipping features or fixing bugs against real services. (Launch the interactive configuration wizard)",
+    "tags": [
+      "common",
+      "mirrord",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mirrord-6",
+    "type": "command",
+    "title": "mirrord - Diagnose mirrord setup and cluster connectivity",
+    "content": "mirrord diagnose",
+    "group": "Common Tools",
+    "description": "mirrord: Run code locally as if it were a pod in a Kubernetes cluster. Skip the build-push-deploy cycle when shipping features or fixing bugs against real services. (Diagnose mirrord setup and cluster connectivity)",
+    "tags": [
+      "common",
+      "mirrord",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-lb-0",
     "type": "command",
     "title": "lb - Make a new draft",
@@ -108468,7 +108858,7 @@
     "id": "tldr-en-common-test-2",
     "type": "command",
     "title": "test - Test if a [f]ile exists",
-    "content": "test -f \"{{path/to/file_or_directory}}\"",
+    "content": "test -f \"{{path/to/file}}\"",
     "group": "Common Tools",
     "description": "test: Check file types and compare values. Returns 0 if the condition evaluates to true, 1 if it evaluates to false. (Test if a [f]ile exists)",
     "tags": [
@@ -108939,6 +109329,81 @@
     "tags": [
       "common",
       "doctl-databases-maintenance-window",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-attr-0",
+    "type": "command",
+    "title": "attr - List the names and sizes of all extended attributes of a file",
+    "content": "attr -l {{path/to/file}}",
+    "group": "Common Tools",
+    "description": "attr: Manipulate extended attributes on filesystem objects. (List the names and sizes of all extended attributes of a file)",
+    "tags": [
+      "common",
+      "attr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-attr-1",
+    "type": "command",
+    "title": "attr - Get the value of an extended attribute",
+    "content": "attr -g {{attribute_name}} {{path/to/file}}",
+    "group": "Common Tools",
+    "description": "attr: Manipulate extended attributes on filesystem objects. (Get the value of an extended attribute)",
+    "tags": [
+      "common",
+      "attr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-attr-2",
+    "type": "command",
+    "title": "attr - Set an extended attribute value",
+    "content": "attr -s {{attribute_name}} -V \"{{attribute_value}}\" {{path/to/file}}",
+    "group": "Common Tools",
+    "description": "attr: Manipulate extended attributes on filesystem objects. (Set an extended attribute value)",
+    "tags": [
+      "common",
+      "attr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-attr-3",
+    "type": "command",
+    "title": "attr - Set an extended attribute using a value from `stdin`",
+    "content": "echo \"{{attribute_value}}\" | attr -s {{attribute_name}} {{path/to/file}}",
+    "group": "Common Tools",
+    "description": "attr: Manipulate extended attributes on filesystem objects. (Set an extended attribute using a value from `stdin`)",
+    "tags": [
+      "common",
+      "attr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-attr-4",
+    "type": "command",
+    "title": "attr - Remove an extended attribute",
+    "content": "attr -r {{attribute_name}} {{path/to/file}}",
+    "group": "Common Tools",
+    "description": "attr: Manipulate extended attributes on filesystem objects. (Remove an extended attribute)",
+    "tags": [
+      "common",
+      "attr",
       "tldr",
       "en"
     ],
@@ -112008,7 +112473,7 @@
     "id": "tldr-en-common-clj-4",
     "type": "command",
     "title": "clj - Start an nREPL server with the CIDER middleware",
-    "content": "clj -Sdeps '{:deps {nrepl {:mvn/version \"0.7.0\"} cider/cider-nrepl {:mvn/version \"0.25.2\"}}}' {{[-m|--main]}} nrepl.cmdline --middleware '[\"cider.nrepl/cider-middleware\"]' --interactive",
+    "content": "clj -Sdeps '{:deps {nrepl {:mvn/version \"0.7.0\"} cider/cider-nrepl {:mvn/version \"0.25.2\"}\\}\\}' {{[-m|--main]}} nrepl.cmdline --middleware '[\"cider.nrepl/cider-middleware\"]' --interactive",
     "group": "Common Tools",
     "description": "clj: Clojure tool to start a REPL or invoke a function with data. All options can be defined in a `deps.edn` file. (Start an nREPL server with the CIDER middleware)",
     "tags": [
@@ -112023,7 +112488,7 @@
     "id": "tldr-en-common-clj-5",
     "type": "command",
     "title": "clj - Start a REPL for ClojureScript and open a web browser",
-    "content": "clj -Sdeps '{:deps {org.clojure/clojurescript {:mvn/version \"1.10.758\"}}}' {{[-m|--main]}} cljs.main {{[-r|--repl]}}",
+    "content": "clj -Sdeps '{:deps {org.clojure/clojurescript {:mvn/version \"1.10.758\"}\\}\\}' {{[-m|--main]}} cljs.main {{[-r|--repl]}}",
     "group": "Common Tools",
     "description": "clj: Clojure tool to start a REPL or invoke a function with data. All options can be defined in a `deps.edn` file. (Start a REPL for ClojureScript and open a web browser)",
     "tags": [
@@ -130605,6 +131070,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-wacli-auth-0",
+    "type": "command",
+    "title": "wacli-auth - Start the authentication process",
+    "content": "wacli auth",
+    "group": "Common Tools",
+    "description": "wacli-auth: Authenticate wacli with WhatsApp via QR code. (Start the authentication process)",
+    "tags": [
+      "common",
+      "wacli-auth",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-auth-1",
+    "type": "command",
+    "title": "wacli-auth - Authenticate using a custom store path",
+    "content": "wacli auth --store {{path/to/store}}",
+    "group": "Common Tools",
+    "description": "wacli-auth: Authenticate wacli with WhatsApp via QR code. (Authenticate using a custom store path)",
+    "tags": [
+      "common",
+      "wacli-auth",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-brew-outdated-0",
     "type": "command",
     "title": "brew-outdated - List all outdated casks and formulae",
@@ -131312,10 +131807,10 @@
   {
     "id": "tldr-en-common-rg-4",
     "type": "command",
-    "title": "rg - Only search the files whose names match the glob pattern(s) (e.g. `README.*`)",
+    "title": "rg - Only search the files matching the glob pattern(s) (e.g. `README.*`, use `!filename_pattern` to exclude instead)",
     "content": "rg {{pattern}} {{[-g|--glob]}} {{filename_glob_pattern}}",
     "group": "Common Tools",
-    "description": "rg: Ripgrep, a recursive line-oriented search tool. Aims to be a faster alternative to `grep`. (Only search the files whose names match the glob pattern(s) (e.g. `README.*`))",
+    "description": "rg: Ripgrep, a recursive line-oriented search tool. Aims to be a faster alternative to `grep`. (Only search the files matching the glob pattern(s) (e.g. `README.*`, use `!filename_pattern` to exclude instead))",
     "tags": [
       "common",
       "rg",
@@ -142863,7 +143358,7 @@
     "id": "tldr-en-common-aws-ses-6",
     "type": "command",
     "title": "aws-ses - Send an email",
-    "content": "aws ses send-email --from {{from_address}} --destination \"ToAddresses={{addresses}}\" --message \"Subject={Data={{subject_text}},Charset=utf8},Body={Text={Data={{body_text}},Charset=utf8},Html={Data={{message_body_containing_html}},Charset=utf8}}\"",
+    "content": "aws ses send-email --from {{from_address}} --destination \"ToAddresses={{addresses}}\" --message \"Subject={Data={{subject_text}},Charset=utf8},Body={Text={Data={{body_text}},Charset=utf8},Html={Data={{message_body_containing_html}},Charset=utf8\\}\\}\"",
     "group": "Common Tools",
     "description": "aws-ses: CLI for AWS Simple Email Service. High-scale inbound and outbound cloud email service. (Send an email)",
     "tags": [
@@ -151127,10 +151622,10 @@
   {
     "id": "tldr-en-common-k8sec-1",
     "type": "command",
-    "title": "k8sec - List a specific secret as a base64-encoded string",
+    "title": "k8sec - List a specific secret as a Base64-encoded string",
     "content": "k8sec list {{secret_name}} --base64",
     "group": "Common Tools",
-    "description": "k8sec: Manage Kubernetes secrets. (List a specific secret as a base64-encoded string)",
+    "description": "k8sec: Manage Kubernetes secrets. (List a specific secret as a Base64-encoded string)",
     "tags": [
       "common",
       "k8sec",
@@ -151157,10 +151652,10 @@
   {
     "id": "tldr-en-common-k8sec-3",
     "type": "command",
-    "title": "k8sec - Set a base64-encoded value",
+    "title": "k8sec - Set a Base64-encoded value",
     "content": "k8sec set --base64 {{secret_name}} {{key=encoded_value}}",
     "group": "Common Tools",
-    "description": "k8sec: Manage Kubernetes secrets. (Set a base64-encoded value)",
+    "description": "k8sec: Manage Kubernetes secrets. (Set a Base64-encoded value)",
     "tags": [
       "common",
       "k8sec",
@@ -167945,7 +168440,7 @@
     "title": "nrm - List all registries",
     "content": "nrm ls",
     "group": "Common Tools",
-    "description": "nrm: npm registry manager. Helps to easily switch between different npm registries. (List all registries)",
+    "description": "nrm: `npm` registry manager. Helps to easily switch between different `npm` registries. (List all registries)",
     "tags": [
       "common",
       "nrm",
@@ -167960,7 +168455,7 @@
     "title": "nrm - Change to a particular registry",
     "content": "nrm use {{registry}}",
     "group": "Common Tools",
-    "description": "nrm: npm registry manager. Helps to easily switch between different npm registries. (Change to a particular registry)",
+    "description": "nrm: `npm` registry manager. Helps to easily switch between different `npm` registries. (Change to a particular registry)",
     "tags": [
       "common",
       "nrm",
@@ -167975,7 +168470,7 @@
     "title": "nrm - Show the response time for all registries",
     "content": "nrm test",
     "group": "Common Tools",
-    "description": "nrm: npm registry manager. Helps to easily switch between different npm registries. (Show the response time for all registries)",
+    "description": "nrm: `npm` registry manager. Helps to easily switch between different `npm` registries. (Show the response time for all registries)",
     "tags": [
       "common",
       "nrm",
@@ -167990,7 +168485,7 @@
     "title": "nrm - Add a custom registry",
     "content": "nrm add {{registry}} {{url}}",
     "group": "Common Tools",
-    "description": "nrm: npm registry manager. Helps to easily switch between different npm registries. (Add a custom registry)",
+    "description": "nrm: `npm` registry manager. Helps to easily switch between different `npm` registries. (Add a custom registry)",
     "tags": [
       "common",
       "nrm",
@@ -168005,7 +168500,7 @@
     "title": "nrm - Delete a registry",
     "content": "nrm del {{registry}}",
     "group": "Common Tools",
-    "description": "nrm: npm registry manager. Helps to easily switch between different npm registries. (Delete a registry)",
+    "description": "nrm: `npm` registry manager. Helps to easily switch between different `npm` registries. (Delete a registry)",
     "tags": [
       "common",
       "nrm",
@@ -170492,10 +170987,10 @@
   {
     "id": "tldr-en-common-tailscale-funnel-3",
     "type": "command",
-    "title": "tailscale-funnel - Expose an HTTPS server with invalid or self-signed certificates at https://localhost:8443",
+    "title": "tailscale-funnel - Expose an HTTPS server with invalid or self-signed certificates at <https://localhost:8443>",
     "content": "tailscale funnel https+insecure://localhost:8443",
     "group": "Common Tools",
-    "description": "tailscale-funnel: Share a local server on the internet using Tailscale. (Expose an HTTPS server with invalid or self-signed certificates at https://localhost:8443)",
+    "description": "tailscale-funnel: Share a local server on the internet using Tailscale. (Expose an HTTPS server with invalid or self-signed certificates at <https://localhost:8443>)",
     "tags": [
       "common",
       "tailscale-funnel",
@@ -188747,10 +189242,10 @@
   {
     "id": "tldr-en-common-rhash-4",
     "type": "command",
-    "title": "rhash - Calculate CRC32 digest of a file and output digest encoded in base64 using BSD format",
+    "title": "rhash - Calculate CRC32 digest of a file and output digest encoded in Base64 using BSD format",
     "content": "rhash --base64 --bsd {{path/to/file}}",
     "group": "Common Tools",
-    "description": "rhash: Calculate or check common message digests. (Calculate CRC32 digest of a file and output digest encoded in base64 using BSD format)",
+    "description": "rhash: Calculate or check common message digests. (Calculate CRC32 digest of a file and output digest encoded in Base64 using BSD format)",
     "tags": [
       "common",
       "rhash",
@@ -208050,6 +208545,96 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-try-rs-0",
+    "type": "command",
+    "title": "try-rs - Open the interactive TUI",
+    "content": "try-rs",
+    "group": "Common Tools",
+    "description": "try-rs: Manage temporary project workspaces with an interactive TUI. (Open the interactive TUI)",
+    "tags": [
+      "common",
+      "try-rs",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-try-rs-1",
+    "type": "command",
+    "title": "try-rs - Create or jump to a named experiment",
+    "content": "try-rs {{experiment_name}}",
+    "group": "Common Tools",
+    "description": "try-rs: Manage temporary project workspaces with an interactive TUI. (Create or jump to a named experiment)",
+    "tags": [
+      "common",
+      "try-rs",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-try-rs-2",
+    "type": "command",
+    "title": "try-rs - Clone a repository into a dated folder",
+    "content": "try-rs {{https://github.com/user/repository}}",
+    "group": "Common Tools",
+    "description": "try-rs: Manage temporary project workspaces with an interactive TUI. (Clone a repository into a dated folder)",
+    "tags": [
+      "common",
+      "try-rs",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-try-rs-3",
+    "type": "command",
+    "title": "try-rs - Clone a repository into a specific destination folder",
+    "content": "try-rs {{https://github.com/user/repository}} {{destination_name}}",
+    "group": "Common Tools",
+    "description": "try-rs: Manage temporary project workspaces with an interactive TUI. (Clone a repository into a specific destination folder)",
+    "tags": [
+      "common",
+      "try-rs",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-try-rs-4",
+    "type": "command",
+    "title": "try-rs - Create a Git worktree from the current repository",
+    "content": "try-rs --worktree {{worktree_name}}",
+    "group": "Common Tools",
+    "description": "try-rs: Manage temporary project workspaces with an interactive TUI. (Create a Git worktree from the current repository)",
+    "tags": [
+      "common",
+      "try-rs",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-try-rs-5",
+    "type": "command",
+    "title": "try-rs - Generate shell integration for the specified shell",
+    "content": "try-rs --setup {{bash|fish|zsh|nu-shell|power-shell}}",
+    "group": "Common Tools",
+    "description": "try-rs: Manage temporary project workspaces with an interactive TUI. (Generate shell integration for the specified shell)",
+    "tags": [
+      "common",
+      "try-rs",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-fc-list-0",
     "type": "command",
     "title": "fc-list - Return a list of installed fonts",
@@ -218358,7 +218943,7 @@
     "id": "tldr-en-common-aws-dynamodb-3",
     "type": "command",
     "title": "aws-dynamodb - Add an item to a table",
-    "content": "aws dynamodb put-item --table-name {{table_name}} --item '{{{\"AttributeName\": {\"S\": \"value\"}}}}'",
+    "content": "aws dynamodb put-item --table-name {{table_name}} --item '{{{\"AttributeName\": {\"S\": \"value\"\\}\\}}}'",
     "group": "Common Tools",
     "description": "aws-dynamodb: Manipulate an AWS Dynamodb database, a fast NoSQL database with predictable performance and seamless scalability. (Add an item to a table)",
     "tags": [
@@ -218373,7 +218958,7 @@
     "id": "tldr-en-common-aws-dynamodb-4",
     "type": "command",
     "title": "aws-dynamodb - Retrieve an item from a table",
-    "content": "aws dynamodb get-item --table-name {{table_name}} --key '{{{\"ID\": {\"N\": \"1\"}}}}'",
+    "content": "aws dynamodb get-item --table-name {{table_name}} --key '{{{\"ID\": {\"N\": \"1\"\\}\\}}}'",
     "group": "Common Tools",
     "description": "aws-dynamodb: Manipulate an AWS Dynamodb database, a fast NoSQL database with predictable performance and seamless scalability. (Retrieve an item from a table)",
     "tags": [
@@ -218388,7 +218973,7 @@
     "id": "tldr-en-common-aws-dynamodb-5",
     "type": "command",
     "title": "aws-dynamodb - Update an item in the table",
-    "content": "aws dynamodb update-item --table-name {{table_name}} --key '{{{\"ID\": {\"N\": \"1\"}}}}' --update-expression \"{{SET Name = :n}}\" --expression-attribute-values '{{{\":n\": {\"S\": \"Jane\"}}}}'",
+    "content": "aws dynamodb update-item --table-name {{table_name}} --key '{{{\"ID\": {\"N\": \"1\"\\}\\}}}' --update-expression \"{{SET Name = :n}}\" --expression-attribute-values '{{{\":n\": {\"S\": \"Jane\"\\}\\}}}'",
     "group": "Common Tools",
     "description": "aws-dynamodb: Manipulate an AWS Dynamodb database, a fast NoSQL database with predictable performance and seamless scalability. (Update an item in the table)",
     "tags": [
@@ -218418,7 +219003,7 @@
     "id": "tldr-en-common-aws-dynamodb-7",
     "type": "command",
     "title": "aws-dynamodb - Delete an item from the table",
-    "content": "aws dynamodb delete-item --table-name {{table_name}} --key '{{{\"ID\": {\"N\": \"1\"}}}}'",
+    "content": "aws dynamodb delete-item --table-name {{table_name}} --key '{{{\"ID\": {\"N\": \"1\"\\}\\}}}'",
     "group": "Common Tools",
     "description": "aws-dynamodb: Manipulate an AWS Dynamodb database, a fast NoSQL database with predictable performance and seamless scalability. (Delete an item from the table)",
     "tags": [
@@ -240437,10 +241022,10 @@
   {
     "id": "tldr-en-common-htpasswd-5",
     "type": "command",
-    "title": "htpasswd - Display a string with username (plain text) and password (md5)",
+    "title": "htpasswd - Display a string with username (plain text) and password (MD5)",
     "content": "htpasswd -nbm {{username}} {{password}}",
     "group": "Common Tools",
-    "description": "htpasswd: Create and manage htpasswd files to protect web server directories using basic authentication. (Display a string with username (plain text) and password (md5))",
+    "description": "htpasswd: Create and manage htpasswd files to protect web server directories using basic authentication. (Display a string with username (plain text) and password (MD5))",
     "tags": [
       "common",
       "htpasswd",
@@ -241839,6 +242424,51 @@
     "tags": [
       "common",
       "dvc-unfreeze",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-send-file-0",
+    "type": "command",
+    "title": "wacli-send-file - Send a file to a phone number",
+    "content": "wacli send file --to {{phone_number}} --file {{path/to/file}}",
+    "group": "Common Tools",
+    "description": "wacli-send-file: Send a file (image, video, audio, or document) via WhatsApp. (Send a file to a phone number)",
+    "tags": [
+      "common",
+      "wacli-send-file",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-send-file-1",
+    "type": "command",
+    "title": "wacli-send-file - Send a file to a specific JID",
+    "content": "wacli send file --to {{phone_number}}@s.whatsapp.net --file {{path/to/file}}",
+    "group": "Common Tools",
+    "description": "wacli-send-file: Send a file (image, video, audio, or document) via WhatsApp. (Send a file to a specific JID)",
+    "tags": [
+      "common",
+      "wacli-send-file",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-send-file-2",
+    "type": "command",
+    "title": "wacli-send-file - Send a file with a custom timeout",
+    "content": "wacli send file --to {{phone_number}} --file {{path/to/file}} --timeout {{10m}}",
+    "group": "Common Tools",
+    "description": "wacli-send-file: Send a file (image, video, audio, or document) via WhatsApp. (Send a file with a custom timeout)",
+    "tags": [
+      "common",
+      "wacli-send-file",
       "tldr",
       "en"
     ],
@@ -253247,10 +253877,10 @@
   {
     "id": "tldr-en-common-pdfunite-0",
     "type": "command",
-    "title": "pdfunite - Merge 2 PDFs into a single PDF",
-    "content": "pdfunite {{path/to/fileA.pdf}} {{path/to/fileB.pdf}} {{path/to/merged_output.pdf}}",
+    "title": "pdfunite - Merge multiple PDF files into a single one",
+    "content": "pdfunite {{path/to/file1.pdf path/to/file2.pdf ...}} {{path/to/merged_output.pdf}}",
     "group": "Common Tools",
-    "description": "pdfunite: PDF merging utility. (Merge 2 PDFs into a single PDF)",
+    "description": "pdfunite: Merge PDF files. (Merge multiple PDF files into a single one)",
     "tags": [
       "common",
       "pdfunite",
@@ -253262,10 +253892,10 @@
   {
     "id": "tldr-en-common-pdfunite-1",
     "type": "command",
-    "title": "pdfunite - Merge a directory of PDFs into a single PDF",
+    "title": "pdfunite - Merge a directory of PDFs into a single file",
     "content": "pdfunite {{path/to/directory/*.pdf}} {{path/to/merged_output.pdf}}",
     "group": "Common Tools",
-    "description": "pdfunite: PDF merging utility. (Merge a directory of PDFs into a single PDF)",
+    "description": "pdfunite: Merge PDF files. (Merge a directory of PDFs into a single file)",
     "tags": [
       "common",
       "pdfunite",
@@ -254334,6 +254964,66 @@
     "tags": [
       "common",
       "lckdo",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-sync-0",
+    "type": "command",
+    "title": "wacli-sync - Synchronize messages",
+    "content": "wacli sync",
+    "group": "Common Tools",
+    "description": "wacli-sync: Synchronize WhatsApp messages to the local store. (Synchronize messages)",
+    "tags": [
+      "common",
+      "wacli-sync",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-sync-1",
+    "type": "command",
+    "title": "wacli-sync - Synchronize messages once and exit",
+    "content": "wacli sync --once",
+    "group": "Common Tools",
+    "description": "wacli-sync: Synchronize WhatsApp messages to the local store. (Synchronize messages once and exit)",
+    "tags": [
+      "common",
+      "wacli-sync",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-sync-2",
+    "type": "command",
+    "title": "wacli-sync - Synchronize messages using a custom store",
+    "content": "wacli sync --store {{path/to/store}}",
+    "group": "Common Tools",
+    "description": "wacli-sync: Synchronize WhatsApp messages to the local store. (Synchronize messages using a custom store)",
+    "tags": [
+      "common",
+      "wacli-sync",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-sync-3",
+    "type": "command",
+    "title": "wacli-sync - Synchronize messages with a custom timeout",
+    "content": "wacli sync --timeout {{10m}}",
+    "group": "Common Tools",
+    "description": "wacli-sync: Synchronize WhatsApp messages to the local store. (Synchronize messages with a custom timeout)",
+    "tags": [
+      "common",
+      "wacli-sync",
       "tldr",
       "en"
     ],
@@ -266949,6 +267639,126 @@
     "tags": [
       "common",
       "pulumi-preview",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-0",
+    "type": "command",
+    "title": "wacli - Authenticate via QR code",
+    "content": "wacli auth",
+    "group": "Common Tools",
+    "description": "wacli: WhatsApp command-line client for sending messages, managing chats, and contacts. Some subcommands such as `send`, `messages`, `chats`, and `contacts` have their own usage documentation. (Authenticate via QR code)",
+    "tags": [
+      "common",
+      "wacli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-1",
+    "type": "command",
+    "title": "wacli - Synchronize messages once and exit",
+    "content": "wacli sync --once",
+    "group": "Common Tools",
+    "description": "wacli: WhatsApp command-line client for sending messages, managing chats, and contacts. Some subcommands such as `send`, `messages`, `chats`, and `contacts` have their own usage documentation. (Synchronize messages once and exit)",
+    "tags": [
+      "common",
+      "wacli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-2",
+    "type": "command",
+    "title": "wacli - Send a text message to a phone number",
+    "content": "wacli send text --to {{phone_number}} --message \"{{message}}\"",
+    "group": "Common Tools",
+    "description": "wacli: WhatsApp command-line client for sending messages, managing chats, and contacts. Some subcommands such as `send`, `messages`, `chats`, and `contacts` have their own usage documentation. (Send a text message to a phone number)",
+    "tags": [
+      "common",
+      "wacli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-3",
+    "type": "command",
+    "title": "wacli - List messages from a specific chat",
+    "content": "wacli messages list --chat {{phone_number}}@s.whatsapp.net --json",
+    "group": "Common Tools",
+    "description": "wacli: WhatsApp command-line client for sending messages, managing chats, and contacts. Some subcommands such as `send`, `messages`, `chats`, and `contacts` have their own usage documentation. (List messages from a specific chat)",
+    "tags": [
+      "common",
+      "wacli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-4",
+    "type": "command",
+    "title": "wacli - List all chats",
+    "content": "wacli chats list --json",
+    "group": "Common Tools",
+    "description": "wacli: WhatsApp command-line client for sending messages, managing chats, and contacts. Some subcommands such as `send`, `messages`, `chats`, and `contacts` have their own usage documentation. (List all chats)",
+    "tags": [
+      "common",
+      "wacli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-5",
+    "type": "command",
+    "title": "wacli - Search contacts by name",
+    "content": "wacli contacts search \"{{name}}\" --json",
+    "group": "Common Tools",
+    "description": "wacli: WhatsApp command-line client for sending messages, managing chats, and contacts. Some subcommands such as `send`, `messages`, `chats`, and `contacts` have their own usage documentation. (Search contacts by name)",
+    "tags": [
+      "common",
+      "wacli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-6",
+    "type": "command",
+    "title": "wacli - Run diagnostics on the store",
+    "content": "wacli doctor",
+    "group": "Common Tools",
+    "description": "wacli: WhatsApp command-line client for sending messages, managing chats, and contacts. Some subcommands such as `send`, `messages`, `chats`, and `contacts` have their own usage documentation. (Run diagnostics on the store)",
+    "tags": [
+      "common",
+      "wacli",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-7",
+    "type": "command",
+    "title": "wacli - Display version",
+    "content": "wacli version",
+    "group": "Common Tools",
+    "description": "wacli: WhatsApp command-line client for sending messages, managing chats, and contacts. Some subcommands such as `send`, `messages`, `chats`, and `contacts` have their own usage documentation. (Display version)",
+    "tags": [
+      "common",
+      "wacli",
       "tldr",
       "en"
     ],
@@ -292023,7 +292833,7 @@
     "id": "tldr-en-common-conda-create-0",
     "type": "command",
     "title": "conda-create - Create a new environment named `py39`, install Python 3.9, NumPy v1.11 or above in it, and the latest stable version of SciPy. Say yes to all confirmations",
-    "content": "conda create {{[-ny|--name --yes]}} py39 python=3.9 \"numpy>=1.11 scipy\"",
+    "content": "conda create {{[-y|--yes]}} {{[-n|--name]}} py39 python=3.9 \"numpy>=1.11\" scipy",
     "group": "Common Tools",
     "description": "conda-create: Create new conda environments. (Create a new environment named `py39`, install Python 3.9, NumPy v1.11 or above in it, and the latest stable version of SciPy. Say yes to all confirmations)",
     "tags": [
@@ -294366,6 +295176,21 @@
     "content": "brew upgrade {{[-n|--dry-run]}}",
     "group": "Common Tools",
     "description": "brew-upgrade: Upgrade outdated formulae and casks. (Print what would be upgraded, but don't actually upgrade anything)",
+    "tags": [
+      "common",
+      "brew-upgrade",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-brew-upgrade-3",
+    "type": "command",
+    "title": "brew-upgrade - Upgrade all outdated packages without asking for confirmation",
+    "content": "brew upgrade {{[-y|--yes]}}",
+    "group": "Common Tools",
+    "description": "brew-upgrade: Upgrade outdated formulae and casks. (Upgrade all outdated packages without asking for confirmation)",
     "tags": [
       "common",
       "brew-upgrade",
@@ -308432,10 +309257,10 @@
   {
     "id": "tldr-en-common-ipcs-1",
     "type": "command",
-    "title": "ipcs - Show information about active shared [m]emory segments, message [q]ueues or [s]empahore sets",
+    "title": "ipcs - Show information about active shared [m]emory segments, message [q]ueues or [s]emaphore sets",
     "content": "ipcs {{-m|-q|-s}}",
     "group": "Common Tools",
-    "description": "ipcs: Show information about the usage of XSI IPC facilities: shared memory segments, message queues, and semaphore arrays. (Show information about active shared [m]emory segments, message [q]ueues or [s]empahore sets)",
+    "description": "ipcs: Show information about the usage of XSI IPC facilities: shared memory segments, message queues, and semaphore arrays. (Show information about active shared [m]emory segments, message [q]ueues or [s]emaphore sets)",
     "tags": [
       "common",
       "ipcs",

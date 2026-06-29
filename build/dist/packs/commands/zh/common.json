@@ -18075,6 +18075,126 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-gh-workflow-0",
+    "type": "command",
+    "title": "gh-workflow - 以交互式方式选择一个工作流以查看其最近的任务",
+    "content": "gh workflow view",
+    "group": "通用工具 (Common)",
+    "description": "gh-workflow: 列出、查看和运行 GitHub Actions 工作流。 (以交互式方式选择一个工作流以查看其最近的任务)",
+    "tags": [
+      "common",
+      "gh-workflow",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-workflow-1",
+    "type": "command",
+    "title": "gh-workflow - 在默认浏览器中查看指定的工作流",
+    "content": "gh workflow view {{id|工作流名称|文件名.yml}} {{[-w|--web]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-workflow: 列出、查看和运行 GitHub Actions 工作流。 (在默认浏览器中查看指定的工作流)",
+    "tags": [
+      "common",
+      "gh-workflow",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-workflow-2",
+    "type": "command",
+    "title": "gh-workflow - 显示指定工作流的 YAML 定义",
+    "content": "gh workflow view {{id|工作流名称|文件名.yml}} {{[-y|--yaml]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-workflow: 列出、查看和运行 GitHub Actions 工作流。 (显示指定工作流的 YAML 定义)",
+    "tags": [
+      "common",
+      "gh-workflow",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-workflow-3",
+    "type": "command",
+    "title": "gh-workflow - 显示指定 Git 分支或标签下的 YAML 定义",
+    "content": "gh workflow view {{id|工作流名称|文件名.yml}} {{[-r|--ref]}} {{分支|标签名}} {{[-y|--yaml]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-workflow: 列出、查看和运行 GitHub Actions 工作流。 (显示指定 Git 分支或标签下的 YAML 定义)",
+    "tags": [
+      "common",
+      "gh-workflow",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-workflow-4",
+    "type": "command",
+    "title": "gh-workflow - 列出工作流文件（使用 `--all` 参数包含已被禁用的工作流）",
+    "content": "gh workflow {{[ls|list]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-workflow: 列出、查看和运行 GitHub Actions 工作流。 (列出工作流文件（使用 `--all` 参数包含已被禁用的工作流）)",
+    "tags": [
+      "common",
+      "gh-workflow",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-workflow-5",
+    "type": "command",
+    "title": "gh-workflow - 运行一个带参数的手动触发工作流",
+    "content": "gh workflow run {{id|工作流名称|文件名.yml}} {{--raw-field 参数1=值1 --raw-field 参数2=值2 ...}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-workflow: 列出、查看和运行 GitHub Actions 工作流。 (运行一个带参数的手动触发工作流)",
+    "tags": [
+      "common",
+      "gh-workflow",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-workflow-6",
+    "type": "command",
+    "title": "gh-workflow - 从 `stdin` 读取 JSON 参数，并在指定的分支或标签下运行手动工作流",
+    "content": "echo '{{{\"参数1\": \"值1\", \"参数2\": \"值2\", ...}}}' | gh workflow run {{id|工作流名称|文件名.yml}} {{[-r|--ref]}} {{分支|标签名}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-workflow: 列出、查看和运行 GitHub Actions 工作流。 (从 `stdin` 读取 JSON 参数，并在指定的分支或标签下运行手动工作流)",
+    "tags": [
+      "common",
+      "gh-workflow",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-workflow-7",
+    "type": "command",
+    "title": "gh-workflow - 启用或禁用指定的工作流",
+    "content": "gh workflow {{enable|disable}} {{id|工作流名称|文件名.yml}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-workflow: 列出、查看和运行 GitHub Actions 工作流。 (启用或禁用指定的工作流)",
+    "tags": [
+      "common",
+      "gh-workflow",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-docker-build-0",
     "type": "command",
     "title": "docker-build - 使用当前目录下的 Dockerfile 打包一个 Docker 镜像",
@@ -20034,6 +20154,96 @@
     "tags": [
       "common",
       "logger",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-test-0",
+    "type": "command",
+    "title": "test - 测试指定的变量是否等于指定的字符串",
+    "content": "test \"{{$MY_VAR}}\" = \"{{/bin/zsh}}\"",
+    "group": "通用工具 (Common)",
+    "description": "test: 检查文件类型，比较数值。 如果条件评估为真，则返回 0，如果评估为假，则返回 1。 另请参阅：`[`。 (测试指定的变量是否等于指定的字符串)",
+    "tags": [
+      "common",
+      "test",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-test-1",
+    "type": "command",
+    "title": "test - 测试指定的变量是否为空（[z]ero 长度）",
+    "content": "test -z \"{{$GIT_BRANCH}}\"",
+    "group": "通用工具 (Common)",
+    "description": "test: 检查文件类型，比较数值。 如果条件评估为真，则返回 0，如果评估为假，则返回 1。 另请参阅：`[`。 (测试指定的变量是否为空（[z]ero 长度）)",
+    "tags": [
+      "common",
+      "test",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-test-2",
+    "type": "command",
+    "title": "test - 测试指定的文件是否存在（[f]ile）",
+    "content": "test -f \"{{路径/到/文件}}\"",
+    "group": "通用工具 (Common)",
+    "description": "test: 检查文件类型，比较数值。 如果条件评估为真，则返回 0，如果评估为假，则返回 1。 另请参阅：`[`。 (测试指定的文件是否存在（[f]ile）)",
+    "tags": [
+      "common",
+      "test",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-test-3",
+    "type": "command",
+    "title": "test - 测试指定的目录是否不存在（[d]irectory）",
+    "content": "test ! -d \"{{路径/到/目录}}\"",
+    "group": "通用工具 (Common)",
+    "description": "test: 检查文件类型，比较数值。 如果条件评估为真，则返回 0，如果评估为假，则返回 1。 另请参阅：`[`。 (测试指定的目录是否不存在（[d]irectory）)",
+    "tags": [
+      "common",
+      "test",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-test-4",
+    "type": "command",
+    "title": "test - 如果 A 为真，则执行 B，如果出错则执行 C（请注意，即使 A 失败，C 也可能会运行）",
+    "content": "test {{condition}} && {{echo \"true\"}} || {{echo \"false\"}}",
+    "group": "通用工具 (Common)",
+    "description": "test: 检查文件类型，比较数值。 如果条件评估为真，则返回 0，如果评估为假，则返回 1。 另请参阅：`[`。 (如果 A 为真，则执行 B，如果出错则执行 C（请注意，即使 A 失败，C 也可能会运行）)",
+    "tags": [
+      "common",
+      "test",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-test-5",
+    "type": "command",
+    "title": "test - 在条件语句中使用 `test`",
+    "content": "if test -f \"{{路径/到/文件}}\"; then echo \"文件存在\"; else echo \"文件不存在\"; fi",
+    "group": "通用工具 (Common)",
+    "description": "test: 检查文件类型，比较数值。 如果条件评估为真，则返回 0，如果评估为假，则返回 1。 另请参阅：`[`。 (在条件语句中使用 `test`)",
+    "tags": [
+      "common",
+      "test",
       "tldr",
       "zh"
     ],
@@ -23964,6 +24174,21 @@
     "tags": [
       "common",
       "g++",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-head-0",
+    "type": "command",
+    "title": "head - 显示文件的前几行",
+    "content": "head -n {{行数}} {{路径/到/文件}}",
+    "group": "通用工具 (Common)",
+    "description": "head: 显示文件的开头部分。 (显示文件的前几行)",
+    "tags": [
+      "common",
+      "head",
       "tldr",
       "zh"
     ],
@@ -28074,6 +28299,111 @@
     "tags": [
       "common",
       "rustup-install",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-auth-0",
+    "type": "command",
+    "title": "gh-auth - 通过交互式提示进行登录",
+    "content": "gh auth login",
+    "group": "通用工具 (Common)",
+    "description": "gh-auth: 进行 GitHub 主机的身份验证。 (通过交互式提示进行登录)",
+    "tags": [
+      "common",
+      "gh-auth",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-auth-1",
+    "type": "command",
+    "title": "gh-auth - 使用来自 `stdin` 的令牌进行登录（在 <https://github.com/settings/tokens> 创建）",
+    "content": "echo {{你的令牌}} | gh auth login --with-token",
+    "group": "通用工具 (Common)",
+    "description": "gh-auth: 进行 GitHub 主机的身份验证。 (使用来自 `stdin` 的令牌进行登录（在 <https://github.com/settings/tokens> 创建）)",
+    "tags": [
+      "common",
+      "gh-auth",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-auth-2",
+    "type": "command",
+    "title": "gh-auth - 检查当前登录状态",
+    "content": "gh auth status",
+    "group": "通用工具 (Common)",
+    "description": "gh-auth: 进行 GitHub 主机的身份验证。 (检查当前登录状态)",
+    "tags": [
+      "common",
+      "gh-auth",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-auth-3",
+    "type": "command",
+    "title": "gh-auth - 登出当前账户",
+    "content": "gh auth logout",
+    "group": "通用工具 (Common)",
+    "description": "gh-auth: 进行 GitHub 主机的身份验证。 (登出当前账户)",
+    "tags": [
+      "common",
+      "gh-auth",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-auth-4",
+    "type": "command",
+    "title": "gh-auth - 登录指定的 GitHub 企业版服务器",
+    "content": "gh auth login {{[-h|--hostname]}} {{github.example.com}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-auth: 进行 GitHub 主机的身份验证。 (登录指定的 GitHub 企业版服务器)",
+    "tags": [
+      "common",
+      "gh-auth",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-auth-5",
+    "type": "command",
+    "title": "gh-auth - 刷新身份验证凭据，并恢复为默认的最小权限范围（移除之前额外申请的权限）",
+    "content": "gh auth refresh",
+    "group": "通用工具 (Common)",
+    "description": "gh-auth: 进行 GitHub 主机的身份验证。 (刷新身份验证凭据，并恢复为默认的最小权限范围（移除之前额外申请的权限）)",
+    "tags": [
+      "common",
+      "gh-auth",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-auth-6",
+    "type": "command",
+    "title": "gh-auth - 扩展当前权限范围",
+    "content": "gh auth refresh {{[-s|--scopes]}} {{repo,admin:repo_hook,admin:org,admin:public_key,admin:org_hook,...}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-auth: 进行 GitHub 主机的身份验证。 (扩展当前权限范围)",
+    "tags": [
+      "common",
+      "gh-auth",
       "tldr",
       "zh"
     ],
@@ -32664,6 +32994,126 @@
     "tags": [
       "common",
       "docker-container-remove",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-run-0",
+    "type": "command",
+    "title": "gh-run - 以交互式方式选择运行记录以查看其任务信息",
+    "content": "gh run view",
+    "group": "通用工具 (Common)",
+    "description": "gh-run: 查看、运行和监控最近的 GitHub Actions 工作流运行记录。 (以交互式方式选择运行记录以查看其任务信息)",
+    "tags": [
+      "common",
+      "gh-run",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-run-1",
+    "type": "command",
+    "title": "gh-run - 显示指定运行记录的信息",
+    "content": "gh run view {{工作流运行编号}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-run: 查看、运行和监控最近的 GitHub Actions 工作流运行记录。 (显示指定运行记录的信息)",
+    "tags": [
+      "common",
+      "gh-run",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-run-2",
+    "type": "command",
+    "title": "gh-run - 显示指定任务的各个步骤的信息",
+    "content": "gh run view {{[-j|--job]}} {{任务编号}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-run: 查看、运行和监控最近的 GitHub Actions 工作流运行记录。 (显示指定任务的各个步骤的信息)",
+    "tags": [
+      "common",
+      "gh-run",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-run-3",
+    "type": "command",
+    "title": "gh-run - 显示指定任务的日志",
+    "content": "gh run view {{[-j|--job]}} {{任务编号}} --log",
+    "group": "通用工具 (Common)",
+    "description": "gh-run: 查看、运行和监控最近的 GitHub Actions 工作流运行记录。 (显示指定任务的日志)",
+    "tags": [
+      "common",
+      "gh-run",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-run-4",
+    "type": "command",
+    "title": "gh-run - 检查指定的工作流运行，如果运行失败则退出并返回非零状态码",
+    "content": "gh run view {{工作流运行编号}} --exit-status && {{echo \"运行中或已通过\"}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-run: 查看、运行和监控最近的 GitHub Actions 工作流运行记录。 (检查指定的工作流运行，如果运行失败则退出并返回非零状态码)",
+    "tags": [
+      "common",
+      "gh-run",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-run-5",
+    "type": "command",
+    "title": "gh-run - 以交互式方式选择一个正在进行的运行记录，并等待其运行完毕",
+    "content": "gh run watch",
+    "group": "通用工具 (Common)",
+    "description": "gh-run: 查看、运行和监控最近的 GitHub Actions 工作流运行记录。 (以交互式方式选择一个正在进行的运行记录，并等待其运行完毕)",
+    "tags": [
+      "common",
+      "gh-run",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-run-6",
+    "type": "command",
+    "title": "gh-run - 显示某个运行记录的任务并等待其运行完毕",
+    "content": "gh run watch {{工作流运行编号}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-run: 查看、运行和监控最近的 GitHub Actions 工作流运行记录。 (显示某个运行记录的任务并等待其运行完毕)",
+    "tags": [
+      "common",
+      "gh-run",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-run-7",
+    "type": "command",
+    "title": "gh-run - 重新运行指定的工作流",
+    "content": "gh run rerun {{工作流运行编号}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-run: 查看、运行和监控最近的 GitHub Actions 工作流运行记录。 (重新运行指定的工作流)",
+    "tags": [
+      "common",
+      "gh-run",
       "tldr",
       "zh"
     ],
@@ -38895,6 +39345,81 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-venv-0",
+    "type": "command",
+    "title": "venv - 创建一个 Python 虚拟环境",
+    "content": "python -m venv {{路径/到/虚拟环境}}",
+    "group": "通用工具 (Common)",
+    "description": "venv: 创建轻量的 Python 虚拟环境。 (创建一个 Python 虚拟环境)",
+    "tags": [
+      "common",
+      "venv",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-venv-1",
+    "type": "command",
+    "title": "venv - 激活虚拟环境（Linux 和 macOS）",
+    "content": "{{[.|source]}} {{路径/到/虚拟环境}}/bin/activate",
+    "group": "通用工具 (Common)",
+    "description": "venv: 创建轻量的 Python 虚拟环境。 (激活虚拟环境（Linux 和 macOS）)",
+    "tags": [
+      "common",
+      "venv",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-venv-2",
+    "type": "command",
+    "title": "venv - 激活虚拟环境（Windows）",
+    "content": "{{路径\\到\\虚拟环境}}\\Scripts\\activate.bat",
+    "group": "通用工具 (Common)",
+    "description": "venv: 创建轻量的 Python 虚拟环境。 (激活虚拟环境（Windows）)",
+    "tags": [
+      "common",
+      "venv",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-venv-3",
+    "type": "command",
+    "title": "venv - 停用虚拟环境",
+    "content": "deactivate",
+    "group": "通用工具 (Common)",
+    "description": "venv: 创建轻量的 Python 虚拟环境。 (停用虚拟环境)",
+    "tags": [
+      "common",
+      "venv",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-venv-4",
+    "type": "command",
+    "title": "venv - 创建一个生成 `.venv` 文件夹并自动激活它的别名",
+    "content": "alias venv='python -m venv .venv && source {{.venv/bin/activate|.venv\\Scripts\\activate.bat}}'",
+    "group": "通用工具 (Common)",
+    "description": "venv: 创建轻量的 Python 虚拟环境。 (创建一个生成 `.venv` 文件夹并自动激活它的别名)",
+    "tags": [
+      "common",
+      "venv",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-brew-list-0",
     "type": "command",
     "title": "brew-list - 列出所有安装的软件包和安装包",
@@ -44835,6 +45360,111 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-common-gh-issue-0",
+    "type": "command",
+    "title": "gh-issue - 显示指定的 issue",
+    "content": "gh issue view {{issue_号}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-issue: 管理 GitHub issue。 (显示指定的 issue)",
+    "tags": [
+      "common",
+      "gh-issue",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-issue-1",
+    "type": "command",
+    "title": "gh-issue - 在默认网页浏览器中查看指定的 issue",
+    "content": "gh issue view {{issue_号}} {{[-w|--web]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-issue: 管理 GitHub issue。 (在默认网页浏览器中查看指定的 issue)",
+    "tags": [
+      "common",
+      "gh-issue",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-issue-2",
+    "type": "command",
+    "title": "gh-issue - 在默认网页浏览器中创建一个新 issue",
+    "content": "gh issue {{[new|create]}} {{[-w|--web]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-issue: 管理 GitHub issue。 (在默认网页浏览器中创建一个新 issue)",
+    "tags": [
+      "common",
+      "gh-issue",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-issue-3",
+    "type": "command",
+    "title": "gh-issue - 列出最近 10 个带有 \"bug\" 标签的 issue",
+    "content": "gh issue {{[ls|list]}} {{[-L|--limit]}} 10 {{[-l|--label]}} \"bug\"",
+    "group": "通用工具 (Common)",
+    "description": "gh-issue: 管理 GitHub issue。 (列出最近 10 个带有 \"bug\" 标签的 issue)",
+    "tags": [
+      "common",
+      "gh-issue",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-issue-4",
+    "type": "command",
+    "title": "gh-issue - 列出由指定用户创建的已关闭的 issue",
+    "content": "gh issue {{[ls|list]}} {{[-s|--state]}} closed {{[-A|--author]}} {{用户名}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-issue: 管理 GitHub issue。 (列出由指定用户创建的已关闭的 issue)",
+    "tags": [
+      "common",
+      "gh-issue",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-issue-5",
+    "type": "command",
+    "title": "gh-issue - 在指定仓库中，显示与当前用户相关的 issue 的状态",
+    "content": "gh issue status {{[-R|--repo]}} {{拥有者}}/{{仓库}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-issue: 管理 GitHub issue。 (在指定仓库中，显示与当前用户相关的 issue 的状态)",
+    "tags": [
+      "common",
+      "gh-issue",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-issue-6",
+    "type": "command",
+    "title": "gh-issue - 重新打开指定的 issue",
+    "content": "gh issue reopen {{issue_号}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-issue: 管理 GitHub issue。 (重新打开指定的 issue)",
+    "tags": [
+      "common",
+      "gh-issue",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-common-cargo-update-0",
     "type": "command",
     "title": "cargo-update - 将 `Cargo.lock` 中的依赖项更新为可能的最新版本",
@@ -44900,7 +45530,7 @@
     "title": "cargo-search - 搜索包",
     "content": "cargo search {{查询词}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-search: 在 https://crates.io 上搜索包。 显示包及其描述，以 TOML 格式显示，可复制到 `Cargo.toml` 中。 (搜索包)",
+    "description": "cargo-search: 在  上搜索包。 显示包及其描述，以 TOML 格式显示，可复制到 `Cargo.toml` 中。 (搜索包)",
     "tags": [
       "common",
       "cargo-search",
@@ -44915,7 +45545,7 @@
     "title": "cargo-search - 显示 n 个结果 (默认为 10，最多为 100)",
     "content": "cargo search --limit {{n}} {{查询词}}",
     "group": "通用工具 (Common)",
-    "description": "cargo-search: 在 https://crates.io 上搜索包。 显示包及其描述，以 TOML 格式显示，可复制到 `Cargo.toml` 中。 (显示 n 个结果 (默认为 10，最多为 100))",
+    "description": "cargo-search: 在  上搜索包。 显示包及其描述，以 TOML 格式显示，可复制到 `Cargo.toml` 中。 (显示 n 个结果 (默认为 10，最多为 100))",
     "tags": [
       "common",
       "cargo-search",
@@ -52247,10 +52877,10 @@
   {
     "id": "tldr-zh-common-jekyll-0",
     "type": "command",
-    "title": "jekyll - 生成一个将在 http://localhost:4000/ 上运行的开发服务器",
+    "title": "jekyll - 生成一个将在 <http://localhost:4000/> 上运行的开发服务器",
     "content": "jekyll serve",
     "group": "通用工具 (Common)",
-    "description": "jekyll: 一个简单的、支持博客的静态网站生成器。 (生成一个将在 http://localhost:4000/ 上运行的开发服务器)",
+    "description": "jekyll: 一个简单的、支持博客的静态网站生成器。 (生成一个将在 <http://localhost:4000/> 上运行的开发服务器)",
     "tags": [
       "common",
       "jekyll",
@@ -55929,6 +56559,111 @@
     "tags": [
       "common",
       "docker-save",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-issue-create-0",
+    "type": "command",
+    "title": "gh-issue-create - 以交互式方式在当前仓库中创建一个新 issue",
+    "content": "gh issue {{[new|create]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-issue-create: 创建 GitHub 仓库中的 issue。 (以交互式方式在当前仓库中创建一个新 issue)",
+    "tags": [
+      "common",
+      "gh-issue-create",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-issue-create-1",
+    "type": "command",
+    "title": "gh-issue-create - 以交互式方式创建一个带有 \"bug\" 标签的新 issue",
+    "content": "gh issue {{[new|create]}} {{[-l|--label]}} \"bug\"",
+    "group": "通用工具 (Common)",
+    "description": "gh-issue-create: 创建 GitHub 仓库中的 issue。 (以交互式方式创建一个带有 \"bug\" 标签的新 issue)",
+    "tags": [
+      "common",
+      "gh-issue-create",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-issue-create-2",
+    "type": "command",
+    "title": "gh-issue-create - 以交互式方式创建一个新 issue 并分配给指定的用户",
+    "content": "gh issue {{[new|create]}} {{[-a|--assignee]}} {{用户1,用户2,...}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-issue-create: 创建 GitHub 仓库中的 issue。 (以交互式方式创建一个新 issue 并分配给指定的用户)",
+    "tags": [
+      "common",
+      "gh-issue-create",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-issue-create-3",
+    "type": "command",
+    "title": "gh-issue-create - 创建一个具有标题和描述的新 issue，并分配给当前用户",
+    "content": "gh issue {{[new|create]}} {{[-t|--title]}} \"{{标题}}\" {{[-b|--body]}} \"{{描述}}\" {{[-a|--assignee]}} \"@me\"",
+    "group": "通用工具 (Common)",
+    "description": "gh-issue-create: 创建 GitHub 仓库中的 issue。 (创建一个具有标题和描述的新 issue，并分配给当前用户)",
+    "tags": [
+      "common",
+      "gh-issue-create",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-issue-create-4",
+    "type": "command",
+    "title": "gh-issue-create - 以交互式方式创建一个新 issue，并从文件中读取其描述正文",
+    "content": "gh issue {{[new|create]}} {{[-F|--body-file]}} {{路径/到/文件}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-issue-create: 创建 GitHub 仓库中的 issue。 (以交互式方式创建一个新 issue，并从文件中读取其描述正文)",
+    "tags": [
+      "common",
+      "gh-issue-create",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-issue-create-5",
+    "type": "command",
+    "title": "gh-issue-create - 在默认网页浏览器中创建一个新 issue",
+    "content": "gh issue {{[new|create]}} {{[-w|--web]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-issue-create: 创建 GitHub 仓库中的 issue。 (在默认网页浏览器中创建一个新 issue)",
+    "tags": [
+      "common",
+      "gh-issue-create",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-common-gh-issue-create-6",
+    "type": "command",
+    "title": "gh-issue-create - 显示帮助",
+    "content": "gh issue {{[new|create]}} {{[-h|--help]}}",
+    "group": "通用工具 (Common)",
+    "description": "gh-issue-create: 创建 GitHub 仓库中的 issue。 (显示帮助)",
+    "tags": [
+      "common",
+      "gh-issue-create",
       "tldr",
       "zh"
     ],

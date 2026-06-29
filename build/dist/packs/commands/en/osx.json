@@ -545,7 +545,7 @@
     "title": "base64 - Encode a file to `stdout`",
     "content": "base64 {{[-i|--input]}} {{path/to/file}}",
     "group": "macOS",
-    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout` or another file. (Encode a file to `stdout`)",
+    "description": "base64: Encode or decode file or `stdin` to/from Base64, to `stdout` or another file. (Encode a file to `stdout`)",
     "tags": [
       "osx",
       "base64",
@@ -560,7 +560,7 @@
     "title": "base64 - Encode a file to the specified output file",
     "content": "base64 {{[-i|--input]}} {{path/to/input_file}} {{[-o|--output]}} {{path/to/output_file}}",
     "group": "macOS",
-    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout` or another file. (Encode a file to the specified output file)",
+    "description": "base64: Encode or decode file or `stdin` to/from Base64, to `stdout` or another file. (Encode a file to the specified output file)",
     "tags": [
       "osx",
       "base64",
@@ -575,7 +575,7 @@
     "title": "base64 - Wrap encoded output at a specific width (`0` disables wrapping)",
     "content": "base64 {{[-b|--break]}} {{0|76|...}} {{path/to/file}}",
     "group": "macOS",
-    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout` or another file. (Wrap encoded output at a specific width (`0` disables wrapping))",
+    "description": "base64: Encode or decode file or `stdin` to/from Base64, to `stdout` or another file. (Wrap encoded output at a specific width (`0` disables wrapping))",
     "tags": [
       "osx",
       "base64",
@@ -590,7 +590,7 @@
     "title": "base64 - Decode a file to `stdout`",
     "content": "base64 {{[-d|--decode]}} {{[-i|--input]}} {{path/to/file}}",
     "group": "macOS",
-    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout` or another file. (Decode a file to `stdout`)",
+    "description": "base64: Encode or decode file or `stdin` to/from Base64, to `stdout` or another file. (Decode a file to `stdout`)",
     "tags": [
       "osx",
       "base64",
@@ -605,7 +605,7 @@
     "title": "base64 - Encode from `stdin` to `stdout`",
     "content": "{{command}} | base64",
     "group": "macOS",
-    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout` or another file. (Encode from `stdin` to `stdout`)",
+    "description": "base64: Encode or decode file or `stdin` to/from Base64, to `stdout` or another file. (Encode from `stdin` to `stdout`)",
     "tags": [
       "osx",
       "base64",
@@ -620,7 +620,7 @@
     "title": "base64 - Decode from `stdin` to `stdout`",
     "content": "{{command}} | base64 {{[-d|--decode]}}",
     "group": "macOS",
-    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout` or another file. (Decode from `stdin` to `stdout`)",
+    "description": "base64: Encode or decode file or `stdin` to/from Base64, to `stdout` or another file. (Decode from `stdin` to `stdout`)",
     "tags": [
       "osx",
       "base64",
@@ -1415,7 +1415,7 @@
     "title": "cfprefsd - Start the daemon",
     "content": "cfprefsd",
     "group": "macOS",
-    "description": "cfprefsd: Start preferences services (`CFPreferences`, `NSUserDefaults`). It should not be invoked manually. (Start the daemon)",
+    "description": "cfprefsd: Start preferences services (`CFPreferences`, `NSUserDefaults`). Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "cfprefsd",
@@ -2240,7 +2240,7 @@
     "title": "dhcp6d - Start the daemon",
     "content": "dhcp6d",
     "group": "macOS",
-    "description": "dhcp6d: Stateless DHCPv6 server. It should not be invoked manually. (Start the daemon)",
+    "description": "dhcp6d: Stateless DHCPv6 server. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "dhcp6d",
@@ -2255,7 +2255,7 @@
     "title": "dhcp6d - Use a custom configuration",
     "content": "dhcp6d {{path/to/config_file}}",
     "group": "macOS",
-    "description": "dhcp6d: Stateless DHCPv6 server. It should not be invoked manually. (Use a custom configuration)",
+    "description": "dhcp6d: Stateless DHCPv6 server. Note: It should not be invoked manually. (Use a custom configuration)",
     "tags": [
       "osx",
       "dhcp6d",
@@ -2450,7 +2450,7 @@
     "title": "systemsoundserverd - Start the daemon",
     "content": "systemsoundserverd",
     "group": "macOS",
-    "description": "systemsoundserverd: Core Audio related daemon. It should not be invoked manually. (Start the daemon)",
+    "description": "systemsoundserverd: Core Audio related daemon. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "systemsoundserverd",
@@ -2465,7 +2465,7 @@
     "title": "timed - Start the daemon",
     "content": "timed",
     "group": "macOS",
-    "description": "timed: Service that synchronizes system time (e.g. using NTP). It should not be invoked manually. (Start the daemon)",
+    "description": "timed: Service that synchronizes system time (e.g. using NTP). Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "timed",
@@ -2585,7 +2585,7 @@
     "title": "nfcd - Start the daemon",
     "content": "nfcd",
     "group": "macOS",
-    "description": "nfcd: This daemon controls the NFC controller. It should not be invoked manually. (Start the daemon)",
+    "description": "nfcd: This daemon controls the NFC controller. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "nfcd",
@@ -2675,7 +2675,7 @@
     "title": "watchdogd - Start the daemon",
     "content": "watchdogd",
     "group": "macOS",
-    "description": "watchdogd: Works with the Watchdog KEXT to ensure that the system is healthy and running. It should not be invoked manually. (Start the daemon)",
+    "description": "watchdogd: Works with the Watchdog KEXT to ensure that the system is healthy and running. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "watchdogd",
@@ -2900,7 +2900,7 @@
     "title": "wwand - Start the daemon",
     "content": "wwand",
     "group": "macOS",
-    "description": "wwand: USB WWAN device configuration daemon. It should not be invoked manually. (Start the daemon)",
+    "description": "wwand: USB WWAN device configuration daemon. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "wwand",
@@ -3035,7 +3035,7 @@
     "title": "coredatad - Start the daemon",
     "content": "coredatad",
     "group": "macOS",
-    "description": "coredatad: Schedules CloudKit operations for clients of NSPersistentCloudKitContainer. It should not be invoked manually. (Start the daemon)",
+    "description": "coredatad: Schedules CloudKit operations for clients of NSPersistentCloudKitContainer. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "coredatad",
@@ -3230,7 +3230,7 @@
     "title": "avbdeviced - Start the daemon",
     "content": "avbdeviced",
     "group": "macOS",
-    "description": "avbdeviced: A service for managing Audio Video Bridging (AVB) devices. It should not be invoked manually. (Start the daemon)",
+    "description": "avbdeviced: A service for managing Audio Video Bridging (AVB) devices. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "avbdeviced",
@@ -3995,7 +3995,7 @@
     "title": "warmd - Start the daemon",
     "content": "warmd",
     "group": "macOS",
-    "description": "warmd: Control caches used during startup and login. It should not be invoked manually. (Start the daemon)",
+    "description": "warmd: Control caches used during startup and login. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "warmd",
@@ -4250,7 +4250,7 @@
     "title": "internetsharing - Start the daemon",
     "content": "InternetSharing",
     "group": "macOS",
-    "description": "internetsharing: Set up Internet Sharing. It should not be invoked manually. (Start the daemon)",
+    "description": "internetsharing: Set up Internet Sharing. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "internetsharing",
@@ -4307,10 +4307,10 @@
   {
     "id": "tldr-en-osx-md5-2",
     "type": "command",
-    "title": "md5 - Output only the md5 checksum (no filename)",
+    "title": "md5 - Output only the MD5 checksum (no filename)",
     "content": "md5 -q {{path/to/file}}",
     "group": "macOS",
-    "description": "md5: Calculate MD5 cryptographic checksums. (Output only the md5 checksum (no filename))",
+    "description": "md5: Calculate MD5 cryptographic checksums. (Output only the MD5 checksum (no filename))",
     "tags": [
       "osx",
       "md5",
@@ -4430,7 +4430,7 @@
     "title": "ocspd - Start the daemon",
     "content": "ocspd",
     "group": "macOS",
-    "description": "ocspd: This retrieves and caches Certificate Revocation Lists (CRLs) and Online Certificate Status Protocol (OCSP) responses for certificate verification. It should not be invoked manually. (Start the daemon)",
+    "description": "ocspd: This retrieves and caches Certificate Revocation Lists (CRLs) and Online Certificate Status Protocol (OCSP) responses for certificate verification. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "ocspd",
@@ -4445,7 +4445,7 @@
     "title": "photolibraryd - Start the daemon",
     "content": "photolibraryd",
     "group": "macOS",
-    "description": "photolibraryd: This handles all photo library requests. It should not be invoked manually. (Start the daemon)",
+    "description": "photolibraryd: This handles all photo library requests. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "photolibraryd",
@@ -4490,7 +4490,7 @@
     "title": "sntpd - Start the daemon",
     "content": "sntpd",
     "group": "macOS",
-    "description": "sntpd: An SNTP server. It should not be invoked manually. (Start the daemon)",
+    "description": "sntpd: An SNTP server. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "sntpd",
@@ -4505,7 +4505,7 @@
     "title": "sntpd - Overwrite existing state with the local clock (stratum 1), for running a master/primary server, without synchronizing with another (higher stratum) server",
     "content": "sntpd -L",
     "group": "macOS",
-    "description": "sntpd: An SNTP server. It should not be invoked manually. (Overwrite existing state with the local clock (stratum 1), for running a master/primary server, without synchronizing with another (higher stratum) server)",
+    "description": "sntpd: An SNTP server. Note: It should not be invoked manually. (Overwrite existing state with the local clock (stratum 1), for running a master/primary server, without synchronizing with another (higher stratum) server)",
     "tags": [
       "osx",
       "sntpd",
@@ -4520,7 +4520,7 @@
     "title": "sntpd - Use a custom file for the SNTP state",
     "content": "sntpd -z {{path/to/state.bin}}",
     "group": "macOS",
-    "description": "sntpd: An SNTP server. It should not be invoked manually. (Use a custom file for the SNTP state)",
+    "description": "sntpd: An SNTP server. Note: It should not be invoked manually. (Use a custom file for the SNTP state)",
     "tags": [
       "osx",
       "sntpd",
@@ -4970,7 +4970,7 @@
     "title": "vpnd - Start the daemon",
     "content": "vpnd",
     "group": "macOS",
-    "description": "vpnd: Listens for incoming VPN connections. It should not be invoked manually. (Start the daemon)",
+    "description": "vpnd: Listens for incoming VPN connections. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "vpnd",
@@ -4985,7 +4985,7 @@
     "title": "vpnd - Run the daemon in the foreground",
     "content": "vpnd -x",
     "group": "macOS",
-    "description": "vpnd: Listens for incoming VPN connections. It should not be invoked manually. (Run the daemon in the foreground)",
+    "description": "vpnd: Listens for incoming VPN connections. Note: It should not be invoked manually. (Run the daemon in the foreground)",
     "tags": [
       "osx",
       "vpnd",
@@ -5000,7 +5000,7 @@
     "title": "vpnd - Run the daemon in the foreground and print logs to the terminal",
     "content": "vpnd -d",
     "group": "macOS",
-    "description": "vpnd: Listens for incoming VPN connections. It should not be invoked manually. (Run the daemon in the foreground and print logs to the terminal)",
+    "description": "vpnd: Listens for incoming VPN connections. Note: It should not be invoked manually. (Run the daemon in the foreground and print logs to the terminal)",
     "tags": [
       "osx",
       "vpnd",
@@ -5015,7 +5015,7 @@
     "title": "vpnd - Run the daemon in the foreground, print logs to the terminal, and quit after validating arguments",
     "content": "vpnd -n",
     "group": "macOS",
-    "description": "vpnd: Listens for incoming VPN connections. It should not be invoked manually. (Run the daemon in the foreground, print logs to the terminal, and quit after validating arguments)",
+    "description": "vpnd: Listens for incoming VPN connections. Note: It should not be invoked manually. (Run the daemon in the foreground, print logs to the terminal, and quit after validating arguments)",
     "tags": [
       "osx",
       "vpnd",
@@ -5030,7 +5030,7 @@
     "title": "vpnd - Run the daemon for a specific server configuration",
     "content": "vpnd -i {{server_id}}",
     "group": "macOS",
-    "description": "vpnd: Listens for incoming VPN connections. It should not be invoked manually. (Run the daemon for a specific server configuration)",
+    "description": "vpnd: Listens for incoming VPN connections. Note: It should not be invoked manually. (Run the daemon for a specific server configuration)",
     "tags": [
       "osx",
       "vpnd",
@@ -5045,7 +5045,7 @@
     "title": "vpnd - Display help",
     "content": "vpnd -h",
     "group": "macOS",
-    "description": "vpnd: Listens for incoming VPN connections. It should not be invoked manually. (Display help)",
+    "description": "vpnd: Listens for incoming VPN connections. Note: It should not be invoked manually. (Display help)",
     "tags": [
       "osx",
       "vpnd",
@@ -5105,7 +5105,7 @@
     "title": "airportd - Start the daemon",
     "content": "airportd",
     "group": "macOS",
-    "description": "airportd: Manage wireless interfaces. It should not be invoked manually. (Start the daemon)",
+    "description": "airportd: Manage wireless interfaces. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "airportd",
@@ -5225,7 +5225,7 @@
     "title": "cloudd - Start the daemon",
     "content": "cloudd",
     "group": "macOS",
-    "description": "cloudd: Backs the CloudKit feature. It should not be invoked manually. (Start the daemon)",
+    "description": "cloudd: Backs the CloudKit feature. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "cloudd",
@@ -6485,10 +6485,25 @@
     "title": "xartstorageremoted - Start the daemon",
     "content": "xartstorageremoted",
     "group": "macOS",
-    "description": "xartstorageremoted: The xART Remote Storage Daemon. Receives save/fetch requests from the CoProcessor. It should not be invoked manually. (Start the daemon)",
+    "description": "xartstorageremoted: The xART Remote Storage Daemon. Receives save/fetch requests from the CoProcessor. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "xartstorageremoted",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-osx-apfsd-0",
+    "type": "command",
+    "title": "apfsd - Start the daemon",
+    "content": "apfsd",
+    "group": "macOS",
+    "description": "apfsd: Manages volumes in the file system. It should not be invoked manually. (Start the daemon)",
+    "tags": [
+      "osx",
+      "apfsd",
       "tldr",
       "en"
     ],
@@ -6545,7 +6560,7 @@
     "title": "filecoordinationd - Start the daemon",
     "content": "filecoordinationd",
     "group": "macOS",
-    "description": "filecoordinationd: Coordinates access to files by multiple processes (`NSFileCoordinator`, `NSFilePresenter`). It should not be invoked manually. (Start the daemon)",
+    "description": "filecoordinationd: Coordinates access to files by multiple processes (`NSFileCoordinator`, `NSFilePresenter`). Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "filecoordinationd",
@@ -7715,7 +7730,7 @@
     "title": "wifivelocityd - Start the daemon",
     "content": "wifivelocityd",
     "group": "macOS",
-    "description": "wifivelocityd: XPC helper for performing system context actions for the WiFiVelocity framework. It should not be invoked manually. (Start the daemon)",
+    "description": "wifivelocityd: XPC helper for performing system context actions for the WiFiVelocity framework. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "wifivelocityd",
@@ -8270,7 +8285,7 @@
     "title": "cloudphotod - Start the daemon",
     "content": "cloudphotod",
     "group": "macOS",
-    "description": "cloudphotod: This synchronizes iCloud Photos. It should not be invoked manually. (Start the daemon)",
+    "description": "cloudphotod: This synchronizes iCloud Photos. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "cloudphotod",
@@ -8420,7 +8435,7 @@
     "title": "universalaccessd - Start the daemon",
     "content": "universalaccessd",
     "group": "macOS",
-    "description": "universalaccessd: Get universal access services. It should not be invoked manually. (Start the daemon)",
+    "description": "universalaccessd: Get universal access services. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "universalaccessd",
@@ -8630,7 +8645,7 @@
     "title": "secd - Start the daemon",
     "content": "secd",
     "group": "macOS",
-    "description": "secd: Control access to and modification of keychain items. It should not be invoked manually. (Start the daemon)",
+    "description": "secd: Control access to and modification of keychain items. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "secd",
@@ -9080,7 +9095,7 @@
     "title": "deleted - Start the daemon",
     "content": "deleted",
     "group": "macOS",
-    "description": "deleted: Keeps track of purgeable space and asks clients to purge when space is low. It should not be invoked manually. (Start the daemon)",
+    "description": "deleted: Keeps track of purgeable space and asks clients to purge when space is low. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "deleted",
@@ -9125,7 +9140,7 @@
     "title": "appsleepd - Start the daemon",
     "content": "appsleepd",
     "group": "macOS",
-    "description": "appsleepd: Start app sleep services. It should not be invoked manually. (Start the daemon)",
+    "description": "appsleepd: Start app sleep services. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "appsleepd",
@@ -9140,7 +9155,7 @@
     "title": "biometrickitd - Start the daemon",
     "content": "biometrickitd",
     "group": "macOS",
-    "description": "biometrickitd: Get support for biometric operations. It should not be invoked manually. (Start the daemon)",
+    "description": "biometrickitd: Get support for biometric operations. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "biometrickitd",
@@ -9155,7 +9170,7 @@
     "title": "fontd - Start the daemon",
     "content": "fontd",
     "group": "macOS",
-    "description": "fontd: Make fonts available to the system. It should not be invoked manually. (Start the daemon)",
+    "description": "fontd: Make fonts available to the system. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "fontd",
@@ -9260,7 +9275,7 @@
     "title": "symptomsd - Start the daemon",
     "content": "symptomsd",
     "group": "macOS",
-    "description": "symptomsd: Provides services for `Symptoms.framework`. It should not be invoked manually. (Start the daemon)",
+    "description": "symptomsd: Provides services for `Symptoms.framework`. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "symptomsd",
@@ -9275,7 +9290,7 @@
     "title": "hidd - Start the daemon",
     "content": "hidd",
     "group": "macOS",
-    "description": "hidd: HID library userland daemon. It should not be invoked manually. (Start the daemon)",
+    "description": "hidd: HID library userland daemon. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "hidd",
@@ -9390,12 +9405,27 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-osx-accessorysensormgrd-0",
+    "type": "command",
+    "title": "accessorysensormgrd - Start the daemon",
+    "content": "accessorysensormgrd",
+    "group": "macOS",
+    "description": "accessorysensormgrd: Control audio accessory sensors. It should not be invoked manually. (Start the daemon)",
+    "tags": [
+      "osx",
+      "accessorysensormgrd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-osx-corebrightnessd-0",
     "type": "command",
     "title": "corebrightnessd - Start the daemon",
     "content": "corebrightnessd",
     "group": "macOS",
-    "description": "corebrightnessd: Manage Night Shift. It should not be invoked manually. (Start the daemon)",
+    "description": "corebrightnessd: Manage Night Shift. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "corebrightnessd",
@@ -9414,6 +9444,21 @@
     "tags": [
       "osx",
       "gsplit",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-osx-alwaysonexclavesd-0",
+    "type": "command",
+    "title": "alwaysonexclavesd - Start the daemon",
+    "content": "alwaysonexclavesd",
+    "group": "macOS",
+    "description": "alwaysonexclavesd: Hosts the Apple Exclaves framework. It should not be invoked manually. (Start the daemon)",
+    "tags": [
+      "osx",
+      "alwaysonexclavesd",
       "tldr",
       "en"
     ],
@@ -9575,7 +9620,7 @@
     "title": "distnoted - Start the daemon",
     "content": "distnoted",
     "group": "macOS",
-    "description": "distnoted: Start distributed notification services. It should not be invoked manually. (Start the daemon)",
+    "description": "distnoted: Start distributed notification services. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "distnoted",
@@ -9800,7 +9845,7 @@
     "title": "bird - Start the daemon",
     "content": "bird",
     "group": "macOS",
-    "description": "bird: This supports the syncing of iCloud and iCloud Drive. It should not be invoked manually. (Start the daemon)",
+    "description": "bird: This supports the syncing of iCloud and iCloud Drive. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "bird",
@@ -9950,7 +9995,7 @@
     "title": "biomesyncd - Start the daemon",
     "content": "biomesyncd",
     "group": "macOS",
-    "description": "biomesyncd: Synchronizes data between devices registered to the same account. It should not be invoked manually. (Start the daemon)",
+    "description": "biomesyncd: Synchronizes data between devices registered to the same account. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "biomesyncd",
@@ -10160,7 +10205,7 @@
     "title": "coreautha - Start the agent",
     "content": "coreautha",
     "group": "macOS",
-    "description": "coreautha: A system agent providing the `LocalAuthentication` framework. It should not be invoked manually. (Start the agent)",
+    "description": "coreautha: A system agent providing the `LocalAuthentication` framework. Note: It should not be invoked manually. (Start the agent)",
     "tags": [
       "osx",
       "coreautha",
@@ -10175,7 +10220,7 @@
     "title": "translationd - Start the daemon",
     "content": "translationd",
     "group": "macOS",
-    "description": "translationd: Enable Translation features. It should not be invoked manually. (Start the daemon)",
+    "description": "translationd: Enable Translation features. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "translationd",
@@ -10194,6 +10239,21 @@
     "tags": [
       "osx",
       "gtsort",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-osx-amfid-0",
+    "type": "command",
+    "title": "amfid - Start the daemon",
+    "content": "amfid",
+    "group": "macOS",
+    "description": "amfid: Mobile file integrity services. It should not be invoked manually. (Start the daemon)",
+    "tags": [
+      "osx",
+      "amfid",
       "tldr",
       "en"
     ],
@@ -10550,7 +10610,7 @@
     "title": "xsand - Start the daemon",
     "content": "xsand",
     "group": "macOS",
-    "description": "xsand: Xsan filesystem management daemon. Provides services for the Xsan filesystem. It should not be invoked manually. (Start the daemon)",
+    "description": "xsand: Xsan filesystem management daemon. Provides services for the Xsan filesystem. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "xsand",
@@ -10760,7 +10820,7 @@
     "title": "coreaudiod - Start the daemon",
     "content": "coreaudiod",
     "group": "macOS",
-    "description": "coreaudiod: Service for Core Audio, Apple's audio system. It should not be invoked manually. (Start the daemon)",
+    "description": "coreaudiod: Service for Core Audio, Apple's audio system. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "coreaudiod",
@@ -10820,7 +10880,7 @@
     "title": "applecamerad - Start the daemon",
     "content": "applecamerad",
     "group": "macOS",
-    "description": "applecamerad: Camera manager. It should not be invoked manually. (Start the daemon)",
+    "description": "applecamerad: Camera manager. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "applecamerad",
@@ -10850,7 +10910,7 @@
     "title": "coreauthd - Start the agent",
     "content": "coreauthd",
     "group": "macOS",
-    "description": "coreauthd: A system daemon providing the `LocalAuthentication` framework. It should not be invoked manually. (Start the agent)",
+    "description": "coreauthd: A system daemon providing the `LocalAuthentication` framework. Note: It should not be invoked manually. (Start the agent)",
     "tags": [
       "osx",
       "coreauthd",
@@ -10940,7 +11000,7 @@
     "title": "securityd - Start the daemon",
     "content": "securityd",
     "group": "macOS",
-    "description": "securityd: This manages security contexts and cryptographic operations. Works with secd for keychain access. It should not be invoked manually. (Start the daemon)",
+    "description": "securityd: This manages security contexts and cryptographic operations. Works with secd for keychain access. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "securityd",
@@ -11375,7 +11435,7 @@
     "title": "webinspectord - Start the daemon",
     "content": "webinspectord",
     "group": "macOS",
-    "description": "webinspectord: Relays commands between Web Inspector and remote targets like WKWebView. It should not be invoked manually. (Start the daemon)",
+    "description": "webinspectord: Relays commands between Web Inspector and remote targets like WKWebView. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "webinspectord",
@@ -11390,7 +11450,7 @@
     "title": "ctkd - Start the daemon",
     "content": "ctkd",
     "group": "macOS",
-    "description": "ctkd: SmartCard daemon. It should not be invoked manually. (Start the daemon)",
+    "description": "ctkd: SmartCard daemon. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "ctkd",
@@ -11630,7 +11690,7 @@
     "title": "wps - Start the daemon",
     "content": "wps",
     "group": "macOS",
-    "description": "wps: Assists AirPort in connecting to a network using Wireless Protected Setup. It should not be invoked manually. (Start the daemon)",
+    "description": "wps: Assists AirPort in connecting to a network using Wireless Protected Setup. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "wps",
@@ -12500,7 +12560,7 @@
     "title": "usernoted - Start the daemon",
     "content": "usernoted",
     "group": "macOS",
-    "description": "usernoted: Provides notification services. It should not be invoked manually. (Start the daemon)",
+    "description": "usernoted: Provides notification services. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "usernoted",
@@ -13115,7 +13175,7 @@
     "title": "backupd - Start the daemon",
     "content": "backupd",
     "group": "macOS",
-    "description": "backupd: Create Time Machine backups and manages its backup history. It should not be invoked manually. (Start the daemon)",
+    "description": "backupd: Create Time Machine backups and manages its backup history. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "backupd",
@@ -13250,7 +13310,7 @@
     "title": "bnepd - Start the daemon",
     "content": "bnepd",
     "group": "macOS",
-    "description": "bnepd: A service that handles all Bluetooth network connections. It should not be invoked manually. (Start the daemon)",
+    "description": "bnepd: A service that handles all Bluetooth network connections. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "bnepd",
@@ -13460,7 +13520,7 @@
     "title": "automountd - Start the daemon",
     "content": "automountd",
     "group": "macOS",
-    "description": "automountd: An automatic mount/unmount daemon for `autofs`. Started on demand by `launchd`. It should not be invoked manually. (Start the daemon)",
+    "description": "automountd: An automatic mount/unmount daemon for `autofs`. Started on demand by `launchd`. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "automountd",
@@ -13475,7 +13535,7 @@
     "title": "automountd - Log more details to `syslog`",
     "content": "automountd -v",
     "group": "macOS",
-    "description": "automountd: An automatic mount/unmount daemon for `autofs`. Started on demand by `launchd`. It should not be invoked manually. (Log more details to `syslog`)",
+    "description": "automountd: An automatic mount/unmount daemon for `autofs`. Started on demand by `launchd`. Note: It should not be invoked manually. (Log more details to `syslog`)",
     "tags": [
       "osx",
       "automountd",
@@ -13665,12 +13725,27 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-osx-adprivacyd-0",
+    "type": "command",
+    "title": "adprivacyd - Start the daemon",
+    "content": "adprivacyd",
+    "group": "macOS",
+    "description": "adprivacyd: Advertising privacy services. It should not be invoked manually. (Start the daemon)",
+    "tags": [
+      "osx",
+      "adprivacyd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-osx-watchlistd-0",
     "type": "command",
     "title": "watchlistd - Start the daemon",
     "content": "watchlistd",
     "group": "macOS",
-    "description": "watchlistd: Manage the Apple TV app's watch list. It should not be invoked manually. (Start the daemon)",
+    "description": "watchlistd: Manage the Apple TV app's watch list. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "watchlistd",
@@ -13685,7 +13760,7 @@
     "title": "contactsd - Start the daemon",
     "content": "contactsd",
     "group": "macOS",
-    "description": "contactsd: Manage the information in your contacts database. It provides functionality to apps using the Contacts API and performs various background maintenance tasks. It should not be invoked manually. (Start the daemon)",
+    "description": "contactsd: Manage the information in your contacts database. It provides functionality to apps using the Contacts API and performs various background maintenance tasks. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "contactsd",
@@ -13910,7 +13985,7 @@
     "title": "notifyd - Start the daemon",
     "content": "notifyd",
     "group": "macOS",
-    "description": "notifyd: Notification server. It should not be invoked manually. (Start the daemon)",
+    "description": "notifyd: Notification server. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "notifyd",
@@ -13925,7 +14000,7 @@
     "title": "notifyd - Log debug messages to the default log file (`/var/log/notifyd.log`)",
     "content": "notifyd -d",
     "group": "macOS",
-    "description": "notifyd: Notification server. It should not be invoked manually. (Log debug messages to the default log file (`/var/log/notifyd.log`))",
+    "description": "notifyd: Notification server. Note: It should not be invoked manually. (Log debug messages to the default log file (`/var/log/notifyd.log`))",
     "tags": [
       "osx",
       "notifyd",
@@ -13940,7 +14015,7 @@
     "title": "notifyd - Log debug messages to an alternate log file",
     "content": "notifyd -d -log_file {{path/to/log_file}}",
     "group": "macOS",
-    "description": "notifyd: Notification server. It should not be invoked manually. (Log debug messages to an alternate log file)",
+    "description": "notifyd: Notification server. Note: It should not be invoked manually. (Log debug messages to an alternate log file)",
     "tags": [
       "osx",
       "notifyd",
@@ -14015,7 +14090,7 @@
     "title": "autofsd - Start the daemon",
     "content": "autofsd",
     "group": "macOS",
-    "description": "autofsd: Run `automount` on startup and network configuration change events. It should not be invoked manually. (Start the daemon)",
+    "description": "autofsd: Run `automount` on startup and network configuration change events. Note: It should not be invoked manually. (Start the daemon)",
     "tags": [
       "osx",
       "autofsd",

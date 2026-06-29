@@ -150,6 +150,126 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-windows-start-0",
+    "type": "command",
+    "title": "start - View the documentation of the equivalent PowerShell command",
+    "content": "tldr start-process",
+    "group": "Windows",
+    "description": "start: Start a command in a new console. Can also be used to run Windows programs registered in the `App Paths` Windows Registry despite not registered in `PATH` environment variable. In PowerShell, this command is an alias of `Start-Process`. This documentation is based on the Command Prompt (`cmd`) version of `start`. (View the documentation of the equivalent PowerShell command)",
+    "tags": [
+      "windows",
+      "start",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-start-1",
+    "type": "command",
+    "title": "start - Start a new shell window with a custom title",
+    "content": "start \"{{window_title}}\" {{cmd|powershell|python|...}}",
+    "group": "Windows",
+    "description": "start: Start a command in a new console. Can also be used to run Windows programs registered in the `App Paths` Windows Registry despite not registered in `PATH` environment variable. In PowerShell, this command is an alias of `Start-Process`. This documentation is based on the Command Prompt (`cmd`) version of `start`. (Start a new shell window with a custom title)",
+    "tags": [
+      "windows",
+      "start",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-start-2",
+    "type": "command",
+    "title": "start - Open a specific directory on Windows Explorer (equivalent to `explorer {{path\\to\\directory}}`)",
+    "content": "start \"\" \"{{path\\to\\directory}}\"",
+    "group": "Windows",
+    "description": "start: Start a command in a new console. Can also be used to run Windows programs registered in the `App Paths` Windows Registry despite not registered in `PATH` environment variable. In PowerShell, this command is an alias of `Start-Process`. This documentation is based on the Command Prompt (`cmd`) version of `start`. (Open a specific directory on Windows Explorer (equivalent to `explorer {{path\\to\\directory}}`))",
+    "tags": [
+      "windows",
+      "start",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-start-3",
+    "type": "command",
+    "title": "start - Start a specific Windows program file (command-line programs will open on a new console window)",
+    "content": "start {{path\\to\\file}}",
+    "group": "Windows",
+    "description": "start: Start a command in a new console. Can also be used to run Windows programs registered in the `App Paths` Windows Registry despite not registered in `PATH` environment variable. In PowerShell, this command is an alias of `Start-Process`. This documentation is based on the Command Prompt (`cmd`) version of `start`. (Start a specific Windows program file (command-line programs will open on a new console window))",
+    "tags": [
+      "windows",
+      "start",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-start-4",
+    "type": "command",
+    "title": "start - Start a registered Windows program name and pass its command arguments",
+    "content": "start {{msedge}} {{--inprivate example.com}}",
+    "group": "Windows",
+    "description": "start: Start a command in a new console. Can also be used to run Windows programs registered in the `App Paths` Windows Registry despite not registered in `PATH` environment variable. In PowerShell, this command is an alias of `Start-Process`. This documentation is based on the Command Prompt (`cmd`) version of `start`. (Start a registered Windows program name and pass its command arguments)",
+    "tags": [
+      "windows",
+      "start",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-start-5",
+    "type": "command",
+    "title": "start - Start a Windows program in minimized or maximized window mode",
+    "content": "start {{/min|/max}} {{path\\to\\file.exe}}",
+    "group": "Windows",
+    "description": "start: Start a command in a new console. Can also be used to run Windows programs registered in the `App Paths` Windows Registry despite not registered in `PATH` environment variable. In PowerShell, this command is an alias of `Start-Process`. This documentation is based on the Command Prompt (`cmd`) version of `start`. (Start a Windows program in minimized or maximized window mode)",
+    "tags": [
+      "windows",
+      "start",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-start-6",
+    "type": "command",
+    "title": "start - Start a command or Windows program with a specified working directory",
+    "content": "start /d {{path\\to\\directory}} {{command_or_program}}",
+    "group": "Windows",
+    "description": "start: Start a command in a new console. Can also be used to run Windows programs registered in the `App Paths` Windows Registry despite not registered in `PATH` environment variable. In PowerShell, this command is an alias of `Start-Process`. This documentation is based on the Command Prompt (`cmd`) version of `start`. (Start a command or Windows program with a specified working directory)",
+    "tags": [
+      "windows",
+      "start",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-start-7",
+    "type": "command",
+    "title": "start - Do not finish this command until the target command or program exits",
+    "content": "start /wait {{command_or_program}}",
+    "group": "Windows",
+    "description": "start: Start a command in a new console. Can also be used to run Windows programs registered in the `App Paths` Windows Registry despite not registered in `PATH` environment variable. In PowerShell, this command is an alias of `Start-Process`. This documentation is based on the Command Prompt (`cmd`) version of `start`. (Do not finish this command until the target command or program exits)",
+    "tags": [
+      "windows",
+      "start",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-windows-cinst-0",
     "type": "command",
     "title": "cinst - View documentation for the original command",
@@ -5700,6 +5820,81 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-windows-olk-0",
+    "type": "command",
+    "title": "olk - Open the New Outlook application",
+    "content": "olk",
+    "group": "Windows",
+    "description": "olk: Microsoft Outlook (New). (Open the New Outlook application)",
+    "tags": [
+      "windows",
+      "olk",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-olk-1",
+    "type": "command",
+    "title": "olk - Open under a specific profile name",
+    "content": "olk --profile \"{{profile}}\"",
+    "group": "Windows",
+    "description": "olk: Microsoft Outlook (New). (Open under a specific profile name)",
+    "tags": [
+      "windows",
+      "olk",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-olk-2",
+    "type": "command",
+    "title": "olk - Run New Outlook in Safe Mode",
+    "content": "olk --safe",
+    "group": "Windows",
+    "description": "olk: Microsoft Outlook (New). (Run New Outlook in Safe Mode)",
+    "tags": [
+      "windows",
+      "olk",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-olk-3",
+    "type": "command",
+    "title": "olk - Check for New Outlook updates",
+    "content": "olk --force-update",
+    "group": "Windows",
+    "description": "olk: Microsoft Outlook (New). (Check for New Outlook updates)",
+    "tags": [
+      "windows",
+      "olk",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-olk-4",
+    "type": "command",
+    "title": "olk - Reset all New Outlook application settings, including credentials, to factory settings",
+    "content": "olk --reset",
+    "group": "Windows",
+    "description": "olk: Microsoft Outlook (New). (Reset all New Outlook application settings, including credentials, to factory settings)",
+    "tags": [
+      "windows",
+      "olk",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-windows-mklink-0",
     "type": "command",
     "title": "mklink - Create a symbolic link to a file",
@@ -7845,6 +8040,81 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-windows-pptview-0",
+    "type": "command",
+    "title": "pptview - Launch the application",
+    "content": "pptview",
+    "group": "Windows",
+    "description": "pptview: View Microsoft PowerPoint presentations. Note: This program has been deprecated. (Launch the application)",
+    "tags": [
+      "windows",
+      "pptview",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-pptview-1",
+    "type": "command",
+    "title": "pptview - Open a presentation",
+    "content": "pptview {{path\\to\\file.pptx}}",
+    "group": "Windows",
+    "description": "pptview: View Microsoft PowerPoint presentations. Note: This program has been deprecated. (Open a presentation)",
+    "tags": [
+      "windows",
+      "pptview",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-pptview-2",
+    "type": "command",
+    "title": "pptview - Open at a specific slide [n]umber",
+    "content": "pptview /n{{1}} {{path\\to\\file.pptx}}",
+    "group": "Windows",
+    "description": "pptview: View Microsoft PowerPoint presentations. Note: This program has been deprecated. (Open at a specific slide [n]umber)",
+    "tags": [
+      "windows",
+      "pptview",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-pptview-3",
+    "type": "command",
+    "title": "pptview - Open a [l]ist of presentation files from a playlist file",
+    "content": "pptview /l {{path\\to\\playlist.txt}}",
+    "group": "Windows",
+    "description": "pptview: View Microsoft PowerPoint presentations. Note: This program has been deprecated. (Open a [l]ist of presentation files from a playlist file)",
+    "tags": [
+      "windows",
+      "pptview",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-pptview-4",
+    "type": "command",
+    "title": "pptview - [p]rint a presentation file",
+    "content": "pptview /p {{path\\to\\file.pptx}}",
+    "group": "Windows",
+    "description": "pptview: View Microsoft PowerPoint presentations. Note: This program has been deprecated. ([p]rint a presentation file)",
+    "tags": [
+      "windows",
+      "pptview",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-windows-history-0",
     "type": "command",
     "title": "history - View documentation for the original command",
@@ -8447,10 +8717,10 @@
   {
     "id": "tldr-en-windows-where-0",
     "type": "command",
-    "title": "where - Display the location of file pattern",
-    "content": "where {{file_pattern}}",
+    "title": "where - View the documentation of the equivalent PowerShell command",
+    "content": "tldr where-object",
     "group": "Windows",
-    "description": "where: Display the location of files that match the search pattern. Defaults to current work directory and paths in the `%PATH%` environment variable. (Display the location of file pattern)",
+    "description": "where: Display the location of files that match the search pattern. Defaults to current work directory and paths in the `%PATH%` environment variable. In PowerShell, this command is an alias of `Where-Object`. This documentation is based on the Command Prompt (`cmd`) version of `where`. (View the documentation of the equivalent PowerShell command)",
     "tags": [
       "windows",
       "where",
@@ -8462,10 +8732,10 @@
   {
     "id": "tldr-en-windows-where-1",
     "type": "command",
-    "title": "where - Display the location of file pattern including file size and date",
-    "content": "where /T {{file_pattern}}",
+    "title": "where - Display the location of file pattern",
+    "content": "where {{file_pattern}}",
     "group": "Windows",
-    "description": "where: Display the location of files that match the search pattern. Defaults to current work directory and paths in the `%PATH%` environment variable. (Display the location of file pattern including file size and date)",
+    "description": "where: Display the location of files that match the search pattern. Defaults to current work directory and paths in the `%PATH%` environment variable. In PowerShell, this command is an alias of `Where-Object`. This documentation is based on the Command Prompt (`cmd`) version of `where`. (Display the location of file pattern)",
     "tags": [
       "windows",
       "where",
@@ -8477,10 +8747,10 @@
   {
     "id": "tldr-en-windows-where-2",
     "type": "command",
-    "title": "where - Recursively search for file pattern at specified path",
-    "content": "where /R {{path\\to\\directory}} {{file_pattern}}",
+    "title": "where - Display the location of file pattern including file size and date",
+    "content": "where /T {{file_pattern}}",
     "group": "Windows",
-    "description": "where: Display the location of files that match the search pattern. Defaults to current work directory and paths in the `%PATH%` environment variable. (Recursively search for file pattern at specified path)",
+    "description": "where: Display the location of files that match the search pattern. Defaults to current work directory and paths in the `%PATH%` environment variable. In PowerShell, this command is an alias of `Where-Object`. This documentation is based on the Command Prompt (`cmd`) version of `where`. (Display the location of file pattern including file size and date)",
     "tags": [
       "windows",
       "where",
@@ -8492,10 +8762,25 @@
   {
     "id": "tldr-en-windows-where-3",
     "type": "command",
+    "title": "where - Recursively search for file pattern at specified path",
+    "content": "where /R {{path\\to\\directory}} {{file_pattern}}",
+    "group": "Windows",
+    "description": "where: Display the location of files that match the search pattern. Defaults to current work directory and paths in the `%PATH%` environment variable. In PowerShell, this command is an alias of `Where-Object`. This documentation is based on the Command Prompt (`cmd`) version of `where`. (Recursively search for file pattern at specified path)",
+    "tags": [
+      "windows",
+      "where",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-where-4",
+    "type": "command",
     "title": "where - Silently return the error code for the location of the file pattern",
     "content": "where /Q {{file_pattern}}",
     "group": "Windows",
-    "description": "where: Display the location of files that match the search pattern. Defaults to current work directory and paths in the `%PATH%` environment variable. (Silently return the error code for the location of the file pattern)",
+    "description": "where: Display the location of files that match the search pattern. Defaults to current work directory and paths in the `%PATH%` environment variable. In PowerShell, this command is an alias of `Where-Object`. This documentation is based on the Command Prompt (`cmd`) version of `where`. (Silently return the error code for the location of the file pattern)",
     "tags": [
       "windows",
       "where",
@@ -12210,6 +12495,126 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-windows-powerpnt-0",
+    "type": "command",
+    "title": "powerpnt - Launch the presentation application",
+    "content": "powerpnt",
+    "group": "Windows",
+    "description": "powerpnt: Microsoft Office's presentation application. (Launch the presentation application)",
+    "tags": [
+      "windows",
+      "powerpnt",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-powerpnt-1",
+    "type": "command",
+    "title": "powerpnt - Create a new [b]lank presentation",
+    "content": "powerpnt /b",
+    "group": "Windows",
+    "description": "powerpnt: Microsoft Office's presentation application. (Create a new [b]lank presentation)",
+    "tags": [
+      "windows",
+      "powerpnt",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-powerpnt-2",
+    "type": "command",
+    "title": "powerpnt - Create a [n]ew presentation from a template",
+    "content": "powerpnt /n {{path\\to\\file.potm}}",
+    "group": "Windows",
+    "description": "powerpnt: Microsoft Office's presentation application. (Create a [n]ew presentation from a template)",
+    "tags": [
+      "windows",
+      "powerpnt",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-powerpnt-3",
+    "type": "command",
+    "title": "powerpnt - [o]pen one or more files",
+    "content": "powerpnt /o {{path\\to\\file1.pptx path\\to\\file2.pptx ...}}",
+    "group": "Windows",
+    "description": "powerpnt: Microsoft Office's presentation application. ([o]pen one or more files)",
+    "tags": [
+      "windows",
+      "powerpnt",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-powerpnt-4",
+    "type": "command",
+    "title": "powerpnt - Open a file in [s]lideshow mode",
+    "content": "powerpnt /s {{path\\to\\file.pptx}}",
+    "group": "Windows",
+    "description": "powerpnt: Microsoft Office's presentation application. (Open a file in [s]lideshow mode)",
+    "tags": [
+      "windows",
+      "powerpnt",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-powerpnt-5",
+    "type": "command",
+    "title": "powerpnt - Open a presentation, then execute a specific [m]acro",
+    "content": "powerpnt /m {{path\\to\\file.pptm}} \"{{MacroName}}\"",
+    "group": "Windows",
+    "description": "powerpnt: Microsoft Office's presentation application. (Open a presentation, then execute a specific [m]acro)",
+    "tags": [
+      "windows",
+      "powerpnt",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-powerpnt-6",
+    "type": "command",
+    "title": "powerpnt - Print a presentation via the Print dialog",
+    "content": "powerpnt /pwo {{path\\to\\file.pptx}}",
+    "group": "Windows",
+    "description": "powerpnt: Microsoft Office's presentation application. (Print a presentation via the Print dialog)",
+    "tags": [
+      "windows",
+      "powerpnt",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-powerpnt-7",
+    "type": "command",
+    "title": "powerpnt - Directly [p]rint a presentation [t]o a specific printer",
+    "content": "powerpnt /pt {{printer_name}} {{path\\to\\file.pptx}}",
+    "group": "Windows",
+    "description": "powerpnt: Microsoft Office's presentation application. (Directly [p]rint a presentation [t]o a specific printer)",
+    "tags": [
+      "windows",
+      "powerpnt",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-windows-remove-appxpackage-0",
     "type": "command",
     "title": "remove-appxpackage - Remove an app package",
@@ -13239,6 +13644,66 @@
     "tags": [
       "windows",
       "wait-process",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-msaccess-0",
+    "type": "command",
+    "title": "msaccess - Launch the database application",
+    "content": "msaccess",
+    "group": "Windows",
+    "description": "msaccess: Microsoft Office's database management application. (Launch the database application)",
+    "tags": [
+      "windows",
+      "msaccess",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-msaccess-1",
+    "type": "command",
+    "title": "msaccess - Open an existing database file",
+    "content": "msaccess {{path\\to\\file.accdb}}",
+    "group": "Windows",
+    "description": "msaccess: Microsoft Office's database management application. (Open an existing database file)",
+    "tags": [
+      "windows",
+      "msaccess",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-msaccess-2",
+    "type": "command",
+    "title": "msaccess - Open an existing database file in [r]ead-[o]nly mode",
+    "content": "msaccess /ro {{path\\to\\fileaccdb}}",
+    "group": "Windows",
+    "description": "msaccess: Microsoft Office's database management application. (Open an existing database file in [r]ead-[o]nly mode)",
+    "tags": [
+      "windows",
+      "msaccess",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-msaccess-3",
+    "type": "command",
+    "title": "msaccess - Open a database, then e[x]ecute a specific macro",
+    "content": "msaccess {{path\\to\\file.accdb}} /x {{MacroName}}",
+    "group": "Windows",
+    "description": "msaccess: Microsoft Office's database management application. (Open a database, then e[x]ecute a specific macro)",
+    "tags": [
+      "windows",
+      "msaccess",
       "tldr",
       "en"
     ],
@@ -14280,6 +14745,96 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-windows-start-process-0",
+    "type": "command",
+    "title": "start-process - Open a specific directory on Windows Explorer (equivalent to `explorer {{path\\to\\directory}}`)",
+    "content": "Start-Process {{path\\to\\directory}}",
+    "group": "Windows",
+    "description": "start-process: Start a command in a new console. Can also be used to run Windows programs registered in the `App Paths` Windows Registry despite not registered in `PATH` environment variable. (Open a specific directory on Windows Explorer (equivalent to `explorer {{path\\to\\directory}}`))",
+    "tags": [
+      "windows",
+      "start-process",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-start-process-1",
+    "type": "command",
+    "title": "start-process - Start a specific Windows program file (command-line programs will open on a new console window)",
+    "content": "Start-Process {{path\\to\\file}}",
+    "group": "Windows",
+    "description": "start-process: Start a command in a new console. Can also be used to run Windows programs registered in the `App Paths` Windows Registry despite not registered in `PATH` environment variable. (Start a specific Windows program file (command-line programs will open on a new console window))",
+    "tags": [
+      "windows",
+      "start-process",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-start-process-2",
+    "type": "command",
+    "title": "start-process - Start a registered Windows program name and pass its command arguments",
+    "content": "Start-Process {{msedge}} {{--inprivate example.com}}",
+    "group": "Windows",
+    "description": "start-process: Start a command in a new console. Can also be used to run Windows programs registered in the `App Paths` Windows Registry despite not registered in `PATH` environment variable. (Start a registered Windows program name and pass its command arguments)",
+    "tags": [
+      "windows",
+      "start-process",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-start-process-3",
+    "type": "command",
+    "title": "start-process - Start a Windows program in minimized or maximized window mode",
+    "content": "Start-Process -WindowStyle {{Minimized|Maximized}} {{program}}",
+    "group": "Windows",
+    "description": "start-process: Start a command in a new console. Can also be used to run Windows programs registered in the `App Paths` Windows Registry despite not registered in `PATH` environment variable. (Start a Windows program in minimized or maximized window mode)",
+    "tags": [
+      "windows",
+      "start-process",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-start-process-4",
+    "type": "command",
+    "title": "start-process - Start a command or Windows program with a specified working directory",
+    "content": "Start-Process -WorkingDirectory {{path\\to\\directory}} {{command_or_program}}",
+    "group": "Windows",
+    "description": "start-process: Start a command in a new console. Can also be used to run Windows programs registered in the `App Paths` Windows Registry despite not registered in `PATH` environment variable. (Start a command or Windows program with a specified working directory)",
+    "tags": [
+      "windows",
+      "start-process",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-start-process-5",
+    "type": "command",
+    "title": "start-process - Do not finish this command until the target command or program exits",
+    "content": "Start-Process -Wait {{command_or_program}}",
+    "group": "Windows",
+    "description": "start-process: Start a command in a new console. Can also be used to run Windows programs registered in the `App Paths` Windows Registry despite not registered in `PATH` environment variable. (Do not finish this command until the target command or program exits)",
+    "tags": [
+      "windows",
+      "start-process",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-windows-get-filehash-0",
     "type": "command",
     "title": "get-filehash - Calculate a hash for a specified file using the SHA256 algorithm",
@@ -14679,6 +15234,51 @@
     "tags": [
       "windows",
       "bcdboot",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-silverlight-installer-0",
+    "type": "command",
+    "title": "silverlight-installer - Run the Microsoft Silverlight installer in GUI",
+    "content": "silverlight-installer",
+    "group": "Windows",
+    "description": "silverlight-installer: Install or uninstall Microsoft Silverlight. You may need to replace the command with the actual installer name, such as `Silverlight.1.0.exe`. Note: This program has been deprecated. (Run the Microsoft Silverlight installer in GUI)",
+    "tags": [
+      "windows",
+      "silverlight-installer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-silverlight-installer-1",
+    "type": "command",
+    "title": "silverlight-installer - Run the installer in [q]uiet mode (do not show GUI)",
+    "content": "silverlight-installer /q",
+    "group": "Windows",
+    "description": "silverlight-installer: Install or uninstall Microsoft Silverlight. You may need to replace the command with the actual installer name, such as `Silverlight.1.0.exe`. Note: This program has been deprecated. (Run the installer in [q]uiet mode (do not show GUI))",
+    "tags": [
+      "windows",
+      "silverlight-installer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-silverlight-installer-2",
+    "type": "command",
+    "title": "silverlight-installer - [u]ninstall the program in [q]uiet mode",
+    "content": "silverlight-installer /qu",
+    "group": "Windows",
+    "description": "silverlight-installer: Install or uninstall Microsoft Silverlight. You may need to replace the command with the actual installer name, such as `Silverlight.1.0.exe`. Note: This program has been deprecated. ([u]ninstall the program in [q]uiet mode)",
+    "tags": [
+      "windows",
+      "silverlight-installer",
       "tldr",
       "en"
     ],
@@ -15939,6 +16539,126 @@
     "tags": [
       "windows",
       "assoc",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-winword-0",
+    "type": "command",
+    "title": "winword - Launch the word processor application",
+    "content": "winword",
+    "group": "Windows",
+    "description": "winword: Microsoft Office's word processor application. (Launch the word processor application)",
+    "tags": [
+      "windows",
+      "winword",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-winword-1",
+    "type": "command",
+    "title": "winword - Launch Word with [n]o open documents",
+    "content": "winword /n",
+    "group": "Windows",
+    "description": "winword: Microsoft Office's word processor application. (Launch Word with [n]o open documents)",
+    "tags": [
+      "windows",
+      "winword",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-winword-2",
+    "type": "command",
+    "title": "winword - [w]rite a new blank document",
+    "content": "winword /w",
+    "group": "Windows",
+    "description": "winword: Microsoft Office's word processor application. ([w]rite a new blank document)",
+    "tags": [
+      "windows",
+      "winword",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-winword-3",
+    "type": "command",
+    "title": "winword - Create a new document [f]rom (based on) an existing file",
+    "content": "winword /f {{path\\to\\file.docx}}",
+    "group": "Windows",
+    "description": "winword: Microsoft Office's word processor application. (Create a new document [f]rom (based on) an existing file)",
+    "tags": [
+      "windows",
+      "winword",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-winword-4",
+    "type": "command",
+    "title": "winword - Open one or more files for edi[t]ing",
+    "content": "winword /t {{path\\to\\file1.docx path\\to\\file2.docx ...}}",
+    "group": "Windows",
+    "description": "winword: Microsoft Office's word processor application. (Open one or more files for edi[t]ing)",
+    "tags": [
+      "windows",
+      "winword",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-winword-5",
+    "type": "command",
+    "title": "winword - Open a file with all AutoExec [m]acros disabled",
+    "content": "winword /m {{path\\to\\file.docm}}",
+    "group": "Windows",
+    "description": "winword: Microsoft Office's word processor application. (Open a file with all AutoExec [m]acros disabled)",
+    "tags": [
+      "windows",
+      "winword",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-winword-6",
+    "type": "command",
+    "title": "winword - Open a file with all AutoExec [m]acros disabled, then run a specific macro",
+    "content": "winword /m{{MacroName}} {{path\\to\\file.docm}}",
+    "group": "Windows",
+    "description": "winword: Microsoft Office's word processor application. (Open a file with all AutoExec [m]acros disabled, then run a specific macro)",
+    "tags": [
+      "windows",
+      "winword",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-winword-7",
+    "type": "command",
+    "title": "winword - Start Microsoft Word in Safe Mode",
+    "content": "winword /safe",
+    "group": "Windows",
+    "description": "winword: Microsoft Office's word processor application. (Start Microsoft Word in Safe Mode)",
+    "tags": [
+      "windows",
+      "winword",
       "tldr",
       "en"
     ],
@@ -17394,6 +18114,66 @@
     "tags": [
       "windows",
       "net",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-excel-0",
+    "type": "command",
+    "title": "excel - Launch the spreadsheet application",
+    "content": "excel",
+    "group": "Windows",
+    "description": "excel: Microsoft Office's spreadsheet application. (Launch the spreadsheet application)",
+    "tags": [
+      "windows",
+      "excel",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-excel-1",
+    "type": "command",
+    "title": "excel - Create a new workbook with a [m]acro-enabled sheet",
+    "content": "excel /m",
+    "group": "Windows",
+    "description": "excel: Microsoft Office's spreadsheet application. (Create a new workbook with a [m]acro-enabled sheet)",
+    "tags": [
+      "windows",
+      "excel",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-excel-2",
+    "type": "command",
+    "title": "excel - Open a workbook as a [t]emplate",
+    "content": "excel {{[/n|/t]}} {{path\\to\\file.xlsx}}",
+    "group": "Windows",
+    "description": "excel: Microsoft Office's spreadsheet application. (Open a workbook as a [t]emplate)",
+    "tags": [
+      "windows",
+      "excel",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-excel-3",
+    "type": "command",
+    "title": "excel - Start Microsoft Excel in [s]afe Mode",
+    "content": "excel {{[/s|/safemode]}}",
+    "group": "Windows",
+    "description": "excel: Microsoft Office's spreadsheet application. (Start Microsoft Excel in [s]afe Mode)",
+    "tags": [
+      "windows",
+      "excel",
       "tldr",
       "en"
     ],
