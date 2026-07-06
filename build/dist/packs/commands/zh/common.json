@@ -18815,7 +18815,7 @@
     "title": "cargo - 搜索包（crate）",
     "content": "cargo search {{搜索关键词}}",
     "group": "通用工具 (Common)",
-    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`. (搜索包（crate）)",
+    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`。 (搜索包（crate）)",
     "tags": [
       "common",
       "cargo",
@@ -18830,7 +18830,7 @@
     "title": "cargo - 安装二进制包（crate）",
     "content": "cargo install {{包名}}",
     "group": "通用工具 (Common)",
-    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`. (安装二进制包（crate）)",
+    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`。 (安装二进制包（crate）)",
     "tags": [
       "common",
       "cargo",
@@ -18845,7 +18845,7 @@
     "title": "cargo - 列出已安装的二进制包（crate）",
     "content": "cargo install --list",
     "group": "通用工具 (Common)",
-    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`. (列出已安装的二进制包（crate）)",
+    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`。 (列出已安装的二进制包（crate）)",
     "tags": [
       "common",
       "cargo",
@@ -18860,7 +18860,7 @@
     "title": "cargo - 在指定目录（或默认情况下在当前工作目录）中创建一个新的二进制或库 Rust 项目",
     "content": "cargo init --{{bin|lib}} {{路径/到/目录}}",
     "group": "通用工具 (Common)",
-    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`. (在指定目录（或默认情况下在当前工作目录）中创建一个新的二进制或库 Rust 项目)",
+    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`。 (在指定目录（或默认情况下在当前工作目录）中创建一个新的二进制或库 Rust 项目)",
     "tags": [
       "common",
       "cargo",
@@ -18875,7 +18875,7 @@
     "title": "cargo - 向当前目录的 `Cargo.toml` 添加一个依赖项",
     "content": "cargo add {{依赖项}}",
     "group": "通用工具 (Common)",
-    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`. (向当前目录的 `Cargo.toml` 添加一个依赖项)",
+    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`。 (向当前目录的 `Cargo.toml` 添加一个依赖项)",
     "tags": [
       "common",
       "cargo",
@@ -18890,7 +18890,7 @@
     "title": "cargo - 使用 release 模式在当前目录中构建 Rust 项目",
     "content": "cargo {{[b|build]}} {{[-r|--release]}}",
     "group": "通用工具 (Common)",
-    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`. (使用 release 模式在当前目录中构建 Rust 项目)",
+    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`。 (使用 release 模式在当前目录中构建 Rust 项目)",
     "tags": [
       "common",
       "cargo",
@@ -18905,7 +18905,7 @@
     "title": "cargo - 使用最新的编译器在当前目录中构建 Rust 项目（需要 `rustup`）",
     "content": "cargo +nightly {{[b|build]}}",
     "group": "通用工具 (Common)",
-    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`. (使用最新的编译器在当前目录中构建 Rust 项目（需要 `rustup`）)",
+    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`。 (使用最新的编译器在当前目录中构建 Rust 项目（需要 `rustup`）)",
     "tags": [
       "common",
       "cargo",
@@ -18920,7 +18920,7 @@
     "title": "cargo - 使用特定数量的线程构建（默认为逻辑 CPU 的数量）",
     "content": "cargo {{[b|build]}} {{[-j|--jobs]}} {{线程数}}",
     "group": "通用工具 (Common)",
-    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`. (使用特定数量的线程构建（默认为逻辑 CPU 的数量）)",
+    "description": "cargo: 管理 Rust 项目及其模块依赖项（crates）。 此命令也有关于其子命令的文件，例如：`build`。 (使用特定数量的线程构建（默认为逻辑 CPU 的数量）)",
     "tags": [
       "common",
       "cargo",
@@ -39197,10 +39197,10 @@
   {
     "id": "tldr-zh-common-git-credential-cache-0",
     "type": "command",
-    "title": "git-credential-cache - Git 凭证缓存助手，用于在内存中临时存储密码。",
+    "title": "git-credential-cache - Git 凭证缓存助手，用于在内存中临时存储密码",
     "content": "git config credential.helper 'cache --timeout={{秒数}}'",
     "group": "通用工具 (Common)",
-    "description": "git-credential-cache: Git 凭证缓存助手，用于在内存中临时存储密码。 (Git 凭证缓存助手，用于在内存中临时存储密码。)",
+    "description": "git-credential-cache: Git 凭证缓存助手，用于在内存中临时存储密码。 (Git 凭证缓存助手，用于在内存中临时存储密码)",
     "tags": [
       "common",
       "git-credential-cache",
@@ -42905,7 +42905,7 @@
     "title": "npm - 使用默认值创建一个 `package.json` 文件（省略 `--yes` 来以交互方式执行）",
     "content": "npm init {{[-y|--yes]}}",
     "group": "通用工具 (Common)",
-    "description": "npm: JavaScript 和 Node.js 软件包管理器。 管理 Node.js 项目及其模块依赖项。 此命令也有关于其子命令的文件，例如：`install`, `run`. (使用默认值创建一个 `package.json` 文件（省略 `--yes` 来以交互方式执行）)",
+    "description": "npm: JavaScript 和 Node.js 软件包管理器。 管理 Node.js 项目及其模块依赖项。 此命令也有关于其子命令的文件，例如：`install`, `run`。 (使用默认值创建一个 `package.json` 文件（省略 `--yes` 来以交互方式执行）)",
     "tags": [
       "common",
       "npm",
@@ -42920,7 +42920,7 @@
     "title": "npm - 下载 `package.json` 中列出的所有依赖项软件包",
     "content": "npm {{[i|install]}}",
     "group": "通用工具 (Common)",
-    "description": "npm: JavaScript 和 Node.js 软件包管理器。 管理 Node.js 项目及其模块依赖项。 此命令也有关于其子命令的文件，例如：`install`, `run`. (下载 `package.json` 中列出的所有依赖项软件包)",
+    "description": "npm: JavaScript 和 Node.js 软件包管理器。 管理 Node.js 项目及其模块依赖项。 此命令也有关于其子命令的文件，例如：`install`, `run`。 (下载 `package.json` 中列出的所有依赖项软件包)",
     "tags": [
       "common",
       "npm",
@@ -42935,7 +42935,7 @@
     "title": "npm - 下载软件包的特定版本并将其添加到 `package.json` 中的依赖项列表中",
     "content": "npm {{[i|install]}} {{软件包名}}@{{版本号}}",
     "group": "通用工具 (Common)",
-    "description": "npm: JavaScript 和 Node.js 软件包管理器。 管理 Node.js 项目及其模块依赖项。 此命令也有关于其子命令的文件，例如：`install`, `run`. (下载软件包的特定版本并将其添加到 `package.json` 中的依赖项列表中)",
+    "description": "npm: JavaScript 和 Node.js 软件包管理器。 管理 Node.js 项目及其模块依赖项。 此命令也有关于其子命令的文件，例如：`install`, `run`。 (下载软件包的特定版本并将其添加到 `package.json` 中的依赖项列表中)",
     "tags": [
       "common",
       "npm",
@@ -42950,7 +42950,7 @@
     "title": "npm - 下载软件包的最新版本并将其添加到 `package.json` 中的开发依赖项列表中",
     "content": "npm {{[i|install]}} {{软件包名}} {{[-D|--save-dev]}}",
     "group": "通用工具 (Common)",
-    "description": "npm: JavaScript 和 Node.js 软件包管理器。 管理 Node.js 项目及其模块依赖项。 此命令也有关于其子命令的文件，例如：`install`, `run`. (下载软件包的最新版本并将其添加到 `package.json` 中的开发依赖项列表中)",
+    "description": "npm: JavaScript 和 Node.js 软件包管理器。 管理 Node.js 项目及其模块依赖项。 此命令也有关于其子命令的文件，例如：`install`, `run`。 (下载软件包的最新版本并将其添加到 `package.json` 中的开发依赖项列表中)",
     "tags": [
       "common",
       "npm",
@@ -42965,7 +42965,7 @@
     "title": "npm - 下载软件包的最新版本并全局安装（用 `npm config set prefix` 设置安装位置）",
     "content": "npm {{[i|install]}} {{软件包名}} {{[-g|--global]}}",
     "group": "通用工具 (Common)",
-    "description": "npm: JavaScript 和 Node.js 软件包管理器。 管理 Node.js 项目及其模块依赖项。 此命令也有关于其子命令的文件，例如：`install`, `run`. (下载软件包的最新版本并全局安装（用 `npm config set prefix` 设置安装位置）)",
+    "description": "npm: JavaScript 和 Node.js 软件包管理器。 管理 Node.js 项目及其模块依赖项。 此命令也有关于其子命令的文件，例如：`install`, `run`。 (下载软件包的最新版本并全局安装（用 `npm config set prefix` 设置安装位置）)",
     "tags": [
       "common",
       "npm",
@@ -42980,7 +42980,7 @@
     "title": "npm - 卸载软件包并将其从 `package.json` 中的依赖项列表中删除",
     "content": "npm {{[r|uninstall]}} {{软件包名}}",
     "group": "通用工具 (Common)",
-    "description": "npm: JavaScript 和 Node.js 软件包管理器。 管理 Node.js 项目及其模块依赖项。 此命令也有关于其子命令的文件，例如：`install`, `run`. (卸载软件包并将其从 `package.json` 中的依赖项列表中删除)",
+    "description": "npm: JavaScript 和 Node.js 软件包管理器。 管理 Node.js 项目及其模块依赖项。 此命令也有关于其子命令的文件，例如：`install`, `run`。 (卸载软件包并将其从 `package.json` 中的依赖项列表中删除)",
     "tags": [
       "common",
       "npm",
@@ -42995,7 +42995,7 @@
     "title": "npm - 列出所有本地安装的依赖项",
     "content": "npm {{[ls|list]}}",
     "group": "通用工具 (Common)",
-    "description": "npm: JavaScript 和 Node.js 软件包管理器。 管理 Node.js 项目及其模块依赖项。 此命令也有关于其子命令的文件，例如：`install`, `run`. (列出所有本地安装的依赖项)",
+    "description": "npm: JavaScript 和 Node.js 软件包管理器。 管理 Node.js 项目及其模块依赖项。 此命令也有关于其子命令的文件，例如：`install`, `run`。 (列出所有本地安装的依赖项)",
     "tags": [
       "common",
       "npm",
@@ -43010,7 +43010,7 @@
     "title": "npm - 列出所有顶层全局安装的软件包",
     "content": "npm {{[ls|list]}} {{[-g|--global]}} --depth {{0}}",
     "group": "通用工具 (Common)",
-    "description": "npm: JavaScript 和 Node.js 软件包管理器。 管理 Node.js 项目及其模块依赖项。 此命令也有关于其子命令的文件，例如：`install`, `run`. (列出所有顶层全局安装的软件包)",
+    "description": "npm: JavaScript 和 Node.js 软件包管理器。 管理 Node.js 项目及其模块依赖项。 此命令也有关于其子命令的文件，例如：`install`, `run`。 (列出所有顶层全局安装的软件包)",
     "tags": [
       "common",
       "npm",
@@ -49940,7 +49940,7 @@
     "title": "nix-flake - 更新当前目录下 Flake 的所有输入（依赖项）",
     "content": "nix flake update",
     "group": "通用工具 (Common)",
-    "description": "nix-flake: 管理 Nix Flakes。 此命令也有关于其子命令的文件，例如：`init`、`show`、`info`. (更新当前目录下 Flake 的所有输入（依赖项）)",
+    "description": "nix-flake: 管理 Nix Flakes。 此命令也有关于其子命令的文件，例如：`init`、`show`、`info`。 (更新当前目录下 Flake 的所有输入（依赖项）)",
     "tags": [
       "common",
       "nix-flake",
@@ -49955,7 +49955,7 @@
     "title": "nix-flake - 仅更新当前目录下 Flake 的指定输入（依赖项）",
     "content": "nix flake update {{输入项}}",
     "group": "通用工具 (Common)",
-    "description": "nix-flake: 管理 Nix Flakes。 此命令也有关于其子命令的文件，例如：`init`、`show`、`info`. (仅更新当前目录下 Flake 的指定输入（依赖项）)",
+    "description": "nix-flake: 管理 Nix Flakes。 此命令也有关于其子命令的文件，例如：`init`、`show`、`info`。 (仅更新当前目录下 Flake 的指定输入（依赖项）)",
     "tags": [
       "common",
       "nix-flake",
@@ -49970,7 +49970,7 @@
     "title": "nix-flake - 克隆包含 Flake 的 GitHub 仓库",
     "content": "nix flake clone {{github:所有者/仓库名#属性}}",
     "group": "通用工具 (Common)",
-    "description": "nix-flake: 管理 Nix Flakes。 此命令也有关于其子命令的文件，例如：`init`、`show`、`info`. (克隆包含 Flake 的 GitHub 仓库)",
+    "description": "nix-flake: 管理 Nix Flakes。 此命令也有关于其子命令的文件，例如：`init`、`show`、`info`。 (克隆包含 Flake 的 GitHub 仓库)",
     "tags": [
       "common",
       "nix-flake",
@@ -49985,7 +49985,7 @@
     "title": "nix-flake - 为指定目录中的 Flake 创建缺失的锁文件记录",
     "content": "nix flake lock {{flake路径}}",
     "group": "通用工具 (Common)",
-    "description": "nix-flake: 管理 Nix Flakes。 此命令也有关于其子命令的文件，例如：`init`、`show`、`info`. (为指定目录中的 Flake 创建缺失的锁文件记录)",
+    "description": "nix-flake: 管理 Nix Flakes。 此命令也有关于其子命令的文件，例如：`init`、`show`、`info`。 (为指定目录中的 Flake 创建缺失的锁文件记录)",
     "tags": [
       "common",
       "nix-flake",
@@ -50000,7 +50000,7 @@
     "title": "nix-flake - 显示帮助",
     "content": "nix flake --help",
     "group": "通用工具 (Common)",
-    "description": "nix-flake: 管理 Nix Flakes。 此命令也有关于其子命令的文件，例如：`init`、`show`、`info`. (显示帮助)",
+    "description": "nix-flake: 管理 Nix Flakes。 此命令也有关于其子命令的文件，例如：`init`、`show`、`info`。 (显示帮助)",
     "tags": [
       "common",
       "nix-flake",

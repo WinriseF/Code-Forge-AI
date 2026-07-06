@@ -79218,7 +79218,7 @@
     "id": "tldr-en-linux-dd-0",
     "type": "command",
     "title": "dd - Make a bootable USB drive from an isohybrid file (such as `archlinux-xxx.iso`) and show the progress",
-    "content": "sudo dd if={{path/to/file.iso}} of={{/dev/usb_drive}} status=progress",
+    "content": "sudo dd status=progress if={{path/to/file.iso}} of={{/dev/usb_drive}}",
     "group": "Linux Ops",
     "description": "dd: Convert and copy a file. (Make a bootable USB drive from an isohybrid file (such as `archlinux-xxx.iso`) and show the progress)",
     "tags": [
@@ -79278,7 +79278,7 @@
     "id": "tldr-en-linux-dd-4",
     "type": "command",
     "title": "dd - Create a system backup, save it into an IMG file (can be restored later by swapping `if` and `of`), and show the progress",
-    "content": "sudo dd if={{/dev/drive_device}} of={{path/to/file.img}} status=progress",
+    "content": "sudo dd status=progress if={{/dev/drive_device}} of={{path/to/file.img}}",
     "group": "Linux Ops",
     "description": "dd: Convert and copy a file. (Create a system backup, save it into an IMG file (can be restored later by swapping `if` and `of`), and show the progress)",
     "tags": [

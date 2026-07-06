@@ -1145,7 +1145,7 @@
     "title": "lsattr - 显示当前目录下文件的属性",
     "content": "lsattr",
     "group": "Linux 运维",
-    "description": "lsattr: 列出 Linux 系统下的文件属性。 (显示当前目录下文件的属性)",
+    "description": "lsattr: 列出 Linux 系统下的文件属性。 另请参阅：`chattr`。 (显示当前目录下文件的属性)",
     "tags": [
       "linux",
       "lsattr",
@@ -1160,7 +1160,7 @@
     "title": "lsattr - 列出指定路径下的文件属性",
     "content": "lsattr {{path}}",
     "group": "Linux 运维",
-    "description": "lsattr: 列出 Linux 系统下的文件属性。 (列出指定路径下的文件属性)",
+    "description": "lsattr: 列出 Linux 系统下的文件属性。 另请参阅：`chattr`。 (列出指定路径下的文件属性)",
     "tags": [
       "linux",
       "lsattr",
@@ -1175,7 +1175,7 @@
     "title": "lsattr - 递归列出当前目录及其子目录中所有文件属性",
     "content": "lsattr -R",
     "group": "Linux 运维",
-    "description": "lsattr: 列出 Linux 系统下的文件属性。 (递归列出当前目录及其子目录中所有文件属性)",
+    "description": "lsattr: 列出 Linux 系统下的文件属性。 另请参阅：`chattr`。 (递归列出当前目录及其子目录中所有文件属性)",
     "tags": [
       "linux",
       "lsattr",
@@ -1190,7 +1190,7 @@
     "title": "lsattr - 显示当前目录下所有文件的属性，包括隐藏文件",
     "content": "lsattr -a",
     "group": "Linux 运维",
-    "description": "lsattr: 列出 Linux 系统下的文件属性。 (显示当前目录下所有文件的属性，包括隐藏文件)",
+    "description": "lsattr: 列出 Linux 系统下的文件属性。 另请参阅：`chattr`。 (显示当前目录下所有文件的属性，包括隐藏文件)",
     "tags": [
       "linux",
       "lsattr",
@@ -1205,7 +1205,7 @@
     "title": "lsattr - 显示当前目录下的目录属性",
     "content": "lsattr -d",
     "group": "Linux 运维",
-    "description": "lsattr: 列出 Linux 系统下的文件属性。 (显示当前目录下的目录属性)",
+    "description": "lsattr: 列出 Linux 系统下的文件属性。 另请参阅：`chattr`。 (显示当前目录下的目录属性)",
     "tags": [
       "linux",
       "lsattr",
@@ -2859,6 +2859,21 @@
     "tags": [
       "linux",
       "qm-importdisk",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-linux-ip-neighbour-0",
+    "type": "command",
+    "title": "ip-neighbour - 查看原命令的文档",
+    "content": "tldr ip neighbor",
+    "group": "Linux 运维",
+    "description": "ip-neighbour: 此命令为 `ip neighbor` 的别名。 (查看原命令的文档)",
+    "tags": [
+      "linux",
+      "ip-neighbour",
       "tldr",
       "zh"
     ],
@@ -7323,7 +7338,7 @@
     "id": "tldr-zh-linux-dd-0",
     "type": "command",
     "title": "dd - 从 isohybrid 文件（如 `archlinux-xxx.iso`）创建可启动 USB 驱动器并显示进度",
-    "content": "sudo dd if={{路径/到/文件.iso}} of={{/dev/usb_drive}} status=progress",
+    "content": "sudo dd status=progress if={{路径/到/文件.iso}} of={{/dev/usb_drive}}",
     "group": "Linux 运维",
     "description": "dd: 转换和复制文件。 另请参阅：`caligula`。 (从 isohybrid 文件（如 `archlinux-xxx.iso`）创建可启动 USB 驱动器并显示进度)",
     "tags": [
@@ -7383,7 +7398,7 @@
     "id": "tldr-zh-linux-dd-4",
     "type": "command",
     "title": "dd - 创建系统备份，保存为 IMG 文件（稍后可通过交换 `if` 和 `of` 参数恢复），并显示进度",
-    "content": "sudo dd if={{/dev/驱动器设备}} of={{路径/到/文件.img}} status=progress",
+    "content": "sudo dd status=progress if={{/dev/驱动器设备}} of={{路径/到/文件.img}}",
     "group": "Linux 运维",
     "description": "dd: 转换和复制文件。 另请参阅：`caligula`。 (创建系统备份，保存为 IMG 文件（稍后可通过交换 `if` 和 `of` 参数恢复），并显示进度)",
     "tags": [

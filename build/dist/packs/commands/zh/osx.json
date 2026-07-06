@@ -855,51 +855,6 @@
     "source": "official"
   },
   {
-    "id": "tldr-zh-osx-lldb-0",
-    "type": "command",
-    "title": "lldb - 调试可执行文件",
-    "content": "lldb \"{{可执行的命令}}\"",
-    "group": "macOS",
-    "description": "lldb: LLVM 低级调试器。 (调试可执行文件)",
-    "tags": [
-      "osx",
-      "lldb",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-osx-lldb-1",
-    "type": "command",
-    "title": "lldb - 将 `lldb` 附加到具有给定 PID 的正在运行的进程",
-    "content": "lldb -p {{pid}}}",
-    "group": "macOS",
-    "description": "lldb: LLVM 低级调试器。 (将 `lldb` 附加到具有给定 PID 的正在运行的进程)",
-    "tags": [
-      "osx",
-      "lldb",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-zh-osx-lldb-2",
-    "type": "command",
-    "title": "lldb - 等待使用给定名称的进程启动，然后附加到该进程上",
-    "content": "lldb -w -n \"{{进程名}}\"",
-    "group": "macOS",
-    "description": "lldb: LLVM 低级调试器。 (等待使用给定名称的进程启动，然后附加到该进程上)",
-    "tags": [
-      "osx",
-      "lldb",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-zh-osx-gtee-0",
     "type": "command",
     "title": "gtee - 原命令的文档在",
@@ -4128,7 +4083,7 @@
     "id": "tldr-zh-osx-chflags-0",
     "type": "command",
     "title": "chflags - 给文件设置 hidden（隐藏）标签",
-    "content": "chflags {{hidden}} {{文件路径}}",
+    "content": "chflags hidden {{文件路径}}",
     "group": "macOS",
     "description": "chflags: 更改文件或文件夹的标志。 (给文件设置 hidden（隐藏）标签)",
     "tags": [
@@ -4143,7 +4098,7 @@
     "id": "tldr-zh-osx-chflags-1",
     "type": "command",
     "title": "chflags - 取消文件的 hidden 标签",
-    "content": "chflags {{hidden}} {{文件路径}}",
+    "content": "chflags nohidden {{文件路径}}",
     "group": "macOS",
     "description": "chflags: 更改文件或文件夹的标志。 (取消文件的 hidden 标签)",
     "tags": [
@@ -4158,7 +4113,7 @@
     "id": "tldr-zh-osx-chflags-2",
     "type": "command",
     "title": "chflags - 递归地给文件夹中每个文件设置 uchg 标志",
-    "content": "chflags -R {{uchg}} {{文件夹路径}}",
+    "content": "chflags -R uchg {{文件夹路径}}",
     "group": "macOS",
     "description": "chflags: 更改文件或文件夹的标志。 (递归地给文件夹中每个文件设置 uchg 标志)",
     "tags": [
@@ -4173,7 +4128,7 @@
     "id": "tldr-zh-osx-chflags-3",
     "type": "command",
     "title": "chflags - 递归地撤销文件夹中每个文件设置的 uchg 标志",
-    "content": "chflags -R {{nouchg}} {{文件夹路径}}",
+    "content": "chflags -R nouchg {{文件夹路径}}",
     "group": "macOS",
     "description": "chflags: 更改文件或文件夹的标志。 (递归地撤销文件夹中每个文件设置的 uchg 标志)",
     "tags": [

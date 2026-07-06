@@ -182,10 +182,10 @@
   {
     "id": "tldr-en-windows-start-2",
     "type": "command",
-    "title": "start - Open a specific directory on Windows Explorer (equivalent to `explorer {{path\\to\\directory}}`)",
+    "title": "start - Open a specific directory on Windows Explorer (equivalent to `explorer path\\to\\directory`)",
     "content": "start \"\" \"{{path\\to\\directory}}\"",
     "group": "Windows",
-    "description": "start: Start a command in a new console. Can also be used to run Windows programs registered in the `App Paths` Windows Registry despite not registered in `PATH` environment variable. In PowerShell, this command is an alias of `Start-Process`. This documentation is based on the Command Prompt (`cmd`) version of `start`. (Open a specific directory on Windows Explorer (equivalent to `explorer {{path\\to\\directory}}`))",
+    "description": "start: Start a command in a new console. Can also be used to run Windows programs registered in the `App Paths` Windows Registry despite not registered in `PATH` environment variable. In PowerShell, this command is an alias of `Start-Process`. This documentation is based on the Command Prompt (`cmd`) version of `start`. (Open a specific directory on Windows Explorer (equivalent to `explorer path\\to\\directory`))",
     "tags": [
       "windows",
       "start",
@@ -1374,6 +1374,21 @@
     "tags": [
       "windows",
       "popd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-internet-explorer-0",
+    "type": "command",
+    "title": "internet-explorer - View documentation for the original command",
+    "content": "tldr {{[-p|--platform]}} windows iexplore",
+    "group": "Windows",
+    "description": "internet-explorer: This command is an alias of `iexplore`. (View documentation for the original command)",
+    "tags": [
+      "windows",
+      "internet-explorer",
       "tldr",
       "en"
     ],
@@ -2685,6 +2700,81 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-windows-iesetup-0",
+    "type": "command",
+    "title": "iesetup - View the documentation for `iewzd`",
+    "content": "tldr {{[-p|--platform]}} windows iewzd",
+    "group": "Windows",
+    "description": "iesetup: Build customized Internet Explorer Wizard (`iewzd`) installer. Part of Internet Explorer Administration Kit (IEAK). Note: You may need to replace the `iesetup` command with your desired IEAK version and executable, such as `Ie11setup` for IE 11. (View the documentation for `iewzd`)",
+    "tags": [
+      "windows",
+      "iesetup",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-iesetup-1",
+    "type": "command",
+    "title": "iesetup - Build a custom Internet Explorer Wizard executable, specifying the location of `iewzd` executable",
+    "content": "iesetup /c:\"{{path\\to\\iewzd.exe}}\"",
+    "group": "Windows",
+    "description": "iesetup: Build customized Internet Explorer Wizard (`iewzd`) installer. Part of Internet Explorer Administration Kit (IEAK). Note: You may need to replace the `iesetup` command with your desired IEAK version and executable, such as `Ie11setup` for IE 11. (Build a custom Internet Explorer Wizard executable, specifying the location of `iewzd` executable)",
+    "tags": [
+      "windows",
+      "iesetup",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-iesetup-2",
+    "type": "command",
+    "title": "iesetup - Apply custom `iewzd` program arguments into the custom installer",
+    "content": "iesetup /c:\"{{path\\to\\iewzd.exe}} {{iewzd_args}}\"",
+    "group": "Windows",
+    "description": "iesetup: Build customized Internet Explorer Wizard (`iewzd`) installer. Part of Internet Explorer Administration Kit (IEAK). Note: You may need to replace the `iesetup` command with your desired IEAK version and executable, such as `Ie11setup` for IE 11. (Apply custom `iewzd` program arguments into the custom installer)",
+    "tags": [
+      "windows",
+      "iesetup",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-iesetup-3",
+    "type": "command",
+    "title": "iesetup - Run the build process in a [q]uiet mode, assuming the user account invoking this command as an [a]dministrator or regular [u]ser",
+    "content": "iesetup /q:{{a|u}} /c:\"{{path\\to\\iewzd.exe}} {{iewzd_args}}\"",
+    "group": "Windows",
+    "description": "iesetup: Build customized Internet Explorer Wizard (`iewzd`) installer. Part of Internet Explorer Administration Kit (IEAK). Note: You may need to replace the `iesetup` command with your desired IEAK version and executable, such as `Ie11setup` for IE 11. (Run the build process in a [q]uiet mode, assuming the user account invoking this command as an [a]dministrator or regular [u]ser)",
+    "tags": [
+      "windows",
+      "iesetup",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-iesetup-4",
+    "type": "command",
+    "title": "iesetup - Specify the [r]estart behavior after a successful installation ([a]sk, [n]ever, or alway[s])",
+    "content": "iesetup /r:{{a|n|s}} /c:\"{{path\\to\\iewzd.exe}} {{iewzd_args}}\"",
+    "group": "Windows",
+    "description": "iesetup: Build customized Internet Explorer Wizard (`iewzd`) installer. Part of Internet Explorer Administration Kit (IEAK). Note: You may need to replace the `iesetup` command with your desired IEAK version and executable, such as `Ie11setup` for IE 11. (Specify the [r]estart behavior after a successful installation ([a]sk, [n]ever, or alway[s]))",
+    "tags": [
+      "windows",
+      "iesetup",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-windows-explorer-0",
     "type": "command",
     "title": "explorer - Open Windows Explorer",
@@ -3930,6 +4020,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-windows-gethelpcmd-teamsaddinscenario-0",
+    "type": "command",
+    "title": "gethelpcmd-teamsaddinscenario - Run the troubleshooter, close Outlook, and accept this command's End-User License Agreement (EULA)",
+    "content": "GetHelpCmd.exe -S TeamsAddinScenario -AcceptEula -CloseOutlook",
+    "group": "Windows",
+    "description": "gethelpcmd-teamsaddinscenario: Troubleshoot installation-related issues with the Microsoft Teams add-in for Microsoft Outlook (Classic). Part of `GetHelpCmd.exe`, formerly `SaRAcmd.exe` (Microsoft Support and Recovery Assistant). Note: This tool has been deprecated and will not work in the new Outlook application. (Run the troubleshooter, close Outlook, and accept this command's End-User License Agreement (EULA))",
+    "tags": [
+      "windows",
+      "gethelpcmd-teamsaddinscenario",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-windows-invoke-webrequest-0",
     "type": "command",
     "title": "invoke-webrequest - Download the contents of a URL to a file",
@@ -4254,6 +4359,36 @@
     "tags": [
       "windows",
       "rpcinfo",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-gethelpcmd-officeactivationscenario-0",
+    "type": "command",
+    "title": "gethelpcmd-officeactivationscenario - Automatically fix activation-related errors, close Office, and accept this command's End-User License Agreement (EULA). Requires Administrator privileges to do so",
+    "content": "GetHelpCmd.exe -S OfficeActivationScenario -AcceptEula -CloseOffice",
+    "group": "Windows",
+    "description": "gethelpcmd-officeactivationscenario: Automatically repair activation-related issues within Microsoft Office / Microsoft 365 Apps for Enterprise. Part of `GetHelpCmd.exe`, formerly `SaRAcmd.exe` (Microsoft Support and Recovery Assistant). Note: This tool has been deprecated and will not work in the new OneNote and Outlook applications. Note: This command may override, deactivate, and/or remove your current volume of licensed Office product versions, so please proceed cautiously. (Automatically fix activation-related errors, close Office, and accept this command's End-User License Agreement (EULA). Requires Administrator privileges to do so)",
+    "tags": [
+      "windows",
+      "gethelpcmd-officeactivationscenario",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-gethelpcmd-officeactivationscenario-1",
+    "type": "command",
+    "title": "gethelpcmd-officeactivationscenario - Detach the currently-installed Office licensing scheme from Shared Computer Activation (SCA), and activate the product separately. Requires Administrator privileges to do so",
+    "content": "GetHelpCmd.exe -S OfficeActivationScenario -AcceptEula -CloseOffice -RemoveSCA",
+    "group": "Windows",
+    "description": "gethelpcmd-officeactivationscenario: Automatically repair activation-related issues within Microsoft Office / Microsoft 365 Apps for Enterprise. Part of `GetHelpCmd.exe`, formerly `SaRAcmd.exe` (Microsoft Support and Recovery Assistant). Note: This tool has been deprecated and will not work in the new OneNote and Outlook applications. Note: This command may override, deactivate, and/or remove your current volume of licensed Office product versions, so please proceed cautiously. (Detach the currently-installed Office licensing scheme from Shared Computer Activation (SCA), and activate the product separately. Requires Administrator privileges to do so)",
+    "tags": [
+      "windows",
+      "gethelpcmd-officeactivationscenario",
       "tldr",
       "en"
     ],
@@ -5079,6 +5214,111 @@
     "tags": [
       "windows",
       "curl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-iewzd-0",
+    "type": "command",
+    "title": "iewzd - View the documentation for `iesetup`",
+    "content": "tldr {{[-p|--platform]}} windows iesetup",
+    "group": "Windows",
+    "description": "iewzd: Internet Explorer Setup Wizard:  Programmatically configure installation of Internet Explorer. Not to be confused with `iesetup`, which also bundles a customized version of Internet Explorer and `iewzd`. Note: You may need to replace the `iewzd` command with your desired IE version and executable, such as `Ie11wzd.exe`, `ie10_setup.exe`, or `IE9-Windows6.0-x86-en-us.exe`. (View the documentation for `iesetup`)",
+    "tags": [
+      "windows",
+      "iewzd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-iewzd-1",
+    "type": "command",
+    "title": "iewzd - Run the Internet Explorer Wizard",
+    "content": "iewzd",
+    "group": "Windows",
+    "description": "iewzd: Internet Explorer Setup Wizard:  Programmatically configure installation of Internet Explorer. Not to be confused with `iesetup`, which also bundles a customized version of Internet Explorer and `iewzd`. Note: You may need to replace the `iewzd` command with your desired IE version and executable, such as `Ie11wzd.exe`, `ie10_setup.exe`, or `IE9-Windows6.0-x86-en-us.exe`. (Run the Internet Explorer Wizard)",
+    "tags": [
+      "windows",
+      "iewzd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-iewzd-2",
+    "type": "command",
+    "title": "iewzd - Force or do not restart the computer after installing Internet Explorer",
+    "content": "iewzd {{/norestart|/forcerestart}}",
+    "group": "Windows",
+    "description": "iewzd: Internet Explorer Setup Wizard:  Programmatically configure installation of Internet Explorer. Not to be confused with `iesetup`, which also bundles a customized version of Internet Explorer and `iewzd`. Note: You may need to replace the `iewzd` command with your desired IE version and executable, such as `Ie11wzd.exe`, `ie10_setup.exe`, or `IE9-Windows6.0-x86-en-us.exe`. (Force or do not restart the computer after installing Internet Explorer)",
+    "tags": [
+      "windows",
+      "iewzd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-iewzd-3",
+    "type": "command",
+    "title": "iewzd - Do not set Internet Explorer as the default browser",
+    "content": "iewzd /no-default",
+    "group": "Windows",
+    "description": "iewzd: Internet Explorer Setup Wizard:  Programmatically configure installation of Internet Explorer. Not to be confused with `iesetup`, which also bundles a customized version of Internet Explorer and `iewzd`. Note: You may need to replace the `iewzd` command with your desired IE version and executable, such as `Ie11wzd.exe`, `ie10_setup.exe`, or `IE9-Windows6.0-x86-en-us.exe`. (Do not set Internet Explorer as the default browser)",
+    "tags": [
+      "windows",
+      "iewzd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-iewzd-4",
+    "type": "command",
+    "title": "iewzd - Do not check for Internet Explorer updates",
+    "content": "iewzd /update-no",
+    "group": "Windows",
+    "description": "iewzd: Internet Explorer Setup Wizard:  Programmatically configure installation of Internet Explorer. Not to be confused with `iesetup`, which also bundles a customized version of Internet Explorer and `iewzd`. Note: You may need to replace the `iewzd` command with your desired IE version and executable, such as `Ie11wzd.exe`, `ie10_setup.exe`, or `IE9-Windows6.0-x86-en-us.exe`. (Do not check for Internet Explorer updates)",
+    "tags": [
+      "windows",
+      "iewzd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-iewzd-5",
+    "type": "command",
+    "title": "iewzd - Run the Wizard in passive (no interaction) or quiet (no interaction and output) mode",
+    "content": "iewzd {{/passive|/quiet}}",
+    "group": "Windows",
+    "description": "iewzd: Internet Explorer Setup Wizard:  Programmatically configure installation of Internet Explorer. Not to be confused with `iesetup`, which also bundles a customized version of Internet Explorer and `iewzd`. Note: You may need to replace the `iewzd` command with your desired IE version and executable, such as `Ie11wzd.exe`, `ie10_setup.exe`, or `IE9-Windows6.0-x86-en-us.exe`. (Run the Wizard in passive (no interaction) or quiet (no interaction and output) mode)",
+    "tags": [
+      "windows",
+      "iewzd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-iewzd-6",
+    "type": "command",
+    "title": "iewzd - Save the installation log to a file",
+    "content": "iewzd /log {{path\\to\\file}}",
+    "group": "Windows",
+    "description": "iewzd: Internet Explorer Setup Wizard:  Programmatically configure installation of Internet Explorer. Not to be confused with `iesetup`, which also bundles a customized version of Internet Explorer and `iewzd`. Note: You may need to replace the `iewzd` command with your desired IE version and executable, such as `Ie11wzd.exe`, `ie10_setup.exe`, or `IE9-Windows6.0-x86-en-us.exe`. (Save the installation log to a file)",
+    "tags": [
+      "windows",
+      "iewzd",
       "tldr",
       "en"
     ],
@@ -13260,6 +13500,81 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-windows-autopsy-0",
+    "type": "command",
+    "title": "autopsy - Launch the Autopsy graphical interface",
+    "content": "autopsy64.exe",
+    "group": "Windows",
+    "description": "autopsy: Digital forensics platform for analyzing disk images and investigating file systems. (Launch the Autopsy graphical interface)",
+    "tags": [
+      "windows",
+      "autopsy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-autopsy-1",
+    "type": "command",
+    "title": "autopsy - Create a new case and specify the base directory to store case files",
+    "content": "autopsy64.exe --createCase --caseName {{case_name}} --caseBaseDir {{path\\to\\base_directory}}",
+    "group": "Windows",
+    "description": "autopsy: Digital forensics platform for analyzing disk images and investigating file systems. (Create a new case and specify the base directory to store case files)",
+    "tags": [
+      "windows",
+      "autopsy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-autopsy-2",
+    "type": "command",
+    "title": "autopsy - Add a data source to an existing case",
+    "content": "autopsy64.exe --caseDir {{path\\to\\case_directory}} --addDataSource --dataSourcePath {{path\\to\\source}}",
+    "group": "Windows",
+    "description": "autopsy: Digital forensics platform for analyzing disk images and investigating file systems. (Add a data source to an existing case)",
+    "tags": [
+      "windows",
+      "autopsy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-autopsy-3",
+    "type": "command",
+    "title": "autopsy - Generate a report for an existing case",
+    "content": "autopsy64.exe --caseDir {{path\\to\\case_directory}} --generateReports",
+    "group": "Windows",
+    "description": "autopsy: Digital forensics platform for analyzing disk images and investigating file systems. (Generate a report for an existing case)",
+    "tags": [
+      "windows",
+      "autopsy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-autopsy-4",
+    "type": "command",
+    "title": "autopsy - List all data sources in an existing case",
+    "content": "autopsy64.exe --caseDir {{path\\to\\case_directory}} --listAllDataSources",
+    "group": "Windows",
+    "description": "autopsy: Digital forensics platform for analyzing disk images and investigating file systems. (List all data sources in an existing case)",
+    "tags": [
+      "windows",
+      "autopsy",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-windows-tee-object-0",
     "type": "command",
     "title": "tee-object - Output processes to a file and to the console",
@@ -13284,6 +13599,21 @@
     "tags": [
       "windows",
       "tee-object",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-saracmd-officeactivationscenario-0",
+    "type": "command",
+    "title": "saracmd-officeactivationscenario - View documentation for the original command",
+    "content": "tldr gethelpcmd-officeactivationscenario",
+    "group": "Windows",
+    "description": "saracmd-officeactivationscenario: This command is an alias of `GetHelpCmd.exe -S OfficeActivationScenario`. (View documentation for the original command)",
+    "tags": [
+      "windows",
+      "saracmd-officeactivationscenario",
       "tldr",
       "en"
     ],
@@ -14747,10 +15077,10 @@
   {
     "id": "tldr-en-windows-start-process-0",
     "type": "command",
-    "title": "start-process - Open a specific directory on Windows Explorer (equivalent to `explorer {{path\\to\\directory}}`)",
+    "title": "start-process - Open a specific directory on Windows Explorer (equivalent to `explorer path\\to\\directory`)",
     "content": "Start-Process {{path\\to\\directory}}",
     "group": "Windows",
-    "description": "start-process: Start a command in a new console. Can also be used to run Windows programs registered in the `App Paths` Windows Registry despite not registered in `PATH` environment variable. (Open a specific directory on Windows Explorer (equivalent to `explorer {{path\\to\\directory}}`))",
+    "description": "start-process: Start a command in a new console. Can also be used to run Windows programs registered in the `App Paths` Windows Registry despite not registered in `PATH` environment variable. (Open a specific directory on Windows Explorer (equivalent to `explorer path\\to\\directory`))",
     "tags": [
       "windows",
       "start-process",
@@ -17175,6 +17505,66 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-windows-iexplore-0",
+    "type": "command",
+    "title": "iexplore - Open a specific URL or file",
+    "content": "iexplore {{https://example.com|path\\to\\file.html}}",
+    "group": "Windows",
+    "description": "iexplore: Microsoft Internet Explorer. Note: This program is deprecated in favor of modern browsers like `msedge`, and is no longer maintained. (Open a specific URL or file)",
+    "tags": [
+      "windows",
+      "iexplore",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-iexplore-1",
+    "type": "command",
+    "title": "iexplore - Open in InPrivate mode",
+    "content": "iexplore -private {{example.com}}",
+    "group": "Windows",
+    "description": "iexplore: Microsoft Internet Explorer. Note: This program is deprecated in favor of modern browsers like `msedge`, and is no longer maintained. (Open in InPrivate mode)",
+    "tags": [
+      "windows",
+      "iexplore",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-iexplore-2",
+    "type": "command",
+    "title": "iexplore - Open in [k]iosk/application mode (without toolbars, URL bar, buttons, etc.)",
+    "content": "iexplore -k {{example.com}}",
+    "group": "Windows",
+    "description": "iexplore: Microsoft Internet Explorer. Note: This program is deprecated in favor of modern browsers like `msedge`, and is no longer maintained. (Open in [k]iosk/application mode (without toolbars, URL bar, buttons, etc.))",
+    "tags": [
+      "windows",
+      "iexplore",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-iexplore-3",
+    "type": "command",
+    "title": "iexplore - Open with [ext]ensions/add-ons disabled",
+    "content": "iexplore -extoff {{example.com}}",
+    "group": "Windows",
+    "description": "iexplore: Microsoft Internet Explorer. Note: This program is deprecated in favor of modern browsers like `msedge`, and is no longer maintained. (Open with [ext]ensions/add-ons disabled)",
+    "tags": [
+      "windows",
+      "iexplore",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-windows-bleachbit-0",
     "type": "command",
     "title": "bleachbit - View documentation for the original command",
@@ -17970,6 +18360,66 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-windows-iexpress-0",
+    "type": "command",
+    "title": "iexpress - Build a self-extracting ZIP archive from a given SED file",
+    "content": "iexpress /n {{path\\to\\file.sed}}",
+    "group": "Windows",
+    "description": "iexpress: Create self-extracting archive executable (`.exe`) or cabinet (`.cab`) files. (Build a self-extracting ZIP archive from a given SED file)",
+    "tags": [
+      "windows",
+      "iexpress",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-iexpress-1",
+    "type": "command",
+    "title": "iexpress - Run the build process in a [m]inimized window",
+    "content": "iexpress /n /m {{path\\to\\file.sed}}",
+    "group": "Windows",
+    "description": "iexpress: Create self-extracting archive executable (`.exe`) or cabinet (`.cab`) files. (Run the build process in a [m]inimized window)",
+    "tags": [
+      "windows",
+      "iexpress",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-iexpress-2",
+    "type": "command",
+    "title": "iexpress - Run the build process in a [q]uiet mode, assuming the user account invoking this command as an [a]dministrator or regular [u]ser",
+    "content": "iexpress /n /q:{{a|u}} {{path\\to\\file.sed}}",
+    "group": "Windows",
+    "description": "iexpress: Create self-extracting archive executable (`.exe`) or cabinet (`.cab`) files. (Run the build process in a [q]uiet mode, assuming the user account invoking this command as an [a]dministrator or regular [u]ser)",
+    "tags": [
+      "windows",
+      "iexpress",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-iexpress-3",
+    "type": "command",
+    "title": "iexpress - Ensure the `.exe` file to [a]sk, [n]ever, or alway[s] [r]estart the computer after installation",
+    "content": "iexpress /r:{{a|n|s}} {{path\\to\\file.sed}}",
+    "group": "Windows",
+    "description": "iexpress: Create self-extracting archive executable (`.exe`) or cabinet (`.cab`) files. (Ensure the `.exe` file to [a]sk, [n]ever, or alway[s] [r]estart the computer after installation)",
+    "tags": [
+      "windows",
+      "iexpress",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-windows-measure-command-0",
     "type": "command",
     "title": "measure-command - Measure the time it takes to run a command",
@@ -18384,6 +18834,21 @@
     "tags": [
       "windows",
       "subst",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-saracmd-teamsaddinscenario-0",
+    "type": "command",
+    "title": "saracmd-teamsaddinscenario - View documentation for the original command",
+    "content": "tldr gethelpcmd-teamsaddinscenario",
+    "group": "Windows",
+    "description": "saracmd-teamsaddinscenario: This command is an alias of `GetHelpCmd.exe -S TeamsAddinScenario`. (View documentation for the original command)",
+    "tags": [
+      "windows",
+      "saracmd-teamsaddinscenario",
       "tldr",
       "en"
     ],

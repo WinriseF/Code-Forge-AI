@@ -390,6 +390,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-windows-internet-explorer-0",
+    "type": "command",
+    "title": "internet-explorer - 查看原命令的文档",
+    "content": "tldr {{[-p|--platform]}} windows iexplore",
+    "group": "Windows",
+    "description": "internet-explorer: 此命令为 `iexplore` 的别名。 (查看原命令的文档)",
+    "tags": [
+      "windows",
+      "internet-explorer",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-windows-ii-0",
     "type": "command",
     "title": "ii - 查看原命令的文档",
@@ -1389,6 +1404,21 @@
     "tags": [
       "windows",
       "systeminfo",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-saracmd-expertexperienceadmintask-0",
+    "type": "command",
+    "title": "saracmd-expertexperienceadmintask - 查看原命令的文档",
+    "content": "tldr gethelpcmd-expertexperienceadmintask",
+    "group": "Windows",
+    "description": "saracmd-expertexperienceadmintask: 此命令为 `GetHelpCmd.exe -S ExpertExperienceAdminTask` 的别名。 (查看原命令的文档)",
+    "tags": [
+      "windows",
+      "saracmd-expertexperienceadmintask",
       "tldr",
       "zh"
     ],
@@ -2724,6 +2754,21 @@
     "tags": [
       "windows",
       "ver",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-saracmd-outlookcalendarchecktask-0",
+    "type": "command",
+    "title": "saracmd-outlookcalendarchecktask - 查看原命令的文档",
+    "content": "tldr gethelpcmd-outlookcalendarchecktask",
+    "group": "Windows",
+    "description": "saracmd-outlookcalendarchecktask: 此命令为 `GetHelpCmd.exe -S OutlookCalendarCheckTask` 的别名。 (查看原命令的文档)",
+    "tags": [
+      "windows",
+      "saracmd-outlookcalendarchecktask",
       "tldr",
       "zh"
     ],

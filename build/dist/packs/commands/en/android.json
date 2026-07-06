@@ -660,6 +660,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-android-pm-install-create-0",
+    "type": "command",
+    "title": "pm-install-create - Create a session and a session ID",
+    "content": "pm install-create",
+    "group": "Android Dev",
+    "description": "pm-install-create: Create an install session. (Create a session and a session ID)",
+    "tags": [
+      "android",
+      "pm-install-create",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-android-screenrecord-0",
     "type": "command",
     "title": "screenrecord - Record the screen",
@@ -1020,6 +1035,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-android-pm-install-commit-0",
+    "type": "command",
+    "title": "pm-install-commit - Install queued packages",
+    "content": "pm install-commit {{session_id}}",
+    "group": "Android Dev",
+    "description": "pm-install-commit: Install queued packages. (Install queued packages)",
+    "tags": [
+      "android",
+      "pm-install-commit",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-android-getprop-0",
     "type": "command",
     "title": "getprop - Display information about Android system properties",
@@ -1179,6 +1209,21 @@
     "tags": [
       "android",
       "screencap",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-install-write-0",
+    "type": "command",
+    "title": "pm-install-write - Add a package to the install batch",
+    "content": "pm install-write {{session_id}} {{label}} {{path/to/package.apk}}",
+    "group": "Android Dev",
+    "description": "pm-install-write: Add packages to the install session. (Add a package to the install batch)",
+    "tags": [
+      "android",
+      "pm-install-write",
       "tldr",
       "en"
     ],

@@ -6062,6 +6062,21 @@
   {
     "id": "tldr-en-common-mvn-dependency-0",
     "type": "command",
+    "title": "mvn-dependency - Add a dependency",
+    "content": "mvn dependency:add -Dgav={{group_id}}:{{artifact_id}}:{{version}}",
+    "group": "Common Tools",
+    "description": "mvn-dependency: Manage and analyze Maven project dependencies. Provides goals for viewing, resolving, and copying project dependencies. (Add a dependency)",
+    "tags": [
+      "common",
+      "mvn-dependency",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mvn-dependency-1",
+    "type": "command",
     "title": "mvn-dependency - Display the full dependency tree, including direct and transitive dependencies",
     "content": "mvn dependency:tree",
     "group": "Common Tools",
@@ -6075,7 +6090,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-mvn-dependency-1",
+    "id": "tldr-en-common-mvn-dependency-2",
     "type": "command",
     "title": "mvn-dependency - Analyze the dependencies and highlight unused or undeclared ones",
     "content": "mvn dependency:analyze",
@@ -6090,7 +6105,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-mvn-dependency-2",
+    "id": "tldr-en-common-mvn-dependency-3",
     "type": "command",
     "title": "mvn-dependency - Copy all project dependencies (by default, to `target/dependency/`)",
     "content": "mvn dependency:copy-dependencies",
@@ -6105,7 +6120,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-mvn-dependency-3",
+    "id": "tldr-en-common-mvn-dependency-4",
     "type": "command",
     "title": "mvn-dependency - Resolve and download all project dependencies to the local Maven repository",
     "content": "mvn dependency:resolve",
@@ -6120,7 +6135,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-mvn-dependency-4",
+    "id": "tldr-en-common-mvn-dependency-5",
     "type": "command",
     "title": "mvn-dependency - Force Maven to update all dependencies from remote repositories",
     "content": "mvn dependency:resolve {{[-U|--update-snapshots]}}",
@@ -26460,6 +26475,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-wacli-contacts-tags-add-0",
+    "type": "command",
+    "title": "wacli-contacts-tags-add - Add a tag to a contact",
+    "content": "wacli contacts tags add {{phone_number}}@s.whatsapp.net {{tag}}",
+    "group": "Common Tools",
+    "description": "wacli-contacts-tags-add: Add a tag to a WhatsApp contact. (Add a tag to a contact)",
+    "tags": [
+      "common",
+      "wacli-contacts-tags-add",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-contacts-tags-add-1",
+    "type": "command",
+    "title": "wacli-contacts-tags-add - Add a tag using a custom store",
+    "content": "wacli contacts tags add {{phone_number}}@s.whatsapp.net {{tag}} --store {{path/to/store}}",
+    "group": "Common Tools",
+    "description": "wacli-contacts-tags-add: Add a tag to a WhatsApp contact. (Add a tag using a custom store)",
+    "tags": [
+      "common",
+      "wacli-contacts-tags-add",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-source-0",
     "type": "command",
     "title": "source - Evaluate contents of a given file",
@@ -37095,6 +37140,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-wacli-contacts-search-0",
+    "type": "command",
+    "title": "wacli-contacts-search - Search for contacts by name in JSON format",
+    "content": "wacli contacts search \"{{name}}\" --json",
+    "group": "Common Tools",
+    "description": "wacli-contacts-search: Search WhatsApp contacts by name. (Search for contacts by name in JSON format)",
+    "tags": [
+      "common",
+      "wacli-contacts-search",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-contacts-search-1",
+    "type": "command",
+    "title": "wacli-contacts-search - Search for contacts using a custom store",
+    "content": "wacli contacts search \"{{name}}\" --json --store {{path/to/store}}",
+    "group": "Common Tools",
+    "description": "wacli-contacts-search: Search WhatsApp contacts by name. (Search for contacts using a custom store)",
+    "tags": [
+      "common",
+      "wacli-contacts-search",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-git-create-branch-0",
     "type": "command",
     "title": "git-create-branch - Create a local branch",
@@ -39669,6 +39744,36 @@
     "tags": [
       "common",
       "kubectl-get",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-contacts-refresh-0",
+    "type": "command",
+    "title": "wacli-contacts-refresh - Refresh all contacts from the store",
+    "content": "wacli contacts refresh",
+    "group": "Common Tools",
+    "description": "wacli-contacts-refresh: Synchronize contacts from the WhatsApp store. (Refresh all contacts from the store)",
+    "tags": [
+      "common",
+      "wacli-contacts-refresh",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-contacts-refresh-1",
+    "type": "command",
+    "title": "wacli-contacts-refresh - Refresh contacts using a custom store",
+    "content": "wacli contacts refresh --store {{path/to/store}}",
+    "group": "Common Tools",
+    "description": "wacli-contacts-refresh: Synchronize contacts from the WhatsApp store. (Refresh contacts using a custom store)",
+    "tags": [
+      "common",
+      "wacli-contacts-refresh",
       "tldr",
       "en"
     ],
@@ -52854,6 +52959,111 @@
     "tags": [
       "common",
       "rustup-help",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tidy-viewer-0",
+    "type": "command",
+    "title": "tidy-viewer - Pretty-print the first 25 rows of a CSV file",
+    "content": "tidy-viewer {{path/to/file.csv}}",
+    "group": "Common Tools",
+    "description": "tidy-viewer: A data pretty-printer with column styling for CSV, TSV, PSV, Parquet, and Arrow IPC files. Commonly aliased as `tv`. (Pretty-print the first 25 rows of a CSV file)",
+    "tags": [
+      "common",
+      "tidy-viewer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tidy-viewer-1",
+    "type": "command",
+    "title": "tidy-viewer - Pretty-print data piped from `stdin`",
+    "content": "cat {{path/to/file.csv}} | tidy-viewer",
+    "group": "Common Tools",
+    "description": "tidy-viewer: A data pretty-printer with column styling for CSV, TSV, PSV, Parquet, and Arrow IPC files. Commonly aliased as `tv`. (Pretty-print data piped from `stdin`)",
+    "tags": [
+      "common",
+      "tidy-viewer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tidy-viewer-2",
+    "type": "command",
+    "title": "tidy-viewer - Pretty-print a file with a custom [s]eparator (e.g. a pipe)",
+    "content": "tidy-viewer {{[-s|--delimiter]}} '|' {{path/to/file.psv}}",
+    "group": "Common Tools",
+    "description": "tidy-viewer: A data pretty-printer with column styling for CSV, TSV, PSV, Parquet, and Arrow IPC files. Commonly aliased as `tv`. (Pretty-print a file with a custom [s]eparator (e.g. a pipe))",
+    "tags": [
+      "common",
+      "tidy-viewer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tidy-viewer-3",
+    "type": "command",
+    "title": "tidy-viewer - Display data with a specific color palette (1: nord, 2: one_dark, 3: gruvbox, 4: dracula, 5: solarized light)",
+    "content": "tidy-viewer {{[-c|--color]}} {{3}} {{path/to/file.csv}}",
+    "group": "Common Tools",
+    "description": "tidy-viewer: A data pretty-printer with column styling for CSV, TSV, PSV, Parquet, and Arrow IPC files. Commonly aliased as `tv`. (Display data with a specific color palette (1: nord, 2: one_dark, 3: gruvbox, 4: dracula, 5: solarized light))",
+    "tags": [
+      "common",
+      "tidy-viewer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tidy-viewer-4",
+    "type": "command",
+    "title": "tidy-viewer - Print all rows in color, paging through the output",
+    "content": "tidy-viewer {{[-af|--color-always --force-all-rows]}} {{path/to/file.csv}} | less -RS",
+    "group": "Common Tools",
+    "description": "tidy-viewer: A data pretty-printer with column styling for CSV, TSV, PSV, Parquet, and Arrow IPC files. Commonly aliased as `tv`. (Print all rows in color, paging through the output)",
+    "tags": [
+      "common",
+      "tidy-viewer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tidy-viewer-5",
+    "type": "command",
+    "title": "tidy-viewer - Display help",
+    "content": "tidy-viewer {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "tidy-viewer: A data pretty-printer with column styling for CSV, TSV, PSV, Parquet, and Arrow IPC files. Commonly aliased as `tv`. (Display help)",
+    "tags": [
+      "common",
+      "tidy-viewer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tidy-viewer-6",
+    "type": "command",
+    "title": "tidy-viewer - Display version",
+    "content": "tidy-viewer {{[-V|--version]}}",
+    "group": "Common Tools",
+    "description": "tidy-viewer: A data pretty-printer with column styling for CSV, TSV, PSV, Parquet, and Arrow IPC files. Commonly aliased as `tv`. (Display version)",
+    "tags": [
+      "common",
+      "tidy-viewer",
       "tldr",
       "en"
     ],
@@ -104435,7 +104645,7 @@
     "title": "git-ignore-io - List available templates",
     "content": "git ignore-io list",
     "group": "Common Tools",
-    "description": "git-ignore-io: Generate `.gitignore` files from predefined templates. (List available templates)",
+    "description": "git-ignore-io: Generate `.gitignore` files from predefined templates. Part of `git-extras`. (List available templates)",
     "tags": [
       "common",
       "git-ignore-io",
@@ -104450,7 +104660,7 @@
     "title": "git-ignore-io - Generate a `.gitignore` template",
     "content": "git ignore-io {{item_a,item_b,...}}",
     "group": "Common Tools",
-    "description": "git-ignore-io: Generate `.gitignore` files from predefined templates. (Generate a `.gitignore` template)",
+    "description": "git-ignore-io: Generate `.gitignore` files from predefined templates. Part of `git-extras`. (Generate a `.gitignore` template)",
     "tags": [
       "common",
       "git-ignore-io",
@@ -117048,7 +117258,7 @@
     "id": "tldr-en-common-patch-0",
     "type": "command",
     "title": "patch - Apply a patch using a diff file (filenames must be included in the diff file)",
-    "content": "patch < {{patch.diff}}",
+    "content": "patch {{[-i|--input]}} {{patch.diff}}",
     "group": "Common Tools",
     "description": "patch: Patch a file (or files) with a diff file. Note that diff files should be generated by the `diff` command. (Apply a patch using a diff file (filenames must be included in the diff file))",
     "tags": [
@@ -117063,7 +117273,7 @@
     "id": "tldr-en-common-patch-1",
     "type": "command",
     "title": "patch - Apply a patch to a specific file",
-    "content": "patch < {{patch.diff}} {{path/to/file}}",
+    "content": "patch {{[-i|--input]}} {{patch.diff}} {{path/to/file}}",
     "group": "Common Tools",
     "description": "patch: Patch a file (or files) with a diff file. Note that diff files should be generated by the `diff` command. (Apply a patch to a specific file)",
     "tags": [
@@ -117078,7 +117288,7 @@
     "id": "tldr-en-common-patch-2",
     "type": "command",
     "title": "patch - Patch a file writing the result to a different file",
-    "content": "patch < {{patch.diff}} {{path/to/input_file}} {{[-o|--output]}} {{path/to/output_file}}",
+    "content": "patch {{[-i|--input]}} {{patch.diff}} {{path/to/input_file}} {{[-o|--output]}} {{path/to/output_file}}",
     "group": "Common Tools",
     "description": "patch: Patch a file (or files) with a diff file. Note that diff files should be generated by the `diff` command. (Patch a file writing the result to a different file)",
     "tags": [
@@ -117093,7 +117303,7 @@
     "id": "tldr-en-common-patch-3",
     "type": "command",
     "title": "patch - Apply a patch to the current directory",
-    "content": "patch < {{patch.diff}} {{[-p|--strip]}} 1",
+    "content": "patch {{[-i|--input]}} {{patch.diff}} {{[-p|--strip]}} 1",
     "group": "Common Tools",
     "description": "patch: Patch a file (or files) with a diff file. Note that diff files should be generated by the `diff` command. (Apply a patch to the current directory)",
     "tags": [
@@ -117108,7 +117318,7 @@
     "id": "tldr-en-common-patch-4",
     "type": "command",
     "title": "patch - Apply the reverse of a patch",
-    "content": "patch < {{patch.diff}} {{[-R|--reverse]}}",
+    "content": "patch {{[-i|--input]}} {{patch.diff}} {{[-R|--reverse]}}",
     "group": "Common Tools",
     "description": "patch: Patch a file (or files) with a diff file. Note that diff files should be generated by the `diff` command. (Apply the reverse of a patch)",
     "tags": [
@@ -125013,9 +125223,9 @@
     "id": "tldr-en-common-cjxl-0",
     "type": "command",
     "title": "cjxl - Convert an image to JPEG XL",
-    "content": "cjxl {{path/to/image.ext}} {{path/to/output.jxl}}",
+    "content": "cjxl {{path/to/image.ext}} {{path/to/output}}.jxl",
     "group": "Common Tools",
-    "description": "cjxl: Compress images to JPEG XL. Accepted input extensions are PNG, APNG, GIF, JPEG, EXR, PPM, PFM, PAM, PGX, and JXL. (Convert an image to JPEG XL)",
+    "description": "cjxl: Convert and compress images to JPEG XL. Accepted input extensions are PNG, APNG, GIF, JPEG, EXR, PPM, PFM, PAM, PGX, and JXL. (Convert an image to JPEG XL)",
     "tags": [
       "common",
       "cjxl",
@@ -125027,10 +125237,10 @@
   {
     "id": "tldr-en-common-cjxl-1",
     "type": "command",
-    "title": "cjxl - Set quality to lossless and maximize compression of the resulting image",
-    "content": "cjxl --distance 0 --effort 9 {{path/to/image.ext}} {{path/to/output.jxl}}",
+    "title": "cjxl - Convert with a specific effort level ('1' - fastest but worst results, '10' - slowest but best results, '7' - default)",
+    "content": "cjxl {{[-e|--effort]}} {{1..10}} {{path/to/image.ext}} {{path/to/output}}.jxl",
     "group": "Common Tools",
-    "description": "cjxl: Compress images to JPEG XL. Accepted input extensions are PNG, APNG, GIF, JPEG, EXR, PPM, PFM, PAM, PGX, and JXL. (Set quality to lossless and maximize compression of the resulting image)",
+    "description": "cjxl: Convert and compress images to JPEG XL. Accepted input extensions are PNG, APNG, GIF, JPEG, EXR, PPM, PFM, PAM, PGX, and JXL. (Convert with a specific effort level ('1' - fastest but worst results, '10' - slowest but best results, '7' - default))",
     "tags": [
       "common",
       "cjxl",
@@ -125042,10 +125252,40 @@
   {
     "id": "tldr-en-common-cjxl-2",
     "type": "command",
+    "title": "cjxl - Convert with a specific quality",
+    "content": "cjxl {{[-q|--quality]}} {{0..100}} {{path/to/image.ext}} {{path/to/output}}.jxl",
+    "group": "Common Tools",
+    "description": "cjxl: Convert and compress images to JPEG XL. Accepted input extensions are PNG, APNG, GIF, JPEG, EXR, PPM, PFM, PAM, PGX, and JXL. (Convert with a specific quality)",
+    "tags": [
+      "common",
+      "cjxl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-cjxl-3",
+    "type": "command",
+    "title": "cjxl - Convert a JPEG to a JPEG XL with specific lossy quality",
+    "content": "cjxl {{[-q|--quality]}} {{0..100}} {{[-j|--lossless_jpeg]}} 0 {{path/to/image.jpeg}} {{path/to/output}}.jxl",
+    "group": "Common Tools",
+    "description": "cjxl: Convert and compress images to JPEG XL. Accepted input extensions are PNG, APNG, GIF, JPEG, EXR, PPM, PFM, PAM, PGX, and JXL. (Convert a JPEG to a JPEG XL with specific lossy quality)",
+    "tags": [
+      "common",
+      "cjxl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-cjxl-4",
+    "type": "command",
     "title": "cjxl - Display an extremely detailed help",
     "content": "cjxl {{[-h -v -v -v -v|--help --verbose --verbose --verbose --verbose]}}",
     "group": "Common Tools",
-    "description": "cjxl: Compress images to JPEG XL. Accepted input extensions are PNG, APNG, GIF, JPEG, EXR, PPM, PFM, PAM, PGX, and JXL. (Display an extremely detailed help)",
+    "description": "cjxl: Convert and compress images to JPEG XL. Accepted input extensions are PNG, APNG, GIF, JPEG, EXR, PPM, PFM, PAM, PGX, and JXL. (Display an extremely detailed help)",
     "tags": [
       "common",
       "cjxl",
@@ -149610,6 +149850,81 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-pomo-0",
+    "type": "command",
+    "title": "pomo - Initialize pomo's database",
+    "content": "pomo init",
+    "group": "Common Tools",
+    "description": "pomo: Utility for the Pomodoro technique. (Initialize pomo's database)",
+    "tags": [
+      "common",
+      "pomo",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-pomo-1",
+    "type": "command",
+    "title": "pomo - Start a pomodoro session",
+    "content": "pomo start {{message}}",
+    "group": "Common Tools",
+    "description": "pomo: Utility for the Pomodoro technique. (Start a pomodoro session)",
+    "tags": [
+      "common",
+      "pomo",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-pomo-2",
+    "type": "command",
+    "title": "pomo - Start a pomodoro session with three intervals that last three seconds",
+    "content": "pomo start --duration 3s --pomodoros 3 {{message}}",
+    "group": "Common Tools",
+    "description": "pomo: Utility for the Pomodoro technique. (Start a pomodoro session with three intervals that last three seconds)",
+    "tags": [
+      "common",
+      "pomo",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-pomo-3",
+    "type": "command",
+    "title": "pomo - List previous tasks",
+    "content": "pomo list",
+    "group": "Common Tools",
+    "description": "pomo: Utility for the Pomodoro technique. (List previous tasks)",
+    "tags": [
+      "common",
+      "pomo",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-pomo-4",
+    "type": "command",
+    "title": "pomo - Display help",
+    "content": "pomo --help",
+    "group": "Common Tools",
+    "description": "pomo: Utility for the Pomodoro technique. (Display help)",
+    "tags": [
+      "common",
+      "pomo",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-git-p4-0",
     "type": "command",
     "title": "git-p4 - Clone a Perforce depot into a new Git repository",
@@ -155004,6 +155319,36 @@
     "tags": [
       "common",
       "docker-container-rm",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-contacts-alias-set-0",
+    "type": "command",
+    "title": "wacli-contacts-alias-set - Set an alias for a specific contact",
+    "content": "wacli contacts alias set {{phone_number}}@s.whatsapp.net {{alias}}",
+    "group": "Common Tools",
+    "description": "wacli-contacts-alias-set: Set a custom alias for a WhatsApp contact. (Set an alias for a specific contact)",
+    "tags": [
+      "common",
+      "wacli-contacts-alias-set",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-contacts-alias-set-1",
+    "type": "command",
+    "title": "wacli-contacts-alias-set - Set an alias using a custom store",
+    "content": "wacli contacts alias set {{phone_number}}@s.whatsapp.net {{alias}} --store {{path/to/store}}",
+    "group": "Common Tools",
+    "description": "wacli-contacts-alias-set: Set a custom alias for a WhatsApp contact. (Set an alias using a custom store)",
+    "tags": [
+      "common",
+      "wacli-contacts-alias-set",
       "tldr",
       "en"
     ],
@@ -163245,6 +163590,66 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-simple-mtpfs-0",
+    "type": "command",
+    "title": "simple-mtpfs - List available MTP devices",
+    "content": "simple-mtpfs {{[-l|--list-devices]}}",
+    "group": "Common Tools",
+    "description": "simple-mtpfs: Mount MTP devices (like Android phones) as a filesystem using FUSE. (List available MTP devices)",
+    "tags": [
+      "common",
+      "simple-mtpfs",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-simple-mtpfs-1",
+    "type": "command",
+    "title": "simple-mtpfs - Mount a device to a directory",
+    "content": "simple-mtpfs {{mount_point}}",
+    "group": "Common Tools",
+    "description": "simple-mtpfs: Mount MTP devices (like Android phones) as a filesystem using FUSE. (Mount a device to a directory)",
+    "tags": [
+      "common",
+      "simple-mtpfs",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-simple-mtpfs-2",
+    "type": "command",
+    "title": "simple-mtpfs - Mount a specific device to a directory (useful when multiple devices are connected)",
+    "content": "simple-mtpfs --device {{number}} {{mount_point}}",
+    "group": "Common Tools",
+    "description": "simple-mtpfs: Mount MTP devices (like Android phones) as a filesystem using FUSE. (Mount a specific device to a directory (useful when multiple devices are connected))",
+    "tags": [
+      "common",
+      "simple-mtpfs",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-simple-mtpfs-3",
+    "type": "command",
+    "title": "simple-mtpfs - Unmount the filesystem",
+    "content": "umount {{mount_point}}",
+    "group": "Common Tools",
+    "description": "simple-mtpfs: Mount MTP devices (like Android phones) as a filesystem using FUSE. (Unmount the filesystem)",
+    "tags": [
+      "common",
+      "simple-mtpfs",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-go-tool-0",
     "type": "command",
     "title": "go-tool - List available tools",
@@ -165348,7 +165753,7 @@
     "id": "tldr-en-common-b2sum-1",
     "type": "command",
     "title": "b2sum - Calculate and save the list of BLAKE2 checksums to a file",
-    "content": "b2sum {{path/to/file1 path/to/file2 ...}} > {{path/to/file}}.b2",
+    "content": "b2sum {{path/to/file1 path/to/file2 ...}} > {{path/to/file.b2}}",
     "group": "Common Tools",
     "description": "b2sum: Calculate BLAKE2 cryptographic checksums. (Calculate and save the list of BLAKE2 checksums to a file)",
     "tags": [
@@ -165378,7 +165783,7 @@
     "id": "tldr-en-common-b2sum-3",
     "type": "command",
     "title": "b2sum - Read a file of BLAKE2 checksums and filenames and verify all files have matching checksums",
-    "content": "b2sum {{[-c|--check]}} {{path/to/file}}.b2",
+    "content": "b2sum {{[-c|--check]}} {{path/to/file.b2}}",
     "group": "Common Tools",
     "description": "b2sum: Calculate BLAKE2 cryptographic checksums. (Read a file of BLAKE2 checksums and filenames and verify all files have matching checksums)",
     "tags": [
@@ -165393,7 +165798,7 @@
     "id": "tldr-en-common-b2sum-4",
     "type": "command",
     "title": "b2sum - Only show a message for missing files or when verification fails",
-    "content": "b2sum {{[-c|--check]}} --quiet {{path/to/file}}.b2",
+    "content": "b2sum {{[-c|--check]}} --quiet {{path/to/file.b2}}",
     "group": "Common Tools",
     "description": "b2sum: Calculate BLAKE2 cryptographic checksums. (Only show a message for missing files or when verification fails)",
     "tags": [
@@ -165408,7 +165813,7 @@
     "id": "tldr-en-common-b2sum-5",
     "type": "command",
     "title": "b2sum - Only show a message when verification fails, ignoring missing files",
-    "content": "b2sum --ignore-missing {{[-c|--check]}} --quiet {{path/to/file}}.b2",
+    "content": "b2sum --ignore-missing {{[-c|--check]}} --quiet {{path/to/file.b2}}",
     "group": "Common Tools",
     "description": "b2sum: Calculate BLAKE2 cryptographic checksums. (Only show a message when verification fails, ignoring missing files)",
     "tags": [
@@ -168129,6 +168534,21 @@
     "tags": [
       "common",
       "sirtopnm",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-adb-install-multiple-0",
+    "type": "command",
+    "title": "adb-install-multiple - Install a split package",
+    "content": "adb install-multiple {{path/to/app1.apk path/to/app2.apk ...}}",
+    "group": "Common Tools",
+    "description": "adb-install-multiple: Install split Android packages. (Install a split package)",
+    "tags": [
+      "common",
+      "adb-install-multiple",
       "tldr",
       "en"
     ],
@@ -200565,6 +200985,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-wacli-contacts-show-0",
+    "type": "command",
+    "title": "wacli-contacts-show - Display details for a specific contact in JSON format",
+    "content": "wacli contacts show {{phone_number}}@s.whatsapp.net --json",
+    "group": "Common Tools",
+    "description": "wacli-contacts-show: Display details of a specific WhatsApp contact. (Display details for a specific contact in JSON format)",
+    "tags": [
+      "common",
+      "wacli-contacts-show",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-contacts-show-1",
+    "type": "command",
+    "title": "wacli-contacts-show - Display details using a custom store",
+    "content": "wacli contacts show {{phone_number}}@s.whatsapp.net --json --store {{path/to/store}}",
+    "group": "Common Tools",
+    "description": "wacli-contacts-show: Display details of a specific WhatsApp contact. (Display details using a custom store)",
+    "tags": [
+      "common",
+      "wacli-contacts-show",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-pamcrater-0",
     "type": "command",
     "title": "pamcrater - Create an image of cratered terrain with the specified dimensions",
@@ -204033,7 +204483,7 @@
     "id": "tldr-en-common-apkeep-1",
     "type": "command",
     "title": "apkeep - List all available versions for download",
-    "content": "apkeep {{[-a|--app]}} {{com.example.application}} {{[-l|--list-versions]}} {{path/to/directory}}",
+    "content": "apkeep {{[-a|--app]}} {{com.example.application}} {{[-l|--list-versions]}}",
     "group": "Common Tools",
     "description": "apkeep: Download APK files from various sources. (List all available versions for download)",
     "tags": [
@@ -204047,10 +204497,40 @@
   {
     "id": "tldr-en-common-apkeep-2",
     "type": "command",
+    "title": "apkeep - Download a specific version of an APK file",
+    "content": "apkeep {{[-a|--app]}} {{com.example.application}}@{{app_version}} {{path/to/directory}}",
+    "group": "Common Tools",
+    "description": "apkeep: Download APK files from various sources. (Download a specific version of an APK file)",
+    "tags": [
+      "common",
+      "apkeep",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-apkeep-3",
+    "type": "command",
     "title": "apkeep - Specify a store to download from",
     "content": "apkeep {{[-a|--app]}} {{com.example.application}} {{[-d|--download-source]}} {{apk-pure|google-play|f-droid|huawei-app-gallery}} {{path/to/directory}}",
     "group": "Common Tools",
     "description": "apkeep: Download APK files from various sources. (Specify a store to download from)",
+    "tags": [
+      "common",
+      "apkeep",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-apkeep-4",
+    "type": "command",
+    "title": "apkeep - Display help",
+    "content": "apkeep {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "apkeep: Download APK files from various sources. (Display help)",
     "tags": [
       "common",
       "apkeep",
@@ -208951,6 +209431,21 @@
   },
   {
     "id": "tldr-en-common-git-pull-2",
+    "type": "command",
+    "title": "git-pull - Download changes from a specific remote repository",
+    "content": "git pull {{remote_name}}",
+    "group": "Common Tools",
+    "description": "git-pull: Fetch branch from a remote repository and merge it to local repository. (Download changes from a specific remote repository)",
+    "tags": [
+      "common",
+      "git-pull",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-git-pull-3",
     "type": "command",
     "title": "git-pull - Download changes from given remote repository and branch, then merge them into `HEAD`",
     "content": "git pull {{remote_name}} {{branch}}",
@@ -254132,10 +254627,10 @@
   {
     "id": "tldr-en-common-tv-0",
     "type": "command",
-    "title": "tv - Launch with the default channel",
-    "content": "tv",
+    "title": "tv - View documentation for the Television fuzzy finder",
+    "content": "tldr tv.fzf",
     "group": "Common Tools",
-    "description": "tv: Cross-platform, fast, extensible fuzzy-finder tool. Works with \"channels\" (e.g., files, env, git repos) or from `stdin`. (Launch with the default channel)",
+    "description": "tv: `tv` can refer to multiple commands with the same name. (View documentation for the Television fuzzy finder)",
     "tags": [
       "common",
       "tv",
@@ -254147,100 +254642,10 @@
   {
     "id": "tldr-en-common-tv-1",
     "type": "command",
-    "title": "tv - Open a specific channel",
-    "content": "tv {{files|env|git-repos|...}}",
+    "title": "tv - View documentation for the tidy-viewer data pretty printer",
+    "content": "tldr tidy-viewer",
     "group": "Common Tools",
-    "description": "tv: Cross-platform, fast, extensible fuzzy-finder tool. Works with \"channels\" (e.g., files, env, git repos) or from `stdin`. (Open a specific channel)",
-    "tags": [
-      "common",
-      "tv",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-common-tv-2",
-    "type": "command",
-    "title": "tv - List all available channels",
-    "content": "tv list-channels",
-    "group": "Common Tools",
-    "description": "tv: Cross-platform, fast, extensible fuzzy-finder tool. Works with \"channels\" (e.g., files, env, git repos) or from `stdin`. (List all available channels)",
-    "tags": [
-      "common",
-      "tv",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-common-tv-3",
-    "type": "command",
-    "title": "tv - Fuzzy-pick from lines piped on `stdin`",
-    "content": "{{command}} | tv",
-    "group": "Common Tools",
-    "description": "tv: Cross-platform, fast, extensible fuzzy-finder tool. Works with \"channels\" (e.g., files, env, git repos) or from `stdin`. (Fuzzy-pick from lines piped on `stdin`)",
-    "tags": [
-      "common",
-      "tv",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-common-tv-4",
-    "type": "command",
-    "title": "tv - Pipe and show a live preview for each entry",
-    "content": "{{command}} | tv --preview '{{preview_command}}'",
-    "group": "Common Tools",
-    "description": "tv: Cross-platform, fast, extensible fuzzy-finder tool. Works with \"channels\" (e.g., files, env, git repos) or from `stdin`. (Pipe and show a live preview for each entry)",
-    "tags": [
-      "common",
-      "tv",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-common-tv-5",
-    "type": "command",
-    "title": "tv - Build a picker from commands (source + preview)",
-    "content": "tv --source-command '{{source_command}}' --preview-command '{{preview_command}}' --preview-size {{70}}",
-    "group": "Common Tools",
-    "description": "tv: Cross-platform, fast, extensible fuzzy-finder tool. Works with \"channels\" (e.g., files, env, git repos) or from `stdin`. (Build a picker from commands (source + preview))",
-    "tags": [
-      "common",
-      "tv",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-common-tv-6",
-    "type": "command",
-    "title": "tv - Update and install community-maintained channels",
-    "content": "tv update-channels",
-    "group": "Common Tools",
-    "description": "tv: Cross-platform, fast, extensible fuzzy-finder tool. Works with \"channels\" (e.g., files, env, git repos) or from `stdin`. (Update and install community-maintained channels)",
-    "tags": [
-      "common",
-      "tv",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-common-tv-7",
-    "type": "command",
-    "title": "tv - View tldr pages (you need to update channels first and have `tldr` installed)",
-    "content": "tv tldr",
-    "group": "Common Tools",
-    "description": "tv: Cross-platform, fast, extensible fuzzy-finder tool. Works with \"channels\" (e.g., files, env, git repos) or from `stdin`. (View tldr pages (you need to update channels first and have `tldr` installed))",
+    "description": "tv: `tv` can refer to multiple commands with the same name. (View documentation for the tidy-viewer data pretty printer)",
     "tags": [
       "common",
       "tv",
@@ -269450,7 +269855,7 @@
     "title": "git-show-unmerged-branches - Print all branches which are not merged into the current `HEAD`",
     "content": "git show-unmerged-branches",
     "group": "Common Tools",
-    "description": "git-show-unmerged-branches: Print all branches which are not merged into the current `HEAD`. (Print all branches which are not merged into the current `HEAD`)",
+    "description": "git-show-unmerged-branches: Print all branches which are not merged into the current `HEAD`. Part of `git-extras`. (Print all branches which are not merged into the current `HEAD`)",
     "tags": [
       "common",
       "git-show-unmerged-branches",
@@ -271629,6 +272034,126 @@
     "tags": [
       "common",
       "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tv.fzf-0",
+    "type": "command",
+    "title": "tv.fzf - Launch with the default channel",
+    "content": "tv",
+    "group": "Common Tools",
+    "description": "tv.fzf: Cross-platform, fast, extensible fuzzy-finder tool. Works with \"channels\" (e.g., files, env, git repos) or from `stdin`. (Launch with the default channel)",
+    "tags": [
+      "common",
+      "tv.fzf",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tv.fzf-1",
+    "type": "command",
+    "title": "tv.fzf - Open a specific channel",
+    "content": "tv {{files|env|git-repos|...}}",
+    "group": "Common Tools",
+    "description": "tv.fzf: Cross-platform, fast, extensible fuzzy-finder tool. Works with \"channels\" (e.g., files, env, git repos) or from `stdin`. (Open a specific channel)",
+    "tags": [
+      "common",
+      "tv.fzf",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tv.fzf-2",
+    "type": "command",
+    "title": "tv.fzf - List all available channels",
+    "content": "tv list-channels",
+    "group": "Common Tools",
+    "description": "tv.fzf: Cross-platform, fast, extensible fuzzy-finder tool. Works with \"channels\" (e.g., files, env, git repos) or from `stdin`. (List all available channels)",
+    "tags": [
+      "common",
+      "tv.fzf",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tv.fzf-3",
+    "type": "command",
+    "title": "tv.fzf - Fuzzy-pick from lines piped on `stdin`",
+    "content": "{{command}} | tv",
+    "group": "Common Tools",
+    "description": "tv.fzf: Cross-platform, fast, extensible fuzzy-finder tool. Works with \"channels\" (e.g., files, env, git repos) or from `stdin`. (Fuzzy-pick from lines piped on `stdin`)",
+    "tags": [
+      "common",
+      "tv.fzf",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tv.fzf-4",
+    "type": "command",
+    "title": "tv.fzf - Pipe and show a live preview for each entry",
+    "content": "{{command}} | tv --preview '{{preview_command}}'",
+    "group": "Common Tools",
+    "description": "tv.fzf: Cross-platform, fast, extensible fuzzy-finder tool. Works with \"channels\" (e.g., files, env, git repos) or from `stdin`. (Pipe and show a live preview for each entry)",
+    "tags": [
+      "common",
+      "tv.fzf",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tv.fzf-5",
+    "type": "command",
+    "title": "tv.fzf - Build a picker from commands (source + preview)",
+    "content": "tv --source-command '{{source_command}}' --preview-command '{{preview_command}}' --preview-size {{70}}",
+    "group": "Common Tools",
+    "description": "tv.fzf: Cross-platform, fast, extensible fuzzy-finder tool. Works with \"channels\" (e.g., files, env, git repos) or from `stdin`. (Build a picker from commands (source + preview))",
+    "tags": [
+      "common",
+      "tv.fzf",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tv.fzf-6",
+    "type": "command",
+    "title": "tv.fzf - Update and install community-maintained channels",
+    "content": "tv update-channels",
+    "group": "Common Tools",
+    "description": "tv.fzf: Cross-platform, fast, extensible fuzzy-finder tool. Works with \"channels\" (e.g., files, env, git repos) or from `stdin`. (Update and install community-maintained channels)",
+    "tags": [
+      "common",
+      "tv.fzf",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tv.fzf-7",
+    "type": "command",
+    "title": "tv.fzf - View tldr pages (you need to update channels first and have `tldr` installed)",
+    "content": "tv tldr",
+    "group": "Common Tools",
+    "description": "tv.fzf: Cross-platform, fast, extensible fuzzy-finder tool. Works with \"channels\" (e.g., files, env, git repos) or from `stdin`. (View tldr pages (you need to update channels first and have `tldr` installed))",
+    "tags": [
+      "common",
+      "tv.fzf",
       "tldr",
       "en"
     ],
@@ -282635,7 +283160,7 @@
     "title": "git-show-merged-branches - Print all branches which are merged into the current head",
     "content": "git show-merged-branches",
     "group": "Common Tools",
-    "description": "git-show-merged-branches: Print all branches which are merged into the current head. (Print all branches which are merged into the current head)",
+    "description": "git-show-merged-branches: Print all branches which are merged into the current head. Part of `git-extras`. (Print all branches which are merged into the current head)",
     "tags": [
       "common",
       "git-show-merged-branches",
