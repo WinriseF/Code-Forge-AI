@@ -15167,10 +15167,10 @@
   {
     "id": "tldr-en-windows-get-filehash-0",
     "type": "command",
-    "title": "get-filehash - Calculate a hash for a specified file using the SHA256 algorithm",
+    "title": "get-filehash - Calculate the SHA256 checksum for a file",
     "content": "Get-FileHash {{path\\to\\file}}",
     "group": "Windows",
-    "description": "get-filehash: Calculate a hash for a file. Note: This command can only be used through PowerShell. (Calculate a hash for a specified file using the SHA256 algorithm)",
+    "description": "get-filehash: Calculate cryptographic checksums for a file. Note: This command can only be used through PowerShell. (Calculate the SHA256 checksum for a file)",
     "tags": [
       "windows",
       "get-filehash",
@@ -15182,10 +15182,40 @@
   {
     "id": "tldr-en-windows-get-filehash-1",
     "type": "command",
-    "title": "get-filehash - Calculate a hash for a specified file using a specified algorithm",
-    "content": "Get-FileHash {{path\\to\\file}} -Algorithm {{SHA1|SHA384|SHA256|SHA512|MD5}}",
+    "title": "get-filehash - Calculate the checksum for a file using a specified algorithm",
+    "content": "Get-FileHash {{path\\to\\file}} -Algorithm {{SHA1|SHA256|SHA384|SHA512|MD5}}",
     "group": "Windows",
-    "description": "get-filehash: Calculate a hash for a file. Note: This command can only be used through PowerShell. (Calculate a hash for a specified file using a specified algorithm)",
+    "description": "get-filehash: Calculate cryptographic checksums for a file. Note: This command can only be used through PowerShell. (Calculate the checksum for a file using a specified algorithm)",
+    "tags": [
+      "windows",
+      "get-filehash",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-get-filehash-2",
+    "type": "command",
+    "title": "get-filehash - Calculate the checksum for a file using a deprecated algorithm (no longer available in PowerShell 6 or later)",
+    "content": "Get-FileHash {{path\\to\\file}} -Algorithm {{MACTripleDES|RIPEMD160}}",
+    "group": "Windows",
+    "description": "get-filehash: Calculate cryptographic checksums for a file. Note: This command can only be used through PowerShell. (Calculate the checksum for a file using a deprecated algorithm (no longer available in PowerShell 6 or later))",
+    "tags": [
+      "windows",
+      "get-filehash",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-get-filehash-3",
+    "type": "command",
+    "title": "get-filehash - Check a known checksum of a file",
+    "content": "(Get-FileHash {{path\\to\\file}} -Algorithm {{SHA1|SHA256|SHA384|SHA512|MD5}}).Hash -eq \"{{known_hash}}\"",
+    "group": "Windows",
+    "description": "get-filehash: Calculate cryptographic checksums for a file. Note: This command can only be used through PowerShell. (Check a known checksum of a file)",
     "tags": [
       "windows",
       "get-filehash",

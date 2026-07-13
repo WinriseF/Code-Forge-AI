@@ -1,5 +1,5 @@
 {
-  "updated_at": 1783307069303,
+  "updated_at": 1783910419604,
   "version": "2.1.0",
   "packages": [
     {
@@ -8,8 +8,8 @@
       "platform": "llm",
       "name": "ChatGPT Role Prompts",
       "description": "Curated role-play prompts for ChatGPT and general LLM workflows.",
-      "count": 1981,
-      "size_kb": 5647.47,
+      "count": 2018,
+      "size_kb": 5806.23,
       "url": "packs/prompts/en/roles.json",
       "category": "prompt"
     },
@@ -183,9 +183,9 @@
       "language": "en",
       "platform": "common",
       "name": "Common Tools (EN)",
-      "description": "Contains 20790 en commands for common.",
-      "count": 20790,
-      "size_kb": 10073,
+      "description": "Contains 20881 en commands for common.",
+      "count": 20881,
+      "size_kb": 10117,
       "url": "packs/commands/en/common.json",
       "category": "command"
     },
@@ -194,9 +194,9 @@
       "language": "en",
       "platform": "linux",
       "name": "Linux Ops (EN)",
-      "description": "Contains 8316 en commands for linux.",
-      "count": 8316,
-      "size_kb": 3928,
+      "description": "Contains 8335 en commands for linux.",
+      "count": 8335,
+      "size_kb": 3937,
       "url": "packs/commands/en/linux.json",
       "category": "command"
     },
@@ -205,9 +205,9 @@
       "language": "en",
       "platform": "windows",
       "name": "Windows (EN)",
-      "description": "Contains 1260 en commands for windows.",
-      "count": 1260,
-      "size_kb": 633,
+      "description": "Contains 1262 en commands for windows.",
+      "count": 1262,
+      "size_kb": 634,
       "url": "packs/commands/en/windows.json",
       "category": "command"
     },

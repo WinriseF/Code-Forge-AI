@@ -32205,6 +32205,96 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-docker-compose-stop-0",
+    "type": "command",
+    "title": "docker-compose-stop - Stop all running services",
+    "content": "docker compose stop",
+    "group": "Common Tools",
+    "description": "docker-compose-stop: Stop running containers without removing them. (Stop all running services)",
+    "tags": [
+      "common",
+      "docker-compose-stop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-compose-stop-1",
+    "type": "command",
+    "title": "docker-compose-stop - Stop specific services",
+    "content": "docker compose stop {{service_1 service_2 ...}}",
+    "group": "Common Tools",
+    "description": "docker-compose-stop: Stop running containers without removing them. (Stop specific services)",
+    "tags": [
+      "common",
+      "docker-compose-stop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-compose-stop-2",
+    "type": "command",
+    "title": "docker-compose-stop - Stop with a custom shutdown timeout in seconds",
+    "content": "docker compose stop {{[-t|--timeout]}} {{seconds}}",
+    "group": "Common Tools",
+    "description": "docker-compose-stop: Stop running containers without removing them. (Stop with a custom shutdown timeout in seconds)",
+    "tags": [
+      "common",
+      "docker-compose-stop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-compose-stop-3",
+    "type": "command",
+    "title": "docker-compose-stop - Stop services defined in a specific compose file",
+    "content": "docker compose {{[-f|--file]}} {{path/to/compose_file}} stop",
+    "group": "Common Tools",
+    "description": "docker-compose-stop: Stop running containers without removing them. (Stop services defined in a specific compose file)",
+    "tags": [
+      "common",
+      "docker-compose-stop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-compose-stop-4",
+    "type": "command",
+    "title": "docker-compose-stop - Dry run (show operations without executing)",
+    "content": "docker compose stop --dry-run",
+    "group": "Common Tools",
+    "description": "docker-compose-stop: Stop running containers without removing them. (Dry run (show operations without executing))",
+    "tags": [
+      "common",
+      "docker-compose-stop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-compose-stop-5",
+    "type": "command",
+    "title": "docker-compose-stop - Stop specific services with a custom timeout",
+    "content": "docker compose stop {{[-t|--timeout]}} {{seconds}} {{service_1 service_2 ...}}",
+    "group": "Common Tools",
+    "description": "docker-compose-stop: Stop running containers without removing them. (Stop specific services with a custom timeout)",
+    "tags": [
+      "common",
+      "docker-compose-stop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-swaylock-0",
     "type": "command",
     "title": "swaylock - Lock the screen using the config in `$HOME/.swaylock/config` or `$XDG_CONFIG_HOME/swaylock/config`",
@@ -41747,10 +41837,10 @@
   {
     "id": "tldr-en-common-objdump-6",
     "type": "command",
-    "title": "objdump - Display a complete binary hex dump of all sections",
+    "title": "objdump - Display a complete binary hex dump of all [s]ections",
     "content": "objdump {{[-s|--full-contents]}} {{path/to/binary}}",
     "group": "Common Tools",
-    "description": "objdump: View information about object files. (Display a complete binary hex dump of all sections)",
+    "description": "objdump: View information about object files. (Display a complete binary hex dump of all [s]ections)",
     "tags": [
       "common",
       "objdump",
@@ -57240,6 +57330,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-gst-launch-1.0-videorate-1",
+    "type": "command",
+    "title": "gst-launch-1.0-videorate - Normalize framerate to 60 frames per second",
+    "content": "gst-launch-1.0 {{source}} ! videorate ! video/x-raw,framerate=60/1 ! {{sink}}",
+    "group": "Common Tools",
+    "description": "gst-launch-1.0-videorate: Normalize input framerate. (Normalize framerate to 60 frames per second)",
+    "tags": [
+      "common",
+      "gst-launch-1.0-videorate",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-bun-x-0",
     "type": "command",
     "title": "bun-x - View documentation for the original command",
@@ -62814,6 +62919,81 @@
     "tags": [
       "common",
       "jj-duplicate",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-container-stop-0",
+    "type": "command",
+    "title": "docker-container-stop - Stop a Docker container",
+    "content": "docker {{[stop|container stop]}} {{container}}",
+    "group": "Common Tools",
+    "description": "docker-container-stop: Stop one or more running containers. (Stop a Docker container)",
+    "tags": [
+      "common",
+      "docker-container-stop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-container-stop-1",
+    "type": "command",
+    "title": "docker-container-stop - Stop a container, sending a specific signal to it",
+    "content": "docker {{[stop|container stop]}} {{[-s|--signal]}} {{signal}} {{container}}",
+    "group": "Common Tools",
+    "description": "docker-container-stop: Stop one or more running containers. (Stop a container, sending a specific signal to it)",
+    "tags": [
+      "common",
+      "docker-container-stop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-container-stop-2",
+    "type": "command",
+    "title": "docker-container-stop - Stop a container, waiting a specific number of seconds before forcibly killing it",
+    "content": "docker {{[stop|container stop]}} {{[-t|--timeout]}} {{seconds}} {{container}}",
+    "group": "Common Tools",
+    "description": "docker-container-stop: Stop one or more running containers. (Stop a container, waiting a specific number of seconds before forcibly killing it)",
+    "tags": [
+      "common",
+      "docker-container-stop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-container-stop-3",
+    "type": "command",
+    "title": "docker-container-stop - Stop one or more containers",
+    "content": "docker {{[stop|container stop]}} {{container1 container2 ...}}",
+    "group": "Common Tools",
+    "description": "docker-container-stop: Stop one or more running containers. (Stop one or more containers)",
+    "tags": [
+      "common",
+      "docker-container-stop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-container-stop-4",
+    "type": "command",
+    "title": "docker-container-stop - Display help",
+    "content": "docker {{[stop|container stop]}} --help",
+    "group": "Common Tools",
+    "description": "docker-container-stop: Stop one or more running containers. (Display help)",
+    "tags": [
+      "common",
+      "docker-container-stop",
       "tldr",
       "en"
     ],
@@ -73989,6 +74169,111 @@
     "tags": [
       "common",
       "rustup-self",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-aha-0",
+    "type": "command",
+    "title": "aha - Convert terminal output to HTML",
+    "content": "{{color_command}} | aha > {{path/to/output}}.html",
+    "group": "Common Tools",
+    "description": "aha: Convert ANSI escape sequences to HTML. (Convert terminal output to HTML)",
+    "tags": [
+      "common",
+      "aha",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-aha-1",
+    "type": "command",
+    "title": "aha - Read from a file instead of `stdin`",
+    "content": "aha -f {{path/to/input.txt}} > {{path/to/output}}.html",
+    "group": "Common Tools",
+    "description": "aha: Convert ANSI escape sequences to HTML. (Read from a file instead of `stdin`)",
+    "tags": [
+      "common",
+      "aha",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-aha-2",
+    "type": "command",
+    "title": "aha - Convert to HTML with a black background",
+    "content": "{{color_command}} | aha {{[-b|--black]}} > {{path/to/output}}.html",
+    "group": "Common Tools",
+    "description": "aha: Convert ANSI escape sequences to HTML. (Convert to HTML with a black background)",
+    "tags": [
+      "common",
+      "aha",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-aha-3",
+    "type": "command",
+    "title": "aha - Convert to HTML with a pink background and set the document title",
+    "content": "{{color_command}} | aha {{[-p|--pink]}} {{[-t|--title]}} \"{{title}}\" > {{path/to/output}}.html",
+    "group": "Common Tools",
+    "description": "aha: Convert ANSI escape sequences to HTML. (Convert to HTML with a pink background and set the document title)",
+    "tags": [
+      "common",
+      "aha",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-aha-4",
+    "type": "command",
+    "title": "aha - Add a CSS file to the HTML output",
+    "content": "{{color_command}} | aha {{[-c|--css]}} {{path/to/style}}.css > {{path/to/output}}.html",
+    "group": "Common Tools",
+    "description": "aha: Convert ANSI escape sequences to HTML. (Add a CSS file to the HTML output)",
+    "tags": [
+      "common",
+      "aha",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-aha-5",
+    "type": "command",
+    "title": "aha - Enable word-wrap to prevent horizontal scrolling",
+    "content": "{{color_command}} | aha {{[-w|--word-wrap]}} > {{path/to/output}}.html",
+    "group": "Common Tools",
+    "description": "aha: Convert ANSI escape sequences to HTML. (Enable word-wrap to prevent horizontal scrolling)",
+    "tags": [
+      "common",
+      "aha",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-aha-6",
+    "type": "command",
+    "title": "aha - Display help",
+    "content": "aha {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "aha: Convert ANSI escape sequences to HTML. (Display help)",
+    "tags": [
+      "common",
+      "aha",
       "tldr",
       "en"
     ],
@@ -112742,10 +113027,10 @@
   {
     "id": "tldr-en-common-bun-pm-version-2",
     "type": "command",
-    "title": "bun-pm-version - Bump the version using a semantic version type (`major`, `minor`, `patch`, etc.)",
+    "title": "bun-pm-version - Bump the version using a semantic version type",
     "content": "bun pm version {{major|minor|patch|premajor|preminor|prepatch|prerelease}}",
     "group": "Common Tools",
-    "description": "bun-pm-version: Manage the `version` field in `package.json`. (Bump the version using a semantic version type (`major`, `minor`, `patch`, etc.))",
+    "description": "bun-pm-version: Manage the `version` field in `package.json`. (Bump the version using a semantic version type)",
     "tags": [
       "common",
       "bun-pm-version",
@@ -122147,10 +122432,10 @@
   {
     "id": "tldr-en-common-sfdk-deploy-0",
     "type": "command",
-    "title": "sfdk-deploy - Deploy using a specified method (`pkcon`, `rsync`, `sdk`, `zypper`, `zypper-dup`, or `manual`)",
-    "content": "sfdk deploy --{{method}}",
+    "title": "sfdk-deploy - Deploy using a specified method",
+    "content": "sfdk deploy --{{pkcon|rsync|sdk|zypper|zypper-dup|manual}}",
     "group": "Common Tools",
-    "description": "sfdk-deploy: Deploy build results to a device. (Deploy using a specified method (`pkcon`, `rsync`, `sdk`, `zypper`, `zypper-dup`, or `manual`))",
+    "description": "sfdk-deploy: Deploy build results to a device. (Deploy using a specified method)",
     "tags": [
       "common",
       "sfdk-deploy",
@@ -122207,10 +122492,10 @@
   {
     "id": "tldr-en-common-sfdk-deploy-4",
     "type": "command",
-    "title": "sfdk-deploy - Undeploy using a specified method (`pkcon`, `rpm`, `rsync`, `sdk`, or `zypper`)",
-    "content": "sfdk undeploy --{{method}}",
+    "title": "sfdk-deploy - Undeploy using a specified method",
+    "content": "sfdk undeploy --{{pkcon|rpm|rsync|sdk|zypper}}",
     "group": "Common Tools",
-    "description": "sfdk-deploy: Deploy build results to a device. (Undeploy using a specified method (`pkcon`, `rpm`, `rsync`, `sdk`, or `zypper`))",
+    "description": "sfdk-deploy: Deploy build results to a device. (Undeploy using a specified method)",
     "tags": [
       "common",
       "sfdk-deploy",
@@ -125192,10 +125477,10 @@
   {
     "id": "tldr-en-common-sfdk-6",
     "type": "command",
-    "title": "sfdk - Display help for specific topic (`building`, `testing`, `maintaining`, `ide`, `all`)",
-    "content": "sfdk --help-{{topic}}",
+    "title": "sfdk - Display help for specific topic",
+    "content": "sfdk --help-{{building|testing|maintaining|ide|all}}",
     "group": "Common Tools",
-    "description": "sfdk: Frontend of the Sailfish SDK. Some subcommands such as `init`, `build-init`, `device` have their own usage documentation. (Display help for specific topic (`building`, `testing`, `maintaining`, `ide`, `all`))",
+    "description": "sfdk: Frontend of the Sailfish SDK. Some subcommands such as `init`, `build-init`, `device` have their own usage documentation. (Display help for specific topic)",
     "tags": [
       "common",
       "sfdk",
@@ -133704,6 +133989,81 @@
     "tags": [
       "common",
       "git-bulk",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-messages-search-0",
+    "type": "command",
+    "title": "wacli-messages-search - Search messages in a specific chat",
+    "content": "wacli messages search \"{{query}}\" --chat {{phone_number}}@s.whatsapp.net --json",
+    "group": "Common Tools",
+    "description": "wacli-messages-search: Search WhatsApp messages using full-text search. (Search messages in a specific chat)",
+    "tags": [
+      "common",
+      "wacli-messages-search",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-messages-search-1",
+    "type": "command",
+    "title": "wacli-messages-search - Search messages from a specific sender",
+    "content": "wacli messages search \"{{query}}\" --from {{phone_number}}@s.whatsapp.net --json",
+    "group": "Common Tools",
+    "description": "wacli-messages-search: Search WhatsApp messages using full-text search. (Search messages from a specific sender)",
+    "tags": [
+      "common",
+      "wacli-messages-search",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-messages-search-2",
+    "type": "command",
+    "title": "wacli-messages-search - Search messages after a specific date",
+    "content": "wacli messages search \"{{query}}\" --chat {{phone_number}}@s.whatsapp.net --after {{2026-01-28}} --json",
+    "group": "Common Tools",
+    "description": "wacli-messages-search: Search WhatsApp messages using full-text search. (Search messages after a specific date)",
+    "tags": [
+      "common",
+      "wacli-messages-search",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-messages-search-3",
+    "type": "command",
+    "title": "wacli-messages-search - Search messages of a specific type",
+    "content": "wacli messages search \"{{query}}\" --type {{image|video|audio|document}} --json",
+    "group": "Common Tools",
+    "description": "wacli-messages-search: Search WhatsApp messages using full-text search. (Search messages of a specific type)",
+    "tags": [
+      "common",
+      "wacli-messages-search",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-messages-search-4",
+    "type": "command",
+    "title": "wacli-messages-search - Search messages with a result limit",
+    "content": "wacli messages search \"{{query}}\" --chat {{phone_number}}@s.whatsapp.net --limit {{10}} --json",
+    "group": "Common Tools",
+    "description": "wacli-messages-search: Search WhatsApp messages using full-text search. (Search messages with a result limit)",
+    "tags": [
+      "common",
+      "wacli-messages-search",
       "tldr",
       "en"
     ],
@@ -177960,6 +178320,66 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-flux-create-0",
+    "type": "command",
+    "title": "flux-create - Create a GitRepository source",
+    "content": "flux create source git {{source_name}} --url {{https://github.com/repository}} --branch {{branch_name}}",
+    "group": "Common Tools",
+    "description": "flux-create: Create or update Flux resources. (Create a GitRepository source)",
+    "tags": [
+      "common",
+      "flux-create",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-create-1",
+    "type": "command",
+    "title": "flux-create - Create a Kustomization resource to sync a directory from a Git source",
+    "content": "flux create kustomization {{kustomization_name}} --source {{source_name}} --path {{path/to/directory}}",
+    "group": "Common Tools",
+    "description": "flux-create: Create or update Flux resources. (Create a Kustomization resource to sync a directory from a Git source)",
+    "tags": [
+      "common",
+      "flux-create",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-create-2",
+    "type": "command",
+    "title": "flux-create - Create a HelmRelease",
+    "content": "flux create helmrelease {{release_name}} --chart {{chart_name}} --source {{HelmRepository/repository_name}}",
+    "group": "Common Tools",
+    "description": "flux-create: Create or update Flux resources. (Create a HelmRelease)",
+    "tags": [
+      "common",
+      "flux-create",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-create-3",
+    "type": "command",
+    "title": "flux-create - Create a Secret to authenticate with a Git repository",
+    "content": "flux create secret git {{secret_name}} --url {{https://github.com/repository}} --username \"{{username}}\" --password \"{{password}}\"",
+    "group": "Common Tools",
+    "description": "flux-create: Create or update Flux resources. (Create a Secret to authenticate with a Git repository)",
+    "tags": [
+      "common",
+      "flux-create",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-kopia-0",
     "type": "command",
     "title": "kopia - Create a repository in the local filesystem",
@@ -187485,6 +187905,126 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-dnote-0",
+    "type": "command",
+    "title": "dnote - Add a note to a book in the configured editor",
+    "content": "dnote add {{book_name}}",
+    "group": "Common Tools",
+    "description": "dnote: A multi-device notebook for capturing commands, snippets, and notes. (Add a note to a book in the configured editor)",
+    "tags": [
+      "common",
+      "dnote",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dnote-1",
+    "type": "command",
+    "title": "dnote - Add a note with inline content",
+    "content": "dnote add {{book_name}} {{[-c|--content]}} \"{{note_content}}\"",
+    "group": "Common Tools",
+    "description": "dnote: A multi-device notebook for capturing commands, snippets, and notes. (Add a note with inline content)",
+    "tags": [
+      "common",
+      "dnote",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dnote-2",
+    "type": "command",
+    "title": "dnote - List all books and notes",
+    "content": "dnote view",
+    "group": "Common Tools",
+    "description": "dnote: A multi-device notebook for capturing commands, snippets, and notes. (List all books and notes)",
+    "tags": [
+      "common",
+      "dnote",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dnote-3",
+    "type": "command",
+    "title": "dnote - View all notes in a specific book",
+    "content": "dnote view {{book_name}}",
+    "group": "Common Tools",
+    "description": "dnote: A multi-device notebook for capturing commands, snippets, and notes. (View all notes in a specific book)",
+    "tags": [
+      "common",
+      "dnote",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dnote-4",
+    "type": "command",
+    "title": "dnote - Search notes using full-text search",
+    "content": "dnote find \"{{keywords}}\"",
+    "group": "Common Tools",
+    "description": "dnote: A multi-device notebook for capturing commands, snippets, and notes. (Search notes using full-text search)",
+    "tags": [
+      "common",
+      "dnote",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dnote-5",
+    "type": "command",
+    "title": "dnote - Edit a specific note by its ID",
+    "content": "dnote edit {{note_id}}",
+    "group": "Common Tools",
+    "description": "dnote: A multi-device notebook for capturing commands, snippets, and notes. (Edit a specific note by its ID)",
+    "tags": [
+      "common",
+      "dnote",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dnote-6",
+    "type": "command",
+    "title": "dnote - Remove a note or an entire book",
+    "content": "dnote remove {{note_id|book_name}}",
+    "group": "Common Tools",
+    "description": "dnote: A multi-device notebook for capturing commands, snippets, and notes. (Remove a note or an entire book)",
+    "tags": [
+      "common",
+      "dnote",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dnote-7",
+    "type": "command",
+    "title": "dnote - Synchronize notes with a Dnote server",
+    "content": "dnote sync",
+    "group": "Common Tools",
+    "description": "dnote: A multi-device notebook for capturing commands, snippets, and notes. (Synchronize notes with a Dnote server)",
+    "tags": [
+      "common",
+      "dnote",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-idevicescreenshot-0",
     "type": "command",
     "title": "idevicescreenshot - Save a screenshot with the default file name as a TIFF image",
@@ -191334,6 +191874,81 @@
     "tags": [
       "common",
       "exercism",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-grafana-cli-admin-0",
+    "type": "command",
+    "title": "grafana-cli-admin - Reset the admin password",
+    "content": "grafana cli admin reset-admin-password {{new_password}}",
+    "group": "Common Tools",
+    "description": "grafana-cli-admin: Manage Grafana administrator commands. (Reset the admin password)",
+    "tags": [
+      "common",
+      "grafana-cli-admin",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-grafana-cli-admin-1",
+    "type": "command",
+    "title": "grafana-cli-admin - Reset the password for a specific user",
+    "content": "grafana cli admin reset-admin-password --user-id {{user_id}} {{new_password}}",
+    "group": "Common Tools",
+    "description": "grafana-cli-admin: Manage Grafana administrator commands. (Reset the password for a specific user)",
+    "tags": [
+      "common",
+      "grafana-cli-admin",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-grafana-cli-admin-2",
+    "type": "command",
+    "title": "grafana-cli-admin - Reset the password using a specific Grafana home directory",
+    "content": "grafana cli --homepath {{path/to/grafana}} admin reset-admin-password {{new_password}}",
+    "group": "Common Tools",
+    "description": "grafana-cli-admin: Manage Grafana administrator commands. (Reset the password using a specific Grafana home directory)",
+    "tags": [
+      "common",
+      "grafana-cli-admin",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-grafana-cli-admin-3",
+    "type": "command",
+    "title": "grafana-cli-admin - Display help",
+    "content": "grafana cli admin {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "grafana-cli-admin: Manage Grafana administrator commands. (Display help)",
+    "tags": [
+      "common",
+      "grafana-cli-admin",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-grafana-cli-admin-4",
+    "type": "command",
+    "title": "grafana-cli-admin - Display version",
+    "content": "grafana cli admin {{[-v|--version]}}",
+    "group": "Common Tools",
+    "description": "grafana-cli-admin: Manage Grafana administrator commands. (Display version)",
+    "tags": [
+      "common",
+      "grafana-cli-admin",
       "tldr",
       "en"
     ],
@@ -197415,6 +198030,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-wacli-messages-context-0",
+    "type": "command",
+    "title": "wacli-messages-context - Show context around a specific message in JSON format",
+    "content": "wacli messages context {{message_id}} --json",
+    "group": "Common Tools",
+    "description": "wacli-messages-context: Display messages surrounding a specific WhatsApp message. (Show context around a specific message in JSON format)",
+    "tags": [
+      "common",
+      "wacli-messages-context",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-messages-context-1",
+    "type": "command",
+    "title": "wacli-messages-context - Show context around a message using a custom store",
+    "content": "wacli messages context {{message_id}} --json --store {{path/to/store}}",
+    "group": "Common Tools",
+    "description": "wacli-messages-context: Display messages surrounding a specific WhatsApp message. (Show context around a message using a custom store)",
+    "tags": [
+      "common",
+      "wacli-messages-context",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-svgcleaner-0",
     "type": "command",
     "title": "svgcleaner - Optimize an SVG",
@@ -199202,10 +199847,10 @@
   {
     "id": "tldr-en-common-sfdk-config-5",
     "type": "command",
-    "title": "sfdk-config - Run subcommand in specified scope (`global`, `session`, or `command`)",
-    "content": "sfdk config --{{scope}} {{subcommand}}",
+    "title": "sfdk-config - Run subcommand in specified scope",
+    "content": "sfdk config --{{global|session|command}} {{subcommand}}",
     "group": "Common Tools",
-    "description": "sfdk-config: Configure sfdk. (Run subcommand in specified scope (`global`, `session`, or `command`))",
+    "description": "sfdk-config: Configure sfdk. (Run subcommand in specified scope)",
     "tags": [
       "common",
       "sfdk-config",
@@ -204099,6 +204744,36 @@
     "tags": [
       "common",
       "haxelib",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-check-0",
+    "type": "command",
+    "title": "flux-check - Check pre-requisites before installing Flux",
+    "content": "flux check --pre",
+    "group": "Common Tools",
+    "description": "flux-check: Check Flux prerequisites and cluster health. (Check pre-requisites before installing Flux)",
+    "tags": [
+      "common",
+      "flux-check",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-check-1",
+    "type": "command",
+    "title": "flux-check - Check the status and health of all Flux controllers",
+    "content": "flux check",
+    "group": "Common Tools",
+    "description": "flux-check: Check Flux prerequisites and cluster health. (Check the status and health of all Flux controllers)",
+    "tags": [
+      "common",
+      "flux-check",
       "tldr",
       "en"
     ],
@@ -211584,6 +212259,36 @@
     "tags": [
       "common",
       "ipptool",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-messages-show-0",
+    "type": "command",
+    "title": "wacli-messages-show - Show a specific message in JSON format",
+    "content": "wacli messages show {{message_id}} --json",
+    "group": "Common Tools",
+    "description": "wacli-messages-show: Display a specific WhatsApp message by its ID. (Show a specific message in JSON format)",
+    "tags": [
+      "common",
+      "wacli-messages-show",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-messages-show-1",
+    "type": "command",
+    "title": "wacli-messages-show - Show a specific message using a custom store",
+    "content": "wacli messages show {{message_id}} --json --store {{path/to/store}}",
+    "group": "Common Tools",
+    "description": "wacli-messages-show: Display a specific WhatsApp message by its ID. (Show a specific message using a custom store)",
+    "tags": [
+      "common",
+      "wacli-messages-show",
       "tldr",
       "en"
     ],
@@ -225084,6 +225789,66 @@
     "tags": [
       "common",
       "groff",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-terraform-untaint-0",
+    "type": "command",
+    "title": "terraform-untaint - Remove tainted status from a resource",
+    "content": "terraform untaint {{resource_type.resource_name[instance_index]}}",
+    "group": "Common Tools",
+    "description": "terraform-untaint: Remove the tainted status from a resource instance. (Remove tainted status from a resource)",
+    "tags": [
+      "common",
+      "terraform-untaint",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-terraform-untaint-1",
+    "type": "command",
+    "title": "terraform-untaint - Remove tainted status, even if the resource is missing",
+    "content": "terraform untaint -allow-missing {{resource_type.resource_name[instance_index]}}",
+    "group": "Common Tools",
+    "description": "terraform-untaint: Remove the tainted status from a resource instance. (Remove tainted status, even if the resource is missing)",
+    "tags": [
+      "common",
+      "terraform-untaint",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-terraform-untaint-2",
+    "type": "command",
+    "title": "terraform-untaint - Remove tainted status without acquiring a state lock",
+    "content": "terraform untaint -lock=false {{resource_type.resource_name[instance_index]}}",
+    "group": "Common Tools",
+    "description": "terraform-untaint: Remove the tainted status from a resource instance. (Remove tainted status without acquiring a state lock)",
+    "tags": [
+      "common",
+      "terraform-untaint",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-terraform-untaint-3",
+    "type": "command",
+    "title": "terraform-untaint - Remove tainted status with a custom lock timeout",
+    "content": "terraform untaint -lock-timeout={{duration}} {{resource_type.resource_name[instance_index]}}",
+    "group": "Common Tools",
+    "description": "terraform-untaint: Remove the tainted status from a resource instance. (Remove tainted status with a custom lock timeout)",
+    "tags": [
+      "common",
+      "terraform-untaint",
       "tldr",
       "en"
     ],
@@ -241112,10 +241877,10 @@
   {
     "id": "tldr-en-common-sfdk-undeploy-0",
     "type": "command",
-    "title": "sfdk-undeploy - Undeploy using a specified method (`pkcon`, `rpm`, `rsync`, `sdk`, or `zypper`)",
-    "content": "sfdk undeploy --{{method}}",
+    "title": "sfdk-undeploy - Undeploy using a specified method",
+    "content": "sfdk undeploy --{{pkcon|rpm|rsync|sdk|zypper}}",
     "group": "Common Tools",
-    "description": "sfdk-undeploy: Undeploy build results from a device. (Undeploy using a specified method (`pkcon`, `rpm`, `rsync`, `sdk`, or `zypper`))",
+    "description": "sfdk-undeploy: Undeploy build results from a device. (Undeploy using a specified method)",
     "tags": [
       "common",
       "sfdk-undeploy",
@@ -246075,6 +246840,66 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-terraform-taint-0",
+    "type": "command",
+    "title": "terraform-taint - Mark a resource as tainted",
+    "content": "terraform taint {{resource_type.resource_name[instance_index]}}",
+    "group": "Common Tools",
+    "description": "terraform-taint: Mark a resource instance as not fully functional to force replacement on next apply. Note: This command is deprecated. Use `terraform apply -replace` instead. (Mark a resource as tainted)",
+    "tags": [
+      "common",
+      "terraform-taint",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-terraform-taint-1",
+    "type": "command",
+    "title": "terraform-taint - Mark a resource as tainted, even if the resource is missing",
+    "content": "terraform taint -allow-missing {{resource_type.resource_name[instance_index]}}",
+    "group": "Common Tools",
+    "description": "terraform-taint: Mark a resource instance as not fully functional to force replacement on next apply. Note: This command is deprecated. Use `terraform apply -replace` instead. (Mark a resource as tainted, even if the resource is missing)",
+    "tags": [
+      "common",
+      "terraform-taint",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-terraform-taint-2",
+    "type": "command",
+    "title": "terraform-taint - Mark a resource as tainted without acquiring a state lock",
+    "content": "terraform taint -lock=false {{resource_type.resource_name[instance_index]}}",
+    "group": "Common Tools",
+    "description": "terraform-taint: Mark a resource instance as not fully functional to force replacement on next apply. Note: This command is deprecated. Use `terraform apply -replace` instead. (Mark a resource as tainted without acquiring a state lock)",
+    "tags": [
+      "common",
+      "terraform-taint",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-terraform-taint-3",
+    "type": "command",
+    "title": "terraform-taint - Mark a resource as tainted with a custom lock timeout",
+    "content": "terraform taint -lock-timeout={{duration}} {{resource_type.resource_name[instance_index]}}",
+    "group": "Common Tools",
+    "description": "terraform-taint: Mark a resource instance as not fully functional to force replacement on next apply. Note: This command is deprecated. Use `terraform apply -replace` instead. (Mark a resource as tainted with a custom lock timeout)",
+    "tags": [
+      "common",
+      "terraform-taint",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-pixi-config-0",
     "type": "command",
     "title": "pixi-config - Edit the configuration file",
@@ -246429,6 +247254,51 @@
     "tags": [
       "common",
       "cadaver",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-bootstrap-0",
+    "type": "command",
+    "title": "flux-bootstrap - Bootstrap using a GitHub repository",
+    "content": "flux bootstrap github --owner {{owner}} --repository {{repository}} --path {{path/to/cluster_directory}} --personal",
+    "group": "Common Tools",
+    "description": "flux-bootstrap: Bootstrap Flux on a Kubernetes cluster. (Bootstrap using a GitHub repository)",
+    "tags": [
+      "common",
+      "flux-bootstrap",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-bootstrap-1",
+    "type": "command",
+    "title": "flux-bootstrap - Bootstrap using a GitLab repository",
+    "content": "flux bootstrap gitlab --owner {{owner}} --repository {{repository}} --path {{path/to/cluster_directory}}",
+    "group": "Common Tools",
+    "description": "flux-bootstrap: Bootstrap Flux on a Kubernetes cluster. (Bootstrap using a GitLab repository)",
+    "tags": [
+      "common",
+      "flux-bootstrap",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-bootstrap-2",
+    "type": "command",
+    "title": "flux-bootstrap - Bootstrap from a generic Git repository via SSH",
+    "content": "flux bootstrap git --url {{ssh://git@example.com/repository.git}} --branch {{main}} --path {{path/to/cluster_directory}}",
+    "group": "Common Tools",
+    "description": "flux-bootstrap: Bootstrap Flux on a Kubernetes cluster. (Bootstrap from a generic Git repository via SSH)",
+    "tags": [
+      "common",
+      "flux-bootstrap",
       "tldr",
       "en"
     ],
@@ -251235,6 +252105,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-docker-stop-0",
+    "type": "command",
+    "title": "docker-stop - View documentation for the original command",
+    "content": "tldr docker container stop",
+    "group": "Common Tools",
+    "description": "docker-stop: This command is an alias of `docker container stop`. (View documentation for the original command)",
+    "tags": [
+      "common",
+      "docker-stop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-sublist3r-0",
     "type": "command",
     "title": "sublist3r - Find subdomains for a domain",
@@ -251634,6 +252519,51 @@
     "tags": [
       "common",
       "picocom",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-build-0",
+    "type": "command",
+    "title": "flux-build - Build a Kustomization",
+    "content": "flux build kustomization {{name}} --path {{path/to/kustomization}}",
+    "group": "Common Tools",
+    "description": "flux-build: Build Flux manifests. (Build a Kustomization)",
+    "tags": [
+      "common",
+      "flux-build",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-build-1",
+    "type": "command",
+    "title": "flux-build - Build a Kustomization and output the manifests to a file",
+    "content": "flux build kustomization {{name}} --path {{path/to/kustomization}} > {{path/to/manifests.yaml}}",
+    "group": "Common Tools",
+    "description": "flux-build: Build Flux manifests. (Build a Kustomization and output the manifests to a file)",
+    "tags": [
+      "common",
+      "flux-build",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-build-2",
+    "type": "command",
+    "title": "flux-build - Build a Kustomization and pipe it directly to `kubectl`",
+    "content": "flux build kustomization {{name}} --path {{path/to/kustomization}} | kubectl apply -f -",
+    "group": "Common Tools",
+    "description": "flux-build: Build Flux manifests. (Build a Kustomization and pipe it directly to `kubectl`)",
+    "tags": [
+      "common",
+      "flux-build",
       "tldr",
       "en"
     ],
@@ -268335,6 +269265,81 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-wacli-messages-list-0",
+    "type": "command",
+    "title": "wacli-messages-list - List messages from a specific chat in JSON format",
+    "content": "wacli messages list --chat {{phone_number}}@s.whatsapp.net --json",
+    "group": "Common Tools",
+    "description": "wacli-messages-list: List messages from a WhatsApp chat. (List messages from a specific chat in JSON format)",
+    "tags": [
+      "common",
+      "wacli-messages-list",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-messages-list-1",
+    "type": "command",
+    "title": "wacli-messages-list - List messages received after a specific date",
+    "content": "wacli messages list --chat {{phone_number}}@s.whatsapp.net --after {{2026-01-28}} --json",
+    "group": "Common Tools",
+    "description": "wacli-messages-list: List messages from a WhatsApp chat. (List messages received after a specific date)",
+    "tags": [
+      "common",
+      "wacli-messages-list",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-messages-list-2",
+    "type": "command",
+    "title": "wacli-messages-list - List messages received before a specific date",
+    "content": "wacli messages list --chat {{phone_number}}@s.whatsapp.net --before {{2026-01-28}} --json",
+    "group": "Common Tools",
+    "description": "wacli-messages-list: List messages from a WhatsApp chat. (List messages received before a specific date)",
+    "tags": [
+      "common",
+      "wacli-messages-list",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-messages-list-3",
+    "type": "command",
+    "title": "wacli-messages-list - List messages within a date range",
+    "content": "wacli messages list --chat {{phone_number}}@s.whatsapp.net --after {{2026-01-01}} --before {{2026-01-31}} --json",
+    "group": "Common Tools",
+    "description": "wacli-messages-list: List messages from a WhatsApp chat. (List messages within a date range)",
+    "tags": [
+      "common",
+      "wacli-messages-list",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-wacli-messages-list-4",
+    "type": "command",
+    "title": "wacli-messages-list - Limit the number of results",
+    "content": "wacli messages list --chat {{phone_number}}@s.whatsapp.net --limit {{10}} --json",
+    "group": "Common Tools",
+    "description": "wacli-messages-list: List messages from a WhatsApp chat. (Limit the number of results)",
+    "tags": [
+      "common",
+      "wacli-messages-list",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-rfetch-0",
     "type": "command",
     "title": "rfetch - Display system information",
@@ -273924,6 +274929,126 @@
     "tags": [
       "common",
       "netstat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-0",
+    "type": "command",
+    "title": "flux - Check if the Flux prerequisites are met on the cluster",
+    "content": "flux check --pre",
+    "group": "Common Tools",
+    "description": "flux: Continuous and progressive delivery solution for Kubernetes. (Check if the Flux prerequisites are met on the cluster)",
+    "tags": [
+      "common",
+      "flux",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-1",
+    "type": "command",
+    "title": "flux - Bootstrap Flux on a Kubernetes cluster",
+    "content": "flux bootstrap {{github|gitlab}} --owner {{owner}} --repository {{repository}} --path {{path/to/cluster_directory}}",
+    "group": "Common Tools",
+    "description": "flux: Continuous and progressive delivery solution for Kubernetes. (Bootstrap Flux on a Kubernetes cluster)",
+    "tags": [
+      "common",
+      "flux",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-2",
+    "type": "command",
+    "title": "flux - Create a new GitRepository source",
+    "content": "flux create source git {{source_name}} --url {{https://github.com/repository}} --branch {{branch_name}}",
+    "group": "Common Tools",
+    "description": "flux: Continuous and progressive delivery solution for Kubernetes. (Create a new GitRepository source)",
+    "tags": [
+      "common",
+      "flux",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-3",
+    "type": "command",
+    "title": "flux - List all Flux custom resources",
+    "content": "flux get all",
+    "group": "Common Tools",
+    "description": "flux: Continuous and progressive delivery solution for Kubernetes. (List all Flux custom resources)",
+    "tags": [
+      "common",
+      "flux",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-4",
+    "type": "command",
+    "title": "flux - Trigger a reconciliation for a specific Kustomization and apply changes from source",
+    "content": "flux reconcile kustomization {{name}} --with-source",
+    "group": "Common Tools",
+    "description": "flux: Continuous and progressive delivery solution for Kubernetes. (Trigger a reconciliation for a specific Kustomization and apply changes from source)",
+    "tags": [
+      "common",
+      "flux",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-5",
+    "type": "command",
+    "title": "flux - Suspend reconciliation for a Kustomization",
+    "content": "flux suspend kustomization {{name}}",
+    "group": "Common Tools",
+    "description": "flux: Continuous and progressive delivery solution for Kubernetes. (Suspend reconciliation for a Kustomization)",
+    "tags": [
+      "common",
+      "flux",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-6",
+    "type": "command",
+    "title": "flux - Resume reconciliation for a Kustomization",
+    "content": "flux resume kustomization {{name}}",
+    "group": "Common Tools",
+    "description": "flux: Continuous and progressive delivery solution for Kubernetes. (Resume reconciliation for a Kustomization)",
+    "tags": [
+      "common",
+      "flux",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-flux-7",
+    "type": "command",
+    "title": "flux - Display help for a specific subcommand",
+    "content": "flux {{subcommand}} --help",
+    "group": "Common Tools",
+    "description": "flux: Continuous and progressive delivery solution for Kubernetes. (Display help for a specific subcommand)",
+    "tags": [
+      "common",
+      "flux",
       "tldr",
       "en"
     ],
@@ -286569,6 +287694,126 @@
     "tags": [
       "common",
       "npm-uninstall",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-critique-0",
+    "type": "command",
+    "title": "critique - Review unstaged changes in the working tree",
+    "content": "critique",
+    "group": "Common Tools",
+    "description": "critique: Review Git changes with syntax highlighting and word-level diffs. (Review unstaged changes in the working tree)",
+    "tags": [
+      "common",
+      "critique",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-critique-1",
+    "type": "command",
+    "title": "critique - Review only staged changes",
+    "content": "critique --staged",
+    "group": "Common Tools",
+    "description": "critique: Review Git changes with syntax highlighting and word-level diffs. (Review only staged changes)",
+    "tags": [
+      "common",
+      "critique",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-critique-2",
+    "type": "command",
+    "title": "critique - Review the changes introduced by a specific commit",
+    "content": "critique {{commit}}",
+    "group": "Common Tools",
+    "description": "critique: Review Git changes with syntax highlighting and word-level diffs. (Review the changes introduced by a specific commit)",
+    "tags": [
+      "common",
+      "critique",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-critique-3",
+    "type": "command",
+    "title": "critique - Compare two branches",
+    "content": "critique {{branch_1}} {{branch_2}}",
+    "group": "Common Tools",
+    "description": "critique: Review Git changes with syntax highlighting and word-level diffs. (Compare two branches)",
+    "tags": [
+      "common",
+      "critique",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-critique-4",
+    "type": "command",
+    "title": "critique - Review the local `HEAD` against its remote-tracking branch",
+    "content": "critique origin/{{branch}} HEAD",
+    "group": "Common Tools",
+    "description": "critique: Review Git changes with syntax highlighting and word-level diffs. (Review the local `HEAD` against its remote-tracking branch)",
+    "tags": [
+      "common",
+      "critique",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-critique-5",
+    "type": "command",
+    "title": "critique - Review changes, automatically refreshing when files change",
+    "content": "critique --watch",
+    "group": "Common Tools",
+    "description": "critique: Review Git changes with syntax highlighting and word-level diffs. (Review changes, automatically refreshing when files change)",
+    "tags": [
+      "common",
+      "critique",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-critique-6",
+    "type": "command",
+    "title": "critique - Restrict the review to files matching a glob pattern",
+    "content": "critique --filter \"{{src/**/*.ts}}\"",
+    "group": "Common Tools",
+    "description": "critique: Review Git changes with syntax highlighting and word-level diffs. (Restrict the review to files matching a glob pattern)",
+    "tags": [
+      "common",
+      "critique",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-critique-7",
+    "type": "command",
+    "title": "critique - Generate an AI code review using a specific agent",
+    "content": "critique review --agent {{claude}}",
+    "group": "Common Tools",
+    "description": "critique: Review Git changes with syntax highlighting and word-level diffs. (Generate an AI code review using a specific agent)",
+    "tags": [
+      "common",
+      "critique",
       "tldr",
       "en"
     ],
@@ -304014,6 +305259,126 @@
     "tags": [
       "common",
       "git-clean",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-passage-0",
+    "type": "command",
+    "title": "passage - Insert a new password (press `<Ctrl d>` on a new line to complete)",
+    "content": "passage insert {{[-m|--multiline]}} {{path/to/data}}",
+    "group": "Common Tools",
+    "description": "passage: Store and read passwords or other sensitive data. Note: All data is age-encrypted (as opposed to GPG used by `pass`). (Insert a new password (press `<Ctrl d>` on a new line to complete))",
+    "tags": [
+      "common",
+      "passage",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-passage-1",
+    "type": "command",
+    "title": "passage - Insert a new password from `stdin`",
+    "content": "echo \"{{password}}\" | passage insert {{[-e|--echo]}} {{path/to/data}}",
+    "group": "Common Tools",
+    "description": "passage: Store and read passwords or other sensitive data. Note: All data is age-encrypted (as opposed to GPG used by `pass`). (Insert a new password from `stdin`)",
+    "tags": [
+      "common",
+      "passage",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-passage-2",
+    "type": "command",
+    "title": "passage - Show a password",
+    "content": "passage {{path/to/data}}",
+    "group": "Common Tools",
+    "description": "passage: Store and read passwords or other sensitive data. Note: All data is age-encrypted (as opposed to GPG used by `pass`). (Show a password)",
+    "tags": [
+      "common",
+      "passage",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-passage-3",
+    "type": "command",
+    "title": "passage - Copy a password to the clipboard",
+    "content": "passage {{[-c|--clip]}} {{path/to/data}}",
+    "group": "Common Tools",
+    "description": "passage: Store and read passwords or other sensitive data. Note: All data is age-encrypted (as opposed to GPG used by `pass`). (Copy a password to the clipboard)",
+    "tags": [
+      "common",
+      "passage",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-passage-4",
+    "type": "command",
+    "title": "passage - List the whole store tree",
+    "content": "passage ls",
+    "group": "Common Tools",
+    "description": "passage: Store and read passwords or other sensitive data. Note: All data is age-encrypted (as opposed to GPG used by `pass`). (List the whole store tree)",
+    "tags": [
+      "common",
+      "passage",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-passage-5",
+    "type": "command",
+    "title": "passage - Generate a new random password of a given length",
+    "content": "passage generate {{path/to/data}} {{length}}",
+    "group": "Common Tools",
+    "description": "passage: Store and read passwords or other sensitive data. Note: All data is age-encrypted (as opposed to GPG used by `pass`). (Generate a new random password of a given length)",
+    "tags": [
+      "common",
+      "passage",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-passage-6",
+    "type": "command",
+    "title": "passage - Edit an entry",
+    "content": "passage edit {{path/to/data}}",
+    "group": "Common Tools",
+    "description": "passage: Store and read passwords or other sensitive data. Note: All data is age-encrypted (as opposed to GPG used by `pass`). (Edit an entry)",
+    "tags": [
+      "common",
+      "passage",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-passage-7",
+    "type": "command",
+    "title": "passage - Remove an entry",
+    "content": "passage rm {{path/to/data}}",
+    "group": "Common Tools",
+    "description": "passage: Store and read passwords or other sensitive data. Note: All data is age-encrypted (as opposed to GPG used by `pass`). (Remove an entry)",
+    "tags": [
+      "common",
+      "passage",
       "tldr",
       "en"
     ],

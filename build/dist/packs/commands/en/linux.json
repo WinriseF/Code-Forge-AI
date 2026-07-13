@@ -3828,9 +3828,84 @@
     "id": "tldr-en-linux-sensors-1",
     "type": "command",
     "title": "sensors - Show temperatures in degrees Fahrenheit",
-    "content": "sensors --fahrenheit",
+    "content": "sensors {{[-f|--fahrenheit]}}",
     "group": "Linux Ops",
     "description": "sensors: Report sensors information. (Show temperatures in degrees Fahrenheit)",
+    "tags": [
+      "linux",
+      "sensors",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-sensors-2",
+    "type": "command",
+    "title": "sensors - Show the readings of a specific sensor chip (run `sensors` to find chip name, e.g. coretemp-isa-0000)",
+    "content": "sensors {{chip_name}}",
+    "group": "Linux Ops",
+    "description": "sensors: Report sensors information. (Show the readings of a specific sensor chip (run `sensors` to find chip name, e.g. coretemp-isa-0000))",
+    "tags": [
+      "linux",
+      "sensors",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-sensors-3",
+    "type": "command",
+    "title": "sensors - Output sensor data in JSON format",
+    "content": "sensors -j",
+    "group": "Linux Ops",
+    "description": "sensors: Report sensors information. (Output sensor data in JSON format)",
+    "tags": [
+      "linux",
+      "sensors",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-sensors-4",
+    "type": "command",
+    "title": "sensors - Show raw sensor output for scripting or debugging purposes",
+    "content": "sensors -u",
+    "group": "Linux Ops",
+    "description": "sensors: Report sensors information. (Show raw sensor output for scripting or debugging purposes)",
+    "tags": [
+      "linux",
+      "sensors",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-sensors-5",
+    "type": "command",
+    "title": "sensors - Show sensor readings using a specific configuration file",
+    "content": "sensors {{[-c|--config-file]}} {{path/to/sensors.conf}}",
+    "group": "Linux Ops",
+    "description": "sensors: Report sensors information. (Show sensor readings using a specific configuration file)",
+    "tags": [
+      "linux",
+      "sensors",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-sensors-6",
+    "type": "command",
+    "title": "sensors - List all detected hardware communication buses (like I2C or ISA)",
+    "content": "sensors --bus-list",
+    "group": "Linux Ops",
+    "description": "sensors: Report sensors information. (List all detected hardware communication buses (like I2C or ISA))",
     "tags": [
       "linux",
       "sensors",
@@ -12780,6 +12855,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-pct-rollback-0",
+    "type": "command",
+    "title": "pct-rollback - Restore a snapshot",
+    "content": "pct {{[ro|rollback]}} {{100}} {{snapshot_name}}",
+    "group": "Linux Ops",
+    "description": "pct-rollback: Restore a specific snapshot. (Restore a snapshot)",
+    "tags": [
+      "linux",
+      "pct-rollback",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-pct-rollback-1",
+    "type": "command",
+    "title": "pct-rollback - Start the container as soon as the snapshot is restored",
+    "content": "pct {{[ro|rollback]}} {{100}} {{snapshot_name}} --start",
+    "group": "Linux Ops",
+    "description": "pct-rollback: Restore a specific snapshot. (Start the container as soon as the snapshot is restored)",
+    "tags": [
+      "linux",
+      "pct-rollback",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-gnuecho-0",
     "type": "command",
     "title": "gnuecho - View documentation for the original command",
@@ -13848,7 +13953,7 @@
     "id": "tldr-en-linux-dnf-install-4",
     "type": "command",
     "title": "dnf-install - Add the Extra Packages for Enterprise Linux (EPEL) repositories",
-    "content": "sudo dnf {{[in|install]}} https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{10}}.noarch.rpm",
+    "content": "sudo dnf {{[in|install]}} epel-release",
     "group": "Linux Ops",
     "description": "dnf-install: Install packages on Red Hat-based distributions. (Add the Extra Packages for Enterprise Linux (EPEL) repositories)",
     "tags": [
@@ -25314,6 +25419,81 @@
     "tags": [
       "linux",
       "talk",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-qtgrace-0",
+    "type": "command",
+    "title": "qtgrace - Plot one or more data files, plotting only the first two columns in each file as X Y",
+    "content": "qtgrace {{path/to/file1.dat path/to/file2.dat ...}}",
+    "group": "Linux Ops",
+    "description": "qtgrace: Display, plot, analyze 2D data. A Qt reimplementation of Grace (), sharing its command-line interface. (Plot one or more data files, plotting only the first two columns in each file as X Y)",
+    "tags": [
+      "linux",
+      "qtgrace",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-qtgrace-1",
+    "type": "command",
+    "title": "qtgrace - Plot one or more data files, plotting all columns in each file as X Y1 Y2",
+    "content": "qtgrace {{-nxy path/to/file1.dat -nxy path/to/file2.dat ...}}",
+    "group": "Linux Ops",
+    "description": "qtgrace: Display, plot, analyze 2D data. A Qt reimplementation of Grace (), sharing its command-line interface. (Plot one or more data files, plotting all columns in each file as X Y1 Y2)",
+    "tags": [
+      "linux",
+      "qtgrace",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-qtgrace-2",
+    "type": "command",
+    "title": "qtgrace - Plot one or more data files with a logarithmically scaled x-axis",
+    "content": "qtgrace -log x {{path/to/file1.dat path/to/file2.dat ...}}",
+    "group": "Linux Ops",
+    "description": "qtgrace: Display, plot, analyze 2D data. A Qt reimplementation of Grace (), sharing its command-line interface. (Plot one or more data files with a logarithmically scaled x-axis)",
+    "tags": [
+      "linux",
+      "qtgrace",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-qtgrace-3",
+    "type": "command",
+    "title": "qtgrace - Plot a data file with a logarithmic scale on both axes, with data formatted as X Y DY",
+    "content": "qtgrace -log xy -settype xydy {{path/to/file.dat}}",
+    "group": "Linux Ops",
+    "description": "qtgrace: Display, plot, analyze 2D data. A Qt reimplementation of Grace (), sharing its command-line interface. (Plot a data file with a logarithmic scale on both axes, with data formatted as X Y DY)",
+    "tags": [
+      "linux",
+      "qtgrace",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-qtgrace-4",
+    "type": "command",
+    "title": "qtgrace - Display help",
+    "content": "qtgrace -help",
+    "group": "Linux Ops",
+    "description": "qtgrace: Display, plot, analyze 2D data. A Qt reimplementation of Grace (), sharing its command-line interface. (Display help)",
+    "tags": [
+      "linux",
+      "qtgrace",
       "tldr",
       "en"
     ],
@@ -42990,6 +43170,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-gamemoderun-0",
+    "type": "command",
+    "title": "gamemoderun - Run a program with optimizations",
+    "content": "gamemoderun {{path/to/program}}",
+    "group": "Linux Ops",
+    "description": "gamemoderun: Invoke a set of optimizations to improve game performance. (Run a program with optimizations)",
+    "tags": [
+      "linux",
+      "gamemoderun",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-gamemoderun-1",
+    "type": "command",
+    "title": "gamemoderun - Within Steam's launch options for a specific game, run a game with optimizations",
+    "content": "gamemoderun %command%",
+    "group": "Linux Ops",
+    "description": "gamemoderun: Invoke a set of optimizations to improve game performance. (Within Steam's launch options for a specific game, run a game with optimizations)",
+    "tags": [
+      "linux",
+      "gamemoderun",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-uvcdynctrl-0",
     "type": "command",
     "title": "uvcdynctrl - List all available cameras",
@@ -48435,6 +48645,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-pct-enter-0",
+    "type": "command",
+    "title": "pct-enter - Launch a shell",
+    "content": "pct {{[en|enter]}} {{100}}",
+    "group": "Linux Ops",
+    "description": "pct-enter: Launch a shell for a container. (Launch a shell)",
+    "tags": [
+      "linux",
+      "pct-enter",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-xterm-0",
     "type": "command",
     "title": "xterm - Open the terminal with a title of `Example`",
@@ -49172,8 +49397,23 @@
   {
     "id": "tldr-en-linux-ddrescue-0",
     "type": "command",
+    "title": "ddrescue - Take an image of a device",
+    "content": "sudo ddrescue {{/dev/sdX}} {{path/to/image.img}}",
+    "group": "Linux Ops",
+    "description": "ddrescue: Data recovery tool that reads data from damaged block devices. (Take an image of a device)",
+    "tags": [
+      "linux",
+      "ddrescue",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ddrescue-1",
+    "type": "command",
     "title": "ddrescue - Take an image of a device, creating a log file",
-    "content": "sudo ddrescue {{/dev/sdb}} {{path/to/image.dd}} {{path/to/log.txt}}",
+    "content": "sudo ddrescue {{/dev/sdX}} {{path/to/image.img}} {{path/to/log.txt}}",
     "group": "Linux Ops",
     "description": "ddrescue: Data recovery tool that reads data from damaged block devices. (Take an image of a device, creating a log file)",
     "tags": [
@@ -49185,7 +49425,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-linux-ddrescue-1",
+    "id": "tldr-en-linux-ddrescue-2",
     "type": "command",
     "title": "ddrescue - Clone Disk A to Disk B, creating a log file",
     "content": "sudo ddrescue {{[-f|--force]}} {{[-n|--no-scrape]}} {{/dev/sdX}} {{/dev/sdY}} {{path/to/log.txt}}",
@@ -58335,6 +58575,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-storagectl-0",
+    "type": "command",
+    "title": "storagectl - List available storage volumes",
+    "content": "storagectl",
+    "group": "Linux Ops",
+    "description": "storagectl: Enumerate and mount storage volumes. (List available storage volumes)",
+    "tags": [
+      "linux",
+      "storagectl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-pw-config-0",
     "type": "command",
     "title": "pw-config - List all configuration files that will be used",
@@ -58539,6 +58794,21 @@
     "tags": [
       "linux",
       "cat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-pct-listsnapshot-0",
+    "type": "command",
+    "title": "pct-listsnapshot - List snapshots",
+    "content": "pct {{[lists|listsnapshot]}} {{100}}",
+    "group": "Linux Ops",
+    "description": "pct-listsnapshot: List snapshots of a container. (List snapshots)",
+    "tags": [
+      "linux",
+      "pct-listsnapshot",
       "tldr",
       "en"
     ],
@@ -71597,10 +71867,10 @@
   {
     "id": "tldr-en-linux-imhex-4",
     "type": "command",
-    "title": "imhex - Calculate the hash of a file using a specific algorithm (`md5`, `sha1`, `sha224`, `sha256`, `sha384`, `sha512`)",
-    "content": "imhex --hash {{algorithm}} {{path/to/file}}",
+    "title": "imhex - Calculate the hash of a file using a specific algorithm",
+    "content": "imhex --hash {{md5|sha1|sha224|sha256|sha384|sha512}} {{path/to/file}}",
     "group": "Linux Ops",
-    "description": "imhex: Hex editor for reverse engineers and programmers. (Calculate the hash of a file using a specific algorithm (`md5`, `sha1`, `sha224`, `sha256`, `sha384`, `sha512`))",
+    "description": "imhex: Hex editor for reverse engineers and programmers. (Calculate the hash of a file using a specific algorithm)",
     "tags": [
       "linux",
       "imhex",
@@ -82218,7 +82488,7 @@
     "id": "tldr-en-linux-pct-console-0",
     "type": "command",
     "title": "pct-console - Attach to a terminal",
-    "content": "pct console {{100}}",
+    "content": "pct {{[cons|console]}} {{100}}",
     "group": "Linux Ops",
     "description": "pct-console: Attach to a container TTY. (Attach to a terminal)",
     "tags": [
@@ -91457,10 +91727,10 @@
   {
     "id": "tldr-en-linux-ufw-0",
     "type": "command",
-    "title": "ufw - Enable `ufw`",
-    "content": "sudo ufw enable",
+    "title": "ufw - Enable/Disable `ufw`",
+    "content": "sudo ufw {{enable|disable}}",
     "group": "Linux Ops",
-    "description": "ufw: Uncomplicated Firewall. Frontend for `iptables` aiming to make configuration of a firewall easier. (Enable `ufw`)",
+    "description": "ufw: Uncomplicated Firewall. Frontend for `iptables` aiming to make configuration of a firewall easier. (Enable/Disable `ufw`)",
     "tags": [
       "linux",
       "ufw",
@@ -91471,21 +91741,6 @@
   },
   {
     "id": "tldr-en-linux-ufw-1",
-    "type": "command",
-    "title": "ufw - Disable `ufw`",
-    "content": "sudo ufw disable",
-    "group": "Linux Ops",
-    "description": "ufw: Uncomplicated Firewall. Frontend for `iptables` aiming to make configuration of a firewall easier. (Disable `ufw`)",
-    "tags": [
-      "linux",
-      "ufw",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-ufw-2",
     "type": "command",
     "title": "ufw - Show `ufw` rules, along with their numbers",
     "content": "sudo ufw status numbered",
@@ -91500,7 +91755,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-linux-ufw-3",
+    "id": "tldr-en-linux-ufw-2",
     "type": "command",
     "title": "ufw - Allow incoming traffic on port 5432 on this host with a comment identifying the service",
     "content": "sudo ufw allow 5432 comment \"{{Service}}\"",
@@ -91515,12 +91770,27 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-linux-ufw-4",
+    "id": "tldr-en-linux-ufw-3",
     "type": "command",
     "title": "ufw - Allow only TCP traffic from 192.168.0.4 to any address on this host, on port 22",
     "content": "sudo ufw allow proto tcp from 192.168.0.4 to any port 22",
     "group": "Linux Ops",
     "description": "ufw: Uncomplicated Firewall. Frontend for `iptables` aiming to make configuration of a firewall easier. (Allow only TCP traffic from 192.168.0.4 to any address on this host, on port 22)",
+    "tags": [
+      "linux",
+      "ufw",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ufw-4",
+    "type": "command",
+    "title": "ufw - Allow traffic from any IP on the 192.168.0/24 subnet on this host, through port 53, only on the eth0 interface",
+    "content": "sudo ufw allow in on eth0 from 192.168.0.0/24 to any port 53",
+    "group": "Linux Ops",
+    "description": "ufw: Uncomplicated Firewall. Frontend for `iptables` aiming to make configuration of a firewall easier. (Allow traffic from any IP on the 192.168.0/24 subnet on this host, through port 53, only on the eth0 interface)",
     "tags": [
       "linux",
       "ufw",
@@ -119529,6 +119799,21 @@
     "tags": [
       "linux",
       "agetty",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-pct-delsnapshot-0",
+    "type": "command",
+    "title": "pct-delsnapshot - Delete a snapshot with a specific name",
+    "content": "pct {{[del|delsnapshot]}} {{100}} {{snapshot_name}}",
+    "group": "Linux Ops",
+    "description": "pct-delsnapshot: Delete a container snapshot. (Delete a snapshot with a specific name)",
+    "tags": [
+      "linux",
+      "pct-delsnapshot",
       "tldr",
       "en"
     ],
