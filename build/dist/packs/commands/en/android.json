@@ -1,5 +1,665 @@
 [
   {
+    "id": "tldr-en-android-pm-install-create-0",
+    "type": "command",
+    "title": "pm-install-create - Create a session and a session ID",
+    "content": "pm install-create",
+    "group": "Android Dev",
+    "description": "pm-install-create: Create an install session. (Create a session and a session ID)",
+    "tags": [
+      "android",
+      "pm-install-create",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-bugreportz-0",
+    "type": "command",
+    "title": "bugreportz - Generate a complete zipped bug report of an Android device",
+    "content": "bugreportz",
+    "group": "Android Dev",
+    "description": "bugreportz: Generate a zipped Android bug report. This command can only be used through `adb shell`. (Generate a complete zipped bug report of an Android device)",
+    "tags": [
+      "android",
+      "bugreportz",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-bugreportz-1",
+    "type": "command",
+    "title": "bugreportz - Show the progress of a running `bugreportz` operation",
+    "content": "bugreportz -p",
+    "group": "Android Dev",
+    "description": "bugreportz: Generate a zipped Android bug report. This command can only be used through `adb shell`. (Show the progress of a running `bugreportz` operation)",
+    "tags": [
+      "android",
+      "bugreportz",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-bugreportz-2",
+    "type": "command",
+    "title": "bugreportz - Write the content of an Android bug report to `stdout`",
+    "content": "bugreportz -s",
+    "group": "Android Dev",
+    "description": "bugreportz: Generate a zipped Android bug report. This command can only be used through `adb shell`. (Write the content of an Android bug report to `stdout`)",
+    "tags": [
+      "android",
+      "bugreportz",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-bugreportz-3",
+    "type": "command",
+    "title": "bugreportz - Display help",
+    "content": "bugreportz -h",
+    "group": "Android Dev",
+    "description": "bugreportz: Generate a zipped Android bug report. This command can only be used through `adb shell`. (Display help)",
+    "tags": [
+      "android",
+      "bugreportz",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-bugreportz-4",
+    "type": "command",
+    "title": "bugreportz - Display version",
+    "content": "bugreportz -v",
+    "group": "Android Dev",
+    "description": "bugreportz: Generate a zipped Android bug report. This command can only be used through `adb shell`. (Display version)",
+    "tags": [
+      "android",
+      "bugreportz",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-screencap-0",
+    "type": "command",
+    "title": "screencap - Take a screenshot",
+    "content": "screencap {{path/to/image.png}}",
+    "group": "Android Dev",
+    "description": "screencap: Take a screenshot of a mobile display. Note: This command can only be used through `adb shell`. (Take a screenshot)",
+    "tags": [
+      "android",
+      "screencap",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-screencap-1",
+    "type": "command",
+    "title": "screencap - Print file contents to `stdout` as PNG",
+    "content": "screencap -p",
+    "group": "Android Dev",
+    "description": "screencap: Take a screenshot of a mobile display. Note: This command can only be used through `adb shell`. (Print file contents to `stdout` as PNG)",
+    "tags": [
+      "android",
+      "screencap",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-screencap-2",
+    "type": "command",
+    "title": "screencap - Take a screenshot and save it over an `adb` connection",
+    "content": "adb shell screencap -p > {{path/to/image.png}}",
+    "group": "Android Dev",
+    "description": "screencap: Take a screenshot of a mobile display. Note: This command can only be used through `adb shell`. (Take a screenshot and save it over an `adb` connection)",
+    "tags": [
+      "android",
+      "screencap",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-screencap-3",
+    "type": "command",
+    "title": "screencap - Display help",
+    "content": "screencap -h",
+    "group": "Android Dev",
+    "description": "screencap: Take a screenshot of a mobile display. Note: This command can only be used through `adb shell`. (Display help)",
+    "tags": [
+      "android",
+      "screencap",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-list-packages-0",
+    "type": "command",
+    "title": "pm-list-packages - List all installed packages",
+    "content": "pm list packages",
+    "group": "Android Dev",
+    "description": "pm-list-packages: List installed, known, or filtered packages on an Android device. (List all installed packages)",
+    "tags": [
+      "android",
+      "pm-list-packages",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-list-packages-1",
+    "type": "command",
+    "title": "pm-list-packages - List all packages and their associated APK [f]ile paths",
+    "content": "pm list packages -f",
+    "group": "Android Dev",
+    "description": "pm-list-packages: List installed, known, or filtered packages on an Android device. (List all packages and their associated APK [f]ile paths)",
+    "tags": [
+      "android",
+      "pm-list-packages",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-list-packages-2",
+    "type": "command",
+    "title": "pm-list-packages - Only list [d]isabled packages",
+    "content": "pm list packages -d",
+    "group": "Android Dev",
+    "description": "pm-list-packages: List installed, known, or filtered packages on an Android device. (Only list [d]isabled packages)",
+    "tags": [
+      "android",
+      "pm-list-packages",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-list-packages-3",
+    "type": "command",
+    "title": "pm-list-packages - Only list [e]nabled packages",
+    "content": "pm list packages -e",
+    "group": "Android Dev",
+    "description": "pm-list-packages: List installed, known, or filtered packages on an Android device. (Only list [e]nabled packages)",
+    "tags": [
+      "android",
+      "pm-list-packages",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-list-packages-4",
+    "type": "command",
+    "title": "pm-list-packages - Only list [s]ystem packages",
+    "content": "pm list packages -s",
+    "group": "Android Dev",
+    "description": "pm-list-packages: List installed, known, or filtered packages on an Android device. (Only list [s]ystem packages)",
+    "tags": [
+      "android",
+      "pm-list-packages",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-list-packages-5",
+    "type": "command",
+    "title": "pm-list-packages - Only list [3]rd-party (non-system) packages",
+    "content": "pm list packages -3",
+    "group": "Android Dev",
+    "description": "pm-list-packages: List installed, known, or filtered packages on an Android device. (Only list [3]rd-party (non-system) packages)",
+    "tags": [
+      "android",
+      "pm-list-packages",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-list-packages-6",
+    "type": "command",
+    "title": "pm-list-packages - Show the [i]nstaller for each package",
+    "content": "pm list packages -i",
+    "group": "Android Dev",
+    "description": "pm-list-packages: List installed, known, or filtered packages on an Android device. (Show the [i]nstaller for each package)",
+    "tags": [
+      "android",
+      "pm-list-packages",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-install-write-0",
+    "type": "command",
+    "title": "pm-install-write - Add a package to the install batch",
+    "content": "pm install-write {{session_id}} {{label}} {{path/to/package.apk}}",
+    "group": "Android Dev",
+    "description": "pm-install-write: Add packages to the install session. (Add a package to the install batch)",
+    "tags": [
+      "android",
+      "pm-install-write",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-getprop-0",
+    "type": "command",
+    "title": "getprop - Display information about Android system properties",
+    "content": "getprop",
+    "group": "Android Dev",
+    "description": "getprop: Show information about Android system properties. (Display information about Android system properties)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-getprop-1",
+    "type": "command",
+    "title": "getprop - Display information about a specific property",
+    "content": "getprop {{property}}",
+    "group": "Android Dev",
+    "description": "getprop: Show information about Android system properties. (Display information about a specific property)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-getprop-2",
+    "type": "command",
+    "title": "getprop - Display the SDK API level",
+    "content": "getprop {{ro.build.version.sdk}}",
+    "group": "Android Dev",
+    "description": "getprop: Show information about Android system properties. (Display the SDK API level)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-getprop-3",
+    "type": "command",
+    "title": "getprop - Display the Android version",
+    "content": "getprop {{ro.build.version.release}}",
+    "group": "Android Dev",
+    "description": "getprop: Show information about Android system properties. (Display the Android version)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-getprop-4",
+    "type": "command",
+    "title": "getprop - Display the Android device model",
+    "content": "getprop {{ro.vendor.product.model}}",
+    "group": "Android Dev",
+    "description": "getprop: Show information about Android system properties. (Display the Android device model)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-getprop-5",
+    "type": "command",
+    "title": "getprop - Display the OEM unlock status",
+    "content": "getprop {{ro.oem_unlock_supported}}",
+    "group": "Android Dev",
+    "description": "getprop: Show information about Android system properties. (Display the OEM unlock status)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-getprop-6",
+    "type": "command",
+    "title": "getprop - Display the MAC address of the Android's Wi-Fi card",
+    "content": "getprop {{ro.boot.wifimacaddr}}",
+    "group": "Android Dev",
+    "description": "getprop: Show information about Android system properties. (Display the MAC address of the Android's Wi-Fi card)",
+    "tags": [
+      "android",
+      "getprop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-logcat-0",
+    "type": "command",
+    "title": "logcat - Display system logs",
+    "content": "logcat",
+    "group": "Android Dev",
+    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Display system logs)",
+    "tags": [
+      "android",
+      "logcat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-logcat-1",
+    "type": "command",
+    "title": "logcat - Write system logs to a [f]ile",
+    "content": "logcat -f {{path/to/file}}",
+    "group": "Android Dev",
+    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Write system logs to a [f]ile)",
+    "tags": [
+      "android",
+      "logcat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-logcat-2",
+    "type": "command",
+    "title": "logcat - Display lines that match a `regex`",
+    "content": "logcat --regex {{regex}}",
+    "group": "Android Dev",
+    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Display lines that match a `regex`)",
+    "tags": [
+      "android",
+      "logcat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-logcat-3",
+    "type": "command",
+    "title": "logcat - Display logs for a specific PID",
+    "content": "logcat --pid {{pid}}",
+    "group": "Android Dev",
+    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Display logs for a specific PID)",
+    "tags": [
+      "android",
+      "logcat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-logcat-4",
+    "type": "command",
+    "title": "logcat - Display logs for the process of a specific package",
+    "content": "logcat --pid $(pidof -s {{package}})",
+    "group": "Android Dev",
+    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Display logs for the process of a specific package)",
+    "tags": [
+      "android",
+      "logcat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-bugreport-0",
+    "type": "command",
+    "title": "bugreport - Display a complete bug report of an Android device",
+    "content": "bugreport",
+    "group": "Android Dev",
+    "description": "bugreport: Show an Android bug report. Note: Can only be used through `adb shell`. (Display a complete bug report of an Android device)",
+    "tags": [
+      "android",
+      "bugreport",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-cmd-0",
+    "type": "command",
+    "title": "cmd - [l]ist all running services",
+    "content": "cmd -l",
+    "group": "Android Dev",
+    "description": "cmd: Android service manager. ([l]ist all running services)",
+    "tags": [
+      "android",
+      "cmd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-cmd-1",
+    "type": "command",
+    "title": "cmd - Call a specific service",
+    "content": "cmd {{service}}",
+    "group": "Android Dev",
+    "description": "cmd: Android service manager. (Call a specific service)",
+    "tags": [
+      "android",
+      "cmd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-cmd-2",
+    "type": "command",
+    "title": "cmd - Call a service with specific arguments",
+    "content": "cmd {{service}} {{argument1 argument2 ...}}",
+    "group": "Android Dev",
+    "description": "cmd: Android service manager. (Call a service with specific arguments)",
+    "tags": [
+      "android",
+      "cmd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-install-existing-0",
+    "type": "command",
+    "title": "pm-install-existing - Re-add an app",
+    "content": "pm install-existing {{app_name}}",
+    "group": "Android Dev",
+    "description": "pm-install-existing: Re-add a pre-existing app to a given user. (Re-add an app)",
+    "tags": [
+      "android",
+      "pm-install-existing",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-screenrecord-0",
+    "type": "command",
+    "title": "screenrecord - Record the screen",
+    "content": "screenrecord {{path/to/file}}.mp4",
+    "group": "Android Dev",
+    "description": "screenrecord: Record a video of a mobile display. Note: This command can only be used through `adb shell`. (Record the screen)",
+    "tags": [
+      "android",
+      "screenrecord",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-screenrecord-1",
+    "type": "command",
+    "title": "screenrecord - Record the screen at a specific resolution",
+    "content": "screenrecord --size {{1280x720}} {{path/to/file}}.mp4",
+    "group": "Android Dev",
+    "description": "screenrecord: Record a video of a mobile display. Note: This command can only be used through `adb shell`. (Record the screen at a specific resolution)",
+    "tags": [
+      "android",
+      "screenrecord",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-screenrecord-2",
+    "type": "command",
+    "title": "screenrecord - Record the screen with a specific bitrate",
+    "content": "screenrecord --bit-rate {{6000000}} {{path/to/file}}.mp4",
+    "group": "Android Dev",
+    "description": "screenrecord: Record a video of a mobile display. Note: This command can only be used through `adb shell`. (Record the screen with a specific bitrate)",
+    "tags": [
+      "android",
+      "screenrecord",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-screenrecord-3",
+    "type": "command",
+    "title": "screenrecord - Record the screen with a maximum duration (in seconds, 180 seconds is the maximum)",
+    "content": "screenrecord --time-limit {{180}} {{path/to/file}}.mp4",
+    "group": "Android Dev",
+    "description": "screenrecord: Record a video of a mobile display. Note: This command can only be used through `adb shell`. (Record the screen with a maximum duration (in seconds, 180 seconds is the maximum))",
+    "tags": [
+      "android",
+      "screenrecord",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-screenrecord-4",
+    "type": "command",
+    "title": "screenrecord - Display help",
+    "content": "screenrecord --help",
+    "group": "Android Dev",
+    "description": "screenrecord: Record a video of a mobile display. Note: This command can only be used through `adb shell`. (Display help)",
+    "tags": [
+      "android",
+      "screenrecord",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-settings-0",
+    "type": "command",
+    "title": "settings - List the settings in the `global` namespace",
+    "content": "settings list global",
+    "group": "Android Dev",
+    "description": "settings: Get information about the Android OS. (List the settings in the `global` namespace)",
+    "tags": [
+      "android",
+      "settings",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-settings-1",
+    "type": "command",
+    "title": "settings - Get a value of a specific setting",
+    "content": "settings get {{global}} {{airplane_mode_on}}",
+    "group": "Android Dev",
+    "description": "settings: Get information about the Android OS. (Get a value of a specific setting)",
+    "tags": [
+      "android",
+      "settings",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-settings-2",
+    "type": "command",
+    "title": "settings - Set a specific value of a setting",
+    "content": "settings put {{system}} {{screen_brightness}} {{42}}",
+    "group": "Android Dev",
+    "description": "settings: Get information about the Android OS. (Set a specific value of a setting)",
+    "tags": [
+      "android",
+      "settings",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-settings-3",
+    "type": "command",
+    "title": "settings - Delete a specific setting",
+    "content": "settings delete {{secure}} {{screensaver_enabled}}",
+    "group": "Android Dev",
+    "description": "settings: Get information about the Android OS. (Delete a specific setting)",
+    "tags": [
+      "android",
+      "settings",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-android-pm-0",
     "type": "command",
     "title": "pm - List installed packages",
@@ -120,6 +780,141 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-android-pm-install-commit-0",
+    "type": "command",
+    "title": "pm-install-commit - Install queued packages",
+    "content": "pm install-commit {{session_id}}",
+    "group": "Android Dev",
+    "description": "pm-install-commit: Install queued packages. (Install queued packages)",
+    "tags": [
+      "android",
+      "pm-install-commit",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-list-0",
+    "type": "command",
+    "title": "pm-list - List all installed packages",
+    "content": "pm list packages",
+    "group": "Android Dev",
+    "description": "pm-list: List users, packages, permissions, instrumentation, permission groups, features, and libraries managed by the package manager. (List all installed packages)",
+    "tags": [
+      "android",
+      "pm-list",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-list-1",
+    "type": "command",
+    "title": "pm-list - List either [s]ystem or [3]rd-party packages",
+    "content": "pm list packages {{-s|-3}}",
+    "group": "Android Dev",
+    "description": "pm-list: List users, packages, permissions, instrumentation, permission groups, features, and libraries managed by the package manager. (List either [s]ystem or [3]rd-party packages)",
+    "tags": [
+      "android",
+      "pm-list",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-list-2",
+    "type": "command",
+    "title": "pm-list - Print all users on the system",
+    "content": "pm list users",
+    "group": "Android Dev",
+    "description": "pm-list: List users, packages, permissions, instrumentation, permission groups, features, and libraries managed by the package manager. (Print all users on the system)",
+    "tags": [
+      "android",
+      "pm-list",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-list-3",
+    "type": "command",
+    "title": "pm-list - Print all known permission groups",
+    "content": "pm list permission-groups",
+    "group": "Android Dev",
+    "description": "pm-list: List users, packages, permissions, instrumentation, permission groups, features, and libraries managed by the package manager. (Print all known permission groups)",
+    "tags": [
+      "android",
+      "pm-list",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-list-4",
+    "type": "command",
+    "title": "pm-list - Print all known permissions",
+    "content": "pm list permissions",
+    "group": "Android Dev",
+    "description": "pm-list: List users, packages, permissions, instrumentation, permission groups, features, and libraries managed by the package manager. (Print all known permissions)",
+    "tags": [
+      "android",
+      "pm-list",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-list-5",
+    "type": "command",
+    "title": "pm-list - List all test packages",
+    "content": "pm list instrumentation",
+    "group": "Android Dev",
+    "description": "pm-list: List users, packages, permissions, instrumentation, permission groups, features, and libraries managed by the package manager. (List all test packages)",
+    "tags": [
+      "android",
+      "pm-list",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-list-6",
+    "type": "command",
+    "title": "pm-list - Print all features of the system",
+    "content": "pm list features",
+    "group": "Android Dev",
+    "description": "pm-list: List users, packages, permissions, instrumentation, permission groups, features, and libraries managed by the package manager. (Print all features of the system)",
+    "tags": [
+      "android",
+      "pm-list",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-android-pm-list-7",
+    "type": "command",
+    "title": "pm-list - Print all the libraries supported by the current device",
+    "content": "pm list libraries",
+    "group": "Android Dev",
+    "description": "pm-list: List users, packages, permissions, instrumentation, permission groups, features, and libraries managed by the package manager. (Print all the libraries supported by the current device)",
+    "tags": [
+      "android",
+      "pm-list",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-android-dalvikvm-0",
     "type": "command",
     "title": "dalvikvm - Start a specific Java program",
@@ -135,255 +930,90 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-android-pm-uninstall-0",
+    "id": "tldr-en-android-dumpsys-0",
     "type": "command",
-    "title": "pm-uninstall - Uninstall a package from the device",
-    "content": "pm uninstall {{package}}",
+    "title": "dumpsys - Get diagnostic output for all system services",
+    "content": "dumpsys",
     "group": "Android Dev",
-    "description": "pm-uninstall: Uninstall a package. (Uninstall a package from the device)",
+    "description": "dumpsys: Get information about Android system services. This command can only be used through `adb shell`. (Get diagnostic output for all system services)",
     "tags": [
       "android",
-      "pm-uninstall",
+      "dumpsys",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-android-pm-uninstall-1",
+    "id": "tldr-en-android-dumpsys-1",
     "type": "command",
-    "title": "pm-uninstall - Remove an app from a specific user",
-    "content": "pm uninstall --user {{user_id}} {{package}}",
+    "title": "dumpsys - Get diagnostic output for a specific system service",
+    "content": "dumpsys {{service}}",
     "group": "Android Dev",
-    "description": "pm-uninstall: Uninstall a package. (Remove an app from a specific user)",
+    "description": "dumpsys: Get information about Android system services. This command can only be used through `adb shell`. (Get diagnostic output for a specific system service)",
     "tags": [
       "android",
-      "pm-uninstall",
+      "dumpsys",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-android-pm-list-packages-0",
+    "id": "tldr-en-android-dumpsys-2",
     "type": "command",
-    "title": "pm-list-packages - List all installed packages",
-    "content": "pm list packages",
+    "title": "dumpsys - List all services `dumpsys` can give information about",
+    "content": "dumpsys -l",
     "group": "Android Dev",
-    "description": "pm-list-packages: List installed, known, or filtered packages on an Android device. (List all installed packages)",
+    "description": "dumpsys: Get information about Android system services. This command can only be used through `adb shell`. (List all services `dumpsys` can give information about)",
     "tags": [
       "android",
-      "pm-list-packages",
+      "dumpsys",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-android-pm-list-packages-1",
+    "id": "tldr-en-android-dumpsys-3",
     "type": "command",
-    "title": "pm-list-packages - List all packages and their associated APK [f]ile paths",
-    "content": "pm list packages -f",
+    "title": "dumpsys - List service-specific arguments for a service",
+    "content": "dumpsys {{service}} -h",
     "group": "Android Dev",
-    "description": "pm-list-packages: List installed, known, or filtered packages on an Android device. (List all packages and their associated APK [f]ile paths)",
+    "description": "dumpsys: Get information about Android system services. This command can only be used through `adb shell`. (List service-specific arguments for a service)",
     "tags": [
       "android",
-      "pm-list-packages",
+      "dumpsys",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-android-pm-list-packages-2",
+    "id": "tldr-en-android-dumpsys-4",
     "type": "command",
-    "title": "pm-list-packages - Only list [d]isabled packages",
-    "content": "pm list packages -d",
+    "title": "dumpsys - Exclude a specific service from the diagnostic output",
+    "content": "dumpsys --skip {{service}}",
     "group": "Android Dev",
-    "description": "pm-list-packages: List installed, known, or filtered packages on an Android device. (Only list [d]isabled packages)",
+    "description": "dumpsys: Get information about Android system services. This command can only be used through `adb shell`. (Exclude a specific service from the diagnostic output)",
     "tags": [
       "android",
-      "pm-list-packages",
+      "dumpsys",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-android-pm-list-packages-3",
+    "id": "tldr-en-android-dumpsys-5",
     "type": "command",
-    "title": "pm-list-packages - Only list [e]nabled packages",
-    "content": "pm list packages -e",
+    "title": "dumpsys - Specify a [t]imeout period in seconds (defaults to 10s)",
+    "content": "dumpsys -t {{8}}",
     "group": "Android Dev",
-    "description": "pm-list-packages: List installed, known, or filtered packages on an Android device. (Only list [e]nabled packages)",
+    "description": "dumpsys: Get information about Android system services. This command can only be used through `adb shell`. (Specify a [t]imeout period in seconds (defaults to 10s))",
     "tags": [
       "android",
-      "pm-list-packages",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-list-packages-4",
-    "type": "command",
-    "title": "pm-list-packages - Only list [s]ystem packages",
-    "content": "pm list packages -s",
-    "group": "Android Dev",
-    "description": "pm-list-packages: List installed, known, or filtered packages on an Android device. (Only list [s]ystem packages)",
-    "tags": [
-      "android",
-      "pm-list-packages",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-list-packages-5",
-    "type": "command",
-    "title": "pm-list-packages - Only list [3]rd-party (non-system) packages",
-    "content": "pm list packages -3",
-    "group": "Android Dev",
-    "description": "pm-list-packages: List installed, known, or filtered packages on an Android device. (Only list [3]rd-party (non-system) packages)",
-    "tags": [
-      "android",
-      "pm-list-packages",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-list-packages-6",
-    "type": "command",
-    "title": "pm-list-packages - Show the [i]nstaller for each package",
-    "content": "pm list packages -i",
-    "group": "Android Dev",
-    "description": "pm-list-packages: List installed, known, or filtered packages on an Android device. (Show the [i]nstaller for each package)",
-    "tags": [
-      "android",
-      "pm-list-packages",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-bugreport-0",
-    "type": "command",
-    "title": "bugreport - Display a complete bug report of an Android device",
-    "content": "bugreport",
-    "group": "Android Dev",
-    "description": "bugreport: Show an Android bug report. Note: Can only be used through `adb shell`. (Display a complete bug report of an Android device)",
-    "tags": [
-      "android",
-      "bugreport",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-cmd-0",
-    "type": "command",
-    "title": "cmd - [l]ist all running services",
-    "content": "cmd -l",
-    "group": "Android Dev",
-    "description": "cmd: Android service manager. ([l]ist all running services)",
-    "tags": [
-      "android",
-      "cmd",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-cmd-1",
-    "type": "command",
-    "title": "cmd - Call a specific service",
-    "content": "cmd {{service}}",
-    "group": "Android Dev",
-    "description": "cmd: Android service manager. (Call a specific service)",
-    "tags": [
-      "android",
-      "cmd",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-cmd-2",
-    "type": "command",
-    "title": "cmd - Call a service with specific arguments",
-    "content": "cmd {{service}} {{argument1 argument2 ...}}",
-    "group": "Android Dev",
-    "description": "cmd: Android service manager. (Call a service with specific arguments)",
-    "tags": [
-      "android",
-      "cmd",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-settings-0",
-    "type": "command",
-    "title": "settings - List the settings in the `global` namespace",
-    "content": "settings list global",
-    "group": "Android Dev",
-    "description": "settings: Get information about the Android OS. (List the settings in the `global` namespace)",
-    "tags": [
-      "android",
-      "settings",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-settings-1",
-    "type": "command",
-    "title": "settings - Get a value of a specific setting",
-    "content": "settings get {{global}} {{airplane_mode_on}}",
-    "group": "Android Dev",
-    "description": "settings: Get information about the Android OS. (Get a value of a specific setting)",
-    "tags": [
-      "android",
-      "settings",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-settings-2",
-    "type": "command",
-    "title": "settings - Set a specific value of a setting",
-    "content": "settings put {{system}} {{screen_brightness}} {{42}}",
-    "group": "Android Dev",
-    "description": "settings: Get information about the Android OS. (Set a specific value of a setting)",
-    "tags": [
-      "android",
-      "settings",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-settings-3",
-    "type": "command",
-    "title": "settings - Delete a specific setting",
-    "content": "settings delete {{secure}} {{screensaver_enabled}}",
-    "group": "Android Dev",
-    "description": "settings: Get information about the Android OS. (Delete a specific setting)",
-    "tags": [
-      "android",
-      "settings",
+      "dumpsys",
       "tldr",
       "en"
     ],
@@ -465,285 +1095,75 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-android-pm-install-existing-0",
+    "id": "tldr-en-android-am-0",
     "type": "command",
-    "title": "pm-install-existing - Re-add an app",
-    "content": "pm install-existing {{app_name}}",
+    "title": "am - Start the activity with a specific component and package [n]ame",
+    "content": "am start -n {{com.android.settings/.Settings}}",
     "group": "Android Dev",
-    "description": "pm-install-existing: Re-add a pre-existing app to a given user. (Re-add an app)",
+    "description": "am: Android activity manager. (Start the activity with a specific component and package [n]ame)",
     "tags": [
       "android",
-      "pm-install-existing",
+      "am",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-android-bugreportz-0",
+    "id": "tldr-en-android-am-1",
     "type": "command",
-    "title": "bugreportz - Generate a complete zipped bug report of an Android device",
-    "content": "bugreportz",
+    "title": "am - Start an intent [a]ction and pass [d]ata to it",
+    "content": "am start -a {{android.intent.action.VIEW}} -d {{tel:123}}",
     "group": "Android Dev",
-    "description": "bugreportz: Generate a zipped Android bug report. This command can only be used through `adb shell`. (Generate a complete zipped bug report of an Android device)",
+    "description": "am: Android activity manager. (Start an intent [a]ction and pass [d]ata to it)",
     "tags": [
       "android",
-      "bugreportz",
+      "am",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-android-bugreportz-1",
+    "id": "tldr-en-android-am-2",
     "type": "command",
-    "title": "bugreportz - Show the progress of a running `bugreportz` operation",
-    "content": "bugreportz -p",
+    "title": "am - Start an activity matching a specific [a]ction and [c]ategory",
+    "content": "am start -a {{android.intent.action.MAIN}} -c {{android.intent.category.HOME}}",
     "group": "Android Dev",
-    "description": "bugreportz: Generate a zipped Android bug report. This command can only be used through `adb shell`. (Show the progress of a running `bugreportz` operation)",
+    "description": "am: Android activity manager. (Start an activity matching a specific [a]ction and [c]ategory)",
     "tags": [
       "android",
-      "bugreportz",
+      "am",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-android-bugreportz-2",
+    "id": "tldr-en-android-am-3",
     "type": "command",
-    "title": "bugreportz - Write the content of an Android bug report to `stdout`",
-    "content": "bugreportz -s",
+    "title": "am - Convert an intent to a URI",
+    "content": "am to-uri -a {{android.intent.action.VIEW}} -d {{tel:123}}",
     "group": "Android Dev",
-    "description": "bugreportz: Generate a zipped Android bug report. This command can only be used through `adb shell`. (Write the content of an Android bug report to `stdout`)",
+    "description": "am: Android activity manager. (Convert an intent to a URI)",
     "tags": [
       "android",
-      "bugreportz",
+      "am",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-android-bugreportz-3",
+    "id": "tldr-en-android-am-4",
     "type": "command",
-    "title": "bugreportz - Display help",
-    "content": "bugreportz -h",
+    "title": "am - Start the home activity on an emulator or device",
+    "content": "am start -W -c android.intent.category.HOME -a android.intent.action.MAIN",
     "group": "Android Dev",
-    "description": "bugreportz: Generate a zipped Android bug report. This command can only be used through `adb shell`. (Display help)",
+    "description": "am: Android activity manager. (Start the home activity on an emulator or device)",
     "tags": [
       "android",
-      "bugreportz",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-bugreportz-4",
-    "type": "command",
-    "title": "bugreportz - Display version",
-    "content": "bugreportz -v",
-    "group": "Android Dev",
-    "description": "bugreportz: Generate a zipped Android bug report. This command can only be used through `adb shell`. (Display version)",
-    "tags": [
-      "android",
-      "bugreportz",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-wm-0",
-    "type": "command",
-    "title": "wm - Display the physical size of an Android device's screen",
-    "content": "wm size",
-    "group": "Android Dev",
-    "description": "wm: Show information about the screen of an Android device. This command can only be used through `adb shell`. (Display the physical size of an Android device's screen)",
-    "tags": [
-      "android",
-      "wm",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-wm-1",
-    "type": "command",
-    "title": "wm - Display the physical density of an Android device's screen",
-    "content": "wm density",
-    "group": "Android Dev",
-    "description": "wm: Show information about the screen of an Android device. This command can only be used through `adb shell`. (Display the physical density of an Android device's screen)",
-    "tags": [
-      "android",
-      "wm",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-logcat-0",
-    "type": "command",
-    "title": "logcat - Display system logs",
-    "content": "logcat",
-    "group": "Android Dev",
-    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Display system logs)",
-    "tags": [
-      "android",
-      "logcat",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-logcat-1",
-    "type": "command",
-    "title": "logcat - Write system logs to a [f]ile",
-    "content": "logcat -f {{path/to/file}}",
-    "group": "Android Dev",
-    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Write system logs to a [f]ile)",
-    "tags": [
-      "android",
-      "logcat",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-logcat-2",
-    "type": "command",
-    "title": "logcat - Display lines that match a `regex`",
-    "content": "logcat --regex {{regex}}",
-    "group": "Android Dev",
-    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Display lines that match a `regex`)",
-    "tags": [
-      "android",
-      "logcat",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-logcat-3",
-    "type": "command",
-    "title": "logcat - Display logs for a specific PID",
-    "content": "logcat --pid {{pid}}",
-    "group": "Android Dev",
-    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Display logs for a specific PID)",
-    "tags": [
-      "android",
-      "logcat",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-logcat-4",
-    "type": "command",
-    "title": "logcat - Display logs for the process of a specific package",
-    "content": "logcat --pid $(pidof -s {{package}})",
-    "group": "Android Dev",
-    "description": "logcat: Dump a log of system messages, including stack traces when an error occurred, and information messages logged by applications. (Display logs for the process of a specific package)",
-    "tags": [
-      "android",
-      "logcat",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-install-create-0",
-    "type": "command",
-    "title": "pm-install-create - Create a session and a session ID",
-    "content": "pm install-create",
-    "group": "Android Dev",
-    "description": "pm-install-create: Create an install session. (Create a session and a session ID)",
-    "tags": [
-      "android",
-      "pm-install-create",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-screenrecord-0",
-    "type": "command",
-    "title": "screenrecord - Record the screen",
-    "content": "screenrecord {{path/to/file}}.mp4",
-    "group": "Android Dev",
-    "description": "screenrecord: Record a video of a mobile display. Note: This command can only be used through `adb shell`. (Record the screen)",
-    "tags": [
-      "android",
-      "screenrecord",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-screenrecord-1",
-    "type": "command",
-    "title": "screenrecord - Record the screen at a specific resolution",
-    "content": "screenrecord --size {{1280x720}} {{path/to/file}}.mp4",
-    "group": "Android Dev",
-    "description": "screenrecord: Record a video of a mobile display. Note: This command can only be used through `adb shell`. (Record the screen at a specific resolution)",
-    "tags": [
-      "android",
-      "screenrecord",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-screenrecord-2",
-    "type": "command",
-    "title": "screenrecord - Record the screen with a specific bitrate",
-    "content": "screenrecord --bit-rate {{6000000}} {{path/to/file}}.mp4",
-    "group": "Android Dev",
-    "description": "screenrecord: Record a video of a mobile display. Note: This command can only be used through `adb shell`. (Record the screen with a specific bitrate)",
-    "tags": [
-      "android",
-      "screenrecord",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-screenrecord-3",
-    "type": "command",
-    "title": "screenrecord - Record the screen with a maximum duration (in seconds, 180 seconds is the maximum)",
-    "content": "screenrecord --time-limit {{180}} {{path/to/file}}.mp4",
-    "group": "Android Dev",
-    "description": "screenrecord: Record a video of a mobile display. Note: This command can only be used through `adb shell`. (Record the screen with a maximum duration (in seconds, 180 seconds is the maximum))",
-    "tags": [
-      "android",
-      "screenrecord",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-screenrecord-4",
-    "type": "command",
-    "title": "screenrecord - Display help",
-    "content": "screenrecord --help",
-    "group": "Android Dev",
-    "description": "screenrecord: Record a video of a mobile display. Note: This command can only be used through `adb shell`. (Display help)",
-    "tags": [
-      "android",
-      "screenrecord",
+      "am",
       "tldr",
       "en"
     ],
@@ -870,480 +1290,60 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-android-dumpsys-0",
+    "id": "tldr-en-android-wm-0",
     "type": "command",
-    "title": "dumpsys - Get diagnostic output for all system services",
-    "content": "dumpsys",
+    "title": "wm - Display the physical size of an Android device's screen",
+    "content": "wm size",
     "group": "Android Dev",
-    "description": "dumpsys: Get information about Android system services. This command can only be used through `adb shell`. (Get diagnostic output for all system services)",
+    "description": "wm: Show information about the screen of an Android device. This command can only be used through `adb shell`. (Display the physical size of an Android device's screen)",
     "tags": [
       "android",
-      "dumpsys",
+      "wm",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-android-dumpsys-1",
+    "id": "tldr-en-android-wm-1",
     "type": "command",
-    "title": "dumpsys - Get diagnostic output for a specific system service",
-    "content": "dumpsys {{service}}",
+    "title": "wm - Display the physical density of an Android device's screen",
+    "content": "wm density",
     "group": "Android Dev",
-    "description": "dumpsys: Get information about Android system services. This command can only be used through `adb shell`. (Get diagnostic output for a specific system service)",
+    "description": "wm: Show information about the screen of an Android device. This command can only be used through `adb shell`. (Display the physical density of an Android device's screen)",
     "tags": [
       "android",
-      "dumpsys",
+      "wm",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-android-dumpsys-2",
+    "id": "tldr-en-android-pm-uninstall-0",
     "type": "command",
-    "title": "dumpsys - List all services `dumpsys` can give information about",
-    "content": "dumpsys -l",
+    "title": "pm-uninstall - Uninstall a package from the device",
+    "content": "pm uninstall {{package}}",
     "group": "Android Dev",
-    "description": "dumpsys: Get information about Android system services. This command can only be used through `adb shell`. (List all services `dumpsys` can give information about)",
+    "description": "pm-uninstall: Uninstall a package. (Uninstall a package from the device)",
     "tags": [
       "android",
-      "dumpsys",
+      "pm-uninstall",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-android-dumpsys-3",
+    "id": "tldr-en-android-pm-uninstall-1",
     "type": "command",
-    "title": "dumpsys - List service-specific arguments for a service",
-    "content": "dumpsys {{service}} -h",
+    "title": "pm-uninstall - Remove an app from a specific user",
+    "content": "pm uninstall --user {{user_id}} {{package}}",
     "group": "Android Dev",
-    "description": "dumpsys: Get information about Android system services. This command can only be used through `adb shell`. (List service-specific arguments for a service)",
+    "description": "pm-uninstall: Uninstall a package. (Remove an app from a specific user)",
     "tags": [
       "android",
-      "dumpsys",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-dumpsys-4",
-    "type": "command",
-    "title": "dumpsys - Exclude a specific service from the diagnostic output",
-    "content": "dumpsys --skip {{service}}",
-    "group": "Android Dev",
-    "description": "dumpsys: Get information about Android system services. This command can only be used through `adb shell`. (Exclude a specific service from the diagnostic output)",
-    "tags": [
-      "android",
-      "dumpsys",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-dumpsys-5",
-    "type": "command",
-    "title": "dumpsys - Specify a [t]imeout period in seconds (defaults to 10s)",
-    "content": "dumpsys -t {{8}}",
-    "group": "Android Dev",
-    "description": "dumpsys: Get information about Android system services. This command can only be used through `adb shell`. (Specify a [t]imeout period in seconds (defaults to 10s))",
-    "tags": [
-      "android",
-      "dumpsys",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-am-0",
-    "type": "command",
-    "title": "am - Start the activity with a specific component and package [n]ame",
-    "content": "am start -n {{com.android.settings/.Settings}}",
-    "group": "Android Dev",
-    "description": "am: Android activity manager. (Start the activity with a specific component and package [n]ame)",
-    "tags": [
-      "android",
-      "am",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-am-1",
-    "type": "command",
-    "title": "am - Start an intent [a]ction and pass [d]ata to it",
-    "content": "am start -a {{android.intent.action.VIEW}} -d {{tel:123}}",
-    "group": "Android Dev",
-    "description": "am: Android activity manager. (Start an intent [a]ction and pass [d]ata to it)",
-    "tags": [
-      "android",
-      "am",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-am-2",
-    "type": "command",
-    "title": "am - Start an activity matching a specific [a]ction and [c]ategory",
-    "content": "am start -a {{android.intent.action.MAIN}} -c {{android.intent.category.HOME}}",
-    "group": "Android Dev",
-    "description": "am: Android activity manager. (Start an activity matching a specific [a]ction and [c]ategory)",
-    "tags": [
-      "android",
-      "am",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-am-3",
-    "type": "command",
-    "title": "am - Convert an intent to a URI",
-    "content": "am to-uri -a {{android.intent.action.VIEW}} -d {{tel:123}}",
-    "group": "Android Dev",
-    "description": "am: Android activity manager. (Convert an intent to a URI)",
-    "tags": [
-      "android",
-      "am",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-am-4",
-    "type": "command",
-    "title": "am - Start the home activity on an emulator or device",
-    "content": "am start -W -c android.intent.category.HOME -a android.intent.action.MAIN",
-    "group": "Android Dev",
-    "description": "am: Android activity manager. (Start the home activity on an emulator or device)",
-    "tags": [
-      "android",
-      "am",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-install-commit-0",
-    "type": "command",
-    "title": "pm-install-commit - Install queued packages",
-    "content": "pm install-commit {{session_id}}",
-    "group": "Android Dev",
-    "description": "pm-install-commit: Install queued packages. (Install queued packages)",
-    "tags": [
-      "android",
-      "pm-install-commit",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-getprop-0",
-    "type": "command",
-    "title": "getprop - Display information about Android system properties",
-    "content": "getprop",
-    "group": "Android Dev",
-    "description": "getprop: Show information about Android system properties. (Display information about Android system properties)",
-    "tags": [
-      "android",
-      "getprop",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-getprop-1",
-    "type": "command",
-    "title": "getprop - Display information about a specific property",
-    "content": "getprop {{property}}",
-    "group": "Android Dev",
-    "description": "getprop: Show information about Android system properties. (Display information about a specific property)",
-    "tags": [
-      "android",
-      "getprop",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-getprop-2",
-    "type": "command",
-    "title": "getprop - Display the SDK API level",
-    "content": "getprop {{ro.build.version.sdk}}",
-    "group": "Android Dev",
-    "description": "getprop: Show information about Android system properties. (Display the SDK API level)",
-    "tags": [
-      "android",
-      "getprop",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-getprop-3",
-    "type": "command",
-    "title": "getprop - Display the Android version",
-    "content": "getprop {{ro.build.version.release}}",
-    "group": "Android Dev",
-    "description": "getprop: Show information about Android system properties. (Display the Android version)",
-    "tags": [
-      "android",
-      "getprop",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-getprop-4",
-    "type": "command",
-    "title": "getprop - Display the Android device model",
-    "content": "getprop {{ro.vendor.product.model}}",
-    "group": "Android Dev",
-    "description": "getprop: Show information about Android system properties. (Display the Android device model)",
-    "tags": [
-      "android",
-      "getprop",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-getprop-5",
-    "type": "command",
-    "title": "getprop - Display the OEM unlock status",
-    "content": "getprop {{ro.oem_unlock_supported}}",
-    "group": "Android Dev",
-    "description": "getprop: Show information about Android system properties. (Display the OEM unlock status)",
-    "tags": [
-      "android",
-      "getprop",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-getprop-6",
-    "type": "command",
-    "title": "getprop - Display the MAC address of the Android's Wi-Fi card",
-    "content": "getprop {{ro.boot.wifimacaddr}}",
-    "group": "Android Dev",
-    "description": "getprop: Show information about Android system properties. (Display the MAC address of the Android's Wi-Fi card)",
-    "tags": [
-      "android",
-      "getprop",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-screencap-0",
-    "type": "command",
-    "title": "screencap - Take a screenshot",
-    "content": "screencap {{path/to/image.png}}",
-    "group": "Android Dev",
-    "description": "screencap: Take a screenshot of a mobile display. Note: This command can only be used through `adb shell`. (Take a screenshot)",
-    "tags": [
-      "android",
-      "screencap",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-screencap-1",
-    "type": "command",
-    "title": "screencap - Print file contents to `stdout` as PNG",
-    "content": "screencap -p",
-    "group": "Android Dev",
-    "description": "screencap: Take a screenshot of a mobile display. Note: This command can only be used through `adb shell`. (Print file contents to `stdout` as PNG)",
-    "tags": [
-      "android",
-      "screencap",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-screencap-2",
-    "type": "command",
-    "title": "screencap - Take a screenshot and save it over an `adb` connection",
-    "content": "adb shell screencap -p > {{path/to/image.png}}",
-    "group": "Android Dev",
-    "description": "screencap: Take a screenshot of a mobile display. Note: This command can only be used through `adb shell`. (Take a screenshot and save it over an `adb` connection)",
-    "tags": [
-      "android",
-      "screencap",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-screencap-3",
-    "type": "command",
-    "title": "screencap - Display help",
-    "content": "screencap -h",
-    "group": "Android Dev",
-    "description": "screencap: Take a screenshot of a mobile display. Note: This command can only be used through `adb shell`. (Display help)",
-    "tags": [
-      "android",
-      "screencap",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-install-write-0",
-    "type": "command",
-    "title": "pm-install-write - Add a package to the install batch",
-    "content": "pm install-write {{session_id}} {{label}} {{path/to/package.apk}}",
-    "group": "Android Dev",
-    "description": "pm-install-write: Add packages to the install session. (Add a package to the install batch)",
-    "tags": [
-      "android",
-      "pm-install-write",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-list-0",
-    "type": "command",
-    "title": "pm-list - List all installed packages",
-    "content": "pm list packages",
-    "group": "Android Dev",
-    "description": "pm-list: List users, packages, permissions, instrumentation, permission groups, features, and libraries managed by the package manager. (List all installed packages)",
-    "tags": [
-      "android",
-      "pm-list",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-list-1",
-    "type": "command",
-    "title": "pm-list - List either [s]ystem or [3]rd-party packages",
-    "content": "pm list packages {{-s|-3}}",
-    "group": "Android Dev",
-    "description": "pm-list: List users, packages, permissions, instrumentation, permission groups, features, and libraries managed by the package manager. (List either [s]ystem or [3]rd-party packages)",
-    "tags": [
-      "android",
-      "pm-list",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-list-2",
-    "type": "command",
-    "title": "pm-list - Print all users on the system",
-    "content": "pm list users",
-    "group": "Android Dev",
-    "description": "pm-list: List users, packages, permissions, instrumentation, permission groups, features, and libraries managed by the package manager. (Print all users on the system)",
-    "tags": [
-      "android",
-      "pm-list",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-list-3",
-    "type": "command",
-    "title": "pm-list - Print all known permission groups",
-    "content": "pm list permission-groups",
-    "group": "Android Dev",
-    "description": "pm-list: List users, packages, permissions, instrumentation, permission groups, features, and libraries managed by the package manager. (Print all known permission groups)",
-    "tags": [
-      "android",
-      "pm-list",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-list-4",
-    "type": "command",
-    "title": "pm-list - Print all known permissions",
-    "content": "pm list permissions",
-    "group": "Android Dev",
-    "description": "pm-list: List users, packages, permissions, instrumentation, permission groups, features, and libraries managed by the package manager. (Print all known permissions)",
-    "tags": [
-      "android",
-      "pm-list",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-list-5",
-    "type": "command",
-    "title": "pm-list - List all test packages",
-    "content": "pm list instrumentation",
-    "group": "Android Dev",
-    "description": "pm-list: List users, packages, permissions, instrumentation, permission groups, features, and libraries managed by the package manager. (List all test packages)",
-    "tags": [
-      "android",
-      "pm-list",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-list-6",
-    "type": "command",
-    "title": "pm-list - Print all features of the system",
-    "content": "pm list features",
-    "group": "Android Dev",
-    "description": "pm-list: List users, packages, permissions, instrumentation, permission groups, features, and libraries managed by the package manager. (Print all features of the system)",
-    "tags": [
-      "android",
-      "pm-list",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-android-pm-list-7",
-    "type": "command",
-    "title": "pm-list - Print all the libraries supported by the current device",
-    "content": "pm list libraries",
-    "group": "Android Dev",
-    "description": "pm-list: List users, packages, permissions, instrumentation, permission groups, features, and libraries managed by the package manager. (Print all the libraries supported by the current device)",
-    "tags": [
-      "android",
-      "pm-list",
+      "pm-uninstall",
       "tldr",
       "en"
     ],
