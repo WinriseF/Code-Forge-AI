@@ -90,6 +90,216 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-netbsd-pkgin-0",
+    "type": "command",
+    "title": "pkgin - Install a package",
+    "content": "pkgin install {{package}}",
+    "group": "Netbsd",
+    "description": "pkgin: Manage `pkgsrc` binary packages on NetBSD. (Install a package)",
+    "tags": [
+      "netbsd",
+      "pkgin",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-pkgin-1",
+    "type": "command",
+    "title": "pkgin - Remove a package and its dependencies",
+    "content": "pkgin remove {{package}}",
+    "group": "Netbsd",
+    "description": "pkgin: Manage `pkgsrc` binary packages on NetBSD. (Remove a package and its dependencies)",
+    "tags": [
+      "netbsd",
+      "pkgin",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-pkgin-2",
+    "type": "command",
+    "title": "pkgin - Upgrade all packages",
+    "content": "pkgin full-upgrade",
+    "group": "Netbsd",
+    "description": "pkgin: Manage `pkgsrc` binary packages on NetBSD. (Upgrade all packages)",
+    "tags": [
+      "netbsd",
+      "pkgin",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-pkgin-3",
+    "type": "command",
+    "title": "pkgin - Search for a package",
+    "content": "pkgin search {{keyword}}",
+    "group": "Netbsd",
+    "description": "pkgin: Manage `pkgsrc` binary packages on NetBSD. (Search for a package)",
+    "tags": [
+      "netbsd",
+      "pkgin",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-pkgin-4",
+    "type": "command",
+    "title": "pkgin - List installed packages",
+    "content": "pkgin list",
+    "group": "Netbsd",
+    "description": "pkgin: Manage `pkgsrc` binary packages on NetBSD. (List installed packages)",
+    "tags": [
+      "netbsd",
+      "pkgin",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-pkgin-5",
+    "type": "command",
+    "title": "pkgin - Remove unneeded dependencies",
+    "content": "pkgin autoremove",
+    "group": "Netbsd",
+    "description": "pkgin: Manage `pkgsrc` binary packages on NetBSD. (Remove unneeded dependencies)",
+    "tags": [
+      "netbsd",
+      "pkgin",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-0",
+    "type": "command",
+    "title": "sed - Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in all input lines and print the result to `stdout`",
+    "content": "{{command}} | sed 's/apple/mango/g'",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in all input lines and print the result to `stdout`)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-1",
+    "type": "command",
+    "title": "sed - Execute a specific script [f]ile and print the result to `stdout`",
+    "content": "{{command}} | sed -f {{path/to/script.sed}}",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. (Execute a specific script [f]ile and print the result to `stdout`)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-2",
+    "type": "command",
+    "title": "sed - Delay opening each file until a command containing the related `w` function or flag is applied to a line of input",
+    "content": "{{command}} | sed -fa {{path/to/script.sed}}",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. (Delay opening each file until a command containing the related `w` function or flag is applied to a line of input)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-3",
+    "type": "command",
+    "title": "sed - Turn on [g]NU `regex` extension",
+    "content": "{{command}} | sed -fg {{path/to/script.sed}}",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. (Turn on [g]NU `regex` extension)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-4",
+    "type": "command",
+    "title": "sed - Replace all `apple` (extended `regex`) occurrences with `APPLE` (extended `regex`) in all input lines and print the result to `stdout`",
+    "content": "{{command}} | sed -E 's/(apple)/\\U\\1/g'",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (extended `regex`) occurrences with `APPLE` (extended `regex`) in all input lines and print the result to `stdout`)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-5",
+    "type": "command",
+    "title": "sed - Print just a first line to `stdout`",
+    "content": "{{command}} | sed -n '1p'",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. (Print just a first line to `stdout`)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-sed-6",
+    "type": "command",
+    "title": "sed - Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in a specific file and overwrite the original file in place",
+    "content": "sed -i 's/apple/mango/g' {{path/to/file}}",
+    "group": "Netbsd",
+    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in a specific file and overwrite the original file in place)",
+    "tags": [
+      "netbsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-chsh-0",
+    "type": "command",
+    "title": "chsh - View documentation for the original command",
+    "content": "tldr chpass",
+    "group": "Netbsd",
+    "description": "chsh: This command is an alias of `chpass`. (View documentation for the original command)",
+    "tags": [
+      "netbsd",
+      "chsh",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-netbsd-sockstat-0",
     "type": "command",
     "title": "sockstat - Show information for IPv4, IPv6, and Unix sockets for both listening and connected sockets",
@@ -159,6 +369,126 @@
     "tags": [
       "netbsd",
       "sockstat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-chfn-0",
+    "type": "command",
+    "title": "chfn - View documentation for the original command",
+    "content": "tldr chpass",
+    "group": "Netbsd",
+    "description": "chfn: This command is an alias of `chpass`. (View documentation for the original command)",
+    "tags": [
+      "netbsd",
+      "chfn",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-0",
+    "type": "command",
+    "title": "df - Display all filesystems and their disk usage (using 512-byte units)",
+    "content": "df",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Display all filesystems and their disk usage (using 512-byte units))",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-1",
+    "type": "command",
+    "title": "df - Use [h]uman-readable units (based on powers of 1024)",
+    "content": "df -h",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Use [h]uman-readable units (based on powers of 1024))",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-2",
+    "type": "command",
+    "title": "df - Display all the fields of the structure(s) returned by `statvfs`",
+    "content": "df -G",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Display all the fields of the structure(s) returned by `statvfs`)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-3",
+    "type": "command",
+    "title": "df - Display the filesystem containing the specified file or directory",
+    "content": "df {{path/to/file_or_directory}}",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Display the filesystem containing the specified file or directory)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-4",
+    "type": "command",
+    "title": "df - Include statistics on the number of free and used [i]nodes",
+    "content": "df -i",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Include statistics on the number of free and used [i]nodes)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-5",
+    "type": "command",
+    "title": "df - Use [k]ibibyte (1024 byte) units when showing size figures",
+    "content": "df -k",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Use [k]ibibyte (1024 byte) units when showing size figures)",
+    "tags": [
+      "netbsd",
+      "df",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-netbsd-df-6",
+    "type": "command",
+    "title": "df - Display information in a [P]ortable way",
+    "content": "df -P",
+    "group": "Netbsd",
+    "description": "df: Display an overview of the filesystem disk space usage. (Display information in a [P]ortable way)",
+    "tags": [
+      "netbsd",
+      "df",
       "tldr",
       "en"
     ],
@@ -279,336 +609,6 @@
     "tags": [
       "netbsd",
       "cal",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-chfn-0",
-    "type": "command",
-    "title": "chfn - View documentation for the original command",
-    "content": "tldr chpass",
-    "group": "Netbsd",
-    "description": "chfn: This command is an alias of `chpass`. (View documentation for the original command)",
-    "tags": [
-      "netbsd",
-      "chfn",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-pkgin-0",
-    "type": "command",
-    "title": "pkgin - Install a package",
-    "content": "pkgin install {{package}}",
-    "group": "Netbsd",
-    "description": "pkgin: Manage `pkgsrc` binary packages on NetBSD. (Install a package)",
-    "tags": [
-      "netbsd",
-      "pkgin",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-pkgin-1",
-    "type": "command",
-    "title": "pkgin - Remove a package and its dependencies",
-    "content": "pkgin remove {{package}}",
-    "group": "Netbsd",
-    "description": "pkgin: Manage `pkgsrc` binary packages on NetBSD. (Remove a package and its dependencies)",
-    "tags": [
-      "netbsd",
-      "pkgin",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-pkgin-2",
-    "type": "command",
-    "title": "pkgin - Upgrade all packages",
-    "content": "pkgin full-upgrade",
-    "group": "Netbsd",
-    "description": "pkgin: Manage `pkgsrc` binary packages on NetBSD. (Upgrade all packages)",
-    "tags": [
-      "netbsd",
-      "pkgin",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-pkgin-3",
-    "type": "command",
-    "title": "pkgin - Search for a package",
-    "content": "pkgin search {{keyword}}",
-    "group": "Netbsd",
-    "description": "pkgin: Manage `pkgsrc` binary packages on NetBSD. (Search for a package)",
-    "tags": [
-      "netbsd",
-      "pkgin",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-pkgin-4",
-    "type": "command",
-    "title": "pkgin - List installed packages",
-    "content": "pkgin list",
-    "group": "Netbsd",
-    "description": "pkgin: Manage `pkgsrc` binary packages on NetBSD. (List installed packages)",
-    "tags": [
-      "netbsd",
-      "pkgin",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-pkgin-5",
-    "type": "command",
-    "title": "pkgin - Remove unneeded dependencies",
-    "content": "pkgin autoremove",
-    "group": "Netbsd",
-    "description": "pkgin: Manage `pkgsrc` binary packages on NetBSD. (Remove unneeded dependencies)",
-    "tags": [
-      "netbsd",
-      "pkgin",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-df-0",
-    "type": "command",
-    "title": "df - Display all filesystems and their disk usage (using 512-byte units)",
-    "content": "df",
-    "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Display all filesystems and their disk usage (using 512-byte units))",
-    "tags": [
-      "netbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-df-1",
-    "type": "command",
-    "title": "df - Use [h]uman-readable units (based on powers of 1024)",
-    "content": "df -h",
-    "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Use [h]uman-readable units (based on powers of 1024))",
-    "tags": [
-      "netbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-df-2",
-    "type": "command",
-    "title": "df - Display all the fields of the structure(s) returned by `statvfs`",
-    "content": "df -G",
-    "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Display all the fields of the structure(s) returned by `statvfs`)",
-    "tags": [
-      "netbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-df-3",
-    "type": "command",
-    "title": "df - Display the filesystem containing the specified file or directory",
-    "content": "df {{path/to/file_or_directory}}",
-    "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Display the filesystem containing the specified file or directory)",
-    "tags": [
-      "netbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-df-4",
-    "type": "command",
-    "title": "df - Include statistics on the number of free and used [i]nodes",
-    "content": "df -i",
-    "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Include statistics on the number of free and used [i]nodes)",
-    "tags": [
-      "netbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-df-5",
-    "type": "command",
-    "title": "df - Use [k]ibibyte (1024 byte) units when showing size figures",
-    "content": "df -k",
-    "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Use [k]ibibyte (1024 byte) units when showing size figures)",
-    "tags": [
-      "netbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-df-6",
-    "type": "command",
-    "title": "df - Display information in a [P]ortable way",
-    "content": "df -P",
-    "group": "Netbsd",
-    "description": "df: Display an overview of the filesystem disk space usage. (Display information in a [P]ortable way)",
-    "tags": [
-      "netbsd",
-      "df",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-chsh-0",
-    "type": "command",
-    "title": "chsh - View documentation for the original command",
-    "content": "tldr chpass",
-    "group": "Netbsd",
-    "description": "chsh: This command is an alias of `chpass`. (View documentation for the original command)",
-    "tags": [
-      "netbsd",
-      "chsh",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-sed-0",
-    "type": "command",
-    "title": "sed - Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in all input lines and print the result to `stdout`",
-    "content": "{{command}} | sed 's/apple/mango/g'",
-    "group": "Netbsd",
-    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in all input lines and print the result to `stdout`)",
-    "tags": [
-      "netbsd",
-      "sed",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-sed-1",
-    "type": "command",
-    "title": "sed - Execute a specific script [f]ile and print the result to `stdout`",
-    "content": "{{command}} | sed -f {{path/to/script.sed}}",
-    "group": "Netbsd",
-    "description": "sed: Edit text in a scriptable manner. (Execute a specific script [f]ile and print the result to `stdout`)",
-    "tags": [
-      "netbsd",
-      "sed",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-sed-2",
-    "type": "command",
-    "title": "sed - Delay opening each file until a command containing the related `w` function or flag is applied to a line of input",
-    "content": "{{command}} | sed -fa {{path/to/script.sed}}",
-    "group": "Netbsd",
-    "description": "sed: Edit text in a scriptable manner. (Delay opening each file until a command containing the related `w` function or flag is applied to a line of input)",
-    "tags": [
-      "netbsd",
-      "sed",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-sed-3",
-    "type": "command",
-    "title": "sed - Turn on [g]NU `regex` extension",
-    "content": "{{command}} | sed -fg {{path/to/script.sed}}",
-    "group": "Netbsd",
-    "description": "sed: Edit text in a scriptable manner. (Turn on [g]NU `regex` extension)",
-    "tags": [
-      "netbsd",
-      "sed",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-sed-4",
-    "type": "command",
-    "title": "sed - Replace all `apple` (extended `regex`) occurrences with `APPLE` (extended `regex`) in all input lines and print the result to `stdout`",
-    "content": "{{command}} | sed -E 's/(apple)/\\U\\1/g'",
-    "group": "Netbsd",
-    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (extended `regex`) occurrences with `APPLE` (extended `regex`) in all input lines and print the result to `stdout`)",
-    "tags": [
-      "netbsd",
-      "sed",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-sed-5",
-    "type": "command",
-    "title": "sed - Print just a first line to `stdout`",
-    "content": "{{command}} | sed -n '1p'",
-    "group": "Netbsd",
-    "description": "sed: Edit text in a scriptable manner. (Print just a first line to `stdout`)",
-    "tags": [
-      "netbsd",
-      "sed",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-netbsd-sed-6",
-    "type": "command",
-    "title": "sed - Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in a specific file and overwrite the original file in place",
-    "content": "sed -i 's/apple/mango/g' {{path/to/file}}",
-    "group": "Netbsd",
-    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in a specific file and overwrite the original file in place)",
-    "tags": [
-      "netbsd",
-      "sed",
       "tldr",
       "en"
     ],

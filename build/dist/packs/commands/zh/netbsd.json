@@ -1,20 +1,5 @@
 [
   {
-    "id": "tldr-zh-netbsd-chfn-0",
-    "type": "command",
-    "title": "chfn - 查看原命令的文档",
-    "content": "tldr chpass",
-    "group": "Netbsd",
-    "description": "chfn: 此命令为 `chpass` 的别名。 (查看原命令的文档)",
-    "tags": [
-      "netbsd",
-      "chfn",
-      "tldr",
-      "zh"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-zh-netbsd-chsh-0",
     "type": "command",
     "title": "chsh - 查看原命令的文档",
@@ -24,6 +9,21 @@
     "tags": [
       "netbsd",
       "chsh",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-netbsd-chfn-0",
+    "type": "command",
+    "title": "chfn - 查看原命令的文档",
+    "content": "tldr chpass",
+    "group": "Netbsd",
+    "description": "chfn: 此命令为 `chpass` 的别名。 (查看原命令的文档)",
+    "tags": [
+      "netbsd",
+      "chfn",
       "tldr",
       "zh"
     ],

@@ -1,59 +1,14 @@
 [
   {
-    "id": "tldr-en-dos-boot-0",
+    "id": "tldr-en-dos-type-0",
     "type": "command",
-    "title": "boot - Boot from floppy image",
-    "content": "BOOT {{path/to/floppy.img}}",
+    "title": "type - Show file",
+    "content": "TYPE {{path/to/file.txt}}",
     "group": "Dos",
-    "description": "boot: Boot floppy or hard disk images directly, bypassing OS emulation. (Boot from floppy image)",
+    "description": "type: Display the contents of a text file. (Show file)",
     "tags": [
       "dos",
-      "boot",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-boot-1",
-    "type": "command",
-    "title": "boot - Boot from hard disk image",
-    "content": "BOOT {{path/to/hard_disk.img}}",
-    "group": "Dos",
-    "description": "boot: Boot floppy or hard disk images directly, bypassing OS emulation. (Boot from hard disk image)",
-    "tags": [
-      "dos",
-      "boot",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-boot-2",
-    "type": "command",
-    "title": "boot - Boot multiple floppy images",
-    "content": "BOOT {{path/to/floppy1.img path/to/floppy2.img ...}}",
-    "group": "Dos",
-    "description": "boot: Boot floppy or hard disk images directly, bypassing OS emulation. (Boot multiple floppy images)",
-    "tags": [
-      "dos",
-      "boot",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-choice-0",
-    "type": "command",
-    "title": "choice - Prompt for yes/no",
-    "content": "CHOICE \"{{prompt}}\"",
-    "group": "Dos",
-    "description": "choice: Wait for keypress and set `ERRORLEVEL` in batch scripts. (Prompt for yes/no)",
-    "tags": [
-      "dos",
-      "choice",
+      "type",
       "tldr",
       "en"
     ],
@@ -75,15 +30,180 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-dos-ver-0",
+    "id": "tldr-en-dos-set-0",
     "type": "command",
-    "title": "ver - Set version",
-    "content": "VER set {{major_version}} {{minor_version}}",
+    "title": "set - Set variable",
+    "content": "SET {{VAR}}={{value}}",
     "group": "Dos",
-    "description": "ver: View/set reported DOS version. (Set version)",
+    "description": "set: Set/display environment variables. (Set variable)",
     "tags": [
       "dos",
-      "ver",
+      "set",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-rescan-0",
+    "type": "command",
+    "title": "rescan - Refresh mounted drives",
+    "content": "RESCAN",
+    "group": "Dos",
+    "description": "rescan: Refresh mounted drives (like CTRL-F4). (Refresh mounted drives)",
+    "tags": [
+      "dos",
+      "rescan",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-chdir-0",
+    "type": "command",
+    "title": "chdir - View documentation for the original command",
+    "content": "tldr {{[-p|--platform]}} dos cd",
+    "group": "Dos",
+    "description": "chdir: This command is an alias of `CD`. (View documentation for the original command)",
+    "tags": [
+      "dos",
+      "chdir",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-config-0",
+    "type": "command",
+    "title": "config - Write current config to file (local drive)",
+    "content": "CONFIG -writeconf {{path/to/file.conf}}",
+    "group": "Dos",
+    "description": "config: Change or query DOSBox settings at runtime; save configs/languages. (Write current config to file (local drive))",
+    "tags": [
+      "dos",
+      "config",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-config-1",
+    "type": "command",
+    "title": "config - Write current language strings to file",
+    "content": "CONFIG -writelang {{path/to/file.lang}}",
+    "group": "Dos",
+    "description": "config: Change or query DOSBox settings at runtime; save configs/languages. (Write current language strings to file)",
+    "tags": [
+      "dos",
+      "config",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-config-2",
+    "type": "command",
+    "title": "config - Enable secure mode (disables MOUNT/IMGMOUNT/BOOT)",
+    "content": "CONFIG -securemode",
+    "group": "Dos",
+    "description": "config: Change or query DOSBox settings at runtime; save configs/languages. (Enable secure mode (disables MOUNT/IMGMOUNT/BOOT))",
+    "tags": [
+      "dos",
+      "config",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-config-3",
+    "type": "command",
+    "title": "config - Set a property (e.g., CPU cycles)",
+    "content": "CONFIG -set \"cpu cycles={{10000}}\"",
+    "group": "Dos",
+    "description": "config: Change or query DOSBox settings at runtime; save configs/languages. (Set a property (e.g., CPU cycles))",
+    "tags": [
+      "dos",
+      "config",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-config-4",
+    "type": "command",
+    "title": "config - Set property (e.g., disable EMS)",
+    "content": "CONFIG -set \"dos ems=off\"",
+    "group": "Dos",
+    "description": "config: Change or query DOSBox settings at runtime; save configs/languages. (Set property (e.g., disable EMS))",
+    "tags": [
+      "dos",
+      "config",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-config-5",
+    "type": "command",
+    "title": "config - Get property value (stored in `%CONFIG%`)",
+    "content": "CONFIG -get \"cpu core\"",
+    "group": "Dos",
+    "description": "config: Change or query DOSBox settings at runtime; save configs/languages. (Get property value (stored in `%CONFIG%`))",
+    "tags": [
+      "dos",
+      "config",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-keyb-0",
+    "type": "command",
+    "title": "keyb - Set layout",
+    "content": "KEYB {{us|uk|gr|...}}",
+    "group": "Dos",
+    "description": "keyb: Change keyboard layout. (Set layout)",
+    "tags": [
+      "dos",
+      "keyb",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-md-0",
+    "type": "command",
+    "title": "md - Create directory",
+    "content": "MD {{path/to/directory}}",
+    "group": "Dos",
+    "description": "md: Make a directory. (Create directory)",
+    "tags": [
+      "dos",
+      "md",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-exit-0",
+    "type": "command",
+    "title": "exit - Exit DOSBox",
+    "content": "EXIT",
+    "group": "Dos",
+    "description": "exit: Exit DOSBox. (Exit DOSBox)",
+    "tags": [
+      "dos",
+      "exit",
       "tldr",
       "en"
     ],
@@ -180,6 +300,186 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-dos-ren-0",
+    "type": "command",
+    "title": "ren - Rename file",
+    "content": "REN {{path/to/file}} {{new_name}}",
+    "group": "Dos",
+    "description": "ren: Rename files (use for moving too). (Rename file)",
+    "tags": [
+      "dos",
+      "ren",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-dir-0",
+    "type": "command",
+    "title": "dir - List current directory",
+    "content": "DIR",
+    "group": "Dos",
+    "description": "dir: List files and directories. (List current directory)",
+    "tags": [
+      "dos",
+      "dir",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-dir-1",
+    "type": "command",
+    "title": "dir - Pause per page",
+    "content": "DIR /p",
+    "group": "Dos",
+    "description": "dir: List files and directories. (Pause per page)",
+    "tags": [
+      "dos",
+      "dir",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-dir-2",
+    "type": "command",
+    "title": "dir - Wide view",
+    "content": "DIR /w",
+    "group": "Dos",
+    "description": "dir: List files and directories. (Wide view)",
+    "tags": [
+      "dos",
+      "dir",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-boot-0",
+    "type": "command",
+    "title": "boot - Boot from floppy image",
+    "content": "BOOT {{path/to/floppy.img}}",
+    "group": "Dos",
+    "description": "boot: Boot floppy or hard disk images directly, bypassing OS emulation. (Boot from floppy image)",
+    "tags": [
+      "dos",
+      "boot",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-boot-1",
+    "type": "command",
+    "title": "boot - Boot from hard disk image",
+    "content": "BOOT {{path/to/hard_disk.img}}",
+    "group": "Dos",
+    "description": "boot: Boot floppy or hard disk images directly, bypassing OS emulation. (Boot from hard disk image)",
+    "tags": [
+      "dos",
+      "boot",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-boot-2",
+    "type": "command",
+    "title": "boot - Boot multiple floppy images",
+    "content": "BOOT {{path/to/floppy1.img path/to/floppy2.img ...}}",
+    "group": "Dos",
+    "description": "boot: Boot floppy or hard disk images directly, bypassing OS emulation. (Boot multiple floppy images)",
+    "tags": [
+      "dos",
+      "boot",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-choice-0",
+    "type": "command",
+    "title": "choice - Prompt for yes/no",
+    "content": "CHOICE \"{{prompt}}\"",
+    "group": "Dos",
+    "description": "choice: Wait for keypress and set `ERRORLEVEL` in batch scripts. (Prompt for yes/no)",
+    "tags": [
+      "dos",
+      "choice",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-cls-0",
+    "type": "command",
+    "title": "cls - Clear the screen resetting colors to white on black",
+    "content": "CLS",
+    "group": "Dos",
+    "description": "cls: Clear the screen and reset colors. (Clear the screen resetting colors to white on black)",
+    "tags": [
+      "dos",
+      "cls",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-loadfix-0",
+    "type": "command",
+    "title": "loadfix - Start a program with 64KB allocated memory",
+    "content": "LOADFIX {{program}}",
+    "group": "Dos",
+    "description": "loadfix: Reduce available conventional memory for old programs (default: 64KB). (Start a program with 64KB allocated memory)",
+    "tags": [
+      "dos",
+      "loadfix",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-loadfix-1",
+    "type": "command",
+    "title": "loadfix - Load with custom KB reduction (1-1024)",
+    "content": "LOADFIX -{{32}} {{program}}",
+    "group": "Dos",
+    "description": "loadfix: Reduce available conventional memory for old programs (default: 64KB). (Load with custom KB reduction (1-1024))",
+    "tags": [
+      "dos",
+      "loadfix",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-loadfix-2",
+    "type": "command",
+    "title": "loadfix - Free all previously allocated memory",
+    "content": "LOADFIX -f",
+    "group": "Dos",
+    "description": "loadfix: Reduce available conventional memory for old programs (default: 64KB). (Free all previously allocated memory)",
+    "tags": [
+      "dos",
+      "loadfix",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-dos-del-0",
     "type": "command",
     "title": "del - Delete a file",
@@ -210,111 +510,6 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-dos-copy-0",
-    "type": "command",
-    "title": "copy - Copy a file",
-    "content": "COPY {{path/to/source_file}} {{path/to/destination_file}}",
-    "group": "Dos",
-    "description": "copy: Copy files. (Copy a file)",
-    "tags": [
-      "dos",
-      "copy",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-mem-0",
-    "type": "command",
-    "title": "mem - Display free memory",
-    "content": "MEM",
-    "group": "Dos",
-    "description": "mem: Display free memory info. (Display free memory)",
-    "tags": [
-      "dos",
-      "mem",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-imgmount-0",
-    "type": "command",
-    "title": "imgmount - Mount floppy",
-    "content": "IMGMOUNT a {{floppy.img}}",
-    "group": "Dos",
-    "description": "imgmount: Mount disk or CD-ROM images. (Mount floppy)",
-    "tags": [
-      "dos",
-      "imgmount",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-imgmount-1",
-    "type": "command",
-    "title": "imgmount - Mount CD-ROM",
-    "content": "IMGMOUNT d {{cd.iso}}",
-    "group": "Dos",
-    "description": "imgmount: Mount disk or CD-ROM images. (Mount CD-ROM)",
-    "tags": [
-      "dos",
-      "imgmount",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-exit-0",
-    "type": "command",
-    "title": "exit - Exit DOSBox",
-    "content": "EXIT",
-    "group": "Dos",
-    "description": "exit: Exit DOSBox. (Exit DOSBox)",
-    "tags": [
-      "dos",
-      "exit",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-chdir-0",
-    "type": "command",
-    "title": "chdir - View documentation for the original command",
-    "content": "tldr {{[-p|--platform]}} dos cd",
-    "group": "Dos",
-    "description": "chdir: This command is an alias of `CD`. (View documentation for the original command)",
-    "tags": [
-      "dos",
-      "chdir",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-ren-0",
-    "type": "command",
-    "title": "ren - Rename file",
-    "content": "REN {{path/to/file}} {{new_name}}",
-    "group": "Dos",
-    "description": "ren: Rename files (use for moving too). (Rename file)",
-    "tags": [
-      "dos",
-      "ren",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-en-dos-rd-0",
     "type": "command",
     "title": "rd - Remove directory",
@@ -330,90 +525,120 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-dos-config-0",
+    "id": "tldr-en-dos-ver-0",
     "type": "command",
-    "title": "config - Write current config to file (local drive)",
-    "content": "CONFIG -writeconf {{path/to/file.conf}}",
+    "title": "ver - Set version",
+    "content": "VER set {{major_version}} {{minor_version}}",
     "group": "Dos",
-    "description": "config: Change or query DOSBox settings at runtime; save configs/languages. (Write current config to file (local drive))",
+    "description": "ver: View/set reported DOS version. (Set version)",
     "tags": [
       "dos",
-      "config",
+      "ver",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-dos-config-1",
+    "id": "tldr-en-dos-mount-0",
     "type": "command",
-    "title": "config - Write current language strings to file",
-    "content": "CONFIG -writelang {{path/to/file.lang}}",
+    "title": "mount - Mount current directory as C",
+    "content": "MOUNT C .",
     "group": "Dos",
-    "description": "config: Change or query DOSBox settings at runtime; save configs/languages. (Write current language strings to file)",
+    "description": "mount: Mount host directories/drives/images as virtual DOS drives. (Mount current directory as C)",
     "tags": [
       "dos",
-      "config",
+      "mount",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-dos-config-2",
+    "id": "tldr-en-dos-mount-1",
     "type": "command",
-    "title": "config - Enable secure mode (disables MOUNT/IMGMOUNT/BOOT)",
-    "content": "CONFIG -securemode",
+    "title": "mount - Mount specific directory as C",
+    "content": "MOUNT C {{C:\\path\\to\\directory}}",
     "group": "Dos",
-    "description": "config: Change or query DOSBox settings at runtime; save configs/languages. (Enable secure mode (disables MOUNT/IMGMOUNT/BOOT))",
+    "description": "mount: Mount host directories/drives/images as virtual DOS drives. (Mount specific directory as C)",
     "tags": [
       "dos",
-      "config",
+      "mount",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-dos-config-3",
+    "id": "tldr-en-dos-mount-2",
     "type": "command",
-    "title": "config - Set a property (e.g., CPU cycles)",
-    "content": "CONFIG -set \"cpu cycles={{10000}}\"",
+    "title": "mount - Mount with free space limit (MB)",
+    "content": "MOUNT C {{C:\\path\\to\\directory}} -freesize {{1024}}",
     "group": "Dos",
-    "description": "config: Change or query DOSBox settings at runtime; save configs/languages. (Set a property (e.g., CPU cycles))",
+    "description": "mount: Mount host directories/drives/images as virtual DOS drives. (Mount with free space limit (MB))",
     "tags": [
       "dos",
-      "config",
+      "mount",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-dos-config-4",
+    "id": "tldr-en-dos-mount-3",
     "type": "command",
-    "title": "config - Set property (e.g., disable EMS)",
-    "content": "CONFIG -set \"dos ems=off\"",
+    "title": "mount - Mount floppy drive",
+    "content": "MOUNT A {{A:\\}} -t floppy",
     "group": "Dos",
-    "description": "config: Change or query DOSBox settings at runtime; save configs/languages. (Set property (e.g., disable EMS))",
+    "description": "mount: Mount host directories/drives/images as virtual DOS drives. (Mount floppy drive)",
     "tags": [
       "dos",
-      "config",
+      "mount",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-dos-config-5",
+    "id": "tldr-en-dos-mount-4",
     "type": "command",
-    "title": "config - Get property value (stored in `%CONFIG%`)",
-    "content": "CONFIG -get \"cpu core\"",
+    "title": "mount - Mount CD-ROM drive",
+    "content": "MOUNT D {{D:\\}} -t cdrom",
     "group": "Dos",
-    "description": "config: Change or query DOSBox settings at runtime; save configs/languages. (Get property value (stored in `%CONFIG%`))",
+    "description": "mount: Mount host directories/drives/images as virtual DOS drives. (Mount CD-ROM drive)",
     "tags": [
       "dos",
-      "config",
+      "mount",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-mount-5",
+    "type": "command",
+    "title": "mount - Mount CD with extra options",
+    "content": "MOUNT D {{D:\\}} -t cdrom -usecd {{0}} -ioctl",
+    "group": "Dos",
+    "description": "mount: Mount host directories/drives/images as virtual DOS drives. (Mount CD with extra options)",
+    "tags": [
+      "dos",
+      "mount",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-dos-mount-6",
+    "type": "command",
+    "title": "mount - Unmount drive",
+    "content": "MOUNT -u {{C}}",
+    "group": "Dos",
+    "description": "mount: Mount host directories/drives/images as virtual DOS drives. (Unmount drive)",
+    "tags": [
+      "dos",
+      "mount",
       "tldr",
       "en"
     ],
@@ -540,180 +765,45 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-dos-cls-0",
+    "id": "tldr-en-dos-cd-0",
     "type": "command",
-    "title": "cls - Clear the screen resetting colors to white on black",
-    "content": "CLS",
+    "title": "cd - Go to the specified directory",
+    "content": "CD {{PATH\\TO\\DIRECTORY}}",
     "group": "Dos",
-    "description": "cls: Clear the screen and reset colors. (Clear the screen resetting colors to white on black)",
+    "description": "cd: Change the current working directory. (Go to the specified directory)",
     "tags": [
       "dos",
-      "cls",
+      "cd",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-dos-dir-0",
+    "id": "tldr-en-dos-cd-1",
     "type": "command",
-    "title": "dir - List current directory",
-    "content": "DIR",
+    "title": "cd - Go up to the parent of the current directory",
+    "content": "CD ..",
     "group": "Dos",
-    "description": "dir: List files and directories. (List current directory)",
+    "description": "cd: Change the current working directory. (Go up to the parent of the current directory)",
     "tags": [
       "dos",
-      "dir",
+      "cd",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-dos-dir-1",
+    "id": "tldr-en-dos-cd-2",
     "type": "command",
-    "title": "dir - Pause per page",
-    "content": "DIR /p",
+    "title": "cd - Go to the root directory of the current drive",
+    "content": "CD \\",
     "group": "Dos",
-    "description": "dir: List files and directories. (Pause per page)",
+    "description": "cd: Change the current working directory. (Go to the root directory of the current drive)",
     "tags": [
       "dos",
-      "dir",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-dir-2",
-    "type": "command",
-    "title": "dir - Wide view",
-    "content": "DIR /w",
-    "group": "Dos",
-    "description": "dir: List files and directories. (Wide view)",
-    "tags": [
-      "dos",
-      "dir",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-mount-0",
-    "type": "command",
-    "title": "mount - Mount current directory as C",
-    "content": "MOUNT C .",
-    "group": "Dos",
-    "description": "mount: Mount host directories/drives/images as virtual DOS drives. (Mount current directory as C)",
-    "tags": [
-      "dos",
-      "mount",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-mount-1",
-    "type": "command",
-    "title": "mount - Mount specific directory as C",
-    "content": "MOUNT C {{C:\\path\\to\\directory}}",
-    "group": "Dos",
-    "description": "mount: Mount host directories/drives/images as virtual DOS drives. (Mount specific directory as C)",
-    "tags": [
-      "dos",
-      "mount",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-mount-2",
-    "type": "command",
-    "title": "mount - Mount with free space limit (MB)",
-    "content": "MOUNT C {{C:\\path\\to\\directory}} -freesize {{1024}}",
-    "group": "Dos",
-    "description": "mount: Mount host directories/drives/images as virtual DOS drives. (Mount with free space limit (MB))",
-    "tags": [
-      "dos",
-      "mount",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-mount-3",
-    "type": "command",
-    "title": "mount - Mount floppy drive",
-    "content": "MOUNT A {{A:\\}} -t floppy",
-    "group": "Dos",
-    "description": "mount: Mount host directories/drives/images as virtual DOS drives. (Mount floppy drive)",
-    "tags": [
-      "dos",
-      "mount",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-mount-4",
-    "type": "command",
-    "title": "mount - Mount CD-ROM drive",
-    "content": "MOUNT D {{D:\\}} -t cdrom",
-    "group": "Dos",
-    "description": "mount: Mount host directories/drives/images as virtual DOS drives. (Mount CD-ROM drive)",
-    "tags": [
-      "dos",
-      "mount",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-mount-5",
-    "type": "command",
-    "title": "mount - Mount CD with extra options",
-    "content": "MOUNT D {{D:\\}} -t cdrom -usecd {{0}} -ioctl",
-    "group": "Dos",
-    "description": "mount: Mount host directories/drives/images as virtual DOS drives. (Mount CD with extra options)",
-    "tags": [
-      "dos",
-      "mount",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-mount-6",
-    "type": "command",
-    "title": "mount - Unmount drive",
-    "content": "MOUNT -u {{C}}",
-    "group": "Dos",
-    "description": "mount: Mount host directories/drives/images as virtual DOS drives. (Unmount drive)",
-    "tags": [
-      "dos",
-      "mount",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-rescan-0",
-    "type": "command",
-    "title": "rescan - Refresh mounted drives",
-    "content": "RESCAN",
-    "group": "Dos",
-    "description": "rescan: Refresh mounted drives (like CTRL-F4). (Refresh mounted drives)",
-    "tags": [
-      "dos",
-      "rescan",
+      "cd",
       "tldr",
       "en"
     ],
@@ -810,150 +900,60 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-dos-keyb-0",
+    "id": "tldr-en-dos-copy-0",
     "type": "command",
-    "title": "keyb - Set layout",
-    "content": "KEYB {{us|uk|gr|...}}",
+    "title": "copy - Copy a file",
+    "content": "COPY {{path/to/source_file}} {{path/to/destination_file}}",
     "group": "Dos",
-    "description": "keyb: Change keyboard layout. (Set layout)",
+    "description": "copy: Copy files. (Copy a file)",
     "tags": [
       "dos",
-      "keyb",
+      "copy",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-dos-cd-0",
+    "id": "tldr-en-dos-imgmount-0",
     "type": "command",
-    "title": "cd - Go to the specified directory",
-    "content": "CD {{PATH\\TO\\DIRECTORY}}",
+    "title": "imgmount - Mount floppy",
+    "content": "IMGMOUNT a {{floppy.img}}",
     "group": "Dos",
-    "description": "cd: Change the current working directory. (Go to the specified directory)",
+    "description": "imgmount: Mount disk or CD-ROM images. (Mount floppy)",
     "tags": [
       "dos",
-      "cd",
+      "imgmount",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-dos-cd-1",
+    "id": "tldr-en-dos-imgmount-1",
     "type": "command",
-    "title": "cd - Go up to the parent of the current directory",
-    "content": "CD ..",
+    "title": "imgmount - Mount CD-ROM",
+    "content": "IMGMOUNT d {{cd.iso}}",
     "group": "Dos",
-    "description": "cd: Change the current working directory. (Go up to the parent of the current directory)",
+    "description": "imgmount: Mount disk or CD-ROM images. (Mount CD-ROM)",
     "tags": [
       "dos",
-      "cd",
+      "imgmount",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-dos-cd-2",
+    "id": "tldr-en-dos-mem-0",
     "type": "command",
-    "title": "cd - Go to the root directory of the current drive",
-    "content": "CD \\",
+    "title": "mem - Display free memory",
+    "content": "MEM",
     "group": "Dos",
-    "description": "cd: Change the current working directory. (Go to the root directory of the current drive)",
+    "description": "mem: Display free memory info. (Display free memory)",
     "tags": [
       "dos",
-      "cd",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-md-0",
-    "type": "command",
-    "title": "md - Create directory",
-    "content": "MD {{path/to/directory}}",
-    "group": "Dos",
-    "description": "md: Make a directory. (Create directory)",
-    "tags": [
-      "dos",
-      "md",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-set-0",
-    "type": "command",
-    "title": "set - Set variable",
-    "content": "SET {{VAR}}={{value}}",
-    "group": "Dos",
-    "description": "set: Set/display environment variables. (Set variable)",
-    "tags": [
-      "dos",
-      "set",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-loadfix-0",
-    "type": "command",
-    "title": "loadfix - Start a program with 64KB allocated memory",
-    "content": "LOADFIX {{program}}",
-    "group": "Dos",
-    "description": "loadfix: Reduce available conventional memory for old programs (default: 64KB). (Start a program with 64KB allocated memory)",
-    "tags": [
-      "dos",
-      "loadfix",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-loadfix-1",
-    "type": "command",
-    "title": "loadfix - Load with custom KB reduction (1-1024)",
-    "content": "LOADFIX -{{32}} {{program}}",
-    "group": "Dos",
-    "description": "loadfix: Reduce available conventional memory for old programs (default: 64KB). (Load with custom KB reduction (1-1024))",
-    "tags": [
-      "dos",
-      "loadfix",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-loadfix-2",
-    "type": "command",
-    "title": "loadfix - Free all previously allocated memory",
-    "content": "LOADFIX -f",
-    "group": "Dos",
-    "description": "loadfix: Reduce available conventional memory for old programs (default: 64KB). (Free all previously allocated memory)",
-    "tags": [
-      "dos",
-      "loadfix",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-dos-type-0",
-    "type": "command",
-    "title": "type - Show file",
-    "content": "TYPE {{path/to/file.txt}}",
-    "group": "Dos",
-    "description": "type: Display the contents of a text file. (Show file)",
-    "tags": [
-      "dos",
-      "type",
+      "mem",
       "tldr",
       "en"
     ],

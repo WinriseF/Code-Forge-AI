@@ -1,5 +1,95 @@
 [
   {
+    "id": "tldr-en-freebsd-pfctl-0",
+    "type": "command",
+    "title": "pfctl - Enable the packet filter",
+    "content": "sudo pfctl -e",
+    "group": "Freebsd",
+    "description": "pfctl: Control the packet filter device. (Enable the packet filter)",
+    "tags": [
+      "freebsd",
+      "pfctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-pfctl-1",
+    "type": "command",
+    "title": "pfctl - Disable the packet filter",
+    "content": "sudo pfctl -d",
+    "group": "Freebsd",
+    "description": "pfctl: Control the packet filter device. (Disable the packet filter)",
+    "tags": [
+      "freebsd",
+      "pfctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-pfctl-2",
+    "type": "command",
+    "title": "pfctl - Load rules from a configuration file",
+    "content": "sudo pfctl -f {{path/to/pf.conf}}",
+    "group": "Freebsd",
+    "description": "pfctl: Control the packet filter device. (Load rules from a configuration file)",
+    "tags": [
+      "freebsd",
+      "pfctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-pfctl-3",
+    "type": "command",
+    "title": "pfctl - Show all active rules",
+    "content": "pfctl -sr",
+    "group": "Freebsd",
+    "description": "pfctl: Control the packet filter device. (Show all active rules)",
+    "tags": [
+      "freebsd",
+      "pfctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-pfctl-4",
+    "type": "command",
+    "title": "pfctl - Show packet filter status information",
+    "content": "pfctl -s info",
+    "group": "Freebsd",
+    "description": "pfctl: Control the packet filter device. (Show packet filter status information)",
+    "tags": [
+      "freebsd",
+      "pfctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-pfctl-5",
+    "type": "command",
+    "title": "pfctl - Flush all rules",
+    "content": "sudo pfctl -F rules",
+    "group": "Freebsd",
+    "description": "pfctl: Control the packet filter device. (Flush all rules)",
+    "tags": [
+      "freebsd",
+      "pfctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-freebsd-chpass-0",
     "type": "command",
     "title": "chpass - Add or change user database information for the current user interactively",
@@ -99,6 +189,291 @@
     "tags": [
       "freebsd",
       "chpass",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-sed-0",
+    "type": "command",
+    "title": "sed - Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in all input lines and print the result to `stdout`",
+    "content": "{{command}} | sed 's/apple/mango/g'",
+    "group": "Freebsd",
+    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in all input lines and print the result to `stdout`)",
+    "tags": [
+      "freebsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-sed-1",
+    "type": "command",
+    "title": "sed - Execute a specific script [f]ile and print the result to `stdout`",
+    "content": "{{command}} | sed -f {{path/to/script.sed}}",
+    "group": "Freebsd",
+    "description": "sed: Edit text in a scriptable manner. (Execute a specific script [f]ile and print the result to `stdout`)",
+    "tags": [
+      "freebsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-sed-2",
+    "type": "command",
+    "title": "sed - Delay opening each file until a command containing the related `w` function or flag is applied to a line of input",
+    "content": "{{command}} | sed -fa {{path/to/script.sed}}",
+    "group": "Freebsd",
+    "description": "sed: Edit text in a scriptable manner. (Delay opening each file until a command containing the related `w` function or flag is applied to a line of input)",
+    "tags": [
+      "freebsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-sed-3",
+    "type": "command",
+    "title": "sed - Replace all `apple` (extended `regex`) occurrences with `APPLE` (extended `regex`) in all input lines and print the result to `stdout`",
+    "content": "{{command}} | sed -E 's/(apple)/\\U\\1/g'",
+    "group": "Freebsd",
+    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (extended `regex`) occurrences with `APPLE` (extended `regex`) in all input lines and print the result to `stdout`)",
+    "tags": [
+      "freebsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-sed-4",
+    "type": "command",
+    "title": "sed - Print just a first line to `stdout`",
+    "content": "{{command}} | sed -n '1p'",
+    "group": "Freebsd",
+    "description": "sed: Edit text in a scriptable manner. (Print just a first line to `stdout`)",
+    "tags": [
+      "freebsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-sed-5",
+    "type": "command",
+    "title": "sed - Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in a specific file and overwrite the original file in place",
+    "content": "sed -i 's/apple/mango/g' {{path/to/file}}",
+    "group": "Freebsd",
+    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in a specific file and overwrite the original file in place)",
+    "tags": [
+      "freebsd",
+      "sed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-pkg-0",
+    "type": "command",
+    "title": "pkg - Install a new package",
+    "content": "pkg install {{package}}",
+    "group": "Freebsd",
+    "description": "pkg: FreeBSD package manager. (Install a new package)",
+    "tags": [
+      "freebsd",
+      "pkg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-pkg-1",
+    "type": "command",
+    "title": "pkg - Delete a package",
+    "content": "pkg delete {{package}}",
+    "group": "Freebsd",
+    "description": "pkg: FreeBSD package manager. (Delete a package)",
+    "tags": [
+      "freebsd",
+      "pkg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-pkg-2",
+    "type": "command",
+    "title": "pkg - Upgrade all packages",
+    "content": "pkg upgrade",
+    "group": "Freebsd",
+    "description": "pkg: FreeBSD package manager. (Upgrade all packages)",
+    "tags": [
+      "freebsd",
+      "pkg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-pkg-3",
+    "type": "command",
+    "title": "pkg - Search for a package",
+    "content": "pkg search {{keyword}}",
+    "group": "Freebsd",
+    "description": "pkg: FreeBSD package manager. (Search for a package)",
+    "tags": [
+      "freebsd",
+      "pkg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-pkg-4",
+    "type": "command",
+    "title": "pkg - List installed packages",
+    "content": "pkg info",
+    "group": "Freebsd",
+    "description": "pkg: FreeBSD package manager. (List installed packages)",
+    "tags": [
+      "freebsd",
+      "pkg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-pkg-5",
+    "type": "command",
+    "title": "pkg - Remove unneeded dependencies",
+    "content": "pkg autoremove",
+    "group": "Freebsd",
+    "description": "pkg: FreeBSD package manager. (Remove unneeded dependencies)",
+    "tags": [
+      "freebsd",
+      "pkg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-look-0",
+    "type": "command",
+    "title": "look - Search for lines beginning with a specific prefix in a specific file",
+    "content": "look {{prefix}} {{path/to/file}}",
+    "group": "Freebsd",
+    "description": "look: Display lines beginning with a prefix in a sorted file. (Search for lines beginning with a specific prefix in a specific file)",
+    "tags": [
+      "freebsd",
+      "look",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-look-1",
+    "type": "command",
+    "title": "look - Case-insensitively search only on alphanumeric characters",
+    "content": "look {{[-f|--ignore-case]}} {{[-d|--alphanum]}} {{prefix}} {{path/to/file}}",
+    "group": "Freebsd",
+    "description": "look: Display lines beginning with a prefix in a sorted file. (Case-insensitively search only on alphanumeric characters)",
+    "tags": [
+      "freebsd",
+      "look",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-look-2",
+    "type": "command",
+    "title": "look - Specify a string termination character (space by default)",
+    "content": "look {{[-t|--terminate]}} {{,}}",
+    "group": "Freebsd",
+    "description": "look: Display lines beginning with a prefix in a sorted file. (Specify a string termination character (space by default))",
+    "tags": [
+      "freebsd",
+      "look",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-look-3",
+    "type": "command",
+    "title": "look - Search in `/usr/share/dict/words` (`--ignore-case` and `--alphanum` are assumed)",
+    "content": "look {{prefix}}",
+    "group": "Freebsd",
+    "description": "look: Display lines beginning with a prefix in a sorted file. (Search in `/usr/share/dict/words` (`--ignore-case` and `--alphanum` are assumed))",
+    "tags": [
+      "freebsd",
+      "look",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-chsh-0",
+    "type": "command",
+    "title": "chsh - View documentation for the original command",
+    "content": "tldr chpass",
+    "group": "Freebsd",
+    "description": "chsh: This command is an alias of `chpass`. (View documentation for the original command)",
+    "tags": [
+      "freebsd",
+      "chsh",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-ypchfn-0",
+    "type": "command",
+    "title": "ypchfn - View documentation for the original command",
+    "content": "tldr chpass",
+    "group": "Freebsd",
+    "description": "ypchfn: This command is an alias of `chpass`. (View documentation for the original command)",
+    "tags": [
+      "freebsd",
+      "ypchfn",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-ypchsh-0",
+    "type": "command",
+    "title": "ypchsh - View documentation for the original command",
+    "content": "tldr chpass",
+    "group": "Freebsd",
+    "description": "ypchsh: This command is an alias of `chpass`. (View documentation for the original command)",
+    "tags": [
+      "freebsd",
+      "ypchsh",
       "tldr",
       "en"
     ],
@@ -270,111 +645,6 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-freebsd-cal-0",
-    "type": "command",
-    "title": "cal - Display a calendar for the current month",
-    "content": "cal",
-    "group": "Freebsd",
-    "description": "cal: Display a calendar with the current day highlighted. (Display a calendar for the current month)",
-    "tags": [
-      "freebsd",
-      "cal",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-cal-1",
-    "type": "command",
-    "title": "cal - Display a calendar for a specific year",
-    "content": "cal {{year}}",
-    "group": "Freebsd",
-    "description": "cal: Display a calendar with the current day highlighted. (Display a calendar for a specific year)",
-    "tags": [
-      "freebsd",
-      "cal",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-cal-2",
-    "type": "command",
-    "title": "cal - Display a calendar for a specific month and year",
-    "content": "cal {{month}} {{year}}",
-    "group": "Freebsd",
-    "description": "cal: Display a calendar with the current day highlighted. (Display a calendar for a specific month and year)",
-    "tags": [
-      "freebsd",
-      "cal",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-cal-3",
-    "type": "command",
-    "title": "cal - Display the whole calendar for the current year",
-    "content": "cal -y",
-    "group": "Freebsd",
-    "description": "cal: Display a calendar with the current day highlighted. (Display the whole calendar for the current year)",
-    "tags": [
-      "freebsd",
-      "cal",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-cal-4",
-    "type": "command",
-    "title": "cal - Don't [h]ighlight today and display [3] months spanning the date",
-    "content": "cal -h -3 {{month}} {{year}}",
-    "group": "Freebsd",
-    "description": "cal: Display a calendar with the current day highlighted. (Don't [h]ighlight today and display [3] months spanning the date)",
-    "tags": [
-      "freebsd",
-      "cal",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-cal-5",
-    "type": "command",
-    "title": "cal - Display the 2 months [B]efore and 3 [A]fter a specific [m]onth of the current year",
-    "content": "cal -A 3 -B 2 {{month}}",
-    "group": "Freebsd",
-    "description": "cal: Display a calendar with the current day highlighted. (Display the 2 months [B]efore and 3 [A]fter a specific [m]onth of the current year)",
-    "tags": [
-      "freebsd",
-      "cal",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-cal-6",
-    "type": "command",
-    "title": "cal - Display [j]ulian days (starting from one, numbered from January 1)",
-    "content": "cal -j",
-    "group": "Freebsd",
-    "description": "cal: Display a calendar with the current day highlighted. (Display [j]ulian days (starting from one, numbered from January 1))",
-    "tags": [
-      "freebsd",
-      "cal",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-en-freebsd-chfn-0",
     "type": "command",
     "title": "chfn - View documentation for the original command",
@@ -384,171 +654,6 @@
     "tags": [
       "freebsd",
       "chfn",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-procstat-0",
-    "type": "command",
-    "title": "procstat - Display file descriptors of a specific process",
-    "content": "procstat fds {{pid}}",
-    "group": "Freebsd",
-    "description": "procstat: Display detailed information about processes in FreeBSD. (Display file descriptors of a specific process)",
-    "tags": [
-      "freebsd",
-      "procstat",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-procstat-1",
-    "type": "command",
-    "title": "procstat - Show virtual memory mappings of a process",
-    "content": "procstat vm {{pid}}",
-    "group": "Freebsd",
-    "description": "procstat: Display detailed information about processes in FreeBSD. (Show virtual memory mappings of a process)",
-    "tags": [
-      "freebsd",
-      "procstat",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-procstat-2",
-    "type": "command",
-    "title": "procstat - Display process arguments",
-    "content": "procstat arguments {{pid}}",
-    "group": "Freebsd",
-    "description": "procstat: Display detailed information about processes in FreeBSD. (Display process arguments)",
-    "tags": [
-      "freebsd",
-      "procstat",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-procstat-3",
-    "type": "command",
-    "title": "procstat - Show resource limits of a process",
-    "content": "procstat rlimit {{pid}}",
-    "group": "Freebsd",
-    "description": "procstat: Display detailed information about processes in FreeBSD. (Show resource limits of a process)",
-    "tags": [
-      "freebsd",
-      "procstat",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-ypchsh-0",
-    "type": "command",
-    "title": "ypchsh - View documentation for the original command",
-    "content": "tldr chpass",
-    "group": "Freebsd",
-    "description": "ypchsh: This command is an alias of `chpass`. (View documentation for the original command)",
-    "tags": [
-      "freebsd",
-      "ypchsh",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-base64-0",
-    "type": "command",
-    "title": "base64 - Encode a file to `stdout`",
-    "content": "base64 {{[-i|--input]}} {{path/to/file}}",
-    "group": "Freebsd",
-    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout` or another file. (Encode a file to `stdout`)",
-    "tags": [
-      "freebsd",
-      "base64",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-base64-1",
-    "type": "command",
-    "title": "base64 - Encode a file to the specified output file",
-    "content": "base64 {{[-i|--input]}} {{path/to/input_file}} {{[-o|--output]}} {{path/to/output_file}}",
-    "group": "Freebsd",
-    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout` or another file. (Encode a file to the specified output file)",
-    "tags": [
-      "freebsd",
-      "base64",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-base64-2",
-    "type": "command",
-    "title": "base64 - Wrap encoded output at a specific width (`0` disables wrapping)",
-    "content": "base64 {{[-b|--break]}} {{0|76|...}} {{path/to/file}}",
-    "group": "Freebsd",
-    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout` or another file. (Wrap encoded output at a specific width (`0` disables wrapping))",
-    "tags": [
-      "freebsd",
-      "base64",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-base64-3",
-    "type": "command",
-    "title": "base64 - Decode a file to `stdout`",
-    "content": "base64 {{[-d|--decode]}} {{[-i|--input]}} {{path/to/file}}",
-    "group": "Freebsd",
-    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout` or another file. (Decode a file to `stdout`)",
-    "tags": [
-      "freebsd",
-      "base64",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-base64-4",
-    "type": "command",
-    "title": "base64 - Encode from `stdin` to `stdout`",
-    "content": "{{command}} | base64",
-    "group": "Freebsd",
-    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout` or another file. (Encode from `stdin` to `stdout`)",
-    "tags": [
-      "freebsd",
-      "base64",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-base64-5",
-    "type": "command",
-    "title": "base64 - Decode from `stdin` to `stdout`",
-    "content": "{{command}} | base64 {{[-d|--decode]}}",
-    "group": "Freebsd",
-    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout` or another file. (Decode from `stdin` to `stdout`)",
-    "tags": [
-      "freebsd",
-      "base64",
       "tldr",
       "en"
     ],
@@ -660,270 +765,150 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-freebsd-chsh-0",
+    "id": "tldr-en-freebsd-procstat-0",
     "type": "command",
-    "title": "chsh - View documentation for the original command",
-    "content": "tldr chpass",
+    "title": "procstat - Display file descriptors of a specific process",
+    "content": "procstat fds {{pid}}",
     "group": "Freebsd",
-    "description": "chsh: This command is an alias of `chpass`. (View documentation for the original command)",
+    "description": "procstat: Display detailed information about processes in FreeBSD. (Display file descriptors of a specific process)",
     "tags": [
       "freebsd",
-      "chsh",
+      "procstat",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-freebsd-sed-0",
+    "id": "tldr-en-freebsd-procstat-1",
     "type": "command",
-    "title": "sed - Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in all input lines and print the result to `stdout`",
-    "content": "{{command}} | sed 's/apple/mango/g'",
+    "title": "procstat - Show virtual memory mappings of a process",
+    "content": "procstat vm {{pid}}",
     "group": "Freebsd",
-    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in all input lines and print the result to `stdout`)",
+    "description": "procstat: Display detailed information about processes in FreeBSD. (Show virtual memory mappings of a process)",
     "tags": [
       "freebsd",
-      "sed",
+      "procstat",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-freebsd-sed-1",
+    "id": "tldr-en-freebsd-procstat-2",
     "type": "command",
-    "title": "sed - Execute a specific script [f]ile and print the result to `stdout`",
-    "content": "{{command}} | sed -f {{path/to/script.sed}}",
+    "title": "procstat - Display process arguments",
+    "content": "procstat arguments {{pid}}",
     "group": "Freebsd",
-    "description": "sed: Edit text in a scriptable manner. (Execute a specific script [f]ile and print the result to `stdout`)",
+    "description": "procstat: Display detailed information about processes in FreeBSD. (Display process arguments)",
     "tags": [
       "freebsd",
-      "sed",
+      "procstat",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-freebsd-sed-2",
+    "id": "tldr-en-freebsd-procstat-3",
     "type": "command",
-    "title": "sed - Delay opening each file until a command containing the related `w` function or flag is applied to a line of input",
-    "content": "{{command}} | sed -fa {{path/to/script.sed}}",
+    "title": "procstat - Show resource limits of a process",
+    "content": "procstat rlimit {{pid}}",
     "group": "Freebsd",
-    "description": "sed: Edit text in a scriptable manner. (Delay opening each file until a command containing the related `w` function or flag is applied to a line of input)",
+    "description": "procstat: Display detailed information about processes in FreeBSD. (Show resource limits of a process)",
     "tags": [
       "freebsd",
-      "sed",
+      "procstat",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-freebsd-sed-3",
+    "id": "tldr-en-freebsd-base64-0",
     "type": "command",
-    "title": "sed - Replace all `apple` (extended `regex`) occurrences with `APPLE` (extended `regex`) in all input lines and print the result to `stdout`",
-    "content": "{{command}} | sed -E 's/(apple)/\\U\\1/g'",
+    "title": "base64 - Encode a file to `stdout`",
+    "content": "base64 {{[-i|--input]}} {{path/to/file}}",
     "group": "Freebsd",
-    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (extended `regex`) occurrences with `APPLE` (extended `regex`) in all input lines and print the result to `stdout`)",
+    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout` or another file. (Encode a file to `stdout`)",
     "tags": [
       "freebsd",
-      "sed",
+      "base64",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-freebsd-sed-4",
+    "id": "tldr-en-freebsd-base64-1",
     "type": "command",
-    "title": "sed - Print just a first line to `stdout`",
-    "content": "{{command}} | sed -n '1p'",
+    "title": "base64 - Encode a file to the specified output file",
+    "content": "base64 {{[-i|--input]}} {{path/to/input_file}} {{[-o|--output]}} {{path/to/output_file}}",
     "group": "Freebsd",
-    "description": "sed: Edit text in a scriptable manner. (Print just a first line to `stdout`)",
+    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout` or another file. (Encode a file to the specified output file)",
     "tags": [
       "freebsd",
-      "sed",
+      "base64",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-freebsd-sed-5",
+    "id": "tldr-en-freebsd-base64-2",
     "type": "command",
-    "title": "sed - Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in a specific file and overwrite the original file in place",
-    "content": "sed -i 's/apple/mango/g' {{path/to/file}}",
+    "title": "base64 - Wrap encoded output at a specific width (`0` disables wrapping)",
+    "content": "base64 {{[-b|--break]}} {{0|76|...}} {{path/to/file}}",
     "group": "Freebsd",
-    "description": "sed: Edit text in a scriptable manner. (Replace all `apple` (basic `regex`) occurrences with `mango` (basic `regex`) in a specific file and overwrite the original file in place)",
+    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout` or another file. (Wrap encoded output at a specific width (`0` disables wrapping))",
     "tags": [
       "freebsd",
-      "sed",
+      "base64",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-freebsd-pfctl-0",
+    "id": "tldr-en-freebsd-base64-3",
     "type": "command",
-    "title": "pfctl - Enable the packet filter",
-    "content": "sudo pfctl -e",
+    "title": "base64 - Decode a file to `stdout`",
+    "content": "base64 {{[-d|--decode]}} {{[-i|--input]}} {{path/to/file}}",
     "group": "Freebsd",
-    "description": "pfctl: Control the packet filter device. (Enable the packet filter)",
+    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout` or another file. (Decode a file to `stdout`)",
     "tags": [
       "freebsd",
-      "pfctl",
+      "base64",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-freebsd-pfctl-1",
+    "id": "tldr-en-freebsd-base64-4",
     "type": "command",
-    "title": "pfctl - Disable the packet filter",
-    "content": "sudo pfctl -d",
+    "title": "base64 - Encode from `stdin` to `stdout`",
+    "content": "{{command}} | base64",
     "group": "Freebsd",
-    "description": "pfctl: Control the packet filter device. (Disable the packet filter)",
+    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout` or another file. (Encode from `stdin` to `stdout`)",
     "tags": [
       "freebsd",
-      "pfctl",
+      "base64",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-freebsd-pfctl-2",
+    "id": "tldr-en-freebsd-base64-5",
     "type": "command",
-    "title": "pfctl - Load rules from a configuration file",
-    "content": "sudo pfctl -f {{path/to/pf.conf}}",
+    "title": "base64 - Decode from `stdin` to `stdout`",
+    "content": "{{command}} | base64 {{[-d|--decode]}}",
     "group": "Freebsd",
-    "description": "pfctl: Control the packet filter device. (Load rules from a configuration file)",
+    "description": "base64: Encode or decode file or `stdin` to/from base64, to `stdout` or another file. (Decode from `stdin` to `stdout`)",
     "tags": [
       "freebsd",
-      "pfctl",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-pfctl-3",
-    "type": "command",
-    "title": "pfctl - Show all active rules",
-    "content": "pfctl -sr",
-    "group": "Freebsd",
-    "description": "pfctl: Control the packet filter device. (Show all active rules)",
-    "tags": [
-      "freebsd",
-      "pfctl",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-pfctl-4",
-    "type": "command",
-    "title": "pfctl - Show packet filter status information",
-    "content": "pfctl -s info",
-    "group": "Freebsd",
-    "description": "pfctl: Control the packet filter device. (Show packet filter status information)",
-    "tags": [
-      "freebsd",
-      "pfctl",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-pfctl-5",
-    "type": "command",
-    "title": "pfctl - Flush all rules",
-    "content": "sudo pfctl -F rules",
-    "group": "Freebsd",
-    "description": "pfctl: Control the packet filter device. (Flush all rules)",
-    "tags": [
-      "freebsd",
-      "pfctl",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-ypchfn-0",
-    "type": "command",
-    "title": "ypchfn - View documentation for the original command",
-    "content": "tldr chpass",
-    "group": "Freebsd",
-    "description": "ypchfn: This command is an alias of `chpass`. (View documentation for the original command)",
-    "tags": [
-      "freebsd",
-      "ypchfn",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-look-0",
-    "type": "command",
-    "title": "look - Search for lines beginning with a specific prefix in a specific file",
-    "content": "look {{prefix}} {{path/to/file}}",
-    "group": "Freebsd",
-    "description": "look: Display lines beginning with a prefix in a sorted file. (Search for lines beginning with a specific prefix in a specific file)",
-    "tags": [
-      "freebsd",
-      "look",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-look-1",
-    "type": "command",
-    "title": "look - Case-insensitively search only on alphanumeric characters",
-    "content": "look {{[-f|--ignore-case]}} {{[-d|--alphanum]}} {{prefix}} {{path/to/file}}",
-    "group": "Freebsd",
-    "description": "look: Display lines beginning with a prefix in a sorted file. (Case-insensitively search only on alphanumeric characters)",
-    "tags": [
-      "freebsd",
-      "look",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-look-2",
-    "type": "command",
-    "title": "look - Specify a string termination character (space by default)",
-    "content": "look {{[-t|--terminate]}} {{,}}",
-    "group": "Freebsd",
-    "description": "look: Display lines beginning with a prefix in a sorted file. (Specify a string termination character (space by default))",
-    "tags": [
-      "freebsd",
-      "look",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-freebsd-look-3",
-    "type": "command",
-    "title": "look - Search in `/usr/share/dict/words` (`--ignore-case` and `--alphanum` are assumed)",
-    "content": "look {{prefix}}",
-    "group": "Freebsd",
-    "description": "look: Display lines beginning with a prefix in a sorted file. (Search in `/usr/share/dict/words` (`--ignore-case` and `--alphanum` are assumed))",
-    "tags": [
-      "freebsd",
-      "look",
+      "base64",
       "tldr",
       "en"
     ],
@@ -945,90 +930,105 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-freebsd-pkg-0",
+    "id": "tldr-en-freebsd-cal-0",
     "type": "command",
-    "title": "pkg - Install a new package",
-    "content": "pkg install {{package}}",
+    "title": "cal - Display a calendar for the current month",
+    "content": "cal",
     "group": "Freebsd",
-    "description": "pkg: FreeBSD package manager. (Install a new package)",
+    "description": "cal: Display a calendar with the current day highlighted. (Display a calendar for the current month)",
     "tags": [
       "freebsd",
-      "pkg",
+      "cal",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-freebsd-pkg-1",
+    "id": "tldr-en-freebsd-cal-1",
     "type": "command",
-    "title": "pkg - Delete a package",
-    "content": "pkg delete {{package}}",
+    "title": "cal - Display a calendar for a specific year",
+    "content": "cal {{year}}",
     "group": "Freebsd",
-    "description": "pkg: FreeBSD package manager. (Delete a package)",
+    "description": "cal: Display a calendar with the current day highlighted. (Display a calendar for a specific year)",
     "tags": [
       "freebsd",
-      "pkg",
+      "cal",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-freebsd-pkg-2",
+    "id": "tldr-en-freebsd-cal-2",
     "type": "command",
-    "title": "pkg - Upgrade all packages",
-    "content": "pkg upgrade",
+    "title": "cal - Display a calendar for a specific month and year",
+    "content": "cal {{month}} {{year}}",
     "group": "Freebsd",
-    "description": "pkg: FreeBSD package manager. (Upgrade all packages)",
+    "description": "cal: Display a calendar with the current day highlighted. (Display a calendar for a specific month and year)",
     "tags": [
       "freebsd",
-      "pkg",
+      "cal",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-freebsd-pkg-3",
+    "id": "tldr-en-freebsd-cal-3",
     "type": "command",
-    "title": "pkg - Search for a package",
-    "content": "pkg search {{keyword}}",
+    "title": "cal - Display the whole calendar for the current year",
+    "content": "cal -y",
     "group": "Freebsd",
-    "description": "pkg: FreeBSD package manager. (Search for a package)",
+    "description": "cal: Display a calendar with the current day highlighted. (Display the whole calendar for the current year)",
     "tags": [
       "freebsd",
-      "pkg",
+      "cal",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-freebsd-pkg-4",
+    "id": "tldr-en-freebsd-cal-4",
     "type": "command",
-    "title": "pkg - List installed packages",
-    "content": "pkg info",
+    "title": "cal - Don't [h]ighlight today and display [3] months spanning the date",
+    "content": "cal -h -3 {{month}} {{year}}",
     "group": "Freebsd",
-    "description": "pkg: FreeBSD package manager. (List installed packages)",
+    "description": "cal: Display a calendar with the current day highlighted. (Don't [h]ighlight today and display [3] months spanning the date)",
     "tags": [
       "freebsd",
-      "pkg",
+      "cal",
       "tldr",
       "en"
     ],
     "source": "official"
   },
   {
-    "id": "tldr-en-freebsd-pkg-5",
+    "id": "tldr-en-freebsd-cal-5",
     "type": "command",
-    "title": "pkg - Remove unneeded dependencies",
-    "content": "pkg autoremove",
+    "title": "cal - Display the 2 months [B]efore and 3 [A]fter a specific [m]onth of the current year",
+    "content": "cal -A 3 -B 2 {{month}}",
     "group": "Freebsd",
-    "description": "pkg: FreeBSD package manager. (Remove unneeded dependencies)",
+    "description": "cal: Display a calendar with the current day highlighted. (Display the 2 months [B]efore and 3 [A]fter a specific [m]onth of the current year)",
     "tags": [
       "freebsd",
-      "pkg",
+      "cal",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-freebsd-cal-6",
+    "type": "command",
+    "title": "cal - Display [j]ulian days (starting from one, numbered from January 1)",
+    "content": "cal -j",
+    "group": "Freebsd",
+    "description": "cal: Display a calendar with the current day highlighted. (Display [j]ulian days (starting from one, numbered from January 1))",
+    "tags": [
+      "freebsd",
+      "cal",
       "tldr",
       "en"
     ],

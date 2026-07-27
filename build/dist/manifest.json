@@ -1,28 +1,17 @@
 {
-  "updated_at": 1784515864146,
+  "updated_at": 1785120476076,
   "version": "2.1.0",
   "packages": [
     {
-      "id": "en-roles",
-      "language": "en",
-      "platform": "llm",
-      "name": "ChatGPT Role Prompts",
-      "description": "Curated role-play prompts for ChatGPT and general LLM workflows.",
-      "count": 2042,
-      "size_kb": 5862.17,
-      "url": "packs/prompts/en/roles.json",
-      "category": "prompt"
-    },
-    {
-      "id": "zh-roles",
+      "id": "zh-common",
       "language": "zh",
-      "platform": "llm",
-      "name": "中文角色扮演提示词精选",
-      "description": "适用于 ChatGPT 和通用大语言模型的中文角色扮演提示词合集。",
-      "count": 124,
-      "size_kb": 95.58,
-      "url": "packs/prompts/zh/roles.json",
-      "category": "prompt"
+      "platform": "common",
+      "name": "通用工具 (Common) (ZH)",
+      "description": "Contains 3823 zh commands for common.",
+      "count": 3823,
+      "size_kb": 1865,
+      "url": "packs/commands/zh/common.json",
+      "category": "command"
     },
     {
       "id": "zh-osx",
@@ -36,17 +25,6 @@
       "category": "command"
     },
     {
-      "id": "zh-dos",
-      "language": "zh",
-      "platform": "dos",
-      "name": "Dos (ZH)",
-      "description": "Contains 11 zh commands for dos.",
-      "count": 11,
-      "size_kb": 4,
-      "url": "packs/commands/zh/dos.json",
-      "category": "command"
-    },
-    {
       "id": "zh-freebsd",
       "language": "zh",
       "platform": "freebsd",
@@ -55,6 +33,61 @@
       "count": 5,
       "size_kb": 2,
       "url": "packs/commands/zh/freebsd.json",
+      "category": "command"
+    },
+    {
+      "id": "zh-openbsd",
+      "language": "zh",
+      "platform": "openbsd",
+      "name": "Openbsd (ZH)",
+      "description": "Contains 2 zh commands for openbsd.",
+      "count": 2,
+      "size_kb": 1,
+      "url": "packs/commands/zh/openbsd.json",
+      "category": "command"
+    },
+    {
+      "id": "zh-linux",
+      "language": "zh",
+      "platform": "linux",
+      "name": "Linux 运维 (ZH)",
+      "description": "Contains 790 zh commands for linux.",
+      "count": 790,
+      "size_kb": 355,
+      "url": "packs/commands/zh/linux.json",
+      "category": "command"
+    },
+    {
+      "id": "zh-android",
+      "language": "zh",
+      "platform": "android",
+      "name": "Android 开发 (ZH)",
+      "description": "Contains 71 zh commands for android.",
+      "count": 71,
+      "size_kb": 31,
+      "url": "packs/commands/zh/android.json",
+      "category": "command"
+    },
+    {
+      "id": "zh-sunos",
+      "language": "zh",
+      "platform": "sunos",
+      "name": "SunOS (ZH)",
+      "description": "Contains 3 zh commands for sunos.",
+      "count": 3,
+      "size_kb": 1,
+      "url": "packs/commands/zh/sunos.json",
+      "category": "command"
+    },
+    {
+      "id": "zh-dos",
+      "language": "zh",
+      "platform": "dos",
+      "name": "Dos (ZH)",
+      "description": "Contains 11 zh commands for dos.",
+      "count": 11,
+      "size_kb": 4,
+      "url": "packs/commands/zh/dos.json",
       "category": "command"
     },
     {
@@ -80,58 +113,14 @@
       "category": "command"
     },
     {
-      "id": "zh-openbsd",
-      "language": "zh",
-      "platform": "openbsd",
-      "name": "Openbsd (ZH)",
-      "description": "Contains 2 zh commands for openbsd.",
-      "count": 2,
-      "size_kb": 1,
-      "url": "packs/commands/zh/openbsd.json",
-      "category": "command"
-    },
-    {
-      "id": "zh-sunos",
-      "language": "zh",
-      "platform": "sunos",
-      "name": "SunOS (ZH)",
-      "description": "Contains 3 zh commands for sunos.",
-      "count": 3,
-      "size_kb": 1,
-      "url": "packs/commands/zh/sunos.json",
-      "category": "command"
-    },
-    {
-      "id": "zh-android",
-      "language": "zh",
-      "platform": "android",
-      "name": "Android 开发 (ZH)",
-      "description": "Contains 71 zh commands for android.",
-      "count": 71,
-      "size_kb": 31,
-      "url": "packs/commands/zh/android.json",
-      "category": "command"
-    },
-    {
-      "id": "zh-common",
-      "language": "zh",
+      "id": "en-common",
+      "language": "en",
       "platform": "common",
-      "name": "通用工具 (Common) (ZH)",
-      "description": "Contains 3823 zh commands for common.",
-      "count": 3823,
-      "size_kb": 1865,
-      "url": "packs/commands/zh/common.json",
-      "category": "command"
-    },
-    {
-      "id": "zh-linux",
-      "language": "zh",
-      "platform": "linux",
-      "name": "Linux 运维 (ZH)",
-      "description": "Contains 790 zh commands for linux.",
-      "count": 790,
-      "size_kb": 355,
-      "url": "packs/commands/zh/linux.json",
+      "name": "Common Tools (EN)",
+      "description": "Contains 20946 en commands for common.",
+      "count": 20946,
+      "size_kb": 10147,
+      "url": "packs/commands/en/common.json",
       "category": "command"
     },
     {
@@ -139,21 +128,65 @@
       "language": "en",
       "platform": "osx",
       "name": "macOS (EN)",
-      "description": "Contains 969 en commands for osx.",
-      "count": 969,
-      "size_kb": 430,
+      "description": "Contains 977 en commands for osx.",
+      "count": 977,
+      "size_kb": 433,
       "url": "packs/commands/en/osx.json",
       "category": "command"
     },
     {
-      "id": "en-dos",
+      "id": "en-freebsd",
       "language": "en",
-      "platform": "dos",
-      "name": "Dos (EN)",
-      "description": "Contains 64 en commands for dos.",
-      "count": 64,
-      "size_kb": 24,
-      "url": "packs/commands/en/dos.json",
+      "platform": "freebsd",
+      "name": "Freebsd (EN)",
+      "description": "Contains 69 en commands for freebsd.",
+      "count": 69,
+      "size_kb": 31,
+      "url": "packs/commands/en/freebsd.json",
+      "category": "command"
+    },
+    {
+      "id": "en-openbsd",
+      "language": "en",
+      "platform": "openbsd",
+      "name": "Openbsd (EN)",
+      "description": "Contains 36 en commands for openbsd.",
+      "count": 36,
+      "size_kb": 16,
+      "url": "packs/commands/en/openbsd.json",
+      "category": "command"
+    },
+    {
+      "id": "en-linux",
+      "language": "en",
+      "platform": "linux",
+      "name": "Linux Ops (EN)",
+      "description": "Contains 8377 en commands for linux.",
+      "count": 8377,
+      "size_kb": 3956,
+      "url": "packs/commands/en/linux.json",
+      "category": "command"
+    },
+    {
+      "id": "en-android",
+      "language": "en",
+      "platform": "android",
+      "name": "Android Dev (EN)",
+      "description": "Contains 90 en commands for android.",
+      "count": 90,
+      "size_kb": 40,
+      "url": "packs/commands/en/android.json",
+      "category": "command"
+    },
+    {
+      "id": "en-sunos",
+      "language": "en",
+      "platform": "sunos",
+      "name": "SunOS (EN)",
+      "description": "Contains 49 en commands for sunos.",
+      "count": 49,
+      "size_kb": 21,
+      "url": "packs/commands/en/sunos.json",
       "category": "command"
     },
     {
@@ -168,14 +201,14 @@
       "category": "command"
     },
     {
-      "id": "en-freebsd",
+      "id": "en-dos",
       "language": "en",
-      "platform": "freebsd",
-      "name": "Freebsd (EN)",
-      "description": "Contains 69 en commands for freebsd.",
-      "count": 69,
-      "size_kb": 31,
-      "url": "packs/commands/en/freebsd.json",
+      "platform": "dos",
+      "name": "Dos (EN)",
+      "description": "Contains 64 en commands for dos.",
+      "count": 64,
+      "size_kb": 24,
+      "url": "packs/commands/en/dos.json",
       "category": "command"
     },
     {
@@ -201,80 +234,25 @@
       "category": "command"
     },
     {
-      "id": "en-openbsd",
+      "id": "en-roles",
       "language": "en",
-      "platform": "openbsd",
-      "name": "Openbsd (EN)",
-      "description": "Contains 36 en commands for openbsd.",
-      "count": 36,
-      "size_kb": 16,
-      "url": "packs/commands/en/openbsd.json",
-      "category": "command"
-    },
-    {
-      "id": "en-sunos",
-      "language": "en",
-      "platform": "sunos",
-      "name": "SunOS (EN)",
-      "description": "Contains 49 en commands for sunos.",
-      "count": 49,
-      "size_kb": 21,
-      "url": "packs/commands/en/sunos.json",
-      "category": "command"
-    },
-    {
-      "id": "en-android",
-      "language": "en",
-      "platform": "android",
-      "name": "Android Dev (EN)",
-      "description": "Contains 90 en commands for android.",
-      "count": 90,
-      "size_kb": 40,
-      "url": "packs/commands/en/android.json",
-      "category": "command"
-    },
-    {
-      "id": "en-common",
-      "language": "en",
-      "platform": "common",
-      "name": "Common Tools (EN)",
-      "description": "Contains 20912 en commands for common.",
-      "count": 20912,
-      "size_kb": 10131,
-      "url": "packs/commands/en/common.json",
-      "category": "command"
-    },
-    {
-      "id": "en-linux",
-      "language": "en",
-      "platform": "linux",
-      "name": "Linux Ops (EN)",
-      "description": "Contains 8360 en commands for linux.",
-      "count": 8360,
-      "size_kb": 3949,
-      "url": "packs/commands/en/linux.json",
-      "category": "command"
-    },
-    {
-      "id": "custom-prompt-en-image2",
-      "language": "en",
-      "platform": "custom",
-      "name": "GPT Image 2 Prompt Collection",
-      "description": "Prompt collection for GPT Image 2 image-generation workflows.",
-      "count": 6456,
-      "size_kb": 19615.25,
-      "url": "packs/prompts/en/image2.json",
+      "platform": "llm",
+      "name": "ChatGPT Role Prompts",
+      "description": "Curated role-play prompts for ChatGPT and general LLM workflows.",
+      "count": 2060,
+      "size_kb": 5937.0,
+      "url": "packs/prompts/en/roles.json",
       "category": "prompt"
     },
     {
-      "id": "custom-prompt-en-nano-banana-pro",
-      "language": "en",
-      "platform": "custom",
-      "name": "Nano Banana Pro Image Prompt Collection",
-      "description": "Prompt collection for Nano Banana Pro image-generation workflows.",
-      "count": 13483,
-      "size_kb": 38811.7,
-      "url": "packs/prompts/en/nano-banana-pro.json",
+      "id": "zh-roles",
+      "language": "zh",
+      "platform": "llm",
+      "name": "中文角色扮演提示词精选",
+      "description": "适用于 ChatGPT 和通用大语言模型的中文角色扮演提示词合集。",
+      "count": 124,
+      "size_kb": 95.58,
+      "url": "packs/prompts/zh/roles.json",
       "category": "prompt"
     },
     {
@@ -300,6 +278,28 @@
       "category": "prompt"
     },
     {
+      "id": "custom-prompt-en-nano-banana-pro",
+      "language": "en",
+      "platform": "custom",
+      "name": "Nano Banana Pro Image Prompt Collection",
+      "description": "Prompt collection for Nano Banana Pro image-generation workflows.",
+      "count": 13483,
+      "size_kb": 38811.7,
+      "url": "packs/prompts/en/nano-banana-pro.json",
+      "category": "prompt"
+    },
+    {
+      "id": "custom-prompt-en-image2",
+      "language": "en",
+      "platform": "custom",
+      "name": "GPT Image 2 Prompt Collection",
+      "description": "Prompt collection for GPT Image 2 image-generation workflows.",
+      "count": 6456,
+      "size_kb": 19615.25,
+      "url": "packs/prompts/en/image2.json",
+      "category": "prompt"
+    },
+    {
       "id": "custom-prompt-zh-code",
       "language": "zh",
       "platform": "custom",
@@ -308,28 +308,6 @@
       "count": 27,
       "size_kb": 56.97,
       "url": "packs/prompts/zh/code.json",
-      "category": "prompt"
-    },
-    {
-      "id": "custom-prompt-zh-image2",
-      "language": "zh",
-      "platform": "custom",
-      "name": "GPT Image 2 图像提示词精选",
-      "description": "适用于 GPT Image 2 图像生成工作流的提示词合集。",
-      "count": 6456,
-      "size_kb": 19359.04,
-      "url": "packs/prompts/zh/image2.json",
-      "category": "prompt"
-    },
-    {
-      "id": "custom-prompt-zh-nano-banana-pro",
-      "language": "zh",
-      "platform": "custom",
-      "name": "Nano Banana Pro 图像提示词精选",
-      "description": "适用于 Nano Banana Pro 图像生成工作流的提示词合集。",
-      "count": 13491,
-      "size_kb": 38107.16,
-      "url": "packs/prompts/zh/nano-banana-pro.json",
       "category": "prompt"
     },
     {
@@ -352,6 +330,28 @@
       "count": 49,
       "size_kb": 75.81,
       "url": "packs/prompts/zh/gemini3.json",
+      "category": "prompt"
+    },
+    {
+      "id": "custom-prompt-zh-nano-banana-pro",
+      "language": "zh",
+      "platform": "custom",
+      "name": "Nano Banana Pro 图像提示词精选",
+      "description": "适用于 Nano Banana Pro 图像生成工作流的提示词合集。",
+      "count": 13491,
+      "size_kb": 38107.16,
+      "url": "packs/prompts/zh/nano-banana-pro.json",
+      "category": "prompt"
+    },
+    {
+      "id": "custom-prompt-zh-image2",
+      "language": "zh",
+      "platform": "custom",
+      "name": "GPT Image 2 图像提示词精选",
+      "description": "适用于 GPT Image 2 图像生成工作流的提示词合集。",
+      "count": 6456,
+      "size_kb": 19359.04,
+      "url": "packs/prompts/zh/image2.json",
       "category": "prompt"
     }
   ]
