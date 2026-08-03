@@ -3500,7 +3500,7 @@
     "title": "cat - 将文件内容打印到 `stdout`",
     "content": "cat {{路径/到/文件}}",
     "group": "Linux 运维",
-    "description": "cat: 打印和连接文件。 (将文件内容打印到 `stdout`)",
+    "description": "cat: 打印和连接文件。 另请参阅：`bat`。 (将文件内容打印到 `stdout`)",
     "tags": [
       "linux",
       "cat",
@@ -3515,7 +3515,7 @@
     "title": "cat - 将多个文件连接到一个输出文件",
     "content": "cat {{路径/到/文件1 路径/到/文件2 ...}} > {{路径/到/输出文件}}",
     "group": "Linux 运维",
-    "description": "cat: 打印和连接文件。 (将多个文件连接到一个输出文件)",
+    "description": "cat: 打印和连接文件。 另请参阅：`bat`。 (将多个文件连接到一个输出文件)",
     "tags": [
       "linux",
       "cat",
@@ -3530,7 +3530,7 @@
     "title": "cat - 将多个文件附加到输出文件",
     "content": "cat {{路径/到/文件1 路径/到/文件2 ...}} >> {{路径/到/输出文件}}",
     "group": "Linux 运维",
-    "description": "cat: 打印和连接文件。 (将多个文件附加到输出文件)",
+    "description": "cat: 打印和连接文件。 另请参阅：`bat`。 (将多个文件附加到输出文件)",
     "tags": [
       "linux",
       "cat",
@@ -3545,7 +3545,7 @@
     "title": "cat - 将 `stdin` 写入文件",
     "content": "cat - > {{路径/到/文件}}",
     "group": "Linux 运维",
-    "description": "cat: 打印和连接文件。 (将 `stdin` 写入文件)",
+    "description": "cat: 打印和连接文件。 另请参阅：`bat`。 (将 `stdin` 写入文件)",
     "tags": [
       "linux",
       "cat",
@@ -3560,7 +3560,7 @@
     "title": "cat - 显示带有行号的所有行",
     "content": "cat {{[-n|--number]}} {{路径/到/文件}}",
     "group": "Linux 运维",
-    "description": "cat: 打印和连接文件。 (显示带有行号的所有行)",
+    "description": "cat: 打印和连接文件。 另请参阅：`bat`。 (显示带有行号的所有行)",
     "tags": [
       "linux",
       "cat",
@@ -3575,7 +3575,7 @@
     "title": "cat - 显示不可打印字符和空白字符（如果非 ASCII，则带有 `M-` 前缀）",
     "content": "cat {{[-vte|--show-nonprinting -t -e]}} {{路径/到/文件}}",
     "group": "Linux 运维",
-    "description": "cat: 打印和连接文件。 (显示不可打印字符和空白字符（如果非 ASCII，则带有 `M-` 前缀）)",
+    "description": "cat: 打印和连接文件。 另请参阅：`bat`。 (显示不可打印字符和空白字符（如果非 ASCII，则带有 `M-` 前缀）)",
     "tags": [
       "linux",
       "cat",
@@ -6380,7 +6380,7 @@
     "title": "poweroff - 关闭系统电源",
     "content": "poweroff",
     "group": "Linux 运维",
-    "description": "poweroff: 关闭系统。 (关闭系统电源)",
+    "description": "poweroff: 关闭系统。 另请参阅：`shutdown`。 (关闭系统电源)",
     "tags": [
       "linux",
       "poweroff",
@@ -6395,7 +6395,7 @@
     "title": "poweroff - 停止系统（等同于 `halt`）",
     "content": "poweroff --halt",
     "group": "Linux 运维",
-    "description": "poweroff: 关闭系统。 (停止系统（等同于 `halt`）)",
+    "description": "poweroff: 关闭系统。 另请参阅：`shutdown`。 (停止系统（等同于 `halt`）)",
     "tags": [
       "linux",
       "poweroff",
@@ -6410,7 +6410,7 @@
     "title": "poweroff - 重启系统（等同于 `reboot`）",
     "content": "poweroff --reboot",
     "group": "Linux 运维",
-    "description": "poweroff: 关闭系统。 (重启系统（等同于 `reboot`）)",
+    "description": "poweroff: 关闭系统。 另请参阅：`shutdown`。 (重启系统（等同于 `reboot`）)",
     "tags": [
       "linux",
       "poweroff",
@@ -6425,7 +6425,7 @@
     "title": "poweroff - 立即关机，不联系系统管理器",
     "content": "poweroff {{[-f|--force]}}",
     "group": "Linux 运维",
-    "description": "poweroff: 关闭系统。 (立即关机，不联系系统管理器)",
+    "description": "poweroff: 关闭系统。 另请参阅：`shutdown`。 (立即关机，不联系系统管理器)",
     "tags": [
       "linux",
       "poweroff",
@@ -6440,7 +6440,7 @@
     "title": "poweroff - 仅写入 wtmp 关机日志条目而不关闭系统",
     "content": "poweroff {{[-w|--wtmp-only]}}",
     "group": "Linux 运维",
-    "description": "poweroff: 关闭系统。 (仅写入 wtmp 关机日志条目而不关闭系统)",
+    "description": "poweroff: 关闭系统。 另请参阅：`shutdown`。 (仅写入 wtmp 关机日志条目而不关闭系统)",
     "tags": [
       "linux",
       "poweroff",
@@ -9785,7 +9785,7 @@
     "title": "df - 显示磁盘使用情况",
     "content": "df",
     "group": "Linux 运维",
-    "description": "df: 显示文件系统磁盘空间使用情况的概览。 (显示磁盘使用情况)",
+    "description": "df: 显示文件系统磁盘空间使用情况的概览。 另请参阅：`ncdu`, `duf`。 (显示磁盘使用情况)",
     "tags": [
       "linux",
       "df",
@@ -9800,7 +9800,7 @@
     "title": "df - 以可读的形式显示磁盘使用情况",
     "content": "df {{[-h|--human-readable]}}",
     "group": "Linux 运维",
-    "description": "df: 显示文件系统磁盘空间使用情况的概览。 (以可读的形式显示磁盘使用情况)",
+    "description": "df: 显示文件系统磁盘空间使用情况的概览。 另请参阅：`ncdu`, `duf`。 (以可读的形式显示磁盘使用情况)",
     "tags": [
       "linux",
       "df",
@@ -9815,7 +9815,7 @@
     "title": "df - 显示给定文件或目录的磁盘使用情况",
     "content": "df {{路径/到/文件或目录}}",
     "group": "Linux 运维",
-    "description": "df: 显示文件系统磁盘空间使用情况的概览。 (显示给定文件或目录的磁盘使用情况)",
+    "description": "df: 显示文件系统磁盘空间使用情况的概览。 另请参阅：`ncdu`, `duf`。 (显示给定文件或目录的磁盘使用情况)",
     "tags": [
       "linux",
       "df",
@@ -9830,7 +9830,7 @@
     "title": "df - 包括空闲 inode 数量的统计信息",
     "content": "df {{[-i|--inodes]}}",
     "group": "Linux 运维",
-    "description": "df: 显示文件系统磁盘空间使用情况的概览。 (包括空闲 inode 数量的统计信息)",
+    "description": "df: 显示文件系统磁盘空间使用情况的概览。 另请参阅：`ncdu`, `duf`。 (包括空闲 inode 数量的统计信息)",
     "tags": [
       "linux",
       "df",
@@ -9845,7 +9845,7 @@
     "title": "df - 显示文件系统但排除指定的类型",
     "content": "df {{[-x|--exclude-type]}} {{squashfs}} {{[-x|--exclude-type]}} {{tmpfs}}",
     "group": "Linux 运维",
-    "description": "df: 显示文件系统磁盘空间使用情况的概览。 (显示文件系统但排除指定的类型)",
+    "description": "df: 显示文件系统磁盘空间使用情况的概览。 另请参阅：`ncdu`, `duf`。 (显示文件系统但排除指定的类型)",
     "tags": [
       "linux",
       "df",
@@ -9860,7 +9860,7 @@
     "title": "df - 显示文件系统类型",
     "content": "df {{[-T|--print-type]}}",
     "group": "Linux 运维",
-    "description": "df: 显示文件系统磁盘空间使用情况的概览。 (显示文件系统类型)",
+    "description": "df: 显示文件系统磁盘空间使用情况的概览。 另请参阅：`ncdu`, `duf`。 (显示文件系统类型)",
     "tags": [
       "linux",
       "df",

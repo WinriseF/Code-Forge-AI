@@ -3540,6 +3540,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-zh-windows-saracmd-teamsaddinscenario-0",
+    "type": "command",
+    "title": "saracmd-teamsaddinscenario - 查看原命令的文档",
+    "content": "tldr gethelpcmd-teamsaddinscenario",
+    "group": "Windows",
+    "description": "saracmd-teamsaddinscenario: 此命令为 `GetHelpCmd.exe -S TeamsAddinScenario` 的别名。 (查看原命令的文档)",
+    "tags": [
+      "windows",
+      "saracmd-teamsaddinscenario",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-zh-windows-del-0",
     "type": "command",
     "title": "del - 查阅 PowerShell 的对应命令",
@@ -5904,6 +5919,21 @@
     "tags": [
       "windows",
       "rdpsign",
+      "tldr",
+      "zh"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-zh-windows-saracmd-officeactivationscenario-0",
+    "type": "command",
+    "title": "saracmd-officeactivationscenario - 查看原命令的文档",
+    "content": "tldr gethelpcmd-officeactivationscenario",
+    "group": "Windows",
+    "description": "saracmd-officeactivationscenario: 此命令为 `GetHelpCmd.exe -S OfficeActivationScenario` 的别名。 (查看原命令的文档)",
+    "tags": [
+      "windows",
+      "saracmd-officeactivationscenario",
       "tldr",
       "zh"
     ],

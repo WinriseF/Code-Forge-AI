@@ -13563,7 +13563,7 @@
     "id": "tldr-en-common-plantuml-1",
     "type": "command",
     "title": "plantuml - Render a diagram in given format (e.g. `png`, `pdf`, `svg`, `txt`)",
-    "content": "plantuml -t {{format}} {{diagram.puml}}",
+    "content": "plantuml {{[-f|--format]}} {{format}} {{diagram.puml}}",
     "group": "Common Tools",
     "description": "plantuml: Create UML diagrams from a plain text language and render them in different formats. (Render a diagram in given format (e.g. `png`, `pdf`, `svg`, `txt`))",
     "tags": [
@@ -13593,7 +13593,7 @@
     "id": "tldr-en-common-plantuml-3",
     "type": "command",
     "title": "plantuml - Render a diagram to the output directory",
-    "content": "plantuml -o {{path/to/output}} {{diagram.puml}}",
+    "content": "plantuml {{[-o|--output-dir]}} {{path/to/output}} {{diagram.puml}}",
     "group": "Common Tools",
     "description": "plantuml: Create UML diagrams from a plain text language and render them in different formats. (Render a diagram to the output directory)",
     "tags": [
@@ -13638,7 +13638,7 @@
     "id": "tldr-en-common-plantuml-6",
     "type": "command",
     "title": "plantuml - Render a diagram with the configuration file",
-    "content": "plantuml -config {{config.cfg}} {{diagram.puml}}",
+    "content": "plantuml --config {{config.cfg}} {{diagram.puml}}",
     "group": "Common Tools",
     "description": "plantuml: Create UML diagrams from a plain text language and render them in different formats. (Render a diagram with the configuration file)",
     "tags": [
@@ -13653,7 +13653,7 @@
     "id": "tldr-en-common-plantuml-7",
     "type": "command",
     "title": "plantuml - Display help",
-    "content": "plantuml -help",
+    "content": "plantuml {{[-h|--help]}}",
     "group": "Common Tools",
     "description": "plantuml: Create UML diagrams from a plain text language and render them in different formats. (Display help)",
     "tags": [
@@ -68072,10 +68072,10 @@
   {
     "id": "tldr-en-common-bun-remove-4",
     "type": "command",
-    "title": "bun-remove - Run the command without actually removing packages (simulate the removal)",
+    "title": "bun-remove - Simulate running the command without actually removing packages",
     "content": "bun {{[rm|remove]}} --dry-run {{package_name}}",
     "group": "Common Tools",
-    "description": "bun-remove: Remove a dependency from `package.json`. (Run the command without actually removing packages (simulate the removal))",
+    "description": "bun-remove: Remove a dependency from `package.json`. (Simulate running the command without actually removing packages)",
     "tags": [
       "common",
       "bun-remove",
@@ -100653,7 +100653,7 @@
     "id": "tldr-en-common-zstd-3",
     "type": "command",
     "title": "zstd - Compress a file specifying the compression level, where 1=fastest, 19=slowest, and 3=default",
-    "content": "zstd -{{level}} {{path/to/file}}",
+    "content": "zstd -{{1..19}} {{path/to/file}}",
     "group": "Common Tools",
     "description": "zstd: Compress or decompress files with Zstandard compression. (Compress a file specifying the compression level, where 1=fastest, 19=slowest, and 3=default)",
     "tags": [
@@ -100668,7 +100668,7 @@
     "id": "tldr-en-common-zstd-4",
     "type": "command",
     "title": "zstd - Compress a file using an ultra-fast compression level, where 1=default",
-    "content": "zstd --fast={{level}} {{path/to/file}}",
+    "content": "zstd --fast={{1..131072}} {{path/to/file}}",
     "group": "Common Tools",
     "description": "zstd: Compress or decompress files with Zstandard compression. (Compress a file using an ultra-fast compression level, where 1=default)",
     "tags": [
@@ -100683,7 +100683,7 @@
     "id": "tldr-en-common-zstd-5",
     "type": "command",
     "title": "zstd - Unlock higher compression levels (up to 22) using more memory (both for compression and decompression)",
-    "content": "zstd --ultra -{{level}} {{path/to/file}}",
+    "content": "zstd --ultra -{{1..22}} {{path/to/file}}",
     "group": "Common Tools",
     "description": "zstd: Compress or decompress files with Zstandard compression. (Unlock higher compression levels (up to 22) using more memory (both for compression and decompression))",
     "tags": [
@@ -115029,6 +115029,96 @@
     "tags": [
       "common",
       "impacket-getarch",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-greed-0",
+    "type": "command",
+    "title": "greed - Start the game",
+    "content": "greed",
+    "group": "Common Tools",
+    "description": "greed: Simple puzzle game. Clear as much of the board as you can. (Start the game)",
+    "tags": [
+      "common",
+      "greed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-greed-1",
+    "type": "command",
+    "title": "greed - Open help",
+    "content": "<?>",
+    "group": "Common Tools",
+    "description": "greed: Simple puzzle game. Clear as much of the board as you can. (Open help)",
+    "tags": [
+      "common",
+      "greed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-greed-2",
+    "type": "command",
+    "title": "greed - Toggle move [p]reviews",
+    "content": "<p>",
+    "group": "Common Tools",
+    "description": "greed: Simple puzzle game. Clear as much of the board as you can. (Toggle move [p]reviews)",
+    "tags": [
+      "common",
+      "greed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-greed-3",
+    "type": "command",
+    "title": "greed - Quit",
+    "content": "<q><y>",
+    "group": "Common Tools",
+    "description": "greed: Simple puzzle game. Clear as much of the board as you can. (Quit)",
+    "tags": [
+      "common",
+      "greed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-greed-4",
+    "type": "command",
+    "title": "greed - Print [s]cores",
+    "content": "greed -s",
+    "group": "Common Tools",
+    "description": "greed: Simple puzzle game. Clear as much of the board as you can. (Print [s]cores)",
+    "tags": [
+      "common",
+      "greed",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-greed-5",
+    "type": "command",
+    "title": "greed - Play with a custom board size and seed",
+    "content": "greed -w {{width}} -h {{height}} -r {{seed}}",
+    "group": "Common Tools",
+    "description": "greed: Simple puzzle game. Clear as much of the board as you can. (Play with a custom board size and seed)",
+    "tags": [
+      "common",
+      "greed",
       "tldr",
       "en"
     ],
@@ -164280,6 +164370,96 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-fd-format-0",
+    "type": "command",
+    "title": "fd-format - Print only the filename",
+    "content": "fd --format \"{/}\"",
+    "group": "Common Tools",
+    "description": "fd-format: Format filesearch results. (Print only the filename)",
+    "tags": [
+      "common",
+      "fd-format",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-fd-format-1",
+    "type": "command",
+    "title": "fd-format - Print the parent directory",
+    "content": "fd --format \"{//}\"",
+    "group": "Common Tools",
+    "description": "fd-format: Format filesearch results. (Print the parent directory)",
+    "tags": [
+      "common",
+      "fd-format",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-fd-format-2",
+    "type": "command",
+    "title": "fd-format - Print the file path without file extension",
+    "content": "fd --format \"{.}\"",
+    "group": "Common Tools",
+    "description": "fd-format: Format filesearch results. (Print the file path without file extension)",
+    "tags": [
+      "common",
+      "fd-format",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-fd-format-3",
+    "type": "command",
+    "title": "fd-format - Print only the filename without extension",
+    "content": "fd --format \"{/.}\"",
+    "group": "Common Tools",
+    "description": "fd-format: Format filesearch results. (Print only the filename without extension)",
+    "tags": [
+      "common",
+      "fd-format",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-fd-format-4",
+    "type": "command",
+    "title": "fd-format - Prepend a `{` and append a `}` to the results",
+    "content": "fd --format \"\\{\\{{}\\}\\}\"",
+    "group": "Common Tools",
+    "description": "fd-format: Format filesearch results. (Prepend a `{` and append a `}` to the results)",
+    "tags": [
+      "common",
+      "fd-format",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-fd-format-5",
+    "type": "command",
+    "title": "fd-format - Prepend text to the results",
+    "content": "fd --format \"{{text}}{}\"",
+    "group": "Common Tools",
+    "description": "fd-format: Format filesearch results. (Prepend text to the results)",
+    "tags": [
+      "common",
+      "fd-format",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-jira-project-0",
     "type": "command",
     "title": "jira-project - List all projects",
@@ -170012,10 +170192,40 @@
   {
     "id": "tldr-en-common-silicon-2",
     "type": "command",
+    "title": "silicon - Do not generate window decorations in the image",
+    "content": "silicon {{path/to/source_file}} {{[-o|--output]}} {{path/to/output_image}} --no-window-controls",
+    "group": "Common Tools",
+    "description": "silicon: Create an image of source code. (Do not generate window decorations in the image)",
+    "tags": [
+      "common",
+      "silicon",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-silicon-3",
+    "type": "command",
     "title": "silicon - Generate an image from `stdin`",
     "content": "{{command}} | silicon {{[-o|--output]}} {{path/to/output_image}}",
     "group": "Common Tools",
     "description": "silicon: Create an image of source code. (Generate an image from `stdin`)",
+    "tags": [
+      "common",
+      "silicon",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-silicon-4",
+    "type": "command",
+    "title": "silicon - Display help",
+    "content": "silicon {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "silicon: Create an image of source code. (Display help)",
     "tags": [
       "common",
       "silicon",
@@ -206283,7 +206493,7 @@
     "id": "tldr-en-common-birdc-5",
     "type": "command",
     "title": "birdc - Show all routes that contain a specific AS number",
-    "content": "birdc \"show route where bgp_path ~ [{{4242120045}}]\"",
+    "content": "birdc \"show route where bgp_path ~ {{4242120045}}\"",
     "group": "Common Tools",
     "description": "birdc: BIRD remote control. Retrieve information like routes from bird and perform configurations during runtime. (Show all routes that contain a specific AS number)",
     "tags": [
@@ -208067,10 +208277,10 @@
   {
     "id": "tldr-en-common-read-7",
     "type": "command",
-    "title": "read - Read `stdin` and perform an action on every line",
-    "content": "cat {{/dev/stdin|path/to/file|...}} | while read line; do {{echo|ls|rm|...}} \"$line\"; done",
+    "title": "read - Perform an action on each line of a command's output",
+    "content": "{{command}} | while IFS= read -r line; do {{echo|ls|rm|...}} \"$line\"; done",
     "group": "Common Tools",
-    "description": "read: Shell builtin for retrieving data from `stdin`. (Read `stdin` and perform an action on every line)",
+    "description": "read: Shell builtin for retrieving data from `stdin`. (Perform an action on each line of a command's output)",
     "tags": [
       "common",
       "read",
@@ -208098,7 +208308,7 @@
     "id": "tldr-en-common-djxl-1",
     "type": "command",
     "title": "djxl - Display an extremely detailed help",
-    "content": "djxl {{[-h -v -v -v -v|--help --verbose --verbose --verbose --verbose]}}",
+    "content": "djxl {{[-h -v -v|--help --verbose --verbose]}}",
     "group": "Common Tools",
     "description": "djxl: Decompress JPEG XL images. Accepted output extensions are PNG, APNG, JPEG, EXR, PGM, PPM, PNM, PFM, PAM, EXIF, XMP, and JUMBF. (Display an extremely detailed help)",
     "tags": [
@@ -210009,6 +210219,51 @@
     "tags": [
       "common",
       "bun-info",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-kwin_wayland-0",
+    "type": "command",
+    "title": "kwin_wayland - Start KWin",
+    "content": "kwin_wayland",
+    "group": "Common Tools",
+    "description": "kwin_wayland: KDE window manager. (Start KWin)",
+    "tags": [
+      "common",
+      "kwin_wayland",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-kwin_wayland-1",
+    "type": "command",
+    "title": "kwin_wayland - Replace the currently running KWin",
+    "content": "kwin_wayland --replace",
+    "group": "Common Tools",
+    "description": "kwin_wayland: KDE window manager. (Replace the currently running KWin)",
+    "tags": [
+      "common",
+      "kwin_wayland",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-kwin_wayland-2",
+    "type": "command",
+    "title": "kwin_wayland - Display help",
+    "content": "kwin_wayland {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "kwin_wayland: KDE window manager. (Display help)",
+    "tags": [
+      "common",
+      "kwin_wayland",
       "tldr",
       "en"
     ],
@@ -224028,7 +224283,7 @@
     "id": "tldr-en-common-pageres-1",
     "type": "command",
     "title": "pageres - Provide specific options for a URL, overriding global options",
-    "content": "pageres [{{https://example.com/}} {{1366x768}} --no-crop] [{{https://example2.com/}} {{1024x768}}] {{[-c|--crop]}}",
+    "content": "pageres [ {{https://example.com/}} {{1366x768}} --no-crop ] [ {{https://example2.com/}} {{1024x768}} ] {{[-c|--crop]}}",
     "group": "Common Tools",
     "description": "pageres: Capture screenshots of websites in various resolutions. (Provide specific options for a URL, overriding global options)",
     "tags": [
@@ -225677,6 +225932,21 @@
   {
     "id": "tldr-en-common-ctest-2",
     "type": "command",
+    "title": "ctest - Run all tests on all processor cores",
+    "content": "ctest {{[-j|--parallel]}}",
+    "group": "Common Tools",
+    "description": "ctest: CMake test driver program. (Run all tests on all processor cores)",
+    "tags": [
+      "common",
+      "ctest",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-ctest-3",
+    "type": "command",
     "title": "ctest - Run all tests defined in the CMake build directory and print detailed logs on failed tests",
     "content": "ctest --output-on-failure",
     "group": "Common Tools",
@@ -225690,7 +225960,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-ctest-3",
+    "id": "tldr-en-common-ctest-4",
     "type": "command",
     "title": "ctest - List available tests",
     "content": "ctest {{[-N|--show-only]}}",
@@ -225705,7 +225975,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-ctest-4",
+    "id": "tldr-en-common-ctest-5",
     "type": "command",
     "title": "ctest - Run a single test based on its name, or filter on a `regex`",
     "content": "ctest --output-on-failure {{[-R|--tests-regex]}} '^{{test_name}}$'",
@@ -244607,6 +244877,21 @@
   {
     "id": "tldr-en-common-qrencode-1",
     "type": "command",
+    "title": "qrencode - Convert a string to a micro QR code and save to an output file",
+    "content": "qrencode {{[-o|--output]}} {{path/to/output_file.png}} {{[-M|--micro]}} {{string}}",
+    "group": "Common Tools",
+    "description": "qrencode: QR Code generator. Supports PNG and EPS. (Convert a string to a micro QR code and save to an output file)",
+    "tags": [
+      "common",
+      "qrencode",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-qrencode-2",
+    "type": "command",
     "title": "qrencode - Convert an input file to a QR code and save to an output file",
     "content": "qrencode {{[-o|--output]}} {{path/to/output_file.png}} {{[-r|--read-from]}} {{path/to/input_file}}",
     "group": "Common Tools",
@@ -244620,7 +244905,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-qrencode-2",
+    "id": "tldr-en-common-qrencode-3",
     "type": "command",
     "title": "qrencode - Convert a string to a QR code and print it in terminal",
     "content": "qrencode {{[-t|--type]}} ansiutf8 {{string}}",
@@ -244635,7 +244920,22 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-qrencode-3",
+    "id": "tldr-en-common-qrencode-4",
+    "type": "command",
+    "title": "qrencode - Convert a string to a QR code with a specific error correction level and save to an output file",
+    "content": "qrencode {{[-o|--output]}} {{path/to/output_file.png}} {{[-l|--level]}} {{[l|m|q|h]}} {{string}}",
+    "group": "Common Tools",
+    "description": "qrencode: QR Code generator. Supports PNG and EPS. (Convert a string to a QR code with a specific error correction level and save to an output file)",
+    "tags": [
+      "common",
+      "qrencode",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-qrencode-5",
     "type": "command",
     "title": "qrencode - Convert input from pipe to a QR code and print it in terminal",
     "content": "echo {{string}} | qrencode {{[-t|--type]}} utf8",
@@ -262877,10 +263177,10 @@
   {
     "id": "tldr-en-common-tldr-6",
     "type": "command",
-    "title": "tldr - Browse tldr pages in a terminal window (`fzf` must be available)",
-    "content": "tldr {{[-l|--list]}} | fzf --preview \"tldr {1} --color=always\" --preview-window=right,70% | xargs tldr",
+    "title": "tldr - Print the tldr page for a command and display short options",
+    "content": "tldr --short-options {{command}}",
     "group": "Common Tools",
-    "description": "tldr: Display simple help pages for command-line tools from the tldr-pages project. Note: The `--language` and `--list` options are not required by the client specification, but most clients implement them. (Browse tldr pages in a terminal window (`fzf` must be available))",
+    "description": "tldr: Display simple help pages for command-line tools from the tldr-pages project. Note: The `--language` and `--list` options are not required by the client specification, but most clients implement them. (Print the tldr page for a command and display short options)",
     "tags": [
       "common",
       "tldr",
@@ -262892,10 +263192,10 @@
   {
     "id": "tldr-en-common-tldr-7",
     "type": "command",
-    "title": "tldr - Print the tldr page for a random command",
-    "content": "tldr {{[-l|--list]}} | shuf {{[-n|--head-count]}} 1 | xargs tldr",
+    "title": "tldr - Browse tldr pages in a terminal window (`fzf` must be available)",
+    "content": "tldr {{[-l|--list]}} | fzf --preview \"tldr {1} --color=always\" --preview-window=right,70% | xargs tldr",
     "group": "Common Tools",
-    "description": "tldr: Display simple help pages for command-line tools from the tldr-pages project. Note: The `--language` and `--list` options are not required by the client specification, but most clients implement them. (Print the tldr page for a random command)",
+    "description": "tldr: Display simple help pages for command-line tools from the tldr-pages project. Note: The `--language` and `--list` options are not required by the client specification, but most clients implement them. (Browse tldr pages in a terminal window (`fzf` must be available))",
     "tags": [
       "common",
       "tldr",
@@ -279062,10 +279362,10 @@
   {
     "id": "tldr-en-common-ninja-1",
     "type": "command",
-    "title": "ninja - Build in the current directory, executing 4 jobs at a time in parallel",
+    "title": "ninja - Build in the current directory, executing 4 [j]obs at a time in parallel",
     "content": "ninja -j {{4}}",
     "group": "Common Tools",
-    "description": "ninja: A Build system designed to be fast. (Build in the current directory, executing 4 jobs at a time in parallel)",
+    "description": "ninja: A Build system designed to be fast. (Build in the current directory, executing 4 [j]obs at a time in parallel)",
     "tags": [
       "common",
       "ninja",
@@ -279092,10 +279392,10 @@
   {
     "id": "tldr-en-common-ninja-3",
     "type": "command",
-    "title": "ninja - Show targets (e.g. `install` and `uninstall`)",
+    "title": "ninja - Show [t]argets (e.g. `install` and `uninstall`)",
     "content": "ninja -t targets",
     "group": "Common Tools",
-    "description": "ninja: A Build system designed to be fast. (Show targets (e.g. `install` and `uninstall`))",
+    "description": "ninja: A Build system designed to be fast. (Show [t]argets (e.g. `install` and `uninstall`))",
     "tags": [
       "common",
       "ninja",
@@ -279106,6 +279406,21 @@
   },
   {
     "id": "tldr-en-common-ninja-4",
+    "type": "command",
+    "title": "ninja - Display verbose output",
+    "content": "ninja {{[-v|--verbose]}}",
+    "group": "Common Tools",
+    "description": "ninja: A Build system designed to be fast. (Display verbose output)",
+    "tags": [
+      "common",
+      "ninja",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-ninja-5",
     "type": "command",
     "title": "ninja - Display help",
     "content": "ninja -h",

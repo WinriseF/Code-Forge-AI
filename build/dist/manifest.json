@@ -1,5 +1,5 @@
 {
-  "updated_at": 1785120476076,
+  "updated_at": 1785724883990,
   "version": "2.1.0",
   "packages": [
     {
@@ -7,9 +7,9 @@
       "language": "zh",
       "platform": "common",
       "name": "通用工具 (Common) (ZH)",
-      "description": "Contains 3823 zh commands for common.",
-      "count": 3823,
-      "size_kb": 1865,
+      "description": "Contains 3824 zh commands for common.",
+      "count": 3824,
+      "size_kb": 1866,
       "url": "packs/commands/zh/common.json",
       "category": "command"
     },
@@ -53,7 +53,7 @@
       "name": "Linux 运维 (ZH)",
       "description": "Contains 790 zh commands for linux.",
       "count": 790,
-      "size_kb": 355,
+      "size_kb": 356,
       "url": "packs/commands/zh/linux.json",
       "category": "command"
     },
@@ -95,9 +95,9 @@
       "language": "zh",
       "platform": "windows",
       "name": "Windows (ZH)",
-      "description": "Contains 437 zh commands for windows.",
-      "count": 437,
-      "size_kb": 189,
+      "description": "Contains 439 zh commands for windows.",
+      "count": 439,
+      "size_kb": 190,
       "url": "packs/commands/zh/windows.json",
       "category": "command"
     },
@@ -117,9 +117,9 @@
       "language": "en",
       "platform": "common",
       "name": "Common Tools (EN)",
-      "description": "Contains 20946 en commands for common.",
-      "count": 20946,
-      "size_kb": 10147,
+      "description": "Contains 20967 en commands for common.",
+      "count": 20967,
+      "size_kb": 10155,
       "url": "packs/commands/en/common.json",
       "category": "command"
     },
@@ -161,9 +161,9 @@
       "language": "en",
       "platform": "linux",
       "name": "Linux Ops (EN)",
-      "description": "Contains 8377 en commands for linux.",
-      "count": 8377,
-      "size_kb": 3956,
+      "description": "Contains 8423 en commands for linux.",
+      "count": 8423,
+      "size_kb": 3978,
       "url": "packs/commands/en/linux.json",
       "category": "command"
     },
@@ -216,9 +216,9 @@
       "language": "en",
       "platform": "windows",
       "name": "Windows (EN)",
-      "description": "Contains 1262 en commands for windows.",
-      "count": 1262,
-      "size_kb": 634,
+      "description": "Contains 1266 en commands for windows.",
+      "count": 1266,
+      "size_kb": 636,
       "url": "packs/commands/en/windows.json",
       "category": "command"
     },
@@ -239,8 +239,8 @@
       "platform": "llm",
       "name": "ChatGPT Role Prompts",
       "description": "Curated role-play prompts for ChatGPT and general LLM workflows.",
-      "count": 2060,
-      "size_kb": 5937.0,
+      "count": 2079,
+      "size_kb": 5961.1,
       "url": "packs/prompts/en/roles.json",
       "category": "prompt"
     },

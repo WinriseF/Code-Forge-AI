@@ -17580,6 +17580,66 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-windows-choco-config-0",
+    "type": "command",
+    "title": "choco-config - Display all configuration settings and their values",
+    "content": "choco config list",
+    "group": "Windows",
+    "description": "choco-config: Manage configuration file settings for Chocolatey. (Display all configuration settings and their values)",
+    "tags": [
+      "windows",
+      "choco-config",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-choco-config-1",
+    "type": "command",
+    "title": "choco-config - Display the value of a specific configuration setting",
+    "content": "choco config get {{setting_name}}",
+    "group": "Windows",
+    "description": "choco-config: Manage configuration file settings for Chocolatey. (Display the value of a specific configuration setting)",
+    "tags": [
+      "windows",
+      "choco-config",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-choco-config-2",
+    "type": "command",
+    "title": "choco-config - Set a value for a specific configuration setting",
+    "content": "choco config set {{setting_name}} {{value}}",
+    "group": "Windows",
+    "description": "choco-config: Manage configuration file settings for Chocolatey. (Set a value for a specific configuration setting)",
+    "tags": [
+      "windows",
+      "choco-config",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-windows-choco-config-3",
+    "type": "command",
+    "title": "choco-config - Remove a specific configuration setting",
+    "content": "choco config unset {{setting_name}}",
+    "group": "Windows",
+    "description": "choco-config: Manage configuration file settings for Chocolatey. (Remove a specific configuration setting)",
+    "tags": [
+      "windows",
+      "choco-config",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-windows-sdelete-0",
     "type": "command",
     "title": "sdelete - Delete files with 3 [p]asses",

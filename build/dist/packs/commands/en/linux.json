@@ -870,6 +870,21 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-qm-importovf-0",
+    "type": "command",
+    "title": "qm-importovf - Import from an OVF manifest and its accompanying files",
+    "content": "qm importovf {{100}} {{path/to/manifest}}.ovf {{storage_name}}",
+    "group": "Linux Ops",
+    "description": "qm-importovf: Import a virtual machine from an Open Virtualization Format manifest. (Import from an OVF manifest and its accompanying files)",
+    "tags": [
+      "linux",
+      "qm-importovf",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-apt-install-0",
     "type": "command",
     "title": "apt-install - Install a package, or update it to the latest version",
@@ -17610,6 +17625,111 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-ufw-deny-0",
+    "type": "command",
+    "title": "ufw-deny - Deny all traffic on a port",
+    "content": "sudo ufw deny {{port}}",
+    "group": "Linux Ops",
+    "description": "ufw-deny: Block traffic through the firewall. (Deny all traffic on a port)",
+    "tags": [
+      "linux",
+      "ufw-deny",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ufw-deny-1",
+    "type": "command",
+    "title": "ufw-deny - Deny traffic for a protocol on a port",
+    "content": "sudo ufw deny {{port}}/{{protocol}}",
+    "group": "Linux Ops",
+    "description": "ufw-deny: Block traffic through the firewall. (Deny traffic for a protocol on a port)",
+    "tags": [
+      "linux",
+      "ufw-deny",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ufw-deny-2",
+    "type": "command",
+    "title": "ufw-deny - Deny incoming traffic for a protocol and add a comment for documentation",
+    "content": "sudo ufw deny in {{protocol}} comment '{{comment}}'",
+    "group": "Linux Ops",
+    "description": "ufw-deny: Block traffic through the firewall. (Deny incoming traffic for a protocol and add a comment for documentation)",
+    "tags": [
+      "linux",
+      "ufw-deny",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ufw-deny-3",
+    "type": "command",
+    "title": "ufw-deny - Deny all traffic from a source address",
+    "content": "sudo ufw deny from {{source_address}}",
+    "group": "Linux Ops",
+    "description": "ufw-deny: Block traffic through the firewall. (Deny all traffic from a source address)",
+    "tags": [
+      "linux",
+      "ufw-deny",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ufw-deny-4",
+    "type": "command",
+    "title": "ufw-deny - Deny all incoming traffic from the subnet 192.168.13.0/24",
+    "content": "sudo ufw deny from 192.168.13.0/24",
+    "group": "Linux Ops",
+    "description": "ufw-deny: Block traffic through the firewall. (Deny all incoming traffic from the subnet 192.168.13.0/24)",
+    "tags": [
+      "linux",
+      "ufw-deny",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ufw-deny-5",
+    "type": "command",
+    "title": "ufw-deny - Deny UDP traffic from 192.168.1.12 to 192.168.1.100 on port 8080",
+    "content": "sudo ufw deny from 192.168.1.12 to 192.168.1.100 port 8080 proto udp",
+    "group": "Linux Ops",
+    "description": "ufw-deny: Block traffic through the firewall. (Deny UDP traffic from 192.168.1.12 to 192.168.1.100 on port 8080)",
+    "tags": [
+      "linux",
+      "ufw-deny",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ufw-deny-6",
+    "type": "command",
+    "title": "ufw-deny - Deny all incoming IGMP traffic to 192.168.1.100 on the eth0 interface",
+    "content": "sudo ufw deny in on eth0 to 192.168.1.100 proto igmp",
+    "group": "Linux Ops",
+    "description": "ufw-deny: Block traffic through the firewall. (Deny all incoming IGMP traffic to 192.168.1.100 on the eth0 interface)",
+    "tags": [
+      "linux",
+      "ufw-deny",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-pacman-f-0",
     "type": "command",
     "title": "pacman-f - View documentation for the original command",
@@ -17898,7 +18018,7 @@
     "id": "tldr-en-linux-trap-2",
     "type": "command",
     "title": "trap - Execute a command when a signal is received",
-    "content": "trap 'echo \"Caught signal {{SIGHUP}}\"' {{SIGHUP}}",
+    "content": "trap 'echo \"Caught signal {{SIGHUP}}\"' {{[HUP|SIGHUP]}}",
     "group": "Linux Ops",
     "description": "trap: Execute a command upon an event. (Execute a command when a signal is received)",
     "tags": [
@@ -17913,7 +18033,7 @@
     "id": "tldr-en-linux-trap-3",
     "type": "command",
     "title": "trap - Remove commands",
-    "content": "trap - {{SIGHUP}} {{SIGINT}}",
+    "content": "trap - {{SIGHUP SIGINT ...}}",
     "group": "Linux Ops",
     "description": "trap: Execute a command upon an event. (Remove commands)",
     "tags": [
@@ -17928,7 +18048,7 @@
     "id": "tldr-en-linux-trap-4",
     "type": "command",
     "title": "trap - Ignore a signal",
-    "content": "trap '' {{SIGINT}}",
+    "content": "trap '' {{[INT|SIGINT]}}",
     "group": "Linux Ops",
     "description": "trap: Execute a command upon an event. (Ignore a signal)",
     "tags": [
@@ -25593,7 +25713,7 @@
     "id": "tldr-en-linux-kill-7",
     "type": "command",
     "title": "kill - Send a `SIGUSR1` signal to all processes with the given GID (group id)",
-    "content": "kill -SIGUSR1 -{{group_id}}",
+    "content": "kill {{[-10|-SIGUSR1]}} -{{group_id}}",
     "group": "Linux Ops",
     "description": "kill: Send a signal to a process, usually related to stopping the process. All signals except for SIGKILL and SIGSTOP can be intercepted by the process to perform a clean exit. (Send a `SIGUSR1` signal to all processes with the given GID (group id))",
     "tags": [
@@ -26220,6 +26340,111 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-dnf5-copr-0",
+    "type": "command",
+    "title": "dnf5-copr - Enable a Copr repository",
+    "content": "sudo dnf5 copr enable {{owner}}/{{project}}",
+    "group": "Linux Ops",
+    "description": "dnf5-copr: Manage Copr repositories on Fedora-based systems. (Enable a Copr repository)",
+    "tags": [
+      "linux",
+      "dnf5-copr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-dnf5-copr-1",
+    "type": "command",
+    "title": "dnf5-copr - Enable a Copr repository for a specific chroot",
+    "content": "sudo dnf5 copr enable {{owner}}/{{project}} {{fedora-rawhide-ppc64le}}",
+    "group": "Linux Ops",
+    "description": "dnf5-copr: Manage Copr repositories on Fedora-based systems. (Enable a Copr repository for a specific chroot)",
+    "tags": [
+      "linux",
+      "dnf5-copr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-dnf5-copr-2",
+    "type": "command",
+    "title": "dnf5-copr - Enable a Copr repository from a specific hub",
+    "content": "sudo dnf5 copr enable {{hub}}/{{owner}}/{{project}}",
+    "group": "Linux Ops",
+    "description": "dnf5-copr: Manage Copr repositories on Fedora-based systems. (Enable a Copr repository from a specific hub)",
+    "tags": [
+      "linux",
+      "dnf5-copr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-dnf5-copr-3",
+    "type": "command",
+    "title": "dnf5-copr - Disable a Copr repository",
+    "content": "sudo dnf5 copr disable {{owner}}/{{project}}",
+    "group": "Linux Ops",
+    "description": "dnf5-copr: Manage Copr repositories on Fedora-based systems. (Disable a Copr repository)",
+    "tags": [
+      "linux",
+      "dnf5-copr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-dnf5-copr-4",
+    "type": "command",
+    "title": "dnf5-copr - Remove a Copr repository",
+    "content": "sudo dnf5 copr remove {{owner}}/{{project}}",
+    "group": "Linux Ops",
+    "description": "dnf5-copr: Manage Copr repositories on Fedora-based systems. (Remove a Copr repository)",
+    "tags": [
+      "linux",
+      "dnf5-copr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-dnf5-copr-5",
+    "type": "command",
+    "title": "dnf5-copr - List Copr repositories",
+    "content": "dnf5 copr list",
+    "group": "Linux Ops",
+    "description": "dnf5-copr: Manage Copr repositories on Fedora-based systems. (List Copr repositories)",
+    "tags": [
+      "linux",
+      "dnf5-copr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-dnf5-copr-6",
+    "type": "command",
+    "title": "dnf5-copr - Print debug information about the system",
+    "content": "dnf5 copr debug",
+    "group": "Linux Ops",
+    "description": "dnf5-copr: Manage Copr repositories on Fedora-based systems. (Print debug information about the system)",
+    "tags": [
+      "linux",
+      "dnf5-copr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-vzdump-0",
     "type": "command",
     "title": "vzdump - Dump a guest virtual machine into the default dump directory (usually `/var/lib/vz/dump/`), excluding snapshots",
@@ -26394,6 +26619,21 @@
     "tags": [
       "linux",
       "xdp-filter",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-qm-import-0",
+    "type": "command",
+    "title": "qm-import - Import an image",
+    "content": "qm {{[i|import]}} {{100}} {{storage_name}}:{{import}}/{{file_name}} --storage {{destination_storage}}",
+    "group": "Linux Ops",
+    "description": "qm-import: Import supported images from VMware, VirtualBox, etc. (Import an image)",
+    "tags": [
+      "linux",
+      "qm-import",
       "tldr",
       "en"
     ],
@@ -27963,7 +28203,7 @@
     "id": "tldr-en-linux-qm-disk-1",
     "type": "command",
     "title": "qm-disk - Move a virtual disk",
-    "content": "qm {{[di|disk]}} {{[m|move]}} {{100}} {{destination}} {{index}}",
+    "content": "qm {{[di|disk]}} {{[m|move]}} {{100}} {{scic0}} {{destination_storage_name}}",
     "group": "Linux Ops",
     "description": "qm-disk: Manage disk images. (Move a virtual disk)",
     "tags": [
@@ -27978,7 +28218,7 @@
     "id": "tldr-en-linux-qm-disk-2",
     "type": "command",
     "title": "qm-disk - Delete the previous copy of the virtual disk",
-    "content": "qm {{[di|disk]}} {{[m|move]}} --delete {{100}} {{destination}} {{index}}",
+    "content": "qm {{[di|disk]}} {{[m|move]}} {{100}} {{scic0}} {{destination_storage_name}} --delete",
     "group": "Linux Ops",
     "description": "qm-disk: Manage disk images. (Delete the previous copy of the virtual disk)",
     "tags": [
@@ -28041,6 +28281,21 @@
     "content": "qm {{[di|disk]}} {{[resc|rescan]}} --vmid {{100}}",
     "group": "Linux Ops",
     "description": "qm-disk: Manage disk images. (Specify a virtual machine by its ID)",
+    "tags": [
+      "linux",
+      "qm-disk",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-qm-disk-7",
+    "type": "command",
+    "title": "qm-disk - Delete a disk",
+    "content": "qm {{[di|disk]}} {{[u|unlink]}} {{100}} --idlist {{unused0,unused1,scsi1,...}}",
+    "group": "Linux Ops",
+    "description": "qm-disk: Manage disk images. (Delete a disk)",
     "tags": [
       "linux",
       "qm-disk",
@@ -35370,6 +35625,126 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-scrub-0",
+    "type": "command",
+    "title": "scrub - Securely overwrite a file using the default overwrite pattern",
+    "content": "scrub {{path/to/file}}",
+    "group": "Linux Ops",
+    "description": "scrub: Securely overwrite files, block devices, or free disk space. (Securely overwrite a file using the default overwrite pattern)",
+    "tags": [
+      "linux",
+      "scrub",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-scrub-1",
+    "type": "command",
+    "title": "scrub - Securely overwrite multiple files",
+    "content": "scrub {{path/to/file1 path/to/file2 ...}}",
+    "group": "Linux Ops",
+    "description": "scrub: Securely overwrite files, block devices, or free disk space. (Securely overwrite multiple files)",
+    "tags": [
+      "linux",
+      "scrub",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-scrub-2",
+    "type": "command",
+    "title": "scrub - Securely overwrite a block device or partition",
+    "content": "sudo scrub {{/dev/sdX}}",
+    "group": "Linux Ops",
+    "description": "scrub: Securely overwrite files, block devices, or free disk space. (Securely overwrite a block device or partition)",
+    "tags": [
+      "linux",
+      "scrub",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-scrub-3",
+    "type": "command",
+    "title": "scrub - Securely overwrite a file with a single-pass overwrite pattern",
+    "content": "scrub {{[-p|--pattern]}} random {{path/to/file}}",
+    "group": "Linux Ops",
+    "description": "scrub: Securely overwrite files, block devices, or free disk space. (Securely overwrite a file with a single-pass overwrite pattern)",
+    "tags": [
+      "linux",
+      "scrub",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-scrub-4",
+    "type": "command",
+    "title": "scrub - Securely overwrite a file using the DoD 5220.22-M overwrite pattern",
+    "content": "scrub {{[-p|--pattern]}} dod {{path/to/file}}",
+    "group": "Linux Ops",
+    "description": "scrub: Securely overwrite files, block devices, or free disk space. (Securely overwrite a file using the DoD 5220.22-M overwrite pattern)",
+    "tags": [
+      "linux",
+      "scrub",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-scrub-5",
+    "type": "command",
+    "title": "scrub - Securely overwrite a file using the Gutmann overwrite pattern",
+    "content": "scrub {{[-p|--pattern]}} gutmann {{path/to/file}}",
+    "group": "Linux Ops",
+    "description": "scrub: Securely overwrite files, block devices, or free disk space. (Securely overwrite a file using the Gutmann overwrite pattern)",
+    "tags": [
+      "linux",
+      "scrub",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-scrub-6",
+    "type": "command",
+    "title": "scrub - Remove a file after successfully overwriting it",
+    "content": "scrub {{[-r|--remove]}} {{path/to/file}}",
+    "group": "Linux Ops",
+    "description": "scrub: Securely overwrite files, block devices, or free disk space. (Remove a file after successfully overwriting it)",
+    "tags": [
+      "linux",
+      "scrub",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-scrub-7",
+    "type": "command",
+    "title": "scrub - Securely overwrite free space in a directory",
+    "content": "scrub {{[-X|--freespace]}} {{path/to/directory}}",
+    "group": "Linux Ops",
+    "description": "scrub: Securely overwrite files, block devices, or free disk space. (Securely overwrite free space in a directory)",
+    "tags": [
+      "linux",
+      "scrub",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-dpkg-reconfigure-0",
     "type": "command",
     "title": "dpkg-reconfigure - Reconfigure one or more packages",
@@ -40614,6 +40989,96 @@
     "tags": [
       "linux",
       "pdfdetach",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-qm-remote-migrate-0",
+    "type": "command",
+    "title": "qm-remote-migrate - Migrate a VM to a remote host",
+    "content": "qm remote-migrate {{vmid}} {{target_vmid}} 'apitoken=PVEAPIToken={{user}}@{{realm}}!{{token}}={{secret}},host={{address}},fingerprint={{fingerprint}}' --target-bridge {{bridge}} --target-storage {{storage}}",
+    "group": "Linux Ops",
+    "description": "qm-remote-migrate: Migrate a virtual machine to a remote Proxmox host or cluster. (Migrate a VM to a remote host)",
+    "tags": [
+      "linux",
+      "qm-remote-migrate",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-qm-remote-migrate-1",
+    "type": "command",
+    "title": "qm-remote-migrate - Migrate a running VM with live migration",
+    "content": "qm remote-migrate {{vmid}} {{target_vmid}} 'apitoken=PVEAPIToken={{user}}@{{realm}}!{{token}}={{secret}},host={{address}},fingerprint={{fingerprint}}' --target-bridge {{bridge}} --target-storage {{storage}} --online",
+    "group": "Linux Ops",
+    "description": "qm-remote-migrate: Migrate a virtual machine to a remote Proxmox host or cluster. (Migrate a running VM with live migration)",
+    "tags": [
+      "linux",
+      "qm-remote-migrate",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-qm-remote-migrate-2",
+    "type": "command",
+    "title": "qm-remote-migrate - Delete the source VM after a successful migration",
+    "content": "qm remote-migrate {{vmid}} {{target_vmid}} 'apitoken=PVEAPIToken={{user}}@{{realm}}!{{token}}={{secret}},host={{address}},fingerprint={{fingerprint}}' --target-bridge {{bridge}} --target-storage {{storage}} --delete 1",
+    "group": "Linux Ops",
+    "description": "qm-remote-migrate: Migrate a virtual machine to a remote Proxmox host or cluster. (Delete the source VM after a successful migration)",
+    "tags": [
+      "linux",
+      "qm-remote-migrate",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-qm-remote-migrate-3",
+    "type": "command",
+    "title": "qm-remote-migrate - Limit migration bandwidth",
+    "content": "qm remote-migrate {{vmid}} {{target_vmid}} 'apitoken=PVEAPIToken={{user}}@{{realm}}!{{token}}={{secret}},host={{address}},fingerprint={{fingerprint}}' --target-bridge {{bridge}} --target-storage {{storage}} --bwlimit {{value}}",
+    "group": "Linux Ops",
+    "description": "qm-remote-migrate: Migrate a virtual machine to a remote Proxmox host or cluster. (Limit migration bandwidth)",
+    "tags": [
+      "linux",
+      "qm-remote-migrate",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-qm-remote-migrate-4",
+    "type": "command",
+    "title": "qm-remote-migrate - Use the same bridge and storage names on the target",
+    "content": "qm remote-migrate {{vmid}} {{target_vmid}} 'apitoken=PVEAPIToken={{user}}@{{realm}}!{{token}}={{secret}},host={{address}},fingerprint={{fingerprint}}' --target-bridge 1 --target-storage 1",
+    "group": "Linux Ops",
+    "description": "qm-remote-migrate: Migrate a virtual machine to a remote Proxmox host or cluster. (Use the same bridge and storage names on the target)",
+    "tags": [
+      "linux",
+      "qm-remote-migrate",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-qm-remote-migrate-5",
+    "type": "command",
+    "title": "qm-remote-migrate - Connect to a remote API on a custom port",
+    "content": "qm remote-migrate {{vmid}} {{target_vmid}} 'apitoken=PVEAPIToken={{user}}@{{realm}}!{{token}}={{secret}},host={{address}},fingerprint={{fingerprint}},port={{porta}}' --target-bridge {{bridge}} --target-storage {{storage}}",
+    "group": "Linux Ops",
+    "description": "qm-remote-migrate: Migrate a virtual machine to a remote Proxmox host or cluster. (Connect to a remote API on a custom port)",
+    "tags": [
+      "linux",
+      "qm-remote-migrate",
       "tldr",
       "en"
     ],
@@ -68237,10 +68702,10 @@
   {
     "id": "tldr-en-linux-certbot-4",
     "type": "command",
-    "title": "certbot - Simulate the obtaining of a new certificate, but don't actually save any new certificates to disk",
+    "title": "certbot - Simulate the obtaining of a new certificate without actually saving any new certificates to disk",
     "content": "sudo certbot --webroot {{[-w|--webroot-path]}} {{path/to/webroot}} {{[-d|--domain]}} {{subdomain.example.com}} --dry-run",
     "group": "Linux Ops",
-    "description": "certbot: The Let's Encrypt Agent for automatically obtaining and renewing TLS certificates. Successor to `letsencrypt`. (Simulate the obtaining of a new certificate, but don't actually save any new certificates to disk)",
+    "description": "certbot: The Let's Encrypt Agent for automatically obtaining and renewing TLS certificates. Successor to `letsencrypt`. (Simulate the obtaining of a new certificate without actually saving any new certificates to disk)",
     "tags": [
       "linux",
       "certbot",
@@ -85485,6 +85950,111 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-ufw-allow-0",
+    "type": "command",
+    "title": "ufw-allow - Allow all traffic on a port",
+    "content": "sudo ufw allow {{port}}",
+    "group": "Linux Ops",
+    "description": "ufw-allow: Allow traffic through the firewall. (Allow all traffic on a port)",
+    "tags": [
+      "linux",
+      "ufw-allow",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ufw-allow-1",
+    "type": "command",
+    "title": "ufw-allow - Allow traffic for a protocol on a port",
+    "content": "sudo ufw allow {{port}}/{{protocol}}",
+    "group": "Linux Ops",
+    "description": "ufw-allow: Allow traffic through the firewall. (Allow traffic for a protocol on a port)",
+    "tags": [
+      "linux",
+      "ufw-allow",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ufw-allow-2",
+    "type": "command",
+    "title": "ufw-allow - Allow incoming traffic for a protocol and add a comment for documentation",
+    "content": "sudo ufw allow in {{protocol}} comment '{{comment}}'",
+    "group": "Linux Ops",
+    "description": "ufw-allow: Allow traffic through the firewall. (Allow incoming traffic for a protocol and add a comment for documentation)",
+    "tags": [
+      "linux",
+      "ufw-allow",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ufw-allow-3",
+    "type": "command",
+    "title": "ufw-allow - Allow all traffic from a source address",
+    "content": "sudo ufw allow from {{source_address}}",
+    "group": "Linux Ops",
+    "description": "ufw-allow: Allow traffic through the firewall. (Allow all traffic from a source address)",
+    "tags": [
+      "linux",
+      "ufw-allow",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ufw-allow-4",
+    "type": "command",
+    "title": "ufw-allow - Allow all incoming traffic from the subnet 192.168.13.0/24",
+    "content": "sudo ufw allow from 192.168.13.0/24",
+    "group": "Linux Ops",
+    "description": "ufw-allow: Allow traffic through the firewall. (Allow all incoming traffic from the subnet 192.168.13.0/24)",
+    "tags": [
+      "linux",
+      "ufw-allow",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ufw-allow-5",
+    "type": "command",
+    "title": "ufw-allow - Allow TCP traffic from 192.168.1.12 to 192.168.1.100 on port 443",
+    "content": "sudo ufw allow from 192.168.1.12 to 192.168.1.100 port 443 proto tcp",
+    "group": "Linux Ops",
+    "description": "ufw-allow: Allow traffic through the firewall. (Allow TCP traffic from 192.168.1.12 to 192.168.1.100 on port 443)",
+    "tags": [
+      "linux",
+      "ufw-allow",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ufw-allow-6",
+    "type": "command",
+    "title": "ufw-allow - Allow all incoming GRE traffic to 192.168.1.100 on the eth0 interface",
+    "content": "sudo ufw allow in on eth0 to 192.168.1.100 proto gre",
+    "group": "Linux Ops",
+    "description": "ufw-allow: Allow traffic through the firewall. (Allow all incoming GRE traffic to 192.168.1.100 on the eth0 interface)",
+    "tags": [
+      "linux",
+      "ufw-allow",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-steghide-0",
     "type": "command",
     "title": "steghide - Embed data in a PNG, prompting for a passphrase",
@@ -88337,6 +88907,21 @@
   {
     "id": "tldr-en-linux-cage-4",
     "type": "command",
+    "title": "cage - Run a specific file",
+    "content": "cage /{{path/to/file}}",
+    "group": "Linux Ops",
+    "description": "cage: Open applications in a kiosk mode. (Run a specific file)",
+    "tags": [
+      "linux",
+      "cage",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-cage-5",
+    "type": "command",
     "title": "cage - Display help",
     "content": "cage -h",
     "group": "Linux Ops",
@@ -88518,7 +89103,7 @@
     "id": "tldr-en-linux-pct-set-6",
     "type": "command",
     "title": "pct-set - Remove an option",
-    "content": "pct {{[se|set]}} {{100}} --delete {{net0,mp0,mp1,...}}",
+    "content": "pct {{[se|set]}} {{100}} --delete {{unused0,net0,mp0,mp1,...}}",
     "group": "Linux Ops",
     "description": "pct-set: Set container options. (Remove an option)",
     "tags": [
@@ -89295,6 +89880,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-pct-fsck-0",
+    "type": "command",
+    "title": "pct-fsck - Check all volumes of a container",
+    "content": "pct fsck {{100}}",
+    "group": "Linux Ops",
+    "description": "pct-fsck: Run a filesystem check on a container volume. (Check all volumes of a container)",
+    "tags": [
+      "linux",
+      "pct-fsck",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-pct-fsck-1",
+    "type": "command",
+    "title": "pct-fsck - Specify which volume to check",
+    "content": "pct fsck {{100}} --device {{mp0|mp1|rootfs|...}}",
+    "group": "Linux Ops",
+    "description": "pct-fsck: Run a filesystem check on a container volume. (Specify which volume to check)",
+    "tags": [
+      "linux",
+      "pct-fsck",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-pstoedit-0",
     "type": "command",
     "title": "pstoedit - Convert a PDF page to PNG or JPEG format",
@@ -89511,6 +90126,21 @@
     "content": "repo-remove {{path/to/database.db.tar.gz}} {{package}}",
     "group": "Linux Ops",
     "description": "repo-remove: Package database maintenance utility which removes packages from a local repository. (Remove a package from a local repository)",
+    "tags": [
+      "linux",
+      "repo-remove",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-repo-remove-1",
+    "type": "command",
+    "title": "repo-remove - Also remove the package file",
+    "content": "repo-remove {{[-R|--remove]}} {{path/to/database.db.tar.gz}} {{package}}",
+    "group": "Linux Ops",
+    "description": "repo-remove: Package database maintenance utility which removes packages from a local repository. (Also remove the package file)",
     "tags": [
       "linux",
       "repo-remove",
@@ -99030,6 +99660,51 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-pvesm-add-0",
+    "type": "command",
+    "title": "pvesm-add - Add a directory storage",
+    "content": "pvesm {{[ad|add]}} dir {{storage_name}} --path {{path/to/directory}}",
+    "group": "Linux Ops",
+    "description": "pvesm-add: Add storages. (Add a directory storage)",
+    "tags": [
+      "linux",
+      "pvesm-add",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-pvesm-add-1",
+    "type": "command",
+    "title": "pvesm-add - Add an LVM storage",
+    "content": "pvesm {{[ad|add]}} lvm {{storage_name}} --vgname {{volume_group_name}}",
+    "group": "Linux Ops",
+    "description": "pvesm-add: Add storages. (Add an LVM storage)",
+    "tags": [
+      "linux",
+      "pvesm-add",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-pvesm-add-2",
+    "type": "command",
+    "title": "pvesm-add - Add an LVM-Thin storage",
+    "content": "pvesm {{[ad|add]}} lvmthin {{storage_name}} --vgname {{volume_group_name}} --thinpool {{logical_volume_name}}",
+    "group": "Linux Ops",
+    "description": "pvesm-add: Add storages. (Add an LVM-Thin storage)",
+    "tags": [
+      "linux",
+      "pvesm-add",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-qm-create-0",
     "type": "command",
     "title": "qm-create - Create a virtual machine with access to 512MiB of memory and 1 CPU core",
@@ -105977,10 +106652,10 @@
   {
     "id": "tldr-en-linux-pvesm-2",
     "type": "command",
-    "title": "pvesm - Add a directory storage",
-    "content": "pvesm add {{[d|dir]}} {{storage_name}} --path {{path/to/directory}}",
+    "title": "pvesm - View the path of a stored file",
+    "content": "pvesm {{[pa|path]}} {{storage_name}}:{{content_type}}/{{file_name}}",
     "group": "Linux Ops",
-    "description": "pvesm: Manage Proxmox storage. (Add a directory storage)",
+    "description": "pvesm: Manage Proxmox storage. (View the path of a stored file)",
     "tags": [
       "linux",
       "pvesm",
@@ -105992,10 +106667,10 @@
   {
     "id": "tldr-en-linux-pvesm-3",
     "type": "command",
-    "title": "pvesm - Set a storage to contain specific content",
-    "content": "pvesm set {{storage_name}} --content {{iso,images,backup,vztmpl,...}}",
+    "title": "pvesm - Add a directory storage",
+    "content": "pvesm {{[ad|add]}} dir {{storage_name}} --path {{path/to/directory}}",
     "group": "Linux Ops",
-    "description": "pvesm: Manage Proxmox storage. (Set a storage to contain specific content)",
+    "description": "pvesm: Manage Proxmox storage. (Add a directory storage)",
     "tags": [
       "linux",
       "pvesm",
@@ -106007,8 +106682,23 @@
   {
     "id": "tldr-en-linux-pvesm-4",
     "type": "command",
+    "title": "pvesm - Set a storage to contain specific content",
+    "content": "pvesm {{[se|set]}} {{storage_name}} --content {{iso,images,backup,vztmpl,rootdir,snippets,import}}",
+    "group": "Linux Ops",
+    "description": "pvesm: Manage Proxmox storage. (Set a storage to contain specific content)",
+    "tags": [
+      "linux",
+      "pvesm",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-pvesm-5",
+    "type": "command",
     "title": "pvesm - Delete a file from storage",
-    "content": "pvesm free {{local:iso/archlinux-2025.08.01-x86_64.iso}}",
+    "content": "pvesm {{[f|free]}} {{local:iso/archlinux-2025.08.01-x86_64.iso}}",
     "group": "Linux Ops",
     "description": "pvesm: Manage Proxmox storage. (Delete a file from storage)",
     "tags": [
@@ -106020,7 +106710,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-linux-pvesm-5",
+    "id": "tldr-en-linux-pvesm-6",
     "type": "command",
     "title": "pvesm - Remove a storage",
     "content": "pvesm {{[r|remove]}} {{storage_name}}",
