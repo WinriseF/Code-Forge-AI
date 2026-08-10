@@ -1,5 +1,5 @@
 {
-  "updated_at": 1785724883990,
+  "updated_at": 1786325722375,
   "version": "2.1.0",
   "packages": [
     {
@@ -117,9 +117,9 @@
       "language": "en",
       "platform": "common",
       "name": "Common Tools (EN)",
-      "description": "Contains 20967 en commands for common.",
-      "count": 20967,
-      "size_kb": 10155,
+      "description": "Contains 20978 en commands for common.",
+      "count": 20978,
+      "size_kb": 10161,
       "url": "packs/commands/en/common.json",
       "category": "command"
     },
@@ -161,9 +161,9 @@
       "language": "en",
       "platform": "linux",
       "name": "Linux Ops (EN)",
-      "description": "Contains 8423 en commands for linux.",
-      "count": 8423,
-      "size_kb": 3978,
+      "description": "Contains 8424 en commands for linux.",
+      "count": 8424,
+      "size_kb": 3979,
       "url": "packs/commands/en/linux.json",
       "category": "command"
     },
@@ -239,8 +239,8 @@
       "platform": "llm",
       "name": "ChatGPT Role Prompts",
       "description": "Curated role-play prompts for ChatGPT and general LLM workflows.",
-      "count": 2079,
-      "size_kb": 5961.1,
+      "count": 2093,
+      "size_kb": 5994.63,
       "url": "packs/prompts/en/roles.json",
       "category": "prompt"
     },

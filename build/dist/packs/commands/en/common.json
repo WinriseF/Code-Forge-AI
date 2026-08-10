@@ -16245,6 +16245,96 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-httrack-0",
+    "type": "command",
+    "title": "httrack - Mirror a website",
+    "content": "httrack {{https://example.com}}",
+    "group": "Common Tools",
+    "description": "httrack: Download websites for offline browsing. (Mirror a website)",
+    "tags": [
+      "common",
+      "httrack",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-httrack-1",
+    "type": "command",
+    "title": "httrack - Mirror a website to a specific directory",
+    "content": "httrack {{https://example.com}} {{[-O|--path]}} {{path/to/output_directory}}",
+    "group": "Common Tools",
+    "description": "httrack: Download websites for offline browsing. (Mirror a website to a specific directory)",
+    "tags": [
+      "common",
+      "httrack",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-httrack-2",
+    "type": "command",
+    "title": "httrack - Continue an interrupted mirror using the cache",
+    "content": "httrack {{https://example.com}} {{[-O|--path]}} {{path/to/output_directory}} {{[-i|--continue]}}",
+    "group": "Common Tools",
+    "description": "httrack: Download websites for offline browsing. (Continue an interrupted mirror using the cache)",
+    "tags": [
+      "common",
+      "httrack",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-httrack-3",
+    "type": "command",
+    "title": "httrack - Limit the recursion depth",
+    "content": "httrack {{https://example.com}} {{[-r|--depth=]}}{{5}}",
+    "group": "Common Tools",
+    "description": "httrack: Download websites for offline browsing. (Limit the recursion depth)",
+    "tags": [
+      "common",
+      "httrack",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-httrack-4",
+    "type": "command",
+    "title": "httrack - Mirror all links from the first-level pages",
+    "content": "httrack {{https://example.com}} {{[-Y|--mirrorlinks]}}",
+    "group": "Common Tools",
+    "description": "httrack: Download websites for offline browsing. (Mirror all links from the first-level pages)",
+    "tags": [
+      "common",
+      "httrack",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-httrack-5",
+    "type": "command",
+    "title": "httrack - Exclude ZIP files while mirroring",
+    "content": "httrack {{https://example.com}} \"-*.zip\"",
+    "group": "Common Tools",
+    "description": "httrack: Download websites for offline browsing. (Exclude ZIP files while mirroring)",
+    "tags": [
+      "common",
+      "httrack",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-az-logout-0",
     "type": "command",
     "title": "az-logout - Log out from the active account",
@@ -62327,10 +62417,10 @@
   {
     "id": "tldr-en-common-git-show-3",
     "type": "command",
-    "title": "git-show - Show information about the 3rd commit from the `HEAD` of a branch",
-    "content": "git show {{branch}}~{{3}}",
+    "title": "git-show - Ignore whitespace when comparing lines",
+    "content": "git show {{[-w|--ignore-all-space]}}",
     "group": "Common Tools",
-    "description": "git-show: Show various types of Git objects (commits, tags, etc.). (Show information about the 3rd commit from the `HEAD` of a branch)",
+    "description": "git-show: Show various types of Git objects (commits, tags, etc.). (Ignore whitespace when comparing lines)",
     "tags": [
       "common",
       "git-show",
@@ -62522,10 +62612,10 @@
   {
     "id": "tldr-en-common-swaybg-0",
     "type": "command",
-    "title": "swaybg - Set the wallpaper to an image",
+    "title": "swaybg - Set the wallpaper on all monitors to an image",
     "content": "swaybg {{[-i|--image]}} {{path/to/image}}",
     "group": "Common Tools",
-    "description": "swaybg: Wallpaper tool for Wayland compositors. (Set the wallpaper to an image)",
+    "description": "swaybg: Wallpaper tool for Wayland compositors. Note: Sway starts `swaybg` automatically if a wallpaper is set in the config file. (Set the wallpaper on all monitors to an image)",
     "tags": [
       "common",
       "swaybg",
@@ -62537,10 +62627,10 @@
   {
     "id": "tldr-en-common-swaybg-1",
     "type": "command",
-    "title": "swaybg - Set the wallpaper mode",
+    "title": "swaybg - Set the image scaling mode (default: `stretch`)",
     "content": "swaybg {{[-i|--image]}} {{path/to/image}} {{[-m|--mode]}} {{stretch|fit|fill|center|tile|solid_color}}",
     "group": "Common Tools",
-    "description": "swaybg: Wallpaper tool for Wayland compositors. (Set the wallpaper mode)",
+    "description": "swaybg: Wallpaper tool for Wayland compositors. Note: Sway starts `swaybg` automatically if a wallpaper is set in the config file. (Set the image scaling mode (default: `stretch`))",
     "tags": [
       "common",
       "swaybg",
@@ -62553,9 +62643,39 @@
     "id": "tldr-en-common-swaybg-2",
     "type": "command",
     "title": "swaybg - Set the wallpaper to a static color",
-    "content": "swaybg {{[-c|--color]}} \"{{#rrggbb}}\"",
+    "content": "swaybg {{[-c|--color]}} {{rrggbb}}",
     "group": "Common Tools",
-    "description": "swaybg: Wallpaper tool for Wayland compositors. (Set the wallpaper to a static color)",
+    "description": "swaybg: Wallpaper tool for Wayland compositors. Note: Sway starts `swaybg` automatically if a wallpaper is set in the config file. (Set the wallpaper to a static color)",
+    "tags": [
+      "common",
+      "swaybg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-swaybg-3",
+    "type": "command",
+    "title": "swaybg - Set the wallpaper on a specific monitor",
+    "content": "swaybg {{[-o|--output]}} {{HDMI-1}} {{[-i|--image]}} {{path/to/image}}",
+    "group": "Common Tools",
+    "description": "swaybg: Wallpaper tool for Wayland compositors. Note: Sway starts `swaybg` automatically if a wallpaper is set in the config file. (Set the wallpaper on a specific monitor)",
+    "tags": [
+      "common",
+      "swaybg",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-swaybg-4",
+    "type": "command",
+    "title": "swaybg - Set different wallpapers on multiple monitors",
+    "content": "swaybg {{[-o|--output]}} {{HDMI-1}} {{[-i|--image]}} {{path/to/image}} {{[-o|--output]}} {{DP-1}} {{[-i|--image]}} {{path/to/image}}",
+    "group": "Common Tools",
+    "description": "swaybg: Wallpaper tool for Wayland compositors. Note: Sway starts `swaybg` automatically if a wallpaper is set in the config file. (Set different wallpapers on multiple monitors)",
     "tags": [
       "common",
       "swaybg",
@@ -104376,6 +104496,21 @@
     "content": "xprop -id {{0x200007}}",
     "group": "Common Tools",
     "description": "xprop: Display window and font properties in an X server. (Display all the properties of the window with the ID 0x200007)",
+    "tags": [
+      "common",
+      "xprop",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-xprop-4",
+    "type": "command",
+    "title": "xprop - Monitor a window for changes",
+    "content": "xprop -spy",
+    "group": "Common Tools",
+    "description": "xprop: Display window and font properties in an X server. (Monitor a window for changes)",
     "tags": [
       "common",
       "xprop",
@@ -238725,6 +238860,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-kcmshell6-0",
+    "type": "command",
+    "title": "kcmshell6 - Display a KCM",
+    "content": "kcmshell6 {{kcm_name}}",
+    "group": "Common Tools",
+    "description": "kcmshell6: Display a single KDE Configuration Module. (Display a KCM)",
+    "tags": [
+      "common",
+      "kcmshell6",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-kcmshell6-1",
+    "type": "command",
+    "title": "kcmshell6 - Display help",
+    "content": "kcmshell6 {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "kcmshell6: Display a single KDE Configuration Module. (Display help)",
+    "tags": [
+      "common",
+      "kcmshell6",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-makepasswd-0",
     "type": "command",
     "title": "makepasswd - Generate a random password (8 to 10 characters long, containing letters and numbers)",
@@ -288768,7 +288933,7 @@
     "id": "tldr-en-common-fd-4",
     "type": "command",
     "title": "fd - Include ignored and hidden files in the search",
-    "content": "fd \"{{regex}}\" {{[-H|--hidden]}} {{[-I|--no-ignore]}}",
+    "content": "fd \"{{regex}}\" {{[-HI|--hidden --no-ignore]}}",
     "group": "Common Tools",
     "description": "fd: Find entries in the filesystem. (Include ignored and hidden files in the search)",
     "tags": [

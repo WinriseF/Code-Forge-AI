@@ -722,10 +722,10 @@
   {
     "id": "tldr-en-linux-makepkg-3",
     "type": "command",
-    "title": "makepkg - Make a package, but skip checking the source's hashes",
-    "content": "makepkg --skipchecksums",
+    "title": "makepkg - Make a package, but skip checking the source's hashes and PGP signatures",
+    "content": "makepkg --skipchecksums --skippgpchecks",
     "group": "Linux Ops",
-    "description": "makepkg: Create a package which can be used with `pacman`. Uses the `PKGBUILD` file in the current working directory by default. (Make a package, but skip checking the source's hashes)",
+    "description": "makepkg: Create a package which can be used with `pacman`. Uses the `PKGBUILD` file in the current working directory by default. (Make a package, but skip checking the source's hashes and PGP signatures)",
     "tags": [
       "linux",
       "makepkg",
@@ -22053,7 +22053,7 @@
     "id": "tldr-en-linux-systemctl-kill-2",
     "type": "command",
     "title": "systemctl-kill - Send a `SIGHUP` signal to only the main process of a unit",
-    "content": "systemctl kill {{[-s|--signal]}} SIGHUP --kill-whom main {{unit}}",
+    "content": "systemctl kill {{[-s|--signal]}} {{[1|SIGHUP]}} --kill-whom main {{unit}}",
     "group": "Linux Ops",
     "description": "systemctl-kill: Send a signal to one or more processes of a unit. (Send a `SIGHUP` signal to only the main process of a unit)",
     "tags": [
@@ -108572,21 +108572,6 @@
   {
     "id": "tldr-en-linux-vlock-1",
     "type": "command",
-    "title": "vlock - Lock current virtual console session via flag",
-    "content": "vlock {{[-c|--current]}}",
-    "group": "Linux Ops",
-    "description": "vlock: Lock virtual console. (Lock current virtual console session via flag)",
-    "tags": [
-      "linux",
-      "vlock",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
-    "id": "tldr-en-linux-vlock-2",
-    "type": "command",
     "title": "vlock - Lock all virtual console sessions",
     "content": "vlock {{[-a|--all]}}",
     "group": "Linux Ops",
@@ -108600,7 +108585,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-linux-vlock-3",
+    "id": "tldr-en-linux-vlock-2",
     "type": "command",
     "title": "vlock - Display help",
     "content": "vlock {{[-h|--help]}}",
@@ -108615,7 +108600,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-linux-vlock-4",
+    "id": "tldr-en-linux-vlock-3",
     "type": "command",
     "title": "vlock - Display version",
     "content": "vlock {{[-v|--version]}}",
@@ -117572,6 +117557,21 @@
   {
     "id": "tldr-en-linux-kinfocenter-2",
     "type": "command",
+    "title": "kinfocenter - Open a specific KCM",
+    "content": "kinfocenter {{kcm_name}}",
+    "group": "Linux Ops",
+    "description": "kinfocenter: KDE information center to show system information. (Open a specific KCM)",
+    "tags": [
+      "linux",
+      "kinfocenter",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-kinfocenter-3",
+    "type": "command",
     "title": "kinfocenter - Display help",
     "content": "kinfocenter {{[-h|--help]}}",
     "group": "Linux Ops",
@@ -122146,6 +122146,21 @@
   },
   {
     "id": "tldr-en-linux-systemsettings-2",
+    "type": "command",
+    "title": "systemsettings - Open a specific KCM",
+    "content": "systemsettings {{kcm_name}}",
+    "group": "Linux Ops",
+    "description": "systemsettings: KDE central settings program. (Open a specific KCM)",
+    "tags": [
+      "linux",
+      "systemsettings",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-systemsettings-3",
     "type": "command",
     "title": "systemsettings - Display help",
     "content": "systemsettings {{[-h|--help]}}",
