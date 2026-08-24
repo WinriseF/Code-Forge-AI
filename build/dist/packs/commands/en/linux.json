@@ -7847,10 +7847,10 @@
   {
     "id": "tldr-en-linux-reflector-2",
     "type": "command",
-    "title": "reflector - Only get the 10 recently sync'd mirrors",
-    "content": "reflector {{[-l|--latest]}} {{10}}",
+    "title": "reflector - Only get the 10 recently synced mirrors",
+    "content": "reflector {{[-l|--latest]}} 10",
     "group": "Linux Ops",
-    "description": "reflector: Arch script to fetch and sort mirrorlists. (Only get the 10 recently sync'd mirrors)",
+    "description": "reflector: Arch script to fetch and sort mirrorlists. (Only get the 10 recently synced mirrors)",
     "tags": [
       "linux",
       "reflector",
@@ -16224,6 +16224,51 @@
     "tags": [
       "linux",
       "update-initramfs",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ufw-status-0",
+    "type": "command",
+    "title": "ufw-status - Show whether the firewall is active and list the rules",
+    "content": "sudo ufw status",
+    "group": "Linux Ops",
+    "description": "ufw-status: Show the status of Uncomplicated Firewall and its rules. (Show whether the firewall is active and list the rules)",
+    "tags": [
+      "linux",
+      "ufw-status",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ufw-status-1",
+    "type": "command",
+    "title": "ufw-status - Show rules with numbers (useful before deleting a rule by number)",
+    "content": "sudo ufw status numbered",
+    "group": "Linux Ops",
+    "description": "ufw-status: Show the status of Uncomplicated Firewall and its rules. (Show rules with numbers (useful before deleting a rule by number))",
+    "tags": [
+      "linux",
+      "ufw-status",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ufw-status-2",
+    "type": "command",
+    "title": "ufw-status - Show a verbose status, including default policies and listening ports",
+    "content": "sudo ufw status verbose",
+    "group": "Linux Ops",
+    "description": "ufw-status: Show the status of Uncomplicated Firewall and its rules. (Show a verbose status, including default policies and listening ports)",
+    "tags": [
+      "linux",
+      "ufw-status",
       "tldr",
       "en"
     ],
@@ -41733,7 +41778,7 @@
     "id": "tldr-en-linux-aura-0",
     "type": "command",
     "title": "aura - Search for packages from the AUR",
-    "content": "aura {{[-As|--aursync --search]}} {{keyword|regex}}",
+    "content": "aura -As {{keyword|regex}}",
     "group": "Linux Ops",
     "description": "aura: The Aura Package Manager: a secure, multilingual package manager for Arch Linux and the AUR. (Search for packages from the AUR)",
     "tags": [
@@ -41748,7 +41793,7 @@
     "id": "tldr-en-linux-aura-1",
     "type": "command",
     "title": "aura - Install a package from the AUR",
-    "content": "aura {{[-A|--aursync]}} {{package}}",
+    "content": "aura -A {{package}}",
     "group": "Linux Ops",
     "description": "aura: The Aura Package Manager: a secure, multilingual package manager for Arch Linux and the AUR. (Install a package from the AUR)",
     "tags": [
@@ -41763,7 +41808,7 @@
     "id": "tldr-en-linux-aura-2",
     "type": "command",
     "title": "aura - Update all AUR packages in a verbose mode and remove all make dependencies",
-    "content": "aura {{[-Akua|--aursync --diff --sysupgrade --delmakedeps]}}",
+    "content": "aura -Akua",
     "group": "Linux Ops",
     "description": "aura: The Aura Package Manager: a secure, multilingual package manager for Arch Linux and the AUR. (Update all AUR packages in a verbose mode and remove all make dependencies)",
     "tags": [
@@ -41778,7 +41823,7 @@
     "id": "tldr-en-linux-aura-3",
     "type": "command",
     "title": "aura - Install a package from the official repositories",
-    "content": "aura {{[-S|--sync]}} {{package}}",
+    "content": "aura -S {{package}}",
     "group": "Linux Ops",
     "description": "aura: The Aura Package Manager: a secure, multilingual package manager for Arch Linux and the AUR. (Install a package from the official repositories)",
     "tags": [
@@ -41793,7 +41838,7 @@
     "id": "tldr-en-linux-aura-4",
     "type": "command",
     "title": "aura - Synchronize and update all packages from the official repositories",
-    "content": "aura {{[-Syu|--sync --refresh --sysupgrade]}}",
+    "content": "aura -Syu",
     "group": "Linux Ops",
     "description": "aura: The Aura Package Manager: a secure, multilingual package manager for Arch Linux and the AUR. (Synchronize and update all packages from the official repositories)",
     "tags": [
@@ -41808,7 +41853,7 @@
     "id": "tldr-en-linux-aura-5",
     "type": "command",
     "title": "aura - Remove a package and its dependencies",
-    "content": "aura {{[-Rsu|--remove --recursive --unneeded]}} {{package}}",
+    "content": "aura -Rsu {{package}}",
     "group": "Linux Ops",
     "description": "aura: The Aura Package Manager: a secure, multilingual package manager for Arch Linux and the AUR. (Remove a package and its dependencies)",
     "tags": [
@@ -41823,7 +41868,7 @@
     "id": "tldr-en-linux-aura-6",
     "type": "command",
     "title": "aura - Remove orphan packages (installed as dependencies but not required by any package)",
-    "content": "aura {{[-Oj|--orphans --abandon]}}",
+    "content": "aura -Oj",
     "group": "Linux Ops",
     "description": "aura: The Aura Package Manager: a secure, multilingual package manager for Arch Linux and the AUR. (Remove orphan packages (installed as dependencies but not required by any package))",
     "tags": [
@@ -51753,7 +51798,7 @@
     "id": "tldr-en-linux-systemd-tmpfiles-0",
     "type": "command",
     "title": "systemd-tmpfiles - Create files and directories as specified in the configuration",
-    "content": "systemd-tmpfiles --create",
+    "content": "sudo systemd-tmpfiles --create",
     "group": "Linux Ops",
     "description": "systemd-tmpfiles: Create, delete, and clean up volatile and temporary files and directories. This command is automatically invoked on boot by systemd services and running it manually is usually not needed. (Create files and directories as specified in the configuration)",
     "tags": [
@@ -51767,10 +51812,10 @@
   {
     "id": "tldr-en-linux-systemd-tmpfiles-1",
     "type": "command",
-    "title": "systemd-tmpfiles - Clean up files and directories with age parameters configured",
-    "content": "systemd-tmpfiles --clean",
+    "title": "systemd-tmpfiles - Create files and directories matching only a specific path prefix",
+    "content": "sudo systemd-tmpfiles --create --prefix {{/var/log/journal}}",
     "group": "Linux Ops",
-    "description": "systemd-tmpfiles: Create, delete, and clean up volatile and temporary files and directories. This command is automatically invoked on boot by systemd services and running it manually is usually not needed. (Clean up files and directories with age parameters configured)",
+    "description": "systemd-tmpfiles: Create, delete, and clean up volatile and temporary files and directories. This command is automatically invoked on boot by systemd services and running it manually is usually not needed. (Create files and directories matching only a specific path prefix)",
     "tags": [
       "linux",
       "systemd-tmpfiles",
@@ -51782,10 +51827,10 @@
   {
     "id": "tldr-en-linux-systemd-tmpfiles-2",
     "type": "command",
-    "title": "systemd-tmpfiles - Remove files and directories as specified in the configuration",
-    "content": "systemd-tmpfiles --remove",
+    "title": "systemd-tmpfiles - Clean up files and directories with age parameters configured",
+    "content": "sudo systemd-tmpfiles --clean",
     "group": "Linux Ops",
-    "description": "systemd-tmpfiles: Create, delete, and clean up volatile and temporary files and directories. This command is automatically invoked on boot by systemd services and running it manually is usually not needed. (Remove files and directories as specified in the configuration)",
+    "description": "systemd-tmpfiles: Create, delete, and clean up volatile and temporary files and directories. This command is automatically invoked on boot by systemd services and running it manually is usually not needed. (Clean up files and directories with age parameters configured)",
     "tags": [
       "linux",
       "systemd-tmpfiles",
@@ -51797,10 +51842,10 @@
   {
     "id": "tldr-en-linux-systemd-tmpfiles-3",
     "type": "command",
-    "title": "systemd-tmpfiles - Apply operations for user-specific configurations",
-    "content": "systemd-tmpfiles --create --user",
+    "title": "systemd-tmpfiles - Remove files and directories as specified in the configuration",
+    "content": "sudo systemd-tmpfiles --remove",
     "group": "Linux Ops",
-    "description": "systemd-tmpfiles: Create, delete, and clean up volatile and temporary files and directories. This command is automatically invoked on boot by systemd services and running it manually is usually not needed. (Apply operations for user-specific configurations)",
+    "description": "systemd-tmpfiles: Create, delete, and clean up volatile and temporary files and directories. This command is automatically invoked on boot by systemd services and running it manually is usually not needed. (Remove files and directories as specified in the configuration)",
     "tags": [
       "linux",
       "systemd-tmpfiles",
@@ -51812,8 +51857,23 @@
   {
     "id": "tldr-en-linux-systemd-tmpfiles-4",
     "type": "command",
+    "title": "systemd-tmpfiles - Apply operations for user-specific configurations",
+    "content": "sudo systemd-tmpfiles --create --user",
+    "group": "Linux Ops",
+    "description": "systemd-tmpfiles: Create, delete, and clean up volatile and temporary files and directories. This command is automatically invoked on boot by systemd services and running it manually is usually not needed. (Apply operations for user-specific configurations)",
+    "tags": [
+      "linux",
+      "systemd-tmpfiles",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-systemd-tmpfiles-5",
+    "type": "command",
     "title": "systemd-tmpfiles - Execute lines marked for early boot",
-    "content": "systemd-tmpfiles --create --boot",
+    "content": "sudo systemd-tmpfiles --create --boot",
     "group": "Linux Ops",
     "description": "systemd-tmpfiles: Create, delete, and clean up volatile and temporary files and directories. This command is automatically invoked on boot by systemd services and running it manually is usually not needed. (Execute lines marked for early boot)",
     "tags": [
@@ -60015,6 +60075,96 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-foremost-0",
+    "type": "command",
+    "title": "foremost - Recover files of a specific [t]ype (e.g., JPEG) from a disk image",
+    "content": "foremost -t {{jpg}} -i {{path/to/disk_image.dd}}",
+    "group": "Linux Ops",
+    "description": "foremost: Recover files using their headers, footers, and data structures. (Recover files of a specific [t]ype (e.g., JPEG) from a disk image)",
+    "tags": [
+      "linux",
+      "foremost",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-foremost-1",
+    "type": "command",
+    "title": "foremost - Recover files of multiple [t]ypes",
+    "content": "foremost -t {{gif,png,pdf}} -i {{path/to/disk_image.dd}}",
+    "group": "Linux Ops",
+    "description": "foremost: Recover files using their headers, footers, and data structures. (Recover files of multiple [t]ypes)",
+    "tags": [
+      "linux",
+      "foremost",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-foremost-2",
+    "type": "command",
+    "title": "foremost - Recover files using all predefined formats",
+    "content": "foremost -t all -i {{path/to/disk_image.dd}}",
+    "group": "Linux Ops",
+    "description": "foremost: Recover files using their headers, footers, and data structures. (Recover files using all predefined formats)",
+    "tags": [
+      "linux",
+      "foremost",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-foremost-3",
+    "type": "command",
+    "title": "foremost - Recover files into a specific [o]utput directory",
+    "content": "foremost -o {{path/to/output_directory}} -i {{path/to/disk_image.dd}}",
+    "group": "Linux Ops",
+    "description": "foremost: Recover files using their headers, footers, and data structures. (Recover files into a specific [o]utput directory)",
+    "tags": [
+      "linux",
+      "foremost",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-foremost-4",
+    "type": "command",
+    "title": "foremost - Display [h]elp",
+    "content": "foremost -h",
+    "group": "Linux Ops",
+    "description": "foremost: Recover files using their headers, footers, and data structures. (Display [h]elp)",
+    "tags": [
+      "linux",
+      "foremost",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-foremost-5",
+    "type": "command",
+    "title": "foremost - Display [V]ersion",
+    "content": "foremost -V",
+    "group": "Linux Ops",
+    "description": "foremost: Recover files using their headers, footers, and data structures. (Display [V]ersion)",
+    "tags": [
+      "linux",
+      "foremost",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-bindfs-0",
     "type": "command",
     "title": "bindfs - Mount a directory with same permissions",
@@ -68208,7 +68358,7 @@
     "id": "tldr-en-linux-shelly-0",
     "type": "command",
     "title": "shelly - Upgrade all packages from every source (repo, AUR, Flatpak, AppImage)",
-    "content": "shelly upgrade-all",
+    "content": "shelly {{[-Ux|upgrade all]}}",
     "group": "Linux Ops",
     "description": "shelly: A modern, unified package manager for Arch Linux. (Upgrade all packages from every source (repo, AUR, Flatpak, AppImage))",
     "tags": [
@@ -68223,7 +68373,7 @@
     "id": "tldr-en-linux-shelly-1",
     "type": "command",
     "title": "shelly - Install a package",
-    "content": "shelly install {{package}}",
+    "content": "shelly {{package}}",
     "group": "Linux Ops",
     "description": "shelly: A modern, unified package manager for Arch Linux. (Install a package)",
     "tags": [
@@ -68238,7 +68388,7 @@
     "id": "tldr-en-linux-shelly-2",
     "type": "command",
     "title": "shelly - Remove an installed package and its orphaned dependencies",
-    "content": "shelly remove --cascade {{package}}",
+    "content": "shelly {{[-Rs|remove standard]}} {{[-c|--cascade]}} {{package}}",
     "group": "Linux Ops",
     "description": "shelly: A modern, unified package manager for Arch Linux. (Remove an installed package and its orphaned dependencies)",
     "tags": [
@@ -68253,7 +68403,7 @@
     "id": "tldr-en-linux-shelly-3",
     "type": "command",
     "title": "shelly - Search for a package in the standard repositories",
-    "content": "shelly query --available {{search_term}}",
+    "content": "shelly {{[-Ss|search standard]}} {{[-v|--available]}} {{search_term}}",
     "group": "Linux Ops",
     "description": "shelly: A modern, unified package manager for Arch Linux. (Search for a package in the standard repositories)",
     "tags": [
@@ -68268,7 +68418,7 @@
     "id": "tldr-en-linux-shelly-4",
     "type": "command",
     "title": "shelly - Search for a package specifically in the AUR",
-    "content": "shelly aur search {{search_term}}",
+    "content": "shelly {{[-Sa|search aur]}} {{search_term}}",
     "group": "Linux Ops",
     "description": "shelly: A modern, unified package manager for Arch Linux. (Search for a package specifically in the AUR)",
     "tags": [
@@ -68283,7 +68433,7 @@
     "id": "tldr-en-linux-shelly-5",
     "type": "command",
     "title": "shelly - Remove orphaned packages (installed as dependencies but no longer required)",
-    "content": "shelly purify --orphans",
+    "content": "shelly {{[-Zs|purify standard]}} {{[-o|--orphans]}}",
     "group": "Linux Ops",
     "description": "shelly: A modern, unified package manager for Arch Linux. (Remove orphaned packages (installed as dependencies but no longer required))",
     "tags": [
@@ -74844,6 +74994,111 @@
     "tags": [
       "linux",
       "steamos-bootdebug",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-rmpc-0",
+    "type": "command",
+    "title": "rmpc - Start the TUI client",
+    "content": "rmpc",
+    "group": "Linux Ops",
+    "description": "rmpc: A terminal music player client for the Music Player Daemon, with album art support. (Start the TUI client)",
+    "tags": [
+      "linux",
+      "rmpc",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-rmpc-1",
+    "type": "command",
+    "title": "rmpc - Connect to a specific MPD instance",
+    "content": "rmpc {{[-a|--address]}} {{host:port}}",
+    "group": "Linux Ops",
+    "description": "rmpc: A terminal music player client for the Music Player Daemon, with album art support. (Connect to a specific MPD instance)",
+    "tags": [
+      "linux",
+      "rmpc",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-rmpc-2",
+    "type": "command",
+    "title": "rmpc - Print the default configuration to use as a starting point",
+    "content": "rmpc config",
+    "group": "Linux Ops",
+    "description": "rmpc: A terminal music player client for the Music Player Daemon, with album art support. (Print the default configuration to use as a starting point)",
+    "tags": [
+      "linux",
+      "rmpc",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-rmpc-3",
+    "type": "command",
+    "title": "rmpc - Scan the music directory for changes",
+    "content": "rmpc update",
+    "group": "Linux Ops",
+    "description": "rmpc: A terminal music player client for the Music Player Daemon, with album art support. (Scan the music directory for changes)",
+    "tags": [
+      "linux",
+      "rmpc",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-rmpc-4",
+    "type": "command",
+    "title": "rmpc - Save the currently playing song's album art to a file",
+    "content": "rmpc albumart {{[-o|--output]}} {{path/to/cover.jpg}}",
+    "group": "Linux Ops",
+    "description": "rmpc: A terminal music player client for the Music Player Daemon, with album art support. (Save the currently playing song's album art to a file)",
+    "tags": [
+      "linux",
+      "rmpc",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-rmpc-5",
+    "type": "command",
+    "title": "rmpc - Toggle playback control functions (consume plays the song and deletes it from the queue afterwards)",
+    "content": "rmpc {{next|prev|stop|consume|togglerepeat|pause|unpause}}",
+    "group": "Linux Ops",
+    "description": "rmpc: A terminal music player client for the Music Player Daemon, with album art support. (Toggle playback control functions (consume plays the song and deletes it from the queue afterwards))",
+    "tags": [
+      "linux",
+      "rmpc",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-rmpc-6",
+    "type": "command",
+    "title": "rmpc - View the currently playing song",
+    "content": "rmpc song",
+    "group": "Linux Ops",
+    "description": "rmpc: A terminal music player client for the Music Player Daemon, with album art support. (View the currently playing song)",
+    "tags": [
+      "linux",
+      "rmpc",
       "tldr",
       "en"
     ],
@@ -86265,6 +86520,81 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-switcherooctl-0",
+    "type": "command",
+    "title": "switcherooctl - Enable the switcheroo service",
+    "content": "systemctl start switcheroo-control",
+    "group": "Linux Ops",
+    "description": "switcherooctl: Launch a command on a specific GPU. (Enable the switcheroo service)",
+    "tags": [
+      "linux",
+      "switcherooctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-switcherooctl-1",
+    "type": "command",
+    "title": "switcherooctl - List known GPUs",
+    "content": "switcherooctl",
+    "group": "Linux Ops",
+    "description": "switcherooctl: Launch a command on a specific GPU. (List known GPUs)",
+    "tags": [
+      "linux",
+      "switcherooctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-switcherooctl-2",
+    "type": "command",
+    "title": "switcherooctl - Launch a command on the first discrete GPU",
+    "content": "switcherooctl launch {{command}}",
+    "group": "Linux Ops",
+    "description": "switcherooctl: Launch a command on a specific GPU. (Launch a command on the first discrete GPU)",
+    "tags": [
+      "linux",
+      "switcherooctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-switcherooctl-3",
+    "type": "command",
+    "title": "switcherooctl - Launch a command on a specific GPU",
+    "content": "switcherooctl launch {{[-g|--gpu]}} {{device_number}} {{command}}",
+    "group": "Linux Ops",
+    "description": "switcherooctl: Launch a command on a specific GPU. (Launch a command on a specific GPU)",
+    "tags": [
+      "linux",
+      "switcherooctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-switcherooctl-4",
+    "type": "command",
+    "title": "switcherooctl - Display help",
+    "content": "switcherooctl help",
+    "group": "Linux Ops",
+    "description": "switcherooctl: Launch a command on a specific GPU. (Display help)",
+    "tags": [
+      "linux",
+      "switcherooctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-apptainer-push-0",
     "type": "command",
     "title": "apptainer-push - Push a container to the Container Library",
@@ -92733,9 +93063,24 @@
     "id": "tldr-en-linux-unshare-2",
     "type": "command",
     "title": "unshare - Execute a command as a child process without sharing mounts, processes, or networks",
-    "content": "sudo unshare {{[-minf|--mount --pid --net --fork]}} {{command}} {{argument1 argument2 ...}}",
+    "content": "sudo unshare {{[-mpnf|--mount --pid --net --fork]}} {{command}} {{argument1 argument2 ...}}",
     "group": "Linux Ops",
     "description": "unshare: Execute a command in new user-defined namespaces. (Execute a command as a child process without sharing mounts, processes, or networks)",
+    "tags": [
+      "linux",
+      "unshare",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-unshare-3",
+    "type": "command",
+    "title": "unshare - Create a container manually",
+    "content": "sudo unshare {{[-puinmf|--pid --uts --ipc --net --mount --fork]}} chroot {{path/to/new_root}} {{/bin/sh}}",
+    "group": "Linux Ops",
+    "description": "unshare: Execute a command in new user-defined namespaces. (Create a container manually)",
     "tags": [
       "linux",
       "unshare",
@@ -107709,6 +108054,96 @@
     "tags": [
       "linux",
       "wodim",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-scalpel-0",
+    "type": "command",
+    "title": "scalpel - Carve files from a disk image using a specific configuration file",
+    "content": "scalpel -c {{path/to/scalpel.conf}} -o {{path/to/output_directory}} {{path/to/disk_image.dd}}",
+    "group": "Linux Ops",
+    "description": "scalpel: Recover files from a disk image based on file headers and footers. File patterns must be enabled in the configuration file (all are commented out by default). (Carve files from a disk image using a specific configuration file)",
+    "tags": [
+      "linux",
+      "scalpel",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-scalpel-1",
+    "type": "command",
+    "title": "scalpel - Preview which files would be carved, without actually carving them",
+    "content": "scalpel -p -c {{path/to/scalpel.conf}} -o {{path/to/output_directory}} {{path/to/disk_image.dd}}",
+    "group": "Linux Ops",
+    "description": "scalpel: Recover files from a disk image based on file headers and footers. File patterns must be enabled in the configuration file (all are commented out by default). (Preview which files would be carved, without actually carving them)",
+    "tags": [
+      "linux",
+      "scalpel",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-scalpel-2",
+    "type": "command",
+    "title": "scalpel - Skip the first N bytes of the disk image before carving",
+    "content": "scalpel -s {{number}} -c {{path/to/scalpel.conf}} -o {{path/to/output_directory}} {{path/to/disk_image.dd}}",
+    "group": "Linux Ops",
+    "description": "scalpel: Recover files from a disk image based on file headers and footers. File patterns must be enabled in the configuration file (all are commented out by default). (Skip the first N bytes of the disk image before carving)",
+    "tags": [
+      "linux",
+      "scalpel",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-scalpel-3",
+    "type": "command",
+    "title": "scalpel - Carve files without organizing them into subdirectories by type",
+    "content": "scalpel -O -c {{path/to/scalpel.conf}} -o {{path/to/output_directory}} {{path/to/disk_image.dd}}",
+    "group": "Linux Ops",
+    "description": "scalpel: Recover files from a disk image based on file headers and footers. File patterns must be enabled in the configuration file (all are commented out by default). (Carve files without organizing them into subdirectories by type)",
+    "tags": [
+      "linux",
+      "scalpel",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-scalpel-4",
+    "type": "command",
+    "title": "scalpel - Display help",
+    "content": "scalpel -h",
+    "group": "Linux Ops",
+    "description": "scalpel: Recover files from a disk image based on file headers and footers. File patterns must be enabled in the configuration file (all are commented out by default). (Display help)",
+    "tags": [
+      "linux",
+      "scalpel",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-scalpel-5",
+    "type": "command",
+    "title": "scalpel - Display version",
+    "content": "scalpel -V",
+    "group": "Linux Ops",
+    "description": "scalpel: Recover files from a disk image based on file headers and footers. File patterns must be enabled in the configuration file (all are commented out by default). (Display version)",
+    "tags": [
+      "linux",
+      "scalpel",
       "tldr",
       "en"
     ],
@@ -126219,6 +126654,66 @@
     "tags": [
       "linux",
       "unmount",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ananicy-cpp-0",
+    "type": "command",
+    "title": "ananicy-cpp - Output all currently parsed rules and rule files",
+    "content": "ananicy-cpp dump rules",
+    "group": "Linux Ops",
+    "description": "ananicy-cpp: Feature-rich C++ rewrite of the Ananicy auto-nice daemon for Linux. (Output all currently parsed rules and rule files)",
+    "tags": [
+      "linux",
+      "ananicy-cpp",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ananicy-cpp-1",
+    "type": "command",
+    "title": "ananicy-cpp - Output all configured process types",
+    "content": "ananicy-cpp dump types",
+    "group": "Linux Ops",
+    "description": "ananicy-cpp: Feature-rich C++ rewrite of the Ananicy auto-nice daemon for Linux. (Output all configured process types)",
+    "tags": [
+      "linux",
+      "ananicy-cpp",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ananicy-cpp-2",
+    "type": "command",
+    "title": "ananicy-cpp - Output all current rules in JSON format",
+    "content": "ananicy-cpp dump rules --json",
+    "group": "Linux Ops",
+    "description": "ananicy-cpp: Feature-rich C++ rewrite of the Ananicy auto-nice daemon for Linux. (Output all current rules in JSON format)",
+    "tags": [
+      "linux",
+      "ananicy-cpp",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-ananicy-cpp-3",
+    "type": "command",
+    "title": "ananicy-cpp - Parse and validate custom rule files without applying them",
+    "content": "ananicy-cpp parse {{path/to/file.rules}}",
+    "group": "Linux Ops",
+    "description": "ananicy-cpp: Feature-rich C++ rewrite of the Ananicy auto-nice daemon for Linux. (Parse and validate custom rule files without applying them)",
+    "tags": [
+      "linux",
+      "ananicy-cpp",
       "tldr",
       "en"
     ],

@@ -5748,7 +5748,7 @@
     "id": "tldr-zh-common-acme.sh-0",
     "type": "command",
     "title": "acme.sh - 使用网站根目录模式签发证书",
-    "content": "acme.sh --issue --domain {{example.com}} --webroot {{/路径/到/网站根目录}}",
+    "content": "acme.sh --issue {{[-d|--domain]}} {{example.com}} {{[-w|--webroot]}} /{{路径/到/网站根目录}}",
     "group": "通用工具 (Common)",
     "description": "acme.sh: 实现了 ACME 客户端协议的 shell 脚本，是 `certbot` 的替代品。 另请参阅：`acme.sh dns`。 (使用网站根目录模式签发证书)",
     "tags": [
@@ -5763,7 +5763,7 @@
     "id": "tldr-zh-common-acme.sh-1",
     "type": "command",
     "title": "acme.sh - 使用独立模式和 80 端口为多个域名签发证书",
-    "content": "acme.sh --issue --standalone --domain {{example.com}} --domain {{www.example.com}}",
+    "content": "acme.sh --issue --standalone {{[-d|--domain]}} {{example.com}} {{[-d|--domain]}} {{www.example.com}}",
     "group": "通用工具 (Common)",
     "description": "acme.sh: 实现了 ACME 客户端协议的 shell 脚本，是 `certbot` 的替代品。 另请参阅：`acme.sh dns`。 (使用独立模式和 80 端口为多个域名签发证书)",
     "tags": [
@@ -5778,7 +5778,7 @@
     "id": "tldr-zh-common-acme.sh-2",
     "type": "command",
     "title": "acme.sh - 使用独立 TLS 模式和 443 端口签发证书",
-    "content": "acme.sh --issue --alpn --domain {{example.com}}",
+    "content": "acme.sh --issue --alpn {{[-d|--domain]}} {{example.com}}",
     "group": "通用工具 (Common)",
     "description": "acme.sh: 实现了 ACME 客户端协议的 shell 脚本，是 `certbot` 的替代品。 另请参阅：`acme.sh dns`。 (使用独立 TLS 模式和 443 端口签发证书)",
     "tags": [
@@ -5793,7 +5793,7 @@
     "id": "tldr-zh-common-acme.sh-3",
     "type": "command",
     "title": "acme.sh - 使用运行中的 `nginx` 的配置来签发证书",
-    "content": "acme.sh --issue --nginx --domain {{example.com}}",
+    "content": "acme.sh --issue --nginx {{[-d|--domain]}} {{example.com}}",
     "group": "通用工具 (Common)",
     "description": "acme.sh: 实现了 ACME 客户端协议的 shell 脚本，是 `certbot` 的替代品。 另请参阅：`acme.sh dns`。 (使用运行中的 `nginx` 的配置来签发证书)",
     "tags": [
@@ -5808,7 +5808,7 @@
     "id": "tldr-zh-common-acme.sh-4",
     "type": "command",
     "title": "acme.sh - 使用运行中的 Apache 的配置来签发证书",
-    "content": "acme.sh --issue --apache --domain {{example.com}}",
+    "content": "acme.sh --issue --apache {{[-d|--domain]}} {{example.com}}",
     "group": "通用工具 (Common)",
     "description": "acme.sh: 实现了 ACME 客户端协议的 shell 脚本，是 `certbot` 的替代品。 另请参阅：`acme.sh dns`。 (使用运行中的 Apache 的配置来签发证书)",
     "tags": [
@@ -5823,7 +5823,7 @@
     "id": "tldr-zh-common-acme.sh-5",
     "type": "command",
     "title": "acme.sh - 使用自动 DNS API 模式签发一个通配符（\\*）证书",
-    "content": "acme.sh --issue --dns {{dns_cf}} --domain {{*.example.com}}",
+    "content": "acme.sh --issue --dns {{dns_cf}} {{[-d|--domain]}} {{*.example.com}}",
     "group": "通用工具 (Common)",
     "description": "acme.sh: 实现了 ACME 客户端协议的 shell 脚本，是 `certbot` 的替代品。 另请参阅：`acme.sh dns`。 (使用自动 DNS API 模式签发一个通配符（\\*）证书)",
     "tags": [
@@ -5838,7 +5838,7 @@
     "id": "tldr-zh-common-acme.sh-6",
     "type": "command",
     "title": "acme.sh - 将证书文件安装到指定位置（对自动更新证书很有用）",
-    "content": "acme.sh --install-cert -d {{example.com}} --key-file {{/路径/到/example.com.key}} --fullchain-file {{/路径/到/example.com.cer}} --reloadcmd \"{{systemctl force-reload nginx}}\"",
+    "content": "acme.sh {{[-i|--install-cert]}} {{[-d|--domain]}} {{example.com}} --key-file /{{路径/到/example.com.key}} --fullchain-file /{{路径/到/example.com.cer}} --reloadcmd \"{{systemctl force-reload nginx}}\"",
     "group": "通用工具 (Common)",
     "description": "acme.sh: 实现了 ACME 客户端协议的 shell 脚本，是 `certbot` 的替代品。 另请参阅：`acme.sh dns`。 (将证书文件安装到指定位置（对自动更新证书很有用）)",
     "tags": [
@@ -31457,10 +31457,10 @@
   {
     "id": "tldr-zh-common-yes-0",
     "type": "command",
-    "title": "yes - 重复输出“消息”",
-    "content": "yes {{消息}}",
+    "title": "yes - 重复输出“y”",
+    "content": "yes",
     "group": "通用工具 (Common)",
-    "description": "yes: 重复输出某些内容。 此命令通常用于对安装命令（如 `apt-get`）每个提示回答是。 (重复输出“消息”)",
+    "description": "yes: 重复输出某些内容。 此命令通常用于对安装命令（如 `apt-get`）每个提示回答是。 (重复输出“y”)",
     "tags": [
       "common",
       "yes",
@@ -31472,10 +31472,10 @@
   {
     "id": "tldr-zh-common-yes-1",
     "type": "command",
-    "title": "yes - 重复输出“y”",
-    "content": "yes",
+    "title": "yes - 重复输出“消息”",
+    "content": "yes {{消息}}",
     "group": "通用工具 (Common)",
-    "description": "yes: 重复输出某些内容。 此命令通常用于对安装命令（如 `apt-get`）每个提示回答是。 (重复输出“y”)",
+    "description": "yes: 重复输出某些内容。 此命令通常用于对安装命令（如 `apt-get`）每个提示回答是。 (重复输出“消息”)",
     "tags": [
       "common",
       "yes",
@@ -49863,7 +49863,7 @@
     "id": "tldr-zh-common-sshuttle-0",
     "type": "command",
     "title": "sshuttle - 通过远程 SSH 服务器转发所有 IPv4 TCP 流量",
-    "content": "sshuttle --remote={{用户名}}@{{服务器名}} {{0.0.0.0/0}}",
+    "content": "sshuttle {{[-r|--remote]}} {{用户名}}@{{服务器名}} {{0.0.0.0/0}}",
     "group": "通用工具 (Common)",
     "description": "sshuttle: 通过 SSH 连接传输流量的透明代理服务器。 不需要在远程 SSH 服务器上进行任何特殊设置，但会提示在本地机器上获取 root 访问权限。 (通过远程 SSH 服务器转发所有 IPv4 TCP 流量)",
     "tags": [
@@ -49878,7 +49878,7 @@
     "id": "tldr-zh-common-sshuttle-1",
     "type": "command",
     "title": "sshuttle - 同时将所有 DNS 流量转发到服务器的默认 DNS 解析器",
-    "content": "sshuttle --dns --remote={{用户名}}@{{服务器名}} {{0.0.0.0/0}}",
+    "content": "sshuttle --dns {{[-r|--remote]}} {{用户名}}@{{服务器名}} {{0.0.0.0/0}}",
     "group": "通用工具 (Common)",
     "description": "sshuttle: 通过 SSH 连接传输流量的透明代理服务器。 不需要在远程 SSH 服务器上进行任何特殊设置，但会提示在本地机器上获取 root 访问权限。 (同时将所有 DNS 流量转发到服务器的默认 DNS 解析器)",
     "tags": [
@@ -49893,7 +49893,7 @@
     "id": "tldr-zh-common-sshuttle-2",
     "type": "command",
     "title": "sshuttle - 转发所有流量，除了发往特定子网的流量",
-    "content": "sshuttle --remote={{用户名}}@{{服务器名}} {{0.0.0.0/0}} --exclude {{192.168.0.1/24}}",
+    "content": "sshuttle {{[-r|--remote]}} {{用户名}}@{{服务器名}} {{0.0.0.0/0}} {{[-x|--exclude]}} {{192.168.0.1/24}}",
     "group": "通用工具 (Common)",
     "description": "sshuttle: 通过 SSH 连接传输流量的透明代理服务器。 不需要在远程 SSH 服务器上进行任何特殊设置，但会提示在本地机器上获取 root 访问权限。 (转发所有流量，除了发往特定子网的流量)",
     "tags": [
@@ -49908,7 +49908,7 @@
     "id": "tldr-zh-common-sshuttle-3",
     "type": "command",
     "title": "sshuttle - 使用 tproxy 方法转发所有 IPv4 和 IPv6 流量",
-    "content": "sshuttle --method=tproxy --remote={{用户名}}@{{服务器名}} {{0.0.0.0/0}} {{::/0}} --exclude={{你本地 IP 地址}} --exclude={{SSH 服务器的 IP 地址}}",
+    "content": "sshuttle --method tproxy {{[-r|--remote]}} {{用户名}}@{{服务器名}} {{0.0.0.0/0}} {{::/0}} {{[-x|--exclude]}} {{你本地 IP 地址}} {{[-x|--exclude]}} {{SSH 服务器的 IP 地址}}",
     "group": "通用工具 (Common)",
     "description": "sshuttle: 通过 SSH 连接传输流量的透明代理服务器。 不需要在远程 SSH 服务器上进行任何特殊设置，但会提示在本地机器上获取 root 访问权限。 (使用 tproxy 方法转发所有 IPv4 和 IPv6 流量)",
     "tags": [

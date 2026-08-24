@@ -5505,6 +5505,126 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-osx-container-0",
+    "type": "command",
+    "title": "container - Start the container services (required before running containers)",
+    "content": "container system start",
+    "group": "macOS",
+    "description": "container: Create and run Linux containers as lightweight virtual machines on macOS. (Start the container services (required before running containers))",
+    "tags": [
+      "osx",
+      "container",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-osx-container-1",
+    "type": "command",
+    "title": "container - Run a container from an image interactively and remove it after it exits",
+    "content": "container run --rm {{[-it|--interactive --tty]}} {{image}} {{sh}}",
+    "group": "macOS",
+    "description": "container: Create and run Linux containers as lightweight virtual machines on macOS. (Run a container from an image interactively and remove it after it exits)",
+    "tags": [
+      "osx",
+      "container",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-osx-container-2",
+    "type": "command",
+    "title": "container - Run a container in the background with a name and a published port",
+    "content": "container run {{[-d|--detach]}} --name {{container_name}} {{[-p|--publish]}} {{8080:80}} {{image}}",
+    "group": "macOS",
+    "description": "container: Create and run Linux containers as lightweight virtual machines on macOS. (Run a container in the background with a name and a published port)",
+    "tags": [
+      "osx",
+      "container",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-osx-container-3",
+    "type": "command",
+    "title": "container - Execute a command inside a running container",
+    "content": "container exec {{[-it|--interactive --tty]}} {{container_name}} {{sh}}",
+    "group": "macOS",
+    "description": "container: Create and run Linux containers as lightweight virtual machines on macOS. (Execute a command inside a running container)",
+    "tags": [
+      "osx",
+      "container",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-osx-container-4",
+    "type": "command",
+    "title": "container - List all containers (running and stopped)",
+    "content": "container {{[ls|list]}} {{[-a|--all]}}",
+    "group": "macOS",
+    "description": "container: Create and run Linux containers as lightweight virtual machines on macOS. (List all containers (running and stopped))",
+    "tags": [
+      "osx",
+      "container",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-osx-container-5",
+    "type": "command",
+    "title": "container - Follow the logs of a container",
+    "content": "container logs {{[-f|--follow]}} {{container_name}}",
+    "group": "macOS",
+    "description": "container: Create and run Linux containers as lightweight virtual machines on macOS. (Follow the logs of a container)",
+    "tags": [
+      "osx",
+      "container",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-osx-container-6",
+    "type": "command",
+    "title": "container - Build an image from a Dockerfile in a directory",
+    "content": "container build {{[-t|--tag]}} {{image_name}} {{path/to/directory}}",
+    "group": "macOS",
+    "description": "container: Create and run Linux containers as lightweight virtual machines on macOS. (Build an image from a Dockerfile in a directory)",
+    "tags": [
+      "osx",
+      "container",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-osx-container-7",
+    "type": "command",
+    "title": "container - Stop or delete a container",
+    "content": "container {{stop|delete}} {{container_name}}",
+    "group": "macOS",
+    "description": "container: Create and run Linux containers as lightweight virtual machines on macOS. (Stop or delete a container)",
+    "tags": [
+      "osx",
+      "container",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-osx-gcomm-0",
     "type": "command",
     "title": "gcomm - View documentation for the original command",
@@ -9804,6 +9924,96 @@
     "tags": [
       "osx",
       "corebrightnessd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-osx-dtruss-0",
+    "type": "command",
+    "title": "dtruss - Trace a running process by PID",
+    "content": "sudo dtruss -p {{pid}}",
+    "group": "macOS",
+    "description": "dtruss: Trace system calls and kernel activities on `osx` using DTrace. Note: Requires System Integrity Protection to be disabled. (Trace a running process by PID)",
+    "tags": [
+      "osx",
+      "dtruss",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-osx-dtruss-1",
+    "type": "command",
+    "title": "dtruss - Run a program and trace it",
+    "content": "sudo dtruss {{program}}",
+    "group": "macOS",
+    "description": "dtruss: Trace system calls and kernel activities on `osx` using DTrace. Note: Requires System Integrity Protection to be disabled. (Run a program and trace it)",
+    "tags": [
+      "osx",
+      "dtruss",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-osx-dtruss-2",
+    "type": "command",
+    "title": "dtruss - [W]ait for a process with a matching name and trace it",
+    "content": "sudo dtruss -W {{name}}",
+    "group": "macOS",
+    "description": "dtruss: Trace system calls and kernel activities on `osx` using DTrace. Note: Requires System Integrity Protection to be disabled. ([W]ait for a process with a matching name and trace it)",
+    "tags": [
+      "osx",
+      "dtruss",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-osx-dtruss-3",
+    "type": "command",
+    "title": "dtruss - Print [e]lapsed time, [o]n-cpu time, and [c]ount of each system call",
+    "content": "sudo dtruss -eoc -p {{pid}}",
+    "group": "macOS",
+    "description": "dtruss: Trace system calls and kernel activities on `osx` using DTrace. Note: Requires System Integrity Protection to be disabled. (Print [e]lapsed time, [o]n-cpu time, and [c]ount of each system call)",
+    "tags": [
+      "osx",
+      "dtruss",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-osx-dtruss-4",
+    "type": "command",
+    "title": "dtruss - Trace a process and [f]ollow children",
+    "content": "sudo dtruss -f -p {{pid}}",
+    "group": "macOS",
+    "description": "dtruss: Trace system calls and kernel activities on `osx` using DTrace. Note: Requires System Integrity Protection to be disabled. (Trace a process and [f]ollow children)",
+    "tags": [
+      "osx",
+      "dtruss",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-osx-dtruss-5",
+    "type": "command",
+    "title": "dtruss - Print occurrences of a specific system call",
+    "content": "sudo dtruss -t {{syscall}} -p {{pid}}",
+    "group": "macOS",
+    "description": "dtruss: Trace system calls and kernel activities on `osx` using DTrace. Note: Requires System Integrity Protection to be disabled. (Print occurrences of a specific system call)",
+    "tags": [
+      "osx",
+      "dtruss",
       "tldr",
       "en"
     ],

@@ -44403,7 +44403,7 @@
     "id": "tldr-en-common-f3fix-1",
     "type": "command",
     "title": "f3fix - Mark the partition as bootable",
-    "content": "sudo f3fix --boot {{/dev/device_name}}",
+    "content": "sudo f3fix {{[-b|--boot]}} {{/dev/device_name}}",
     "group": "Common Tools",
     "description": "f3fix: Edit the partition table of a fake flash drive. (Mark the partition as bootable)",
     "tags": [
@@ -44418,7 +44418,7 @@
     "id": "tldr-en-common-f3fix-2",
     "type": "command",
     "title": "f3fix - Specify the filesystem",
-    "content": "sudo f3fix --fs-type={{filesystem_type}} {{/dev/device_name}}",
+    "content": "sudo f3fix {{[-f|--fs-type]}} {{filesystem_type}} {{/dev/device_name}}",
     "group": "Common Tools",
     "description": "f3fix: Edit the partition table of a fake flash drive. (Specify the filesystem)",
     "tags": [
@@ -52785,10 +52785,25 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-kitty-5",
+    "type": "command",
+    "title": "kitty - Open a terminal without loading the user config",
+    "content": "kitty --config NONE",
+    "group": "Common Tools",
+    "description": "kitty: A fast, feature-rich, GPU based terminal emulator. (Open a terminal without loading the user config)",
+    "tags": [
+      "common",
+      "kitty",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-f3write-0",
     "type": "command",
     "title": "f3write - Write test files to a given directory, filling the drive",
-    "content": "f3write {{path/to/mount_point}}",
+    "content": "sudo f3write {{path/to/mount_point}}",
     "group": "Common Tools",
     "description": "f3write: Fill a drive out with `.h2w` files to test its real capacity. (Write test files to a given directory, filling the drive)",
     "tags": [
@@ -52803,7 +52818,7 @@
     "id": "tldr-en-common-f3write-1",
     "type": "command",
     "title": "f3write - Limit the write speed",
-    "content": "f3write --max-write-rate={{kb_per_second}} {{path/to/mount_point}}",
+    "content": "sudo f3write {{[-w|--max-write-rate]}} {{kb_per_second}} {{path/to/mount_point}}",
     "group": "Common Tools",
     "description": "f3write: Fill a drive out with `.h2w` files to test its real capacity. (Limit the write speed)",
     "tags": [
@@ -53094,6 +53109,51 @@
     "tags": [
       "common",
       "resticprofile",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-multipass-transfer-0",
+    "type": "command",
+    "title": "multipass-transfer - Transfer a file from the host to an instance",
+    "content": "multipass transfer {{path/to/local_file}} {{instance_name}}:{{path/to/remote_directory}}",
+    "group": "Common Tools",
+    "description": "multipass-transfer: Transfer files between the host and the virtual machine. Note: Relative paths on an instance start from the user's home directory. (Transfer a file from the host to an instance)",
+    "tags": [
+      "common",
+      "multipass-transfer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-multipass-transfer-1",
+    "type": "command",
+    "title": "multipass-transfer - Transfer a file from an instance to the host",
+    "content": "multipass transfer {{instance_name}}:{{path/to/remote_file}} {{path/to/local_directory}}",
+    "group": "Common Tools",
+    "description": "multipass-transfer: Transfer files between the host and the virtual machine. Note: Relative paths on an instance start from the user's home directory. (Transfer a file from an instance to the host)",
+    "tags": [
+      "common",
+      "multipass-transfer",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-multipass-transfer-2",
+    "type": "command",
+    "title": "multipass-transfer - Transfer a directory from the host to an instance",
+    "content": "multipass transfer {{[-r|--recursive]}} {{path/to/local_directory}} {{instance_name}}:{{path/to/remote_directory}}",
+    "group": "Common Tools",
+    "description": "multipass-transfer: Transfer files between the host and the virtual machine. Note: Relative paths on an instance start from the user's home directory. (Transfer a directory from the host to an instance)",
+    "tags": [
+      "common",
+      "multipass-transfer",
       "tldr",
       "en"
     ],
@@ -59522,6 +59582,21 @@
   {
     "id": "tldr-en-common-gource-4",
     "type": "command",
+    "title": "gource - Highlight the name of a specific user",
+    "content": "gource --follow-user {{user_name}}",
+    "group": "Common Tools",
+    "description": "gource: Renders an animated tree diagram of Git, SVN, Mercurial, and Bazaar repositories. It shows files and directories being created, modified, or removed over time. (Highlight the name of a specific user)",
+    "tags": [
+      "common",
+      "gource",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gource-5",
+    "type": "command",
     "title": "gource - Specify the animation title",
     "content": "gource --title {{title}}",
     "group": "Common Tools",
@@ -59535,7 +59610,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-gource-5",
+    "id": "tldr-en-common-gource-6",
     "type": "command",
     "title": "gource - Pause the animation",
     "content": "<Space>",
@@ -59550,27 +59625,12 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-gource-6",
-    "type": "command",
-    "title": "gource - Adjust simulation speed",
-    "content": "<{{+|-}}>",
-    "group": "Common Tools",
-    "description": "gource: Renders an animated tree diagram of Git, SVN, Mercurial, and Bazaar repositories. It shows files and directories being created, modified, or removed over time. (Adjust simulation speed)",
-    "tags": [
-      "common",
-      "gource",
-      "tldr",
-      "en"
-    ],
-    "source": "official"
-  },
-  {
     "id": "tldr-en-common-gource-7",
     "type": "command",
-    "title": "gource - Display help",
-    "content": "gource {{[-h|--help]}}",
+    "title": "gource - Adjust simulation speed and timescale",
+    "content": "<{{+|-|<|>}}>",
     "group": "Common Tools",
-    "description": "gource: Renders an animated tree diagram of Git, SVN, Mercurial, and Bazaar repositories. It shows files and directories being created, modified, or removed over time. (Display help)",
+    "description": "gource: Renders an animated tree diagram of Git, SVN, Mercurial, and Bazaar repositories. It shows files and directories being created, modified, or removed over time. (Adjust simulation speed and timescale)",
     "tags": [
       "common",
       "gource",
@@ -60392,10 +60452,10 @@
   {
     "id": "tldr-en-common-f3probe-1",
     "type": "command",
-    "title": "f3probe - Use the minimum about of RAM possible",
-    "content": "sudo f3probe --min-memory {{path/to/block_device}}",
+    "title": "f3probe - Probe a whole block device destructively, without preserving any data (required for raw devices with no partition table)",
+    "content": "sudo f3probe {{[-n|--destructive]}} {{path/to/block_device}}",
     "group": "Common Tools",
-    "description": "f3probe: Probe a block device (e.g. a flash drive or a microSD card) for counterfeit flash memory. (Use the minimum about of RAM possible)",
+    "description": "f3probe: Probe a block device (e.g. a flash drive or a microSD card) for counterfeit flash memory. (Probe a whole block device destructively, without preserving any data (required for raw devices with no partition table))",
     "tags": [
       "common",
       "f3probe",
@@ -60407,8 +60467,23 @@
   {
     "id": "tldr-en-common-f3probe-2",
     "type": "command",
+    "title": "f3probe - Use the minimum amount of RAM possible",
+    "content": "sudo f3probe {{[-l|--min-memory]}} {{path/to/block_device}}",
+    "group": "Common Tools",
+    "description": "f3probe: Probe a block device (e.g. a flash drive or a microSD card) for counterfeit flash memory. (Use the minimum amount of RAM possible)",
+    "tags": [
+      "common",
+      "f3probe",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-f3probe-3",
+    "type": "command",
     "title": "f3probe - Time disk operations",
-    "content": "sudo f3probe --time-ops {{path/to/block_device}}",
+    "content": "sudo f3probe {{[-t|--time-ops]}} {{path/to/block_device}}",
     "group": "Common Tools",
     "description": "f3probe: Probe a block device (e.g. a flash drive or a microSD card) for counterfeit flash memory. (Time disk operations)",
     "tags": [
@@ -108300,6 +108375,81 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-docker-compose-start-0",
+    "type": "command",
+    "title": "docker-compose-start - Start existing containers for all services",
+    "content": "docker compose start",
+    "group": "Common Tools",
+    "description": "docker-compose-start: Start existing containers for services. (Start existing containers for all services)",
+    "tags": [
+      "common",
+      "docker-compose-start",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-compose-start-1",
+    "type": "command",
+    "title": "docker-compose-start - Start existing containers for one or more services",
+    "content": "docker compose start {{service1 service2 ...}}",
+    "group": "Common Tools",
+    "description": "docker-compose-start: Start existing containers for services. (Start existing containers for one or more services)",
+    "tags": [
+      "common",
+      "docker-compose-start",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-compose-start-2",
+    "type": "command",
+    "title": "docker-compose-start - Simulate starting existing containers",
+    "content": "docker compose start --dry-run",
+    "group": "Common Tools",
+    "description": "docker-compose-start: Start existing containers for services. (Simulate starting existing containers)",
+    "tags": [
+      "common",
+      "docker-compose-start",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-compose-start-3",
+    "type": "command",
+    "title": "docker-compose-start - Start existing containers and wait for services to be running or healthy",
+    "content": "docker compose start --wait",
+    "group": "Common Tools",
+    "description": "docker-compose-start: Start existing containers for services. (Start existing containers and wait for services to be running or healthy)",
+    "tags": [
+      "common",
+      "docker-compose-start",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-docker-compose-start-4",
+    "type": "command",
+    "title": "docker-compose-start - Start existing containers and wait up to a specified number of seconds",
+    "content": "docker compose start --wait --wait-timeout {{seconds}}",
+    "group": "Common Tools",
+    "description": "docker-compose-start: Start existing containers for services. (Start existing containers and wait up to a specified number of seconds)",
+    "tags": [
+      "common",
+      "docker-compose-start",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-uv-help-0",
     "type": "command",
     "title": "uv-help - Display general help for `uv`",
@@ -118359,6 +118509,126 @@
     "tags": [
       "common",
       "wacli-contacts-tags-add",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-litert-lm-0",
+    "type": "command",
+    "title": "litert-lm - List all imported models",
+    "content": "litert-lm list",
+    "group": "Common Tools",
+    "description": "litert-lm: Run and manage LiteRT-LM models. (List all imported models)",
+    "tags": [
+      "common",
+      "litert-lm",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-litert-lm-1",
+    "type": "command",
+    "title": "litert-lm - Run a local or imported model interactively",
+    "content": "litert-lm run {{path/to/model.litertlm|model_id}}",
+    "group": "Common Tools",
+    "description": "litert-lm: Run and manage LiteRT-LM models. (Run a local or imported model interactively)",
+    "tags": [
+      "common",
+      "litert-lm",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-litert-lm-2",
+    "type": "command",
+    "title": "litert-lm - Run a model directly from a Hugging Face repository with a single prompt",
+    "content": "litert-lm run --from-huggingface-repo {{owner/repository}} {{model.litertlm}} --prompt \"{{What is the capital of France?}}\"",
+    "group": "Common Tools",
+    "description": "litert-lm: Run and manage LiteRT-LM models. (Run a model directly from a Hugging Face repository with a single prompt)",
+    "tags": [
+      "common",
+      "litert-lm",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-litert-lm-3",
+    "type": "command",
+    "title": "litert-lm - Run a model using GPU acceleration",
+    "content": "litert-lm run {{path/to/model.litertlm|model_id}} --backend gpu",
+    "group": "Common Tools",
+    "description": "litert-lm: Run and manage LiteRT-LM models. (Run a model using GPU acceleration)",
+    "tags": [
+      "common",
+      "litert-lm",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-litert-lm-4",
+    "type": "command",
+    "title": "litert-lm - Run a multimodal model with an image attachment",
+    "content": "litert-lm run {{path/to/model.litertlm|model_id}} --vision-backend {{gpu|cpu}} --attachment {{path/to/image.jpg}} --prompt \"{{Describe this image.}}\"",
+    "group": "Common Tools",
+    "description": "litert-lm: Run and manage LiteRT-LM models. (Run a multimodal model with an image attachment)",
+    "tags": [
+      "common",
+      "litert-lm",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-litert-lm-5",
+    "type": "command",
+    "title": "litert-lm - Run a model with Python function calling tools via a preset file",
+    "content": "litert-lm run {{path/to/model.litertlm|model_id}} --preset {{path/to/preset.py}}",
+    "group": "Common Tools",
+    "description": "litert-lm: Run and manage LiteRT-LM models. (Run a model with Python function calling tools via a preset file)",
+    "tags": [
+      "common",
+      "litert-lm",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-litert-lm-6",
+    "type": "command",
+    "title": "litert-lm - Benchmark a model's performance",
+    "content": "litert-lm benchmark {{path/to/model.litertlm|model_id}}",
+    "group": "Common Tools",
+    "description": "litert-lm: Run and manage LiteRT-LM models. (Benchmark a model's performance)",
+    "tags": [
+      "common",
+      "litert-lm",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-litert-lm-7",
+    "type": "command",
+    "title": "litert-lm - Start an OpenAI-compatible API server on a specific port",
+    "content": "litert-lm serve --port {{9379}}",
+    "group": "Common Tools",
+    "description": "litert-lm: Run and manage LiteRT-LM models. (Start an OpenAI-compatible API server on a specific port)",
+    "tags": [
+      "common",
+      "litert-lm",
       "tldr",
       "en"
     ],
@@ -131349,6 +131619,81 @@
     "tags": [
       "common",
       "syncthing",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mmdblookup-0",
+    "type": "command",
+    "title": "mmdblookup - Look up an IP address in the specified MaxMind DB file",
+    "content": "mmdblookup {{[-f|--file]}} {{path/to/dataset.mmdb}} {{[-i|--ip]}} {{8.8.8.8}}",
+    "group": "Common Tools",
+    "description": "mmdblookup: A utility to look up an IP address in a MaxMind DB file. (Look up an IP address in the specified MaxMind DB file)",
+    "tags": [
+      "common",
+      "mmdblookup",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mmdblookup-1",
+    "type": "command",
+    "title": "mmdblookup - Look up a subset of data for an IP address in the specified MaxMind DB file",
+    "content": "mmdblookup {{[-f|--file]}} {{path/to/dataset.mmdb}} {{[-i|--ip]}} {{8.8.8.8}} {{key1 key2 ...}}",
+    "group": "Common Tools",
+    "description": "mmdblookup: A utility to look up an IP address in a MaxMind DB file. (Look up a subset of data for an IP address in the specified MaxMind DB file)",
+    "tags": [
+      "common",
+      "mmdblookup",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mmdblookup-2",
+    "type": "command",
+    "title": "mmdblookup - Look up the country ISO code for an IP address in the specified MaxMind DB file",
+    "content": "mmdblookup {{[-f|--file]}} {{path/to/dataset.mmdb}} {{[-i|--ip]}} {{8.8.8.8}} country iso_code",
+    "group": "Common Tools",
+    "description": "mmdblookup: A utility to look up an IP address in a MaxMind DB file. (Look up the country ISO code for an IP address in the specified MaxMind DB file)",
+    "tags": [
+      "common",
+      "mmdblookup",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mmdblookup-3",
+    "type": "command",
+    "title": "mmdblookup - Display help",
+    "content": "mmdblookup {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "mmdblookup: A utility to look up an IP address in a MaxMind DB file. (Display help)",
+    "tags": [
+      "common",
+      "mmdblookup",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-mmdblookup-4",
+    "type": "command",
+    "title": "mmdblookup - Display version",
+    "content": "mmdblookup --version",
+    "group": "Common Tools",
+    "description": "mmdblookup: A utility to look up an IP address in a MaxMind DB file. (Display version)",
+    "tags": [
+      "common",
+      "mmdblookup",
       "tldr",
       "en"
     ],
@@ -167432,10 +167777,10 @@
   {
     "id": "tldr-en-common-redshift-0",
     "type": "command",
-    "title": "redshift - Turn on Redshift with a specific [t]emperature during day (e.g., 5700K) and at night (e.g., 3600K)",
+    "title": "redshift - Turn on Redshift with [t]emperature set to 5700k during the day and 3600k at night",
     "content": "redshift -t 5700:3600",
     "group": "Common Tools",
-    "description": "redshift: Adjust the color temperature of a screen according to its surroundings. Note: Redshift does not support Wayland. (Turn on Redshift with a specific [t]emperature during day (e.g., 5700K) and at night (e.g., 3600K))",
+    "description": "redshift: Adjust the color temperature of a screen according to its surroundings. Note: Redshift does not support Wayland. (Turn on Redshift with [t]emperature set to 5700k during the day and 3600k at night)",
     "tags": [
       "common",
       "redshift",
@@ -167462,10 +167807,10 @@
   {
     "id": "tldr-en-common-redshift-2",
     "type": "command",
-    "title": "redshift - Turn on Redshift with a specific screen [b]rightness during the day (e.g, 70%) and at night (e.g., 40%)",
+    "title": "redshift - Turn on Redshift with screen [b]rightness set to 70% during the day and 40% at night",
     "content": "redshift -b 0.7:0.4",
     "group": "Common Tools",
-    "description": "redshift: Adjust the color temperature of a screen according to its surroundings. Note: Redshift does not support Wayland. (Turn on Redshift with a specific screen [b]rightness during the day (e.g, 70%) and at night (e.g., 40%))",
+    "description": "redshift: Adjust the color temperature of a screen according to its surroundings. Note: Redshift does not support Wayland. (Turn on Redshift with screen [b]rightness set to 70% during the day and 40% at night)",
     "tags": [
       "common",
       "redshift",
@@ -206987,10 +207332,10 @@
   {
     "id": "tldr-en-common-rg-5",
     "type": "command",
-    "title": "rg - Recursively list filenames in the current directory that match a pattern",
-    "content": "rg --files | rg {{pattern}}",
+    "title": "rg - Recursively list filenames in the current directory and highlight ones that match a pattern",
+    "content": "rg --files | rg {{[--passthru|--passthrough]}} {{pattern}}",
     "group": "Common Tools",
-    "description": "rg: Ripgrep, a recursive line-oriented search tool. Aims to be a faster alternative to `grep`. (Recursively list filenames in the current directory that match a pattern)",
+    "description": "rg: Ripgrep, a recursive line-oriented search tool. Aims to be a faster alternative to `grep`. (Recursively list filenames in the current directory and highlight ones that match a pattern)",
     "tags": [
       "common",
       "rg",
@@ -221484,6 +221829,66 @@
     "tags": [
       "common",
       "bind",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gomoku-0",
+    "type": "command",
+    "title": "gomoku - Start the game",
+    "content": "gomoku",
+    "group": "Common Tools",
+    "description": "gomoku: Play the classic 5-in-a-row strategy board game. (Start the game)",
+    "tags": [
+      "common",
+      "gomoku",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gomoku-1",
+    "type": "command",
+    "title": "gomoku - Move the cursor",
+    "content": "{{<h>|<j>|<k>|<l>|<ArrowLeft>|<ArrowDown>|<ArrowUp>|<ArrowRight>}}",
+    "group": "Common Tools",
+    "description": "gomoku: Play the classic 5-in-a-row strategy board game. (Move the cursor)",
+    "tags": [
+      "common",
+      "gomoku",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gomoku-2",
+    "type": "command",
+    "title": "gomoku - Select the cell",
+    "content": "<Space>",
+    "group": "Common Tools",
+    "description": "gomoku: Play the classic 5-in-a-row strategy board game. (Select the cell)",
+    "tags": [
+      "common",
+      "gomoku",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-gomoku-3",
+    "type": "command",
+    "title": "gomoku - Quit the game",
+    "content": "<q>",
+    "group": "Common Tools",
+    "description": "gomoku: Play the classic 5-in-a-row strategy board game. (Quit the game)",
+    "tags": [
+      "common",
+      "gomoku",
       "tldr",
       "en"
     ],
@@ -236865,6 +237270,81 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-openssl-passwd-0",
+    "type": "command",
+    "title": "openssl-passwd - Generate password hash in SHA256 algorithm (Linux only)",
+    "content": "openssl passwd -5",
+    "group": "Common Tools",
+    "description": "openssl-passwd: Generate password hash. (Generate password hash in SHA256 algorithm (Linux only))",
+    "tags": [
+      "common",
+      "openssl-passwd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-openssl-passwd-1",
+    "type": "command",
+    "title": "openssl-passwd - Generate password hash in APR1 algorithm",
+    "content": "openssl passwd -apr1",
+    "group": "Common Tools",
+    "description": "openssl-passwd: Generate password hash. (Generate password hash in APR1 algorithm)",
+    "tags": [
+      "common",
+      "openssl-passwd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-openssl-passwd-2",
+    "type": "command",
+    "title": "openssl-passwd - Generate password hash in APR1 algorithm with salt",
+    "content": "openssl passwd -apr1 -salt {{salt_string}}",
+    "group": "Common Tools",
+    "description": "openssl-passwd: Generate password hash. (Generate password hash in APR1 algorithm with salt)",
+    "tags": [
+      "common",
+      "openssl-passwd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-openssl-passwd-3",
+    "type": "command",
+    "title": "openssl-passwd - Generate password hash in APR1 and display the password and the hash",
+    "content": "openssl passwd -apr1 -table",
+    "group": "Common Tools",
+    "description": "openssl-passwd: Generate password hash. (Generate password hash in APR1 and display the password and the hash)",
+    "tags": [
+      "common",
+      "openssl-passwd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-openssl-passwd-4",
+    "type": "command",
+    "title": "openssl-passwd - Generate password hash from `stdin`",
+    "content": "echo -n \"{{password}}\" | openssl passwd {{-apr1}} -stdin",
+    "group": "Common Tools",
+    "description": "openssl-passwd: Generate password hash. (Generate password hash from `stdin`)",
+    "tags": [
+      "common",
+      "openssl-passwd",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-git-reset-0",
     "type": "command",
     "title": "git-reset - Unstage everything",
@@ -245571,6 +246051,21 @@
     "content": "pv {{path/to/file}} | {{sha256sum}}",
     "group": "Common Tools",
     "description": "pv: Monitor the progress of data through a pipe. (Calculate hash (MD5, SHA1, SHA256, etc) of a large file and show progress)",
+    "tags": [
+      "common",
+      "pv",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-pv-7",
+    "type": "command",
+    "title": "pv - Only display a timer for how long a command has taken to run",
+    "content": "{{command}} | pv {{[-t|--timer]}}",
+    "group": "Common Tools",
+    "description": "pv: Monitor the progress of data through a pipe. (Only display a timer for how long a command has taken to run)",
     "tags": [
       "common",
       "pv",
@@ -256314,6 +256809,126 @@
     "tags": [
       "common",
       "git-commit",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-herdr-0",
+    "type": "command",
+    "title": "herdr - Start a new session or attach to the default one",
+    "content": "herdr",
+    "group": "Common Tools",
+    "description": "herdr: Terminal workspace manager for AI coding agents. Note: The layout is Session > Workspace > Tab > Pane. (Start a new session or attach to the default one)",
+    "tags": [
+      "common",
+      "herdr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-herdr-1",
+    "type": "command",
+    "title": "herdr - Show local client and server status",
+    "content": "herdr status",
+    "group": "Common Tools",
+    "description": "herdr: Terminal workspace manager for AI coding agents. Note: The layout is Session > Workspace > Tab > Pane. (Show local client and server status)",
+    "tags": [
+      "common",
+      "herdr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-herdr-2",
+    "type": "command",
+    "title": "herdr - Generate default config and print to `stdout`",
+    "content": "herdr --default-config",
+    "group": "Common Tools",
+    "description": "herdr: Terminal workspace manager for AI coding agents. Note: The layout is Session > Workspace > Tab > Pane. (Generate default config and print to `stdout`)",
+    "tags": [
+      "common",
+      "herdr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-herdr-3",
+    "type": "command",
+    "title": "herdr - Detach from the current session (inside a herdr session)",
+    "content": "<Ctrl b><q>",
+    "group": "Common Tools",
+    "description": "herdr: Terminal workspace manager for AI coding agents. Note: The layout is Session > Workspace > Tab > Pane. (Detach from the current session (inside a herdr session))",
+    "tags": [
+      "common",
+      "herdr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-herdr-4",
+    "type": "command",
+    "title": "herdr - Show keybinds (inside a herdr session)",
+    "content": "<Ctrl b><?>",
+    "group": "Common Tools",
+    "description": "herdr: Terminal workspace manager for AI coding agents. Note: The layout is Session > Workspace > Tab > Pane. (Show keybinds (inside a herdr session))",
+    "tags": [
+      "common",
+      "herdr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-herdr-5",
+    "type": "command",
+    "title": "herdr - Create new workspace (inside a herdr session)",
+    "content": "<Ctrl b><Shift n>",
+    "group": "Common Tools",
+    "description": "herdr: Terminal workspace manager for AI coding agents. Note: The layout is Session > Workspace > Tab > Pane. (Create new workspace (inside a herdr session))",
+    "tags": [
+      "common",
+      "herdr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-herdr-6",
+    "type": "command",
+    "title": "herdr - Create new tab (inside a herdr session)",
+    "content": "<Ctrl b><c>",
+    "group": "Common Tools",
+    "description": "herdr: Terminal workspace manager for AI coding agents. Note: The layout is Session > Workspace > Tab > Pane. (Create new tab (inside a herdr session))",
+    "tags": [
+      "common",
+      "herdr",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-herdr-7",
+    "type": "command",
+    "title": "herdr - Split pane vertically/horizontally (inside a herdr session)",
+    "content": "<Ctrl b>{{<v>|<->}}",
+    "group": "Common Tools",
+    "description": "herdr: Terminal workspace manager for AI coding agents. Note: The layout is Session > Workspace > Tab > Pane. (Split pane vertically/horizontally (inside a herdr session))",
+    "tags": [
+      "common",
+      "herdr",
       "tldr",
       "en"
     ],
@@ -282767,10 +283382,10 @@
   {
     "id": "tldr-en-common-gammastep-0",
     "type": "command",
-    "title": "gammastep - Turn on Gammastep with a specific [t]emperature during the day (e.g. 5700k) and at night (e.g. 3600k)",
-    "content": "gammastep -t {{5700}}:{{3600}}",
+    "title": "gammastep - Turn on Gammastep with [t]emperature set to 5700k during the day and 3600k at night",
+    "content": "gammastep -t 5700:3600",
     "group": "Common Tools",
-    "description": "gammastep: Adjust the screen's color temperature according to the time of day. (Turn on Gammastep with a specific [t]emperature during the day (e.g. 5700k) and at night (e.g. 3600k))",
+    "description": "gammastep: Adjust the screen's color temperature according to the time of day. (Turn on Gammastep with [t]emperature set to 5700k during the day and 3600k at night)",
     "tags": [
       "common",
       "gammastep",
@@ -282797,10 +283412,10 @@
   {
     "id": "tldr-en-common-gammastep-2",
     "type": "command",
-    "title": "gammastep - Turn on Gammastep with a specific screen [b]rightness during the day (e.g. 70%) and at night (e.g. 40%), with minimum brightness 10% and maximum brightness 100%",
-    "content": "gammastep -b {{0.7}}:{{0.4}}",
+    "title": "gammastep - Turn on Gammastep with screen [b]rightness set to 70% during the day and 40% at night",
+    "content": "gammastep -b 0.7:0.4",
     "group": "Common Tools",
-    "description": "gammastep: Adjust the screen's color temperature according to the time of day. (Turn on Gammastep with a specific screen [b]rightness during the day (e.g. 70%) and at night (e.g. 40%), with minimum brightness 10% and maximum brightness 100%)",
+    "description": "gammastep: Adjust the screen's color temperature according to the time of day. (Turn on Gammastep with screen [b]rightness set to 70% during the day and 40% at night)",
     "tags": [
       "common",
       "gammastep",
@@ -299805,6 +300420,81 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-slideshow-0",
+    "type": "command",
+    "title": "slideshow - Display a default slide with options to run the tutorial or load a `.rkt` presentation file",
+    "content": "slideshow",
+    "group": "Common Tools",
+    "description": "slideshow: Make presentation slides in the Racket language. (Display a default slide with options to run the tutorial or load a `.rkt` presentation file)",
+    "tags": [
+      "common",
+      "slideshow",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-slideshow-1",
+    "type": "command",
+    "title": "slideshow - Start a presentation in full screen",
+    "content": "slideshow {{path/to/presentation.rkt}}",
+    "group": "Common Tools",
+    "description": "slideshow: Make presentation slides in the Racket language. (Start a presentation in full screen)",
+    "tags": [
+      "common",
+      "slideshow",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-slideshow-2",
+    "type": "command",
+    "title": "slideshow - Display the presentation window with a title bar and resize border",
+    "content": "slideshow --keep-titlebar {{path/to/presentation.rkt}}",
+    "group": "Common Tools",
+    "description": "slideshow: Make presentation slides in the Racket language. (Display the presentation window with a title bar and resize border)",
+    "tags": [
+      "common",
+      "slideshow",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-slideshow-3",
+    "type": "command",
+    "title": "slideshow - Set the width and height (in pixels) of the presentation window",
+    "content": "slideshow {{[-s|--size]}} {{width}} {{height}} {{path/to/presentation.rkt}}",
+    "group": "Common Tools",
+    "description": "slideshow: Make presentation slides in the Racket language. (Set the width and height (in pixels) of the presentation window)",
+    "tags": [
+      "common",
+      "slideshow",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-slideshow-4",
+    "type": "command",
+    "title": "slideshow - Export a presentation to a PDF file",
+    "content": "slideshow {{[-D|--pdf]}} -o {{path/to/presentation.pdf}} {{path/to/presentation.rkt}}",
+    "group": "Common Tools",
+    "description": "slideshow: Make presentation slides in the Racket language. (Export a presentation to a PDF file)",
+    "tags": [
+      "common",
+      "slideshow",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-netcat-0",
     "type": "command",
     "title": "netcat - View documentation for the original command",
@@ -310080,6 +310770,81 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-colcrt-0",
+    "type": "command",
+    "title": "colcrt - Provide virtual half-line and reverse line feed sequences",
+    "content": "colcrt",
+    "group": "Common Tools",
+    "description": "colcrt: Filter nroff output for CRT previewing. (Provide virtual half-line and reverse line feed sequences)",
+    "tags": [
+      "common",
+      "colcrt",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-colcrt-1",
+    "type": "command",
+    "title": "colcrt - Print all half-lines",
+    "content": "colcrt {{[-2|--half-lines]}}",
+    "group": "Common Tools",
+    "description": "colcrt: Filter nroff output for CRT previewing. (Print all half-lines)",
+    "tags": [
+      "common",
+      "colcrt",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-colcrt-2",
+    "type": "command",
+    "title": "colcrt - Suppress all underlining",
+    "content": "colcrt {{[-|--no-underlining]}}",
+    "group": "Common Tools",
+    "description": "colcrt: Filter nroff output for CRT previewing. (Suppress all underlining)",
+    "tags": [
+      "common",
+      "colcrt",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-colcrt-3",
+    "type": "command",
+    "title": "colcrt - Display help",
+    "content": "colcrt {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "colcrt: Filter nroff output for CRT previewing. (Display help)",
+    "tags": [
+      "common",
+      "colcrt",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-colcrt-4",
+    "type": "command",
+    "title": "colcrt - Display version",
+    "content": "colcrt {{[-V|--version]}}",
+    "group": "Common Tools",
+    "description": "colcrt: Filter nroff output for CRT previewing. (Display version)",
+    "tags": [
+      "common",
+      "colcrt",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-fluxctl-0",
     "type": "command",
     "title": "fluxctl - List workloads currently running in the cluster on specific namespace",
@@ -311073,7 +311838,7 @@
     "id": "tldr-en-common-git-rebase-6",
     "type": "command",
     "title": "git-rebase - Reapply the last 5 commits in-place, stopping to allow them to be reordered, omitted, combined, or modified",
-    "content": "git rebase {{[-i|--interactive]}} {{HEAD~5}}",
+    "content": "git rebase {{[-i|--interactive]}} HEAD~5",
     "group": "Common Tools",
     "description": "git-rebase: Reapply commits from one branch on top of another branch. Commonly used to \"move\" an entire branch to another base, creating copies of the commits in the new location. (Reapply the last 5 commits in-place, stopping to allow them to be reordered, omitted, combined, or modified)",
     "tags": [

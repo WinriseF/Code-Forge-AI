@@ -1,5 +1,5 @@
 {
-  "updated_at": 1786929176250,
+  "updated_at": 1787534056257,
   "version": "2.1.0",
   "packages": [
     {
@@ -161,9 +161,9 @@
       "language": "en",
       "platform": "common",
       "name": "Common Tools (EN)",
-      "description": "Contains 21001 en commands for common.",
-      "count": 21001,
-      "size_kb": 10170,
+      "description": "Contains 21052 en commands for common.",
+      "count": 21052,
+      "size_kb": 10194,
       "url": "packs/commands/en/common.json",
       "category": "command"
     },
@@ -194,9 +194,9 @@
       "language": "en",
       "platform": "osx",
       "name": "macOS (EN)",
-      "description": "Contains 977 en commands for osx.",
-      "count": 977,
-      "size_kb": 433,
+      "description": "Contains 991 en commands for osx.",
+      "count": 991,
+      "size_kb": 440,
       "url": "packs/commands/en/osx.json",
       "category": "command"
     },
@@ -205,9 +205,9 @@
       "language": "en",
       "platform": "linux",
       "name": "Linux Ops (EN)",
-      "description": "Contains 8438 en commands for linux.",
-      "count": 8438,
-      "size_kb": 3986,
+      "description": "Contains 8471 en commands for linux.",
+      "count": 8471,
+      "size_kb": 4001,
       "url": "packs/commands/en/linux.json",
       "category": "command"
     },
@@ -239,8 +239,8 @@
       "platform": "llm",
       "name": "ChatGPT Role Prompts",
       "description": "Curated role-play prompts for ChatGPT and general LLM workflows.",
-      "count": 2108,
-      "size_kb": 6006.18,
+      "count": 2131,
+      "size_kb": 6098.26,
       "url": "packs/prompts/en/roles.json",
       "category": "prompt"
     },
