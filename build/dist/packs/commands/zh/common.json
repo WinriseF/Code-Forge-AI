@@ -33498,7 +33498,7 @@
     "id": "tldr-zh-common-zsh-1",
     "type": "command",
     "title": "zsh - 执行指定的命令",
-    "content": "zsh -c \"{{echo Hello world}}\"",
+    "content": "zsh -c \"{{echo '已执行zsh命令'}}\"",
     "group": "通用工具 (Common)",
     "description": "zsh: Z SHell，一个兼容 Bash 的命令行解释器。 另请参阅：`bash`, `!`, `^`。 (执行指定的命令)",
     "tags": [
@@ -33543,7 +33543,7 @@
     "id": "tldr-zh-common-zsh-4",
     "type": "command",
     "title": "zsh - 执行来自 `stdin` 的命令",
-    "content": "{{echo Hello world}} | zsh",
+    "content": "{{echo \"echo '已执行zsh命令'\"}} | zsh",
     "group": "通用工具 (Common)",
     "description": "zsh: Z SHell，一个兼容 Bash 的命令行解释器。 另请参阅：`bash`, `!`, `^`。 (执行来自 `stdin` 的命令)",
     "tags": [
@@ -33753,7 +33753,7 @@
     "id": "tldr-zh-common-zfs-5",
     "type": "command",
     "title": "zfs - 更改文件系统的挂载点",
-    "content": "zfs set mountpoint={{/我的/挂载/路径}} {{存储池名称/文件系统名称}}",
+    "content": "zfs set mountpoint=/{{我的/挂载/路径}} {{存储池名称/文件系统名称}}",
     "group": "通用工具 (Common)",
     "description": "zfs: 管理 ZFS 文件系统。 (更改文件系统的挂载点)",
     "tags": [
@@ -45558,7 +45558,7 @@
     "id": "tldr-zh-common-man-1",
     "type": "command",
     "title": "man - 在浏览器中打开一条命令的使用手册分页 (`$BROWSER` 环境变量可以替换 `=browser_name`)",
-    "content": "man {{[-Hbrowser_name|--html=browser_name]}} {{command}}",
+    "content": "man {{[-H|--html=]}}{{browser_name}} {{command}}",
     "group": "通用工具 (Common)",
     "description": "man: 展示手册分页 (manual page)。 另请参阅：`whatis`, `apropos`。 (在浏览器中打开一条命令的使用手册分页 (`$BROWSER` 环境变量可以替换 `=browser_name`))",
     "tags": [
@@ -45573,7 +45573,7 @@
     "id": "tldr-zh-common-man-2",
     "type": "command",
     "title": "man - 从第七章节展示一条命令的使用手册分页",
-    "content": "man {{7}} {{command}}",
+    "content": "man 7 {{command}}",
     "group": "通用工具 (Common)",
     "description": "man: 展示手册分页 (manual page)。 另请参阅：`whatis`, `apropos`。 (从第七章节展示一条命令的使用手册分页)",
     "tags": [
@@ -51213,7 +51213,7 @@
     "id": "tldr-zh-common-arthas-trace-2",
     "type": "command",
     "title": "arthas-trace - 追踪多个类和方法的调用",
-    "content": "trace -E {{class-pattern1|class-patter2}} {{method-pattern1|method-pattern2|method-pattern3}}",
+    "content": "trace -E {{class-pattern1}}|{{class-patter2}} {{method-pattern1}}|{{method-pattern2}}|{{method-pattern3}}",
     "group": "通用工具 (Common)",
     "description": "arthas-trace: 方法内部调用路径，并输出方法路径上的每个节点上耗时。 另请参阅：`arthas`, `arthas-watch`。 (追踪多个类和方法的调用)",
     "tags": [
@@ -56478,7 +56478,7 @@
     "id": "tldr-zh-common-git-rebase-6",
     "type": "command",
     "title": "git-rebase - 启动交互式的合并任务，对最近提交的 5 个 commits 进行重新排序、省略、合并或修改",
-    "content": "git rebase {{[-i|--interactive]}} {{HEAD~5}}",
+    "content": "git rebase {{[-i|--interactive]}} HEAD~5",
     "group": "通用工具 (Common)",
     "description": "git-rebase: 将 commits 从一个分支合并到另一个分支上。 常用于跨分支的 commits 合并，在被合并分支的最头部构建新的 `commit`，表示合并完成。 (启动交互式的合并任务，对最近提交的 5 个 commits 进行重新排序、省略、合并或修改)",
     "tags": [

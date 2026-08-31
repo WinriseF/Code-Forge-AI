@@ -5553,7 +5553,7 @@
     "id": "tldr-zh-windows-cmd-1",
     "type": "command",
     "title": "cmd - 运行指定的命令然后退出",
-    "content": "cmd /c {{echo 命令}}",
+    "content": "cmd /c {{echo 已执行cmd命令}}",
     "group": "Windows",
     "description": "cmd: Windows 命令解释器。 (运行指定的命令然后退出)",
     "tags": [
@@ -5568,7 +5568,7 @@
     "id": "tldr-zh-windows-cmd-2",
     "type": "command",
     "title": "cmd - 执行一个指定的命令，之后进入一个交互式 shell",
-    "content": "cmd /k {{echo 命令}}",
+    "content": "cmd /k {{echo 已执行cmd命令}}",
     "group": "Windows",
     "description": "cmd: Windows 命令解释器。 (执行一个指定的命令，之后进入一个交互式 shell)",
     "tags": [

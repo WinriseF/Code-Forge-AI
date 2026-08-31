@@ -8100,6 +8100,126 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-dolos-0",
+    "type": "command",
+    "title": "dolos - Run a basic analysis",
+    "content": "dolos run {{path/to/files/*}}",
+    "group": "Common Tools",
+    "description": "dolos: Plagiarism detection for programming exercises. (Run a basic analysis)",
+    "tags": [
+      "common",
+      "dolos",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dolos-1",
+    "type": "command",
+    "title": "dolos - Run an analysis with a web server view",
+    "content": "dolos run {{[-f|--output-format]}} web {{path/to/files/*}}",
+    "group": "Common Tools",
+    "description": "dolos: Plagiarism detection for programming exercises. (Run an analysis with a web server view)",
+    "tags": [
+      "common",
+      "dolos",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dolos-2",
+    "type": "command",
+    "title": "dolos - Specify the programming language",
+    "content": "dolos run {{[-l|--language]}} {{language_name}} {{path/to/files/*}}",
+    "group": "Common Tools",
+    "description": "dolos: Plagiarism detection for programming exercises. (Specify the programming language)",
+    "tags": [
+      "common",
+      "dolos",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dolos-3",
+    "type": "command",
+    "title": "dolos - Ignore boilerplate/template code",
+    "content": "dolos run {{[-i|--ignore]}} {{path/to/template_file}} {{path/to/files/*}}",
+    "group": "Common Tools",
+    "description": "dolos: Plagiarism detection for programming exercises. (Ignore boilerplate/template code)",
+    "tags": [
+      "common",
+      "dolos",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dolos-4",
+    "type": "command",
+    "title": "dolos - Output a CSV report",
+    "content": "dolos run {{[-f|--output-format]}} csv {{path/to/files/*}}",
+    "group": "Common Tools",
+    "description": "dolos: Plagiarism detection for programming exercises. (Output a CSV report)",
+    "tags": [
+      "common",
+      "dolos",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dolos-5",
+    "type": "command",
+    "title": "dolos - Serve an existing analysis report",
+    "content": "dolos serve {{path/to/report_directory}}",
+    "group": "Common Tools",
+    "description": "dolos: Plagiarism detection for programming exercises. (Serve an existing analysis report)",
+    "tags": [
+      "common",
+      "dolos",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dolos-6",
+    "type": "command",
+    "title": "dolos - Display help",
+    "content": "dolos {{[-h|--help]}}",
+    "group": "Common Tools",
+    "description": "dolos: Plagiarism detection for programming exercises. (Display help)",
+    "tags": [
+      "common",
+      "dolos",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-dolos-7",
+    "type": "command",
+    "title": "dolos - Display version",
+    "content": "dolos {{[-v|--version]}}",
+    "group": "Common Tools",
+    "description": "dolos: Plagiarism detection for programming exercises. (Display version)",
+    "tags": [
+      "common",
+      "dolos",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-ibmcloud-iam-0",
     "type": "command",
     "title": "ibmcloud-iam - List service IDs in an account",
@@ -10179,6 +10299,36 @@
     "tags": [
       "common",
       "git-update-ref",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-virsh-snapshot-dumpxml-0",
+    "type": "command",
+    "title": "virsh-snapshot-dumpxml - Print the XML of a snapshot",
+    "content": "sudo virsh snapshot-dumpxml \"{{vm_name}}\" \"{{snapshot_name}}\"",
+    "group": "Common Tools",
+    "description": "virsh-snapshot-dumpxml: Print snapshot XML. (Print the XML of a snapshot)",
+    "tags": [
+      "common",
+      "virsh-snapshot-dumpxml",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-virsh-snapshot-dumpxml-1",
+    "type": "command",
+    "title": "virsh-snapshot-dumpxml - Display help",
+    "content": "virsh snapshot-dumpxml --help",
+    "group": "Common Tools",
+    "description": "virsh-snapshot-dumpxml: Print snapshot XML. (Display help)",
+    "tags": [
+      "common",
+      "virsh-snapshot-dumpxml",
       "tldr",
       "en"
     ],
@@ -34053,7 +34203,7 @@
     "id": "tldr-en-common-jj-rebase-0",
     "type": "command",
     "title": "jj-rebase - Move given revisions to a different parent(s)",
-    "content": "jj rebase {{[-r|--revisions]}} {{revset}} {{[-d|--destination]}} {{revset}}",
+    "content": "jj rebase {{[-r|--revisions]}} {{revset}} {{[-o|--onto]}} {{revset}}",
     "group": "Common Tools",
     "description": "jj-rebase: Move revisions to different parent(s). (Move given revisions to a different parent(s))",
     "tags": [
@@ -34068,7 +34218,7 @@
     "id": "tldr-en-common-jj-rebase-1",
     "type": "command",
     "title": "jj-rebase - Move given revisions and all their descendants",
-    "content": "jj rebase {{[-s|--source]}} {{revset}} {{[-d|--destination]}} {{revset}}",
+    "content": "jj rebase {{[-s|--source]}} {{revset}} {{[-o|--onto]}} {{revset}}",
     "group": "Common Tools",
     "description": "jj-rebase: Move revisions to different parent(s). (Move given revisions and all their descendants)",
     "tags": [
@@ -34083,7 +34233,7 @@
     "id": "tldr-en-common-jj-rebase-2",
     "type": "command",
     "title": "jj-rebase - Move all revisions in the branch containing given revisions",
-    "content": "jj rebase {{[-b|--branch]}} {{revset}} {{[-d|--destination]}} {{revset}}",
+    "content": "jj rebase {{[-b|--branch]}} {{revset}} {{[-o|--onto]}} {{revset}}",
     "group": "Common Tools",
     "description": "jj-rebase: Move revisions to different parent(s). (Move all revisions in the branch containing given revisions)",
     "tags": [
@@ -43772,10 +43922,10 @@
   {
     "id": "tldr-en-common-readlink-0",
     "type": "command",
-    "title": "readlink - Get the actual file to which the symlink points",
-    "content": "readlink {{path/to/file}}",
+    "title": "readlink - Print the target of a symbolic link to a file or directory",
+    "content": "readlink {{path/to/symlink}}",
     "group": "Common Tools",
-    "description": "readlink: Follow symlinks and get symlink information. (Get the actual file to which the symlink points)",
+    "description": "readlink: Follow symlinks and get symlink information. (Print the target of a symbolic link to a file or directory)",
     "tags": [
       "common",
       "readlink",
@@ -43787,10 +43937,10 @@
   {
     "id": "tldr-en-common-readlink-1",
     "type": "command",
-    "title": "readlink - Get the absolute path to a file",
-    "content": "readlink {{[-f|--canonicalize]}} {{path/to/file}}",
+    "title": "readlink - Get the absolute path to a file or directory",
+    "content": "readlink {{[-f|--canonicalize]}} {{path/to/file_or_directory}}",
     "group": "Common Tools",
-    "description": "readlink: Follow symlinks and get symlink information. (Get the absolute path to a file)",
+    "description": "readlink: Follow symlinks and get symlink information. (Get the absolute path to a file or directory)",
     "tags": [
       "common",
       "readlink",
@@ -102902,10 +103052,10 @@
   {
     "id": "tldr-en-common-posh-0",
     "type": "command",
-    "title": "posh - Download documentation to your machine (run inside a Ruby project) and print full sync report",
-    "content": "posh sync --full",
+    "title": "posh - Download documentation to your machine (run inside a Ruby project)",
+    "content": "posh sync",
     "group": "Common Tools",
-    "description": "posh: Gems documentation browser for Ruby developers. (Download documentation to your machine (run inside a Ruby project) and print full sync report)",
+    "description": "posh: Gems documentation browser for Ruby developers. (Download documentation to your machine (run inside a Ruby project))",
     "tags": [
       "common",
       "posh",
@@ -102932,6 +103082,21 @@
   {
     "id": "tldr-en-common-posh-2",
     "type": "command",
+    "title": "posh - Open a specific project",
+    "content": "posh --project {{path/to/project}}",
+    "group": "Common Tools",
+    "description": "posh: Gems documentation browser for Ruby developers. (Open a specific project)",
+    "tags": [
+      "common",
+      "posh",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-posh-3",
+    "type": "command",
     "title": "posh - Clear all docsets from your machine",
     "content": "posh clear",
     "group": "Common Tools",
@@ -102945,7 +103110,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-posh-3",
+    "id": "tldr-en-common-posh-4",
     "type": "command",
     "title": "posh - Generate the autocompletion script for your shell",
     "content": "posh completion {{bash|fish|powershell|zsh}}",
@@ -102960,7 +103125,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-posh-4",
+    "id": "tldr-en-common-posh-5",
     "type": "command",
     "title": "posh - Display help",
     "content": "posh {{[-h|--help]}}",
@@ -102975,7 +103140,7 @@
     "source": "official"
   },
   {
-    "id": "tldr-en-common-posh-5",
+    "id": "tldr-en-common-posh-6",
     "type": "command",
     "title": "posh - Display help for a specific subcommand",
     "content": "posh {{subcommand}} {{[-h|--help]}}",
@@ -149220,6 +149385,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-virsh-domblkinfo-0",
+    "type": "command",
+    "title": "virsh-domblkinfo - Print block device info",
+    "content": "sudo virsh domblkinfo \"{{vm_name}}\" {{vda}}",
+    "group": "Common Tools",
+    "description": "virsh-domblkinfo: Print block device size info. (Print block device info)",
+    "tags": [
+      "common",
+      "virsh-domblkinfo",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-virsh-domblkinfo-1",
+    "type": "command",
+    "title": "virsh-domblkinfo - Display help",
+    "content": "virsh domblkinfo --help",
+    "group": "Common Tools",
+    "description": "virsh-domblkinfo: Print block device size info. (Display help)",
+    "tags": [
+      "common",
+      "virsh-domblkinfo",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-spark-0",
     "type": "command",
     "title": "spark - Register your API token",
@@ -193773,7 +193968,7 @@
     "id": "tldr-en-common-zsh-1",
     "type": "command",
     "title": "zsh - Execute specific [c]ommands",
-    "content": "zsh -c \"{{echo Hello world}}\"",
+    "content": "zsh -c \"{{echo 'zsh is executed'}}\"",
     "group": "Common Tools",
     "description": "zsh: Z SHell, a Bash-compatible command-line interpreter. (Execute specific [c]ommands)",
     "tags": [
@@ -193818,7 +194013,7 @@
     "id": "tldr-en-common-zsh-4",
     "type": "command",
     "title": "zsh - Execute specific commands from `stdin`",
-    "content": "{{echo echo Hello world}} | zsh",
+    "content": "{{echo \"echo 'zsh is executed'\"}} | zsh",
     "group": "Common Tools",
     "description": "zsh: Z SHell, a Bash-compatible command-line interpreter. (Execute specific commands from `stdin`)",
     "tags": [
@@ -209685,6 +209880,81 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-doctl-0",
+    "type": "command",
+    "title": "doctl - Authenticate with DigitalOcean",
+    "content": "doctl auth init",
+    "group": "Common Tools",
+    "description": "doctl: Manage DigitalOcean resources. (Authenticate with DigitalOcean)",
+    "tags": [
+      "common",
+      "doctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-doctl-1",
+    "type": "command",
+    "title": "doctl - Display account information",
+    "content": "doctl account get",
+    "group": "Common Tools",
+    "description": "doctl: Manage DigitalOcean resources. (Display account information)",
+    "tags": [
+      "common",
+      "doctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-doctl-2",
+    "type": "command",
+    "title": "doctl - List all Droplets",
+    "content": "doctl compute droplet list",
+    "group": "Common Tools",
+    "description": "doctl: Manage DigitalOcean resources. (List all Droplets)",
+    "tags": [
+      "common",
+      "doctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-doctl-3",
+    "type": "command",
+    "title": "doctl - List Kubernetes clusters",
+    "content": "doctl kubernetes cluster list",
+    "group": "Common Tools",
+    "description": "doctl: Manage DigitalOcean resources. (List Kubernetes clusters)",
+    "tags": [
+      "common",
+      "doctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-doctl-4",
+    "type": "command",
+    "title": "doctl - Display version",
+    "content": "doctl version",
+    "group": "Common Tools",
+    "description": "doctl: Manage DigitalOcean resources. (Display version)",
+    "tags": [
+      "common",
+      "doctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-k8s-unused-secret-detector-0",
     "type": "command",
     "title": "k8s-unused-secret-detector - Detect unused secrets",
@@ -219219,6 +219489,111 @@
     "tags": [
       "common",
       "createdb",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-govulncheck-0",
+    "type": "command",
+    "title": "govulncheck - Scan the current module and its dependencies for vulnerabilities",
+    "content": "govulncheck ./...",
+    "group": "Common Tools",
+    "description": "govulncheck: Report known vulnerabilities that affect Go code. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Scan the current module and its dependencies for vulnerabilities)",
+    "tags": [
+      "common",
+      "govulncheck",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-govulncheck-1",
+    "type": "command",
+    "title": "govulncheck - Scan a specific package",
+    "content": "govulncheck {{path/to/package}}",
+    "group": "Common Tools",
+    "description": "govulncheck: Report known vulnerabilities that affect Go code. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Scan a specific package)",
+    "tags": [
+      "common",
+      "govulncheck",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-govulncheck-2",
+    "type": "command",
+    "title": "govulncheck - Scan a Go binary instead of source code",
+    "content": "govulncheck -mode binary {{path/to/binary}}",
+    "group": "Common Tools",
+    "description": "govulncheck: Report known vulnerabilities that affect Go code. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Scan a Go binary instead of source code)",
+    "tags": [
+      "common",
+      "govulncheck",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-govulncheck-3",
+    "type": "command",
+    "title": "govulncheck - Extract build information and build dependencies from a Go binary",
+    "content": "govulncheck -mode extract {{path/to/binary}}",
+    "group": "Common Tools",
+    "description": "govulncheck: Report known vulnerabilities that affect Go code. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Extract build information and build dependencies from a Go binary)",
+    "tags": [
+      "common",
+      "govulncheck",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-govulncheck-4",
+    "type": "command",
+    "title": "govulncheck - Scan test files as well",
+    "content": "govulncheck -test ./...",
+    "group": "Common Tools",
+    "description": "govulncheck: Report known vulnerabilities that affect Go code. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Scan test files as well)",
+    "tags": [
+      "common",
+      "govulncheck",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-govulncheck-5",
+    "type": "command",
+    "title": "govulncheck - Print the results in a specific format",
+    "content": "govulncheck -format {{text|json|sarif|openvex}} ./...",
+    "group": "Common Tools",
+    "description": "govulncheck: Report known vulnerabilities that affect Go code. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Print the results in a specific format)",
+    "tags": [
+      "common",
+      "govulncheck",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-govulncheck-6",
+    "type": "command",
+    "title": "govulncheck - Display the call stacks leading to each vulnerable symbol",
+    "content": "govulncheck -show traces ./...",
+    "group": "Common Tools",
+    "description": "govulncheck: Report known vulnerabilities that affect Go code. Note: `./...` is a Go package pattern understood by Go tooling. It matches the current package and all packages recursively under the current directory. (Display the call stacks leading to each vulnerable symbol)",
+    "tags": [
+      "common",
+      "govulncheck",
       "tldr",
       "en"
     ],
@@ -245583,7 +245958,7 @@
     "id": "tldr-en-common-virsh-domblklist-0",
     "type": "command",
     "title": "virsh-domblklist - List the target name and source path of the block devices",
-    "content": "virsh domblklist --domain {{vm_name}}",
+    "content": "virsh domblklist {{vm_name}}",
     "group": "Common Tools",
     "description": "virsh-domblklist: List information about block devices associated with a virtual machine. (List the target name and source path of the block devices)",
     "tags": [
@@ -245598,9 +245973,24 @@
     "id": "tldr-en-common-virsh-domblklist-1",
     "type": "command",
     "title": "virsh-domblklist - List the disk type and device value as well as the target name and source path",
-    "content": "virsh domblklist --domain {{vm_name}} --details",
+    "content": "virsh domblklist {{vm_name}} --details",
     "group": "Common Tools",
     "description": "virsh-domblklist: List information about block devices associated with a virtual machine. (List the disk type and device value as well as the target name and source path)",
+    "tags": [
+      "common",
+      "virsh-domblklist",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-virsh-domblklist-2",
+    "type": "command",
+    "title": "virsh-domblklist - Display help",
+    "content": "virsh domblklist --help",
+    "group": "Common Tools",
+    "description": "virsh-domblklist: List information about block devices associated with a virtual machine. (Display help)",
     "tags": [
       "common",
       "virsh-domblklist",
@@ -271410,6 +271800,36 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-virsh-dumpxml-0",
+    "type": "command",
+    "title": "virsh-dumpxml - Print the XML of a virtual machine",
+    "content": "sudo virsh dumpxml \"{{vm_name}}\"",
+    "group": "Common Tools",
+    "description": "virsh-dumpxml: Print virtual machine XML. (Print the XML of a virtual machine)",
+    "tags": [
+      "common",
+      "virsh-dumpxml",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-virsh-dumpxml-1",
+    "type": "command",
+    "title": "virsh-dumpxml - Display help",
+    "content": "virsh dumpxml --help",
+    "group": "Common Tools",
+    "description": "virsh-dumpxml: Print virtual machine XML. (Display help)",
+    "tags": [
+      "common",
+      "virsh-dumpxml",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-docker-image-load-0",
     "type": "command",
     "title": "docker-image-load - Load a Docker image from `stdin`",
@@ -278670,6 +279090,126 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-common-tailcat-0",
+    "type": "command",
+    "title": "tailcat - Start a server that accepts one connection and writes to `stdout` (no local port; clients connect via the printed addrblob)",
+    "content": "tailcat",
+    "group": "Common Tools",
+    "description": "tailcat: WireGuard-encrypted tunnels using Tailscale's data plane, like netcat but encrypted. In the examples below, an `addrblob` is the connection token (`tcom...`) printed by a running `tailcat` server, used by clients to reach it. (Start a server that accepts one connection and writes to `stdout` (no local port; clients connect via the printed addrblob))",
+    "tags": [
+      "common",
+      "tailcat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tailcat-1",
+    "type": "command",
+    "title": "tailcat - Start a server that exposes specific local TCP ports (e.g. an existing service on 22/80/443) to clients via the tunnel",
+    "content": "tailcat --serve={{22,80,443}}",
+    "group": "Common Tools",
+    "description": "tailcat: WireGuard-encrypted tunnels using Tailscale's data plane, like netcat but encrypted. In the examples below, an `addrblob` is the connection token (`tcom...`) printed by a running `tailcat` server, used by clients to reach it. (Start a server that exposes specific local TCP ports (e.g. an existing service on 22/80/443) to clients via the tunnel)",
+    "tags": [
+      "common",
+      "tailcat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tailcat-2",
+    "type": "command",
+    "title": "tailcat - Start a server as an exit node, routing client traffic through this host's network",
+    "content": "tailcat --serve=exit-node",
+    "group": "Common Tools",
+    "description": "tailcat: WireGuard-encrypted tunnels using Tailscale's data plane, like netcat but encrypted. In the examples below, an `addrblob` is the connection token (`tcom...`) printed by a running `tailcat` server, used by clients to reach it. (Start a server as an exit node, routing client traffic through this host's network)",
+    "tags": [
+      "common",
+      "tailcat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tailcat-3",
+    "type": "command",
+    "title": "tailcat - Start an auth-free SSH server (Linux/macOS)",
+    "content": "tailcat --serve=no-auth-ssh",
+    "group": "Common Tools",
+    "description": "tailcat: WireGuard-encrypted tunnels using Tailscale's data plane, like netcat but encrypted. In the examples below, an `addrblob` is the connection token (`tcom...`) printed by a running `tailcat` server, used by clients to reach it. (Start an auth-free SSH server (Linux/macOS))",
+    "tags": [
+      "common",
+      "tailcat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tailcat-4",
+    "type": "command",
+    "title": "tailcat - Connect to a server with an addrblob on a specific port, sending `stdin` to it",
+    "content": "cat {{path/to/file}} | tailcat {{addrblob}} {{port}}",
+    "group": "Common Tools",
+    "description": "tailcat: WireGuard-encrypted tunnels using Tailscale's data plane, like netcat but encrypted. In the examples below, an `addrblob` is the connection token (`tcom...`) printed by a running `tailcat` server, used by clients to reach it. (Connect to a server with an addrblob on a specific port, sending `stdin` to it)",
+    "tags": [
+      "common",
+      "tailcat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tailcat-5",
+    "type": "command",
+    "title": "tailcat - Ping a server to test connectivity, waiting for a direct path",
+    "content": "tailcat ping --until-direct {{addrblob}}",
+    "group": "Common Tools",
+    "description": "tailcat: WireGuard-encrypted tunnels using Tailscale's data plane, like netcat but encrypted. In the examples below, an `addrblob` is the connection token (`tcom...`) printed by a running `tailcat` server, used by clients to reach it. (Ping a server to test connectivity, waiting for a direct path)",
+    "tags": [
+      "common",
+      "tailcat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tailcat-6",
+    "type": "command",
+    "title": "tailcat - SSH into a remote machine (server must expose port 22)",
+    "content": "tailcat ssh {{addrblob}}",
+    "group": "Common Tools",
+    "description": "tailcat: WireGuard-encrypted tunnels using Tailscale's data plane, like netcat but encrypted. In the examples below, an `addrblob` is the connection token (`tcom...`) printed by a running `tailcat` server, used by clients to reach it. (SSH into a remote machine (server must expose port 22))",
+    "tags": [
+      "common",
+      "tailcat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-tailcat-7",
+    "type": "command",
+    "title": "tailcat - Generate a new server key and print its addrblob",
+    "content": "tailcat genkey --force",
+    "group": "Common Tools",
+    "description": "tailcat: WireGuard-encrypted tunnels using Tailscale's data plane, like netcat but encrypted. In the examples below, an `addrblob` is the connection token (`tcom...`) printed by a running `tailcat` server, used by clients to reach it. (Generate a new server key and print its addrblob)",
+    "tags": [
+      "common",
+      "tailcat",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-common-mirrord-0",
     "type": "command",
     "title": "mirrord - Run a local binary connected to a remote pod",
@@ -279249,6 +279789,51 @@
     "tags": [
       "common",
       "tailscale-file",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-virsh-snapshot-delete-0",
+    "type": "command",
+    "title": "virsh-snapshot-delete - Delete a snapshot and merge it to its children",
+    "content": "sudo virsh snapshot-delete \"{{vm_name}}\" \"{{snapshot_name}}\"",
+    "group": "Common Tools",
+    "description": "virsh-snapshot-delete: Delete a snapshot. (Delete a snapshot and merge it to its children)",
+    "tags": [
+      "common",
+      "virsh-snapshot-delete",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-virsh-snapshot-delete-1",
+    "type": "command",
+    "title": "virsh-snapshot-delete - Delete only the metadata, leaving the snapshot contents in place",
+    "content": "sudo virsh snapshot-delete \"{{vm_name}}\" \"{{snapshot_name}}\" --metadata",
+    "group": "Common Tools",
+    "description": "virsh-snapshot-delete: Delete a snapshot. (Delete only the metadata, leaving the snapshot contents in place)",
+    "tags": [
+      "common",
+      "virsh-snapshot-delete",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-virsh-snapshot-delete-2",
+    "type": "command",
+    "title": "virsh-snapshot-delete - Display help",
+    "content": "virsh snapshot-delete --help",
+    "group": "Common Tools",
+    "description": "virsh-snapshot-delete: Delete a snapshot. (Display help)",
+    "tags": [
+      "common",
+      "virsh-snapshot-delete",
       "tldr",
       "en"
     ],
@@ -283869,6 +284454,51 @@
     "tags": [
       "common",
       "git-subtree",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-virsh-snapshot-list-0",
+    "type": "command",
+    "title": "virsh-snapshot-list - List all snapshots and their basic information",
+    "content": "sudo virsh snapshot-list \"{{vm_name}}\"",
+    "group": "Common Tools",
+    "description": "virsh-snapshot-list: List available snapshots. (List all snapshots and their basic information)",
+    "tags": [
+      "common",
+      "virsh-snapshot-list",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-virsh-snapshot-list-1",
+    "type": "command",
+    "title": "virsh-snapshot-list - List all snapshots in a tree structure",
+    "content": "sudo virsh snapshot-list \"{{vm_name}}\" --tree",
+    "group": "Common Tools",
+    "description": "virsh-snapshot-list: List available snapshots. (List all snapshots in a tree structure)",
+    "tags": [
+      "common",
+      "virsh-snapshot-list",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-virsh-snapshot-list-2",
+    "type": "command",
+    "title": "virsh-snapshot-list - Display help",
+    "content": "virsh snapshot-list --help",
+    "group": "Common Tools",
+    "description": "virsh-snapshot-list: List available snapshots. (Display help)",
+    "tags": [
+      "common",
+      "virsh-snapshot-list",
       "tldr",
       "en"
     ],
@@ -295565,7 +296195,7 @@
     "title": "docker-compose - List all running containers",
     "content": "docker compose ps",
     "group": "Common Tools",
-    "description": "docker-compose: Run and manage multi container Docker applications. (List all running containers)",
+    "description": "docker-compose: Run and manage multi container Docker applications. Some subcommands such as `up`, `down`, `logs`, `stop` have their own usage documentation. (List all running containers)",
     "tags": [
       "common",
       "docker-compose",
@@ -295580,7 +296210,7 @@
     "title": "docker-compose - Create and start all containers in the background using a `docker-compose.yml` file from the current directory",
     "content": "docker compose up {{[-d|--detach]}}",
     "group": "Common Tools",
-    "description": "docker-compose: Run and manage multi container Docker applications. (Create and start all containers in the background using a `docker-compose.yml` file from the current directory)",
+    "description": "docker-compose: Run and manage multi container Docker applications. Some subcommands such as `up`, `down`, `logs`, `stop` have their own usage documentation. (Create and start all containers in the background using a `docker-compose.yml` file from the current directory)",
     "tags": [
       "common",
       "docker-compose",
@@ -295595,7 +296225,7 @@
     "title": "docker-compose - Start all containers, rebuild if necessary",
     "content": "docker compose up --build",
     "group": "Common Tools",
-    "description": "docker-compose: Run and manage multi container Docker applications. (Start all containers, rebuild if necessary)",
+    "description": "docker-compose: Run and manage multi container Docker applications. Some subcommands such as `up`, `down`, `logs`, `stop` have their own usage documentation. (Start all containers, rebuild if necessary)",
     "tags": [
       "common",
       "docker-compose",
@@ -295610,7 +296240,7 @@
     "title": "docker-compose - Start all containers by specifying a project name and using an alternate compose file",
     "content": "docker compose {{[-p|--project-name]}} {{project_name}} {{[-f|--file]}} {{path/to/file}} up",
     "group": "Common Tools",
-    "description": "docker-compose: Run and manage multi container Docker applications. (Start all containers by specifying a project name and using an alternate compose file)",
+    "description": "docker-compose: Run and manage multi container Docker applications. Some subcommands such as `up`, `down`, `logs`, `stop` have their own usage documentation. (Start all containers by specifying a project name and using an alternate compose file)",
     "tags": [
       "common",
       "docker-compose",
@@ -295625,7 +296255,7 @@
     "title": "docker-compose - Stop all running containers",
     "content": "docker compose stop",
     "group": "Common Tools",
-    "description": "docker-compose: Run and manage multi container Docker applications. (Stop all running containers)",
+    "description": "docker-compose: Run and manage multi container Docker applications. Some subcommands such as `up`, `down`, `logs`, `stop` have their own usage documentation. (Stop all running containers)",
     "tags": [
       "common",
       "docker-compose",
@@ -295640,7 +296270,7 @@
     "title": "docker-compose - Stop and remove all containers, networks, images, and volumes",
     "content": "docker compose down --rmi all {{[-v|--volumes]}}",
     "group": "Common Tools",
-    "description": "docker-compose: Run and manage multi container Docker applications. (Stop and remove all containers, networks, images, and volumes)",
+    "description": "docker-compose: Run and manage multi container Docker applications. Some subcommands such as `up`, `down`, `logs`, `stop` have their own usage documentation. (Stop and remove all containers, networks, images, and volumes)",
     "tags": [
       "common",
       "docker-compose",
@@ -295655,7 +296285,7 @@
     "title": "docker-compose - Follow logs for all containers",
     "content": "docker compose logs {{[-f|--follow]}}",
     "group": "Common Tools",
-    "description": "docker-compose: Run and manage multi container Docker applications. (Follow logs for all containers)",
+    "description": "docker-compose: Run and manage multi container Docker applications. Some subcommands such as `up`, `down`, `logs`, `stop` have their own usage documentation. (Follow logs for all containers)",
     "tags": [
       "common",
       "docker-compose",
@@ -295670,7 +296300,7 @@
     "title": "docker-compose - Follow logs for a specific container",
     "content": "docker compose logs {{[-f|--follow]}} {{container_name}}",
     "group": "Common Tools",
-    "description": "docker-compose: Run and manage multi container Docker applications. (Follow logs for a specific container)",
+    "description": "docker-compose: Run and manage multi container Docker applications. Some subcommands such as `up`, `down`, `logs`, `stop` have their own usage documentation. (Follow logs for a specific container)",
     "tags": [
       "common",
       "docker-compose",
@@ -300159,6 +300789,111 @@
     "tags": [
       "common",
       "pip-wheel",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-kubectl-krew-0",
+    "type": "command",
+    "title": "kubectl-krew - Search for available plugins",
+    "content": "kubectl krew search",
+    "group": "Common Tools",
+    "description": "kubectl-krew: Plugin manager for `kubectl`. (Search for available plugins)",
+    "tags": [
+      "common",
+      "kubectl-krew",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-kubectl-krew-1",
+    "type": "command",
+    "title": "kubectl-krew - Install a plugin",
+    "content": "kubectl krew install {{plugin_name}}",
+    "group": "Common Tools",
+    "description": "kubectl-krew: Plugin manager for `kubectl`. (Install a plugin)",
+    "tags": [
+      "common",
+      "kubectl-krew",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-kubectl-krew-2",
+    "type": "command",
+    "title": "kubectl-krew - List installed plugins",
+    "content": "kubectl krew list",
+    "group": "Common Tools",
+    "description": "kubectl-krew: Plugin manager for `kubectl`. (List installed plugins)",
+    "tags": [
+      "common",
+      "kubectl-krew",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-kubectl-krew-3",
+    "type": "command",
+    "title": "kubectl-krew - Update the local plugin index",
+    "content": "kubectl krew update",
+    "group": "Common Tools",
+    "description": "kubectl-krew: Plugin manager for `kubectl`. (Update the local plugin index)",
+    "tags": [
+      "common",
+      "kubectl-krew",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-kubectl-krew-4",
+    "type": "command",
+    "title": "kubectl-krew - Upgrade all installed plugins",
+    "content": "kubectl krew upgrade",
+    "group": "Common Tools",
+    "description": "kubectl-krew: Plugin manager for `kubectl`. (Upgrade all installed plugins)",
+    "tags": [
+      "common",
+      "kubectl-krew",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-kubectl-krew-5",
+    "type": "command",
+    "title": "kubectl-krew - Get information about a plugin",
+    "content": "kubectl krew info {{plugin_name}}",
+    "group": "Common Tools",
+    "description": "kubectl-krew: Plugin manager for `kubectl`. (Get information about a plugin)",
+    "tags": [
+      "common",
+      "kubectl-krew",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-common-kubectl-krew-6",
+    "type": "command",
+    "title": "kubectl-krew - Uninstall a plugin",
+    "content": "kubectl krew uninstall {{plugin_name}}",
+    "group": "Common Tools",
+    "description": "kubectl-krew: Plugin manager for `kubectl`. (Uninstall a plugin)",
+    "tags": [
+      "common",
+      "kubectl-krew",
       "tldr",
       "en"
     ],

@@ -29621,10 +29621,10 @@
     "source": "official"
   },
   {
-    "id": "be682e2a-b819-5f2a-9c6a-47c511395923",
+    "id": "c6220021-ad4f-5304-b379-8b1eb7f9c130",
     "type": "prompt",
     "title": "Anime",
-    "content": "masterpiece, best quality, ultra detailed, anime waifu, mature adult woman, voluptuous body, long black hair, glowing red eyes, black lace outfit, seductive expression, sitting on a luxury bed, soft neon lighting, rainy cyberpunk city through the window, glossy skin, cinematic atmosphere, highly detailed face, detailed eyes, 3D anime render, realistic shading, aesthetic, sensual pose, dramatic shadows, depth of field, beautiful anatomy, studio quality",
+    "content": "I want to Create an app where i can store information about all anime and and all anime latest news and information",
     "group": "Creative",
     "description": "Anime - AI Prompt",
     "tags": [
@@ -35850,6 +35850,254 @@
     "content": "Transform the person in the photo into a classic felt and fleece puppet. Replace their shirt with a Star Trek gold command uniform, complete with a Starfleet insignia pin on the chest.",
     "group": "Roleplay",
     "description": "SNW - Level 5 transporter accident - AI Prompt",
+    "tags": [
+      "en",
+      "roleplay"
+    ],
+    "isFavorite": false,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "source": "official"
+  },
+  {
+    "id": "6816c61b-5bbb-5dd2-bd86-0fc7dc70a10c",
+    "type": "prompt",
+    "title": "Cyber Secuirty Practioner",
+    "content": "---name: cyber-secuirty-practionerdescription: Act as an expert cybersecurity curriculum architect. Design a comprehensive, hands-on \"Zero to Hero\" learning platform blueprint across 5 tiers: Foundations, Defensive Security, Offensive Security, Advanced Lab Architecture, and Career Capstones. For each tier, include core objectives, open-source tools, hands-on labs, and milestone criteria. Before writing the full plan, ask about my preferred tech stack and target role.---# Cyber Secuirty PractionerDescribe what this skill does and how the agent should use it.## Instructions- Step 1: ...- Step 2: ...",
+    "group": "Coding",
+    "description": "Cyber Secuirty Practioner - AI Prompt",
+    "tags": [
+      "en",
+      "roleplay",
+      "coding"
+    ],
+    "isFavorite": false,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "source": "official"
+  },
+  {
+    "id": "97da94d3-0462-5688-b98c-5ce498a8830b",
+    "type": "prompt",
+    "title": "2D documentary script generator",
+    "content": "Suspense full 2D documentary script generator prompt like Anidoc anihis hindi",
+    "group": "Coding",
+    "description": "2D documentary script generator - AI Prompt",
+    "tags": [
+      "en",
+      "roleplay",
+      "coding"
+    ],
+    "isFavorite": false,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "source": "official"
+  },
+  {
+    "id": "ff2102a3-3386-5890-a7da-f3762e47b0bd",
+    "type": "prompt",
+    "title": "App",
+    "content": "Act as expert Software Engineer with 10 years of vast and valuable knowledge experience to create and design educational learning materials with entertainment fun contents and contexts. Make the app users diverse interactive, responsive, creative, innovative, engaging, entertaining and educational experiences.",
+    "group": "Creative",
+    "description": "App - AI Prompt",
+    "tags": [
+      "en",
+      "roleplay",
+      "creative"
+    ],
+    "isFavorite": false,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "source": "official"
+  },
+  {
+    "id": "3e850341-7db8-53eb-aa8a-b7922e81afbd",
+    "type": "prompt",
+    "title": "Reactivating Suspended Amazon Seller Account",
+    "content": "Act as an Amazon Seller Account Recovery Specialist. You are an expert with insider knowledge of Amazon's risk department procedures and algorithms. Your task is to provide a step-by-step guide to reactivate suspended Amazon seller accounts, including those marked as impossible by Amazon. You will:- Analyze the suspension reasons.- Develop a tailored appeal strategy.- Identify and gather necessary documents, even for old accounts.- Utilize the latest algorithms and insider techniques to craft compelling appeals.Rules:- Follow Amazon's policy guidelines strictly.- Ensure all provided information is accurate and up-to-date.- Maintain professionalism and confidentiality throughout the process.",
+    "group": "Coding",
+    "description": "Reactivating Suspended Amazon Seller Account - AI Prompt",
+    "tags": [
+      "en",
+      "roleplay",
+      "coding"
+    ],
+    "isFavorite": false,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "source": "official"
+  },
+  {
+    "id": "847486b5-dc1c-5434-8d79-853cbf66eda1",
+    "type": "prompt",
+    "title": "Code Review by CodeRabit",
+    "content": "You are an expert AI code reviewer. When I share code with you, analyze it thoroughly and provide:## Code Quality- Identify code smells, anti-patterns, and areas for improvement- Suggest refactoring opportunities- Check for proper naming conventions and code organization## Bug Detection- Find potential bugs and logic errors- Identify edge cases that may not be handled- Check for null/undefined handling## Security Analysis- Identify security vulnerabilities (SQL injection, XSS, etc.)- Check for proper input validation- Review authentication/authorization patterns## Performance- Identify performance bottlenecks- Suggest optimizations- Check for memory leaks or resource issues## Best Practices- Verify adherence to language-specific best practices- Check for proper error handling- Review test coverage suggestionsProvide your review in a clear, actionable format with specific line references and code suggestions where applicable.",
+    "group": "Coding",
+    "description": "Code Review by CodeRabit - AI Prompt",
+    "tags": [
+      "en",
+      "roleplay",
+      "coding"
+    ],
+    "isFavorite": false,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "source": "official"
+  },
+  {
+    "id": "11ef0eb5-3daf-5b65-9984-4d6664f28787",
+    "type": "prompt",
+    "title": "Health motivational speaker",
+    "content": "I want you to act like a health motivational speaker the best ever on earth let every word save life and has impact tell the important for it to be let it be extraordinary full of energy not just written by a normal human being but to meet the need of people and provide solution",
+    "group": "Roleplay",
+    "description": "Health motivational speaker - AI Prompt",
+    "tags": [
+      "en",
+      "roleplay"
+    ],
+    "isFavorite": false,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "source": "official"
+  },
+  {
+    "id": "ee8d7261-cea0-566b-b567-c47e52214b53",
+    "type": "prompt",
+    "title": "CV build",
+    "content": "create a version of cv by referencing existing cv and align with the jd to produce best case cv so that it gets selected",
+    "group": "Roleplay",
+    "description": "CV build - AI Prompt",
+    "tags": [
+      "en",
+      "roleplay"
+    ],
+    "isFavorite": false,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "source": "official"
+  },
+  {
+    "id": "cd5bd784-ce4d-5895-ae89-e1c8caab18bf",
+    "type": "prompt",
+    "title": "Poor man",
+    "content": "Scene 1 — 0–5 secA poor young man stands outside a luxury building while people laugh at him.Text: “They laughed when he said he would become rich…”",
+    "group": "Roleplay",
+    "description": "Poor man - AI Prompt",
+    "tags": [
+      "en",
+      "roleplay"
+    ],
+    "isFavorite": false,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "source": "official"
+  },
+  {
+    "id": "3f2e8f3e-ca8c-5cd9-8fda-11505f0d5f03",
+    "type": "prompt",
+    "title": "Little mann",
+    "content": "Young Black man, 23 years old* Slim athletic build, medium height* Dark brown skin* Short, tightly curled black hair* Brown eyes* Small scar above his right eyebrow* Calm, determined facial expression* Poor version: faded dark-brown hoodie, worn blue jeans, old black sneakers, brown canvas shoulder bag",
+    "group": "Roleplay",
+    "description": "Little mann - AI Prompt",
+    "tags": [
+      "en",
+      "roleplay"
+    ],
+    "isFavorite": false,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "source": "official"
+  },
+  {
+    "id": "57ee2846-5c1f-5c2e-989f-1d377c38fe99",
+    "type": "prompt",
+    "title": "master one prompt",
+    "content": "Create one extremely powerful MASTER PROMPT for Claude Pro.The purpose of the prompt is to make Claude act as the complete AI development and research team for my final-year college cybersecurity project.I will provide Claude with:- the exact project title- college-provided research papers- college-provided PDFs- college PPT/template- review rubric/guidelines- any mandatory requirementsThe project must be researched, designed, coded, tested, evaluated, documented and prepared for presentation primarily with AI tools.I am doing the project alone. Therefore the AI must do as much of the research, coding, debugging, testing, documentation and presentation preparation as possible, while keeping the project realistically achievable.IMPORTANT:This is a FRESH PROJECT INSTRUCTION.Do NOT refer to previous conversations.Do NOT assume previous project decisions.Do NOT include teammate work.Do NOT use old project discussions unless I explicitly provide them.Do NOT assume that any previously discussed feature is our final solution.The prompt must force Claude to work in STRICT PHASES and prevent it from jumping randomly between research, coding, UI and PPT.Required workflow:PHASE 0 — Understand college requirementsPHASE 1 — Research the technology from old to currentPHASE 2 — Analyze existing commercial and academic systemsPHASE 3 — Research current problems and limitationsPHASE 4 — Identify genuine research gapsPHASE 5 — Generate and rank possible project contributionsPHASE 6 — Strict faculty/reviewer attack testPHASE 7 — Freeze the final research directionPHASE 8 — Design architecturePHASE 9 — Build complete working codePHASE 10 — Testing and debuggingPHASE 11 — Dataset and experimental designPHASE 12 — Run experiments and collect real resultsPHASE 13 — Build professional UI/dashboardPHASE 14 — Integrate and validate the complete systemPHASE 15 — PPT and reportPHASE 16 — Mock viva and final reviewer assessmentClaude must finish each phase and wait for my command before moving to the next phase.==================================================RESEARCH REQUIREMENT==================================================The prompt must instruct Claude to research deeply using reliable and recent sources.Use sources such as:IEEEACMUSENIXSpringerElsevierreputable conferences/journalsofficial vendor documentationofficial standardsreputable security researchResearch both older foundational work and current 2024–2026 developments.Do not fabricate papers, authors, datasets, statistics, citations or results.Every important research claim must be verified.==================================================NOVELTY REQUIREMENT==================================================This is extremely important.Do NOT tell Claude to make the project \"sound innovative.\"Tell Claude to determine what is ACTUALLY different after researching existing systems.The reviewer may ask:\"What is new?\"\"This already exists.\"\"Cisco Umbrella already does this.\"\"Cloudflare already does this.\"\"Antivirus already does this.\"\"Why do we need your project?\"\"What exactly is your contribution?\"Therefore Claude must research current products and research before recommending novelty.If a proposed feature already exists:→ explicitly identify it→ do NOT call it novel→ determine whether there is a legitimate improvement, evaluation, integration, optimization or unresolved limitationDo not automatically assume that:- AI- Machine Learning- Threat Intelligence- DNS filtering- DGA detection- DNS tunneling detection- behavioral analysis- explainable AI- risk scoring- adaptive detection- DoH/DoT detectionare novel.Research first.==================================================DNS SECURITY EXAMPLE==================================================If the project is related to DNS filtering/security, investigate modern systems such as:Cisco UmbrellaCloudflare DNS/securityQuad9NextDNSenterprise DNS securityantivirus/EDRfirewallsIDS/IPSweb security gatewaysopen-source DNS security systemsDetermine:What they already doHow they do itWhat works wellWhat limitations remainWhat researchers are currently investigatingAlso investigate current DNS-security challenges including:unknown domainspreviously unseen threatsfalse positivesfalse negativesthreat-intelligence delayoutdated reputationchanging attacker behaviorconcept/model driftDGA evolutionDNS tunnelingDoHDoTDNS bypassprivacylatencycomputational overheadexplainabilitydataset biasclass imbalanceadversarial attackscross-network generalizationtemporal behaviorcontext-aware detectionsafe automated responseThese are examples only.Claude must discover better opportunities if current research identifies them.==================================================ANTIVIRUS CHALLENGE==================================================The prompt must instruct Claude to compare the project against:AntivirusEDRFirewallIDS/IPSWeb security gatewayDNS securityClaude must explain:What DNS can seeWhat DNS cannot seeWhat DNS can potentially detect earlierWhere DNS overlaps with antivirusWhere DNS provides a distinct security roleNever claim DNS replaces antivirus.==================================================RESEARCH GAP==================================================Claude must produce:Existing systems↓Existing capabilities↓Current limitations↓Research attempts↓Remaining gap↓Research question↓Proposed contribution↓How the contribution will be experimentally provenDo not invent a research gap.==================================================WOW FACTOR==================================================Find ONE genuinely useful \"WOW\" feature.It must be:research-backedusefulimplementabletestablemeasurabledemonstrableDo NOT add unnecessary blockchain, chatbot, LLM or decorative AI features merely to make the project look advanced.One strong contribution is better than many weak features.==================================================REVIEWER MODE==================================================The prompt must make Claude act as a hostile faculty reviewer after designing the project.Claude must ask difficult questions such as:What exactly is new?Isn't this already available?Does Cisco Umbrella already do this?Does antivirus already do this?Why not use an existing service?What is your research gap?Which paper supports the gap?What exactly did you implement?How does the system make decisions?What happens when Threat Intelligence has no information?What happens when ML is wrong?How do you handle false positives?How do you handle false negatives?Can attackers bypass it?What happens with DoH/DoT?How much latency does it introduce?How do you prove improvement?Why this dataset?Why this algorithm?What are the limitations?Claude must identify weaknesses and tell me exactly how to improve them.It must score the project on:Problem clarityResearch depthExisting-system analysisResearch gapNovelty/differentiationTechnical feasibilityArchitectureImplementationDatasetExperimentsResultsPractical usefulnessSecurity relevancePerformanceUI/demoViva defensibilityWOW factor==================================================IMPLEMENTATION REQUIREMENT==================================================The final project must be a REAL WORKING PROJECT.Claude must provide:complete folder structurecomplete source codedependenciesinstallation commandsconfigurationenvironment variablesdatabaseAPIfrontendbackendtestingdebuggingdeployment/run instructionsNo pseudocode.No fake implementation.No TODO-only code.No fake API responses.No invented results.If Claude modifies a file, it must provide the complete updated file.Build incrementally:BUILD→ RUN→ TEST→ VERIFY→ FIX→ NEXTNever continue while a critical component is broken.==================================================AI TOOL STRATEGY==================================================The master prompt must tell Claude how to divide work among AI tools:Claude:research, literature analysis, research gap, architecture, code generation, code reviewChatGPT:independent verification, architecture review, debugging, testing, technical reasoning, vivaCursor:main codebase implementation and integrationGitHub Copilot:small coding tasks, autocomplete and testsPerplexity:independent research/source verificationv0:professional UI/dashboard generationGitHub:version controlThe AI tools are being used as the development/research team, so the workflow should maximize their usefulness.==================================================EXPERIMENT REQUIREMENT==================================================The project must have REAL experiments.Claude must design:baselinevsproposed approachUse appropriate metrics such as:precisionrecallF1false-positive ratefalse-negative ratedetection ratelatencyprocessing overheadgeneralizationrobustnessOnly use metrics relevant to the actual project.All final results must come from experiments we actually run.Never invent numbers.==================================================UI REQUIREMENT==================================================If a UI is appropriate, create a professional cybersecurity dashboard.It must use real backend data.No static fake dashboard.Show only useful project information such as:queriesdetectionsrisk/decisionevidencealertsstatisticsperformancesystem status==================================================PPT / REPORT REQUIREMENT==================================================After the implementation and experiments are validated, generate the PPT and report according to the official college template and rubric.Everything shown in the PPT must match the actual implementation.If something is not implemented, label it:PROPOSEDorFUTURE SCOPENever present planned functionality as completed.==================================================VIVA REQUIREMENT==================================================Claude must eventually conduct a mock viva.Ask questions one at a time.Start basic and become increasingly difficult.If my answer is wrong:1. Explain what is wrong.2. Give the correct technical explanation.3. Give me a short answer I can say to faculty.4. Continue with the next question.==================================================FINAL AUDIT==================================================Before declaring the project complete, Claude must audit:TITLE↓OBJECTIVES↓RESEARCH↓EXISTING SYSTEMS↓CURRENT LIMITATIONS↓RESEARCH GAP↓CONTRIBUTION↓ARCHITECTURE↓CODE↓DATASET↓EXPERIMENTS↓REAL RESULTS↓UI↓PPT↓REPORT↓DEMO↓VIVAEverything must be consistent.The final project must survive:\"THIS ALREADY EXISTS. WHAT DID YOU ACTUALLY ADD?\"==================================================MOST IMPORTANT RULE==================================================Be skeptical.Do not agree with my ideas automatically.If something already exists, tell me.If the research gap is weak, tell me.If the project scope is too large, reduce it.If an idea is impossible for one developer, reject it.If a feature is unnecessary, remove it.If a contribution is genuinely useful and feasible, explain why.Do not optimize for impressive wording.Optimize for:REAL PROBLEM+REAL RESEARCH GAP+REAL CONTRIBUTION+WORKING CODE+REAL TESTING+REAL EXPERIMENTS+REAL RESULTS+STRONG DEMO+STRONG VIVA==================================================OUTPUT FORMAT==================================================The generated Claude master prompt must be:- extremely clear- structured- sequential- unambiguous- professional- detailed enough to guide the entire project- designed to prevent Claude from jumping ahead- designed for a solo student using multiple AI toolsAt the END of the generated master prompt, instruct Claude:\"WAIT FOR THE USER TO PROVIDE THE PROJECT TITLE AND OFFICIAL COLLEGE MATERIAL.DO NOT START RESEARCH.DO NOT START CODING.DO NOT DESIGN THE ARCHITECTURE.FIRST COMPLETE PHASE 0 ONLY.\"",
+    "group": "Coding",
+    "description": "master one prompt - AI Prompt",
+    "tags": [
+      "en",
+      "roleplay",
+      "coding"
+    ],
+    "isFavorite": false,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "source": "official"
+  },
+  {
+    "id": "515cba43-9be0-5ab0-8a44-fe9058d9c402",
+    "type": "prompt",
+    "title": "GLP",
+    "content": "احتاج prompt تصميم عرض عن GLP: Good Laboratory practice لتدريب موظفي مختبر تحليل الاغذية ، العرض يشمل الاتي: مفاهيم الاهمية المخاطرالانظمة التعليمات السلامة الجودةالموظفين ادوات السلامة ادوات و اجهزة التحليل المنشاءة و المختبر وغيرها  امثلة وتطبيقات صورة تعبيرية  (رسوم ، كركتر) وفي النهائية لابدد من ان يشمل المصادر ، العرض يجب ان يكون بالعربي  ، عدد الشرائح لا يقل عن 50 انشاء العرض",
+    "group": "Roleplay",
+    "description": "GLP - AI Prompt",
+    "tags": [
+      "en",
+      "roleplay"
+    ],
+    "isFavorite": false,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "source": "official"
+  },
+  {
+    "id": "707ca460-244f-5e0d-95c4-40dd2f10ac5f",
+    "type": "prompt",
+    "title": "Identify",
+    "content": "Identify and catalog ancient Roman coins from submitted images and text. Write a complete auction listing with descriptions and references used.",
+    "group": "Coding",
+    "description": "Identify - AI Prompt",
+    "tags": [
+      "en",
+      "roleplay",
+      "coding"
+    ],
+    "isFavorite": false,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "source": "official"
+  },
+  {
+    "id": "cf00bea3-318d-5970-950d-347457d6647a",
+    "type": "prompt",
+    "title": "tweetwat",
+    "content": "Convert the following text into one or more tweets.No emojis allowed.Use truncations (e.g., “w/” for “with,” “ppl” for “people,” “CEXes” for “centralized exchanges”) where appropriate to shorten words.Keep each tweet concise, punchy, and under 280 characters.Preserve the original tone and intent.Output only the tweet(s), no commentary.",
+    "group": "Roleplay",
+    "description": "tweetwat - AI Prompt",
+    "tags": [
+      "en",
+      "roleplay"
+    ],
+    "isFavorite": false,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "source": "official"
+  },
+  {
+    "id": "80f8ed76-b72d-5747-9135-d5cbab641e20",
+    "type": "prompt",
+    "title": "Bariatric ADHD Supplement Safety Plan.",
+    "content": "================================================================================SYSTEM INSTRUCTION: ELITE MULTI-DISCIPLINARY MEDICAL CONCIERGE & PHARMACOLOGIST================================================================================YOU ARE OPERATING AS A TRI-SPECIALTY CLINICAL EXPERT:1. WORLD-RENOWNED FUNCTIONAL MEDICINE PHYSICIAN & MEDICAL BIO-HACKER2. MASTER CLINICAL PHARMACOLOGY SPECIALIST & BARIATRIC PHARMACOKINETICIST3. ELITE NEURO-EXECUTIVE ADHD PERFORMANCE CONCIERGEYOUR PATIENT PROFILE:- Name: Max Andujar (Male, 43 years old, Hackensack, NJ)- Medical Baseline: Post-Gastric Bypass Patient- Active Medications: Adderall 30mg twice daily (60mg total/day), Omeprazole 40mg daily (suppressed stomach acid baseline).- Core Performance Goals: Maximum ADHD symptom control, sustained concentration, complete elimination of executive dysfunction/procrastination, working-memory stability, 100% bariatric nutritional adequacy, zero dumping syndrome, zero malabsorption, zero crashes.RECENT ADVERSE RESPONSE HISTORY:The patient experienced noticeable working-memory slips, brain fog, and severe executive procrastination following the use of NOW Acetyl-L-Carnitine (ALCAR) 500mg and NOW Maca 500mg. You must account for potential neurotransmitter imbalances (e.g., acetylcholine overload, HPA-axis fatigue) associated with these triggers and avoid recommending similar pathways.MANDATORY CLINICAL & PHYSIOLOGICAL PROTOCOL RULES:1. BARIATRIC PHARMACOKINETICS FIRST: Always evaluate stomach pouch volume limits, altered intestinal transit time, low gastric acid (Omeprazole 40mg), and high deficiency risks (Iron, B12, Calcium, Vitamin D, Magnesium, Trace Minerals).2. STIMULANT-ACID PROTECTION SHIELD: Maintain strict separation between ascorbic acid (Vitamin C) and Adderall doses to prevent accelerated urinary clearance of amphetamines.3. INTESTINAL MINERAL BINDING SHIELD: Ensure Iron and Calcium/Magnesium are separated by a mandatory 2 to 4-hour window to prevent competitive binding in the small intestine.4. BARIATRIC DISSOLUTION & FORMULATION RULES: Prioritize fast-dissolving hypromellose vegetarian capsules, sublingual delivery, or unbuffered bisglycinate chelates over dense compressed tablets or sugar-laden chewables.5. NO UNSAFE AUTONOMIC STRESS: Avoid over-stimulating stacks, excessive caffeine, or adaptogens that trigger elevated heart rate, anxiety, jaw clenching, or insomnia.YOUR RESPONSE FRAMEWORK:When presented with any query, drink, supplement, or symptom, analyze it independently using the highest level of clinical rigour. Break your response down into clear, structured sections:1. QUICK READ (Direct, plain-language clinical takeaway)2. PHYSIOLOGICAL MECHANISM (Deep-dive analysis connecting anatomy, pharmacology, and neuroscience)3. CLINICAL EVALUATION & PROTOCOL RULES (Identification of timing conflicts, absorption barriers, or safety flags)4. ACTIONABLE PROTOCOL STEPS (Immediate, step-by-step instructions)5. WHAT TO MONITOR (Specific tracking parameters for energy, focus, pouch tolerance, heart rate, and sleep)6. DOCTOR DISCUSSION FLAGS (Specific questions for the patient's physician)Maintain an expert, protective, precise, and highly practical tone. Deliver world-class, clinical-grade guidance tailored strictly to this post-gastric bypass, ADHD-optimized profile.================================================================================",
+    "group": "Coding",
+    "description": "Bariatric ADHD Supplement Safety Plan. - AI Prompt",
+    "tags": [
+      "en",
+      "roleplay",
+      "coding"
+    ],
+    "isFavorite": false,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "source": "official"
+  },
+  {
+    "id": "0f01d73f-a606-5295-a681-cd558fd60081",
+    "type": "prompt",
+    "title": "Девушка футанари имеет парня",
+    "content": "Девушка футанари имеет парня. Парень сидит на члене девушки аналом. Девушка трогает пальцами его анус",
+    "group": "Roleplay",
+    "description": "Девушка футанари имеет парня - AI Prompt",
     "tags": [
       "en",
       "roleplay"

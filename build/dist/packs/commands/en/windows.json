@@ -16398,7 +16398,7 @@
     "id": "tldr-en-windows-cmd-1",
     "type": "command",
     "title": "cmd - Execute specific [c]ommands",
-    "content": "cmd /c {{echo Hello world}}",
+    "content": "cmd /c {{echo cmd is executed}}",
     "group": "Windows",
     "description": "cmd: The Windows command interpreter. (Execute specific [c]ommands)",
     "tags": [
@@ -16428,7 +16428,7 @@
     "id": "tldr-en-windows-cmd-3",
     "type": "command",
     "title": "cmd - Execute specific commands and then enter an interactive shell",
-    "content": "cmd /k {{echo Hello world}}",
+    "content": "cmd /k {{echo cmd is executed}}",
     "group": "Windows",
     "description": "cmd: The Windows command interpreter. (Execute specific commands and then enter an interactive shell)",
     "tags": [

@@ -2883,7 +2883,7 @@
     "id": "tldr-en-linux-secon-1",
     "type": "command",
     "title": "secon - Get the current security context of a process",
-    "content": "secon --pid {{1}}",
+    "content": "secon {{[-p|--pid]}} {{1}}",
     "group": "Linux Ops",
     "description": "secon: Get the SELinux security context of a file, pid, current execution context, or a context specification. (Get the current security context of a process)",
     "tags": [
@@ -2898,7 +2898,7 @@
     "id": "tldr-en-linux-secon-2",
     "type": "command",
     "title": "secon - Get the current security context of a file, resolving all intermediate symlinks",
-    "content": "secon --file {{path/to/file_or_directory}}",
+    "content": "secon {{[-f|--file]}} {{path/to/file_or_directory}}",
     "group": "Linux Ops",
     "description": "secon: Get the SELinux security context of a file, pid, current execution context, or a context specification. (Get the current security context of a file, resolving all intermediate symlinks)",
     "tags": [
@@ -2913,7 +2913,7 @@
     "id": "tldr-en-linux-secon-3",
     "type": "command",
     "title": "secon - Get the current security context of a symlink itself (i.e. do not resolve)",
-    "content": "secon --link {{path/to/symlink}}",
+    "content": "secon {{[-L|--link]}} {{path/to/symlink}}",
     "group": "Linux Ops",
     "description": "secon: Get the SELinux security context of a file, pid, current execution context, or a context specification. (Get the current security context of a symlink itself (i.e. do not resolve))",
     "tags": [
@@ -6527,10 +6527,10 @@
   {
     "id": "tldr-en-linux-trash-5",
     "type": "command",
-    "title": "trash - Remove all files in the trash, which match a specific blob pattern",
+    "title": "trash - Remove all files in the trash, which match a specific glob pattern",
     "content": "trash-rm \"{{*.o}}\"",
     "group": "Linux Ops",
-    "description": "trash: Manage the trashcan/recycling bin. (Remove all files in the trash, which match a specific blob pattern)",
+    "description": "trash: Manage the trashcan/recycling bin. (Remove all files in the trash, which match a specific glob pattern)",
     "tags": [
       "linux",
       "trash",
@@ -41025,6 +41025,66 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-hyprcursor-util-0",
+    "type": "command",
+    "title": "hyprcursor-util - Compile a working directory into a Hyprcursor theme",
+    "content": "hyprcursor-util {{[-c|--create]}} {{path/to/theme_directory}}",
+    "group": "Linux Ops",
+    "description": "hyprcursor-util: Utility to create and extract Hyprcursor cursor themes for Hyprland. (Compile a working directory into a Hyprcursor theme)",
+    "tags": [
+      "linux",
+      "hyprcursor-util",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-hyprcursor-util-1",
+    "type": "command",
+    "title": "hyprcursor-util - Extract an XCursor theme into a Hyprcursor working directory",
+    "content": "hyprcursor-util {{[-e|--extract]}} {{path/to/xcursor_theme}}",
+    "group": "Linux Ops",
+    "description": "hyprcursor-util: Utility to create and extract Hyprcursor cursor themes for Hyprland. (Extract an XCursor theme into a Hyprcursor working directory)",
+    "tags": [
+      "linux",
+      "hyprcursor-util",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-hyprcursor-util-2",
+    "type": "command",
+    "title": "hyprcursor-util - Specify the output directory",
+    "content": "hyprcursor-util {{[-c|--create]}} {{path/to/theme_directory}} {{[-o|--output]}} {{path/to/output}}",
+    "group": "Linux Ops",
+    "description": "hyprcursor-util: Utility to create and extract Hyprcursor cursor themes for Hyprland. (Specify the output directory)",
+    "tags": [
+      "linux",
+      "hyprcursor-util",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-hyprcursor-util-3",
+    "type": "command",
+    "title": "hyprcursor-util - Extract a theme with a specific resize mode",
+    "content": "hyprcursor-util --extract {{path/to/xcursor_theme}} --resize {{none|nearest|bilinear}}",
+    "group": "Linux Ops",
+    "description": "hyprcursor-util: Utility to create and extract Hyprcursor cursor themes for Hyprland. (Extract a theme with a specific resize mode)",
+    "tags": [
+      "linux",
+      "hyprcursor-util",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-reptyr-0",
     "type": "command",
     "title": "reptyr - Move a running process to your current terminal",
@@ -50394,6 +50454,126 @@
     "tags": [
       "linux",
       "distrobox",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-kscreenctl-0",
+    "type": "command",
+    "title": "kscreenctl - List all connected outputs",
+    "content": "kscreenctl list-outputs",
+    "group": "Linux Ops",
+    "description": "kscreenctl: Manage display outputs on KDE Plasma. (List all connected outputs)",
+    "tags": [
+      "linux",
+      "kscreenctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-kscreenctl-1",
+    "type": "command",
+    "title": "kscreenctl - Show an on-screen label on each monitor to identify connector names",
+    "content": "kscreenctl identify",
+    "group": "Linux Ops",
+    "description": "kscreenctl: Manage display outputs on KDE Plasma. (Show an on-screen label on each monitor to identify connector names)",
+    "tags": [
+      "linux",
+      "kscreenctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-kscreenctl-2",
+    "type": "command",
+    "title": "kscreenctl - Show information about a specific output (or use `active-output` / `primary-output`)",
+    "content": "kscreenctl {{DP-1}}",
+    "group": "Linux Ops",
+    "description": "kscreenctl: Manage display outputs on KDE Plasma. (Show information about a specific output (or use `active-output` / `primary-output`))",
+    "tags": [
+      "linux",
+      "kscreenctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-kscreenctl-3",
+    "type": "command",
+    "title": "kscreenctl - Set the resolution and refresh rate of an output",
+    "content": "kscreenctl {{DP-1}} set-mode 1920x1080@60",
+    "group": "Linux Ops",
+    "description": "kscreenctl: Manage display outputs on KDE Plasma. (Set the resolution and refresh rate of an output)",
+    "tags": [
+      "linux",
+      "kscreenctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-kscreenctl-4",
+    "type": "command",
+    "title": "kscreenctl - Set the scale of an output to 200%",
+    "content": "kscreenctl {{DP-1}} set-scale 200%",
+    "group": "Linux Ops",
+    "description": "kscreenctl: Manage display outputs on KDE Plasma. (Set the scale of an output to 200%)",
+    "tags": [
+      "linux",
+      "kscreenctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-kscreenctl-5",
+    "type": "command",
+    "title": "kscreenctl - Place an output to the right of another",
+    "content": "kscreenctl {{HDMI-A-1}} right-of {{DP-1}}",
+    "group": "Linux Ops",
+    "description": "kscreenctl: Manage display outputs on KDE Plasma. (Place an output to the right of another)",
+    "tags": [
+      "linux",
+      "kscreenctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-kscreenctl-6",
+    "type": "command",
+    "title": "kscreenctl - Disable a specific output",
+    "content": "kscreenctl {{HDMI-A-1}} set-enabled false",
+    "group": "Linux Ops",
+    "description": "kscreenctl: Manage display outputs on KDE Plasma. (Disable a specific output)",
+    "tags": [
+      "linux",
+      "kscreenctl",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-kscreenctl-7",
+    "type": "command",
+    "title": "kscreenctl - Turn all outputs off through Display Power Management Signaling",
+    "content": "kscreenctl off",
+    "group": "Linux Ops",
+    "description": "kscreenctl: Manage display outputs on KDE Plasma. (Turn all outputs off through Display Power Management Signaling)",
+    "tags": [
+      "linux",
+      "kscreenctl",
       "tldr",
       "en"
     ],
@@ -62252,10 +62432,10 @@
   {
     "id": "tldr-en-linux-makepkg-3",
     "type": "command",
-    "title": "makepkg - Make a package, but skip checking the source's hashes and PGP signatures",
-    "content": "makepkg --skipchecksums --skippgpchecks",
+    "title": "makepkg - Make a package, but skip checking the source's hashes, PGP signatures, and the `PKGBUILD` `check()` function",
+    "content": "makepkg --skipchecksums --skippgpcheck --nocheck",
     "group": "Linux Ops",
-    "description": "makepkg: Create a package which can be used with `pacman`. Uses the `PKGBUILD` file in the current working directory by default. (Make a package, but skip checking the source's hashes and PGP signatures)",
+    "description": "makepkg: Create a package which can be used with `pacman`. Uses the `PKGBUILD` file in the current working directory by default. (Make a package, but skip checking the source's hashes, PGP signatures, and the `PKGBUILD` `check()` function)",
     "tags": [
       "linux",
       "makepkg",
@@ -62424,6 +62604,81 @@
     "tags": [
       "linux",
       "hw-probe",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-setleds-0",
+    "type": "command",
+    "title": "setleds - Print current key and LED states",
+    "content": "setleds",
+    "group": "Linux Ops",
+    "description": "setleds: Set lock key and LED states. (Print current key and LED states)",
+    "tags": [
+      "linux",
+      "setleds",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-setleds-1",
+    "type": "command",
+    "title": "setleds - Turn a lock key and its LED off",
+    "content": "setleds -{{num|caps|scroll}}",
+    "group": "Linux Ops",
+    "description": "setleds: Set lock key and LED states. (Turn a lock key and its LED off)",
+    "tags": [
+      "linux",
+      "setleds",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-setleds-2",
+    "type": "command",
+    "title": "setleds - Turn a lock key and its LED on",
+    "content": "setleds +{{num|caps|scroll}}",
+    "group": "Linux Ops",
+    "description": "setleds: Set lock key and LED states. (Turn a lock key and its LED on)",
+    "tags": [
+      "linux",
+      "setleds",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-setleds-3",
+    "type": "command",
+    "title": "setleds - Unpair key and LED states and only set the LED",
+    "content": "setleds -L {{+scroll}}",
+    "group": "Linux Ops",
+    "description": "setleds: Set lock key and LED states. (Unpair key and LED states and only set the LED)",
+    "tags": [
+      "linux",
+      "setleds",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-setleds-4",
+    "type": "command",
+    "title": "setleds - Restore key and LED pairing",
+    "content": "setleds -L",
+    "group": "Linux Ops",
+    "description": "setleds: Set lock key and LED states. (Restore key and LED pairing)",
+    "tags": [
+      "linux",
+      "setleds",
       "tldr",
       "en"
     ],
@@ -88455,6 +88710,66 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-hypridle-0",
+    "type": "command",
+    "title": "hypridle - Start the idle daemon using the default configuration",
+    "content": "hypridle",
+    "group": "Linux Ops",
+    "description": "hypridle: Idle management daemon for the Hyprland Wayland compositor. Executes commands based on inactivity timeouts. Configured via `~/.config/hypr/hypridle.conf`. (Start the idle daemon using the default configuration)",
+    "tags": [
+      "linux",
+      "hypridle",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-hypridle-1",
+    "type": "command",
+    "title": "hypridle - Start the idle daemon using a specific configuration file",
+    "content": "hypridle {{[-c|--config]}} {{path/to/hypridle.conf}}",
+    "group": "Linux Ops",
+    "description": "hypridle: Idle management daemon for the Hyprland Wayland compositor. Executes commands based on inactivity timeouts. Configured via `~/.config/hypr/hypridle.conf`. (Start the idle daemon using a specific configuration file)",
+    "tags": [
+      "linux",
+      "hypridle",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-hypridle-2",
+    "type": "command",
+    "title": "hypridle - Start the idle daemon with verbose output",
+    "content": "hypridle {{[-v|--verbose]}}",
+    "group": "Linux Ops",
+    "description": "hypridle: Idle management daemon for the Hyprland Wayland compositor. Executes commands based on inactivity timeouts. Configured via `~/.config/hypr/hypridle.conf`. (Start the idle daemon with verbose output)",
+    "tags": [
+      "linux",
+      "hypridle",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-hypridle-3",
+    "type": "command",
+    "title": "hypridle - Display help",
+    "content": "hypridle {{[-h|--help]}}",
+    "group": "Linux Ops",
+    "description": "hypridle: Idle management daemon for the Hyprland Wayland compositor. Executes commands based on inactivity timeouts. Configured via `~/.config/hypr/hypridle.conf`. (Display help)",
+    "tags": [
+      "linux",
+      "hypridle",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-resize-0",
     "type": "command",
     "title": "resize - Resize the terminal",
@@ -99825,6 +100140,96 @@
     "source": "official"
   },
   {
+    "id": "tldr-en-linux-duff-0",
+    "type": "command",
+    "title": "duff - Find duplicate files recursively",
+    "content": "duff -r {{path/to/directory}}",
+    "group": "Linux Ops",
+    "description": "duff: Duplicate file finder. (Find duplicate files recursively)",
+    "tags": [
+      "linux",
+      "duff",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-duff-1",
+    "type": "command",
+    "title": "duff - List all but one file from each cluster of duplicates",
+    "content": "duff -er {{path/to/directory}}",
+    "group": "Linux Ops",
+    "description": "duff: Duplicate file finder. (List all but one file from each cluster of duplicates)",
+    "tags": [
+      "linux",
+      "duff",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-duff-2",
+    "type": "command",
+    "title": "duff - List unique files",
+    "content": "duff -ur {{path/to/directory}}",
+    "group": "Linux Ops",
+    "description": "duff: Duplicate file finder. (List unique files)",
+    "tags": [
+      "linux",
+      "duff",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-duff-3",
+    "type": "command",
+    "title": "duff - Use SHA-256 instead of SHA-1",
+    "content": "duff -d sha256 {{path/to/directory}}",
+    "group": "Linux Ops",
+    "description": "duff: Duplicate file finder. (Use SHA-256 instead of SHA-1)",
+    "tags": [
+      "linux",
+      "duff",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-duff-4",
+    "type": "command",
+    "title": "duff - Compare files byte by byte instead of using digests",
+    "content": "duff -t {{path/to/directory}}",
+    "group": "Linux Ops",
+    "description": "duff: Duplicate file finder. (Compare files byte by byte instead of using digests)",
+    "tags": [
+      "linux",
+      "duff",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-duff-5",
+    "type": "command",
+    "title": "duff - Include hidden files and directories when searching recursively",
+    "content": "duff -ar {{path/to/directory}}",
+    "group": "Linux Ops",
+    "description": "duff: Duplicate file finder. (Include hidden files and directories when searching recursively)",
+    "tags": [
+      "linux",
+      "duff",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
     "id": "tldr-en-linux-koji-untag-build-0",
     "type": "command",
     "title": "koji-untag-build - Remove a tag from one or more builds",
@@ -99909,6 +100314,81 @@
     "tags": [
       "linux",
       "koji-untag-build",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-hyprlock-0",
+    "type": "command",
+    "title": "hyprlock - Lock the screen using the default configuration",
+    "content": "hyprlock",
+    "group": "Linux Ops",
+    "description": "hyprlock: GPU-accelerated screen locker for the Hyprland Wayland compositor. Configured via `~/.config/hypr/hyprlock.conf`. (Lock the screen using the default configuration)",
+    "tags": [
+      "linux",
+      "hyprlock",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-hyprlock-1",
+    "type": "command",
+    "title": "hyprlock - Lock the screen using a specific configuration file",
+    "content": "hyprlock {{[-c|--config]}} {{path/to/hyprlock.conf}}",
+    "group": "Linux Ops",
+    "description": "hyprlock: GPU-accelerated screen locker for the Hyprland Wayland compositor. Configured via `~/.config/hypr/hyprlock.conf`. (Lock the screen using a specific configuration file)",
+    "tags": [
+      "linux",
+      "hyprlock",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-hyprlock-2",
+    "type": "command",
+    "title": "hyprlock - Lock the screen immediately, bypassing the grace period",
+    "content": "hyprlock --grace 0",
+    "group": "Linux Ops",
+    "description": "hyprlock: GPU-accelerated screen locker for the Hyprland Wayland compositor. Configured via `~/.config/hypr/hyprlock.conf`. (Lock the screen immediately, bypassing the grace period)",
+    "tags": [
+      "linux",
+      "hyprlock",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-hyprlock-3",
+    "type": "command",
+    "title": "hyprlock - Disable the fade-in animation when locking",
+    "content": "hyprlock --no-fade-in",
+    "group": "Linux Ops",
+    "description": "hyprlock: GPU-accelerated screen locker for the Hyprland Wayland compositor. Configured via `~/.config/hypr/hyprlock.conf`. (Disable the fade-in animation when locking)",
+    "tags": [
+      "linux",
+      "hyprlock",
+      "tldr",
+      "en"
+    ],
+    "source": "official"
+  },
+  {
+    "id": "tldr-en-linux-hyprlock-4",
+    "type": "command",
+    "title": "hyprlock - Display help",
+    "content": "hyprlock {{[-h|--help]}}",
+    "group": "Linux Ops",
+    "description": "hyprlock: GPU-accelerated screen locker for the Hyprland Wayland compositor. Configured via `~/.config/hypr/hyprlock.conf`. (Display help)",
+    "tags": [
+      "linux",
+      "hyprlock",
       "tldr",
       "en"
     ],
@@ -120212,10 +120692,10 @@
   {
     "id": "tldr-en-linux-localectl-4",
     "type": "command",
-    "title": "localectl - Set the system keyboard mapping for the console and X11",
+    "title": "localectl - Set the system keyboard mapping for the console and graphical sessions",
     "content": "localectl set-keymap {{us}}",
     "group": "Linux Ops",
-    "description": "localectl: Control the system locale and keyboard layout settings. (Set the system keyboard mapping for the console and X11)",
+    "description": "localectl: Control the system locale and keyboard layout settings. (Set the system keyboard mapping for the console and graphical sessions)",
     "tags": [
       "linux",
       "localectl",
